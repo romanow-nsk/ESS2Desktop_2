@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/../ABCCore" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../ABCDataServer" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../ABCDesktop" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../ESS2Core" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../ESS2DataServer" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+  </component>
+</project>
