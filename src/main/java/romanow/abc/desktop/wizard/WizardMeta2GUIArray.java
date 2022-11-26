@@ -176,7 +176,7 @@ public class WizardMeta2GUIArray extends WizardBaseView {
                     int type = types.get(Types.getSelectedIndex()).value();
                     Meta2GUI entity = (Meta2GUI) createByType(type);
                     if (entity.getErrors().getErrCount()!=0){
-                        System.out.println(entity.getErrors().getInfo());
+                        System.out.println(entity.getErrors().toString());
                         main.popup("Ошибка создания элемента ЧМИ");
                         return;
                         }

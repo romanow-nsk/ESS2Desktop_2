@@ -54,7 +54,7 @@ public class FESS2WriteRegGUI extends ESS2LocalFunction {
             }
         if (!device.getErrors().valid()){
             throw new ScriptException(ValuesBase.SEConfiguration, "Ошибки оборудования "+devName.formatTo()+
-                    ": "+device.getErrors().getInfo());
+                    ": "+device.getErrors().toString());
             }
         try {
             device.getDriver().writeRegister(device.getShortName(),(int)unit.toLong(),(int)regNum.toLong(),(int)regValue.toLong());
