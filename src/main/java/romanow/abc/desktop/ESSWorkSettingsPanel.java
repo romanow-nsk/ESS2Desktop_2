@@ -68,6 +68,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         MainServerPeriod = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
         MainServerConnectPeriod = new javax.swing.JTextField();
+        TraceMode = new javax.swing.JCheckBox();
 
         setLayout(null);
 
@@ -81,15 +82,15 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
 
         jLabel18.setText("Цикл опроса потоковых данных (сек)");
         add(jLabel18);
-        jLabel18.setBounds(20, 50, 230, 14);
+        jLabel18.setBounds(20, 50, 230, 16);
 
         jLabel19.setText("Вид компрессии потоковых данных");
         add(jLabel19);
-        jLabel19.setBounds(20, 290, 260, 14);
+        jLabel19.setBounds(20, 290, 260, 16);
 
         jLabel20.setText("Цикл обнаружения аварий (сек)");
         add(jLabel20);
-        jLabel20.setBounds(20, 110, 230, 14);
+        jLabel20.setBounds(20, 110, 230, 16);
 
         ArchiveDepthInDay.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -125,7 +126,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
 
         jLabel21.setText("Период обновления форм ЧМИ (сек)");
         add(jLabel21);
-        jLabel21.setBounds(20, 140, 210, 14);
+        jLabel21.setBounds(20, 140, 210, 16);
 
         EventsPeriod.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -137,7 +138,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
 
         jLabel22.setText("\"Возраст\" регистра в кэше (мс)");
         add(jLabel22);
-        jLabel22.setBounds(20, 260, 250, 14);
+        jLabel22.setBounds(20, 260, 250, 16);
 
         RegisterAge.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -149,11 +150,11 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
 
         jLabel23.setText("IP/порт  сервера ДЦ");
         add(jLabel23);
-        jLabel23.setBounds(420, 70, 150, 14);
+        jLabel23.setBounds(420, 70, 150, 16);
 
         jLabel24.setText("Глубина архива в днях");
         add(jLabel24);
-        jLabel24.setBounds(20, 20, 180, 14);
+        jLabel24.setBounds(20, 20, 180, 16);
 
         FileScanPeriod.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -165,11 +166,11 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
 
         jLabel33.setText("Длинный цикл опроса потоковых данных (сек)");
         add(jLabel33);
-        jLabel33.setBounds(20, 80, 260, 14);
+        jLabel33.setBounds(20, 80, 260, 16);
 
         jLabel34.setText("Цикл опроса источников файлов (сек)");
         add(jLabel34);
-        jLabel34.setBounds(20, 230, 260, 14);
+        jLabel34.setBounds(20, 230, 260, 16);
 
         StreamDataCompressMode.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -194,11 +195,11 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(WaitForMainServer);
-        WaitForMainServer.setBounds(410, 90, 290, 23);
+        WaitForMainServer.setBounds(410, 90, 290, 20);
 
         jLabel25.setText("Цикл опроса мгновенных значений  (сек)");
         add(jLabel25);
-        jLabel25.setBounds(20, 200, 290, 14);
+        jLabel25.setBounds(20, 200, 290, 16);
 
         MainServerPort.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -226,7 +227,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
 
         jLabel26.setText("Цикл опроса дискретных событий (сек)");
         add(jLabel26);
-        jLabel26.setBounds(20, 170, 250, 14);
+        jLabel26.setBounds(20, 170, 250, 16);
 
         MainServerMode.setText("Режим сервера ДЦ");
         MainServerMode.addItemListener(new java.awt.event.ItemListener() {
@@ -235,15 +236,15 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(MainServerMode);
-        MainServerMode.setBounds(410, 10, 170, 23);
+        MainServerMode.setBounds(410, 10, 170, 20);
 
         jLabel2.setText("Время \"молчания\" оператора (мин)");
         add(jLabel2);
-        jLabel2.setBounds(20, 320, 240, 14);
+        jLabel2.setBounds(20, 320, 240, 16);
 
         jLabel28.setText("Цикл сервера ДЦ (сек)");
         add(jLabel28);
-        jLabel28.setBounds(420, 40, 160, 14);
+        jLabel28.setBounds(420, 40, 160, 16);
 
         MainServerPeriod.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -255,7 +256,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
 
         jLabel29.setText("Цикл проверки соединения  сервера ДЦ (сек)");
         add(jLabel29);
-        jLabel29.setBounds(20, 350, 280, 14);
+        jLabel29.setBounds(20, 350, 280, 16);
 
         MainServerConnectPeriod.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -264,6 +265,15 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         });
         add(MainServerConnectPeriod);
         MainServerConnectPeriod.setBounds(310, 340, 70, 25);
+
+        TraceMode.setText("Трассиовка");
+        TraceMode.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TraceModeItemStateChanged(evt);
+            }
+        });
+        add(TraceMode);
+        TraceMode.setBounds(410, 120, 140, 20);
     }// </editor-fold>//GEN-END:initComponents
 
     private void GUIrefreshPeriodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GUIrefreshPeriodKeyPressed
@@ -337,6 +347,11 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         procPressedInt(evt, MainServerConnectPeriod,"mainServerConnectPeriod");
     }//GEN-LAST:event_MainServerConnectPeriodKeyPressed
 
+    private void TraceModeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TraceModeItemStateChanged
+        procPressedBoolean(TraceMode,"traceMode");
+        refreshMainServerParams();
+    }//GEN-LAST:event_TraceModeItemStateChanged
+
     private void procPressedInt(KeyEvent evt, JTextField text, String name){
         if(evt.getKeyCode()!=10) return;
         int vv=0;
@@ -383,6 +398,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             MainServerPeriod.setText(""+ws.getMainServerPeriod());
             MainServerConnectPeriod.setText(""+ws.getMainServerConnectPeriod());
             MainServerMode.setSelected(ws.isMainServerMode());
+            TraceMode.setSelected(ws.isTraceMode());
             refreshMainServerParams();
             } catch (Exception e) { popup(e.toString()); }
         }
@@ -507,6 +523,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     private javax.swing.JTextField StreamDataCompressMode;
     private javax.swing.JTextField StreamDataLongPeriod;
     private javax.swing.JTextField StreamDataPeriod;
+    private javax.swing.JCheckBox TraceMode;
     private javax.swing.JTextField UserSilenceTime;
     private javax.swing.JCheckBox WaitForMainServer;
     private javax.swing.JLabel jLabel18;
