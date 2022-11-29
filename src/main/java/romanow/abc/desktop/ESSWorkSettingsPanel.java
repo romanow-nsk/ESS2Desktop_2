@@ -68,7 +68,6 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         MainServerPeriod = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
         MainServerConnectPeriod = new javax.swing.JTextField();
-        TraceMode = new javax.swing.JCheckBox();
 
         setLayout(null);
 
@@ -265,15 +264,6 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         });
         add(MainServerConnectPeriod);
         MainServerConnectPeriod.setBounds(310, 340, 70, 25);
-
-        TraceMode.setText("Трассиовка");
-        TraceMode.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                TraceModeItemStateChanged(evt);
-            }
-        });
-        add(TraceMode);
-        TraceMode.setBounds(410, 120, 140, 20);
     }// </editor-fold>//GEN-END:initComponents
 
     private void GUIrefreshPeriodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GUIrefreshPeriodKeyPressed
@@ -347,11 +337,6 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         procPressedInt(evt, MainServerConnectPeriod,"mainServerConnectPeriod");
     }//GEN-LAST:event_MainServerConnectPeriodKeyPressed
 
-    private void TraceModeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TraceModeItemStateChanged
-        procPressedBoolean(TraceMode,"traceMode");
-        refreshMainServerParams();
-    }//GEN-LAST:event_TraceModeItemStateChanged
-
     private void procPressedInt(KeyEvent evt, JTextField text, String name){
         if(evt.getKeyCode()!=10) return;
         int vv=0;
@@ -398,7 +383,6 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             MainServerPeriod.setText(""+ws.getMainServerPeriod());
             MainServerConnectPeriod.setText(""+ws.getMainServerConnectPeriod());
             MainServerMode.setSelected(ws.isMainServerMode());
-            TraceMode.setSelected(ws.isTraceMode());
             refreshMainServerParams();
             } catch (Exception e) { popup(e.toString()); }
         }
@@ -523,7 +507,6 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     private javax.swing.JTextField StreamDataCompressMode;
     private javax.swing.JTextField StreamDataLongPeriod;
     private javax.swing.JTextField StreamDataPeriod;
-    private javax.swing.JCheckBox TraceMode;
     private javax.swing.JTextField UserSilenceTime;
     private javax.swing.JCheckBox WaitForMainServer;
     private javax.swing.JLabel jLabel18;

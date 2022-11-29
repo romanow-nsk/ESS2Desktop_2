@@ -305,7 +305,6 @@ public class ESSMetaPanel extends ESSBasePanel {
         jLabel5 = new javax.swing.JLabel();
         FullScreen = new javax.swing.JCheckBox();
         OnOffNode = new javax.swing.JButton();
-        ServerTrace = new javax.swing.JCheckBox();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -344,7 +343,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(DeviceRead);
-        DeviceRead.setBounds(230, 600, 70, 23);
+        DeviceRead.setBounds(230, 600, 70, 22);
 
         DeviceWrite.setText("Запись");
         DeviceWrite.addActionListener(new java.awt.event.ActionListener() {
@@ -353,7 +352,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(DeviceWrite);
-        DeviceWrite.setBounds(230, 630, 70, 23);
+        DeviceWrite.setBounds(230, 630, 70, 22);
 
         RegNum.setText("0");
         add(RegNum);
@@ -365,7 +364,7 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         jLabel4.setText("Значение");
         add(jLabel4);
-        jLabel4.setBounds(10, 640, 80, 14);
+        jLabel4.setBounds(10, 640, 80, 16);
 
         HEXReg.setText("hex");
         HEXReg.addItemListener(new java.awt.event.ItemListener() {
@@ -378,7 +377,7 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         jLabel8.setText("Регистр");
         add(jLabel8);
-        jLabel8.setBounds(10, 610, 80, 14);
+        jLabel8.setBounds(10, 610, 80, 16);
 
         SettingsList.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -390,7 +389,7 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         jLabel10.setText("Уставка");
         add(jLabel10);
-        jLabel10.setBounds(870, 90, 60, 14);
+        jLabel10.setBounds(870, 90, 60, 16);
 
         SettingValue.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -402,11 +401,11 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         jLabel11.setText("Номер");
         add(jLabel11);
-        jLabel11.setBounds(710, 165, 50, 14);
+        jLabel11.setBounds(710, 165, 50, 16);
 
         jLabel12.setText("Значение");
         add(jLabel12);
-        jLabel12.setBounds(630, 245, 90, 14);
+        jLabel12.setBounds(630, 245, 90, 16);
 
         DefValueFormula.setEnabled(false);
         add(DefValueFormula);
@@ -422,11 +421,11 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         jLabel13.setText("Умолчание");
         add(jLabel13);
-        jLabel13.setBounds(380, 165, 90, 14);
+        jLabel13.setBounds(380, 165, 90, 16);
 
         jLabel14.setText("Формула");
         add(jLabel14);
-        jLabel14.setBounds(460, 245, 90, 14);
+        jLabel14.setBounds(460, 245, 90, 16);
 
         DefValue.setEnabled(false);
         add(DefValue);
@@ -438,7 +437,7 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         jLabel15.setText("Минимум");
         add(jLabel15);
-        jLabel15.setBounds(380, 195, 90, 14);
+        jLabel15.setBounds(380, 195, 90, 16);
 
         MaxValue.setEnabled(false);
         add(MaxValue);
@@ -451,7 +450,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(WriteSetting);
-        WriteSetting.setBounds(760, 220, 80, 23);
+        WriteSetting.setBounds(760, 220, 80, 22);
 
         SettingRegNum.setEnabled(false);
         add(SettingRegNum);
@@ -459,11 +458,11 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         jLabel16.setText("Максимум");
         add(jLabel16);
-        jLabel16.setBounds(380, 225, 90, 14);
+        jLabel16.setBounds(380, 225, 90, 16);
 
         jLabel17.setText("Имя");
         add(jLabel17);
-        jLabel17.setBounds(710, 200, 30, 14);
+        jLabel17.setBounds(710, 200, 30, 16);
 
         SettingShortName.setEnabled(false);
         add(SettingShortName);
@@ -475,7 +474,7 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         CheckLimits.setText("Проверка");
         add(CheckLimits);
-        CheckLimits.setBounds(790, 110, 90, 23);
+        CheckLimits.setBounds(790, 110, 90, 20);
 
         SettingEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -531,11 +530,11 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         WriteFloat.setText("Float");
         add(WriteFloat);
-        WriteFloat.setBounds(290, 550, 70, 23);
+        WriteFloat.setBounds(290, 550, 70, 20);
 
         WriteInt32.setText("Int32");
         add(WriteInt32);
-        WriteInt32.setBounds(290, 570, 60, 23);
+        WriteInt32.setBounds(290, 570, 60, 20);
         add(jSeparator6);
         jSeparator6.setBounds(380, 470, 360, 10);
 
@@ -576,7 +575,7 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         MetaDataChangesLabel.setText("Изменений");
         add(MetaDataChangesLabel);
-        MetaDataChangesLabel.setBounds(810, 10, 70, 14);
+        MetaDataChangesLabel.setBounds(810, 10, 70, 16);
 
         EditMeta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/media_list.png"))); // NOI18N
         EditMeta.setBorderPainted(false);
@@ -851,7 +850,7 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         ArchitectureLabel.setText("Архитектура не выбрана");
         add(ArchitectureLabel);
-        ArchitectureLabel.setBounds(140, 425, 170, 14);
+        ArchitectureLabel.setBounds(140, 425, 170, 16);
 
         Connect.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/status_gray.png"))); // NOI18N
         Connect.setBorderPainted(false);
@@ -968,7 +967,7 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         Trace.setText("Трасса");
         add(Trace);
-        Trace.setBounds(10, 350, 70, 23);
+        Trace.setBounds(10, 350, 70, 20);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("xls 2");
@@ -1004,11 +1003,11 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         jLabel19.setText("сервер");
         add(jLabel19);
-        jLabel19.setBounds(120, 335, 50, 14);
+        jLabel19.setBounds(120, 335, 50, 16);
 
         jLabel30.setText("клиент");
         add(jLabel30);
-        jLabel30.setBounds(70, 335, 50, 14);
+        jLabel30.setBounds(70, 335, 50, 16);
 
         RuntimeEdit.setText("Редакт. \"на лету\"");
         RuntimeEdit.addItemListener(new java.awt.event.ItemListener() {
@@ -1017,7 +1016,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(RuntimeEdit);
-        RuntimeEdit.setBounds(10, 460, 130, 23);
+        RuntimeEdit.setBounds(150, 460, 130, 20);
 
         RunTimeSaveChanges.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/save.png"))); // NOI18N
         RunTimeSaveChanges.setBorderPainted(false);
@@ -1036,13 +1035,13 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         RunTimeChangesLabel.setText("Изменений");
         add(RunTimeChangesLabel);
-        RunTimeChangesLabel.setBounds(280, 440, 70, 14);
+        RunTimeChangesLabel.setBounds(280, 440, 70, 16);
         add(MetaTypes);
         MetaTypes.setBounds(650, 50, 140, 20);
 
         jLabel31.setText(" ограничений");
         add(jLabel31);
-        jLabel31.setBounds(790, 130, 80, 14);
+        jLabel31.setBounds(790, 130, 80, 16);
 
         jLabel35.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel35.setText("xls 1");
@@ -1110,7 +1109,7 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         jLabel39.setText("Контроллер (драйвер)");
         add(jLabel39);
-        jLabel39.setBounds(10, 550, 210, 14);
+        jLabel39.setBounds(10, 550, 210, 16);
         add(DevicesRW);
         DevicesRW.setBounds(10, 570, 210, 20);
         add(jSeparator8);
@@ -1122,7 +1121,7 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         jLabel38.setText("Unit");
         add(jLabel38);
-        jLabel38.setBounds(230, 550, 40, 14);
+        jLabel38.setBounds(230, 550, 40, 16);
 
         HEXValue.setText("hex");
         HEXValue.addItemListener(new java.awt.event.ItemListener() {
@@ -1131,7 +1130,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(HEXValue);
-        HEXValue.setBounds(180, 630, 50, 23);
+        HEXValue.setBounds(180, 630, 50, 20);
 
         jLabel40.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel40.setText("Контроллер (драйвер)");
@@ -1249,7 +1248,7 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         FullScreen.setText("Полный экран");
         add(FullScreen);
-        FullScreen.setBounds(150, 440, 120, 23);
+        FullScreen.setBounds(150, 440, 120, 20);
 
         OnOffNode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/connect-off.png"))); // NOI18N
         OnOffNode.setBorderPainted(false);
@@ -1261,10 +1260,6 @@ public class ESSMetaPanel extends ESSBasePanel {
         });
         add(OnOffNode);
         OnOffNode.setBounds(320, 15, 40, 40);
-
-        ServerTrace.setText("Трасса");
-        add(ServerTrace);
-        ServerTrace.setBounds(150, 460, 90, 23);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ImportMetaDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportMetaDataActionPerformed
@@ -2465,7 +2460,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         new APICall<CallResult>(main){
             @Override
             public Call<CallResult> apiFun() {
-                return main2.service2.connectToEquipment(main2.debugToken, ServerTrace.isSelected());
+                return main2.service2.connectToEquipment(main2.debugToken);
                 }
             @Override
             public void onSucess(CallResult oo) {
@@ -3260,7 +3255,6 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JButton RunTimeSaveChanges;
     private javax.swing.JCheckBox RuntimeEdit;
     private java.awt.Choice Scripts;
-    private javax.swing.JCheckBox ServerTrace;
     private javax.swing.JButton SettingEdit;
     private javax.swing.JTextField SettingRegNum;
     private javax.swing.JTextField SettingShortName;

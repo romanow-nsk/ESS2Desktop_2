@@ -1324,7 +1324,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="10" y="460" width="130" height="-1"/>
+          <AbsoluteConstraints x="150" y="460" width="130" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -1792,16 +1792,6 @@
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="320" y="15" width="40" height="40"/>
-        </Constraint>
-      </Constraints>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="ServerTrace">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&#x422;&#x440;&#x430;&#x441;&#x441;&#x430;"/>
-      </Properties>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="150" y="460" width="90" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
