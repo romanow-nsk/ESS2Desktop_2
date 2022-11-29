@@ -5,10 +5,12 @@
  */
 package romanow.abc.desktop;
 
+import romanow.abc.ESS2ExportKotlin;
 import romanow.abc.core.DBRequest;
 import romanow.abc.core.entity.baseentityes.JEmpty;
 import romanow.abc.core.entity.subjectarea.WorkSettings;
 import retrofit2.Response;
+import romanow.abc.core.utils.FileNameExt;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
@@ -68,6 +70,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         MainServerPeriod = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
         MainServerConnectPeriod = new javax.swing.JTextField();
+        ToKotlinJS = new javax.swing.JButton();
 
         setLayout(null);
 
@@ -264,6 +267,15 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         });
         add(MainServerConnectPeriod);
         MainServerConnectPeriod.setBounds(310, 340, 70, 25);
+
+        ToKotlinJS.setText("Экспорт Kotlis/JS");
+        ToKotlinJS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ToKotlinJSActionPerformed(evt);
+            }
+        });
+        add(ToKotlinJS);
+        ToKotlinJS.setBounds(410, 120, 150, 25);
     }// </editor-fold>//GEN-END:initComponents
 
     private void GUIrefreshPeriodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GUIrefreshPeriodKeyPressed
@@ -336,6 +348,14 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     private void MainServerConnectPeriodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MainServerConnectPeriodKeyPressed
         procPressedInt(evt, MainServerConnectPeriod,"mainServerConnectPeriod");
     }//GEN-LAST:event_MainServerConnectPeriodKeyPressed
+
+    private void ToKotlinJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ToKotlinJSActionPerformed
+        FileNameExt fname = main.getOutputFileName("Каталог исходников Kotlin/JS","aaa","aaa");
+        if (fname==null)
+            return;
+        System.out.println("Исходники Kotlis/JS: экспорт в "+fname.getPath());
+        ESS2ExportKotlin.exportKotlin(fname.getPath());
+    }//GEN-LAST:event_ToKotlinJSActionPerformed
 
     private void procPressedInt(KeyEvent evt, JTextField text, String name){
         if(evt.getKeyCode()!=10) return;
@@ -507,6 +527,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     private javax.swing.JTextField StreamDataCompressMode;
     private javax.swing.JTextField StreamDataLongPeriod;
     private javax.swing.JTextField StreamDataPeriod;
+    private javax.swing.JButton ToKotlinJS;
     private javax.swing.JTextField UserSilenceTime;
     private javax.swing.JCheckBox WaitForMainServer;
     private javax.swing.JLabel jLabel18;
