@@ -305,6 +305,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         jLabel5 = new javax.swing.JLabel();
         FullScreen = new javax.swing.JCheckBox();
         OnOffNode = new javax.swing.JButton();
+        CIDLocal = new javax.swing.JButton();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -1260,6 +1261,15 @@ public class ESSMetaPanel extends ESSBasePanel {
         });
         add(OnOffNode);
         OnOffNode.setBounds(320, 15, 40, 40);
+
+        CIDLocal.setText("CID-local");
+        CIDLocal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CIDLocalActionPerformed(evt);
+            }
+        });
+        add(CIDLocal);
+        CIDLocal.setBounds(255, 505, 100, 25);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ImportMetaDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportMetaDataActionPerformed
@@ -3065,6 +3075,16 @@ public class ESSMetaPanel extends ESSBasePanel {
 
     }//GEN-LAST:event_OnOffNodeActionPerformed
 
+    private void CIDLocalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CIDLocalActionPerformed
+        if (!main2.deployed.isDeployed()){
+            popup("Архитектутра не развернута");
+            return;
+            }
+        ESS2Architecture arch = main2.deployed;
+        CIDCreateData data = arch.createCIDRecord();
+        System.out.println(data.toString());
+    }//GEN-LAST:event_CIDLocalActionPerformed
+
 
     @Override
     public void refresh() {
@@ -3186,6 +3206,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JButton ArchNodeRefrresh;
     private javax.swing.JLabel ArchitectureLabel;
     private java.awt.Choice Architectures;
+    private javax.swing.JButton CIDLocal;
     private javax.swing.JCheckBox CheckLimits;
     private javax.swing.JButton Connect;
     private javax.swing.JTextField DefValue;
