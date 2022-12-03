@@ -80,6 +80,10 @@ public class ModBusClientProxyDriver implements I_ModbusGroupDriver {
     @Override
     public void reopenConnection() {
         }
+    @Override
+    public int getState() {
+        return ready ? ModBusBase.StateOn : ModBusBase.StateOff;
+        }
 
     @Override
     public boolean isReady() {
