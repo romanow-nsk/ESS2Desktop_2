@@ -26,6 +26,7 @@ public class WizardESS2Connector extends WizardBaseViewDB {
         IP.setText(connector.getIP());
         Port.setText(""+connector.getPort());
         DBEmulator.setSelected(connector.isDbEmulator());
+        RTU.setSelected(connector.isRTU());
         RegInBlock.setText(""+connector.getRegsInBlock());
         TimeOut.setText(""+connector.getTimeOut());
         setSize(750,230);
@@ -54,11 +55,12 @@ public class WizardESS2Connector extends WizardBaseViewDB {
         TimeOut = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         UnitsNum = new javax.swing.JTextField();
+        RTU = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(10, 120, 460, 2);
+        jSeparator1.setBounds(10, 120, 460, 3);
 
         Port.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -70,11 +72,11 @@ public class WizardESS2Connector extends WizardBaseViewDB {
 
         jLabel1.setText("Порт");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(200, 135, 40, 14);
+        jLabel1.setBounds(200, 135, 40, 16);
 
         jLabel2.setText("Регистров в блоке");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(10, 165, 110, 14);
+        jLabel2.setBounds(10, 165, 110, 16);
 
         IP.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -91,11 +93,11 @@ public class WizardESS2Connector extends WizardBaseViewDB {
             }
         });
         getContentPane().add(DBEmulator);
-        DBEmulator.setBounds(340, 130, 130, 23);
+        DBEmulator.setBounds(340, 130, 130, 20);
 
         jLabel3.setText("IP");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(10, 135, 50, 14);
+        jLabel3.setBounds(10, 135, 50, 16);
 
         RegInBlock.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -107,7 +109,7 @@ public class WizardESS2Connector extends WizardBaseViewDB {
 
         jLabel4.setText("Тайм-аут(с)");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(200, 165, 80, 14);
+        jLabel4.setBounds(200, 165, 80, 16);
 
         TimeOut.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -119,7 +121,7 @@ public class WizardESS2Connector extends WizardBaseViewDB {
 
         jLabel5.setText("Unit-ов");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(340, 165, 50, 14);
+        jLabel5.setBounds(200, 190, 50, 16);
 
         UnitsNum.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -127,7 +129,16 @@ public class WizardESS2Connector extends WizardBaseViewDB {
             }
         });
         getContentPane().add(UnitsNum);
-        UnitsNum.setBounds(390, 160, 40, 25);
+        UnitsNum.setBounds(280, 190, 40, 25);
+
+        RTU.setText("RS-485");
+        RTU.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                RTUItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(RTU);
+        RTU.setBounds(340, 160, 100, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -185,6 +196,13 @@ public class WizardESS2Connector extends WizardBaseViewDB {
 
     }//GEN-LAST:event_UnitsNumKeyPressed
 
+    private void RTUItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_RTUItemStateChanged
+        if(onStart)
+            return;
+        connector.setRTU(RTU.isSelected());
+        oneUpdate("Изменено RTU: "+RTU.isSelected());
+    }//GEN-LAST:event_RTUItemStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -224,6 +242,7 @@ public class WizardESS2Connector extends WizardBaseViewDB {
     private javax.swing.JCheckBox DBEmulator;
     private javax.swing.JTextField IP;
     private javax.swing.JTextField Port;
+    private javax.swing.JCheckBox RTU;
     private javax.swing.JTextField RegInBlock;
     private javax.swing.JTextField TimeOut;
     private javax.swing.JTextField UnitsNum;
