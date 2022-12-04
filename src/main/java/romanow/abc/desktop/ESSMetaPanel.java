@@ -32,7 +32,9 @@ import romanow.abc.desktop.wizard.*;
 import romanow.abc.drivers.ModBusClientProxyDriver;
 
 import javax.swing.*;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -3077,12 +3079,21 @@ public class ESSMetaPanel extends ESSBasePanel {
 
     private void CIDLocalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CIDLocalActionPerformed
         if (!main2.deployed.isDeployed()){
-            popup("Архитектутра не развернута");
+            popup("Архитектура не развернута");
             return;
             }
         ESS2Architecture arch = main2.deployed;
         CIDCreateData data = arch.createCIDRecord();
-        System.out.println(data.toString());
+        FileNameExt ff = main.getOutputFileName("МЭК 61850","",arch.getTitle()+".cid");
+        try {
+
+            OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(ff.fullName()), "UTF-8");
+            writer.write(data.toString());
+            writer.close();
+            System.out.println("Файл записан "+ff.fullName());
+            } catch (Exception ee){
+                System.out.println("Ошибка записи "+ff.fileName());
+                }
     }//GEN-LAST:event_CIDLocalActionPerformed
 
 
