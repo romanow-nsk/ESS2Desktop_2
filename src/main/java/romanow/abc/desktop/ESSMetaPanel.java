@@ -3083,16 +3083,18 @@ public class ESSMetaPanel extends ESSBasePanel {
             return;
             }
         ESS2Architecture arch = main2.deployed;
-        CIDCreateData data = arch.createCIDRecord();
-        FileNameExt ff = main.getOutputFileName("МЭК 61850","",arch.getTitle()+".cid");
-        try {
-
-            OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(ff.fullName()), "UTF-8");
-            writer.write(data.toString());
-            writer.close();
-            System.out.println("Файл записан "+ff.fullName());
-            } catch (Exception ee){
-                System.out.println("Ошибка записи "+ff.fileName());
+        for(ESS2Equipment equipment : arch.getEquipments()){
+            CIDCreateData data = equipment.createCIDRecord();
+            FileNameExt ff = main.getOutputFileName("МЭК 61850","",arch.getTitle()+"_"+equipment.getTitle()+".cid");
+            try {
+                OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(ff.fullName()), "UTF-8");
+                writer.write(data.toString());
+                writer.close();
+                System.out.println("Файл записан "+ff.fullName());
+                System.out.println(data.errors.toString());
+                } catch (Exception ee){
+                    System.out.println("Ошибка записи "+ff.fileName());
+                    }
                 }
     }//GEN-LAST:event_CIDLocalActionPerformed
 
