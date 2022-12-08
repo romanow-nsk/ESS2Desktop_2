@@ -27,6 +27,7 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
         Enabled.setSelected(emulator.isEnable());
         Trace.setSelected(emulator.isTrace());
         RTU.setSelected(emulator.isRTU());
+        BaudRate.setText(""+emulator.getBaudRate());
         setSize(750,200);
     }
 
@@ -48,6 +49,8 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
         Enabled = new javax.swing.JCheckBox();
         Trace = new javax.swing.JCheckBox();
         RTU = new javax.swing.JCheckBox();
+        BaudRate = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -68,9 +71,9 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(290, 105, 40, 16);
 
-        jLabel2.setText("Класс (Java)");
+        jLabel2.setText("BaudRate");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(10, 105, 80, 16);
+        jLabel2.setBounds(100, 135, 80, 16);
 
         ClassName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -107,11 +110,23 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
         getContentPane().add(RTU);
         RTU.setBounds(330, 130, 80, 20);
 
+        BaudRate.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BaudRateKeyPressed(evt);
+            }
+        });
+        getContentPane().add(BaudRate);
+        BaudRate.setBounds(200, 130, 80, 25);
+
+        jLabel3.setText("Класс (Java)");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(10, 105, 80, 16);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void PortKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PortKeyPressed
-        onKeyPressed("Port", Port, evt, new I_WizardAction() {
+        onKeyPressed("port", Port, evt, new I_WizardAction() {
             @Override
             public void onAction(int value) {
                 emulator.setPort(value);
@@ -143,6 +158,16 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
         emulator.setRTU(RTU.isSelected());
         oneUpdate("Изменено RTU="+RTU.isSelected());
     }//GEN-LAST:event_RTUItemStateChanged
+
+    private void BaudRateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BaudRateKeyPressed
+        onKeyPressed("baudRate", BaudRate, evt, new I_WizardAction() {
+            @Override
+            public void onAction(int value) {
+                emulator.setBaudRate(value);
+            }
+        });
+
+    }//GEN-LAST:event_BaudRateKeyPressed
 
     /**
      * @param args the command line arguments
@@ -183,6 +208,7 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField BaudRate;
     private javax.swing.JTextField ClassName;
     private javax.swing.JCheckBox Enabled;
     private javax.swing.JTextField Port;
@@ -191,6 +217,7 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

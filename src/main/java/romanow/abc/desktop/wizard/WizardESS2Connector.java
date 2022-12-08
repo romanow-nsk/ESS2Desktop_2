@@ -29,6 +29,7 @@ public class WizardESS2Connector extends WizardBaseViewDB {
         RTU.setSelected(connector.isRTU());
         RegInBlock.setText(""+connector.getRegsInBlock());
         TimeOut.setText(""+connector.getTimeOut());
+        BaudRate.setText(""+connector.getBaudRate());
         setSize(750,230);
         onStart=false;
         UnitsNum.setText(""+connector.getUnitsNum());
@@ -56,6 +57,8 @@ public class WizardESS2Connector extends WizardBaseViewDB {
         jLabel5 = new javax.swing.JLabel();
         UnitsNum = new javax.swing.JTextField();
         RTU = new javax.swing.JCheckBox();
+        BaudRate = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -68,7 +71,7 @@ public class WizardESS2Connector extends WizardBaseViewDB {
             }
         });
         getContentPane().add(Port);
-        Port.setBounds(240, 130, 80, 25);
+        Port.setBounds(240, 130, 70, 25);
 
         jLabel1.setText("Порт");
         getContentPane().add(jLabel1);
@@ -76,7 +79,7 @@ public class WizardESS2Connector extends WizardBaseViewDB {
 
         jLabel2.setText("Регистров в блоке");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(10, 165, 110, 16);
+        jLabel2.setBounds(10, 165, 120, 16);
 
         IP.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -93,7 +96,7 @@ public class WizardESS2Connector extends WizardBaseViewDB {
             }
         });
         getContentPane().add(DBEmulator);
-        DBEmulator.setBounds(340, 130, 130, 20);
+        DBEmulator.setBounds(320, 130, 130, 20);
 
         jLabel3.setText("IP");
         getContentPane().add(jLabel3);
@@ -105,7 +108,7 @@ public class WizardESS2Connector extends WizardBaseViewDB {
             }
         });
         getContentPane().add(RegInBlock);
-        RegInBlock.setBounds(120, 160, 70, 25);
+        RegInBlock.setBounds(140, 160, 50, 25);
 
         jLabel4.setText("Тайм-аут(с)");
         getContentPane().add(jLabel4);
@@ -117,11 +120,12 @@ public class WizardESS2Connector extends WizardBaseViewDB {
             }
         });
         getContentPane().add(TimeOut);
-        TimeOut.setBounds(280, 160, 40, 25);
+        TimeOut.setBounds(280, 160, 30, 25);
 
-        jLabel5.setText("Unit-ов");
+        jLabel5.setText("BaudRate");
+        jLabel5.setInheritsPopupMenu(false);
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(200, 190, 50, 16);
+        jLabel5.setBounds(400, 165, 50, 16);
 
         UnitsNum.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -129,7 +133,7 @@ public class WizardESS2Connector extends WizardBaseViewDB {
             }
         });
         getContentPane().add(UnitsNum);
-        UnitsNum.setBounds(280, 190, 40, 25);
+        UnitsNum.setBounds(500, 130, 30, 25);
 
         RTU.setText("RS-485");
         RTU.addItemListener(new java.awt.event.ItemListener() {
@@ -138,7 +142,19 @@ public class WizardESS2Connector extends WizardBaseViewDB {
             }
         });
         getContentPane().add(RTU);
-        RTU.setBounds(340, 160, 100, 20);
+        RTU.setBounds(320, 165, 80, 20);
+
+        BaudRate.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BaudRateKeyPressed(evt);
+            }
+        });
+        getContentPane().add(BaudRate);
+        BaudRate.setBounds(460, 160, 70, 25);
+
+        jLabel6.setText("Unit-ов");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(440, 135, 50, 16);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -203,6 +219,16 @@ public class WizardESS2Connector extends WizardBaseViewDB {
         oneUpdate("Изменено RTU: "+RTU.isSelected());
     }//GEN-LAST:event_RTUItemStateChanged
 
+    private void BaudRateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BaudRateKeyPressed
+        onKeyPressed("baudRate", BaudRate, evt, new I_WizardAction() {
+            @Override
+            public void onAction(int value) {
+                connector.setBaudRate(value);
+            }
+        });
+
+    }//GEN-LAST:event_BaudRateKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -239,6 +265,7 @@ public class WizardESS2Connector extends WizardBaseViewDB {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField BaudRate;
     private javax.swing.JCheckBox DBEmulator;
     private javax.swing.JTextField IP;
     private javax.swing.JTextField Port;
@@ -251,6 +278,7 @@ public class WizardESS2Connector extends WizardBaseViewDB {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
