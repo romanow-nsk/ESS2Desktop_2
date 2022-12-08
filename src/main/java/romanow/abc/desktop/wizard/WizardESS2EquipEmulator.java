@@ -26,6 +26,7 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
         Port.setText(""+emulator.getPort());
         Enabled.setSelected(emulator.isEnable());
         Trace.setSelected(emulator.isTrace());
+        RTU.setSelected(emulator.isRTU());
         setSize(750,200);
     }
 
@@ -46,13 +47,14 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
         ClassName = new javax.swing.JTextField();
         Enabled = new javax.swing.JCheckBox();
         Trace = new javax.swing.JCheckBox();
+        RTU = new javax.swing.JCheckBox();
 
         jCheckBox1.setText("jCheckBox1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(10, 90, 460, 2);
+        jSeparator1.setBounds(10, 90, 460, 3);
 
         Port.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -64,11 +66,11 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
 
         jLabel1.setText("Port");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(290, 105, 40, 14);
+        jLabel1.setBounds(290, 105, 40, 16);
 
         jLabel2.setText("Класс (Java)");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(10, 105, 80, 14);
+        jLabel2.setBounds(10, 105, 80, 16);
 
         ClassName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -85,7 +87,7 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
             }
         });
         getContentPane().add(Enabled);
-        Enabled.setBounds(420, 100, 77, 23);
+        Enabled.setBounds(420, 105, 80, 20);
 
         Trace.setText("Трассировка");
         Trace.addItemListener(new java.awt.event.ItemListener() {
@@ -94,7 +96,16 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
             }
         });
         getContentPane().add(Trace);
-        Trace.setBounds(420, 120, 130, 23);
+        Trace.setBounds(420, 130, 130, 20);
+
+        RTU.setText("RS-485");
+        RTU.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                RTUItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(RTU);
+        RTU.setBounds(330, 130, 59, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -127,6 +138,11 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
         oneUpdate("Изменено trace="+Trace.isSelected());
 
     }//GEN-LAST:event_TraceItemStateChanged
+
+    private void RTUItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_RTUItemStateChanged
+        emulator.setRTU(RTU.isSelected());
+        oneUpdate("Изменено RTU="+RTU.isSelected());
+    }//GEN-LAST:event_RTUItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -170,6 +186,7 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
     private javax.swing.JTextField ClassName;
     private javax.swing.JCheckBox Enabled;
     private javax.swing.JTextField Port;
+    private javax.swing.JCheckBox RTU;
     private javax.swing.JCheckBox Trace;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
