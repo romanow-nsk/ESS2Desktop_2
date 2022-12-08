@@ -105,7 +105,7 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
             }
         });
         getContentPane().add(RTU);
-        RTU.setBounds(330, 130, 59, 20);
+        RTU.setBounds(330, 130, 80, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
