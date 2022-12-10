@@ -79,10 +79,14 @@ public class WizardBaseView extends javax.swing.JFrame {
         Title.setText(entity.getTitle());
         Comment.setText(entity.getComment());
         ShortName.setText(entity.getShortName());
-        if (entity instanceof Meta2Face)
+        if (entity instanceof Meta2Face){
             DOType.setText(((Meta2Face)entity).getDOType());
-        else
+            Not61850.setSelected(((Meta2Face)entity).isOutCIDModel());
+            }
+        else{
             DOType.setVisible(false);
+            Not61850.setVisible(false);
+            }
         }
 
     public WizardBaseView(){
@@ -107,6 +111,7 @@ public class WizardBaseView extends javax.swing.JFrame {
         Title = new javax.swing.JTextField();
         DOType = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        Not61850 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -126,7 +131,7 @@ public class WizardBaseView extends javax.swing.JFrame {
 
         jLabel1.setText("Название");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(170, 20, 70, 16);
+        jLabel1.setBounds(180, 10, 70, 16);
 
         Comment.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -134,15 +139,15 @@ public class WizardBaseView extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Comment);
-        Comment.setBounds(270, 50, 360, 25);
+        Comment.setBounds(120, 50, 450, 25);
 
         jLabel2.setText("Комментарий");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(170, 50, 100, 20);
+        jLabel2.setBounds(20, 50, 100, 20);
 
         jLabel3.setText("DOType");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(20, 50, 70, 20);
+        jLabel3.setBounds(590, 50, 70, 20);
 
         Title.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -158,11 +163,20 @@ public class WizardBaseView extends javax.swing.JFrame {
             }
         });
         getContentPane().add(DOType);
-        DOType.setBounds(80, 50, 80, 25);
+        DOType.setBounds(650, 50, 80, 25);
 
         jLabel4.setText("Имя ");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(20, 15, 40, 16);
+        jLabel4.setBounds(20, 20, 40, 16);
+
+        Not61850.setText("без 61850");
+        Not61850.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                Not61850ItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(Not61850);
+        Not61850.setBounds(650, 15, 110, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -214,6 +228,11 @@ public class WizardBaseView extends javax.swing.JFrame {
             }
         });
     }//GEN-LAST:event_DOTypeKeyPressed
+
+    private void Not61850ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_Not61850ItemStateChanged
+        ((Meta2Face)entity).setOutCIDModel(Not61850.isSelected());
+        back.onEnter("Изменено outCIDMode="+Not61850.isSelected());
+    }//GEN-LAST:event_Not61850ItemStateChanged
 
 
     public void onKeyPressed(String name, JTextField fld, KeyEvent evt, I_WizardAction action){
@@ -307,6 +326,7 @@ public class WizardBaseView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Comment;
     private javax.swing.JTextField DOType;
+    private javax.swing.JCheckBox Not61850;
     private javax.swing.JTextField ShortName;
     private javax.swing.JTextField Title;
     private javax.swing.JLabel jLabel1;
