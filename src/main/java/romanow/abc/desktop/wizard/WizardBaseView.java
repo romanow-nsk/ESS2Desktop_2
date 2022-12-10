@@ -9,6 +9,7 @@ import lombok.Setter;
 import romanow.abc.core.constants.ConstValue;
 import romanow.abc.core.constants.Values;
 import romanow.abc.core.entity.metadata.Meta2Entity;
+import romanow.abc.core.entity.metadata.Meta2Face;
 import romanow.abc.desktop.I_Value;
 import romanow.abc.desktop.MainBaseFrame;
 
@@ -78,6 +79,10 @@ public class WizardBaseView extends javax.swing.JFrame {
         Title.setText(entity.getTitle());
         Comment.setText(entity.getComment());
         ShortName.setText(entity.getShortName());
+        if (entity instanceof Meta2Face)
+            DOType.setText(((Meta2Face)entity).getDOType());
+        else
+            DOType.setVisible(false);
         }
 
     public WizardBaseView(){
@@ -100,6 +105,8 @@ public class WizardBaseView extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         Title = new javax.swing.JTextField();
+        DOType = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -115,11 +122,11 @@ public class WizardBaseView extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ShortName);
-        ShortName.setBounds(60, 10, 80, 25);
+        ShortName.setBounds(80, 10, 80, 25);
 
         jLabel1.setText("Название");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(160, 15, 70, 14);
+        jLabel1.setBounds(170, 20, 70, 16);
 
         Comment.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -127,15 +134,15 @@ public class WizardBaseView extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Comment);
-        Comment.setBounds(100, 50, 530, 25);
+        Comment.setBounds(270, 50, 360, 25);
 
         jLabel2.setText("Комментарий");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(20, 55, 100, 14);
+        jLabel2.setBounds(170, 50, 100, 20);
 
-        jLabel3.setText("Имя ");
+        jLabel3.setText("DOType");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(20, 15, 40, 14);
+        jLabel3.setBounds(20, 50, 70, 20);
 
         Title.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -143,7 +150,19 @@ public class WizardBaseView extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Title);
-        Title.setBounds(230, 10, 400, 25);
+        Title.setBounds(270, 10, 360, 25);
+
+        DOType.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                DOTypeKeyPressed(evt);
+            }
+        });
+        getContentPane().add(DOType);
+        DOType.setBounds(80, 50, 80, 25);
+
+        jLabel4.setText("Имя ");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(20, 15, 40, 16);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -186,6 +205,15 @@ public class WizardBaseView extends javax.swing.JFrame {
             }
         });
     }//GEN-LAST:event_CommentKeyPressed
+
+    private void DOTypeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DOTypeKeyPressed
+        onStringKeyPressed("logDevName", DOType, evt, new I_WizardActionString() {
+            @Override
+            public void onAction(String value) {
+                ((Meta2Face)entity).setDOType(value);
+            }
+        });
+    }//GEN-LAST:event_DOTypeKeyPressed
 
 
     public void onKeyPressed(String name, JTextField fld, KeyEvent evt, I_WizardAction action){
@@ -278,10 +306,12 @@ public class WizardBaseView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Comment;
+    private javax.swing.JTextField DOType;
     private javax.swing.JTextField ShortName;
     private javax.swing.JTextField Title;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }
