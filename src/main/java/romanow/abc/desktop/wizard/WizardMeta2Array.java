@@ -31,13 +31,14 @@ public class WizardMeta2Array extends WizardBaseView {
         }
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
-        setSize(750,250);
+        setSize(800,250);
         array = (Meta2Array) entity;
         OwnBase.setText(""+array.getOwnBase());
         if (array.getElem()==null)
             Elem.setText("???");
         else
             Elem.setText(""+array.getElem().getFullTitle());
+        Inline61850.setSelected(array.isInline61860());
         Step.setText(""+array.getStep());
         Size.setText(""+array.getSize());
         Types.removeAll();
@@ -49,6 +50,7 @@ public class WizardMeta2Array extends WizardBaseView {
                 Types.select(i);
                 break;
                 }
+        busy = false;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -71,14 +73,13 @@ public class WizardMeta2Array extends WizardBaseView {
         ChangeElem = new javax.swing.JButton();
         Edit = new javax.swing.JButton();
         Types = new java.awt.Choice();
+        Inline61850 = new javax.swing.JCheckBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
         });
-        getContentPane().setLayout(null);
 
         Elem.setEnabled(false);
         getContentPane().add(Elem);
@@ -86,11 +87,11 @@ public class WizardMeta2Array extends WizardBaseView {
 
         jLabel1.setText("Элемент");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(20, 135, 90, 14);
+        jLabel1.setBounds(20, 135, 90, 16);
 
         jLabel2.setText("База");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(370, 95, 70, 14);
+        jLabel2.setBounds(370, 95, 70, 16);
 
         OwnBase.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -102,7 +103,7 @@ public class WizardMeta2Array extends WizardBaseView {
 
         jLabel3.setText("Размерность");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(20, 95, 100, 14);
+        jLabel3.setBounds(20, 95, 100, 16);
 
         Size.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -114,7 +115,7 @@ public class WizardMeta2Array extends WizardBaseView {
 
         jLabel4.setText("Шаг");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(210, 95, 60, 14);
+        jLabel4.setBounds(210, 95, 60, 16);
 
         Step.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -124,7 +125,7 @@ public class WizardMeta2Array extends WizardBaseView {
         getContentPane().add(Step);
         Step.setBounds(270, 90, 80, 25);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(10, 82, 560, 2);
+        jSeparator1.setBounds(10, 82, 560, 3);
 
         ChangeElem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/up.PNG"))); // NOI18N
         ChangeElem.setBorderPainted(false);
@@ -149,6 +150,15 @@ public class WizardMeta2Array extends WizardBaseView {
         Edit.setBounds(530, 130, 30, 30);
         getContentPane().add(Types);
         Types.setBounds(270, 170, 210, 20);
+
+        Inline61850.setText(" 61850 inline");
+        Inline61850.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                Inline61850ItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(Inline61850);
+        Inline61850.setBounds(650, 90, 120, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -209,11 +219,19 @@ public class WizardMeta2Array extends WizardBaseView {
         openWizardByType(array.getElem());
     }//GEN-LAST:event_EditActionPerformed
 
+    private void Inline61850ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_Inline61850ItemStateChanged
+        if (busy)
+            return;
+        array.setOut61850Model(Inline61850.isSelected());
+        back.onEnter("Изменено 61850 Inline="+Inline61850.isSelected());
+    }//GEN-LAST:event_Inline61850ItemStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ChangeElem;
     private javax.swing.JButton Edit;
     private javax.swing.JTextField Elem;
+    private javax.swing.JCheckBox Inline61850;
     private javax.swing.JTextField OwnBase;
     private javax.swing.JTextField Size;
     private javax.swing.JTextField Step;

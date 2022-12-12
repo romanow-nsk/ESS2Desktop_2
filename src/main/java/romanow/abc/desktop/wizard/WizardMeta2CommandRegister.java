@@ -32,7 +32,7 @@ public class WizardMeta2CommandRegister extends WizardMeta2Register {
         }
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
-        setSize(770,230);
+        setSize(800,230);
         register = (Meta2CommandRegister)entity;
         selector = new WizardMetaEntitySelector("Команды", Values.MECommand,callBack);
         selector.setBounds(10,130,750,40);

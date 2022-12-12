@@ -26,7 +26,7 @@ public class WizardMeta2DataRegister extends WizardMeta2Register {
         }
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
-        setSize(750,200);
+        setSize(800,200);
         register = (Meta2DataRegister)entity;
         Unit.setText(register.getUnit());
         Power.setText(""+register.getPower());

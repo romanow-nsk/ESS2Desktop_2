@@ -23,7 +23,7 @@ public class WizardMeta2State extends WizardBaseView {
         }
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
-        setSize(750,250);
+        setSize(800,250);
         state = (Meta2State)  entity;
         RemoteEnable.setSelected(state.isRemoteEnable());
         Code.setText(""+state.getCode());

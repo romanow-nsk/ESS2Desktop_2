@@ -30,6 +30,7 @@ public class WizardBaseView extends javax.swing.JFrame {
     protected Meta2Entity entity;
     protected int level=0;
     protected I_Value<String> back;
+    protected boolean busy=false;
     public static String openWizard(MainBaseFrame main0, Meta2Entity entity,I_Value<String> back){
         String name = "Wizard"+entity.getClass().getSimpleName();
         try {
@@ -65,6 +66,7 @@ public class WizardBaseView extends javax.swing.JFrame {
         }
 
     public void openForm(WizardBaseView parentView0,Meta2Entity entity0) {
+        busy = true;
         level = parentView0==null ? 0 : level+1;
         parentView = parentView0;
         if (parentView !=null){
@@ -81,7 +83,7 @@ public class WizardBaseView extends javax.swing.JFrame {
         ShortName.setText(entity.getShortName());
         if (entity instanceof Meta2Face){
             DOType.setText(((Meta2Face)entity).getDOType());
-            Not61850.setSelected(((Meta2Face)entity).isOutCIDModel());
+            Not61850.setSelected(((Meta2Face)entity).isOut61850Model());
             }
         else{
             DOType.setVisible(false);
@@ -169,14 +171,14 @@ public class WizardBaseView extends javax.swing.JFrame {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(20, 20, 40, 16);
 
-        Not61850.setText("без 61850");
+        Not61850.setText("61850 disable");
         Not61850.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 Not61850ItemStateChanged(evt);
             }
         });
         getContentPane().add(Not61850);
-        Not61850.setBounds(650, 15, 110, 20);
+        Not61850.setBounds(650, 10, 110, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -230,8 +232,10 @@ public class WizardBaseView extends javax.swing.JFrame {
     }//GEN-LAST:event_DOTypeKeyPressed
 
     private void Not61850ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_Not61850ItemStateChanged
-        ((Meta2Face)entity).setOutCIDModel(Not61850.isSelected());
-        back.onEnter("Изменено outCIDMode="+Not61850.isSelected());
+        if (busy)
+            return;
+        ((Meta2Face)entity).setOut61850Model(Not61850.isSelected());
+        back.onEnter("Изменено 61850 Disable="+Not61850.isSelected());
     }//GEN-LAST:event_Not61850ItemStateChanged
 
 

@@ -32,13 +32,14 @@ public class WizardMeta2BitRegister extends WizardMeta2Register {
         }
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
-        setSize(770,270);
+        setSize(800,270);
         register = (Meta2BitRegister)entity;
         selector = new WizardMetaEntitySelector("Биты", Values.MEBit,callBack);
         selector.setBounds(10,130,750,40);
         choice = selector.getList();
         getContentPane().add(selector);
         bits = register.getBits().getList();
+        Inline61850.setSelected(register.isInline61860());
         bitsTypes = Values.constMap().getGroupList("BitRegType");
         BitsType.removeAll();
         for(ConstValue vv : bitsTypes)
@@ -47,6 +48,7 @@ public class WizardMeta2BitRegister extends WizardMeta2Register {
             if(bitsTypes.get(i).value()==register.getBitRegType())
                 BitsType.select(i);
         refreshList();
+        busy=false;
         }
 
     public void refreshList(){
@@ -104,22 +106,21 @@ public class WizardMeta2BitRegister extends WizardMeta2Register {
         BitsType = new java.awt.Choice();
         jLabel1 = new javax.swing.JLabel();
         SaveBitsType = new javax.swing.JButton();
+        Inline61850 = new javax.swing.JCheckBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
         });
-        getContentPane().setLayout(null);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(10, 120, 560, 2);
+        jSeparator1.setBounds(10, 120, 560, 3);
         getContentPane().add(BitsType);
         BitsType.setBounds(120, 180, 160, 25);
 
         jLabel1.setText("Тип битов");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(20, 185, 90, 14);
+        jLabel1.setBounds(20, 185, 90, 16);
 
         SaveBitsType.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/save.png"))); // NOI18N
         SaveBitsType.setBorderPainted(false);
@@ -131,6 +132,15 @@ public class WizardMeta2BitRegister extends WizardMeta2Register {
         });
         getContentPane().add(SaveBitsType);
         SaveBitsType.setBounds(290, 175, 30, 30);
+
+        Inline61850.setText("61850 inline");
+        Inline61850.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                Inline61850ItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(Inline61850);
+        Inline61850.setBounds(650, 90, 100, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -145,8 +155,16 @@ public class WizardMeta2BitRegister extends WizardMeta2Register {
         back.onEnter("Изменено bitRegType: "+value.title());
     }//GEN-LAST:event_SaveBitsTypeActionPerformed
 
+    private void Inline61850ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_Inline61850ItemStateChanged
+        if (busy)
+            return;
+        register.setOut61850Model(Inline61850.isSelected());
+        back.onEnter("Изменено 61850 Inline="+Inline61850.isSelected());
+    }//GEN-LAST:event_Inline61850ItemStateChanged
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Choice BitsType;
+    private javax.swing.JCheckBox Inline61850;
     private javax.swing.JButton SaveBitsType;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
