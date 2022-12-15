@@ -207,7 +207,11 @@
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.openmuc</groupId>
+            <artifactId>openiec61850-clientgui</artifactId>
+            <version>1.3.3</version>
+        </dependency>
     </dependencies>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
