@@ -71,6 +71,8 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         jLabel29 = new javax.swing.JLabel();
         MainServerConnectPeriod = new javax.swing.JTextField();
         ToKotlinJS = new javax.swing.JButton();
+        jLabel27 = new javax.swing.JLabel();
+        IEC61850Port = new javax.swing.JTextField();
 
         setLayout(null);
 
@@ -150,9 +152,9 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         add(RegisterAge);
         RegisterAge.setBounds(310, 250, 70, 25);
 
-        jLabel23.setText("IP/порт  сервера ДЦ");
+        jLabel23.setText("Порт  сервера IEC 61850");
         add(jLabel23);
-        jLabel23.setBounds(420, 70, 150, 16);
+        jLabel23.setBounds(410, 160, 160, 16);
 
         jLabel24.setText("Глубина архива в днях");
         add(jLabel24);
@@ -276,6 +278,18 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         });
         add(ToKotlinJS);
         ToKotlinJS.setBounds(410, 120, 150, 25);
+
+        jLabel27.setText("IP/порт  сервера ДЦ");
+        add(jLabel27);
+        jLabel27.setBounds(420, 70, 150, 16);
+
+        IEC61850Port.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                IEC61850PortKeyPressed(evt);
+            }
+        });
+        add(IEC61850Port);
+        IEC61850Port.setBounds(590, 160, 70, 25);
     }// </editor-fold>//GEN-END:initComponents
 
     private void GUIrefreshPeriodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GUIrefreshPeriodKeyPressed
@@ -357,6 +371,10 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         ESS2ExportKotlin.exportKotlin(fname.getPath());
     }//GEN-LAST:event_ToKotlinJSActionPerformed
 
+    private void IEC61850PortKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IEC61850PortKeyPressed
+        procPressedInt(evt, IEC61850Port,"iec61850Port");
+    }//GEN-LAST:event_IEC61850PortKeyPressed
+
     private void procPressedInt(KeyEvent evt, JTextField text, String name){
         if(evt.getKeyCode()!=10) return;
         int vv=0;
@@ -403,6 +421,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             MainServerPeriod.setText(""+ws.getMainServerPeriod());
             MainServerConnectPeriod.setText(""+ws.getMainServerConnectPeriod());
             MainServerMode.setSelected(ws.isMainServerMode());
+            IEC61850Port.setText(""+ws.getIec61850Port());
             refreshMainServerParams();
             } catch (Exception e) { popup(e.toString()); }
         }
@@ -517,6 +536,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     private javax.swing.JTextField FailureTestPeriod;
     private javax.swing.JTextField FileScanPeriod;
     private javax.swing.JTextField GUIrefreshPeriod;
+    private javax.swing.JTextField IEC61850Port;
     private javax.swing.JTextField MainServerConnectPeriod;
     private javax.swing.JTextField MainServerIP;
     private javax.swing.JCheckBox MainServerMode;
@@ -540,6 +560,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel33;

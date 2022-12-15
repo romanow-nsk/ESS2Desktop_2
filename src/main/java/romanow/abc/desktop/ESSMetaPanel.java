@@ -38,8 +38,7 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import static romanow.abc.core.constants.Values.MTViewFullScreen;
-import static romanow.abc.core.constants.Values.MTViewMainServer;
+import static romanow.abc.core.constants.Values.*;
 import static romanow.abc.core.entity.metadata.Meta2Entity.toHex;
 
 /**
@@ -308,6 +307,8 @@ public class ESSMetaPanel extends ESSBasePanel {
         FullScreen = new javax.swing.JCheckBox();
         OnOffNode = new javax.swing.JButton();
         CIDLocal = new javax.swing.JButton();
+        IECServerOnOff = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -1264,14 +1265,32 @@ public class ESSMetaPanel extends ESSBasePanel {
         add(OnOffNode);
         OnOffNode.setBounds(320, 15, 40, 40);
 
-        CIDLocal.setText("CID-local");
+        CIDLocal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/download.png"))); // NOI18N
+        CIDLocal.setBorderPainted(false);
+        CIDLocal.setContentAreaFilled(false);
         CIDLocal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CIDLocalActionPerformed(evt);
             }
         });
         add(CIDLocal);
-        CIDLocal.setBounds(255, 505, 100, 25);
+        CIDLocal.setBounds(320, 505, 40, 30);
+
+        IECServerOnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/status_gray.png"))); // NOI18N
+        IECServerOnOff.setBorderPainted(false);
+        IECServerOnOff.setContentAreaFilled(false);
+        IECServerOnOff.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IECServerOnOffActionPerformed(evt);
+            }
+        });
+        add(IECServerOnOff);
+        IECServerOnOff.setBounds(280, 500, 40, 40);
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel6.setText("IEC61850");
+        add(jLabel6);
+        jLabel6.setBounds(220, 520, 70, 16);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ImportMetaDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportMetaDataActionPerformed
@@ -3085,8 +3104,9 @@ public class ESSMetaPanel extends ESSBasePanel {
         ESS2Architecture arch = main2.deployed;
         FileNameExt ff = main.getOutputFileName("МЭК 61850","",arch.getTitle()+".cid");
         for(ESS2Equipment equipment : arch.getEquipments()){
-            CIDCreateData data = equipment.createCIDRecord();
-            ff.setName(arch.getTitle()+"_"+equipment.getTitle()+".cid");
+            equipment.createCIDRecord(arch.getShortName());
+            CIDCreateData data = equipment.getCidData();
+                    ff.setName(arch.getTitle()+"_"+equipment.getTitle()+".cid");
             try {
                 OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(ff.fullName()), "UTF-8");
                 writer.write(data.toString());
@@ -3099,6 +3119,34 @@ public class ESSMetaPanel extends ESSBasePanel {
                     }
                 }
     }//GEN-LAST:event_CIDLocalActionPerformed
+
+    private void IECServerOnOffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IECServerOnOffActionPerformed
+        if (!main2.deployed.isConnected()){
+            System.out.println("Допустимо только при подключенном оборудовании");
+            return;
+            }
+        new APICall<CallResult>(main) {
+            @Override
+            public Call<CallResult> apiFun() {
+                return main2.service2.iec61850ServerOnOff(main.debugToken, deployed.getEquipments().get(Equipments.getSelectedIndex()).getOid());
+                }
+            @Override
+            public void onSucess(CallResult vv) {
+                System.out.println(vv.toString());
+                switch (vv.getState()){
+                    case IEC61850StOn:
+                        IECServerOnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource( "/drawable/status_green.png")));
+                        break;
+                    case IEC61850StFail:
+                        IECServerOnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource( "/drawable/status_red.png")));
+                        break;
+                    case IEC61850StOff:
+                        IECServerOnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource( "/drawable/status_gray.png")));
+                        break;
+                        }
+                }
+            };
+    }//GEN-LAST:event_IECServerOnOffActionPerformed
 
 
     @Override
@@ -3255,6 +3303,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JCheckBox FullScreen;
     private javax.swing.JCheckBox HEXReg;
     private javax.swing.JCheckBox HEXValue;
+    private javax.swing.JButton IECServerOnOff;
     private javax.swing.JButton ImportMetaData;
     private javax.swing.JButton ImportMetaEquipment2;
     private javax.swing.JButton ImportScript;
@@ -3339,6 +3388,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
