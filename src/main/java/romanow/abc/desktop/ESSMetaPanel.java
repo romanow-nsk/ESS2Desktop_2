@@ -6,6 +6,7 @@
 package romanow.abc.desktop;
 
 import lombok.Getter;
+import org.openmuc.openiec61850.clientgui.ClientGui;
 import retrofit2.Response;
 import romanow.abc.core.API.RestAPICommon;
 import romanow.abc.core.DBRequest;
@@ -38,6 +39,7 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import static romanow.abc.core.constants.Values.*;
 import static romanow.abc.core.entity.metadata.Meta2Entity.toHex;
 
@@ -122,6 +124,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         Connect.setVisible(!mainServerMode);
         OnOff.setVisible(!mainServerMode);
         OnOffNode.setVisible(mainServerMode);
+        refreshIEC61850State();
         }
     private void setMetaTypeSelector(int type){
         int i=0;
@@ -309,6 +312,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         CIDLocal = new javax.swing.JButton();
         IECServerOnOff = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        IEC61850ClientGUI = new javax.swing.JButton();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -1274,7 +1278,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(CIDLocal);
-        CIDLocal.setBounds(320, 505, 40, 30);
+        CIDLocal.setBounds(280, 500, 40, 30);
 
         IECServerOnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/status_gray.png"))); // NOI18N
         IECServerOnOff.setBorderPainted(false);
@@ -1285,12 +1289,23 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(IECServerOnOff);
-        IECServerOnOff.setBounds(280, 500, 40, 40);
+        IECServerOnOff.setBounds(240, 495, 40, 40);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel6.setText("IEC61850");
         add(jLabel6);
-        jLabel6.setBounds(220, 520, 70, 16);
+        jLabel6.setBounds(180, 520, 70, 16);
+
+        IEC61850ClientGUI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/connect-off.png"))); // NOI18N
+        IEC61850ClientGUI.setBorderPainted(false);
+        IEC61850ClientGUI.setContentAreaFilled(false);
+        IEC61850ClientGUI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IEC61850ClientGUIActionPerformed(evt);
+            }
+        });
+        add(IEC61850ClientGUI);
+        IEC61850ClientGUI.setBounds(320, 500, 40, 30);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ImportMetaDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportMetaDataActionPerformed
@@ -2473,6 +2488,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 public void onSucess(CallResult oo) {
                     int state = oo.getState();
                     boolean connected = state == Values.ASConnected;
+                    refreshIEC61850State();
                     deployed.setArchitectureState(state);
                     System.out.println(oo);
                     Deploy.setIcon(new javax.swing.ImageIcon(getClass().getResource(archStateIcons[state])));
@@ -2485,7 +2501,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             return;
             }
         if (deployed.getArchitectureState()!=Values.ASDeployed){
-            popup("Недопустимое состояние мета-данных и обобрудования для соединения");
+            popup("Недопустимое состояние мета-данных и оборудования для соединения");
             return;
             }
         new APICall<CallResult>(main){
@@ -3133,22 +3149,42 @@ public class ESSMetaPanel extends ESSBasePanel {
             @Override
             public void onSucess(CallResult vv) {
                 System.out.println(vv.toString());
-                switch (vv.getState()){
-                    case IEC61850StOn:
-                        IECServerOnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource( "/drawable/status_green.png")));
-                        break;
-                    case IEC61850StFail:
-                        IECServerOnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource( "/drawable/status_red.png")));
-                        break;
-                    case IEC61850StOff:
-                        IECServerOnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource( "/drawable/status_gray.png")));
-                        break;
-                        }
+                viewIEC61850State(vv.getState());
                 }
             };
-    }//GEN-LAST:event_IECServerOnOffActionPerformed
+        }//GEN-LAST:event_IECServerOnOffActionPerformed
 
+    private void IEC61850ClientGUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IEC61850ClientGUIActionPerformed
+        ClientGui gui = new ClientGui();
+        gui.setVisible(true);
+        gui.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_IEC61850ClientGUIActionPerformed
 
+    private void refreshIEC61850State(){
+        new APICall<JInt>(main) {
+            @Override
+            public Call<JInt> apiFun() {
+                return main2.service2.iec61850ServerState(main.debugToken);
+                }
+            @Override
+            public void onSucess(JInt vv) {
+                viewIEC61850State(vv.getValue());
+                }
+            };
+        }
+    private void viewIEC61850State(int state){
+        switch (state){
+            case IEC61850StOn:
+                IECServerOnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource( "/drawable/status_green.png")));
+                break;
+            case IEC61850StFail:
+                IECServerOnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource( "/drawable/status_red.png")));
+                break;
+            case IEC61850StOff:
+                IECServerOnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource( "/drawable/status_gray.png")));
+                break;
+            }
+        }
     @Override
     public void refresh() {
         refreshMetaData();
@@ -3303,6 +3339,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JCheckBox FullScreen;
     private javax.swing.JCheckBox HEXReg;
     private javax.swing.JCheckBox HEXValue;
+    private javax.swing.JButton IEC61850ClientGUI;
     private javax.swing.JButton IECServerOnOff;
     private javax.swing.JButton ImportMetaData;
     private javax.swing.JButton ImportMetaEquipment2;
