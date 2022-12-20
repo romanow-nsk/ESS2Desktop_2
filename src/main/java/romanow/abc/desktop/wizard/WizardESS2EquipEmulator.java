@@ -57,7 +57,7 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(10, 90, 460, 3);
+        jSeparator1.setBounds(10, 83, 560, 10);
 
         Port.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -65,7 +65,7 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
             }
         });
         getContentPane().add(Port);
-        Port.setBounds(330, 100, 80, 25);
+        Port.setBounds(330, 100, 140, 25);
 
         jLabel1.setText("Port");
         getContentPane().add(jLabel1);
@@ -90,7 +90,7 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
             }
         });
         getContentPane().add(Enabled);
-        Enabled.setBounds(420, 105, 80, 20);
+        Enabled.setBounds(290, 135, 80, 20);
 
         Trace.setText("Трассировка");
         Trace.addItemListener(new java.awt.event.ItemListener() {
@@ -99,7 +99,7 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
             }
         });
         getContentPane().add(Trace);
-        Trace.setBounds(420, 130, 130, 20);
+        Trace.setBounds(390, 135, 130, 20);
 
         RTU.setText("RS-485");
         RTU.addItemListener(new java.awt.event.ItemListener() {
@@ -108,7 +108,7 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
             }
         });
         getContentPane().add(RTU);
-        RTU.setBounds(330, 130, 80, 20);
+        RTU.setBounds(490, 100, 80, 20);
 
         BaudRate.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
