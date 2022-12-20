@@ -71,11 +71,11 @@ public class WizardESS2Connector extends WizardBaseViewDB {
             }
         });
         getContentPane().add(Port);
-        Port.setBounds(240, 130, 140, 25);
+        Port.setBounds(320, 130, 50, 25);
 
-        jLabel1.setText("Порт");
+        jLabel1.setText("Порт/номер");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(200, 135, 40, 16);
+        jLabel1.setBounds(230, 135, 80, 16);
 
         jLabel2.setText("Регистров в блоке");
         getContentPane().add(jLabel2);
@@ -87,7 +87,7 @@ public class WizardESS2Connector extends WizardBaseViewDB {
             }
         });
         getContentPane().add(IP);
-        IP.setBounds(50, 130, 140, 25);
+        IP.setBounds(70, 130, 140, 25);
 
         DBEmulator.setText("БД-эмулятор");
         DBEmulator.addItemListener(new java.awt.event.ItemListener() {
@@ -96,9 +96,9 @@ public class WizardESS2Connector extends WizardBaseViewDB {
             }
         });
         getContentPane().add(DBEmulator);
-        DBEmulator.setBounds(420, 165, 110, 20);
+        DBEmulator.setBounds(470, 164, 110, 20);
 
-        jLabel3.setText("IP");
+        jLabel3.setText("IP/Имя");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(10, 135, 50, 16);
 
@@ -112,7 +112,7 @@ public class WizardESS2Connector extends WizardBaseViewDB {
 
         jLabel4.setText("Тайм-аут(с)");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(200, 165, 80, 16);
+        jLabel4.setBounds(230, 165, 80, 16);
 
         TimeOut.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -120,12 +120,12 @@ public class WizardESS2Connector extends WizardBaseViewDB {
             }
         });
         getContentPane().add(TimeOut);
-        TimeOut.setBounds(280, 160, 30, 25);
+        TimeOut.setBounds(320, 160, 30, 25);
 
         jLabel5.setText("BaudRate");
         jLabel5.setInheritsPopupMenu(false);
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(470, 135, 50, 16);
+        jLabel5.setBounds(460, 135, 80, 16);
 
         UnitsNum.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -133,7 +133,7 @@ public class WizardESS2Connector extends WizardBaseViewDB {
             }
         });
         getContentPane().add(UnitsNum);
-        UnitsNum.setBounds(370, 160, 30, 25);
+        UnitsNum.setBounds(380, 160, 30, 25);
 
         RTU.setText("RS-485");
         RTU.addItemListener(new java.awt.event.ItemListener() {
@@ -142,7 +142,7 @@ public class WizardESS2Connector extends WizardBaseViewDB {
             }
         });
         getContentPane().add(RTU);
-        RTU.setBounds(390, 135, 80, 20);
+        RTU.setBounds(380, 135, 80, 20);
 
         BaudRate.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -154,7 +154,7 @@ public class WizardESS2Connector extends WizardBaseViewDB {
 
         jLabel6.setText("Unit-ов");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(320, 165, 50, 16);
+        jLabel6.setBounds(420, 165, 50, 16);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -22,13 +22,14 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
         super(frame0,entity0,back0);
         initComponents();
         emulator = (ESS2EquipEmulator) entity0;
-        ClassName.setText(emulator.getClassName());
+        DeviceName.setText(emulator.getClassName());
         Port.setText(""+emulator.getPort());
         Enabled.setSelected(emulator.isEnable());
         Trace.setSelected(emulator.isTrace());
         RTU.setSelected(emulator.isRTU());
         BaudRate.setText(""+emulator.getBaudRate());
-        setSize(750,200);
+        DeviceName.setText(emulator.getLineName());
+        setSize(750,210);
     }
 
     /**
@@ -45,12 +46,14 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
         Port = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        ClassName = new javax.swing.JTextField();
+        DeviceName = new javax.swing.JTextField();
         Enabled = new javax.swing.JCheckBox();
         Trace = new javax.swing.JCheckBox();
         RTU = new javax.swing.JCheckBox();
         BaudRate = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        ClassName = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -65,23 +68,23 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
             }
         });
         getContentPane().add(Port);
-        Port.setBounds(330, 100, 140, 25);
+        Port.setBounds(340, 130, 60, 25);
 
-        jLabel1.setText("Port");
+        jLabel1.setText("Порт/номер");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(290, 105, 40, 16);
+        jLabel1.setBounds(250, 135, 80, 16);
 
         jLabel2.setText("BaudRate");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(100, 135, 80, 16);
+        jLabel2.setBounds(580, 135, 80, 16);
 
-        ClassName.addKeyListener(new java.awt.event.KeyAdapter() {
+        DeviceName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                ClassNameKeyPressed(evt);
+                DeviceNameKeyPressed(evt);
             }
         });
-        getContentPane().add(ClassName);
-        ClassName.setBounds(100, 100, 180, 25);
+        getContentPane().add(DeviceName);
+        DeviceName.setBounds(100, 130, 140, 25);
 
         Enabled.setText("Включено");
         Enabled.addItemListener(new java.awt.event.ItemListener() {
@@ -90,7 +93,7 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
             }
         });
         getContentPane().add(Enabled);
-        Enabled.setBounds(290, 135, 80, 20);
+        Enabled.setBounds(300, 95, 80, 20);
 
         Trace.setText("Трассировка");
         Trace.addItemListener(new java.awt.event.ItemListener() {
@@ -99,7 +102,7 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
             }
         });
         getContentPane().add(Trace);
-        Trace.setBounds(390, 135, 130, 20);
+        Trace.setBounds(410, 95, 130, 20);
 
         RTU.setText("RS-485");
         RTU.addItemListener(new java.awt.event.ItemListener() {
@@ -108,7 +111,7 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
             }
         });
         getContentPane().add(RTU);
-        RTU.setBounds(490, 100, 80, 20);
+        RTU.setBounds(410, 135, 80, 20);
 
         BaudRate.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -116,11 +119,23 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
             }
         });
         getContentPane().add(BaudRate);
-        BaudRate.setBounds(200, 130, 80, 25);
+        BaudRate.setBounds(490, 130, 80, 25);
 
-        jLabel3.setText("Класс (Java)");
+        jLabel3.setText("Имя");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(10, 105, 80, 16);
+        jLabel3.setBounds(10, 135, 80, 16);
+
+        ClassName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ClassNameKeyPressed(evt);
+            }
+        });
+        getContentPane().add(ClassName);
+        ClassName.setBounds(100, 90, 180, 25);
+
+        jLabel4.setText("Класс (Java)");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(10, 95, 80, 16);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -134,14 +149,14 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
             });
     }//GEN-LAST:event_PortKeyPressed
 
-    private void ClassNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ClassNameKeyPressed
-        onStringKeyPressed("ClassName", ClassName, evt, new I_WizardActionString() {
+    private void DeviceNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DeviceNameKeyPressed
+        onStringKeyPressed("DeviceName", DeviceName, evt, new I_WizardActionString() {
             @Override
             public void onAction(String value) {
-                emulator.setClassName(value);
+                emulator.setLineName(value);
             }
         });
-    }//GEN-LAST:event_ClassNameKeyPressed
+    }//GEN-LAST:event_DeviceNameKeyPressed
 
     private void EnabledItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_EnabledItemStateChanged
         emulator.setEnable(Enabled.isSelected());
@@ -168,6 +183,16 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
         });
 
     }//GEN-LAST:event_BaudRateKeyPressed
+
+    private void ClassNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ClassNameKeyPressed
+        onStringKeyPressed("ClassName", ClassName, evt, new I_WizardActionString() {
+            @Override
+            public void onAction(String value) {
+                emulator.setClassName(value);
+            }
+        });
+
+    }//GEN-LAST:event_ClassNameKeyPressed
 
     /**
      * @param args the command line arguments
@@ -210,6 +235,7 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField BaudRate;
     private javax.swing.JTextField ClassName;
+    private javax.swing.JTextField DeviceName;
     private javax.swing.JCheckBox Enabled;
     private javax.swing.JTextField Port;
     private javax.swing.JCheckBox RTU;
@@ -218,6 +244,7 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
