@@ -1,8 +1,33 @@
 package romanow.abc.desktop;
 
+import org.openmuc.openiec61850.clientgui.ClientGui;
+import romanow.abc.core.UniException;
 import romanow.abc.core.constants.Values;
+import romanow.abc.core.constants.ValuesBase;
+import romanow.abc.dataserver.iec61850.IEC61850Client;
+
+import javax.swing.*;
 
 public class ESSMainBase extends MainBase{
+    public ESSMainBase(){
+        super();
+        JButton ClientIEC61850 = new JButton();
+        ClientIEC61850.setText("IEC61850");
+        ClientIEC61850.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        ClientGui gui = new ClientGui();
+                        gui.setVisible(true);
+                        gui.setBounds(300,200,800,600);
+                    }
+                });
+                }
+            });
+        getContentPane().add(ClientIEC61850);
+        ClientIEC61850.setBounds(40, 70, 110, 23);
+        setBounds(200,200,180,150);
+        }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
