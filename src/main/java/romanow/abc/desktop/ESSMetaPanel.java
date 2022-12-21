@@ -3155,9 +3155,13 @@ public class ESSMetaPanel extends ESSBasePanel {
         }//GEN-LAST:event_IECServerOnOffActionPerformed
 
     private void IEC61850ClientGUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IEC61850ClientGUIActionPerformed
-        ClientGui gui = new ClientGui();
-        gui.setVisible(true);
-        gui.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                ClientGui gui = new ClientGui();
+                gui.setVisible(true);
+                gui.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                }
+            });
     }//GEN-LAST:event_IEC61850ClientGUIActionPerformed
 
     private void refreshIEC61850State(){
