@@ -5,11 +5,6 @@ import romanow.abc.core.constants.Values;
 public class ESSCabinet extends Cabinet{
     public ESSCabinet(){
         super();
-        String path = getClass().getClassLoader()
-                .getResource("logging.properties")
-                .getFile();
-        if (path!=null)
-            System.setProperty("java.util.logging.config.file", path);
         }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
