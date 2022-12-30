@@ -22,7 +22,7 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
         super(frame0,entity0,back0);
         initComponents();
         emulator = (ESS2EquipEmulator) entity0;
-        DeviceName.setText(emulator.getClassName());
+        ClassName.setText(emulator.getClassName());
         Port.setText(""+emulator.getPort());
         Enabled.setSelected(emulator.isEnable());
         Trace.setSelected(emulator.isTrace());
