@@ -367,5 +367,31 @@
         </Constraint>
       </Constraints>
     </Component>
+    <Component class="javax.swing.JCheckBox" name="ClockAcrossAPI">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x421;&#x43e;&#x431;&#x44b;&#x442;&#x438;&#x44f; &#x442;&#x430;&#x439;&#x43c;&#x435;&#x440;&#x43e;&#x432; &#x447;&#x435;&#x440;&#x435;&#x437; API"/>
+      </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="ClockAcrossAPIItemStateChanged"/>
+      </Events>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="410" y="230" width="340" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="PriorityDispatcher">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x414;&#x438;&#x441;&#x43f;&#x435;&#x442;&#x447;&#x435;&#x440; &#x43f;&#x440;&#x438;&#x43e;&#x440;&#x438;&#x442;&#x435;&#x442;&#x43e;&#x432; &#x437;&#x430;&#x43f;&#x440;&#x43e;&#x441;&#x43e;&#x432; &#x43a; ModBus"/>
+      </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="PriorityDispatcherItemStateChanged"/>
+      </Events>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="410" y="200" width="340" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
   </SubComponents>
 </Form>

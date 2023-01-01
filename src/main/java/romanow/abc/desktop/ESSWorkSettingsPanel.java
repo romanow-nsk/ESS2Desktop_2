@@ -73,6 +73,8 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         ToKotlinJS = new javax.swing.JButton();
         jLabel27 = new javax.swing.JLabel();
         IEC61850Port = new javax.swing.JTextField();
+        ClockAcrossAPI = new javax.swing.JCheckBox();
+        PriorityDispatcher = new javax.swing.JCheckBox();
 
         setLayout(null);
 
@@ -290,6 +292,24 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         });
         add(IEC61850Port);
         IEC61850Port.setBounds(590, 160, 70, 25);
+
+        ClockAcrossAPI.setText("События таймеров через API");
+        ClockAcrossAPI.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ClockAcrossAPIItemStateChanged(evt);
+            }
+        });
+        add(ClockAcrossAPI);
+        ClockAcrossAPI.setBounds(410, 230, 340, 20);
+
+        PriorityDispatcher.setText("Диспетчер приоритетов запросов к ModBus");
+        PriorityDispatcher.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                PriorityDispatcherItemStateChanged(evt);
+            }
+        });
+        add(PriorityDispatcher);
+        PriorityDispatcher.setBounds(410, 200, 340, 20);
     }// </editor-fold>//GEN-END:initComponents
 
     private void GUIrefreshPeriodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GUIrefreshPeriodKeyPressed
@@ -375,6 +395,14 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         procPressedInt(evt, IEC61850Port,"iec61850Port");
     }//GEN-LAST:event_IEC61850PortKeyPressed
 
+    private void PriorityDispatcherItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PriorityDispatcherItemStateChanged
+        procPressedBoolean(PriorityDispatcher,"priorityDispatcher");
+    }//GEN-LAST:event_PriorityDispatcherItemStateChanged
+
+    private void ClockAcrossAPIItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ClockAcrossAPIItemStateChanged
+        procPressedBoolean(ClockAcrossAPI,"clockAcrossAPI");
+    }//GEN-LAST:event_ClockAcrossAPIItemStateChanged
+
     private void procPressedInt(KeyEvent evt, JTextField text, String name){
         if(evt.getKeyCode()!=10) return;
         int vv=0;
@@ -422,6 +450,8 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             MainServerConnectPeriod.setText(""+ws.getMainServerConnectPeriod());
             MainServerMode.setSelected(ws.isMainServerMode());
             IEC61850Port.setText(""+ws.getIec61850Port());
+            ClockAcrossAPI.setSelected(ws.isClockAcrossAPI());
+            PriorityDispatcher.setSelected(ws.isPriorityDispatcher());
             refreshMainServerParams();
             } catch (Exception e) { popup(e.toString()); }
         }
@@ -532,6 +562,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ArchiveDepthInDay;
+    private javax.swing.JCheckBox ClockAcrossAPI;
     private javax.swing.JTextField EventsPeriod;
     private javax.swing.JTextField FailureTestPeriod;
     private javax.swing.JTextField FileScanPeriod;
@@ -542,6 +573,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     private javax.swing.JCheckBox MainServerMode;
     private javax.swing.JTextField MainServerPeriod;
     private javax.swing.JTextField MainServerPort;
+    private javax.swing.JCheckBox PriorityDispatcher;
     private javax.swing.JTextField RegisterAge;
     private javax.swing.JTextField SnapShotPeriod;
     private javax.swing.JTextField StreamDataCompressMode;
