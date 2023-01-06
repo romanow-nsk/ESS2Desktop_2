@@ -29,6 +29,7 @@ import romanow.abc.core.utils.FileNameExt;
 import okhttp3.MultipartBody;
 import retrofit2.Call;
 import romanow.abc.core.utils.Pair;
+import romanow.abc.dataserver.iec61850.IEC61850Client;
 import romanow.abc.desktop.wizard.*;
 import romanow.abc.drivers.ModBusClientProxyDriver;
 
@@ -105,6 +106,9 @@ public class ESSMetaPanel extends ESSBasePanel {
         RunTimeChangesLabel.setVisible(false);
         ExecScriptServer.setEnabled(false);
         ExecScriptClient.setEnabled(false);
+        CIDLocal.setEnabled(false);
+        IECServerOnOff.setEnabled(false);
+        IEC61850ClientGUI.setEnabled(false);
         metaTypesMap = Values.constMap().getGroupMapByValue("MetaType");
         metaTypes = Values.constMap().getGroupList("MetaType");
         MetaTypes.removeAll();
@@ -3293,6 +3297,10 @@ public class ESSMetaPanel extends ESSBasePanel {
         RefreshMeta.setEnabled(enabled);
         ExecScriptServer.setEnabled(!enabled);
         ExecScriptClient.setEnabled(!enabled);
+        //-----------------------------------------------
+        CIDLocal.setEnabled(!enabled);
+        IECServerOnOff.setEnabled(!enabled);
+        IEC61850ClientGUI.setEnabled(!enabled);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

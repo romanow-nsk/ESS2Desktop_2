@@ -23,8 +23,8 @@ import java.util.HashMap;
 public class WizardMeta2Collection extends WizardBaseView {
     private ArrayList<Meta2Face> list;
     private HashMap<Integer, Integer> idxMap = new HashMap<>();
-    private WizardMetaEntitySelector[] choices = new WizardMetaEntitySelector[20];
-    private int cnts[] = new int[20];
+    private WizardMetaEntitySelector[] choices = new WizardMetaEntitySelector[Values.Meta2ElemCount];
+    private int cnts[] = new int[Values.Meta2ElemCount];
     /**
      * Creates new form xxx
      */
