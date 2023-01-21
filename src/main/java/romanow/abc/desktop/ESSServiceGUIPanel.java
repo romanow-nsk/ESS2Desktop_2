@@ -52,7 +52,7 @@ import static romanow.abc.core.constants.Values.MTViewFullScreen;
  */
 public class ESSServiceGUIPanel extends ESSBasePanel {
     private JButton OnOff=null;
-    private final static String buttonCopy = "/drawable/add.png";
+    private final static String buttonEdit = "/drawable/edit.png";
     private final static String buttonToMain = "/refresh.png";
     private final static String buttonLogout = "/login.png";
     private final static String buttonInfoOn = "/question.png";
@@ -73,7 +73,8 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     private final static int PopupLimitCount = 5;
     private final static int PopupLimitTime = 20;
     private PopupLimiter limiter = new PopupLimiter(PopupLimitCount,PopupLimitTime);
-    JButton copyView = null;
+    private ESSGUIEditPanel editPanel = null;
+    JButton editView = null;
     private FormContext2 context = new FormContext2(){
         @Override
         public void reOpenForm() {
@@ -536,16 +537,23 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         add(toMain);
         toMain.setBounds(context.x(870), context.y(620), context.x(40), context.y(40));
         //-------------------------------------------------------------------------------------
-        copyView = new JButton();
-        copyView.setIcon(new javax.swing.ImageIcon(getClass().getResource(buttonCopy))); // NOI18N
+        editView = new JButton();
+        editView.setIcon(new javax.swing.ImageIcon(getClass().getResource(buttonEdit))); // NOI18N
         //toMain.setBorderPainted(false);
         //toMain.setContentAreaFilled(false);
-        copyView.addActionListener(new ActionListener() {
+        editView.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                final Meta2GUI view = context.getSelectedView();        // Выбранный элемент в оконтексте рендеринга
+                editPanel = new ESSGUIEditPanel(ESSServiceGUIPanel.this, context, new I_Button() {
+                    @Override
+                    public void onPush() {
+                        editPanel = null;
+                        }
+                    });
+                /*
+                final Meta2GUI view = context.getSelectedView();        // Выбранный элемент в контексте рендеринга
                 if (!context.isRuntimeEditMode() || view==null){        // Элемент выбран и редактирование "на лету"
-                    copyView.setVisible(false);
+                    editView.setVisible(false);
                     return;
                 }
                 new OK(200,200,"Вставить элемент: "+view.getFullTitle(), new I_Button() {
@@ -555,7 +563,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                         try {
                             copy = view.getClass().newInstance();       // Клонировать элемент
                         } catch (Exception ee){
-                            copyView.setVisible(false);
+                            editView.setVisible(false);
                             popup("Ошибка создания клона для  "+view.getFullTitle());
                             return;
                         }
@@ -566,11 +574,13 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                         main.sendEventPanel(BasePanel.EventRuntimeEdited,0,0,"Добавлен "+form1.getTitle()+": "+copy.getFullTitle());
                         }
                     });
+
+                */
                 }
             });
-        add(copyView);
-        copyView.setBounds(context.x(820), context.y(620), context.x(40), context.y(40));
-        copyView.setVisible(context.isRuntimeEditMode() && context.getSelectedView()!=null);
+        add(editView);
+        editView.setBounds(context.x(820), context.y(620), context.x(40), context.y(40));
+        editView.setVisible(context.isRuntimeEditMode());
         //-----------------------------------------------------------------------------------
         JButton logout = new JButton();
         logout.setIcon(new javax.swing.ImageIcon(getClass().getResource(buttonLogout))); // NOI18N
@@ -669,10 +679,10 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             runtimeEditMode = par1!=0;
             context.setRuntimeEditMode(runtimeEditMode);
             if (par1==0)
-                copyView.setVisible(false);
+                editView.setVisible(false);
             }
         if (code==EventRuntimeSelected){
-            copyView.setVisible(true);
+            editView.setVisible(true);
             }
         }
     //---------------------------------------------------------------------------------------------
