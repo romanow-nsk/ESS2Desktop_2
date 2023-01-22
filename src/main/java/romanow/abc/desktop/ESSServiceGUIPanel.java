@@ -460,7 +460,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         toMain.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                context.openForm(mainFormName);
+                context.openForm(mainFormName,FormContext2.ModeCrearIdx);
             }
         });
         add(toMain);
