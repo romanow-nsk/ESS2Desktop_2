@@ -56,7 +56,7 @@ public class DesktopGUILevelIndicator2 extends View2BaseDesktop {
         }
 
     @Override
-    public void putValue(int zz) throws UniException {
+    public void putValue(long zz) throws UniException {
         Meta2DataRegister register = (Meta2DataRegister)  getRegister();
         double vv = register.doubleWithPower(zz);
         Color color = Color.green;

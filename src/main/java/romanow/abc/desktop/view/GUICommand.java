@@ -75,7 +75,7 @@ public class GUICommand extends GUIElement {
         new Message(200,200,"Команда "+register.getRegNum()+":="+cmdCode+"$"+ ss,Values.PopupMessageDelay);
         }
     @Override
-    public void putValue(int vv) throws UniException {}
+    public void putValue(long vv) throws UniException {}
 
     @Override
     public String setParams(FormContext context, MetaExternalSystem meta, MetaRegister register0, MetaGUIElement element0, I_ModbusGroupDriver plm0, I_GUIEvent onEvent0) {

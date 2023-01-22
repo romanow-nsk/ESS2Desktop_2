@@ -81,8 +81,8 @@ public class DesktopGUI3StateBox extends View2BaseDesktop {
         new Message(300,300,ss,Values.PopupMessageDelay);
         }
     @Override
-    public void putValue(int vv) throws UniException {
-        int pair = (vv>>bitNum) & 03;
+    public void putValue(long vv) throws UniException {
+        int pair = (int)(vv>>bitNum) & 03;
         JButton bb = (JButton)textField;
         Meta2GUI3StateBox element = (Meta2GUI3StateBox) getElement();
         String ss = getContext().getForm().getFormLevel()==0 ? iconsWarning[pair] : iconsWorking[pair];

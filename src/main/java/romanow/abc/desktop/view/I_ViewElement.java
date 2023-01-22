@@ -14,7 +14,7 @@ public interface I_ViewElement {
     public String getTitle();
     public String setParams(FormContext context, MetaExternalSystem meta, MetaRegister register, MetaGUIElement element, I_ModbusGroupDriver plm, I_GUIEvent onEvent);
     public void addToPanel(JPanel panel);
-    public void putValue(int vv) throws UniException;
+    public void putValue(long vv) throws UniException;
     public int []getRegNum();
     public void putValue(int vv[]) throws UniException;
     public boolean needRegister();

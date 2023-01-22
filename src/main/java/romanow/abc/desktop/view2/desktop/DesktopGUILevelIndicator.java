@@ -58,11 +58,11 @@ public class DesktopGUILevelIndicator extends View2BaseDesktop {
         setInfoClick(textField);
         }
     @Override
-    public void putValue(Meta2Register register, int xx, int idx) {
+    public void putValue(Meta2Register register, long xx, int idx) {
         limits[idx] = register.doubleWithPower(xx);
         }
     @Override
-    public void putValue(int xx) throws UniException {
+    public void putValue(long xx) throws UniException {
         Meta2DataRegister register = (Meta2DataRegister) getRegister();
         value = register.doubleWithPower(xx);
         }

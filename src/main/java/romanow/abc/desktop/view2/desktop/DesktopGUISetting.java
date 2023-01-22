@@ -107,7 +107,7 @@ public class DesktopGUISetting extends View2BaseDesktop {
         new Message(300,300,ss,Values.PopupMessageDelay);
         }
     @Override
-    public void putValue(int vv) throws UniException {
+    public void putValue(long vv) throws UniException {
         Meta2SettingRegister register = (Meta2SettingRegister) getRegister();
         textField.setText(register.valueWithPower(vv));
         }

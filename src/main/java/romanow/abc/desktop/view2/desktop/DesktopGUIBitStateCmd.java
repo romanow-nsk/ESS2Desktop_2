@@ -148,9 +148,9 @@ public class DesktopGUIBitStateCmd extends View2BaseDesktop {
         new Message(300,300,ss,Values.PopupMessageDelay);
         }
     @Override
-    public void putValue(int vv) throws UniException {
+    public void putValue(long vv) throws UniException {
         Meta2GUIBitStateCmd element = (Meta2GUIBitStateCmd) getElement();
-        lastBitValue = (vv>>bitNum) & 01;
+        lastBitValue = (int)(vv>>bitNum) & 01;
         if (cmdButton!=null)
             cmdButton.setText(lastBitValue!=0 ? "ОТКЛ" : "ВКЛ");
         int cc = (lastBitValue!=0 ? element.getColorYes() : element.getColorNo()) & 0x00FFFFFF;

@@ -140,7 +140,7 @@ public class DesktopGUIFormSelector extends View2BaseDesktop {
         busy=false;
         }
     @Override
-    public void putValue(int vv) throws UniException {}
+    public void putValue(long vv) throws UniException {}
     @Override
     public void showInfoMessage() {
         new Message(300,300, "Переход на форму "+((Meta2GUIFormButton)getElement()).getFormName(),Values.PopupMessageDelay);

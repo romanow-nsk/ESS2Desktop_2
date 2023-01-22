@@ -92,9 +92,9 @@ public class DesktopGUIImageBit extends View2BaseDesktop {
         new Message(300,300,ss,Values.PopupMessageDelay);
         }
     @Override
-    public void putValue(int vv) throws UniException {
+    public void putValue(long vv) throws UniException {
         Meta2GUI2StateBox element = (Meta2GUI2StateBox) getElement();
-        lastBitValue = (vv>>bitNum) & 01;
+        lastBitValue = (int)(vv>>bitNum) & 01;
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 imagePanel.repaint();

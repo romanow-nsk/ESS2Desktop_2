@@ -101,7 +101,7 @@ public class GUIESSWorkSettingInt extends GUIElement {
             textField.setText(""+setValue);
         }
     @Override
-    public void putValue(int vv) throws UniException {
+    public void putValue(long vv) throws UniException {
         }
     @Override
     public String setParams(FormContext context, MetaExternalSystem meta, MetaRegister register0, MetaGUIElement element0, I_ModbusGroupDriver plm0, I_GUIEvent back0) {

@@ -68,7 +68,7 @@ public class DesktopGUILevelIndicator3 extends View2BaseDesktop {
         panel.add(high);
         }
     @Override
-    public void putValue(int zz) throws UniException {
+    public void putValue(long zz) throws UniException {
         FormContext2 context= getContext();
         Meta2GUISetting element = (Meta2GUISetting) getElement();
         Meta2DataRegister register = (Meta2DataRegister)  getRegister();

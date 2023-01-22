@@ -86,7 +86,7 @@ public class GUI2StateBox extends GUIElement {
             return 0;
         }
     @Override
-    public void putValue(int vv) throws UniException {
+    public void putValue(long vv) throws UniException {
         boolean bb = ((vv>>bitNum) & 01) !=0;
         int cc = (bb ? element.getColorYes() : element.getColorNo()) & 0x00FFFFFF;
         putValueOwn(cc);

@@ -114,7 +114,7 @@ public class GUIFormSelector extends GUIElement {
         }
 
     @Override
-    public void putValue(int vv) throws UniException {}
+    public void putValue(long vv) throws UniException {}
     public boolean needRegister() {
         return false;
         }

@@ -26,8 +26,8 @@ public class DesktopGUI2StateBox extends View2BaseDesktop {
     protected JComponent textField;
     private int bitNum=0;
     private JButton cmdButton=null;     // Кнопка
-    private int lastBitValue=-1;        // Последнее значение разряда
-    private int lastValue=0;            //
+    private long lastBitValue=-1;        // Последнее значение разряда
+    private long lastValue=0;            //
     public DesktopGUI2StateBox(){
         setType(Values.GUI2StateBox);
         }
@@ -122,8 +122,8 @@ public class DesktopGUI2StateBox extends View2BaseDesktop {
                     @Override
                     public void onPush() {
                         try {
-                            int vv = lastValue ^ (1<<bitNum);       // Инвертировать разряд
-                            writeMainRegister(vv);
+                            long vv = lastValue ^ (1<<bitNum);       // Инвертировать разряд
+                            writeMainRegister((int)vv);
                             } catch (UniException ex) {
                                 String ss = "Ошибка изменения разряда: "+ex.toString();
                                 context.popup(ss);
@@ -146,7 +146,7 @@ public class DesktopGUI2StateBox extends View2BaseDesktop {
         new Message(300,300,ss,Values.PopupMessageDelay);
         }
     @Override
-    public void putValue(int vv) throws UniException {
+    public void putValue(long vv) throws UniException {
         Meta2GUI2StateBox element = (Meta2GUI2StateBox) getElement();
         lastValue = vv;
         lastBitValue = (vv>>bitNum) & 01;

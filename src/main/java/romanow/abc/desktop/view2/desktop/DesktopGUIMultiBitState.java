@@ -43,7 +43,7 @@ public class DesktopGUIMultiBitState extends View2BaseDesktop {
         textField.setBackground(color);
         setInfoClick(textField);
         }
-    public ArrayList<Meta2Bit>  createStateText(int regNum, int bitMask, int regVal){
+    public ArrayList<Meta2Bit>  createStateText(int regNum, int bitMask, long regVal){
         ArrayList<Meta2Bit> out = new ArrayList<>();
         if (regNum==0)
             return out;
@@ -78,7 +78,7 @@ public class DesktopGUIMultiBitState extends View2BaseDesktop {
         new Message(300,300,ss,Values.PopupMessageDelay);
         }
     @Override
-    public void putValue(int vv) throws UniException {
+    public void putValue(long vv) throws UniException {
         Meta2GUIMultiBitState element = (Meta2GUIMultiBitState) getElement();
         ArrayList<Meta2Bit> out = createStateText(element.getRegNum(),element.getBitMask(),vv);
         textField.removeAll();

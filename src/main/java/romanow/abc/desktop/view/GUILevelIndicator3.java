@@ -65,7 +65,7 @@ public class GUILevelIndicator3 extends GUIElement {
             return 0;
         }
     @Override
-    public void putValue(int zz) throws UniException {
+    public void putValue(long zz) throws UniException {
         if (settingsValues==null){
             high.setBounds(
                     context.x(element.getX()+dxOffset+5),

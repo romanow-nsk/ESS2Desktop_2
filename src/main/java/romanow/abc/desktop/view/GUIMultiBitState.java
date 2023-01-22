@@ -40,7 +40,7 @@ public class GUIMultiBitState extends GUIElement {
         textField.setBackground(color);
         setInfoClick(textField);
         }
-    public void createStateText(int regNum, int bitMask, ArrayList<MetaBit> out, int regVal){
+    public void createStateText(int regNum, int bitMask, ArrayList<MetaBit> out, long regVal){
         if (regNum==0)
             return;
         MetaRegister register = meta.getRegisterByNum(regNum);
@@ -77,7 +77,7 @@ public class GUIMultiBitState extends GUIElement {
         new Message(300,300,ss,Values.PopupMessageDelay);
         }
     @Override
-    public void putValue(int vv) throws UniException {
+    public void putValue(long vv) throws UniException {
         ArrayList<MetaBit> out = new ArrayList();
         createStateText(element.getRegNum(),element.getBitMask(),out,vv);
         if (out.size()==0)

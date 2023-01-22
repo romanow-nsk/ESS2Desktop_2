@@ -48,10 +48,10 @@ public class GUIData extends GUIElement {
         new Message(300,300,ss,Values.PopupMessageDelay);
         }
     @Override
-    public void putValue(int vv) throws UniException {
+    public void putValue(long vv) throws UniException {
         int type = register.getFormat();
         if (type==Values.FloatValue)
-            textField.setText(""+Float.intBitsToFloat(vv));
+            textField.setText(""+Double.longBitsToDouble(vv));
         else
             textField.setText(valueWithPower(vv));
         }

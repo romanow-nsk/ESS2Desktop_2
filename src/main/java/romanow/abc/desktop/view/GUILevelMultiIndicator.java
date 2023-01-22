@@ -92,7 +92,7 @@ public class GUILevelMultiIndicator extends GUIElement {
             return 0;
         }
     @Override
-    public void putValue(int vv) throws UniException {}
+    public void putValue(long vv) throws UniException {}
 
     private Color getValueColor(double vv){
         Color color = Color.gray;

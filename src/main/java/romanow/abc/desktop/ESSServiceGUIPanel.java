@@ -481,8 +481,12 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 }
         Meta2GUIForm fff = context.getForm();
         if (fff.isEmpty()){         // пропустить пустые экраны
-            while (fff.isEmpty())
+            while (fff.isEmpty()){
+                if (fff.getChilds().size()==0){
+                    return;
+                    }
                 fff = fff.getChilds().get(0);
+                }
             context.openForm(fff,FormContext2.ModeForce);
             return;
             }
@@ -686,6 +690,22 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             }
         }
     //---------------------------------------------------------------------------------------------
+    public int []getRegisterData(ESS2Device device,Meta2RegLink link, int unitIdx,int offset){
+        int regNumFull = link.getRegNum()+offset;
+        int regSize = link.getRegister().size16Bit();
+        int data[] = new int[regSize];
+        boolean good=true;
+        for(int i=0;i<regSize;i++){
+            Integer vv = device.getValue(unitIdx,regNumFull+i);
+            if (vv==null){
+                limiter.popup("Не найден регистр в ответе сервера "+(regNumFull+i));
+                good=false;
+                break;
+                }
+            data[i]=vv;
+            }
+        return good ? data : null;
+        }
     public void repaintValuesOnAnswer(ESS2Device device, int unitIdx,IntegerList values,Meta2GUIForm currentForm) throws UniException {
         if (currentForm!=context.getForm())
             return;
@@ -700,59 +720,31 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 continue;
             if (element.getDevUnit()!=unitIdx)      // Пропустить чужой физический Unit
                 continue;
-            int regNumFull = link.getRegNum()+element.getRegOffset();
-            Integer vv = device.getValue(unitIdx,regNumFull);
-            if (vv==null){
-                limiter.popup("Не найден регистр в ответе сервера "+regNumFull);
+            int data[] = getRegisterData(device,link,unitIdx,element.getRegOffset());
+            if (data==null)
                 continue;
-                }
-            int sum = vv.intValue() & 0x0FFFF;
-            if (link.getRegister().doubleSize()){       // Сдвоенные регистры (передается словом)
-                vv = device.getValue(unitIdx,regNumFull+1);
-                if (vv==null){
-                    limiter.popup("Не найден регистр в ответе сервера "+regNumFull+1);
-                    continue;
-                    }
-                sum |= vv.intValue() << 16;
-                }
-            element.putValue(sum);
+            element.putValue(data);
             Meta2RegLink links[] = element.getSettingsLinks();
             for(int i=0;i<links.length;i++){
-                regNumFull = links[i].getRegNum();
-                vv = device.getValue(unitIdx,regNumFull);
-                if (vv==null){
-                    limiter.popup("Не найден регистр в ответе сервера "+regNumFull);
+                data = getRegisterData(device,links[i],unitIdx,0);
+                if (data==null)
+                    continue;
+                if (data.length>4){
+                    limiter.popup("Ошибка размерности доп. регистра "+links[i].getRegNum());
                     continue;
                     }
-                sum = vv.intValue() & 0x0FFFF;
-                if (links[i].getRegister().doubleSize()){       // Сдвоенные регистры (передается словом)
-                    vv = device.getValue(unitIdx,regNumFull+1);
-                    if (vv==null){
-                        limiter.popup("Не найден регистр в ответе сервера "+regNumFull+1);
-                        continue;
-                        }
-                    sum |= vv.intValue() << 16;
-                    }
-                element.putValue(links[i].getRegister(),sum,i);
+                element.putValue(links[i].getRegister(),View2Base.toOneWord(data),i);
                 }
             links = element.getDataLinks();
             for(int i=0;i<links.length;i++){
-                regNumFull = links[i].getRegNum();
-                vv = device.getValue(unitIdx,regNumFull);
-                if (vv==null){
-                    limiter.popup("Не найден регистр в ответе сервера "+regNumFull);
+                data = getRegisterData(device,links[i],unitIdx,0);
+                if (data==null)
                     continue;
-                }
-                sum = vv.intValue() & 0x0FFFF;
-                if (links[i].getRegister().doubleSize()){       // Сдвоенные регистры (передается словом)
-                    vv = device.getValue(unitIdx,regNumFull+1);
-                    if (vv==null){
-                        limiter.popup("Не найден регистр в ответе сервера "+regNumFull+1);
-                        continue;
+                if (data.length>4){
+                    limiter.popup("Ошибка размерности доп. регистра "+links[i].getRegNum());
+                    continue;
                     }
-                    sum |= vv.intValue() << 16;
-                    }
-                element.putValue(links[i].getRegister(),sum,i);
+                element.putValue(links[i].getRegister(),View2Base.toOneWord(data),i);
                 }
             element.repaintValues();
             }
@@ -768,6 +760,12 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         //    prevForm = context.getForm();
         //    return;
         //    }
+    public void putOneLinkRegister(View2Base element,Meta2RegLink link,int offset){
+        int regNumFull = link.getRegNum()+offset;
+        int regSize = link.getRegister().size16Bit();
+        for(int i=0;i<regSize;i++)
+            element.getDevice().putValue(element.getDevUnit(),regNumFull+i,0);     // Регистр со смещением
+        }
     public synchronized void repaintValues(){       // По физическим устройствам
         if (!renderingOn)
             return;
@@ -781,25 +779,28 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             Meta2RegLink link = element.getRegLink();
             if (link==null)
                 continue;
-            ESS2Device device = element.getDevice();
-            int regNumFull = link.getRegNum()+element.getRegOffset();                   // Двойные регистры
-            device.putValue(element.getDevUnit(),regNumFull,0);                   // Регистр со смещением
-            if (link.getRegister().doubleSize())
-                device.putValue(element.getDevUnit(),regNumFull+1,0);     // Регистр со смещением
+            putOneLinkRegister(element,link,element.getRegOffset());
+            //ESS2Device device = element.getDevice();
+            //int regNumFull = link.getRegNum()+element.getRegOffset();                   // Двойные регистры
+            //int regSize = link.getRegister().size16Bit();
+            //for(int i=0;i<regSize;i++)
+            //    device.putValue(element.getDevUnit(),regNumFull+i,0);     // Регистр со смещением
             Meta2RegLink vv[] = element.getSettingsLinks();
             //---------- Вспомогательные регистры с того же девайса и юнита, что и основной, без смещения
             for(Meta2RegLink link2 : vv){
-                regNumFull = link2.getRegNum();
-                device.putValue(element.getDevUnit(),regNumFull,0);               // Регистр БЕЗ СМЕЩЕНИЯ
-                if (link2.getRegister().doubleSize())
-                    device.putValue(element.getDevUnit(),regNumFull+1,0); // Регистр БЕЗ СМЕЩЕНИЯ
+                putOneLinkRegister(element,link2,0);
+                //regNumFull = link2.getRegNum();
+                //regSize = link.getRegister().size16Bit();
+                //for(int i=0;i<regSize;i++)
+                //    device.putValue(element.getDevUnit(),regNumFull+i,0); // Регистр БЕЗ СМЕЩЕНИЯ
                 }
             vv = element.getDataLinks();
             for(Meta2RegLink link2 : vv){
-                regNumFull = link2.getRegNum();
-                device.putValue(element.getDevUnit(),regNumFull,0);               // Регистр БЕЗ СМЕЩЕНИЯ
-                if (link2.getRegister().doubleSize())
-                    device.putValue(element.getDevUnit(),regNumFull+1,0); // Регистр БЕЗ СМЕЩЕНИЯ
+                putOneLinkRegister(element,link2,0);
+                //regNumFull = link2.getRegNum();
+                //regSize = link.getRegister().size16Bit();
+                //for(int i=0;i<regSize;i++)
+                //    device.putValue(element.getDevUnit(),regNumFull+i,0); // Регистр БЕЗ СМЕЩЕНИЯ
                 }
             }
         renderSeqNum++;             // Установить след. номер запроса

@@ -68,12 +68,12 @@ public abstract class GUIElement implements I_ViewElement{
         count = register.getLevelCount(1);
         inGroup = count!=0;
         }
+    //----------- Для элементов с несколькими регистрами - источниками (MutiLevelIndicator)
     public int []getRegNum() {
         regNums[0] = register.getRegNum()+regOffset;
         return regNums;
         }
-    public void putValue(int vv[]) throws UniException{
-        }
+    public void putValue(int vv[]) throws UniException{}    // Deprecated - версия 1.0
     public int getRegStep(){
         return 0;
         }
@@ -172,7 +172,7 @@ public abstract class GUIElement implements I_ViewElement{
                     showInfoMessage();
                 }});
             }
-    public String valueWithPower(int vv){
+    public String valueWithPower(long vv){
         int power = register.getPower();
         if (power<0)
             return ""+vv/Math.pow(10,-power);
@@ -180,7 +180,7 @@ public abstract class GUIElement implements I_ViewElement{
             return ""+vv*Math.pow(10,power);
         return ""+vv;
         }
-    public double doubleWithPower(int vv){
+    public double doubleWithPower(long vv){
         int power = register.getPower();
         if (power<0)
             return vv/Math.pow(10,-power);

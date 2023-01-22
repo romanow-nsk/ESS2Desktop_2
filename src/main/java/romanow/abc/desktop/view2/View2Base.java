@@ -47,7 +47,7 @@ public abstract class View2Base implements I_View2 {
         }
     public void repaintBefore(){}                               // Для исключительных действий (скрипты)
     public void repaintValues(){}                               // После прочтения всех данных
-    public void putValue(Meta2Register register, int value, int idx){}
+    public void putValue(Meta2Register register, long value, int idx){}
     public abstract void showInfoMessage();
     @Override
     public String getTypeName() {
@@ -153,5 +153,15 @@ public abstract class View2Base implements I_View2 {
         }
     public void writeRegister(Meta2RegLink link,int vv, int regOffset) throws UniException {
         device.getDriver().writeRegister(device.getShortName(),devUnit,link.getRegNum()+regOffset,vv);
+        }
+    //------------------------------------------------------------------------------------------------------------------
+    public static long toOneWord(int data[]){
+        long out=0;
+        for(int i=0;i<4 && i<data.length;i++)
+            out |= (((long) data[i])&0x0FFFF) << (i*16);
+        return out;
+        }
+    public void putValue(int data[]) throws UniException {
+        putValue(toOneWord(data));
         }
 }

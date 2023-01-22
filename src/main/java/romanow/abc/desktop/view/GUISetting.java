@@ -79,7 +79,7 @@ public class GUISetting extends GUIElement {
         new Message(300,300,ss,Values.PopupMessageDelay);
         }
     @Override
-    public void putValue(int vv) throws UniException {
+    public void putValue(long vv) throws UniException {
         textField.setText(valueWithPower(vv));
         }
     @Override

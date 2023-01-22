@@ -34,10 +34,10 @@ public class GUIDataLabel extends GUIElement {
             return 0;
         }
     @Override
-    public void putValue(int vv) throws UniException {
+    public void putValue(long vv) throws UniException {
         int type = register.getFormat();
         if (type==Values.FloatValue)
-            label.setText(element.getTitle()+" "+Float.intBitsToFloat(vv));
+            label.setText(element.getTitle()+" "+Double.longBitsToDouble(vv));
         else
             label.setText(element.getTitle()+" "+valueWithPower(vv));
         }

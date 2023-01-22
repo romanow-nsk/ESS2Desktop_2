@@ -33,11 +33,11 @@ public class DesktopGUIDataLabel extends View2BaseDesktop {
         new Message(300,300,ss,Values.PopupMessageDelay);
         }
     @Override
-    public void putValue(int vv) throws UniException {
+    public void putValue(long vv) throws UniException {
         Meta2Register register = (Meta2Register) getRegister();
         int type = register.getFormat();
         if (type == Values.FloatValue)
-            label.setText(" " + getElement().getTitle() + " = " + Float.intBitsToFloat(vv) + " " + register.getUnit());
+            label.setText(" " + getElement().getTitle() + " = " + Double.longBitsToDouble(vv) + " " + register.getUnit());
         else
             label.setText(" " + getElement().getTitle() + " = " + register.valueWithPower(vv) + " " + register.getUnit());
         }

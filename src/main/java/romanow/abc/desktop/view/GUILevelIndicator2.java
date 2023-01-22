@@ -47,7 +47,7 @@ public class GUILevelIndicator2 extends GUIElement {
         }
 
     @Override
-    public void putValue(int zz) throws UniException {
+    public void putValue(long zz) throws UniException {
         double vv = doubleWithPower(zz);
         Color color = Color.green;
         if (vv>=alarmMax || vv<=alarmMin)

@@ -22,9 +22,9 @@ public class GUI3StateBoxSmall extends GUI3StateBox {
         bb.setText("");
         }
     @Override
-    public void putValue(int vv) {
+    public void putValue(long vv) {
         JTextField bb = (JTextField) textField;
-        int pair = (vv>>bitNum) & 03;
+        int pair = (int)(vv>>bitNum) & 03;
         int color = element.getFormLevel()==0 ? iconsWarning[pair] : iconsWorking[pair];
         bb.setBackground(new Color(color));
         }

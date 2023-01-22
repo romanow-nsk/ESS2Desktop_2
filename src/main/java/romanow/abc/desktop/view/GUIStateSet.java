@@ -34,7 +34,7 @@ public class GUIStateSet extends GUIElement {
         }
 
     @Override
-    public void putValue(int vv) throws UniException {
+    public void putValue(long vv) throws UniException {
         MetaCommandRegister reg = (MetaCommandRegister)register;
         for(MetaCommand cmd : Collections.unmodifiableList(reg.getCommands())){
             if (cmd.getCode()==vv){

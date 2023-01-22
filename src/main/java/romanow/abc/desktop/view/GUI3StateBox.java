@@ -76,8 +76,8 @@ public class GUI3StateBox extends GUIElement {
             return 0;
         }
     @Override
-    public void putValue(int vv) throws UniException {
-        int pair = (vv>>bitNum) & 03;
+    public void putValue(long vv) throws UniException {
+        int pair = (int)(vv>>bitNum) & 03;
         JButton bb = (JButton)textField;
         String ss = element.getFormLevel()==0 ? iconsWarning[pair] : iconsWorking[pair];
         bb.setIcon(new ImageIcon(getClass().getResource(ss)));

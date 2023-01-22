@@ -37,7 +37,7 @@ public class DesktopGUIScriptLabel extends View2BaseDesktop {
         new Message(300,300,ss,Values.PopupMessageDelay);
         }
     @Override
-    public void putValue(int vv) throws UniException {
+    public void putValue(long vv) throws UniException {
         }
     @Override
     public void repaintBefore(){
