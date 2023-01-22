@@ -8,17 +8,21 @@ import romanow.abc.core.constants.Values;
 import romanow.abc.core.entity.metadata.Meta2GUIForm;
 import romanow.abc.core.entity.metadata.Meta2GUIView;
 import romanow.abc.core.entity.metadata.view.Meta2GUI;
+import romanow.abc.core.entity.subject2area.ESS2View;
 import romanow.abc.core.entity.subjectarea.AccessManager;
+import romanow.abc.desktop.ESSServiceGUIPanel;
 import romanow.abc.desktop.MainBaseFrame;
 import romanow.abc.desktop.ScreenMode;
 
 
-public abstract class FormContext2 {
+public class FormContext2 {
     public final static int ModeNext=0;
     public final static int ModeCrearIdx=1;
     public final static int ModeForce=2;
+    private I_ContextBack back;
     @Getter @Setter private MainBaseFrame main;
     @Getter @Setter private Meta2GUIView view;                      // Общие данные ЧМИ
+    @Setter private ESS2View currentView=null;
     @Getter @Setter private String platformName="";
     @Getter @Setter private boolean valid=false;
     @Getter @Setter private ScreenMode screen = new ScreenMode();   // Данные экрана (панели)
@@ -36,7 +40,7 @@ public abstract class FormContext2 {
     @Getter @Setter private String token="";                        // Токен сессии сервера данных
     @Getter @Setter private int idx[]=new int[Values.FormStackSize];// Стек начальных индексов групповых элементов GUI
     @Getter @Setter private int size[]=new int[Values.FormStackSize];// Стек размерностей групповых элементов GUI в форме
-    @Getter @Setter private String menuFormStack[] = new String[Values.MenuStackSize];
+    private String menuFormStack[] = new String[Values.MenuStackSize];
     public void show(){
         System.out.print((form!=null ? form.getFormLevel() : "")+"->");
         for(int i=0;i<idx.length;i++)
@@ -67,13 +71,15 @@ public abstract class FormContext2 {
         for(int i=level;i<Values.FormStackSize;i++)
             size[i]=0;
         }
-    public FormContext2(int idx1, int idx2, int idx3) {
+    public FormContext2(I_ContextBack back0,int idx1, int idx2, int idx3) {
+        back = back0;
         for(int i=0;i<Values.FormStackSize;i++)
             idx[i]=size[i]=0;
         idx[0] = idx1;
         idx[1] = idx2;
         idx[2] = idx3; }
-    public FormContext2() {
+    public FormContext2(I_ContextBack back0) {
+        back = back0;
         for(int i=0;i<Values.FormStackSize;i++)
             idx[i]=size[i]=0;
         }
@@ -87,16 +93,81 @@ public abstract class FormContext2 {
     public int y(int y){
         return screen.y(y);
         }
-    public abstract void reOpenForm();
     public void openForm(String formName){
         openForm(formName,ModeNext);
         }
-    public abstract void openForm(String formName,int mode);
-    public abstract void openForm(Meta2GUIForm form,int mode);
-    public abstract void repaintView();
-    public abstract void repaintValues();
-    public abstract void popup(String mes);
     public boolean isActionEnable(){
         return manager.getCurrentAccessLevel() <= form.getWriteLevel();
         }
+    public void reOpenForm() {
+        repaintView();
+    }
+    public void openForm(String formName, int mode) {
+        Meta2GUIForm form = currentView.getView().getForms().getByTitle(formName);
+        if (form==null){
+            back.popup("Не найдена форма "+formName);
+            return;
+            }
+        openForm(form,mode);
+        }
+    public void openForm(Meta2GUIForm form, int mode) {
+        setBaseForm(form);
+        if (form.isLinkForm()){
+            String baseFormName = form.getShortName();
+            Meta2GUIForm baseForm = currentView.getView().getForms().getByTitle(baseFormName);
+            if (baseForm==null){
+                back.popup("Не найдена базовая форма "+baseFormName);
+                return;
+            }
+            int idx = form.getBaseFormIndex();
+            int level = form.getFormLevel();
+            if (level!=0 && idx!=-1)            // Индекс для предыдущего уровня их групповой кнопки меню
+                setIndex(level,idx);
+            setBaseForm(baseForm);
+            }
+        if (back.getAcccessLevel() > form.getAccessLevel()){
+            popup("Недостаточен уровень доступа");
+            return;
+            }
+        Meta2GUIForm prev = getForm();
+        if (mode !=FormContext2.ModeForce && prev!=null && form.getLevel()>prev.getLevel()+1){
+            popup("Пропущен уровень формы при переходе из "+prev.getTitle()+" в "+form.getTitle());
+        }
+        setForm(form);
+        int level = form.getLevel();
+        if (level!=0 && mode==FormContext2.ModeCrearIdx){
+            setIndex(level,0);
+            setName(level,getForm().getTitle());
+            setSize(level,getBaseForm().getElementsCount());
+            }
+        if (mode==FormContext2.ModeForce){          // Для неиндексируемых форм
+            Meta2GUIForm ff=form;
+            for(int i=level;i<menuFormStack.length;i++)
+                menuFormStack[i]="";
+            for(int ll = level; ll>0;ll--){
+                setIndex(ll,0);
+                setSize(ll,0);
+                menuFormStack[ll-1] = ff.getTitle();
+                ff = ff.getParent();
+                }
+            }
+        if (mode==FormContext2.ModeNext){
+            menuFormStack[level-1]=form.getTitle();
+            }
+        int vv[] = getIdx();
+        System.out.println("Стек индексов: "+vv[0]+" "+vv[1]+" "+vv[2]+" "+vv[3]);
+        System.out.println("Стек форм: "+menuFormStack[0]+" "+menuFormStack[1]+" "+menuFormStack[2]+" "+menuFormStack[3]);
+        repaintView();
+        }
+    public void repaintView() {
+        back.repaintView();
+        }
+    public void repaintValues() {
+        back.repaintValues();
+        }
+    public void popup(String mes) {
+        back.popup(mes);
+        }
+
+
 }

@@ -28,10 +28,7 @@ import romanow.abc.desktop.module.I_Module;
 import romanow.abc.desktop.module.Module;
 
 import retrofit2.Call;
-import romanow.abc.desktop.view2.FormContext2;
-import romanow.abc.desktop.view2.I_GUI2Event;
-import romanow.abc.desktop.view2.View2Base;
-import romanow.abc.desktop.view2.View2BaseDesktop;
+import romanow.abc.desktop.view2.*;
 import romanow.abc.desktop.wizard.WizardBaseView;
 
 import javax.swing.*;
@@ -75,71 +72,11 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     private PopupLimiter limiter = new PopupLimiter(PopupLimitCount,PopupLimitTime);
     private ESSGUIEditPanel editPanel = null;
     JButton editView = null;
-    private FormContext2 context = new FormContext2(){
+    private FormContext2 context = new FormContext2(new I_ContextBack() {
         @Override
-        public void reOpenForm() {
-            repaintView();
+        public void popup(String ss) {
+            limiter.popup(ss);
             }
-        public void openForm(String formName, int mode) {
-            Meta2GUIForm form = main2.currentView.getView().getForms().getByTitle(formName);
-            if (form==null){
-                limiter.popup("Не найдена форма "+formName);
-                return;
-                }
-            openForm(form,mode);
-            }
-        @Override
-        public void openForm(Meta2GUIForm form, int mode) {
-            //---------------- Поиск для групповых кнопок -------------------------------------------------
-            setBaseForm(form);
-            if (form.isLinkForm()){
-                String baseFormName = form.getShortName();
-                Meta2GUIForm baseForm = main2.currentView.getView().getForms().getByTitle(baseFormName);
-                if (baseForm==null){
-                    limiter.popup("Не найдена базовая форма "+baseFormName);
-                    return;
-                    }
-                int idx = form.getBaseFormIndex();
-                int level = form.getFormLevel();
-                if (level!=0 && idx!=-1)            // Индекс для предыдущего уровня их групповой кнопки меню
-                    setIndex(level,idx);
-                setBaseForm(baseForm);
-                }
-            //---------------------------------------------------------------------------------------------
-            if (main2.manager.getCurrentAccessLevel() > form.getAccessLevel()){
-                popup("Недостаточен уровень доступа");
-                return;
-                }
-            Meta2GUIForm prev = getForm();
-            if (mode !=FormContext2.ModeForce && prev!=null && form.getLevel()>prev.getLevel()+1){
-                popup("Пропущен уровень формы при переходе из "+prev.getTitle()+" в "+form.getTitle());
-                }
-            setForm(form);
-            int level = form.getLevel();
-            if (level!=0 && mode==FormContext2.ModeCrearIdx){
-                setIndex(level,0);
-                setName(level,getForm().getTitle());
-                setSize(level,getBaseForm().getElementsCount());
-                }
-            if (mode==FormContext2.ModeForce){          // Для неиндексируемых форм
-                Meta2GUIForm ff=form;
-                String menuFormStack[] = getMenuFormStack();
-                for(int i=level;i<menuFormStack.length;i++)
-                    menuFormStack[i]="";
-                for(int ll = level; ll>0;ll--){
-                    setIndex(ll,0);
-                    setSize(ll,0);
-                    menuFormStack[ll-1] = ff.getTitle();
-                    ff = ff.getParent();
-                    }
-                }
-            int vv[] = getIdx();
-            System.out.println("Стек индексов: "+vv[0]+" "+vv[1]+" "+vv[2]+" "+vv[3]);
-            String ss[] = getMenuFormStack();
-            System.out.println("Стек форм: "+ss[0]+" "+ss[1]+" "+ss[2]+" "+ss[3]);
-            repaintView();
-            }
-
         @Override
         public void repaintView() {
             ESSServiceGUIPanel.this.repaintView();
@@ -149,10 +86,10 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             ESSServiceGUIPanel.this.repaintValues();
             }
         @Override
-        public void popup(String mes) {
-            limiter.popup(mes);
+        public int getAcccessLevel() {
+            return main2.manager.getCurrentAccessLevel();
             }
-    };
+        });
     //------------------------------ Цикл рендеринга ------------------------------------------------------
     private Thread guiLoop = null;
     private boolean shutDown=false;
@@ -160,6 +97,8 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     private boolean renderingOn=false;
     private void setRenderingOnOff(boolean vv){
         renderingOn = vv;
+        if (renderingOn)
+            context.setCurrentView(main2.currentView);
         }
     //private boolean repaintValuesOn=false;                           // Обновление данных
     //private boolean repaintBusy=false;                               // Обновление формы
@@ -313,7 +252,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         Meta2EntityList<Meta2GUIForm> formList = currentView.getForms();
         Meta2GUIForm form = context.getForm();
         Meta2GUIForm baseForm = context.getBaseForm();
-        int level = context.getForm().getLevel();
+        int level = form.getLevel();
         //-----------------------------------------------------------------------------------
         if (context.getForm().getTitle().equals(mainFormName)){
             TextField userTitle = new TextField();
@@ -349,7 +288,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 bb.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        context.openForm(parent,FormContext2.ModeCrearIdx);
+                        context.openForm(parent,FormContext2.ModeForce);
                         }
                     });
                 add(bb);
@@ -418,23 +357,9 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                                 new Message(300,300,ss,Values.PopupMessageDelay);
                             }
                         else
-                            context.openForm(zz,FormContext2.ModeCrearIdx);
+                            context.openForm(zz,FormContext2.ModeNext);
                         }
                     });
-                //--------------------------------------------------------------------------
-                /*
-                int regNum = next.getRegNum();          // TODO Сервисный режим ??????
-                next.setColoured(false);
-                if (regNum!=0){
-                    try {
-                        int vv = main2.plm.readRegister("",0,regNum);
-                        if (((vv>>next.getRegBit()) & 1)!=0){
-                            next.setColoured(true);
-                            bb.setBackground(new Color(next.getColor()));
-                            }
-                        } catch (UniException e) {}
-                    }
-                */
                 add(bb);
                 ii++;
                 }
@@ -487,7 +412,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                     }
                 fff = fff.getChilds().get(0);
                 }
-            context.openForm(fff,FormContext2.ModeForce);
+            context.openForm(fff,FormContext2.ModeNext);
             return;
             }
         repaint();
@@ -554,32 +479,6 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                         editPanel = null;
                         }
                     });
-                /*
-                final Meta2GUI view = context.getSelectedView();        // Выбранный элемент в контексте рендеринга
-                if (!context.isRuntimeEditMode() || view==null){        // Элемент выбран и редактирование "на лету"
-                    editView.setVisible(false);
-                    return;
-                }
-                new OK(200,200,"Вставить элемент: "+view.getFullTitle(), new I_Button() {
-                    @Override
-                    public void onPush() {
-                        Meta2GUI copy = null;
-                        try {
-                            copy = view.getClass().newInstance();       // Клонировать элемент
-                        } catch (Exception ee){
-                            editView.setVisible(false);
-                            popup("Ошибка создания клона для  "+view.getFullTitle());
-                            return;
-                        }
-                        copy.cloneGUIData(view);                        // Метод клонирования содержимого для GUI
-                        Meta2GUIForm form1 = context.getForm();
-                        form1.getControls().add(copy);                  // Добавить в список элементов управления GUI формы
-                        repaintView();                                  // Разослать уведомление (форма редактирования)
-                        main.sendEventPanel(BasePanel.EventRuntimeEdited,0,0,"Добавлен "+form1.getTitle()+": "+copy.getFullTitle());
-                        }
-                    });
-
-                */
                 }
             });
         add(editView);
