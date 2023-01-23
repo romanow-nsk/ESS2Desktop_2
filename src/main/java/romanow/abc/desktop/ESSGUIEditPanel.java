@@ -52,6 +52,7 @@ public class ESSGUIEditPanel extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         CopyElem = new javax.swing.JButton();
         CopyTitle = new javax.swing.JTextField();
+        RemoveElem = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -97,11 +98,22 @@ public class ESSGUIEditPanel extends javax.swing.JFrame {
             }
         });
         getContentPane().add(CopyElem);
-        CopyElem.setBounds(10, 70, 40, 38);
+        CopyElem.setBounds(140, 40, 30, 30);
 
         CopyTitle.setEnabled(false);
         getContentPane().add(CopyTitle);
-        CopyTitle.setBounds(50, 80, 190, 25);
+        CopyTitle.setBounds(20, 80, 190, 25);
+
+        RemoveElem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/remove.png"))); // NOI18N
+        RemoveElem.setBorderPainted(false);
+        RemoveElem.setContentAreaFilled(false);
+        RemoveElem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RemoveElemActionPerformed(evt);
+            }
+        });
+        getContentPane().add(RemoveElem);
+        RemoveElem.setBounds(180, 40, 30, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -152,8 +164,11 @@ public class ESSGUIEditPanel extends javax.swing.JFrame {
                 }
                 copy.cloneGUIData(view);                        // Метод клонирования содержимого для GUI
                 Meta2GUIForm form1 = context.getForm();
+                Meta2GUIForm form2 = context.getBaseForm();     //
+                if (form2!=null)
+                    form1 = form2;
                 form1.getControls().add(copy);                  // Добавить в список элементов управления GUI формы
-                panel.repaintView();                                  // Разослать уведомление (форма редактирования)
+                panel.repaintView();                            // Разослать уведомление (форма редактирования)
                 panel.main.sendEventPanel(BasePanel.EventRuntimeEdited,0,0,"Добавлен "+form1.getTitle()+": "+copy.getFullTitle());
                 dispose();
                 }
@@ -166,12 +181,30 @@ public class ESSGUIEditPanel extends javax.swing.JFrame {
             back.onPush();
     }//GEN-LAST:event_formWindowClosed
 
+    private void RemoveElemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveElemActionPerformed
+        final Meta2GUI view = context.getSelectedView();        // Выбранный элемент в контексте рендеринга
+        new OK(200,200,"Удалить элемент: "+view.getFullTitle(), new I_Button() {
+            @Override
+            public void onPush() {
+                Meta2GUIForm form1 = context.getForm();
+                Meta2GUIForm form2 = context.getBaseForm();     //
+                if (form2!=null)
+                    form1 = form2;
+                form1.getControls().getList().remove(view);     // Удалить из списка элементов управления GUI формы
+                panel.repaintView();                            // Разослать уведомление (форма редактирования)
+                panel.main.sendEventPanel(BasePanel.EventRuntimeEdited,0,0,"Удален "+form1.getTitle()+": "+view.getFullTitle());
+                dispose();
+            }
+        });
+    }//GEN-LAST:event_RemoveElemActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CopyElem;
     private javax.swing.JTextField CopyTitle;
     private javax.swing.JTextField DX;
     private javax.swing.JTextField DY;
     private javax.swing.JButton MoveElems;
+    private javax.swing.JButton RemoveElem;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
