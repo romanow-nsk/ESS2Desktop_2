@@ -16,7 +16,7 @@ import javax.swing.*;
  * @author romanow0
  */
 public class WizardMeta2GUIRegW2 extends WizardMeta2GUI {
-
+    private boolean onStart=false;
     private Meta2GUIRegW2 elem;
     public WizardMeta2GUIRegW2() {
         initComponents();
@@ -29,6 +29,9 @@ public class WizardMeta2GUIRegW2 extends WizardMeta2GUI {
         WizardRegLinkPanel linkPanel = new WizardRegLinkPanel(0,120,"",elem.getLink(),this);
         add(linkPanel);
         W2.setText(""+elem.getW2());
+        onStart=true;
+        IntValue.setSelected(elem.isIntValue());
+        onStart=false;
         }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -42,16 +45,15 @@ public class WizardMeta2GUIRegW2 extends WizardMeta2GUI {
         jCheckBox1 = new javax.swing.JCheckBox();
         W2 = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
+        IntValue = new javax.swing.JCheckBox();
 
         jCheckBox1.setText("jCheckBox1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
         });
-        getContentPane().setLayout(null);
 
         W2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -63,7 +65,16 @@ public class WizardMeta2GUIRegW2 extends WizardMeta2GUI {
 
         jLabel13.setText("W2");
         getContentPane().add(jLabel13);
-        jLabel13.setBounds(10, 180, 30, 14);
+        jLabel13.setBounds(10, 180, 30, 16);
+
+        IntValue.setText("Формат целого");
+        IntValue.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                IntValueItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(IntValue);
+        IntValue.setBounds(100, 180, 140, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -81,9 +92,17 @@ public class WizardMeta2GUIRegW2 extends WizardMeta2GUI {
         });
     }//GEN-LAST:event_W2KeyPressed
 
+    private void IntValueItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_IntValueItemStateChanged
+        if (onStart)
+            return;
+        elem.setIntValue(IntValue.isSelected());
+        back.onEnter("Изменено IntValue"+": "+IntValue.isSelected());
+    }//GEN-LAST:event_IntValueItemStateChanged
+
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox IntValue;
     private javax.swing.JTextField W2;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel13;

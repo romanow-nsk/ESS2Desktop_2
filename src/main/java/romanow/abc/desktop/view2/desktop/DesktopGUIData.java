@@ -70,8 +70,12 @@ public class DesktopGUIData extends View2BaseDesktop {
         if (type==Values.FloatValue)
             textField.setText(""+Double.longBitsToDouble(vv));
         else{
-            if (register instanceof Meta2DataRegister)
-                textField.setText(((Meta2DataRegister)register).valueWithPower(vv));
+            if (register instanceof Meta2DataRegister){
+                if (((Meta2GUIData) getElement()).isIntValue())
+                    textField.setText(((Meta2DataRegister)register).valueIntWithPower(vv));
+                else
+                    textField.setText(((Meta2DataRegister)register).valueWithPower(vv));
+                }
             else
                 textField.setText(((Meta2SettingRegister)register).valueWithPower(vv));
             }
