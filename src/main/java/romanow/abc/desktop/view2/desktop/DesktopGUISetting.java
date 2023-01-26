@@ -5,6 +5,7 @@ import romanow.abc.core.constants.Values;
 import romanow.abc.core.entity.metadata.Meta2Register;
 import romanow.abc.core.entity.metadata.Meta2SettingRegister;
 import romanow.abc.core.entity.metadata.view.Meta2GUI;
+import romanow.abc.core.entity.metadata.view.Meta2GUIData;
 import romanow.abc.core.entity.metadata.view.Meta2GUISetting;
 import romanow.abc.core.entity.subject2area.ESS2Architecture;
 import romanow.abc.desktop.*;
@@ -109,7 +110,10 @@ public class DesktopGUISetting extends View2BaseDesktop {
     @Override
     public void putValue(long vv) throws UniException {
         Meta2SettingRegister register = (Meta2SettingRegister) getRegister();
-        textField.setText(register.valueWithPower(vv));
+        if (((Meta2GUISetting) getElement()).isIntValue())
+            textField.setText(register.valueIntWithPower(vv));
+        else
+            textField.setText(register.valueWithPower(vv));
         }
     @Override
     public String setParams(FormContext2 context0, ESS2Architecture meta0, Meta2GUI element0, I_GUI2Event onEvent0) {

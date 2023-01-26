@@ -7,6 +7,7 @@ import romanow.abc.core.entity.metadata.Meta2RegLink;
 import romanow.abc.core.entity.metadata.Meta2Register;
 import romanow.abc.core.entity.metadata.Meta2SettingRegister;
 import romanow.abc.core.entity.metadata.view.Meta2GUI;
+import romanow.abc.core.entity.metadata.view.Meta2GUIData;
 import romanow.abc.core.entity.metadata.view.Meta2GUILevelIndicator;
 import romanow.abc.core.entity.subject2area.ESS2Architecture;
 import romanow.abc.desktop.I_Success;
@@ -64,7 +65,11 @@ public class DesktopGUILevelIndicator extends View2BaseDesktop {
     @Override
     public void putValue(long xx) throws UniException {
         Meta2DataRegister register = (Meta2DataRegister) getRegister();
-        value = register.doubleWithPower(xx);
+        if (((Meta2GUILevelIndicator)getElement()).isByteSize()){
+            value = (byte)xx;
+            }
+        else
+            value = register.doubleWithPower(xx);
         }
     @Override
     public void repaintValues(){

@@ -1,5 +1,6 @@
 package romanow.abc.desktop.view2.desktop;
 
+import lombok.Getter;
 import romanow.abc.core.UniException;
 import romanow.abc.core.constants.Values;
 import romanow.abc.core.entity.metadata.Meta2DataRegister;
@@ -19,7 +20,7 @@ import java.awt.*;
 import static romanow.abc.core.entity.metadata.Meta2Entity.toHex;
 
 public class DesktopGUIData extends View2BaseDesktop {
-    private JTextField textField;
+    @Getter private JTextField textField;
     public DesktopGUIData(){
         setType(Values.GUIData);
         }
@@ -66,6 +67,10 @@ public class DesktopGUIData extends View2BaseDesktop {
     @Override
     public void putValue(long vv) throws UniException {
         Meta2Register register = getRegister();
+        if (((Meta2GUIData)getElement()).isByteSize()){
+            textField.setText(""+(byte)vv);
+            return;
+            }
         int type = register.getFormat();
         if (type==Values.FloatValue)
             textField.setText(""+Double.longBitsToDouble(vv));
@@ -76,8 +81,12 @@ public class DesktopGUIData extends View2BaseDesktop {
                 else
                     textField.setText(((Meta2DataRegister)register).valueWithPower(vv));
                 }
-            else
-                textField.setText(((Meta2SettingRegister)register).valueWithPower(vv));
+            else{
+                if (((Meta2GUIData) getElement()).isIntValue())
+                    textField.setText(((Meta2SettingRegister)register).valueIntWithPower(vv));
+                else
+                    textField.setText(((Meta2SettingRegister)register).valueWithPower(vv));
+                }
             }
         }
 

@@ -16,7 +16,7 @@ import java.awt.*;
  * @author romanow0
  */
 public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
-
+    private boolean start=false;
     private Meta2GUI2StateBox elem;
     public WizardMeta2GUI2StateBox() {
         initComponents();
@@ -27,6 +27,7 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
         elem = (Meta2GUI2StateBox) entity;
         WizardRegLinkPanel linkPanel = new WizardRegLinkPanel(10,120,"",elem.getRegLink(),this);
         add(linkPanel);
+        start=true;
         BitNum.setText(""+elem.getBitNum());
         ColorYes.setText(""+String.format("%6x",elem.getColorYes()));
         ColorYesButton.setBackground(new Color(elem.getColorYes()));
@@ -35,6 +36,8 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
         W2.setText(""+elem.getW2());
         ButtonSize.setText(""+elem.getButtonSize());
         RemoteEnable.setSelected(elem.isRemoteEnable());
+        MixedRegister.setSelected(elem.isMixedRegister());
+        start=false;
         }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,6 +64,7 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
         jLabel2 = new javax.swing.JLabel();
         ButtonSize = new javax.swing.JTextField();
         RemoteEnable = new javax.swing.JCheckBox();
+        MixedRegister = new javax.swing.JCheckBox();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -147,6 +151,15 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
         getContentPane().add(RemoteEnable);
         RemoteEnable.setBounds(640, 150, 90, 20);
 
+        MixedRegister.setText("Рег.данных");
+        MixedRegister.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MixedRegisterItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(MixedRegister);
+        MixedRegister.setBounds(640, 170, 100, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -200,9 +213,19 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
     }//GEN-LAST:event_ButtonSizeKeyPressed
 
     private void RemoteEnableItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_RemoteEnableItemStateChanged
+        if (start)
+            return;
         elem.setRemoteEnable(RemoteEnable.isSelected());
         back.onEnter("Изменено remoteEnable"+": "+elem.isRemoteEnable());
     }//GEN-LAST:event_RemoteEnableItemStateChanged
+
+    private void MixedRegisterItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MixedRegisterItemStateChanged
+        if (start)
+            return;
+        elem.setMixedRegister(MixedRegister.isSelected());
+        back.onEnter("Изменено mixedRegister"+": "+elem.isMixedRegister());
+
+    }//GEN-LAST:event_MixedRegisterItemStateChanged
 
  
 
@@ -213,6 +236,7 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
     private javax.swing.JButton ColorNoButton;
     private javax.swing.JTextField ColorYes;
     private javax.swing.JButton ColorYesButton;
+    private javax.swing.JCheckBox MixedRegister;
     private javax.swing.JCheckBox RemoteEnable;
     private javax.swing.JTextField W2;
     private javax.swing.JCheckBox jCheckBox1;

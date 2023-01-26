@@ -24,13 +24,14 @@ public class WizardMeta2GUIRegW2 extends WizardMeta2GUI {
     public void onHex(){}
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
-        setSize(750,260);
+        setSize(750,280);
         elem = (Meta2GUIRegW2)  entity;
         WizardRegLinkPanel linkPanel = new WizardRegLinkPanel(0,120,"",elem.getLink(),this);
         add(linkPanel);
         W2.setText(""+elem.getW2());
         onStart=true;
         IntValue.setSelected(elem.isIntValue());
+        ByteSize.setSelected(elem.isByteSize());
         onStart=false;
         }
     /**
@@ -46,6 +47,7 @@ public class WizardMeta2GUIRegW2 extends WizardMeta2GUI {
         W2 = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         IntValue = new javax.swing.JCheckBox();
+        ByteSize = new javax.swing.JCheckBox();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -74,7 +76,16 @@ public class WizardMeta2GUIRegW2 extends WizardMeta2GUI {
             }
         });
         getContentPane().add(IntValue);
-        IntValue.setBounds(100, 180, 140, 20);
+        IntValue.setBounds(100, 180, 130, 20);
+
+        ByteSize.setText("Размерность байт");
+        ByteSize.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ByteSizeItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(ByteSize);
+        ByteSize.setBounds(100, 200, 140, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -99,9 +110,17 @@ public class WizardMeta2GUIRegW2 extends WizardMeta2GUI {
         back.onEnter("Изменено IntValue"+": "+IntValue.isSelected());
     }//GEN-LAST:event_IntValueItemStateChanged
 
+    private void ByteSizeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ByteSizeItemStateChanged
+        if (onStart)
+        return;
+        elem.setByteSize(ByteSize.isSelected());
+        back.onEnter("Изменено ByteSize"+": "+ByteSize.isSelected());
+    }//GEN-LAST:event_ByteSizeItemStateChanged
+
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox ByteSize;
     private javax.swing.JCheckBox IntValue;
     private javax.swing.JTextField W2;
     private javax.swing.JCheckBox jCheckBox1;
