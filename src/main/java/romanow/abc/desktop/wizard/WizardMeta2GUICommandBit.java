@@ -8,6 +8,7 @@ package romanow.abc.desktop.wizard;
 
 import romanow.abc.core.entity.metadata.Meta2Entity;
 import romanow.abc.core.entity.metadata.view.Meta2GUI2StateBox;
+import romanow.abc.core.entity.metadata.view.Meta2GUICommandBit;
 
 import java.awt.*;
 
@@ -15,23 +16,19 @@ import java.awt.*;
  *
  * @author romanow0
  */
-public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
+public class WizardMeta2GUICommandBit extends WizardMeta2GUI {
 
-    private Meta2GUI2StateBox elem;
-    public WizardMeta2GUI2StateBox() {
+    private Meta2GUICommandBit elem;
+    public WizardMeta2GUICommandBit() {
         initComponents();
         }
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
         setSize(750,240);
-        elem = (Meta2GUI2StateBox) entity;
+        elem = (Meta2GUICommandBit) entity;
         WizardRegLinkPanel linkPanel = new WizardRegLinkPanel(10,120,"",elem.getRegLink(),this);
         add(linkPanel);
         BitNum.setText(""+elem.getBitNum());
-        ColorYes.setText(""+String.format("%6x",elem.getColorYes()));
-        ColorYesButton.setBackground(new Color(elem.getColorYes()));
-        ColorNo.setText(""+String.format("%6x",elem.getColorNo()));
-        ColorNoButton.setBackground(new Color(elem.getColorNo()));
         W2.setText(""+elem.getW2());
         ButtonSize.setText(""+elem.getButtonSize());
         RemoteEnable.setSelected(elem.isRemoteEnable());
@@ -48,14 +45,8 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
         jCheckBox1 = new javax.swing.JCheckBox();
         jCheckBox2 = new javax.swing.JCheckBox();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel11 = new javax.swing.JLabel();
-        ColorYes = new javax.swing.JTextField();
         BitNum = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        ColorYesButton = new javax.swing.JButton();
-        jLabel14 = new javax.swing.JLabel();
-        ColorNo = new javax.swing.JTextField();
-        ColorNoButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         W2 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -74,18 +65,6 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
         getContentPane().add(jSeparator1);
         jSeparator1.setBounds(10, 84, 670, 0);
 
-        jLabel11.setText("Цвет \"1\"");
-        getContentPane().add(jLabel11);
-        jLabel11.setBounds(290, 130, 60, 16);
-
-        ColorYes.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                ColorYesKeyPressed(evt);
-            }
-        });
-        getContentPane().add(ColorYes);
-        ColorYes.setBounds(290, 150, 80, 25);
-
         BitNum.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 BitNumKeyPressed(evt);
@@ -97,26 +76,10 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
         jLabel13.setText("Бит");
         getContentPane().add(jLabel13);
         jLabel13.setBounds(240, 130, 40, 16);
-        getContentPane().add(ColorYesButton);
-        ColorYesButton.setBounds(380, 150, 25, 25);
-
-        jLabel14.setText("Цвет \"0\"");
-        getContentPane().add(jLabel14);
-        jLabel14.setBounds(420, 130, 60, 16);
-
-        ColorNo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                ColorNoKeyPressed(evt);
-            }
-        });
-        getContentPane().add(ColorNo);
-        ColorNo.setBounds(420, 150, 80, 25);
-        getContentPane().add(ColorNoButton);
-        ColorNoButton.setBounds(510, 150, 25, 25);
 
         jLabel1.setText("W2");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(540, 130, 30, 16);
+        jLabel1.setBounds(290, 130, 30, 16);
 
         W2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -124,11 +87,11 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
             }
         });
         getContentPane().add(W2);
-        W2.setBounds(540, 150, 40, 25);
+        W2.setBounds(290, 150, 40, 25);
 
         jLabel2.setText("Кнопка (size)");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(590, 130, 80, 16);
+        jLabel2.setBounds(340, 130, 80, 16);
 
         ButtonSize.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -136,7 +99,7 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
             }
         });
         getContentPane().add(ButtonSize);
-        ButtonSize.setBounds(590, 150, 40, 25);
+        ButtonSize.setBounds(340, 150, 40, 25);
 
         RemoteEnable.setText("Удаленно");
         RemoteEnable.addItemListener(new java.awt.event.ItemListener() {
@@ -145,7 +108,7 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
             }
         });
         getContentPane().add(RemoteEnable);
-        RemoteEnable.setBounds(640, 150, 90, 20);
+        RemoteEnable.setBounds(390, 150, 90, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -153,15 +116,6 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         closeForm();
     }//GEN-LAST:event_formWindowClosing
-
-    private void ColorYesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ColorYesKeyPressed
-        onColorKeyPressed("colorYes", ColorYes, ColorYesButton, evt, new I_WizardAction() {
-            @Override
-            public void onAction(int value) {
-                elem.setColorYes(value);
-            }
-        });
-    }//GEN-LAST:event_ColorYesKeyPressed
 
     private void BitNumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BitNumKeyPressed
         onKeyPressed("bitNum", BitNum, evt, new I_WizardAction() {
@@ -171,24 +125,6 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
             }
         });
     }//GEN-LAST:event_BitNumKeyPressed
-
-    private void ColorNoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ColorNoKeyPressed
-        onColorKeyPressed("colorNo", ColorNo, ColorNoButton, evt, new I_WizardAction() {
-            @Override
-            public void onAction(int value) {
-                elem.setColorNo(value);
-            }
-        });
-    }//GEN-LAST:event_ColorNoKeyPressed
-
-    private void W2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_W2KeyPressed
-        onKeyPressed("W2", W2, evt, new I_WizardAction() {
-            @Override
-            public void onAction(int value) {
-                elem.setW2(value);
-            }
-        });
-    }//GEN-LAST:event_W2KeyPressed
 
     private void ButtonSizeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ButtonSizeKeyPressed
         onKeyPressed("buttonSize", ButtonSize, evt, new I_WizardAction() {
@@ -204,23 +140,26 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
         back.onEnter("Изменено remoteEnable"+": "+elem.isRemoteEnable());
     }//GEN-LAST:event_RemoteEnableItemStateChanged
 
+    private void W2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_W2KeyPressed
+        onKeyPressed("W2", W2, evt, new I_WizardAction() {
+            @Override
+            public void onAction(int value) {
+                elem.setW2(value);
+            }
+        });
+    }//GEN-LAST:event_W2KeyPressed
+
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField BitNum;
     private javax.swing.JTextField ButtonSize;
-    private javax.swing.JTextField ColorNo;
-    private javax.swing.JButton ColorNoButton;
-    private javax.swing.JTextField ColorYes;
-    private javax.swing.JButton ColorYesButton;
     private javax.swing.JCheckBox RemoteEnable;
     private javax.swing.JTextField W2;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables

@@ -87,7 +87,7 @@ public class DesktopGUICommandBit extends View2BaseDesktop {
     @Override
     public void showInfoMessage(){
         Meta2BitRegister register = (Meta2BitRegister)  getRegister();
-        new Message(200,200,"Разряд "+getElement().getTitle()+toHex(register.getRegNum())+":="+bit.getBitNum()+"$"+ bit.getTitle(),Values.PopupMessageDelay);
+        new Message(200,200,"Разряд "+getElement().getTitle()+" "+toHex(register.getRegNum())+":="+bit.getBitNum()+"$"+ bit.getTitle(),Values.PopupMessageDelay);
         }
     @Override
     public void putValue(long vv) throws UniException {}
