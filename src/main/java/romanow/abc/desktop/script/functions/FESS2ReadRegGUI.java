@@ -1,5 +1,6 @@
 package romanow.abc.desktop.script.functions;
 
+import romanow.abc.core.Pair;
 import romanow.abc.core.UniException;
 import romanow.abc.core.constants.ValuesBase;
 import romanow.abc.core.entity.subject2area.ESS2Architecture;
@@ -46,16 +47,9 @@ public class FESS2ReadRegGUI extends ESS2LocalFunction {
             } catch (Exception ee){
                 throw new ScriptException(ValuesBase.SEBug,"Исключение: "+ee.toString());
                 }
-        ESS2Device device = findDevice(architecture,devName.formatTo());
-        if (device==null){
-            throw new ScriptException(ValuesBase.SEConfiguration, "Не найдено ед.оборудования: "+devName.formatTo());
-            }
-        if (!device.getErrors().valid()){
-            throw new ScriptException(ValuesBase.SEConfiguration, "Ошибки оборудования "+devName.formatTo()+
-                    ": "+device.getErrors().toString());
-            }
         try {
-            int vv = device.getDriver().readRegister(device.getShortName(),(int)unit.toLong(),(int)regNum.toLong());
+            Pair<ESS2Device,Integer> res = findDevice(architecture,devName.formatTo(),(int)unit.toLong());
+            int vv = res.o1.getDriver().readRegister(res.o1.getShortName(),res.o2,(int)regNum.toLong());
             stack.push(new TypeShort((short) vv));
             } catch (UniException ee){
                 String ss = "Ошибка чтения регистра Modbus: "+regNum.toLong()+ "\n"+ee.toString();

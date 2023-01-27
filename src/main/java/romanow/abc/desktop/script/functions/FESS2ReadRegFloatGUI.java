@@ -1,5 +1,6 @@
 package romanow.abc.desktop.script.functions;
 
+import romanow.abc.core.Pair;
 import romanow.abc.core.UniException;
 import romanow.abc.core.constants.ValuesBase;
 import romanow.abc.core.entity.subject2area.ESS2Architecture;
@@ -43,18 +44,10 @@ public class FESS2ReadRegFloatGUI extends ESS2LocalFunction {
             } catch (Exception ee){
                 throw new ScriptException(ValuesBase.SEBug,"Исключение: "+ee.toString());
                 }
-        ESS2Device device = findDevice(architecture,devName.formatTo());
-        if (device==null){
-            throw new ScriptException(ValuesBase.SEConfiguration, "Не найдено ед.оборудования: "+devName.formatTo());
-            }
-        if (!device.getErrors().valid()){
-            throw new ScriptException(ValuesBase.SEConfiguration, "Ошибки оборудования "+devName.formatTo()+
-                    ": "+device.getErrors().toString());
-            }
         try {
-            int regNum2 = (int)regNum.toLong();
-            int vv = device.getDriver().readRegister(device.getShortName(),(int)unit.toLong(),regNum2) & 0x0FFFF;
-            int vv2 = device.getDriver().readRegister(device.getShortName(),(int)unit.toLong(),regNum2+1) & 0x0FFFF;
+            Pair<ESS2Device,Integer> res = findDevice(architecture,devName.formatTo(),(int)unit.toLong());
+            int vv = res.o1.getDriver().readRegister(res.o1.getShortName(),res.o2,(int)regNum.toLong()) & 0x0FFFF;;
+            int vv2 = res.o1.getDriver().readRegister(res.o1.getShortName(),res.o2,(int)regNum.toLong()+1) & 0x0FFFF;;
             vv |= vv2<<16;
             float  ff = Float.intBitsToFloat(vv);
             stack.push(new TypeFloat(ff));

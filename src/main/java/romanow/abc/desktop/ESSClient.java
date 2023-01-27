@@ -269,32 +269,36 @@ public class ESSClient extends Client {
         EntityRefList<ESS2EnvValue> list = deployed.getEnvValues();
         for(ESS2EnvValue value : list)
             value.setValid(false);
-        for(Pair<String,Double> vv : oo.getList()){
+        for(Pair<String,ArrayList<Double>> vv : oo.getList()){
             ESS2EnvValue value = list.getByName(vv.o1);
             if (value==null) {
                 System.out.println("Не найдена локальная переменная окружения "+vv.o1);
                 continue;
                 }
-            value.setEnvValue(vv.o2);
+            value.setEnvValues(vv.o2);
             value.setValid(true);
             }
         for(ESS2EnvValue value : list){
             if (!value.isValid())
                 System.out.println("Не инициализирована локальная переменная окружения "+ value.getShortName());
             else
-                System.out.println("Локальная переменная окружения "+ value.getShortName()+"="+value.getEnvValue());
+                System.out.println("Локальная переменная окружения "+ value.toString());
             }
         for(ESS2Equipment equipment : deployed.getEquipments())
             for(Meta2Register reg : equipment.getEquipment().getRegList().getList()){
                 String envVarName = reg.getEnvVar();
                 if (envVarName==null || envVarName.length()==0)
                     continue;
-                ESS2EnvValue value = deployed.getEnvValues().getByName(envVarName);
-                if (value==null || !value.isValid())
-                    System.out.println("Не найдена переменная окружения "+envVarName+" для регистра "+equipment.getShortName()+"."+toHex(reg.getRegNum()));
-                else
-                    reg.setEnvVarValue(value.getEnvValue());
-                }
+                ArrayList<Double> values = new ArrayList<>();
+                    for(int logUnit=0;logUnit<equipment.getLogUnits().size();logUnit++) {
+                        ESS2EnvValue value = deployed.getEnvValues().getByName(envVarName + logUnit);
+                        if (value == null || !value.isValid())
+                            System.out.println("Не найдена переменная окружения " + (envVarName + logUnit) + " для регистра " + equipment.getShortName() + "." + toHex(reg.getRegNum()));
+                        else
+                            values.add(value.getEnvValues().get(0));
+                        }
+                    reg.setEnvVarValue(values);
+                    }
             }
     //------------------------------------------------------------------------------------------------------
     public void setRenderingOn() {

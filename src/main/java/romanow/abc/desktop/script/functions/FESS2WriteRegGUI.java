@@ -1,5 +1,6 @@
 package romanow.abc.desktop.script.functions;
 
+import romanow.abc.core.Pair;
 import romanow.abc.core.UniException;
 import romanow.abc.core.constants.ValuesBase;
 import romanow.abc.core.entity.subject2area.ESS2Architecture;
@@ -48,16 +49,9 @@ public class FESS2WriteRegGUI extends ESS2LocalFunction {
             } catch (Exception ee){
                 throw new ScriptException(ValuesBase.SEBug,"Исключение: "+ee.toString());
                 }
-        ESS2Device device = findDevice(architecture,devName.formatTo());
-        if (device==null){
-            throw new ScriptException(ValuesBase.SEConfiguration, "Не найдено ед.оборудования: "+devName.formatTo());
-            }
-        if (!device.getErrors().valid()){
-            throw new ScriptException(ValuesBase.SEConfiguration, "Ошибки оборудования "+devName.formatTo()+
-                    ": "+device.getErrors().toString());
-            }
         try {
-            device.getDriver().writeRegister(device.getShortName(),(int)unit.toLong(),(int)regNum.toLong(),(int)regValue.toLong());
+            Pair<ESS2Device,Integer> res = findDevice(architecture,devName.formatTo(),(int)unit.toLong());
+            res.o1.getDriver().writeRegister(res.o1.getShortName(),res.o2,(int)regNum.toLong(),(int)regValue.toLong());
             } catch (UniException ee){
                 String ss = "Ошибка записи регистра Modbus: "+regNum.toLong()+ "\n"+ee.toString();
                 throw new ScriptException(ValuesBase.SEConfiguration, "Ошибки оборудования "+devName.formatTo()+ ": "+ss);

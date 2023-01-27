@@ -77,15 +77,15 @@ public class DesktopGUIData extends View2BaseDesktop {
         else{
             if (register instanceof Meta2DataRegister){
                 if (((Meta2GUIData) getElement()).isIntValue())
-                    textField.setText(((Meta2DataRegister)register).valueIntWithPower(vv));
+                    textField.setText(((Meta2DataRegister)register).valueIntWithPower(getUnitIdx(),vv));
                 else
-                    textField.setText(((Meta2DataRegister)register).valueWithPower(vv));
+                    textField.setText(((Meta2DataRegister)register).valueWithPower(getUnitIdx(),vv));
                 }
             else{
                 if (((Meta2GUIData) getElement()).isIntValue())
-                    textField.setText(((Meta2SettingRegister)register).valueIntWithPower(vv));
+                    textField.setText(((Meta2SettingRegister)register).valueIntWithPower(getUnitIdx(),vv));
                 else
-                    textField.setText(((Meta2SettingRegister)register).valueWithPower(vv));
+                    textField.setText(((Meta2SettingRegister)register).valueWithPower(getUnitIdx(),vv));
                 }
             }
         }

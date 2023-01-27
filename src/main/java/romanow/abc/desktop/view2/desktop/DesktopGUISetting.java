@@ -81,7 +81,7 @@ public class DesktopGUISetting extends View2BaseDesktop {
                                 if (register.getFormat()==Values.FloatValue)
                                     writeMainRegister(Float.floatToIntBits((float) value));
                                 else
-                                    writeMainRegister(register.intWithPower(value));
+                                    writeMainRegister(register.intWithPower(getUnitIdx(),value));
                                 context.repaintValues();
                                 } catch (UniException ex) {
                                     String ss = "Ошибка записи уставки: "+ex.toString();
@@ -111,9 +111,9 @@ public class DesktopGUISetting extends View2BaseDesktop {
     public void putValue(long vv) throws UniException {
         Meta2SettingRegister register = (Meta2SettingRegister) getRegister();
         if (((Meta2GUISetting) getElement()).isIntValue())
-            textField.setText(register.valueIntWithPower(vv));
+            textField.setText(register.valueIntWithPower(getUnitIdx(),vv));
         else
-            textField.setText(register.valueWithPower(vv));
+            textField.setText(register.valueWithPower(getUnitIdx(),vv));
         }
     @Override
     public String setParams(FormContext2 context0, ESS2Architecture meta0, Meta2GUI element0, I_GUI2Event onEvent0) {

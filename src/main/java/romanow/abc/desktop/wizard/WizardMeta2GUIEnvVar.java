@@ -15,6 +15,7 @@ import romanow.abc.core.entity.metadata.view.Meta2GUIScript;
  * @author romanow0
  */
 public class WizardMeta2GUIEnvVar extends WizardMeta2GUI {
+    private boolean start=false;
     private Meta2GUIEnvVar envVar;
     public WizardMeta2GUIEnvVar() {
         initComponents();
@@ -25,6 +26,9 @@ public class WizardMeta2GUIEnvVar extends WizardMeta2GUI {
         envVar = (Meta2GUIEnvVar)  entity;
         ScriptName.setText(envVar.getEnvVarName());
         W2.setText(""+envVar.getW2());
+        start=true;
+        WithUnit.setSelected(envVar.isWithUnit());
+        start=false;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -40,20 +44,19 @@ public class WizardMeta2GUIEnvVar extends WizardMeta2GUI {
         ScriptName = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         W2 = new javax.swing.JTextField();
+        WithUnit = new javax.swing.JCheckBox();
 
         jCheckBox1.setText("jCheckBox1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
         });
-        getContentPane().setLayout(null);
 
         jLabel1.setText("Скрипт ");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(20, 135, 70, 14);
+        jLabel1.setBounds(20, 135, 70, 16);
 
         ScriptName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -65,7 +68,7 @@ public class WizardMeta2GUIEnvVar extends WizardMeta2GUI {
 
         jLabel2.setText("W2");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(200, 135, 30, 14);
+        jLabel2.setBounds(200, 135, 30, 16);
 
         W2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -74,6 +77,15 @@ public class WizardMeta2GUIEnvVar extends WizardMeta2GUI {
         });
         getContentPane().add(W2);
         W2.setBounds(230, 130, 50, 25);
+
+        WithUnit.setText("+номер LogUnit");
+        WithUnit.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                WithUnitItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(WithUnit);
+        WithUnit.setBounds(300, 130, 150, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -100,11 +112,19 @@ public class WizardMeta2GUIEnvVar extends WizardMeta2GUI {
         });
     }//GEN-LAST:event_W2KeyPressed
 
+    private void WithUnitItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_WithUnitItemStateChanged
+        if (start)
+            return;
+        envVar.setWithUnit(WithUnit.isSelected());
+        back.onEnter("Изменено WithUnit"+": "+WithUnit.isSelected());
+    }//GEN-LAST:event_WithUnitItemStateChanged
+
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ScriptName;
     private javax.swing.JTextField W2;
+    private javax.swing.JCheckBox WithUnit;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

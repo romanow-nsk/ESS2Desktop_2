@@ -19,11 +19,12 @@ import romanow.abc.desktop.view2.View2BaseDesktop;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class DesktopGUIEnvVar extends View2BaseDesktop {
     private JTextField textField;
     private Meta2GUIEnvVar element;
-    private double envVarValue=0;
+    private ArrayList<Double> envVarValue=new ArrayList<>();
     private boolean valid=false;
     public DesktopGUIEnvVar(){
         setType(Values.GUIEnvVar);
@@ -63,19 +64,35 @@ public class DesktopGUIEnvVar extends View2BaseDesktop {
         }
     @Override
     public void repaintBefore(){
-        if (valid)
-            textField.setText(""+envVarValue);
+        if (!valid)
+            return;
+        boolean first=true;
+        String out = "";
+        for(Double dd : envVarValue){
+            if (first)
+                first=!first;
+            else
+                out+=",";
+            out +=dd;
+            }
+        textField.setText(out);
         }
     @Override
     public String setParams(FormContext2 context0, ESS2Architecture meta0, Meta2GUI element0, I_GUI2Event onEvent0) {
         super.setParams(context0,meta0, element0,onEvent0);
         Meta2GUIEnvVar envVar = (Meta2GUIEnvVar) element0;
-        ESS2EnvValue value = meta0.getEnvValues().getByName(envVar.getEnvVarName());
+        String name= envVar.getEnvVarName();
+        if (envVar.isWithUnit()) {
+            FormContext2 context = getContext();
+            int idx = context.getIndex(context.getForm().getFormLevel());
+            name += ""+idx;
+            }
+        ESS2EnvValue value = meta0.getEnvValues().getByName(name);
         if (value==null)
-            return "Не найдена переменная окружения "+envVar.getEnvVarName();
+            return "Не найдена переменная окружения "+name;
         if (!value.isValid())
-            return "Отсутствует значение переменной окружения "+envVar.getEnvVarName();
-        envVarValue = value.getEnvValue();
+            return "Отсутствует значение переменной окружения "+name;
+        envVarValue = value.getEnvValues();
         valid = true;
         return null;
         }
