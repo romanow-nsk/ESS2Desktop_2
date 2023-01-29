@@ -99,18 +99,18 @@ public class DesktopGUILevelMultiIndicator extends View2BaseDesktop {
     @Override
     public void putValue(Meta2Register register, long xx, int idx) {
         if (register instanceof Meta2SettingRegister)
-            limits[idx] = register.doubleWithPower(xx);
+            limits[idx] = register.doubleWithPower(getUnitIdx(),xx);
         else{
             if (idx==0)
-                vv[1] = register.doubleWithPower(xx);
+                vv[1] = register.doubleWithPower(getUnitIdx(),xx);
             else
-                vv[2] = register.doubleWithPower(xx);
+                vv[2] = register.doubleWithPower(getUnitIdx(),xx);
             }
         }
     @Override
     public void putValue(long xx) throws UniException {
         Meta2DataRegister register = (Meta2DataRegister) getRegister();
-        vv[0] = register.doubleWithPower(xx);
+        vv[0] = register.doubleWithPower(getUnitIdx(),xx);
         }
     private Color getValueColor(double vv){
         Color color = Color.gray;

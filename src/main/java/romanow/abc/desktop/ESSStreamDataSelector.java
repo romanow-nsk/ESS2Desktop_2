@@ -251,7 +251,7 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
                     DataSourceSize.setText(""+v2);
                     DataPackedProc.setText(""+v1*100/v2);
                     DataCompressMode.setText(compressModes.get(set.getCompressMode()).title());
-                    DataValueSet.setText(""+data.getRegister().doubleWithPower(value));
+                    DataValueSet.setText(""+data.getRegister().doubleWithPower(0,value));
                     } catch (UniException e) {
                         System.out.println(e.toString());
                         }
