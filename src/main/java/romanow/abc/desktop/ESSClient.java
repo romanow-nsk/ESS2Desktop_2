@@ -48,6 +48,8 @@ public class ESSClient extends Client {
         Values.init();
         setLoginName("9139877277");
         setPassword("schwanensee1969");
+        addIP("10.200.200.70");
+        addIP("10.200.200.71");
         }
     public void initPanels() {
         super.initPanels();
