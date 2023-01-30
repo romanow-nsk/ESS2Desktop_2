@@ -203,7 +203,7 @@ public class DesktopGUILevelMultiIndicator extends View2BaseDesktop {
             ss+=toHex(link.getRegister().getRegNum())+" ";
         ss+="Доп.регистры: ";
         for(Meta2RegLink link2 : getElement().getDataLinks())
-            ss+=toHex(link2.getRegister().getRegNum())+" ";
+            ss+=toHex(link2.getRegister().getRegNum()+getRegOffset())+" ";
         new Message(300,300,ss,Values.PopupMessageDelay);
         }
     }

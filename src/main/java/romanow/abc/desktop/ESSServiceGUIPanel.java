@@ -636,7 +636,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 }
             links = element.getDataLinks();
             for(int i=0;i<links.length;i++){
-                data = getRegisterData(device,links[i],unitIdx,0);
+                data = getRegisterData(device,links[i],unitIdx,element.getRegOffset());
                 if (data==null)
                     continue;
                 if (data.length>4){
@@ -695,7 +695,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 }
             vv = element.getDataLinks();
             for(Meta2RegLink link2 : vv){
-                putOneLinkRegister(element,link2,0);
+                putOneLinkRegister(element,link2,element.getRegOffset());
                 //regNumFull = link2.getRegNum();
                 //regSize = link.getRegister().size16Bit();
                 //for(int i=0;i<regSize;i++)
