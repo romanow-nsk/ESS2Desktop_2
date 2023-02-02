@@ -73,19 +73,19 @@ public class DesktopGUIData extends View2BaseDesktop {
             }
         int type = register.getFormat();
         if (type==Values.FloatValue)
-            textField.setText(""+Double.longBitsToDouble(vv));
+            textField.setText(""+Float.intBitsToFloat((int)vv));
         else{
             if (register instanceof Meta2DataRegister){
                 if (((Meta2GUIData) getElement()).isIntValue())
-                    textField.setText(((Meta2DataRegister)register).valueIntWithPower(getUnitIdx(),vv));
+                    textField.setText(((Meta2DataRegister)register).formatIntWithPower(getUnitIdx(),(int)vv));
                 else
-                    textField.setText(((Meta2DataRegister)register).valueWithPower(getUnitIdx(),vv));
+                    textField.setText(((Meta2DataRegister)register).formatStringWithPower(getUnitIdx(),(int)vv));
                 }
             else{
                 if (((Meta2GUIData) getElement()).isIntValue())
-                    textField.setText(((Meta2SettingRegister)register).valueIntWithPower(getUnitIdx(),vv));
+                    textField.setText(((Meta2SettingRegister)register).formatIntWithPower(getUnitIdx(),(int)vv));
                 else
-                    textField.setText(((Meta2SettingRegister)register).valueWithPower(getUnitIdx(),vv));
+                    textField.setText(((Meta2SettingRegister)register).formatStringWithPower(getUnitIdx(),(int)vv));
                 }
             }
         }

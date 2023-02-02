@@ -244,7 +244,7 @@ public class ESSMainServiceGUIPanel extends ESSBasePanel {
                 return null;
                 }
             try {
-                //double value = el.doubleWithPower(el.readRegister(0));
+                //double value = el.floatWithPower(el.readRegister(0));
                 double value = ((MetaSettingRegister)register).doubleWithPower(main2.plm.readRegister("",0,register.getRegNum()));
                 out[j]=value;
                 } catch (UniException ee){
