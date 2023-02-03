@@ -5,7 +5,6 @@ import romanow.abc.core.constants.Values;
 import romanow.abc.core.entity.metadata.Meta2Register;
 import romanow.abc.core.entity.metadata.Meta2SettingRegister;
 import romanow.abc.core.entity.metadata.view.Meta2GUI;
-import romanow.abc.core.entity.metadata.view.Meta2GUIData;
 import romanow.abc.core.entity.metadata.view.Meta2GUISetting;
 import romanow.abc.core.entity.subject2area.ESS2Architecture;
 import romanow.abc.desktop.*;
@@ -81,7 +80,7 @@ public class DesktopGUISetting extends View2BaseDesktop {
                                 if (register.getFormat()==Values.FloatValue)
                                     writeMainRegister(Float.floatToIntBits((float) value));
                                 else
-                                    writeMainRegister(register.wordWithPowerSet(getUnitIdx(),value));
+                                    writeMainRegister(register.doubleToRegValueSet(getUnitIdx(),value));
                                 context.repaintValues();
                                 } catch (UniException ex) {
                                     String ss = "Ошибка записи уставки: "+ex.toString();
@@ -111,9 +110,9 @@ public class DesktopGUISetting extends View2BaseDesktop {
     public void putValue(long vv) throws UniException {
         Meta2SettingRegister register = (Meta2SettingRegister) getRegister();
         if (((Meta2GUISetting) getElement()).isIntValue())
-            textField.setText(register.formatIntWithPower(getUnitIdx(),(int)vv));
+            textField.setText(register.regValueToIntString(getUnitIdx(),(int)vv));
         else
-            textField.setText(register.formatStringWithPower(getUnitIdx(),(int)vv));
+            textField.setText(register.regValueToString(getUnitIdx(),(int)vv));
         }
     @Override
     public String setParams(FormContext2 context0, ESS2Architecture meta0, Meta2GUI element0, I_GUI2Event onEvent0) {

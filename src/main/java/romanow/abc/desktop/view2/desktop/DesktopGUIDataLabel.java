@@ -39,7 +39,7 @@ public class DesktopGUIDataLabel extends View2BaseDesktop {
         if (type == Values.FloatValue)
             label.setText(" " + getElement().getTitle() + " = " + Double.longBitsToDouble(vv) + " " + register.getUnit());
         else
-            label.setText(" " + getElement().getTitle() + " = " + register.floatWithPower(getUnitIdx(),(int)vv) + " " + register.getUnit());
+            label.setText(" " + getElement().getTitle() + " = " + register.regValueToFloat(getUnitIdx(),(int)vv) + " " + register.getUnit());
         }
     @Override
     public String setParams(FormContext2 context0, ESS2Architecture meta0, Meta2GUI element0, I_GUI2Event onEvent0) {

@@ -80,7 +80,7 @@ public class DesktopGUILevelIndicator3 extends View2BaseDesktop {
                     context.y(h));
             return;
             }
-        double vv = register.floatWithPower(getUnitIdx(),(int)zz);
+        double vv = register.regValueToFloat(getUnitIdx(),(int)zz);
         if (vv<vMin) vv=vMin*1.03;
         if (vv>vMax) vv=vMax*0.98;
         Color color = Color.gray;

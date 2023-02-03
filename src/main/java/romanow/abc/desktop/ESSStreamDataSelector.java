@@ -15,6 +15,7 @@ import romanow.abc.core.DBRequest;
 import romanow.abc.core.UniException;
 import romanow.abc.core.constants.ConstValue;
 import romanow.abc.core.constants.Values;
+import romanow.abc.core.entity.metadata.Meta2Register;
 import romanow.abc.core.entity.metadata.StreamDataValue;
 import romanow.abc.core.entity.metadata.StreamRegisterData;
 import romanow.abc.core.entity.metadata.StreamRegisterGroup;
@@ -129,11 +130,11 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
 
         jLabel2.setText("До");
         add(jLabel2);
-        jLabel2.setBounds(180, 60, 34, 14);
+        jLabel2.setBounds(180, 60, 34, 16);
 
         jLabel3.setText("От");
         add(jLabel3);
-        jLabel3.setBounds(60, 60, 14, 14);
+        jLabel3.setBounds(60, 60, 14, 16);
 
         StreamType.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -155,9 +156,9 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
         add(DataSourceSize);
         DataSourceSize.setBounds(10, 180, 70, 25);
 
-        jLabel4.setText("Из выборки");
+        jLabel4.setText("Значение");
         add(jLabel4);
-        jLabel4.setBounds(320, 110, 70, 14);
+        jLabel4.setBounds(320, 110, 70, 16);
 
         StreamDataOffset.setEnabled(false);
         add(StreamDataOffset);
@@ -169,11 +170,11 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
 
         jLabel5.setText("Смещение");
         add(jLabel5);
-        jLabel5.setBounds(290, 60, 100, 14);
+        jLabel5.setBounds(290, 60, 100, 16);
 
         jLabel6.setText("Сжатое (байт)");
         add(jLabel6);
-        jLabel6.setBounds(100, 160, 90, 14);
+        jLabel6.setBounds(100, 160, 90, 16);
 
         DataPackedSize.setEnabled(false);
         add(DataPackedSize);
@@ -191,21 +192,21 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
         add(DataValueSet);
         DataValueSet.setBounds(320, 130, 70, 25);
 
-        jLabel7.setText("От сервера");
+        jLabel7.setText("hex (запись)");
         add(jLabel7);
-        jLabel7.setBounds(230, 110, 70, 14);
+        jLabel7.setBounds(230, 110, 80, 16);
 
         jLabel8.setText("тип сжатия");
         add(jLabel8);
-        jLabel8.setBounds(280, 160, 110, 14);
+        jLabel8.setBounds(280, 160, 110, 16);
 
         jLabel9.setText("Исх (байт)");
         add(jLabel9);
-        jLabel9.setBounds(10, 160, 70, 14);
+        jLabel9.setBounds(10, 160, 70, 16);
 
         jLabel10.setText("% сжатия");
         add(jLabel10);
-        jLabel10.setBounds(190, 160, 70, 14);
+        jLabel10.setBounds(190, 160, 70, 16);
 
         ShowData.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/no_problem.png"))); // NOI18N
         ShowData.setBorderPainted(false);
@@ -234,7 +235,6 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
         if (DataSetList.getItemCount()==0)
             return;
         StreamDataValue value = data.getValueList().get(DataSetList.getSelectedIndex());
-        DataValueAPI.setText(""+value.value);
         new APICall<DBRequest>(main){
             @Override
             public Call<DBRequest> apiFun() {
@@ -244,14 +244,17 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
             public void onSucess(DBRequest oo) {
                 try {
                     ArchStreamDataSet set  = (ArchStreamDataSet) oo.get(main.gson);
-                    int value = (set.getValue(data.getStreamDataOffset(),data.getRegister().doubleSize() ? 4 : 2));
+                    Meta2Register register = data.getRegister();
+                    int value = set.getValue(data.getStreamDataOffset(),register.savedDoubleSize() ? 4 : 2);
+                    DataValueAPI.setText(String.format("%8x",value));
                     int v1 = set.getPackedByteSize();
                     int v2 = set.getSourceByteSize();
+                    StreamDataOffset.setText(""+data.getStreamDataOffset());
                     DataPackedSize.setText(""+v1);
                     DataSourceSize.setText(""+v2);
                     DataPackedProc.setText(""+v1*100/v2);
                     DataCompressMode.setText(compressModes.get(set.getCompressMode()).title());
-                    DataValueSet.setText(""+data.getRegister().floatWithPower(0,value));
+                    DataValueSet.setText(register.wordToString(value));
                     } catch (UniException e) {
                         System.out.println(e.toString());
                         }
@@ -299,9 +302,12 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
             }
         ArrayList<StreamRegisterGroup> list = architecture.getStreamRegisterList(selectedMode.value());
         for(StreamRegisterGroup group : list)
-            for(StreamRegisterData registerData : group.getList())
+            for(StreamRegisterData registerData : group.getList()){
+                registerData.setUnitIdx(group.getLogUnit());
                 StreamRegister.add(registerData.getTitle());
-        }//GEN-LAST:event_StreamTypeItemStateChanged
+            }
+        refreshDataSet();
+    }//GEN-LAST:event_StreamTypeItemStateChanged
 
     private void DataSetListItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DataSetListItemStateChanged
         refreshDataSet();
