@@ -246,6 +246,7 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
                     ArchStreamDataSet set  = (ArchStreamDataSet) oo.get(main.gson);
                     Meta2Register register = data.getRegister();
                     int value = set.getValue(data.getStreamDataOffset(),register.savedDoubleSize() ? 4 : 2);
+                    DataValueSet.setText(register.wordToString(value));
                     DataValueAPI.setText(String.format("%8x",value));
                     int v1 = set.getPackedByteSize();
                     int v2 = set.getSourceByteSize();
@@ -254,7 +255,6 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
                     DataSourceSize.setText(""+v2);
                     DataPackedProc.setText(""+v1*100/v2);
                     DataCompressMode.setText(compressModes.get(set.getCompressMode()).title());
-                    DataValueSet.setText(register.wordToString(value));
                     } catch (UniException e) {
                         System.out.println(e.toString());
                         }
