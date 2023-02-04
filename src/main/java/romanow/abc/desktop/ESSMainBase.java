@@ -17,11 +17,14 @@ public class ESSMainBase extends MainBase{
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 java.awt.EventQueue.invokeLater(new Runnable() {
                     public void run() {
-                        ClientGui gui = new ClientGui();
-                        gui.setVisible(true);
-                        gui.setBounds(300,200,800,600);
-                    }
-                });
+                        try {
+                            UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+                            ClientGui gui = new ClientGui();
+                            gui.setVisible(true);
+                            gui.setBounds(300,200,800,600);
+                        } catch (Exception ee) {}
+                        }
+                    });
                 }
             });
         getContentPane().add(ClientIEC61850);
@@ -35,7 +38,9 @@ public class ESSMainBase extends MainBase{
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
+            System.out.println(javax.swing.UIManager.getLookAndFeel().getName());
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                System.out.println(info.getName()+" "+info.getClassName());
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
@@ -51,7 +56,6 @@ public class ESSMainBase extends MainBase{
             java.util.logging.Logger.getLogger(MainBase.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
