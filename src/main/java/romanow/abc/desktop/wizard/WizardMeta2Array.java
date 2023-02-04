@@ -222,7 +222,7 @@ public class WizardMeta2Array extends WizardBaseView {
     private void Inline61850ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_Inline61850ItemStateChanged
         if (busy)
             return;
-        array.setOut61850Model(Inline61850.isSelected());
+        array.setInline61860(Inline61850.isSelected());
         back.onEnter("Изменено 61850 Inline="+Inline61850.isSelected());
     }//GEN-LAST:event_Inline61850ItemStateChanged
 
