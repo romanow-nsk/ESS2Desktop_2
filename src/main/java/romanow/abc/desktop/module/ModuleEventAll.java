@@ -8,6 +8,8 @@ import romanow.abc.core.UniException;
 import romanow.abc.core.constants.Values;
 import romanow.abc.core.entity.metadata.Meta2GUIForm;
 import romanow.abc.core.entity.subjectarea.ArchESSEvent;
+import romanow.abc.core.mongo.*;
+import romanow.abc.desktop.APICall;
 import romanow.abc.desktop.APICall2;
 import romanow.abc.desktop.Client;
 import romanow.abc.desktop.MainBaseFrame;
@@ -24,6 +26,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 public class ModuleEventAll extends Module {
+    public final static int EventsDeepth=4;                 // "Глубина" в днях чтения событий
     protected ArrayList<ArchESSEvent> events = new ArrayList<>();
     protected ArrayList<ArchESSEvent> selected = new ArrayList<>();
     protected JTable table;
@@ -92,29 +95,42 @@ public class ModuleEventAll extends Module {
     @Override
     public void repaintValues() {
         super.repaintValues();
-        try {
-            ArrayList<DBRequest> res = new APICall2<ArrayList<DBRequest>>(){
+            long after = new OwnDateTime().timeInMS()-EventsDeepth*24*3600*1000;
+            DBQueryList query =  new DBQueryList().
+                    add(new DBQueryLong(I_DBQuery.ModeGT,"a_timeInMS", after)).
+                    add(new DBQueryBoolean("valid",true));
+            final String xmlQuery = new DBXStream().toXML(query);
+            new APICall<ArrayList<DBRequest>>(null){
                 @Override
                 public Call<ArrayList<DBRequest>> apiFun() {
-                    return service.getEntityListLast(token,"ArchESSEvent",100,0);
+                    return service.getEntityListByQuery(token,"ArchESSEvent",xmlQuery,0);
                     }
-                }.call(client);
-            System.out.println("Прочитано событий "+res.size());
-            events.clear();
-            Gson gson = new Gson();
-            for(DBRequest request : res)
-                events.add((ArchESSEvent) request.get(gson));
-            selected.clear();
-            for(int idx=events.size()-1;idx>=0;idx--){
-                ArchESSEvent essEvent = events.get(idx);
-                if (typeFilter(essEvent.getType()))
-                    selected.add(essEvent);
+                @Override
+                public void onSucess(ArrayList<DBRequest> oo) {
+                    System.out.println("Прочитано событий "+oo.size());
+                    events.clear();
+                    Gson gson = new Gson();
+                    for(DBRequest vv : oo){
+                        try {
+                            events.add((ArchESSEvent) vv.get(gson));
+                            } catch (Exception ee){}
+                        }
+                    selected.clear();
+                    for(int idx=events.size()-1;idx>=0;idx--){
+                        ArchESSEvent essEvent = events.get(idx);
+                        if (typeFilter(essEvent.getType()))
+                            selected.add(essEvent);
+                        }
+                    System.out.println("Выбрано событий "+selected.size());
+                    showTable();
                 }
-            System.out.println("Выбрано событий "+selected.size());
-            showTable();
-            } catch (UniException e) {
-                System.out.println(e.toString());
-                }
+            };
+            //ArrayList<DBRequest> res = new APICall2<ArrayList<DBRequest>>(){
+            //    @Override
+            //    public Call<ArrayList<DBRequest>> apiFun() {
+            //        return service.getEntityListLast(token,"ArchESSEvent",100,0);
+            //        }
+            //    }.call(client);
         }
     public boolean typeFilter(int type) {
         return true;

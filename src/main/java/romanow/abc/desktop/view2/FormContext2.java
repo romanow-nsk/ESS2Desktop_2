@@ -155,8 +155,8 @@ public class FormContext2 {
             menuFormStack[level-1]=form.getTitle();
             }
         int vv[] = getIdx();
-        System.out.println("Стек индексов: "+vv[0]+" "+vv[1]+" "+vv[2]+" "+vv[3]);
-        System.out.println("Стек форм: "+menuFormStack[0]+" "+menuFormStack[1]+" "+menuFormStack[2]+" "+menuFormStack[3]);
+        //System.out.println("`Стек` индексов: "+vv[0]+" "+vv[1]+" "+vv[2]+" "+vv[3]);
+        //System.out.println("Стек форм: "+menuFormStack[0]+" "+menuFormStack[1]+" "+menuFormStack[2]+" "+menuFormStack[3]);
         repaintView();
         }
     public void repaintView() {

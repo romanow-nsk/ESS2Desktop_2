@@ -118,7 +118,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                     try {
                         Thread.sleep(((WorkSettings) main.workSettings).getGUIrefreshPeriod() * 1000);
                         } catch (InterruptedException e) {
-                            System.out.println("Разбудили: " + (new OwnDateTime().timeInMS()-tt));
+                            //System.out.println("Разбудили: " + (new OwnDateTime().timeInMS()-tt));
                             }
                         if (shutDown){
                             repaintOff();
@@ -706,7 +706,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         for(ESS2Device device : main2.deployed.getDevices()){
             ArrayList<UnitRegisterList> list2 = device.createList(false);
                 for(UnitRegisterList list : list2){
-                    System.out.println(device.getShortName()+"["+list.getUnitIdx()+"]="+list.size());
+                    //System.out.println(device.getShortName()+"["+list.getUnitIdx()+"]="+list.size());
                     readPLMRegistersAsync(device,list,context.getForm());               // Асинхронная версия
                     }
                 }
@@ -748,7 +748,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                                 }
                             try {
                                 repaintValuesOnAnswer(device, list.getUnitIdx(), values,currentForm);
-                                System.out.println("Ждали: " + (new OwnDateTime().timeInMS()-tt));
+                                //System.out.println("Ждали: " + (new OwnDateTime().timeInMS()-tt));
                             } catch (UniException e) {
                                     limiter.popup("Ошибка GUI: "+e.getSysMessage());
                                     }
