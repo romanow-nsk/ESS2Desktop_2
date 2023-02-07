@@ -26,12 +26,14 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 public class ModuleEventAll extends Module {
-    public final static int EventsDeepth=4;                 // "Глубина" в днях чтения событий
+    public final static int EventsDeepth=1;                 // "Глубина" в днях чтения событий
     protected ArrayList<ArchESSEvent> events = new ArrayList<>();
     protected ArrayList<ArchESSEvent> selected = new ArrayList<>();
     protected JTable table;
     private ListSelectionListener listener;
     public ModuleEventAll(){}
+    private int types[] = {};
+    public int[] eventTypes(){ return types; }
     @Override
     public void init(MainBaseFrame client, JPanel panel, RestAPIBase service, RestAPIESS2 service2, String token, Meta2GUIForm form, FormContext2 formContext) {
         super.init(client, panel, service, service2,token, form, formContext);
@@ -99,7 +101,14 @@ public class ModuleEventAll extends Module {
             DBQueryList query =  new DBQueryList().
                     add(new DBQueryLong(I_DBQuery.ModeGT,"a_timeInMS", after)).
                     add(new DBQueryBoolean("valid",true));
-            final String xmlQuery = new DBXStream().toXML(query);
+            int types[] = eventTypes();
+            if (types.length!=0){
+                DBQueryList query2 = new DBQueryList(I_DBQuery.ModeOr);
+                for (int type : types)
+                    query2.add(new DBQueryInt(I_DBQuery.ModeEQ,"type", type));
+                query.add(query2);
+                }
+        final String xmlQuery = new DBXStream().toXML(query);
             new APICall<ArrayList<DBRequest>>(null){
                 @Override
                 public Call<ArrayList<DBRequest>> apiFun() {

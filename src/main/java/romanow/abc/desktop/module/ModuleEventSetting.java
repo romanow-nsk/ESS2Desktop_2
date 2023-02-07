@@ -7,4 +7,6 @@ public class ModuleEventSetting extends ModuleEventAll {
     public boolean typeFilter(int type) {
         return type== Values.EventSetting;
         }
+    private int[] eTypes = {Values.EventSetting};
+    public int[] eventTypes(){ return eTypes; }
 }
