@@ -55,14 +55,14 @@ public class ESSClient extends Client {
         super.initPanels();
         panelDescList.add(new PanelDescriptor("Настройки СНЭ", ESSWorkSettingsPanel.class,new int[]
                 {UserSuperAdminType,UserESSServiceEngeneer,UserESSEngeneer}));
-        panelDescList.add(new PanelDescriptor("Мета-данные", ESSMetaPanel.class,new int[]
-                {UserSuperAdminType,UserESSServiceEngeneer,UserESSEngeneer}));
         // Обязательна мета-панель, т.к. запускается соединение с ПЛК при инициализации
-        panelDescList.add(new PanelDescriptor("СМУ СНЭ", ESSServiceGUIPanel.class,new int[]
+        panelDescList.add(new PanelDescriptor("Оператор", ESSServiceGUIPanel.class,new int[]
                 {UserSuperAdminType,UserESSServiceEngeneer,UserESSEngeneer,UserESSOperator}));
-        panelDescList.add(new PanelDescriptor("Сервер СУ АГЭУ", ESSMainServerPanel.class,new int[]
+        panelDescList.add(new PanelDescriptor("Мета-данные", ESSMetaPanel.class,new int[]
+                {UserSuperAdminType,UserESSServiceEngeneer,UserESSEngeneer,UserESSOperator}));
+        panelDescList.add(new PanelDescriptor("Сервер интегратора", ESSMainServerPanel.class,new int[]
                 {UserSuperAdminType,UserESSServiceEngeneer}));
-        panelDescList.add(new PanelDescriptor("СУ АГЭУ", ESSMainServiceGUIPanel.class,new int[]
+        panelDescList.add(new PanelDescriptor("Интегратор", ESSMainServiceGUIPanel.class,new int[]
                 {UserSuperAdminType,UserESSServiceEngeneer,UserESSEngeneer,UserESSOperator}));
         panelDescList.add(new PanelDescriptor("Тренды", ESSTrendPanel.class,new int[]
                 {UserSuperAdminType, UserAdminType,UserESSServiceEngeneer,UserESSEngeneer,UserESSOperator}));

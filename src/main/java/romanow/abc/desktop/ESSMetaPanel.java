@@ -115,8 +115,32 @@ public class ESSMetaPanel extends ESSBasePanel {
         for(ConstValue cc : metaTypes)
             MetaTypes.add(cc.title());
         refreshArchitectures();
-        refreshArchtectureState();
         setRenderingOff();
+        refreshArchtectureState();
+        if (main.loginUser.getTypeId()== UserESSOperator) {
+                if (main.loginUser.getTypeId()==Values.UserESSOperator){
+                    if (main2.deployed.getArchitectureState()!=Values.ASConnected){
+                        popup("Конфигурация не развернута или не активирована");
+                    }
+                    else{
+                        EntityRefList<ESS2View> list = main2.deployed.getViews();
+                        ESS2View view = null;
+                        for(ESS2View view1 :list){
+                            int type = view1.getView().getXmlType();
+                            if (type==Values.MTViewDesktop || type== MTViewFullScreen) {
+                                view = view1;
+                                break;
+                            }
+                        }
+                        if (view==null){
+                            popup("Не найден ЧМИ для ПК");
+                        }
+                        else
+                            main2.setRenderingOn(0,view,false);
+                    }
+                }
+            getRootPane().setVisible(false);
+            }
         if (!main2.getWorkSettings()){
             popup("Ошибка чтения настроек");
             System.out.println("Ошибка чтения настроек");
