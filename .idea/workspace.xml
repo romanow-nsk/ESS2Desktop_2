@@ -9,13 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="Default uset - SU">
-      <change beforePath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/BasePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/BasePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/Client.java" afterDir="false" />
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="Режим оператора">
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/subject2area/ESS2LogUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/subject2area/ESS2LogUnit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/ESSCommandStringData.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/ESSCommandStringData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/ESSConsoleServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/ESSConsoleServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSServiceGUIPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSServiceGUIPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +32,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../ESS2DataServer" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
@@ -113,7 +111,7 @@
       <recent name="romanow.abc.desktop.wizard" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ESSClient">
+  <component name="RunManager" selected="Application.ESSConsoleServer">
     <configuration name="ESS61850ClientGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="romanow.abc.desktop.iec61850.ESS61850ClientGUI" />
       <module name="ESS2Desktop" />
@@ -194,8 +192,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ESSClient" />
         <item itemvalue="Application.ESSConsoleServer" />
+        <item itemvalue="Application.ESSClient" />
         <item itemvalue="Application.ESSMainBase" />
         <item itemvalue="Application.ESS61850ClientGUI" />
         <item itemvalue="Application.ESSBARSEmulatorServer" />
@@ -210,13 +208,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00057" summary="Modbus server косяки в протоколе">
-      <created>1671371414992</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1671371414992</updated>
     </task>
     <task id="LOCAL-00058" summary="Запись в сервер, окно клиента 61850">
       <created>1671384210429</created>
@@ -554,7 +545,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675852754815</updated>
     </task>
-    <option name="localTasksCounter" value="106" />
+    <task id="LOCAL-00106" summary="Режим оператора">
+      <created>1675880190278</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1675880190278</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -581,7 +579,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Мелкие изменения..." />
     <MESSAGE value="БАРС - мета-данные" />
     <MESSAGE value="БАРС - эмулятор" />
     <MESSAGE value="IEC61850" />
@@ -606,7 +603,8 @@
     <MESSAGE value="Версия" />
     <MESSAGE value="Внешний вид" />
     <MESSAGE value="Default uset - SU" />
-    <option name="LAST_COMMIT_MESSAGE" value="Default uset - SU" />
+    <MESSAGE value="Режим оператора" />
+    <option name="LAST_COMMIT_MESSAGE" value="Режим оператора" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -665,6 +663,16 @@
           <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java</url>
           <line>141</line>
           <option name="timeStamp" value="303" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/subject2area/ESS2LogUnit.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="304" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/ESSConsoleServer.java</url>
+          <line>98</line>
+          <option name="timeStamp" value="305" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
