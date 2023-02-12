@@ -105,7 +105,10 @@ public class ESSMetaPanel extends ESSBasePanel {
         RunTimeChanges.setVisible(false);
         RunTimeChangesLabel.setVisible(false);
         ExecScriptServer.setEnabled(false);
-        ExecScriptClient.setEnabled(false);
+        ExecScriptClient.setEnabled(true);
+        AddEnvValue.setEnabled(true);
+        RemoveEnvValue.setEnabled(true);
+        EditEnvValue.setEnabled(true);
         CIDLocal.setEnabled(false);
         IECServerOnOff.setEnabled(false);
         IEC61850ClientGUI.setEnabled(false);
@@ -1810,12 +1813,15 @@ public class ESSMetaPanel extends ESSBasePanel {
         MetaDataChanges.setText("" + changesCount);
         }
     public void refreshScripts() {
+        int idx = Scripts.getSelectedIndex();
         Scripts.removeAll();
         if (architecture == null)
             return;
         for (ESS2ScriptFile script : architecture.getScripts()) {
             Scripts.add(script.toString());
             }
+        if (idx!=-1 && idx<=Scripts.getItemCount())
+            Scripts.select(idx);
         }
     public void refreshEnvValues() {
         EnvValue.removeAll();
@@ -2798,10 +2804,10 @@ public class ESSMetaPanel extends ESSBasePanel {
         if (Scripts.getItemCount()==0)
             return;
         if (!deployed.isConnected()){
-            popup("Нет соединения с оборудованием");
-            return;
+            popup("Скрипт не должен работать с оборудованием");
             }
-        final ESS2ScriptFile scriptFile = deployed.getScripts().get(Scripts.getSelectedIndex());
+        int idx= Scripts.getSelectedIndex();
+        final ESS2ScriptFile scriptFile = architecture.getScripts().get(idx);
         main.loadFileAsString(scriptFile.getFile().getRef(), new I_DownLoadString() {
             @Override
             public void onSuccess(String ss) {
@@ -3297,6 +3303,8 @@ public class ESSMetaPanel extends ESSBasePanel {
         AddView.setEnabled(enabled);
         AddMeta.setEnabled(enabled);
         AddLogUnit.setEnabled(enabled);
+        AddScript.setEnabled(enabled);
+        AddEnvValue.setEnabled(enabled);
         RemoveNode.setEnabled(enabled);
         RemoveArch.setEnabled(enabled);
         RemoveEquip.setEnabled(enabled);
@@ -3305,6 +3313,8 @@ public class ESSMetaPanel extends ESSBasePanel {
         RemoveView.setEnabled(enabled);
         RemoveMeta.setEnabled(enabled);
         RemoveLogUnit.setEnabled(enabled);
+        RemoveScript.setEnabled(enabled);
+        RemoveEnvValue.setEnabled(enabled);
         EditNode.setEnabled(enabled);
         EditArch.setEnabled(enabled);
         EditEquip.setEnabled(enabled);
@@ -3312,15 +3322,14 @@ public class ESSMetaPanel extends ESSBasePanel {
         EditEmulator.setEnabled(enabled);
         EditView.setEnabled(enabled);
         EditLogUnit.setEnabled(enabled);
-        //EditMeta.setEnabled(enabled);
-        ImportScript.setEnabled(enabled);
+        EditScript.setEnabled(enabled);
+        EditEnvValue.setEnabled(enabled);
         ImportMetaData.setEnabled(enabled);
         ImportMetaEquipment2.setEnabled(enabled);
         DownLoadArchitecture.setEnabled(enabled);
         ArchNodeRefrresh.setEnabled(enabled);
         RefreshMeta.setEnabled(enabled);
         ExecScriptServer.setEnabled(!enabled);
-        ExecScriptClient.setEnabled(!enabled);
         //-----------------------------------------------
         CIDLocal.setEnabled(!enabled);
         IECServerOnOff.setEnabled(!enabled);
