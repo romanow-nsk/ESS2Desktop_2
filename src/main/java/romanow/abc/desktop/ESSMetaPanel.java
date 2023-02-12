@@ -292,7 +292,6 @@ public class ESSMetaPanel extends ESSBasePanel {
         ImportScript = new javax.swing.JButton();
         Scripts = new java.awt.Choice();
         RemoveScript = new javax.swing.JButton();
-        AddScript = new javax.swing.JButton();
         EditScript = new javax.swing.JButton();
         jLabel34 = new javax.swing.JLabel();
         ExecScriptServer = new javax.swing.JButton();
@@ -951,7 +950,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(ImportScript);
-        ImportScript.setBounds(320, 350, 40, 30);
+        ImportScript.setBounds(290, 350, 40, 30);
         add(Scripts);
         Scripts.setBounds(10, 390, 340, 20);
 
@@ -964,18 +963,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(RemoveScript);
-        RemoveScript.setBounds(260, 350, 30, 30);
-
-        AddScript.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/add.png"))); // NOI18N
-        AddScript.setBorderPainted(false);
-        AddScript.setContentAreaFilled(false);
-        AddScript.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddScriptActionPerformed(evt);
-            }
-        });
-        add(AddScript);
-        AddScript.setBounds(220, 350, 40, 30);
+        RemoveScript.setBounds(225, 350, 30, 30);
 
         EditScript.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/media_list.png"))); // NOI18N
         EditScript.setBorderPainted(false);
@@ -986,7 +974,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(EditScript);
-        EditScript.setBounds(290, 350, 30, 30);
+        EditScript.setBounds(260, 350, 30, 30);
 
         jLabel34.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel34.setText("Скрипты");
@@ -2674,10 +2662,6 @@ public class ESSMetaPanel extends ESSBasePanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_RemoveScriptActionPerformed
 
-    private void AddScriptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddScriptActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AddScriptActionPerformed
-
     private void EditScriptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditScriptActionPerformed
         if (architecture==null || Scripts.getItemCount()==0)
             return;
@@ -3303,7 +3287,6 @@ public class ESSMetaPanel extends ESSBasePanel {
         AddView.setEnabled(enabled);
         AddMeta.setEnabled(enabled);
         AddLogUnit.setEnabled(enabled);
-        AddScript.setEnabled(enabled);
         AddEnvValue.setEnabled(enabled);
         RemoveNode.setEnabled(enabled);
         RemoveArch.setEnabled(enabled);
@@ -3345,7 +3328,6 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JButton AddLogUnit;
     private javax.swing.JButton AddMeta;
     private javax.swing.JButton AddNode;
-    private javax.swing.JButton AddScript;
     private javax.swing.JButton AddView;
     private javax.swing.JButton ArchNodeRefrresh;
     private javax.swing.JLabel ArchitectureLabel;
