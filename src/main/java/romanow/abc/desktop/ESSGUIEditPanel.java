@@ -28,7 +28,8 @@ public class ESSGUIEditPanel extends javax.swing.JFrame {
         setBounds(100,100, 300,150);
         setVisible(true);
         Meta2GUI view = context.getSelectedView();
-        CopyElem.setVisible(view!=null);
+        CopyElem.setEnabled(view!=null);
+        RemoveElem.setEnabled(view!=null);
         if (view!=null)
             CopyTitle.setText(view.getTitle());
         if (!context.isRuntimeEditMode()){        // Элемент выбран и редактирование "на лету"
@@ -102,7 +103,7 @@ public class ESSGUIEditPanel extends javax.swing.JFrame {
 
         CopyTitle.setEnabled(false);
         getContentPane().add(CopyTitle);
-        CopyTitle.setBounds(20, 80, 190, 25);
+        CopyTitle.setBounds(20, 80, 250, 25);
 
         RemoveElem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/remove.png"))); // NOI18N
         RemoveElem.setBorderPainted(false);

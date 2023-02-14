@@ -1328,7 +1328,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ImportMetaDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportMetaDataActionPerformed
-        FileNameExt fname = main.getInputFileName("Импорт мета-данных", "*.xls", null);
+        FileNameExt fname = main.getInputFileName("Импорт Excel-файла мета-данных оборудования, формат 1.0", "*.xls", null);
         final MultipartBody.Part body = RestAPICommon.createMultipartBody(fname);
         new APICall<Artifact>(main) {
             @Override
@@ -2754,7 +2754,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     }//GEN-LAST:event_ExecScriptServerActionPerformed
 
     private void ImportMetaEquipment2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportMetaEquipment2ActionPerformed
-        FileNameExt fname = main.getInputFileName("Импорт мета-данных 2.0", "*.xls", null);
+        FileNameExt fname = main.getInputFileName("Импорт Excel-файла мета-данных оборудования, формат 2.0", "*.xls", null);
         final MultipartBody.Part body = RestAPICommon.createMultipartBody(fname);
         new APICall<Artifact>(main) {
             @Override
@@ -2838,7 +2838,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     }//GEN-LAST:event_MetaFileItemStateChanged
 
     private void ImportXMLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportXMLActionPerformed
-        FileNameExt fname = main.getInputFileName("Загрузка мета-данных", "*.xml", null);
+        FileNameExt fname = main.getInputFileName("Импорт xml-файла мета-данных", "*.xml", null);
         final MultipartBody.Part body = RestAPICommon.createMultipartBody(fname);
         new APICall<Artifact>(main) {
             @Override
@@ -3067,7 +3067,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         new OK(200, 200, "Экспорт XML-файлов", new I_Button() {
             @Override
             public void onPush() {
-                FileNameExt ff = main.getOutputFileName("Каталог импорта","aaa","aaa");
+                FileNameExt ff = main.getOutputFileName("Каталог экспорта метда-данных","aaa","aaa");
                 String loadDirectory = ff.getPath();
                 ArrayList<Artifact> artifacts = new ArrayList<>();
                 for(ESS2MetaFile metaFile : metaData)
@@ -3083,7 +3083,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             public void onPush() {
                 if (architecture == null)
                     return;
-                FileNameExt ff = main.getOutputFileName("Каталог импорта","aaa","aaa");
+                FileNameExt ff = main.getOutputFileName("Каталог экспорта скриптов","aaa","aaa");
                 String loadDirectory = ff.getPath();
                 ArrayList<Artifact> artifacts = new ArrayList<>();
                 for(ESS2ScriptFile metaFile : architecture.getScripts())
