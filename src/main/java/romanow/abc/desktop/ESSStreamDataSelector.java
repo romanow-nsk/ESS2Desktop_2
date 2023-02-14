@@ -26,6 +26,7 @@ import romanow.abc.core.entity.subjectarea.ESSNode;
 import romanow.abc.core.entity.subjectarea.MetaDataRegister;
 import romanow.abc.core.utils.OwnDateTime;
 import retrofit2.Call;
+import romanow.abc.core.utils.Pair;
 
 /**
  *
@@ -245,9 +246,12 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
                 try {
                     ArchStreamDataSet set  = (ArchStreamDataSet) oo.get(main.gson);
                     Meta2Register register = data.getRegister();
-                    int value = set.getValue(data.getStreamDataOffset(),register.savedDoubleSize() ? 4 : 2);
-                    DataValueSet.setText(register.wordToString(value));
-                    DataValueAPI.setText(String.format("%8x",value));
+                    Pair<String,Integer> value = set.getValue(data.getStreamDataOffset(),register.savedDoubleSize() ? 4 : 2);
+                    if (value.o1!=null){
+                        System.out.println(value.o1);
+                        }
+                    DataValueSet.setText(register.wordToString(value.o2.intValue()));
+                    DataValueAPI.setText(String.format("%8x",value.o2.intValue()));
                     int v1 = set.getPackedByteSize();
                     int v2 = set.getSourceByteSize();
                     StreamDataOffset.setText(""+data.getStreamDataOffset());
@@ -256,9 +260,6 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
                     DataPackedProc.setText(""+v1*100/v2);
                     DataCompressMode.setText(compressModes.get(set.getCompressMode()).title());
                     } catch (UniException e) {
-                        System.out.println(e.toString());
-                        }
-                    catch (IOException e) {
                         System.out.println(e.toString());
                         }
             }
