@@ -33,7 +33,6 @@ public class WizardMeta2Array extends WizardBaseView {
         super.openForm(parentView0,entity0);
         setSize(800,250);
         array = (Meta2Array) entity;
-        OwnBase.setText(""+array.getOwnBase());
         if (array.getElem()==null)
             Elem.setText("???");
         else
@@ -63,8 +62,6 @@ public class WizardMeta2Array extends WizardBaseView {
 
         Elem = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        OwnBase = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         Size = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -88,18 +85,6 @@ public class WizardMeta2Array extends WizardBaseView {
         jLabel1.setText("Элемент");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(20, 135, 90, 16);
-
-        jLabel2.setText("База");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(370, 95, 70, 16);
-
-        OwnBase.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                OwnBaseKeyPressed(evt);
-            }
-        });
-        getContentPane().add(OwnBase);
-        OwnBase.setBounds(440, 90, 80, 25);
 
         jLabel3.setText("Размерность");
         getContentPane().add(jLabel3);
@@ -176,15 +161,6 @@ public class WizardMeta2Array extends WizardBaseView {
         });
     }//GEN-LAST:event_SizeKeyPressed
 
-    private void OwnBaseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_OwnBaseKeyPressed
-        onKeyPressed("ownBase", OwnBase, evt, new I_WizardAction() {
-            @Override
-            public void onAction(int value) {
-                array.setOwnBase(value);
-            }
-        });
-    }//GEN-LAST:event_OwnBaseKeyPressed
-
     private void StepKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StepKeyPressed
         onKeyPressed("step", Step, evt, new I_WizardAction() {
             @Override
@@ -232,12 +208,10 @@ public class WizardMeta2Array extends WizardBaseView {
     private javax.swing.JButton Edit;
     private javax.swing.JTextField Elem;
     private javax.swing.JCheckBox Inline61850;
-    private javax.swing.JTextField OwnBase;
     private javax.swing.JTextField Size;
     private javax.swing.JTextField Step;
     private java.awt.Choice Types;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JSeparator jSeparator1;

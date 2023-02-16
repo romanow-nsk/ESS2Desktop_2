@@ -1328,7 +1328,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ImportMetaDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportMetaDataActionPerformed
-        FileNameExt fname = main.getInputFileName("Импорт Excel-файла мета-данных оборудования, формат 1.0", "*.xls", null);
+        FileNameExt fname = main.getInputFileName("Импорт Excel-файла мета-данных оборудования, формат СНЭЭ-1", "*.xls", null);
         final MultipartBody.Part body = RestAPICommon.createMultipartBody(fname);
         new APICall<Artifact>(main) {
             @Override
@@ -1798,7 +1798,9 @@ public class ESSMetaPanel extends ESSBasePanel {
     public void refreshMetaData() {
         createMetaDataList();
         changesCount = 0;
-        MetaDataChanges.setText("" + changesCount);
+        MetaDataSaveChanges.setVisible(false);
+        MetaDataChanges.setVisible(false);
+        MetaDataChangesLabel.setVisible(false);
         }
     public void refreshScripts() {
         int idx = Scripts.getSelectedIndex();
@@ -1895,7 +1897,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         if (MetaFile.getItemCount() == 0)
             return;
         if (changesCount != 0) {
-            System.out.println("Несохраненные изменения: сохранить или обновить список");
+            popup("Несохраненные изменения: сохранить или обновить список");
             return;
             }
         metaFile = metaData.get(MetaFile.getSelectedIndex());
@@ -2754,7 +2756,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     }//GEN-LAST:event_ExecScriptServerActionPerformed
 
     private void ImportMetaEquipment2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportMetaEquipment2ActionPerformed
-        FileNameExt fname = main.getInputFileName("Импорт Excel-файла мета-данных оборудования, формат 2.0", "*.xls", null);
+        FileNameExt fname = main.getInputFileName("Импорт Excel-файла мета-данных оборудования, формат СНЭЭ-2", "*.xls", null);
         final MultipartBody.Part body = RestAPICommon.createMultipartBody(fname);
         new APICall<Artifact>(main) {
             @Override

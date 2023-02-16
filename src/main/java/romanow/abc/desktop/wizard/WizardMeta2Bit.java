@@ -37,7 +37,6 @@ public class WizardMeta2Bit extends WizardBaseView {
         DataReg.setText(""+bit.getDataRegNum());
         SettingsReg.setText(""+bit.getSettingRegNum());
         FailBy0.setSelected(bit.isInvert());
-        Control.setSelected(bit.isControl());
         BitNum.setText(""+bit.getBitNum());
     }
     /**
@@ -60,23 +59,20 @@ public class WizardMeta2Bit extends WizardBaseView {
         jLabel4 = new javax.swing.JLabel();
         SettingsReg = new javax.swing.JTextField();
         FailBy0 = new javax.swing.JCheckBox();
-        Control = new javax.swing.JCheckBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
         });
-        getContentPane().setLayout(null);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(10, 82, 560, 2);
+        jSeparator1.setBounds(10, 82, 560, 3);
         getContentPane().add(BitType);
         BitType.setBounds(380, 100, 160, 25);
 
         jLabel1.setText("Тип бита");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(310, 105, 60, 14);
+        jLabel1.setBounds(310, 105, 60, 16);
 
         SaveBitType.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/save.png"))); // NOI18N
         SaveBitType.setBorderPainted(false);
@@ -99,7 +95,7 @@ public class WizardMeta2Bit extends WizardBaseView {
 
         jLabel2.setText("Связанный рег.данных");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(20, 135, 140, 14);
+        jLabel2.setBounds(20, 135, 140, 16);
 
         BitNum.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -111,11 +107,11 @@ public class WizardMeta2Bit extends WizardBaseView {
 
         jLabel3.setText("Номер бита");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(20, 105, 80, 14);
+        jLabel3.setBounds(20, 105, 80, 16);
 
         jLabel4.setText("Связанный рег.уставки");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(240, 135, 140, 14);
+        jLabel4.setBounds(240, 135, 140, 16);
 
         SettingsReg.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -132,16 +128,7 @@ public class WizardMeta2Bit extends WizardBaseView {
             }
         });
         getContentPane().add(FailBy0);
-        FailBy0.setBounds(240, 160, 180, 23);
-
-        Control.setText("Состояние/управление");
-        Control.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                ControlItemStateChanged(evt);
-            }
-        });
-        getContentPane().add(Control);
-        Control.setBounds(20, 160, 180, 23);
+        FailBy0.setBounds(240, 160, 180, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -155,11 +142,6 @@ public class WizardMeta2Bit extends WizardBaseView {
         bit.setBitType(value.value());
         back.onEnter("Изменено bitType: "+value.title());
     }//GEN-LAST:event_SaveBitTypeActionPerformed
-
-    private void ControlItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ControlItemStateChanged
-        bit.setControl(Control.isSelected());
-        back.onEnter("Изменено control: "+bit.isControl());
-    }//GEN-LAST:event_ControlItemStateChanged
 
     private void FailBy0ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FailBy0ItemStateChanged
         bit.setInvert(FailBy0.isSelected());
@@ -221,7 +203,6 @@ public class WizardMeta2Bit extends WizardBaseView {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField BitNum;
     private java.awt.Choice BitType;
-    private javax.swing.JCheckBox Control;
     private javax.swing.JTextField DataReg;
     private javax.swing.JCheckBox FailBy0;
     private javax.swing.JButton SaveBitType;
