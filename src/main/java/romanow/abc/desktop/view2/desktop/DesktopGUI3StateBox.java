@@ -20,6 +20,7 @@ import static romanow.abc.core.entity.metadata.Meta2Entity.toHex;
 public class DesktopGUI3StateBox extends View2BaseDesktop {
     //private JTextField textField;
     protected JComponent textField;
+    protected boolean failMode=false;
     protected int bitNum=0;
     public DesktopGUI3StateBox(){
         setType(Values.GUI3StateBox);
@@ -48,6 +49,7 @@ public class DesktopGUI3StateBox extends View2BaseDesktop {
     }
     @Override
     public void addToPanel(JPanel panel) {
+        failMode=true;
         FormContext2 context= getContext();
         Meta2GUI2StateBox element = (Meta2GUI2StateBox) getElement();
         int hh = element.getH();
@@ -85,7 +87,7 @@ public class DesktopGUI3StateBox extends View2BaseDesktop {
         int pair = (int)(vv>>bitNum) & 03;
         JButton bb = (JButton)textField;
         Meta2GUI3StateBox element = (Meta2GUI3StateBox) getElement();
-        String ss = getContext().getForm().getFormLevel()==0 ? iconsWarning[pair] : iconsWorking[pair];
+        String ss = element.isFailMode() ? iconsWorking[pair] : iconsWarning[pair];
         bb.setIcon(new ImageIcon(getClass().getResource(ss)));
         }
 

@@ -9,6 +9,7 @@ package romanow.abc.desktop.wizard;
 import romanow.abc.core.entity.metadata.Meta2Entity;
 import romanow.abc.core.entity.metadata.view.Meta2GUI2StateBox;
 
+import javax.swing.*;
 import java.awt.*;
 
 /**
@@ -24,6 +25,7 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
         setSize(750,240);
+        FailMode.setVisible(false);
         elem = (Meta2GUI2StateBox) entity;
         WizardRegLinkPanel linkPanel = new WizardRegLinkPanel(10,120,"",elem.getRegLink(),this);
         add(linkPanel);
@@ -37,8 +39,12 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
         ButtonSize.setText(""+elem.getButtonSize());
         RemoteEnable.setSelected(elem.isRemoteEnable());
         MixedRegister.setSelected(elem.isMixedRegister());
+        FailMode.setSelected(elem.isFailMode());
         start=false;
         }
+    public JCheckBox FailMode(){
+        return FailMode;
+        }    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,6 +71,7 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
         ButtonSize = new javax.swing.JTextField();
         RemoteEnable = new javax.swing.JCheckBox();
         MixedRegister = new javax.swing.JCheckBox();
+        FailMode = new javax.swing.JCheckBox();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -158,7 +165,16 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
             }
         });
         getContentPane().add(MixedRegister);
-        MixedRegister.setBounds(640, 170, 100, 20);
+        MixedRegister.setBounds(640, 180, 100, 20);
+
+        FailMode.setText("Работа/предупр.");
+        FailMode.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                FailModeItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(FailMode);
+        FailMode.setBounds(510, 180, 130, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -227,6 +243,14 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
 
     }//GEN-LAST:event_MixedRegisterItemStateChanged
 
+    private void FailModeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FailModeItemStateChanged
+        if (start)
+            return;
+        elem.setFailMode(FailMode.isSelected());
+        back.onEnter("Изменено FailMode"+": "+elem.isFailMode());
+
+    }//GEN-LAST:event_FailModeItemStateChanged
+
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -236,6 +260,7 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
     private javax.swing.JButton ColorNoButton;
     private javax.swing.JTextField ColorYes;
     private javax.swing.JButton ColorYesButton;
+    private javax.swing.JCheckBox FailMode;
     private javax.swing.JCheckBox MixedRegister;
     private javax.swing.JCheckBox RemoteEnable;
     private javax.swing.JTextField W2;
