@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 public class ModuleEventAll extends Module {
-    public final static int EventsDeepth=1;                 // "Глубина" в днях чтения событий
+    public final static int EventsDeepth=5;                 // "Глубина" в днях чтения событий
     protected ArrayList<ArchESSEvent> events = new ArrayList<>();
     protected ArrayList<ArchESSEvent> selected = new ArrayList<>();
     protected JTable table;
