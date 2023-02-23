@@ -53,7 +53,7 @@ public class ESSClient extends Client {
         }
     public void initPanels() {
         super.initPanels();
-        panelDescList.add(new PanelDescriptor("Настройки СНЭ", ESSWorkSettingsPanel.class,new int[]
+        panelDescList.add(new PanelDescriptor("Настройки СНЭЭ", ESSWorkSettingsPanel.class,new int[]
                 {UserSuperAdminType,UserESSServiceEngeneer,UserESSEngeneer}));
         // Обязательна мета-панель, т.к. запускается соединение с ПЛК при инициализации
         panelDescList.add(new PanelDescriptor("Оператор", ESSServiceGUIPanel.class,new int[]

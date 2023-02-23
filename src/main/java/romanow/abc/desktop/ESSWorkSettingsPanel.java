@@ -86,7 +86,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         add(GUIrefreshPeriod);
         GUIrefreshPeriod.setBounds(310, 130, 70, 25);
 
-        jLabel18.setText("Цикл опроса потоковых данных (сек)");
+        jLabel18.setText("Цикл опроса актуальных ПД  (сек)");
         add(jLabel18);
         jLabel18.setBounds(20, 50, 230, 16);
 
@@ -146,6 +146,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         add(jLabel22);
         jLabel22.setBounds(20, 260, 250, 16);
 
+        RegisterAge.setEnabled(false);
         RegisterAge.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 RegisterAgeKeyPressed(evt);
@@ -156,7 +157,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
 
         jLabel23.setText("Порт  сервера IEC 61850");
         add(jLabel23);
-        jLabel23.setBounds(410, 160, 160, 16);
+        jLabel23.setBounds(410, 170, 160, 16);
 
         jLabel24.setText("Глубина архива в днях");
         add(jLabel24);
@@ -170,9 +171,9 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         add(FileScanPeriod);
         FileScanPeriod.setBounds(310, 220, 70, 25);
 
-        jLabel33.setText("Длинный цикл опроса потоковых данных (сек)");
+        jLabel33.setText("Цикл опроса фоновых ПД  (сек)");
         add(jLabel33);
-        jLabel33.setBounds(20, 80, 260, 16);
+        jLabel33.setBounds(20, 80, 280, 16);
 
         jLabel34.setText("Цикл опроса источников файлов (сек)");
         add(jLabel34);
@@ -194,14 +195,14 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         add(UserSilenceTime);
         UserSilenceTime.setBounds(310, 310, 70, 25);
 
-        WaitForMainServer.setText("Ждать отправки потоковых данных на сервер");
+        WaitForMainServer.setText("Ждать отправки потоковых данных в интегратор");
         WaitForMainServer.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 WaitForMainServerItemStateChanged(evt);
             }
         });
         add(WaitForMainServer);
-        WaitForMainServer.setBounds(410, 90, 290, 20);
+        WaitForMainServer.setBounds(410, 90, 340, 20);
 
         jLabel25.setText("Цикл опроса мгновенных значений  (сек)");
         add(jLabel25);
@@ -221,7 +222,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(MainServerIP);
-        MainServerIP.setBounds(590, 60, 120, 25);
+        MainServerIP.setBounds(600, 60, 110, 25);
 
         SnapShotPeriod.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -235,7 +236,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         add(jLabel26);
         jLabel26.setBounds(20, 170, 250, 16);
 
-        MainServerMode.setText("Режим сервера ДЦ");
+        MainServerMode.setText("Режим интегратора");
         MainServerMode.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 MainServerModeItemStateChanged(evt);
@@ -248,9 +249,9 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         add(jLabel2);
         jLabel2.setBounds(20, 320, 240, 16);
 
-        jLabel28.setText("Цикл сервера ДЦ (сек)");
+        jLabel28.setText("Цикл сервера интегратора  (сек)");
         add(jLabel28);
-        jLabel28.setBounds(420, 40, 160, 16);
+        jLabel28.setBounds(420, 40, 200, 16);
 
         MainServerPeriod.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -258,11 +259,11 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(MainServerPeriod);
-        MainServerPeriod.setBounds(590, 30, 70, 25);
+        MainServerPeriod.setBounds(640, 30, 70, 25);
 
-        jLabel29.setText("Цикл проверки соединения  сервера ДЦ (сек)");
+        jLabel29.setText("Цикл проверки соединения  с интегратором (сек)");
         add(jLabel29);
-        jLabel29.setBounds(20, 350, 280, 16);
+        jLabel29.setBounds(20, 350, 290, 16);
 
         MainServerConnectPeriod.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -281,9 +282,9 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         add(ToKotlinJS);
         ToKotlinJS.setBounds(410, 120, 150, 25);
 
-        jLabel27.setText("IP/порт  сервера ДЦ");
+        jLabel27.setText("IP/порт  сервера интегратора");
         add(jLabel27);
-        jLabel27.setBounds(420, 70, 150, 16);
+        jLabel27.setBounds(420, 70, 180, 16);
 
         IEC61850Port.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -291,7 +292,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(IEC61850Port);
-        IEC61850Port.setBounds(590, 160, 70, 25);
+        IEC61850Port.setBounds(600, 160, 70, 25);
 
         ClockAcrossAPI.setText("События таймеров через API");
         ClockAcrossAPI.addItemListener(new java.awt.event.ItemListener() {
@@ -302,7 +303,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         add(ClockAcrossAPI);
         ClockAcrossAPI.setBounds(410, 230, 340, 20);
 
-        PriorityDispatcher.setText("Диспетчер приоритетов запросов к ModBus");
+        PriorityDispatcher.setText("Диспетчер приоритетов для запросов к ModBus");
         PriorityDispatcher.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 PriorityDispatcherItemStateChanged(evt);

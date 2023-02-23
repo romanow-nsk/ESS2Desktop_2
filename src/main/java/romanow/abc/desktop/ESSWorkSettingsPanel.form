@@ -30,7 +30,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel18">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#x426;&#x438;&#x43a;&#x43b; &#x43e;&#x43f;&#x440;&#x43e;&#x441;&#x430; &#x43f;&#x43e;&#x442;&#x43e;&#x43a;&#x43e;&#x432;&#x44b;&#x445; &#x434;&#x430;&#x43d;&#x43d;&#x44b;&#x445; (&#x441;&#x435;&#x43a;)"/>
+        <Property name="text" type="java.lang.String" value="&#x426;&#x438;&#x43a;&#x43b; &#x43e;&#x43f;&#x440;&#x43e;&#x441;&#x430; &#x430;&#x43a;&#x442;&#x443;&#x430;&#x43b;&#x44c;&#x43d;&#x44b;&#x445; &#x41f;&#x414;  (&#x441;&#x435;&#x43a;)"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -129,6 +129,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="RegisterAge">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="RegisterAgeKeyPressed"/>
       </Events>
@@ -144,7 +147,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="410" y="160" width="160" height="-1"/>
+          <AbsoluteConstraints x="410" y="170" width="160" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -170,11 +173,11 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel33">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#x414;&#x43b;&#x438;&#x43d;&#x43d;&#x44b;&#x439; &#x446;&#x438;&#x43a;&#x43b; &#x43e;&#x43f;&#x440;&#x43e;&#x441;&#x430; &#x43f;&#x43e;&#x442;&#x43e;&#x43a;&#x43e;&#x432;&#x44b;&#x445; &#x434;&#x430;&#x43d;&#x43d;&#x44b;&#x445; (&#x441;&#x435;&#x43a;)"/>
+        <Property name="text" type="java.lang.String" value="&#x426;&#x438;&#x43a;&#x43b; &#x43e;&#x43f;&#x440;&#x43e;&#x441;&#x430; &#x444;&#x43e;&#x43d;&#x43e;&#x432;&#x44b;&#x445; &#x41f;&#x414;  (&#x441;&#x435;&#x43a;)"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="20" y="80" width="260" height="-1"/>
+          <AbsoluteConstraints x="20" y="80" width="280" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -210,14 +213,14 @@
     </Component>
     <Component class="javax.swing.JCheckBox" name="WaitForMainServer">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#x416;&#x434;&#x430;&#x442;&#x44c; &#x43e;&#x442;&#x43f;&#x440;&#x430;&#x432;&#x43a;&#x438; &#x43f;&#x43e;&#x442;&#x43e;&#x43a;&#x43e;&#x432;&#x44b;&#x445; &#x434;&#x430;&#x43d;&#x43d;&#x44b;&#x445; &#x43d;&#x430; &#x441;&#x435;&#x440;&#x432;&#x435;&#x440;"/>
+        <Property name="text" type="java.lang.String" value="&#x416;&#x434;&#x430;&#x442;&#x44c; &#x43e;&#x442;&#x43f;&#x440;&#x430;&#x432;&#x43a;&#x438; &#x43f;&#x43e;&#x442;&#x43e;&#x43a;&#x43e;&#x432;&#x44b;&#x445; &#x434;&#x430;&#x43d;&#x43d;&#x44b;&#x445; &#x432; &#x438;&#x43d;&#x442;&#x435;&#x433;&#x440;&#x430;&#x442;&#x43e;&#x440;"/>
       </Properties>
       <Events>
         <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="WaitForMainServerItemStateChanged"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="410" y="90" width="290" height="-1"/>
+          <AbsoluteConstraints x="410" y="90" width="340" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -247,7 +250,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="590" y="60" width="120" height="25"/>
+          <AbsoluteConstraints x="600" y="60" width="110" height="25"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -273,7 +276,7 @@
     </Component>
     <Component class="javax.swing.JCheckBox" name="MainServerMode">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#x420;&#x435;&#x436;&#x438;&#x43c; &#x441;&#x435;&#x440;&#x432;&#x435;&#x440;&#x430; &#x414;&#x426;"/>
+        <Property name="text" type="java.lang.String" value="&#x420;&#x435;&#x436;&#x438;&#x43c; &#x438;&#x43d;&#x442;&#x435;&#x433;&#x440;&#x430;&#x442;&#x43e;&#x440;&#x430;"/>
       </Properties>
       <Events>
         <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="MainServerModeItemStateChanged"/>
@@ -296,11 +299,11 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel28">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#x426;&#x438;&#x43a;&#x43b; &#x441;&#x435;&#x440;&#x432;&#x435;&#x440;&#x430; &#x414;&#x426; (&#x441;&#x435;&#x43a;)"/>
+        <Property name="text" type="java.lang.String" value="&#x426;&#x438;&#x43a;&#x43b; &#x441;&#x435;&#x440;&#x432;&#x435;&#x440;&#x430; &#x438;&#x43d;&#x442;&#x435;&#x433;&#x440;&#x430;&#x442;&#x43e;&#x440;&#x430;  (&#x441;&#x435;&#x43a;)"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="420" y="40" width="160" height="-1"/>
+          <AbsoluteConstraints x="420" y="40" width="200" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -310,17 +313,17 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="590" y="30" width="70" height="25"/>
+          <AbsoluteConstraints x="640" y="30" width="70" height="25"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel29">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#x426;&#x438;&#x43a;&#x43b; &#x43f;&#x440;&#x43e;&#x432;&#x435;&#x440;&#x43a;&#x438; &#x441;&#x43e;&#x435;&#x434;&#x438;&#x43d;&#x435;&#x43d;&#x438;&#x44f;  &#x441;&#x435;&#x440;&#x432;&#x435;&#x440;&#x430; &#x414;&#x426; (&#x441;&#x435;&#x43a;)"/>
+        <Property name="text" type="java.lang.String" value="&#x426;&#x438;&#x43a;&#x43b; &#x43f;&#x440;&#x43e;&#x432;&#x435;&#x440;&#x43a;&#x438; &#x441;&#x43e;&#x435;&#x434;&#x438;&#x43d;&#x435;&#x43d;&#x438;&#x44f;  &#x441; &#x438;&#x43d;&#x442;&#x435;&#x433;&#x440;&#x430;&#x442;&#x43e;&#x440;&#x43e;&#x43c; (&#x441;&#x435;&#x43a;)"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="20" y="350" width="280" height="-1"/>
+          <AbsoluteConstraints x="20" y="350" width="290" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -349,11 +352,11 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel27">
       <Properties>
-        <Property name="text" type="java.lang.String" value="IP/&#x43f;&#x43e;&#x440;&#x442;  &#x441;&#x435;&#x440;&#x432;&#x435;&#x440;&#x430; &#x414;&#x426;"/>
+        <Property name="text" type="java.lang.String" value="IP/&#x43f;&#x43e;&#x440;&#x442;  &#x441;&#x435;&#x440;&#x432;&#x435;&#x440;&#x430; &#x438;&#x43d;&#x442;&#x435;&#x433;&#x440;&#x430;&#x442;&#x43e;&#x440;&#x430;"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="420" y="70" width="150" height="-1"/>
+          <AbsoluteConstraints x="420" y="70" width="180" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -363,7 +366,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="590" y="160" width="70" height="25"/>
+          <AbsoluteConstraints x="600" y="160" width="70" height="25"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -382,7 +385,7 @@
     </Component>
     <Component class="javax.swing.JCheckBox" name="PriorityDispatcher">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#x414;&#x438;&#x441;&#x43f;&#x435;&#x442;&#x447;&#x435;&#x440; &#x43f;&#x440;&#x438;&#x43e;&#x440;&#x438;&#x442;&#x435;&#x442;&#x43e;&#x432; &#x437;&#x430;&#x43f;&#x440;&#x43e;&#x441;&#x43e;&#x432; &#x43a; ModBus"/>
+        <Property name="text" type="java.lang.String" value="&#x414;&#x438;&#x441;&#x43f;&#x435;&#x442;&#x447;&#x435;&#x440; &#x43f;&#x440;&#x438;&#x43e;&#x440;&#x438;&#x442;&#x435;&#x442;&#x43e;&#x432; &#x434;&#x43b;&#x44f; &#x437;&#x430;&#x43f;&#x440;&#x43e;&#x441;&#x43e;&#x432; &#x43a; ModBus"/>
       </Properties>
       <Events>
         <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="PriorityDispatcherItemStateChanged"/>
