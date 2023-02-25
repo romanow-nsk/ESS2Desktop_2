@@ -15,6 +15,12 @@ import javax.swing.*;
 public class ModuleTrend extends Module {
     private final static String buttonAdd = "/drawable/add.png";
     private TrendPanel trend;
+    @Override
+    public void init(MainBaseFrame client, JPanel panel, RestAPIBase service, RestAPIESS2 service2, String token, Meta2GUIForm form, FormContext2 formContext){
+        super.init(client, panel, service, service2,token, form, formContext);
+        trend = new TrendPanel();
+        trend.init(context,after);
+        }
     private Runnable after = new Runnable() {
         @Override
         public void run() {
@@ -64,11 +70,4 @@ public class ModuleTrend extends Module {
              */
         }
     };
-    @Override
-    public void init(MainBaseFrame client, JPanel panel, RestAPIBase service, RestAPIESS2 service2, String token, Meta2GUIForm form, FormContext2 formContext){
-        super.init(client, panel, service, service2,token, form, formContext);
-        //trend = new TrendPanel();
-        trend = new TrendPanel();
-        trend.init(context,after);
-    }
 }

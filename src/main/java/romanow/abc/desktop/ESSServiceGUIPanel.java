@@ -677,27 +677,14 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             if (link==null)
                 continue;
             putOneLinkRegister(element,link,element.getRegOffset());
-            //ESS2Device device = element.getDevice();
-            //int regNumFull = link.getRegNum()+element.getRegOffset();                   // Двойные регистры
-            //int regSize = link.getRegister().size16Bit();
-            //for(int i=0;i<regSize;i++)
-            //    device.putValue(element.getDevUnit(),regNumFull+i,0);     // Регистр со смещением
             Meta2RegLink vv[] = element.getSettingsLinks();
             //---------- Вспомогательные регистры с того же девайса и юнита, что и основной, без смещения
             for(Meta2RegLink link2 : vv){
                 putOneLinkRegister(element,link2,0);
-                //regNumFull = link2.getRegNum();
-                //regSize = link.getRegister().size16Bit();
-                //for(int i=0;i<regSize;i++)
-                //    device.putValue(element.getDevUnit(),regNumFull+i,0); // Регистр БЕЗ СМЕЩЕНИЯ
                 }
             vv = element.getDataLinks();
             for(Meta2RegLink link2 : vv){
                 putOneLinkRegister(element,link2,element.getRegOffset());
-                //regNumFull = link2.getRegNum();
-                //regSize = link.getRegister().size16Bit();
-                //for(int i=0;i<regSize;i++)
-                //    device.putValue(element.getDevUnit(),regNumFull+i,0); // Регистр БЕЗ СМЕЩЕНИЯ
                 }
             }
         renderSeqNum++;             // Установить след. номер запроса

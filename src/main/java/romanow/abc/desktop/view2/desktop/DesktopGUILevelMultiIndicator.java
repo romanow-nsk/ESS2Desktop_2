@@ -133,16 +133,6 @@ public class DesktopGUILevelMultiIndicator extends View2BaseDesktop {
         Meta2DataRegister register = (Meta2DataRegister)  getRegister();
         vMin = limits[alarmMin] - (limits[alarmMax]-limits[alarmMin])*proc/100;
         vMax = limits[alarmMax] + (limits[alarmMax]-limits[alarmMin])*proc/100;
-        /*
-        if (settingsValues==null){
-            high.setBounds(
-                    context.x(element.getX()+dxOffset+5),
-                    context.y(element.getY()+dyOffset),
-                    context.x(w2),
-                    context.y(h));
-            return;
-            }
-         */
         for(int i=0;i<3;i++){
             if (vv[i]<vMin) vv[i]=vMin*1.03;
             if (vv[i]>vMax) vv[i]=vMax*0.98;

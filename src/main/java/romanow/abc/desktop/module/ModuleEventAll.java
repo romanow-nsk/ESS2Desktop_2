@@ -134,12 +134,6 @@ public class ModuleEventAll extends Module {
                     showTable();
                 }
             };
-            //ArrayList<DBRequest> res = new APICall2<ArrayList<DBRequest>>(){
-            //    @Override
-            //    public Call<ArrayList<DBRequest>> apiFun() {
-            //        return service.getEntityListLast(token,"ArchESSEvent",100,0);
-            //        }
-            //    }.call(client);
         }
     public boolean typeFilter(int type) {
         return true;
