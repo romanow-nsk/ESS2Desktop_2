@@ -23,7 +23,7 @@ import java.awt.event.MouseEvent;
 
 
 public abstract class View2Base implements I_View2 {
-    @Getter @Setter int type= Values.GUINull;
+    @Getter @Setter int type= Values.GUI;
     @Getter @Setter Meta2GUI element=null;          // Элемент мета-данных
     @Getter @Setter ESS2Architecture architecture;
     @Getter @Setter I_GUI2Event onEvent=null;
