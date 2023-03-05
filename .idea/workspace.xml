@@ -13,21 +13,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="Экспорт KotlinReact">
-      <change afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/iot/InData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/iot/IoTLineBack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/iot/IoTLineDriver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/iot/IoTMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/iot/IoTProtocolMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/iot/IoTRegisterMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/iot/IoTTCPDriver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/iot/IoTUDPDriver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/iot/IoTValues.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/iot/OutData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/mongo/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/mongo/DAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2Core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/ESS2ExportKotlin.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/ESS2ExportKotlin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="IoT - SCADA">
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/iot/IoTValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/iot/IoTValues.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,13 +212,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00075" summary="Групповое перемещение элементов">
-      <created>1674310075858</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1674310075859</updated>
     </task>
     <task id="LOCAL-00076" summary="Размерности данных в регистрах, строки, дата-время">
       <created>1674371680609</created>
@@ -569,7 +549,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677419478469</updated>
     </task>
-    <option name="localTasksCounter" value="124" />
+    <task id="LOCAL-00124" summary="IoT - SCADA">
+      <created>1678032437636</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1678032437636</updated>
+    </task>
+    <option name="localTasksCounter" value="125" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -596,7 +583,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Эмулятор БАРС" />
     <MESSAGE value="Косяк с доп. рег. данных (смещение группы)" />
     <MESSAGE value="ip логина" />
     <MESSAGE value="рефакторинг - общие форматы данных" />
@@ -621,7 +607,8 @@
     <MESSAGE value="Очистка архива" />
     <MESSAGE value="Удалены комменты" />
     <MESSAGE value="Экспорт KotlinReact" />
-    <option name="LAST_COMMIT_MESSAGE" value="Экспорт KotlinReact" />
+    <MESSAGE value="IoT - SCADA" />
+    <option name="LAST_COMMIT_MESSAGE" value="IoT - SCADA" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
