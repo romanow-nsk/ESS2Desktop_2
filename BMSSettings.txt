@@ -1,0 +1,8 @@
+writeReg("ess1_0",298,550);
+writeReg("ess1_0",294,450);
+writeReg("ess1_0",286,250);
+writeReg("ess1_0",290,150);
+writeReg("ess1_0",314,75);
+writeReg("ess1_0",310,50);
+writeReg("ess1_0",302,20);
+writeReg("ess1_0",306,5);
