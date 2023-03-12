@@ -1803,6 +1803,8 @@ public class ESSMetaPanel extends ESSBasePanel {
         MetaDataChangesLabel.setVisible(false);
         }
     public void refreshScripts() {
+        if (Scripts.getItemCount()==0)
+            return;
         int idx = Scripts.getSelectedIndex();
         Scripts.removeAll();
         if (architecture == null)
@@ -1812,7 +1814,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         if (idx!=-1 && idx<=Scripts.getItemCount())
             Scripts.select(idx);
-        }
+            }
     public void refreshEnvValues() {
         EnvValue.removeAll();
         if (architecture == null)
