@@ -21,6 +21,10 @@ public class WizardESS2Equipment extends WizardBaseViewDB {
     private ESS2Node node;
     private ESS2Equipment equipment;
     private void selectChoice(){
+        if (equipment.getMetaFile().getOid()==0){
+            MetaFile.select(0);
+            return;
+            }
         long oid = equipment.getMetaFile().getRef().getOid();
         for(int i=0;i<panel.getMetaData().size();i++){
             if (panel.getMetaData().get(i).getOid()==oid){

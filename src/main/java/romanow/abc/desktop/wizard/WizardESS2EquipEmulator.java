@@ -5,8 +5,10 @@
  */
 package romanow.abc.desktop.wizard;
 
+import romanow.abc.core.constants.Values;
 import romanow.abc.core.entity.subject2area.ESS2Entity;
 import romanow.abc.core.entity.subject2area.ESS2EquipEmulator;
+import romanow.abc.core.entity.subject2area.ESS2MetaFile;
 import romanow.abc.core.entity.subject2area.ESS2Node;
 import romanow.abc.desktop.ESSMetaPanel;
 import romanow.abc.desktop.MainBaseFrame;
@@ -29,9 +31,28 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
         RTU.setSelected(emulator.isRTU());
         BaudRate.setText(""+emulator.getBaudRate());
         DeviceName.setText(emulator.getLineName());
-        setSize(750,210);
+        AuthCode.setText(emulator.getAuthCode());
+        MetaFile.removeAll();
+        MetaFile.add("...");
+        for(ESS2MetaFile metaFile : panel.getMetaData())
+            MetaFile.add(metaFile.toString());
+        selectChoice();
+        setSize(750,280);
+        }
+    private void selectChoice(){
+        if (emulator.getMetaFile().getOid()==0){
+            MetaFile.select(0);
+            return;
+            }
+        long oid = emulator.getMetaFile().getRef().getOid();
+        for(int i=0;i<panel.getMetaData().size();i++){
+            if (panel.getMetaData().get(i).getOid()==oid){
+                MetaFile.select(i+1);
+                return;
+            }
+        MetaFile.select(0);
+        }
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -54,6 +75,10 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
         jLabel3 = new javax.swing.JLabel();
         ClassName = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        MetaFile = new java.awt.Choice();
+        SetMetaFile = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        AuthCode = new javax.swing.JTextField();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -70,9 +95,9 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
         getContentPane().add(Port);
         Port.setBounds(340, 130, 60, 25);
 
-        jLabel1.setText("Порт/номер");
+        jLabel1.setText("Код аутентификации");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(250, 135, 80, 16);
+        jLabel1.setBounds(10, 200, 150, 16);
 
         jLabel2.setText("BaudRate");
         getContentPane().add(jLabel2);
@@ -136,6 +161,31 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
         jLabel4.setText("Класс (Java)");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(10, 95, 80, 16);
+        getContentPane().add(MetaFile);
+        MetaFile.setBounds(10, 170, 400, 20);
+
+        SetMetaFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/save.png"))); // NOI18N
+        SetMetaFile.setBorderPainted(false);
+        SetMetaFile.setContentAreaFilled(false);
+        SetMetaFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SetMetaFileActionPerformed(evt);
+            }
+        });
+        getContentPane().add(SetMetaFile);
+        SetMetaFile.setBounds(420, 160, 30, 30);
+
+        jLabel5.setText("Порт/номер");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(250, 135, 80, 16);
+
+        AuthCode.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AuthCodeKeyPressed(evt);
+            }
+        });
+        getContentPane().add(AuthCode);
+        AuthCode.setBounds(140, 200, 270, 25);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -194,6 +244,29 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
 
     }//GEN-LAST:event_ClassNameKeyPressed
 
+    private void SetMetaFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SetMetaFileActionPerformed
+        if (MetaFile.getSelectedIndex()==0){
+            main.popup("Не выбран мета-файл");
+            return;
+        }
+        ESS2MetaFile metaFile = panel.getMetaData().get(MetaFile.getSelectedIndex()-1);
+        if (!Values.isEquipmentType(metaFile.getMetaType())) {
+            main.popup("Недопустимый тип для мета-файла оборудования");
+            return;
+            }
+        emulator.getMetaFile().setOid(metaFile.getOid());
+        oneUpdate("Изменено metaFile: "+metaFile.toString());
+    }//GEN-LAST:event_SetMetaFileActionPerformed
+
+    private void AuthCodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AuthCodeKeyPressed
+        onStringKeyPressed("AuthCode", AuthCode, evt, new I_WizardActionString() {
+            @Override
+            public void onAction(String value) {
+                emulator.setAuthCode(value);
+            }
+        });
+    }//GEN-LAST:event_AuthCodeKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -233,18 +306,22 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField AuthCode;
     private javax.swing.JTextField BaudRate;
     private javax.swing.JTextField ClassName;
     private javax.swing.JTextField DeviceName;
     private javax.swing.JCheckBox Enabled;
+    private java.awt.Choice MetaFile;
     private javax.swing.JTextField Port;
     private javax.swing.JCheckBox RTU;
+    private javax.swing.JButton SetMetaFile;
     private javax.swing.JCheckBox Trace;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

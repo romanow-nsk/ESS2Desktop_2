@@ -40,9 +40,6 @@ public class WizardMeta2Equipment extends WizardBaseView {
 
         Registers = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        getContentPane().setLayout(null);
-
         Registers.setText("Элементы");
         Registers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -50,7 +47,7 @@ public class WizardMeta2Equipment extends WizardBaseView {
             }
         });
         getContentPane().add(Registers);
-        Registers.setBounds(20, 90, 100, 23);
+        Registers.setBounds(20, 90, 100, 22);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
