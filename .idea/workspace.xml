@@ -13,10 +13,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="Сборка 72 - потеря таймера редких данных">
-      <change afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS4ACDCEmulator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/ESSDataServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/ESSDataServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/bms/BMSSetting.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/bms/BMSSetting.java" afterDir="false" />
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="AC/DC">
+      <change afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/BCAddTopic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/BCCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/BCCommandFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/BCError.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/BCMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/BCNone.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/BCRemoveTopic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/BCSubscribe.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/BCUnSubscribe.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/BroadCast.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/BroadCastChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/BroadCastClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/I_BroadCast.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS4ACDCEmulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS4ACDCEmulator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,8 +42,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -107,26 +119,27 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="romanow.abc.dataserver.profiler" />
       <recent name="romanow.abc.ess2.emulators" />
       <recent name="romanow.abc.ess2.iot" />
       <recent name="romanow.abc.dataserver.datastreams" />
       <recent name="romanow.abc.desktop.iec61850" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="romanow.abc.ess2.iot" />
+      <recent name="romanow.abc.dataserver.profiler" />
       <recent name="romanow.abc.ess2.iot.iotmessages" />
+      <recent name="romanow.abc.ess2.iot" />
       <recent name="romanow.abc.core.entity.subjectarea" />
       <recent name="romanow.abc.dataserver.iec61850" />
-      <recent name="romanow.abc.desktop.view2.desktop" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ESSClient">
-    <configuration name="ESSCabinet" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="romanow.abc.desktop.ESSCabinet" />
-      <module name="ESS2Desktop" />
+  <component name="RunManager" selected="Application.BroadCast">
+    <configuration name="BroadCast" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="romanow.abc.dataserver.profiler.BroadCast" />
+      <module name="ESS2DataServer" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="romanow.abc.desktop.*" />
+          <option name="PATTERN" value="romanow.abc.dataserver.profiler.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -201,11 +214,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.BroadCast" />
         <item itemvalue="Application.ESSClient" />
         <item itemvalue="Application.ESSConsoleServer" />
         <item itemvalue="Application.IoTTestClient" />
         <item itemvalue="Application.IoTDeviceEmulator" />
-        <item itemvalue="Application.ESSCabinet" />
       </list>
     </recent_temporary>
   </component>
@@ -217,13 +230,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00093" summary="ip логина">
-      <created>1675139143329</created>
-      <option name="number" value="00093" />
-      <option name="presentableId" value="LOCAL-00093" />
-      <option name="project" value="LOCAL" />
-      <updated>1675139143329</updated>
     </task>
     <task id="LOCAL-00094" summary="рефакторинг - общие форматы данных">
       <created>1675358014460</created>
@@ -561,7 +567,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679031239947</updated>
     </task>
-    <option name="localTasksCounter" value="142" />
+    <task id="LOCAL-00142" summary="AC/DC">
+      <created>1680587265987</created>
+      <option name="number" value="00142" />
+      <option name="presentableId" value="LOCAL-00142" />
+      <option name="project" value="LOCAL" />
+      <updated>1680587265988</updated>
+    </task>
+    <option name="localTasksCounter" value="143" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -588,7 +601,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Окно в разметке Metal" />
     <MESSAGE value="Фильтрация событий - 4 дня" />
     <MESSAGE value="Фильтрация событий" />
     <MESSAGE value="Версия" />
@@ -613,7 +625,8 @@
     <MESSAGE value="IoT - SCADA настройка модели" />
     <MESSAGE value="IoT - 138.9" />
     <MESSAGE value="Сборка 72 - потеря таймера редких данных" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сборка 72 - потеря таймера редких данных" />
+    <MESSAGE value="AC/DC" />
+    <option name="LAST_COMMIT_MESSAGE" value="AC/DC" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -697,6 +710,16 @@
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/IoTDeviceEmulator.java</url>
           <line>283</line>
           <option name="timeStamp" value="343" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/BroadCastClient.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="347" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/BroadCastChannel.java</url>
+          <line>70</line>
+          <option name="timeStamp" value="348" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS4ACDCEmulator.java</url>
