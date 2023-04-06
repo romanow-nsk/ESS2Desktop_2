@@ -85,7 +85,12 @@ public class ESSMetaPanel extends ESSBasePanel {
             "/drawable/status_red.png",
             "/drawable/status_green.png",
             };
-
+    private String serviceStateIcons[]={
+            "/drawable/status_gray.png",
+            "/drawable/status_red.png",
+            "/drawable/status_green.png",
+            "/drawable/status_yellow.png",
+    };
     public ESSMetaPanel() {
         initComponents();
     }
@@ -156,6 +161,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         OnOff.setVisible(!mainServerMode);
         OnOffNode.setVisible(mainServerMode);
         refreshIEC61850State();
+        refreshProfilerState();
         }
     private void setMetaTypeSelector(int type){
         int i=0;
@@ -343,6 +349,8 @@ public class ESSMetaPanel extends ESSBasePanel {
         IECServerOnOff = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         IEC61850ClientGUI = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        ProfilerOnOff = new javax.swing.JButton();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -361,7 +369,7 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         Password.setText("pi31415926");
         add(Password);
-        Password.setBounds(10, 500, 80, 25);
+        Password.setBounds(10, 470, 110, 25);
 
         OnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/connect-off.png"))); // NOI18N
         OnOff.setBorderPainted(false);
@@ -394,11 +402,11 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         RegNum.setText("0");
         add(RegNum);
-        RegNum.setBounds(80, 600, 90, 25);
+        RegNum.setBounds(90, 600, 80, 25);
 
         RegValue.setText("0");
         add(RegValue);
-        RegValue.setBounds(80, 630, 90, 25);
+        RegValue.setBounds(90, 630, 80, 25);
 
         jLabel4.setText("Значение");
         add(jLabel4);
@@ -568,11 +576,11 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         WriteFloat.setText("Float");
         add(WriteFloat);
-        WriteFloat.setBounds(290, 550, 70, 20);
+        WriteFloat.setBounds(310, 605, 70, 20);
 
         WriteInt32.setText("Int32");
         add(WriteInt32);
-        WriteInt32.setBounds(290, 570, 60, 20);
+        WriteInt32.setBounds(310, 630, 60, 20);
         add(jSeparator6);
         jSeparator6.setBounds(380, 470, 360, 10);
 
@@ -1054,15 +1062,15 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(RunTimeSaveChanges);
-        RunTimeSaveChanges.setBounds(280, 455, 30, 30);
+        RunTimeSaveChanges.setBounds(280, 445, 30, 30);
 
         RunTimeChanges.setEnabled(false);
         add(RunTimeChanges);
-        RunTimeChanges.setBounds(320, 460, 40, 25);
+        RunTimeChanges.setBounds(320, 450, 40, 25);
 
         RunTimeChangesLabel.setText("Изменений");
         add(RunTimeChangesLabel);
-        RunTimeChangesLabel.setBounds(280, 440, 70, 16);
+        RunTimeChangesLabel.setBounds(290, 425, 80, 16);
         add(MetaTypes);
         MetaTypes.setBounds(650, 50, 140, 20);
 
@@ -1134,21 +1142,21 @@ public class ESSMetaPanel extends ESSBasePanel {
         add(ExportXMLView);
         ExportXMLView.setBounds(330, 220, 30, 30);
 
-        jLabel39.setText("Контроллер (драйвер)");
+        jLabel39.setText("Контроллер");
         add(jLabel39);
-        jLabel39.setBounds(10, 550, 210, 16);
+        jLabel39.setBounds(10, 570, 80, 16);
         add(DevicesRW);
-        DevicesRW.setBounds(10, 570, 210, 20);
+        DevicesRW.setBounds(90, 570, 210, 20);
         add(jSeparator8);
-        jSeparator8.setBounds(10, 540, 350, 10);
+        jSeparator8.setBounds(10, 560, 350, 10);
 
         UnitRW.setText("0");
         add(UnitRW);
-        UnitRW.setBounds(230, 570, 40, 25);
+        UnitRW.setBounds(330, 570, 40, 25);
 
         jLabel38.setText("Unit");
         add(jLabel38);
-        jLabel38.setBounds(230, 550, 40, 16);
+        jLabel38.setBounds(300, 575, 30, 16);
 
         HEXValue.setText("hex");
         HEXValue.addItemListener(new java.awt.event.ItemListener() {
@@ -1199,7 +1207,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         add(EditLogUnit);
         EditLogUnit.setBounds(290, 140, 30, 30);
         add(jSeparator9);
-        jSeparator9.setBounds(10, 490, 350, 10);
+        jSeparator9.setBounds(130, 480, 230, 10);
 
         jLabel41.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel41.setText("Переменные окружения");
@@ -1297,7 +1305,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(CIDLocal);
-        CIDLocal.setBounds(280, 500, 40, 30);
+        CIDLocal.setBounds(50, 505, 40, 30);
 
         IECServerOnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/status_gray.png"))); // NOI18N
         IECServerOnOff.setBorderPainted(false);
@@ -1308,12 +1316,12 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(IECServerOnOff);
-        IECServerOnOff.setBounds(240, 495, 40, 40);
+        IECServerOnOff.setBounds(10, 500, 40, 40);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel6.setText("IEC61850");
+        jLabel6.setText("Профилирование");
         add(jLabel6);
-        jLabel6.setBounds(180, 520, 70, 16);
+        jLabel6.setBounds(140, 540, 130, 16);
 
         IEC61850ClientGUI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/connect-off.png"))); // NOI18N
         IEC61850ClientGUI.setBorderPainted(false);
@@ -1324,7 +1332,23 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(IEC61850ClientGUI);
-        IEC61850ClientGUI.setBounds(320, 500, 40, 30);
+        IEC61850ClientGUI.setBounds(90, 505, 40, 30);
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel7.setText("IEC61850");
+        add(jLabel7);
+        jLabel7.setBounds(10, 540, 70, 16);
+
+        ProfilerOnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/status_gray.png"))); // NOI18N
+        ProfilerOnOff.setBorderPainted(false);
+        ProfilerOnOff.setContentAreaFilled(false);
+        ProfilerOnOff.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ProfilerOnOffActionPerformed(evt);
+            }
+        });
+        add(ProfilerOnOff);
+        ProfilerOnOff.setBounds(130, 500, 40, 40);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ImportMetaDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportMetaDataActionPerformed
@@ -2515,6 +2539,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                     int state = oo.getState();
                     boolean connected = state == Values.ASConnected;
                     refreshIEC61850State();
+                    refreshProfilerState();
                     deployed.setArchitectureState(state);
                     System.out.println(oo);
                     Deploy.setIcon(new javax.swing.ImageIcon(getClass().getResource(archStateIcons[state])));
@@ -3171,7 +3196,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             @Override
             public void onSucess(CallResult vv) {
                 System.out.println(vv.toString());
-                viewIEC61850State(vv.getState());
+                viewServiceState(IECServerOnOff,vv.getState());
                 }
             };
         }//GEN-LAST:event_IECServerOnOffActionPerformed
@@ -3186,6 +3211,25 @@ public class ESSMetaPanel extends ESSBasePanel {
             });
     }//GEN-LAST:event_IEC61850ClientGUIActionPerformed
 
+    private void ProfilerOnOffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfilerOnOffActionPerformed
+        if (!main2.deployed.isConnected()){
+            System.out.println("Допустимо только при подключенном оборудовании");
+            return;
+        }
+        new APICall<CallResult>(main) {
+            @Override
+            public Call<CallResult> apiFun() {
+                return main2.service2.profilerOnOff(main.debugToken);
+            }
+            @Override
+            public void onSucess(CallResult vv) {
+                System.out.println(vv.toString());
+                viewServiceState(ProfilerOnOff,vv.getState());
+                }
+        };
+
+    }//GEN-LAST:event_ProfilerOnOffActionPerformed
+
     private void refreshIEC61850State(){
         new APICall<JInt>(main) {
             @Override
@@ -3194,22 +3238,24 @@ public class ESSMetaPanel extends ESSBasePanel {
                 }
             @Override
             public void onSucess(JInt vv) {
-                viewIEC61850State(vv.getValue());
+                viewServiceState(IECServerOnOff,vv.getValue());
                 }
             };
         }
-    private void viewIEC61850State(int state){
-        switch (state){
-            case IEC61850StOn:
-                IECServerOnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource( "/drawable/status_green.png")));
-                break;
-            case IEC61850StFail:
-                IECServerOnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource( "/drawable/status_red.png")));
-                break;
-            case IEC61850StOff:
-                IECServerOnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource( "/drawable/status_gray.png")));
-                break;
+    private void refreshProfilerState(){
+        new APICall<JInt>(main) {
+            @Override
+            public Call<JInt> apiFun() {
+                return main2.service2.profilerState(main.debugToken);
+                }
+            @Override
+            public void onSucess(JInt vv) {
+                viewServiceState(ProfilerOnOff,vv.getValue());
             }
+            };
+        }
+    private void viewServiceState(JButton button,int state){
+        button.setIcon(new javax.swing.ImageIcon(getClass().getResource( serviceStateIcons[state])));
         }
     @Override
     public void refresh() {
@@ -3390,6 +3436,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JButton OnOff;
     private javax.swing.JButton OnOffNode;
     private javax.swing.JPasswordField Password;
+    private javax.swing.JButton ProfilerOnOff;
     private javax.swing.JButton RefreshMeta;
     private javax.swing.JTextField RegNum;
     private javax.swing.JTextField RegValue;
@@ -3457,6 +3504,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
