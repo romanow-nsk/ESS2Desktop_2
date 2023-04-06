@@ -75,6 +75,8 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         IEC61850Port = new javax.swing.JTextField();
         ClockAcrossAPI = new javax.swing.JCheckBox();
         PriorityDispatcher = new javax.swing.JCheckBox();
+        ProfilerOn = new javax.swing.JCheckBox();
+        ProfilerPort = new javax.swing.JTextField();
 
         setLayout(null);
 
@@ -311,6 +313,23 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         });
         add(PriorityDispatcher);
         PriorityDispatcher.setBounds(410, 200, 340, 20);
+
+        ProfilerOn.setText("Профилирование (порт)");
+        ProfilerOn.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ProfilerOnItemStateChanged(evt);
+            }
+        });
+        add(ProfilerOn);
+        ProfilerOn.setBounds(410, 260, 170, 20);
+
+        ProfilerPort.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ProfilerPortKeyPressed(evt);
+            }
+        });
+        add(ProfilerPort);
+        ProfilerPort.setBounds(600, 260, 70, 25);
     }// </editor-fold>//GEN-END:initComponents
 
     private void GUIrefreshPeriodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GUIrefreshPeriodKeyPressed
@@ -404,6 +423,14 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         procPressedBoolean(ClockAcrossAPI,"clockAcrossAPI");
     }//GEN-LAST:event_ClockAcrossAPIItemStateChanged
 
+    private void ProfilerOnItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ProfilerOnItemStateChanged
+        procPressedBoolean(ProfilerOn,"profilerOn");
+    }//GEN-LAST:event_ProfilerOnItemStateChanged
+
+    private void ProfilerPortKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ProfilerPortKeyPressed
+        procPressedInt(evt, ProfilerPort,"profilerPort");
+    }//GEN-LAST:event_ProfilerPortKeyPressed
+
     private void procPressedInt(KeyEvent evt, JTextField text, String name){
         if(evt.getKeyCode()!=10) return;
         int vv=0;
@@ -453,6 +480,8 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             IEC61850Port.setText(""+ws.getIec61850Port());
             ClockAcrossAPI.setSelected(ws.isClockAcrossAPI());
             PriorityDispatcher.setSelected(ws.isPriorityDispatcher());
+            ProfilerOn.setSelected(ws.isProfilerOn());
+            ProfilerPort.setText(""+ws.getProfilerPort());
             refreshMainServerParams();
             } catch (Exception e) { popup(e.toString()); }
         }
@@ -575,6 +604,8 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     private javax.swing.JTextField MainServerPeriod;
     private javax.swing.JTextField MainServerPort;
     private javax.swing.JCheckBox PriorityDispatcher;
+    private javax.swing.JCheckBox ProfilerOn;
+    private javax.swing.JTextField ProfilerPort;
     private javax.swing.JTextField RegisterAge;
     private javax.swing.JTextField SnapShotPeriod;
     private javax.swing.JTextField StreamDataCompressMode;

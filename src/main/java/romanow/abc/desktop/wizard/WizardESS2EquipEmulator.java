@@ -79,6 +79,8 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
         SetMetaFile = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         AuthCode = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -173,7 +175,7 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
             }
         });
         getContentPane().add(SetMetaFile);
-        SetMetaFile.setBounds(420, 160, 30, 30);
+        SetMetaFile.setBounds(420, 170, 30, 30);
 
         jLabel5.setText("Порт/номер");
         getContentPane().add(jLabel5);
@@ -186,6 +188,13 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
         });
         getContentPane().add(AuthCode);
         AuthCode.setBounds(140, 200, 270, 25);
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel6.setText("Модель IoT");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(460, 170, 110, 16);
+        getContentPane().add(jSeparator2);
+        jSeparator2.setBounds(0, 163, 630, 10);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -322,6 +331,8 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables
 }
