@@ -71,7 +71,6 @@ public class ESSSettingsConfigSelector extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         Config = new java.awt.Choice();
         CreateDate = new javax.swing.JTextField();
-        Comment = new javax.swing.JTextField();
         Set = new javax.swing.JButton();
         Add = new javax.swing.JButton();
         Remove = new javax.swing.JButton();
@@ -93,9 +92,7 @@ public class ESSSettingsConfigSelector extends javax.swing.JPanel {
 
         CreateDate.setEnabled(false);
         add(CreateDate);
-        CreateDate.setBounds(10, 70, 140, 25);
-        add(Comment);
-        Comment.setBounds(10, 130, 420, 25);
+        CreateDate.setBounds(10, 65, 110, 25);
 
         Set.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/settings.png"))); // NOI18N
         Set.setBorderPainted(false);
@@ -117,7 +114,7 @@ public class ESSSettingsConfigSelector extends javax.swing.JPanel {
             }
         });
         add(Add);
-        Add.setBounds(360, 100, 30, 30);
+        Add.setBounds(360, 40, 30, 30);
 
         Remove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/remove.png"))); // NOI18N
         Remove.setBorderPainted(false);
@@ -128,17 +125,15 @@ public class ESSSettingsConfigSelector extends javax.swing.JPanel {
             }
         });
         add(Remove);
-        Remove.setBounds(400, 5, 30, 30);
+        Remove.setBounds(360, 80, 30, 30);
         add(Title);
-        Title.setBounds(10, 100, 340, 25);
-
-        CommentCur.setEnabled(false);
+        Title.setBounds(10, 95, 330, 25);
         add(CommentCur);
-        CommentCur.setBounds(10, 40, 420, 25);
+        CommentCur.setBounds(10, 35, 330, 25);
 
         User.setEnabled(false);
         add(User);
-        User.setBounds(160, 70, 270, 25);
+        User.setBounds(130, 65, 210, 25);
     }// </editor-fold>//GEN-END:initComponents
 
     private void refresh(){
@@ -204,7 +199,7 @@ public class ESSSettingsConfigSelector extends javax.swing.JPanel {
                 new APICall<JLong>(main) {
                     @Override
                     public Call<JLong> apiFun() {
-                        return main.service2.addConfig(main.debugToken, Title.getText(),Comment.getText());
+                        return main.service2.addConfig(main.debugToken, Title.getText(), CommentCur.getText());
                         }
                     @Override
                     public void onSucess(final JLong oo) {
@@ -232,7 +227,6 @@ public class ESSSettingsConfigSelector extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Add;
-    private javax.swing.JTextField Comment;
     private javax.swing.JTextField CommentCur;
     private java.awt.Choice Config;
     private javax.swing.JTextField CreateDate;

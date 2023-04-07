@@ -18,7 +18,7 @@ public class WizardESS2Host extends WizardBaseViewDB {
 
     private ESS2Node node;
     public WizardESS2Host(ESSMetaPanel frame0, ESS2Entity entity0, I_Wizard back0) {
-        super(frame0,entity0,back0);
+        super("Узел СНЭЭ",frame0,entity0,back0);
         initComponents();
         node = (ESS2Node) entity0;
         IP.setText(node.getESSServerIP());

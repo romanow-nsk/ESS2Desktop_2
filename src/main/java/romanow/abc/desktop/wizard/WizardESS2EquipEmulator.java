@@ -21,7 +21,7 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
 
     private ESS2EquipEmulator emulator;
     public WizardESS2EquipEmulator(ESSMetaPanel frame0, ESS2Entity entity0, I_Wizard back0) {
-        super(frame0,entity0,back0);
+        super("Эмулятор",frame0,entity0,back0);
         initComponents();
         emulator = (ESS2EquipEmulator) entity0;
         ClassName.setText(emulator.getClassName());

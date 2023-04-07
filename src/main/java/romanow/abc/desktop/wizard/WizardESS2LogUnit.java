@@ -22,7 +22,7 @@ public class WizardESS2LogUnit extends WizardBaseViewDB {
     private ESS2LogUnit logUnit;
     private EntityRefList<ESS2Device> devices;
     public WizardESS2LogUnit(ESSMetaPanel frame0, ESS2Entity entity0, EntityRefList<ESS2Device> devices0, I_Wizard back0) {
-        super(frame0,entity0,back0);
+        super("Лог.устройство",frame0,entity0,back0);
         initComponents();
         logUnit = (ESS2LogUnit) entity0;
         LogUnit.setText(""+logUnit.getUnit());

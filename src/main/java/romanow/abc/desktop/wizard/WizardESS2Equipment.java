@@ -35,7 +35,7 @@ public class WizardESS2Equipment extends WizardBaseViewDB {
             }
         }
     public WizardESS2Equipment(ESSMetaPanel frame0, ESS2Entity entity0, I_Wizard back0) {
-        super(frame0,entity0,back0);
+        super("Оборудование",frame0,entity0,back0);
         initComponents();
         setSize(750,220);
         equipment = (ESS2Equipment)entity0;

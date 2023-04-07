@@ -19,7 +19,7 @@ public class WizardESS2Connector extends WizardBaseViewDB {
     private ESS2Device connector;
     private boolean onStart=false;
     public WizardESS2Connector(ESSMetaPanel frame0, ESS2Entity entity0, I_Wizard back0) {
-        super(frame0,entity0,back0);
+        super("Контроллер",frame0,entity0,back0);
         initComponents();
         onStart=true;
         connector = (ESS2Device)entity0;

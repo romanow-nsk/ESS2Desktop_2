@@ -88,11 +88,11 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
         DataPackedProc = new javax.swing.JTextField();
         DataCompressMode = new javax.swing.JTextField();
         DataValueSet = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         ShowData = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
@@ -107,7 +107,7 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
             }
         });
         add(TIME1);
-        TIME1.setBounds(60, 80, 110, 25);
+        TIME1.setBounds(90, 70, 110, 25);
 
         TIME2.setEnabled(false);
         TIME2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -116,9 +116,9 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
             }
         });
         add(TIME2);
-        TIME2.setBounds(180, 80, 100, 25);
+        TIME2.setBounds(240, 70, 100, 25);
 
-        ShowGraph.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/graph.png"))); // NOI18N
+        ShowGraph.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/statistic.png"))); // NOI18N
         ShowGraph.setBorderPainted(false);
         ShowGraph.setContentAreaFilled(false);
         ShowGraph.addActionListener(new java.awt.event.ActionListener() {
@@ -127,15 +127,15 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
             }
         });
         add(ShowGraph);
-        ShowGraph.setBounds(370, 70, 40, 40);
+        ShowGraph.setBounds(420, 20, 40, 40);
 
         jLabel2.setText("До");
         add(jLabel2);
-        jLabel2.setBounds(180, 60, 34, 16);
+        jLabel2.setBounds(210, 70, 34, 16);
 
         jLabel3.setText("От");
         add(jLabel3);
-        jLabel3.setBounds(60, 60, 14, 16);
+        jLabel3.setBounds(60, 70, 14, 16);
 
         StreamType.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -151,63 +151,59 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
             }
         });
         add(DataSetList);
-        DataSetList.setBounds(10, 130, 210, 20);
+        DataSetList.setBounds(10, 105, 210, 20);
 
         DataSourceSize.setEnabled(false);
         add(DataSourceSize);
-        DataSourceSize.setBounds(10, 180, 70, 25);
+        DataSourceSize.setBounds(10, 150, 70, 25);
 
-        jLabel4.setText("Значение");
+        jLabel4.setText("hex/dec");
         add(jLabel4);
-        jLabel4.setBounds(320, 110, 70, 16);
+        jLabel4.setBounds(400, 120, 70, 16);
 
         StreamDataOffset.setEnabled(false);
         add(StreamDataOffset);
-        StreamDataOffset.setBounds(290, 80, 70, 25);
+        StreamDataOffset.setBounds(420, 70, 70, 25);
 
         DataValueAPI.setEnabled(false);
         add(DataValueAPI);
-        DataValueAPI.setBounds(230, 130, 70, 25);
+        DataValueAPI.setBounds(240, 100, 70, 25);
 
         jLabel5.setText("Смещение");
         add(jLabel5);
-        jLabel5.setBounds(290, 60, 100, 16);
+        jLabel5.setBounds(350, 70, 70, 16);
 
         jLabel6.setText("Сжатое (байт)");
         add(jLabel6);
-        jLabel6.setBounds(100, 160, 90, 16);
+        jLabel6.setBounds(100, 130, 90, 16);
 
         DataPackedSize.setEnabled(false);
         add(DataPackedSize);
-        DataPackedSize.setBounds(100, 180, 70, 25);
+        DataPackedSize.setBounds(100, 150, 70, 25);
 
         DataPackedProc.setEnabled(false);
         add(DataPackedProc);
-        DataPackedProc.setBounds(190, 180, 70, 25);
+        DataPackedProc.setBounds(190, 150, 70, 25);
 
         DataCompressMode.setEnabled(false);
         add(DataCompressMode);
-        DataCompressMode.setBounds(280, 180, 110, 25);
+        DataCompressMode.setBounds(280, 150, 110, 25);
 
         DataValueSet.setEnabled(false);
         add(DataValueSet);
-        DataValueSet.setBounds(320, 130, 70, 25);
-
-        jLabel7.setText("hex (запись)");
-        add(jLabel7);
-        jLabel7.setBounds(230, 110, 80, 16);
+        DataValueSet.setBounds(320, 100, 70, 25);
 
         jLabel8.setText("тип сжатия");
         add(jLabel8);
-        jLabel8.setBounds(280, 160, 110, 16);
+        jLabel8.setBounds(280, 130, 110, 16);
 
         jLabel9.setText("Исх (байт)");
         add(jLabel9);
-        jLabel9.setBounds(10, 160, 70, 16);
+        jLabel9.setBounds(10, 130, 70, 16);
 
         jLabel10.setText("% сжатия");
         add(jLabel10);
-        jLabel10.setBounds(190, 160, 70, 16);
+        jLabel10.setBounds(190, 130, 70, 16);
 
         ShowData.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/no_problem.png"))); // NOI18N
         ShowData.setBorderPainted(false);
@@ -218,7 +214,11 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
             }
         });
         add(ShowData);
-        ShowData.setBounds(10, 70, 40, 40);
+        ShowData.setBounds(10, 60, 40, 40);
+
+        jLabel11.setText("Значение");
+        add(jLabel11);
+        jLabel11.setBounds(400, 100, 70, 16);
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -366,12 +366,12 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
     private javax.swing.JTextField TIME2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables

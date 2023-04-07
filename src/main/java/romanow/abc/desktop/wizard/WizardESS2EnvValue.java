@@ -28,7 +28,7 @@ public class WizardESS2EnvValue extends WizardBaseViewDB {
             }
         }
     public WizardESS2EnvValue(ESSMetaPanel frame0, ESS2Entity entity0, I_Wizard back0) {
-        super(frame0,entity0,back0);
+        super("Переменная окружения",frame0,entity0,back0);
         initComponents();
         setSize(750,220);
         envValue = (ESS2EnvValue) entity0;

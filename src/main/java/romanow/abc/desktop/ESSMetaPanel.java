@@ -98,9 +98,9 @@ public class ESSMetaPanel extends ESSBasePanel {
     public void initPanel(MainBaseFrame main0) {
         super.initPanel(main0);
         Password.setText(main.loginUser.getPassword());
-        streamData.setBounds(370, 260, 450, 210);
+        streamData.setBounds(370, 270, 470, 185);
         add(streamData);
-        configSelector.setBounds(370, 400, 450, 165);
+        configSelector.setBounds(370, 450, 400, 125);
         add(configSelector);
         configSelector.setVisible(true);
         MetaDataSaveChanges.setVisible(false);
@@ -351,6 +351,14 @@ public class ESSMetaPanel extends ESSBasePanel {
         IEC61850ClientGUI = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         ProfilerOnOff = new javax.swing.JButton();
+        jSeparator5 = new javax.swing.JSeparator();
+        jLabel21 = new javax.swing.JLabel();
+        Profilers = new java.awt.Choice();
+        RemoveProfiler = new javax.swing.JButton();
+        AddProfiler = new javax.swing.JButton();
+        EditProfiler = new javax.swing.JButton();
+        jSeparator10 = new javax.swing.JSeparator();
+        jLabel42 = new javax.swing.JLabel();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -369,7 +377,7 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         Password.setText("pi31415926");
         add(Password);
-        Password.setBounds(10, 470, 110, 25);
+        Password.setBounds(10, 500, 110, 25);
 
         OnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/connect-off.png"))); // NOI18N
         OnOff.setBorderPainted(false);
@@ -389,7 +397,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(DeviceRead);
-        DeviceRead.setBounds(230, 600, 70, 22);
+        DeviceRead.setBounds(600, 610, 70, 22);
 
         DeviceWrite.setText("Запись");
         DeviceWrite.addActionListener(new java.awt.event.ActionListener() {
@@ -398,19 +406,19 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(DeviceWrite);
-        DeviceWrite.setBounds(230, 630, 70, 22);
+        DeviceWrite.setBounds(600, 640, 70, 22);
 
         RegNum.setText("0");
         add(RegNum);
-        RegNum.setBounds(90, 600, 80, 25);
+        RegNum.setBounds(460, 610, 80, 25);
 
         RegValue.setText("0");
         add(RegValue);
-        RegValue.setBounds(90, 630, 80, 25);
+        RegValue.setBounds(460, 640, 80, 25);
 
         jLabel4.setText("Значение");
         add(jLabel4);
-        jLabel4.setBounds(10, 640, 80, 16);
+        jLabel4.setBounds(380, 650, 80, 16);
 
         HEXReg.setText("hex");
         HEXReg.addItemListener(new java.awt.event.ItemListener() {
@@ -419,11 +427,11 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(HEXReg);
-        HEXReg.setBounds(180, 600, 50, 21);
+        HEXReg.setBounds(550, 610, 50, 21);
 
         jLabel8.setText("Регистр");
         add(jLabel8);
-        jLabel8.setBounds(10, 610, 80, 16);
+        jLabel8.setBounds(380, 620, 80, 16);
 
         SettingsList.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -431,11 +439,12 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(SettingsList);
-        SettingsList.setBounds(380, 90, 470, 20);
+        SettingsList.setBounds(380, 100, 470, 20);
 
-        jLabel10.setText("Уставка");
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel10.setText("Уставки");
         add(jLabel10);
-        jLabel10.setBounds(870, 90, 60, 16);
+        jLabel10.setBounds(860, 100, 60, 16);
 
         SettingValue.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -447,11 +456,11 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         jLabel11.setText("Номер");
         add(jLabel11);
-        jLabel11.setBounds(710, 165, 50, 16);
+        jLabel11.setBounds(710, 160, 50, 16);
 
         jLabel12.setText("Значение");
         add(jLabel12);
-        jLabel12.setBounds(630, 245, 90, 16);
+        jLabel12.setBounds(630, 250, 90, 16);
 
         DefValueFormula.setEnabled(false);
         add(DefValueFormula);
@@ -467,11 +476,11 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         jLabel13.setText("Умолчание");
         add(jLabel13);
-        jLabel13.setBounds(380, 165, 90, 16);
+        jLabel13.setBounds(380, 160, 90, 16);
 
         jLabel14.setText("Формула");
         add(jLabel14);
-        jLabel14.setBounds(460, 245, 90, 16);
+        jLabel14.setBounds(460, 250, 90, 16);
 
         DefValue.setEnabled(false);
         add(DefValue);
@@ -483,7 +492,7 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         jLabel15.setText("Минимум");
         add(jLabel15);
-        jLabel15.setBounds(380, 195, 90, 16);
+        jLabel15.setBounds(380, 190, 90, 16);
 
         MaxValue.setEnabled(false);
         add(MaxValue);
@@ -504,7 +513,7 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         jLabel16.setText("Максимум");
         add(jLabel16);
-        jLabel16.setBounds(380, 225, 90, 16);
+        jLabel16.setBounds(380, 220, 90, 16);
 
         jLabel17.setText("Имя");
         add(jLabel17);
@@ -520,7 +529,7 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         CheckLimits.setText("Проверка");
         add(CheckLimits);
-        CheckLimits.setBounds(790, 110, 90, 20);
+        CheckLimits.setBounds(790, 125, 90, 20);
 
         SettingEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -528,18 +537,18 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(SettingEdit);
-        SettingEdit.setBounds(880, 110, 30, 30);
+        SettingEdit.setBounds(880, 130, 30, 30);
 
         SettingsName.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         SettingsName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         add(SettingsName);
-        SettingsName.setBounds(380, 115, 400, 35);
+        SettingsName.setBounds(380, 130, 400, 25);
         add(jSeparator1);
         jSeparator1.setBounds(10, 302, 360, 0);
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         add(jSeparator2);
-        jSeparator2.setBounds(370, 90, 10, 470);
+        jSeparator2.setBounds(370, 90, 10, 580);
 
         Nodes.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -550,9 +559,9 @@ public class ESSMetaPanel extends ESSBasePanel {
         Nodes.setBounds(10, 20, 210, 25);
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel18.setText("Конфигурации");
+        jLabel18.setText("Modbus-регистры");
         add(jLabel18);
-        jLabel18.setBounds(750, 460, 100, 14);
+        jLabel18.setBounds(780, 570, 130, 14);
 
         RefreshMeta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/refresh.png"))); // NOI18N
         RefreshMeta.setBorderPainted(false);
@@ -567,22 +576,22 @@ public class ESSMetaPanel extends ESSBasePanel {
         add(jSeparator3);
         jSeparator3.setBounds(10, 420, 340, 10);
         add(jSeparator4);
-        jSeparator4.setBounds(380, 260, 370, 10);
+        jSeparator4.setBounds(380, 90, 500, 10);
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel20.setText("Тренды");
         add(jLabel20);
-        jLabel20.setBounds(760, 250, 70, 14);
+        jLabel20.setBounds(840, 260, 70, 14);
 
         WriteFloat.setText("Float");
         add(WriteFloat);
-        WriteFloat.setBounds(310, 605, 70, 20);
+        WriteFloat.setBounds(680, 610, 70, 20);
 
         WriteInt32.setText("Int32");
         add(WriteInt32);
-        WriteInt32.setBounds(310, 630, 60, 20);
+        WriteInt32.setBounds(680, 640, 60, 20);
         add(jSeparator6);
-        jSeparator6.setBounds(380, 470, 360, 10);
+        jSeparator6.setBounds(380, 450, 390, 10);
 
         jLabel24.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel24.setText("ЧМИ");
@@ -1040,9 +1049,9 @@ public class ESSMetaPanel extends ESSBasePanel {
         add(jLabel19);
         jLabel19.setBounds(120, 335, 50, 16);
 
-        jLabel30.setText("клиент");
+        jLabel30.setText("пароль операции");
         add(jLabel30);
-        jLabel30.setBounds(70, 335, 50, 16);
+        jLabel30.setBounds(10, 480, 120, 16);
 
         RuntimeEdit.setText("Редакт. \"на лету\"");
         RuntimeEdit.addItemListener(new java.awt.event.ItemListener() {
@@ -1051,7 +1060,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(RuntimeEdit);
-        RuntimeEdit.setBounds(150, 460, 130, 20);
+        RuntimeEdit.setBounds(140, 460, 130, 20);
 
         RunTimeSaveChanges.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/save.png"))); // NOI18N
         RunTimeSaveChanges.setBorderPainted(false);
@@ -1076,7 +1085,7 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         jLabel31.setText(" ограничений");
         add(jLabel31);
-        jLabel31.setBounds(790, 130, 80, 16);
+        jLabel31.setBounds(790, 145, 80, 16);
 
         jLabel35.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel35.setText("xls 1");
@@ -1144,19 +1153,19 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         jLabel39.setText("Контроллер");
         add(jLabel39);
-        jLabel39.setBounds(10, 570, 80, 16);
+        jLabel39.setBounds(380, 580, 80, 16);
         add(DevicesRW);
-        DevicesRW.setBounds(90, 570, 210, 20);
+        DevicesRW.setBounds(460, 580, 210, 20);
         add(jSeparator8);
-        jSeparator8.setBounds(10, 560, 350, 10);
+        jSeparator8.setBounds(370, 570, 400, 10);
 
         UnitRW.setText("0");
         add(UnitRW);
-        UnitRW.setBounds(330, 570, 40, 25);
+        UnitRW.setBounds(710, 580, 30, 25);
 
         jLabel38.setText("Unit");
         add(jLabel38);
-        jLabel38.setBounds(300, 575, 30, 16);
+        jLabel38.setBounds(680, 580, 30, 16);
 
         HEXValue.setText("hex");
         HEXValue.addItemListener(new java.awt.event.ItemListener() {
@@ -1165,7 +1174,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(HEXValue);
-        HEXValue.setBounds(180, 630, 50, 20);
+        HEXValue.setBounds(550, 640, 50, 20);
 
         jLabel40.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel40.setText("Контроллер (драйвер)");
@@ -1207,7 +1216,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         add(EditLogUnit);
         EditLogUnit.setBounds(290, 140, 30, 30);
         add(jSeparator9);
-        jSeparator9.setBounds(130, 480, 230, 10);
+        jSeparator9.setBounds(10, 530, 340, 10);
 
         jLabel41.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel41.setText("Переменные окружения");
@@ -1283,7 +1292,7 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         FullScreen.setText("Полный экран");
         add(FullScreen);
-        FullScreen.setBounds(150, 440, 120, 20);
+        FullScreen.setBounds(140, 440, 120, 20);
 
         OnOffNode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/connect-off.png"))); // NOI18N
         OnOffNode.setBorderPainted(false);
@@ -1305,7 +1314,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(CIDLocal);
-        CIDLocal.setBounds(50, 505, 40, 30);
+        CIDLocal.setBounds(270, 490, 40, 30);
 
         IECServerOnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/status_gray.png"))); // NOI18N
         IECServerOnOff.setBorderPainted(false);
@@ -1316,12 +1325,12 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(IECServerOnOff);
-        IECServerOnOff.setBounds(10, 500, 40, 40);
+        IECServerOnOff.setBounds(230, 485, 40, 40);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel6.setText("Профилирование");
         add(jLabel6);
-        jLabel6.setBounds(140, 540, 130, 16);
+        jLabel6.setBounds(10, 530, 130, 16);
 
         IEC61850ClientGUI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/connect-off.png"))); // NOI18N
         IEC61850ClientGUI.setBorderPainted(false);
@@ -1332,12 +1341,12 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(IEC61850ClientGUI);
-        IEC61850ClientGUI.setBounds(90, 505, 40, 30);
+        IEC61850ClientGUI.setBounds(310, 490, 40, 30);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel7.setText("IEC61850");
         add(jLabel7);
-        jLabel7.setBounds(10, 540, 70, 16);
+        jLabel7.setBounds(140, 490, 70, 16);
 
         ProfilerOnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/status_gray.png"))); // NOI18N
         ProfilerOnOff.setBorderPainted(false);
@@ -1348,7 +1357,55 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(ProfilerOnOff);
-        ProfilerOnOff.setBounds(130, 500, 40, 40);
+        ProfilerOnOff.setBounds(10, 575, 40, 40);
+        add(jSeparator5);
+        jSeparator5.setBounds(380, 270, 460, 10);
+
+        jLabel21.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel21.setText("Конфигурации");
+        add(jLabel21);
+        jLabel21.setBounds(770, 440, 100, 14);
+        add(Profilers);
+        Profilers.setBounds(10, 550, 210, 20);
+
+        RemoveProfiler.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/remove.png"))); // NOI18N
+        RemoveProfiler.setBorderPainted(false);
+        RemoveProfiler.setContentAreaFilled(false);
+        RemoveProfiler.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RemoveProfilerActionPerformed(evt);
+            }
+        });
+        add(RemoveProfiler);
+        RemoveProfiler.setBounds(260, 540, 30, 30);
+
+        AddProfiler.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/add.png"))); // NOI18N
+        AddProfiler.setBorderPainted(false);
+        AddProfiler.setContentAreaFilled(false);
+        AddProfiler.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddProfilerActionPerformed(evt);
+            }
+        });
+        add(AddProfiler);
+        AddProfiler.setBounds(220, 540, 40, 30);
+
+        EditProfiler.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/media_list.png"))); // NOI18N
+        EditProfiler.setBorderPainted(false);
+        EditProfiler.setContentAreaFilled(false);
+        EditProfiler.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditProfilerActionPerformed(evt);
+            }
+        });
+        add(EditProfiler);
+        EditProfiler.setBounds(290, 540, 30, 30);
+        add(jSeparator10);
+        jSeparator10.setBounds(130, 480, 230, 10);
+
+        jLabel42.setText("клиент");
+        add(jLabel42);
+        jLabel42.setBounds(70, 335, 50, 16);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ImportMetaDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportMetaDataActionPerformed
@@ -1441,6 +1498,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         refreshScripts();
         refreshDevices();
         refreshEnvValues();
+        refreshProfilers();
         architecture.createStreamRegisterList();
         }
 
@@ -1522,6 +1580,14 @@ public class ESSMetaPanel extends ESSBasePanel {
             Emulators.add(emulator.getTitle());
             }
         }
+    private void refreshProfilers() {
+        Profilers.removeAll();
+        if (architecture == null)
+            return;
+        for (ESS2ProfilerModule module : architecture.getProfilers()) {
+            Profilers.add(module.getTitle());
+        }
+    }
 
     private void refreshArchtectureState(){
         new APICall<ArrayList<Long>>(main) {
@@ -2581,7 +2647,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         if (Emulators.getItemCount() == 0)
             return;
         final ESS2EquipEmulator emulator= architecture.getEmulators().get(Emulators.getSelectedIndex());
-        new OK(200, 200, "Удалить ЧМИ " + emulator.getTitle(), new I_Button() {
+        new OK(200, 200, "Удалить эмулятор " + emulator.getTitle(), new I_Button() {
             @Override
             public void onPush() {
                 new APICall<JBoolean>(main) {
@@ -2688,7 +2754,27 @@ public class ESSMetaPanel extends ESSBasePanel {
     }//GEN-LAST:event_ImportScriptActionPerformed
 
     private void RemoveScriptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveScriptActionPerformed
-        // TODO add your handling code here:
+        if (Architectures.getItemCount() == 0)
+            return;
+        final ESS2Architecture architecture = architectures.get(Architectures.getSelectedIndex());
+        if (Profilers.getItemCount() == 0)
+            return;
+        final ESS2ScriptFile scriptFile= architecture.getScripts().get(Scripts.getSelectedIndex());
+        new OK(200, 200, "Удалить скрипт " + scriptFile.getTitle(), new I_Button() {
+            @Override
+            public void onPush() {
+                new APICall<JBoolean>(main) {
+                    @Override
+                    public Call<JBoolean> apiFun() {
+                        return main.service.removeEntity(main.debugToken, "ESS2ScriptFile", scriptFile.getOid());
+                    }
+                    @Override
+                    public void onSucess(JBoolean val) {
+                        refreshWithDelay(4);
+                    }
+                };
+            }
+        });
     }//GEN-LAST:event_RemoveScriptActionPerformed
 
     private void EditScriptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditScriptActionPerformed
@@ -3025,7 +3111,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         if (Equipments.getItemCount() == 0)
             return;
         final ESS2EnvValue envValue = architecture.getEnvValues().get(EnvValue.getSelectedIndex());
-        new OK(200, 200, "Удалить оборудование " + envValue.getTitle(), new I_Button() {
+        new OK(200, 200, "Удалить переменную окружения " + envValue.getTitle(), new I_Button() {
             @Override
             public void onPush() {
                 new APICall<JBoolean>(main) {
@@ -3230,6 +3316,85 @@ public class ESSMetaPanel extends ESSBasePanel {
 
     }//GEN-LAST:event_ProfilerOnOffActionPerformed
 
+    private void RemoveProfilerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveProfilerActionPerformed
+        if (Architectures.getItemCount() == 0)
+            return;
+        final ESS2Architecture architecture = architectures.get(Architectures.getSelectedIndex());
+        if (Profilers.getItemCount() == 0)
+            return;
+        final ESS2ProfilerModule module= architecture.getProfilers().get(Emulators.getSelectedIndex());
+        new OK(200, 200, "Удалить модуль профилирования " + module.getTitle(), new I_Button() {
+            @Override
+            public void onPush() {
+                new APICall<JBoolean>(main) {
+                    @Override
+                    public Call<JBoolean> apiFun() {
+                        return main.service.removeEntity(main.debugToken, "ESS2ProfilerModule", module.getOid());
+                        }
+                    @Override
+                    public void onSucess(JBoolean val) {
+                        refreshWithDelay(4);
+                        }
+                    };
+            }
+        });
+    }//GEN-LAST:event_RemoveProfilerActionPerformed
+
+    private void AddProfilerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddProfilerActionPerformed
+        if (Architectures.getItemCount() == 0)
+            return;
+        final ESS2Architecture architecture = architectures.get(Architectures.getSelectedIndex());
+        if (MetaFile.getItemCount() == 0) {
+            popup("Нет мета-файла оборудования");
+            return;
+            }
+        new OK(200, 200, "Добавить модуль профилирования", new I_Button() {
+            @Override
+            public void onPush() {
+                final ESS2ProfilerModule module = new ESS2ProfilerModule("...", "Новый", "");
+                module.getESS2Architecture().setOid(architecture.getOid());
+                new APICall<JLong>(main) {
+                    @Override
+                    public Call<JLong> apiFun() {
+                        return main.service.addEntity(main.debugToken, new DBRequest(module, main.gson), 0);
+                        }
+                    @Override
+                    public void onSucess(JLong val) {
+                        refreshArchitectures();
+                        }
+                    };
+                }
+            });
+    }//GEN-LAST:event_AddProfilerActionPerformed
+
+    private void EditProfilerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditProfilerActionPerformed
+        if (Architectures.getItemCount() == 0)
+            return;
+        final ESS2Architecture architecture = architectures.get(Architectures.getSelectedIndex());
+        if (Profilers.getItemCount() == 0)
+            return;
+        final ESS2ProfilerModule module = architecture.getProfilers().get(Profilers.getSelectedIndex());
+        new WizardESS2ЗProfilerModule(this, module, new I_Wizard() {
+            @Override
+            public void onUpdate() {
+                new APICall<JEmpty>(main) {
+                    @Override
+                    public Call<JEmpty> apiFun() {
+                        return main.service.updateEntity(main.debugToken, new DBRequest(module, main.gson));
+                        }
+                    @Override
+                    public void onSucess(JEmpty vv) {
+                        refreshArchitectures();
+                        }
+                    };
+                }
+            @Override
+            public void onEnter(String value) {
+                System.out.println(value);
+            }
+        });
+    }//GEN-LAST:event_EditProfilerActionPerformed
+
     private void refreshIEC61850State(){
         new APICall<JInt>(main) {
             @Override
@@ -3263,6 +3428,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         refreshArchitectures();
         refreshNodes();
         initStreamData();
+        configSelector.init(main2);
         /*
         try {
             JBoolean bb = new APICall2<JBoolean>() {
@@ -3338,6 +3504,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         AddMeta.setEnabled(enabled);
         AddLogUnit.setEnabled(enabled);
         AddEnvValue.setEnabled(enabled);
+        AddProfiler.setEnabled(enabled);
         RemoveNode.setEnabled(enabled);
         RemoveArch.setEnabled(enabled);
         RemoveEquip.setEnabled(enabled);
@@ -3348,6 +3515,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         RemoveLogUnit.setEnabled(enabled);
         RemoveScript.setEnabled(enabled);
         RemoveEnvValue.setEnabled(enabled);
+        RemoveProfiler.setEnabled(enabled);
         EditNode.setEnabled(enabled);
         EditArch.setEnabled(enabled);
         EditEquip.setEnabled(enabled);
@@ -3357,6 +3525,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         EditLogUnit.setEnabled(enabled);
         EditScript.setEnabled(enabled);
         EditEnvValue.setEnabled(enabled);
+        EditProfiler.setEnabled(enabled);
         ImportMetaData.setEnabled(enabled);
         ImportMetaEquipment2.setEnabled(enabled);
         DownLoadArchitecture.setEnabled(enabled);
@@ -3378,6 +3547,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JButton AddLogUnit;
     private javax.swing.JButton AddMeta;
     private javax.swing.JButton AddNode;
+    private javax.swing.JButton AddProfiler;
     private javax.swing.JButton AddView;
     private javax.swing.JButton ArchNodeRefrresh;
     private javax.swing.JLabel ArchitectureLabel;
@@ -3401,6 +3571,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JButton EditLogUnit;
     private javax.swing.JButton EditMeta;
     private javax.swing.JButton EditNode;
+    private javax.swing.JButton EditProfiler;
     private javax.swing.JButton EditScript;
     private javax.swing.JButton EditView;
     private java.awt.Choice Emulators;
@@ -3437,6 +3608,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JButton OnOffNode;
     private javax.swing.JPasswordField Password;
     private javax.swing.JButton ProfilerOnOff;
+    private java.awt.Choice Profilers;
     private javax.swing.JButton RefreshMeta;
     private javax.swing.JTextField RegNum;
     private javax.swing.JTextField RegValue;
@@ -3448,6 +3620,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JButton RemoveLogUnit;
     private javax.swing.JButton RemoveMeta;
     private javax.swing.JButton RemoveNode;
+    private javax.swing.JButton RemoveProfiler;
     private javax.swing.JButton RemoveScript;
     private javax.swing.JButton RemoveView;
     private javax.swing.JTextField RunTimeChanges;
@@ -3482,6 +3655,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
@@ -3502,14 +3676,17 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;

@@ -31,7 +31,7 @@ public class WizardBaseViewDB extends javax.swing.JFrame {
         if (back!=null)
             back.onEnter(ss);
         }
-    public WizardBaseViewDB(ESSMetaPanel frame0, ESS2Entity entity0, I_Wizard back0) {
+    public WizardBaseViewDB(String name,ESSMetaPanel frame0, ESS2Entity entity0, I_Wizard back0) {
         initComponents();
         entity = entity0;
         back = back0;
@@ -39,7 +39,7 @@ public class WizardBaseViewDB extends javax.swing.JFrame {
         main = panel.getFrame();
         setVisible(true);
         setLocation(200,250);
-        setTitle(entity.getTitle());
+        setTitle(name+": "+entity.getTitle());
         Title.setText(entity.getTitle());
         Comment.setText(entity.getComment());
         ShortName.setText(entity.getShortName());

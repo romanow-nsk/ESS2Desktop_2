@@ -19,7 +19,7 @@ public class WizardESS2Node extends WizardBaseViewDB {
 
     private ESS2Node node;
     public WizardESS2Node(ESSMetaPanel frame0, ESS2Entity entity0, I_Wizard back0) {
-        super(frame0,entity0,back0);
+        super("Узел СНЭЭ",frame0,entity0,back0);
         initComponents();
         setSize(750,170);
         node = (ESS2Node)entity0;
