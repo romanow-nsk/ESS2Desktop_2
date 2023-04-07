@@ -77,6 +77,8 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         PriorityDispatcher = new javax.swing.JCheckBox();
         ProfilerOn = new javax.swing.JCheckBox();
         ProfilerPort = new javax.swing.JTextField();
+        jLabel30 = new javax.swing.JLabel();
+        ProfilerScale = new javax.swing.JTextField();
 
         setLayout(null);
 
@@ -284,9 +286,9 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         add(ToKotlinJS);
         ToKotlinJS.setBounds(410, 120, 150, 25);
 
-        jLabel27.setText("IP/порт  сервера интегратора");
+        jLabel27.setText("Масштаб времени");
         add(jLabel27);
-        jLabel27.setBounds(420, 70, 180, 16);
+        jLabel27.setBounds(430, 290, 150, 16);
 
         IEC61850Port.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -330,6 +332,18 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         });
         add(ProfilerPort);
         ProfilerPort.setBounds(600, 260, 70, 25);
+
+        jLabel30.setText("IP/порт  сервера интегратора");
+        add(jLabel30);
+        jLabel30.setBounds(420, 70, 180, 16);
+
+        ProfilerScale.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ProfilerScaleKeyPressed(evt);
+            }
+        });
+        add(ProfilerScale);
+        ProfilerScale.setBounds(600, 290, 70, 25);
     }// </editor-fold>//GEN-END:initComponents
 
     private void GUIrefreshPeriodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GUIrefreshPeriodKeyPressed
@@ -431,6 +445,10 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         procPressedInt(evt, ProfilerPort,"profilerPort");
     }//GEN-LAST:event_ProfilerPortKeyPressed
 
+    private void ProfilerScaleKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ProfilerScaleKeyPressed
+        procPressedInt(evt, ProfilerScale,"profilerScale");
+    }//GEN-LAST:event_ProfilerScaleKeyPressed
+
     private void procPressedInt(KeyEvent evt, JTextField text, String name){
         if(evt.getKeyCode()!=10) return;
         int vv=0;
@@ -482,6 +500,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             PriorityDispatcher.setSelected(ws.isPriorityDispatcher());
             ProfilerOn.setSelected(ws.isProfilerOn());
             ProfilerPort.setText(""+ws.getProfilerPort());
+            ProfilerScale.setText(""+ws.getProfilerScale());
             refreshMainServerParams();
             } catch (Exception e) { popup(e.toString()); }
         }
@@ -606,6 +625,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     private javax.swing.JCheckBox PriorityDispatcher;
     private javax.swing.JCheckBox ProfilerOn;
     private javax.swing.JTextField ProfilerPort;
+    private javax.swing.JTextField ProfilerScale;
     private javax.swing.JTextField RegisterAge;
     private javax.swing.JTextField SnapShotPeriod;
     private javax.swing.JTextField StreamDataCompressMode;
@@ -627,6 +647,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     // End of variables declaration//GEN-END:variables
