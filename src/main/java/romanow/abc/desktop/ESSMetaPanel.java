@@ -8,11 +8,8 @@ package romanow.abc.desktop;
 import lombok.Getter;
 import org.openmuc.openiec61850.clientgui.ClientGui;
 import retrofit2.Response;
+import romanow.abc.core.*;
 import romanow.abc.core.API.RestAPICommon;
-import romanow.abc.core.DBRequest;
-import romanow.abc.core.OidString;
-import romanow.abc.core.UniException;
-import romanow.abc.core.Utils;
 import romanow.abc.core.constants.ConstValue;
 import romanow.abc.core.constants.Values;
 import romanow.abc.core.constants.ValuesBase;
@@ -30,6 +27,7 @@ import okhttp3.MultipartBody;
 import retrofit2.Call;
 import romanow.abc.core.utils.Pair;
 import romanow.abc.dataserver.iec61850.IEC61850Client;
+import romanow.abc.dataserver.profiler.BroadCast;
 import romanow.abc.desktop.wizard.*;
 import romanow.abc.drivers.ModBusClientProxyDriver;
 
@@ -69,6 +67,8 @@ public class ESSMetaPanel extends ESSBasePanel {
     @Getter private ESS2Architecture architecture = null;               // Редактируемая архитектура
     private ESS2Architecture deployed = new ESS2Architecture();         // Развернутая архитектура
     private ArrayList<ESS2Node> nodes = new ArrayList<>();
+    private GUITimer profilerTimer = new GUITimer();                    // Таймер профилирования
+    private final static int profilerTimerDelay=3;                      // Таймер повтора профилирования
     private String archStateIcons[]={
             "/drawable/settings-gray.png",
             "/drawable/settings-red.png",
@@ -3301,7 +3301,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         if (!main2.deployed.isConnected()){
             System.out.println("Допустимо только при подключенном оборудовании");
             return;
-        }
+            }
         new APICall<CallResult>(main) {
             @Override
             public Call<CallResult> apiFun() {
@@ -3311,9 +3311,10 @@ public class ESSMetaPanel extends ESSBasePanel {
             public void onSucess(CallResult vv) {
                 System.out.println(vv.toString());
                 viewServiceState(ProfilerOnOff,vv.getState());
+                if (vv.getState()==ServiceStateOn)
+                    profilerTimer.start(profilerTimerDelay,limitedProfile);
                 }
         };
-
     }//GEN-LAST:event_ProfilerOnOffActionPerformed
 
     private void RemoveProfilerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveProfilerActionPerformed
@@ -3407,6 +3408,12 @@ public class ESSMetaPanel extends ESSBasePanel {
                 }
             };
         }
+    private I_EmptyEvent limitedProfile = new I_EmptyEvent() {
+        @Override
+        public void onEvent() {
+            refreshProfilerState();
+            }
+        };
     private void refreshProfilerState(){
         new APICall<JInt>(main) {
             @Override
@@ -3416,7 +3423,12 @@ public class ESSMetaPanel extends ESSBasePanel {
             @Override
             public void onSucess(JInt vv) {
                 viewServiceState(ProfilerOnOff,vv.getValue());
-            }
+                if (vv.getValue()== ServiceStateOn){
+                    profilerTimer.start(profilerTimerDelay, limitedProfile);
+                    }
+                else
+                    profilerTimer.cancel();
+                }
             };
         }
     private void viewServiceState(JButton button,int state){
