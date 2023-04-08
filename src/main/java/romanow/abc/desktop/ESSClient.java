@@ -34,9 +34,9 @@ import static romanow.abc.desktop.BasePanel.EventPLMOn;
 public class ESSClient extends Client {
     ESS2Architecture deployed=null;             // Развернутая архитектура
     ESS2View currentView=null;                  // Текущий вид
-    long mainServerNodeId = 0;                         // oid текущего узла для ДЦ
+    long mainServerNodeId = 0;                  // oid текущего узла для ДЦ
     I_ModbusGroupDriver plm= new ModBusMemoryEmulator();
-    MetaExternalSystem meta=null;
+    MetaExternalSystem meta=null;               // Чтобы не удалять 1.0 (ESSMetaPanel ESSMainServiceGUIPanel
     ArrayList<ESSNode> nodes = new ArrayList<>();
     AccessManager manager;
     RestAPIESS2 service2;
