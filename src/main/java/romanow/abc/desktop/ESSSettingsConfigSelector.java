@@ -9,8 +9,10 @@ import java.util.ArrayList;
 
 import romanow.abc.core.DBRequest;
 import romanow.abc.core.UniException;
+import romanow.abc.core.constants.Values;
 import romanow.abc.core.entity.baseentityes.JEmpty;
 import romanow.abc.core.entity.baseentityes.JLong;
+import romanow.abc.core.entity.subject2area.ESS2Config;
 import romanow.abc.core.entity.subjectarea.MetaExternalSystem;
 import romanow.abc.core.entity.subjectarea.PLMConfig;
 import romanow.abc.core.utils.OwnDateTime;
@@ -24,8 +26,8 @@ public class ESSSettingsConfigSelector extends javax.swing.JPanel {
     private OwnDateTime time1=new OwnDateTime(false);
     private OwnDateTime time2=new OwnDateTime(false);
     private MetaExternalSystem meta;
-    private ArrayList<PLMConfig> configs;
-    private PLMConfig selected=null;
+    private ArrayList<ESS2Config> configs;
+    private ESS2Config selected=null;
     private ESSClient main;
     /**
      * Creates new form ESSStreamDataSelector
@@ -41,15 +43,22 @@ public class ESSSettingsConfigSelector extends javax.swing.JPanel {
     private void refreahList(){
         selected=null;
         Config.removeAll();
-        new APICall<ArrayList<PLMConfig>>(main){
+        new APICall<ArrayList<DBRequest>>(main){
             @Override
-            public Call<ArrayList<PLMConfig>> apiFun() {
-                return main.service2.getConfigList(main.debugToken);
+            public Call<ArrayList<DBRequest>> apiFun() {
+                return main.service.getEntityList(main.debugToken,"ESS2Config", Values.GetAllModeActual,2);
             }
             @Override
-            public void onSucess(ArrayList<PLMConfig> oo) {
-                configs = oo;
-                for(PLMConfig vv : configs)
+            public void onSucess(ArrayList<DBRequest> oo) {
+                configs.clear();
+                for(DBRequest request : oo) {
+                    try {
+                        configs.add((ESS2Config) request.get(main.gson));
+                        } catch (UniException e) {
+                            System.out.println("Ошибка конвертирования json: "+e.toString());
+                            }
+                        }
+                for(ESS2Config vv : configs)
                     Config.add(vv.getTitle());
                 if (configs.size()==0)
                     return;
