@@ -14,16 +14,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="Эмулятор IoT - трансляция исключений эмулятора в ошибки Modbus">
-      <change beforePath="$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/UniException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/UniException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/Meta2Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/Meta2Register.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/view/Meta2GUIRegW2.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/view/Meta2GUIRegW2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/drivers/ModBusServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/drivers/ModBusServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/BasePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/BasePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/IoTDeviceEmulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/IoTDeviceEmulator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/iot/IoTLineData.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/iot/IoTLineData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/iot/IoTRegisterMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/iot/IoTRegisterMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/iot/IoTTestClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/iot/IoTTestClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/iot/IoTUDPDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/iot/IoTUDPDriver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSServiceGUIPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSServiceGUIPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view/GUIElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view/GUIElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ESS2Desktop.jar" beforeDir="false" afterPath="$PROJECT_DIR$/ESS2Desktop.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +40,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../ESS2DataServer" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
@@ -137,7 +135,7 @@
       <recent name="romanow.abc.core.entity.subjectarea" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.IoTTestClientLocal">
+  <component name="RunManager" selected="Application.ESSClient">
     <configuration name="ESSClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="romanow.abc.desktop.ESSClient" />
       <module name="ESS2Desktop" />
@@ -218,10 +216,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.IoTTestClientLocal" />
-        <item itemvalue="Application.ESSIoTConsoleServer" />
         <item itemvalue="Application.ESSClient" />
+        <item itemvalue="Application.ESSIoTConsoleServer" />
         <item itemvalue="Application.IoTTestClient" />
+        <item itemvalue="Application.IoTTestClientLocal" />
         <item itemvalue="Application.ESSConsoleServer" />
       </list>
     </recent_temporary>
@@ -234,13 +232,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00115" summary="Икэбана">
-      <created>1676543790778</created>
-      <option name="number" value="00115" />
-      <option name="presentableId" value="LOCAL-00115" />
-      <option name="project" value="LOCAL" />
-      <updated>1676543790779</updated>
     </task>
     <task id="LOCAL-00116" summary="3 State Box">
       <created>1676713219935</created>
@@ -578,7 +569,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682527300186</updated>
     </task>
-    <option name="localTasksCounter" value="164" />
+    <task id="LOCAL-00164" summary="Эмулятор IoT - трансляция исключений эмулятора в ошибки Modbus">
+      <created>1682577318660</created>
+      <option name="number" value="00164" />
+      <option name="presentableId" value="LOCAL-00164" />
+      <option name="project" value="LOCAL" />
+      <updated>1682577318660</updated>
+    </task>
+    <option name="localTasksCounter" value="165" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -736,11 +734,6 @@
           <option name="timeStamp" value="367" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/iot/iotmessages/IoTMesAuth.java</url>
-          <line>18</line>
-          <option name="timeStamp" value="368" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java</url>
           <line>1455</line>
           <option name="timeStamp" value="402" />
@@ -756,14 +749,29 @@
           <option name="timeStamp" value="416" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMainServiceGUIPanel.java</url>
-          <line>434</line>
-          <option name="timeStamp" value="417" />
+          <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/iot/IoTRegisterMessage.java</url>
+          <line>80</line>
+          <option name="timeStamp" value="421" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/iot/IoTTestClient.java</url>
-          <line>37</line>
-          <option name="timeStamp" value="418" />
+          <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/iot/IoTLineDriver.java</url>
+          <line>205</line>
+          <option name="timeStamp" value="436" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/iot/IoTLineDriver.java</url>
+          <line>190</line>
+          <option name="timeStamp" value="437" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/iot/IoTLineDriver.java</url>
+          <line>178</line>
+          <option name="timeStamp" value="456" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/iot/IoTUDPDriver.java</url>
+          <line>25</line>
+          <option name="timeStamp" value="462" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS4ACDCEmulator.java</url>
