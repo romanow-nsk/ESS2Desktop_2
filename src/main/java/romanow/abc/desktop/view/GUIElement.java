@@ -2,6 +2,7 @@ package romanow.abc.desktop.view;
 
 import romanow.abc.core.UniException;
 import romanow.abc.core.constants.Values;
+import romanow.abc.core.entity.metadata.Meta2Register;
 import romanow.abc.core.entity.metadata.view.Meta2GUI;
 import romanow.abc.core.drivers.I_ModbusGroupDriver;
 import romanow.abc.core.entity.subjectarea.MetaExternalSystem;

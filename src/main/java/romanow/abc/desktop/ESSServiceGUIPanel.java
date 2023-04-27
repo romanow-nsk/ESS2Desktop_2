@@ -617,6 +617,8 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 continue;
             if (element.getDevUnit()!=unitIdx)      // Пропустить чужой физический Unit
                 continue;
+            if (!link.getRegister().isReadEnable())
+                continue;
             int data[] = getRegisterData(device,link,unitIdx,element.getRegOffset());
             if (data==null)
                 continue;
@@ -658,6 +660,8 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         //    return;
         //    }
     public void putOneLinkRegister(View2Base element,Meta2RegLink link,int offset){
+        if (!link.getRegister().isReadEnable())
+            return;
         int regNumFull = link.getRegNum()+offset;
         int regSize = link.getRegister().size16Bit();
         for(int i=0;i<regSize;i++)
