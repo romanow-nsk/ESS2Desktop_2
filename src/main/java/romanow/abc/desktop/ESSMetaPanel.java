@@ -1286,7 +1286,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         ExportScripts.setBounds(170, 350, 30, 30);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel5.setText(" все");
+        jLabel5.setText("xml-*");
         add(jLabel5);
         jLabel5.setBounds(500, 70, 40, 14);
 
@@ -1893,9 +1893,9 @@ public class ESSMetaPanel extends ESSBasePanel {
         MetaDataChangesLabel.setVisible(false);
         }
     public void refreshScripts() {
-        if (Scripts.getItemCount()==0)
-            return;
-        int idx = Scripts.getSelectedIndex();
+        int idx = -1;
+        if (Scripts.getItemCount()!=0)
+            idx = Scripts.getSelectedIndex();
         Scripts.removeAll();
         if (architecture == null)
             return;
@@ -2149,12 +2149,13 @@ public class ESSMetaPanel extends ESSBasePanel {
             popup("Недопустимый тип для мета-файла оборудования");
             return;
         }
-        new OK(200, 200, "Добавить оборудование", new I_Button() {
+        new OK(200, 200, "Добавить оборудование "+metaFile.getTitle(), new I_Button() {
             @Override
             public void onPush() {
-                final ESS2Equipment equipment = new ESS2Equipment("...", "Новое", "");
+                final ESS2Equipment equipment = new ESS2Equipment("...", "Новое "+metaFile.getTitle(), metaFile.getComment());
                 equipment.getESS2Architecture().setOid(architecture.getOid());
                 equipment.getMetaFile().setOid(metaFile.getOid());
+                equipment.setShortName(metaFile.getShortName());
                 new APICall<JLong>(main) {
                     @Override
                     public Call<JLong> apiFun() {
@@ -2305,10 +2306,10 @@ public class ESSMetaPanel extends ESSBasePanel {
             popup("Недопустимый тип для мета-файла ЧМИ");
             return;
         }
-        new OK(200, 200, "Добавить ЧМИ", new I_Button() {
+        new OK(200, 200, "Добавить ЧМИ "+metaFile.getTitle(), new I_Button() {
             @Override
             public void onPush() {
-                final ESS2View view = new ESS2View("...", "Новый", "");
+                final ESS2View view = new ESS2View(metaFile.getShortName(), "Новый "+metaFile.getTitle(), metaFile.getComment());
                 view.getESS2Architecture().setOid(architecture.getOid());
                 view.getMetaFile().setOid(metaFile.getOid());
                 new APICall<JLong>(main) {
