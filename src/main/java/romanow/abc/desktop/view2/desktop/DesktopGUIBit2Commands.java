@@ -2,13 +2,13 @@ package romanow.abc.desktop.view2.desktop;
 
 import romanow.abc.core.UniException;
 import romanow.abc.core.constants.Values;
-import romanow.abc.core.entity.metadata.Meta2Bit;
-import romanow.abc.core.entity.metadata.Meta2BitRegister;
-import romanow.abc.core.entity.metadata.Meta2DataRegister;
-import romanow.abc.core.entity.metadata.Meta2Register;
+import romanow.abc.core.entity.metadata.*;
 import romanow.abc.core.entity.metadata.view.Meta2GUI;
 import romanow.abc.core.entity.metadata.view.Meta2GUI2StateBox;
+import romanow.abc.core.entity.metadata.view.Meta2GUIBit2Commands;
+import romanow.abc.core.entity.metadata.view.Meta2GUIReg;
 import romanow.abc.core.entity.subject2area.ESS2Architecture;
+import romanow.abc.core.entity.subject2area.ESS2Device;
 import romanow.abc.desktop.I_Button;
 import romanow.abc.desktop.Message;
 import romanow.abc.desktop.OK;
@@ -23,14 +23,14 @@ import java.awt.event.ActionListener;
 
 import static romanow.abc.core.entity.metadata.Meta2Entity.toHex;
 
-public class DesktopGUI2StateBox extends View2BaseDesktop {
+public class DesktopGUIBit2Commands extends View2BaseDesktop {
     protected JComponent textField;
     private int bitNum=0;
-    private JButton cmdButton=null;     // Кнопка
+    private JButton cmdButton=null;      // Кнопка
     private long lastBitValue=-1;        // Последнее значение разряда
     private long lastValue=0;            //
-    public DesktopGUI2StateBox(){
-        setType(Values.GUI2StateBox);
+    public DesktopGUIBit2Commands(){
+        setType(Values.GUIBit2Commands);
         }
     //----------------------------------------------------------------------
     protected JComponent createComponent(){
@@ -65,7 +65,7 @@ public class DesktopGUI2StateBox extends View2BaseDesktop {
         }
     @Override
     public void addToPanel(JPanel panel) {
-        Meta2GUI2StateBox element = (Meta2GUI2StateBox) getElement();
+        Meta2GUIBit2Commands element = (Meta2GUIBit2Commands) getElement();
         int hh = element.getH();
         if (hh==0) hh=25;
         if (element.getDx()!=0){
@@ -123,11 +123,16 @@ public class DesktopGUI2StateBox extends View2BaseDesktop {
                 new OK(200, 200, element.getTitle()+" "+(lastBitValue!=0 ? "ОТКЛ" : "ВКЛ"), new I_Button() {
                     @Override
                     public void onPush() {
+                            int cmd=0;
+                            Meta2RegLink link = null;
                         try {
-                            long vv = lastValue ^ (1<<bitNum);       // Инвертировать разряд
-                            writeMainRegister((int)vv);
+                            long vv = (lastValue >> bitNum) ^ 1;
+                            link = element.getCmdRegLink();
+                            ESS2Device device = getDevice();
+                            cmd = vv !=0 ? element.getCmdOff() : element.getCmdOff();
+                            device.getDriver().writeRegister(device.getShortName(),getDevUnit(),link.getRegNum(), cmd);
                             } catch (UniException ex) {
-                                String ss = "Ошибка изменения разряда: "+ex.toString();
+                                String ss = "Ошибка записи команды "+cmd+" в регистр: "+ link.getTitle() + ": "+ ex.toString();
                                 context.popup(ss);
                                 System.out.println(ss);
                                 }
@@ -149,7 +154,7 @@ public class DesktopGUI2StateBox extends View2BaseDesktop {
         }
     @Override
     public void putValue(long vv) throws UniException {
-        Meta2GUI2StateBox element = (Meta2GUI2StateBox) getElement();
+        Meta2GUIBit2Commands element = (Meta2GUIBit2Commands)  getElement();
         lastValue = vv;
         lastBitValue = (vv>>bitNum) & 01;
         if (cmdButton!=null)
@@ -163,6 +168,9 @@ public class DesktopGUI2StateBox extends View2BaseDesktop {
         super.setParams(context0,meta0, element0,onEvent0);
         Meta2Register register = (Meta2Register) getRegister();
         if (!(register instanceof Meta2BitRegister || ((Meta2GUI2StateBox) getElement()).isMixedRegister() && register instanceof Meta2DataRegister))
+            return "Недопустимый "+register.getTypeName()+" для "+getTypeName();
+        register = ((Meta2GUIBit2Commands)getElement()).getCmdRegLink().getRegister();
+        if (!(register instanceof Meta2CommandRegister))
             return "Недопустимый "+register.getTypeName()+" для "+getTypeName();
         return null;
         }

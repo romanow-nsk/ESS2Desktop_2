@@ -14,10 +14,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="Косяк в Modbus однобитные регистры">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ballblue.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/drawable/move.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/view/Meta2GUIBit2Commands.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS2EmptyEmulator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUIBit2Commands.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIBit2Commands.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIBit2Commands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/view/Meta2GUICommandBit.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/view/Meta2GUICommandBit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/drivers/ModBusBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/drivers/ModBusBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUI2StateBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUI2StateBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUILevelIndicator.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUILevelIndicator.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUILevelIndicator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUILevelIndicator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,14 +133,14 @@
       <recent name="romanow.abc.desktop.iec61850" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="romanow.abc.ess2.emulators" />
+      <recent name="romanow.abc.desktop.view2.desktop" />
+      <recent name="romanow.abc.core.entity.metadata.view" />
       <recent name="romanow.abc.dataserver" />
       <recent name="romanow.abc.ess2.iot" />
-      <recent name="romanow.abc.core.entity.subject2area" />
-      <recent name="romanow.abc.dataserver.profiler" />
-      <recent name="romanow.abc.ess2.iot.iotmessages" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ESSClient">
+  <component name="RunManager" selected="Application.ESS40ConsoleServer">
     <configuration name="ESS40ConsoleServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="romanow.abc.dataserver.ESS40ConsoleServer" />
       <module name="ESS2DataServer" />
@@ -212,8 +221,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ESSClient" />
         <item itemvalue="Application.ESS40ConsoleServer" />
+        <item itemvalue="Application.ESSClient" />
         <item itemvalue="Application.ESSIoTConsoleServer" />
         <item itemvalue="Application.ESSConsoleServer" />
         <item itemvalue="Application.IoTTestClient" />
@@ -228,13 +237,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00122" summary="Экспорт KotlinReact">
-      <created>1677414236296</created>
-      <option name="number" value="00122" />
-      <option name="presentableId" value="LOCAL-00122" />
-      <option name="project" value="LOCAL" />
-      <updated>1677414236296</updated>
     </task>
     <task id="LOCAL-00123" summary="Экспорт KotlinReact">
       <created>1677419478468</created>
@@ -572,7 +574,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682841308021</updated>
     </task>
-    <option name="localTasksCounter" value="171" />
+    <task id="LOCAL-00171" summary="Косяк в Modbus однобитные регистры">
+      <created>1682846533602</created>
+      <option name="number" value="00171" />
+      <option name="presentableId" value="LOCAL-00171" />
+      <option name="project" value="LOCAL" />
+      <updated>1682846533602</updated>
+    </task>
+    <option name="localTasksCounter" value="172" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -666,7 +675,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java</url>
-          <line>2909</line>
+          <line>2910</line>
           <option name="timeStamp" value="315" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -706,7 +715,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java</url>
-          <line>3315</line>
+          <line>3316</line>
           <option name="timeStamp" value="363" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -771,7 +780,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java</url>
-          <line>2336</line>
+          <line>2337</line>
           <option name="timeStamp" value="464" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -790,13 +799,8 @@
           <option name="timeStamp" value="487" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/drivers/ModBusServer.java</url>
-          <line>149</line>
-          <option name="timeStamp" value="488" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/drivers/ModBusBase.java</url>
-          <line>142</line>
+          <line>143</line>
           <option name="timeStamp" value="490" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -805,9 +809,24 @@
           <option name="timeStamp" value="491" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/drivers/ModBusServer.java</url>
-          <line>121</line>
-          <option name="timeStamp" value="492" />
+          <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUIBit2Commands.java</url>
+          <line>67</line>
+          <option name="timeStamp" value="497" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS2EmptyEmulator.java</url>
+          <line>67</line>
+          <option name="timeStamp" value="501" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/drivers/ModBusBase.java</url>
+          <line>157</line>
+          <option name="timeStamp" value="508" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/drivers/ModBusBase.java</url>
+          <line>96</line>
+          <option name="timeStamp" value="511" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS4ACDCEmulator.java</url>

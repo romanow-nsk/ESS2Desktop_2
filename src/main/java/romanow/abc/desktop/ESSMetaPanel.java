@@ -1451,7 +1451,8 @@ public class ESSMetaPanel extends ESSBasePanel {
             public void onSucess(ArrayList<DBRequest> oo) {
                 try {
                     metaData.clear();
-                    for (DBRequest request : oo) {
+                    for (int i=oo.size()-1; i>=0;i--) {
+                        DBRequest request = oo.get(i);
                         ESS2MetaFile file = (ESS2MetaFile) request.get(main.gson);
                         metaData.add(file);
                         //ConstValue cc = metaTypesMap.get(file.getMetaType());
