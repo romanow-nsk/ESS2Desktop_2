@@ -8,6 +8,7 @@ import romanow.abc.core.entity.metadata.Meta2Register;
 import romanow.abc.core.entity.metadata.Meta2SettingRegister;
 import romanow.abc.core.entity.metadata.view.Meta2GUI;
 import romanow.abc.core.entity.metadata.view.Meta2GUIData;
+import romanow.abc.core.entity.metadata.view.Meta2GUIRegW2;
 import romanow.abc.core.entity.subject2area.ESS2Architecture;
 import romanow.abc.desktop.Message;
 import romanow.abc.desktop.view2.FormContext2;
@@ -67,27 +68,8 @@ public class DesktopGUIData extends View2BaseDesktop {
     @Override
     public void putValue(long vv) throws UniException {
         Meta2Register register = getRegister();
-        if (((Meta2GUIData)getElement()).isByteSize()){
-            textField.setText(""+(byte)vv);
-            return;
-            }
-        int type = register.getFormat();
-        if (type==Values.FloatValue)
-            textField.setText(""+Float.intBitsToFloat((int)vv));
-        else{
-            if (register instanceof Meta2DataRegister){
-                if (((Meta2GUIData) getElement()).isIntValue())
-                    textField.setText(((Meta2DataRegister)register).regValueToIntString(getUnitIdx(),(int)vv));
-                else
-                    textField.setText(((Meta2DataRegister)register).regValueToString(getUnitIdx(),(int)vv));
-                }
-            else{
-                if (((Meta2GUIData) getElement()).isIntValue())
-                    textField.setText(((Meta2SettingRegister)register).regValueToIntString(getUnitIdx(),(int)vv));
-                else
-                    textField.setText(((Meta2SettingRegister)register).regValueToString(getUnitIdx(),(int)vv));
-                }
-            }
+        Meta2GUIRegW2 metaGUI = (Meta2GUIRegW2)getElement();
+        textField.setText(register.regValueToString(getUnitIdx(),(int)vv,metaGUI));
         }
 
     @Override

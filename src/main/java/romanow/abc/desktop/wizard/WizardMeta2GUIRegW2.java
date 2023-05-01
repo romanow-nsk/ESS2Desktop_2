@@ -32,6 +32,7 @@ public class WizardMeta2GUIRegW2 extends WizardMeta2GUI {
         onStart=true;
         IntValue.setSelected(elem.isIntValue());
         ByteSize.setSelected(elem.isByteSize());
+        AfterPoint.setText(""+elem.getAfterPoint());
         onStart=false;
         }
     /**
@@ -48,6 +49,8 @@ public class WizardMeta2GUIRegW2 extends WizardMeta2GUI {
         jLabel13 = new javax.swing.JLabel();
         IntValue = new javax.swing.JCheckBox();
         ByteSize = new javax.swing.JCheckBox();
+        jLabel14 = new javax.swing.JLabel();
+        AfterPoint = new javax.swing.JTextField();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -63,11 +66,11 @@ public class WizardMeta2GUIRegW2 extends WizardMeta2GUI {
             }
         });
         getContentPane().add(W2);
-        W2.setBounds(45, 175, 40, 25);
+        W2.setBounds(50, 180, 40, 25);
 
-        jLabel13.setText("W2");
+        jLabel13.setText("цифр после точки ");
         getContentPane().add(jLabel13);
-        jLabel13.setBounds(10, 180, 30, 16);
+        jLabel13.setBounds(105, 220, 120, 16);
 
         IntValue.setText("Формат целого");
         IntValue.addItemListener(new java.awt.event.ItemListener() {
@@ -86,6 +89,18 @@ public class WizardMeta2GUIRegW2 extends WizardMeta2GUI {
         });
         getContentPane().add(ByteSize);
         ByteSize.setBounds(100, 200, 140, 20);
+
+        jLabel14.setText("W2");
+        getContentPane().add(jLabel14);
+        jLabel14.setBounds(10, 180, 30, 16);
+
+        AfterPoint.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AfterPointKeyPressed(evt);
+            }
+        });
+        getContentPane().add(AfterPoint);
+        AfterPoint.setBounds(50, 210, 40, 25);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -117,13 +132,24 @@ public class WizardMeta2GUIRegW2 extends WizardMeta2GUI {
         back.onEnter("Изменено ByteSize"+": "+ByteSize.isSelected());
     }//GEN-LAST:event_ByteSizeItemStateChanged
 
+    private void AfterPointKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AfterPointKeyPressed
+        onKeyPressed("AfterPoint", AfterPoint, evt, new I_WizardAction() {
+            @Override
+            public void onAction(int value) {
+                elem.setAfterPoint(value);
+            }
+        });
+    }//GEN-LAST:event_AfterPointKeyPressed
+
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField AfterPoint;
     private javax.swing.JCheckBox ByteSize;
     private javax.swing.JCheckBox IntValue;
     private javax.swing.JTextField W2;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     // End of variables declaration//GEN-END:variables
 }

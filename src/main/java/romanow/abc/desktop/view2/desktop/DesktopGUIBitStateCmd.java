@@ -139,7 +139,7 @@ public class DesktopGUIBitStateCmd extends View2BaseDesktop {
         cmdButton.setText("...");
         }
     public void showInfoMessage() {
-        Meta2GUI2StateBox element = (Meta2GUI2StateBox) getElement();
+        Meta2GUIBitStateCmd element = (Meta2GUIBitStateCmd) getElement();
         int bitNumElem = element.getBitNum();
         Meta2BitRegister set = (Meta2BitRegister) getRegister();
         Meta2Bit bit = set.getBits().getByCode(bitNumElem);
