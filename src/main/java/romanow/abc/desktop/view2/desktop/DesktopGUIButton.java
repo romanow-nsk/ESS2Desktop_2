@@ -93,5 +93,6 @@ public class DesktopGUIButton extends View2BaseDesktop {
         if (!(getRegister() instanceof Meta2CommandRegister))
             return "Недопустимый "+getRegister().getTypeName()+" для "+getElement().getFullTitle();
         return null;
-    }
+        }
+
 }
