@@ -13,12 +13,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="Запись двойного регистра с проверкой">
-      <change afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/I_RegRW.java" afterDir="false" />
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="Связывание разрядов и команд ПП">
+      <change afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/bundle/Bundle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/bundle/BundleValue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/utils/Pair.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/utils/Pair.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/modules/I_Profiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/modules/I_Profiler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/modules/ProfilerBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/modules/ProfilerBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/modules/ProfilerEventList.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/modules/ProfilerEventList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/modules/ProfilerXLSStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/modules/ProfilerXLSStream.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/drivers/I_ModBusGroupServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/drivers/I_ModBusGroupServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/drivers/ModBusBaseEmulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/drivers/ModBusBaseEmulator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS2BARSEmulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS2BARSEmulator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS2DBEmulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS2DBEmulator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS2DMSEmulatorDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS2DMSEmulatorDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS2DMSEmulatorV2_0.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS2DMSEmulatorV2_0.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS2DMSEmulator_v0.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS2DMSEmulator_v0.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS2EmptyEmulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS2EmptyEmulator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS2IncRegEmulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS2IncRegEmulator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS2MemoryEmulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS2MemoryEmulator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS4ACDCEmulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS4ACDCEmulator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ShortWordRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ShortWordRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/IoTDeviceEmulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/IoTDeviceEmulator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ESS2Desktop.jar" beforeDir="false" afterPath="$PROJECT_DIR$/ESS2Desktop.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,8 +48,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -132,7 +149,7 @@
       <recent name="romanow.abc.ess2.iot" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ESS40ConsoleServer">
+  <component name="RunManager" selected="Application.ESSClient">
     <configuration name="ESS40ConsoleServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="romanow.abc.dataserver.ESS40ConsoleServer" />
       <module name="ESS2DataServer" />
@@ -213,8 +230,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ESS40ConsoleServer" />
         <item itemvalue="Application.ESSClient" />
+        <item itemvalue="Application.ESS40ConsoleServer" />
         <item itemvalue="Application.ESSIoTConsoleServer" />
         <item itemvalue="Application.ESSConsoleServer" />
         <item itemvalue="Application.IoTTestClient" />
@@ -229,13 +246,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00128" summary="IoT - SCADA">
-      <created>1678298832220</created>
-      <option name="number" value="00128" />
-      <option name="presentableId" value="LOCAL-00128" />
-      <option name="project" value="LOCAL" />
-      <updated>1678298832221</updated>
     </task>
     <task id="LOCAL-00129" summary="IoT - SCADA">
       <created>1678334649688</created>
@@ -573,7 +583,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683046015722</updated>
     </task>
-    <option name="localTasksCounter" value="177" />
+    <task id="LOCAL-00177" summary="Связывание разрядов и команд ПП">
+      <created>1683120876709</created>
+      <option name="number" value="00177" />
+      <option name="presentableId" value="LOCAL-00177" />
+      <option name="project" value="LOCAL" />
+      <updated>1683120876709</updated>
+    </task>
+    <option name="localTasksCounter" value="178" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -600,7 +617,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Данные модуля профилирования Excel" />
     <MESSAGE value="логгер профилирования" />
     <MESSAGE value="Обновление poi до 5.2.2" />
     <MESSAGE value="Убрано Asterisk-RSync" />
@@ -625,7 +641,8 @@
     <MESSAGE value="Косяк с проверкой регистров по записи" />
     <MESSAGE value="Косяк cmd Button клонирование" />
     <MESSAGE value="Запись двойного регистра с проверкой" />
-    <option name="LAST_COMMIT_MESSAGE" value="Запись двойного регистра с проверкой" />
+    <MESSAGE value="Связывание разрядов и команд ПП" />
+    <option name="LAST_COMMIT_MESSAGE" value="Связывание разрядов и команд ПП" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -637,7 +654,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS2DMSEmulatorV2_0.java</url>
-          <line>376</line>
+          <line>377</line>
           <option name="timeStamp" value="137" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -727,12 +744,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/IoTDeviceEmulator.java</url>
-          <line>300</line>
+          <line>301</line>
           <option name="timeStamp" value="409" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/IoTDeviceEmulator.java</url>
-          <line>281</line>
+          <line>282</line>
           <option name="timeStamp" value="416" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -792,7 +809,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS2EmptyEmulator.java</url>
-          <line>67</line>
+          <line>68</line>
           <option name="timeStamp" value="501" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -812,12 +829,22 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS4ACDCEmulator.java</url>
-          <line>350</line>
+          <line>358</line>
           <option name="timeStamp" value="535" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/modules/ProfilerEventList.java</url>
+          <line>52</line>
+          <option name="timeStamp" value="537" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/modules/ProfilerEventList.java</url>
+          <line>96</line>
+          <option name="timeStamp" value="544" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS4ACDCEmulator.java</url>
-          <line>40</line>
+          <line>41</line>
           <properties field="MODE_FLAGS" class="romanow.abc.ess2.emulators.ESS4ACDCEmulator" />
           <option name="timeStamp" value="344" />
         </line-breakpoint>
