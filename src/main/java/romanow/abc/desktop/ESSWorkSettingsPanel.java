@@ -84,6 +84,9 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         ProfilerFileSelect = new javax.swing.JButton();
         jLabel31 = new javax.swing.JLabel();
         ProfilerFilesPath = new javax.swing.JTextField();
+        jLabel32 = new javax.swing.JLabel();
+        ProfilerBundle = new javax.swing.JCheckBox();
+        ProfilerTrace = new javax.swing.JCheckBox();
 
         setLayout(null);
 
@@ -293,7 +296,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
 
         jLabel27.setText("Каталог профилирования");
         add(jLabel27);
-        jLabel27.setBounds(410, 310, 180, 16);
+        jLabel27.setBounds(520, 320, 180, 16);
 
         IEC61850Port.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -310,7 +313,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(ClockAcrossAPI);
-        ClockAcrossAPI.setBounds(410, 230, 340, 20);
+        ClockAcrossAPI.setBounds(410, 230, 200, 20);
 
         PriorityDispatcher.setText("Диспетчер приоритетов для запросов к ModBus");
         PriorityDispatcher.addItemListener(new java.awt.event.ItemListener() {
@@ -321,7 +324,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         add(PriorityDispatcher);
         PriorityDispatcher.setBounds(410, 200, 340, 20);
 
-        ProfilerOn.setText("Профилирование (порт)");
+        ProfilerOn.setText("Профилирование ");
         ProfilerOn.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 ProfilerOnItemStateChanged(evt);
@@ -348,7 +351,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(ProfilerScale);
-        ProfilerScale.setBounds(600, 290, 70, 25);
+        ProfilerScale.setBounds(690, 260, 70, 25);
 
         ProfilerFileSelect.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/statistic.png"))); // NOI18N
         ProfilerFileSelect.setBorderPainted(false);
@@ -359,11 +362,11 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(ProfilerFileSelect);
-        ProfilerFileSelect.setBounds(680, 320, 40, 40);
+        ProfilerFileSelect.setBounds(680, 330, 40, 40);
 
-        jLabel31.setText("Масштаб времени");
+        jLabel31.setText("Порт");
         add(jLabel31);
-        jLabel31.setBounds(410, 290, 150, 16);
+        jLabel31.setBounds(610, 240, 60, 16);
 
         ProfilerFilesPath.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -371,7 +374,29 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(ProfilerFilesPath);
-        ProfilerFilesPath.setBounds(410, 330, 260, 25);
+        ProfilerFilesPath.setBounds(410, 340, 260, 25);
+
+        jLabel32.setText("Масштаб времени");
+        add(jLabel32);
+        jLabel32.setBounds(690, 240, 110, 16);
+
+        ProfilerBundle.setText("Bundle");
+        ProfilerBundle.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ProfilerBundleItemStateChanged(evt);
+            }
+        });
+        add(ProfilerBundle);
+        ProfilerBundle.setBounds(410, 300, 120, 20);
+
+        ProfilerTrace.setText("Трассировка");
+        ProfilerTrace.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ProfilerTraceItemStateChanged(evt);
+            }
+        });
+        add(ProfilerTrace);
+        ProfilerTrace.setBounds(410, 280, 170, 20);
     }// </editor-fold>//GEN-END:initComponents
 
     private void GUIrefreshPeriodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GUIrefreshPeriodKeyPressed
@@ -492,6 +517,14 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         updateSettings(evt,"profilerPath",ProfilerFilesPath.getText());
     }//GEN-LAST:event_ProfilerFilesPathKeyPressed
 
+    private void ProfilerBundleItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ProfilerBundleItemStateChanged
+        procPressedBoolean(ProfilerBundle,"profilerBundle");
+    }//GEN-LAST:event_ProfilerBundleItemStateChanged
+
+    private void ProfilerTraceItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ProfilerTraceItemStateChanged
+        procPressedBoolean(ProfilerTrace,"profilerTrace");
+    }//GEN-LAST:event_ProfilerTraceItemStateChanged
+
     private void procPressedInt(KeyEvent evt, JTextField text, String name){
         if(evt.getKeyCode()!=10) return;
         int vv=0;
@@ -542,6 +575,8 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             ClockAcrossAPI.setSelected(ws.isClockAcrossAPI());
             PriorityDispatcher.setSelected(ws.isPriorityDispatcher());
             ProfilerOn.setSelected(ws.isProfilerOn());
+            ProfilerBundle.setSelected(ws.isProfilerBundle());
+            ProfilerTrace.setSelected(ws.isProfilerTrace());
             ProfilerPort.setText(""+ws.getProfilerPort());
             ProfilerScale.setText(""+ws.getProfilerScale());
             ProfilerFilesPath.setText(ws.getProfilerPath());
@@ -685,11 +720,13 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     private javax.swing.JTextField MainServerPeriod;
     private javax.swing.JTextField MainServerPort;
     private javax.swing.JCheckBox PriorityDispatcher;
+    private javax.swing.JCheckBox ProfilerBundle;
     private javax.swing.JButton ProfilerFileSelect;
     private javax.swing.JTextField ProfilerFilesPath;
     private javax.swing.JCheckBox ProfilerOn;
     private javax.swing.JTextField ProfilerPort;
     private javax.swing.JTextField ProfilerScale;
+    private javax.swing.JCheckBox ProfilerTrace;
     private javax.swing.JTextField RegisterAge;
     private javax.swing.JTextField SnapShotPeriod;
     private javax.swing.JTextField StreamDataCompressMode;
@@ -713,6 +750,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     // End of variables declaration//GEN-END:variables
