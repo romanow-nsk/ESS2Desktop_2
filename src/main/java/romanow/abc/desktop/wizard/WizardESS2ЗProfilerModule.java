@@ -5,9 +5,18 @@
  */
 package romanow.abc.desktop.wizard;
 
+import com.google.gson.Gson;
+import okhttp3.MultipartBody;
+import retrofit2.Call;
+import romanow.abc.core.API.RestAPICommon;
+import romanow.abc.core.DBRequest;
 import romanow.abc.core.constants.Values;
+import romanow.abc.core.entity.artifacts.Artifact;
+import romanow.abc.core.entity.baseentityes.JEmpty;
+import romanow.abc.core.entity.baseentityes.JLong;
 import romanow.abc.core.entity.subject2area.*;
 import romanow.abc.core.utils.FileNameExt;
+import romanow.abc.desktop.APICall;
 import romanow.abc.desktop.ESSMetaPanel;
 import romanow.abc.desktop.MainBaseFrame;
 
@@ -25,7 +34,7 @@ public class WizardESS2ЗProfilerModule extends WizardBaseViewDB {
         ClassName.setText(module.getClassName());
         Enabled.setSelected(module.isEnable());
         Trace.setSelected(module.isTrace());
-        DataFile.setText(module.getFilePath());
+        DataFile.setText(module.getProfileData().getTitle());
         setSize(750,200);
         }
     /**
@@ -85,7 +94,7 @@ public class WizardESS2ЗProfilerModule extends WizardBaseViewDB {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(10, 95, 80, 16);
 
-        SelectDataFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/load.png"))); // NOI18N
+        SelectDataFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/upload.png"))); // NOI18N
         SelectDataFile.setBorderPainted(false);
         SelectDataFile.setContentAreaFilled(false);
         SelectDataFile.addActionListener(new java.awt.event.ActionListener() {
@@ -130,13 +139,42 @@ public class WizardESS2ЗProfilerModule extends WizardBaseViewDB {
     }//GEN-LAST:event_ClassNameKeyPressed
 
     private void SelectDataFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectDataFileActionPerformed
+        FileNameExt fname = main.getInputFileName("Импорт данных профилирования", "*.xlsx", null);
+        final MultipartBody.Part body = RestAPICommon.createMultipartBody(fname);
+        new APICall<Artifact>(main) {
+            @Override
+            public Call<Artifact> apiFun() {
+                return main.getService().upload(main.getDebugToken(), "Profile Data import", fname.fileName(), body);
+                }
+            @Override
+            public void onSucess(final Artifact oo) {
+                final long oldOId = module.getProfileData().getOid();
+                module.getProfileData().setOidRef(oo);
+                DataFile.setText(module.getProfileData().getTitle());
+                oneUpdate("Изменено profileData "+DataFile.getText());
+                if (oldOId!=0)
+                     new APICall<JEmpty>(main) {
+                     @Override
+                     public Call<JEmpty> apiFun() {
+                          return main.getService().removeArtifact(main.getDebugToken(),oldOId);
+                          }
+                     @Override
+                     public void onSucess(JEmpty oo) {}
+                };
+
+            }
+        };
+
+        /*
         FileNameExt fileNameExt = main.getInputFileName("Файл данных профилирования","*.xls","");
         if (fileNameExt==null)
             return;
         DataFile.setText(fileNameExt.fullName());
         module.setFilePath(DataFile.getText());
         oneUpdate("Изменено filePath "+DataFile.getText());
+         */
     }//GEN-LAST:event_SelectDataFileActionPerformed
+
 
     /**
      * @param args the command line arguments
