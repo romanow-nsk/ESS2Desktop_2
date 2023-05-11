@@ -69,6 +69,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     private ArrayList<ESS2Node> nodes = new ArrayList<>();
     private GUITimer profilerTimer = new GUITimer();                    // Таймер профилирования
     private final static int profilerTimerDelay=3;                      // Таймер повтора профилирования
+    private boolean oldProfilerState=false;
     private String archStateIcons[]={
             "/drawable/settings-gray.png",
             "/drawable/settings-red.png",
@@ -117,6 +118,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         CIDLocal.setEnabled(false);
         IECServerOnOff.setEnabled(false);
         IEC61850ClientGUI.setEnabled(false);
+        ProfilerResults.setVisible(false);
         metaTypesMap = Values.constMap().getGroupMapByValue("MetaType");
         metaTypes = Values.constMap().getGroupList("MetaType");
         MetaTypes.removeAll();
@@ -359,6 +361,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         EditProfiler = new javax.swing.JButton();
         jSeparator10 = new javax.swing.JSeparator();
         jLabel42 = new javax.swing.JLabel();
+        ProfilerResults = new javax.swing.JButton();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -1406,6 +1409,17 @@ public class ESSMetaPanel extends ESSBasePanel {
         jLabel42.setText("клиент");
         add(jLabel42);
         jLabel42.setBounds(70, 335, 50, 16);
+
+        ProfilerResults.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/load.png"))); // NOI18N
+        ProfilerResults.setBorderPainted(false);
+        ProfilerResults.setContentAreaFilled(false);
+        ProfilerResults.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ProfilerResultsActionPerformed(evt);
+            }
+        });
+        add(ProfilerResults);
+        ProfilerResults.setBounds(50, 580, 40, 30);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ImportMetaDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportMetaDataActionPerformed
@@ -3398,6 +3412,22 @@ public class ESSMetaPanel extends ESSBasePanel {
         });
     }//GEN-LAST:event_EditProfilerActionPerformed
 
+    private void ProfilerResultsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfilerResultsActionPerformed
+        ProfilerResults.setEnabled(false);
+        new APICall<CallResult2>(main) {
+            @Override
+            public Call<CallResult2> apiFun() {
+                return main2.service2.profilerExport(main.debugToken);
+                }
+            @Override
+            public void onSucess(CallResult2 vv) {
+                if (vv.valid())
+                    main.loadFileAndDelete(vv.getArt());
+                System.out.println(vv.getErrors());
+                }
+            };
+    }//GEN-LAST:event_ProfilerResultsActionPerformed
+
     private void refreshIEC61850State(){
         new APICall<JInt>(main) {
             @Override
@@ -3426,10 +3456,15 @@ public class ESSMetaPanel extends ESSBasePanel {
             public void onSucess(JInt vv) {
                 viewServiceState(ProfilerOnOff,vv.getValue());
                 if (vv.getValue()== ServiceStateOn){
+                    oldProfilerState = true;
+                    ProfilerResults.setVisible(false);
                     profilerTimer.start(profilerTimerDelay, limitedProfile);
                     }
-                else
+                else{
+                    if (oldProfilerState)
+                        ProfilerResults.setVisible(true);
                     profilerTimer.cancel();
+                    }
                 }
             };
         }
@@ -3622,6 +3657,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JButton OnOffNode;
     private javax.swing.JPasswordField Password;
     private javax.swing.JButton ProfilerOnOff;
+    private javax.swing.JButton ProfilerResults;
     private java.awt.Choice Profilers;
     private javax.swing.JButton RefreshMeta;
     private javax.swing.JTextField RegNum;
