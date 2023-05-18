@@ -3413,7 +3413,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     }//GEN-LAST:event_EditProfilerActionPerformed
 
     private void ProfilerResultsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfilerResultsActionPerformed
-        ProfilerResults.setEnabled(false);
+        ProfilerResults.setVisible(false);
         new APICall<CallResult2>(main) {
             @Override
             public Call<CallResult2> apiFun() {

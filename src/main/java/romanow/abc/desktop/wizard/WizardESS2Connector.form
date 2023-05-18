@@ -38,7 +38,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="320" y="130" width="50" height="25"/>
+          <AbsoluteConstraints x="310" y="130" width="50" height="25"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -48,7 +48,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="230" y="135" width="80" height="-1"/>
+          <AbsoluteConstraints x="220" y="135" width="80" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -78,10 +78,11 @@
       </Properties>
       <Events>
         <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="DBEmulatorItemStateChanged"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DBEmulatorActionPerformed"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="470" y="164" width="110" height="-1"/>
+          <AbsoluteConstraints x="460" y="135" width="110" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -101,7 +102,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="140" y="160" width="50" height="25"/>
+          <AbsoluteConstraints x="170" y="160" width="40" height="25"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -111,7 +112,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="230" y="165" width="80" height="-1"/>
+          <AbsoluteConstraints x="220" y="165" width="80" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -121,18 +122,18 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="320" y="160" width="30" height="25"/>
+          <AbsoluteConstraints x="310" y="160" width="50" height="25"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
-        <Property name="text" type="java.lang.String" value="BaudRate"/>
+        <Property name="text" type="java.lang.String" value="&#x411;&#x438;&#x442;/&#x441;"/>
         <Property name="inheritsPopupMenu" type="boolean" value="false"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="460" y="135" width="80" height="-1"/>
+          <AbsoluteConstraints x="460" y="165" width="60" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -142,7 +143,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="380" y="160" width="30" height="25"/>
+          <AbsoluteConstraints x="420" y="130" width="30" height="25"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -155,7 +156,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="380" y="135" width="80" height="-1"/>
+          <AbsoluteConstraints x="370" y="165" width="80" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -165,7 +166,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="540" y="130" width="70" height="25"/>
+          <AbsoluteConstraints x="500" y="160" width="-1" height="25"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -175,7 +176,20 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="420" y="165" width="50" height="-1"/>
+          <AbsoluteConstraints x="370" y="135" width="50" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="Trace">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x422;&#x440;&#x430;&#x441;&#x441;&#x438;&#x440;&#x43e;&#x432;&#x43a;&#x430;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="TraceItemStateChanged"/>
+      </Events>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="570" y="135" width="110" height="20"/>
         </Constraint>
       </Constraints>
     </Component>
