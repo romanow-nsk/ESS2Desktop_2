@@ -270,7 +270,7 @@ public class ESSClient extends Client {
     private void setLocalEnvValues(ESS2EnvValuesList oo){
         EntityRefList<ESS2EnvValue> list = deployed.getEnvValues();
         for(ESS2EnvValue value : list)
-            value.setValid(false);
+            value.setDone(false);
         for(Pair<String,ArrayList<Double>> vv : oo.getList()){
             ESS2EnvValue value = list.getByName(vv.o1);
             if (value==null) {
@@ -278,10 +278,10 @@ public class ESSClient extends Client {
                 continue;
                 }
             value.setEnvValues(vv.o2);
-            value.setValid(true);
+            value.setDone(true);
             }
         for(ESS2EnvValue value : list){
-            if (!value.isValid())
+            if (!value.isDone())
                 System.out.println("Не инициализирована локальная переменная окружения "+ value.getShortName());
             else
                 System.out.println("Локальная переменная окружения "+ value.toString());
@@ -294,7 +294,7 @@ public class ESSClient extends Client {
                 ArrayList<Double> values = new ArrayList<>();
                     for(int logUnit=0;logUnit<equipment.getLogUnits().size();logUnit++) {
                         ESS2EnvValue value = deployed.getEnvValues().getByName(envVarName + logUnit);
-                        if (value == null || !value.isValid())
+                        if (value == null || !value.isDone())
                             System.out.println("Не найдена переменная окружения " + (envVarName + logUnit) + " для регистра " + equipment.getShortName() + "." + toHex(reg.getRegNum()));
                         else
                             values.add(value.getEnvValues().get(0));

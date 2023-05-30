@@ -90,7 +90,7 @@ public class DesktopGUIEnvVar extends View2BaseDesktop {
         ESS2EnvValue value = meta0.getEnvValues().getByName(name);
         if (value==null)
             return "Не найдена переменная окружения "+name;
-        if (!value.isValid())
+        if (!value.isDone())
             return "Отсутствует значение переменной окружения "+name;
         envVarValue = value.getEnvValues();
         valid = true;

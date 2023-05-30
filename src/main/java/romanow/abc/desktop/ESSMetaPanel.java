@@ -2773,7 +2773,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         if (Architectures.getItemCount() == 0)
             return;
         final ESS2Architecture architecture = architectures.get(Architectures.getSelectedIndex());
-        if (Profilers.getItemCount() == 0)
+        if (Scripts.getItemCount() == 0)
             return;
         final ESS2ScriptFile scriptFile= architecture.getScripts().get(Scripts.getSelectedIndex());
         new OK(200, 200, "Удалить скрипт " + scriptFile.getTitle(), new I_Button() {
@@ -2782,7 +2782,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JBoolean>(main) {
                     @Override
                     public Call<JBoolean> apiFun() {
-                        return main.service.removeEntity(main.debugToken, "ESS2ScriptFile", scriptFile.getOid());
+                        return main.service.deleteById(main.debugToken, "ESS2ScriptFile", scriptFile.getOid());
                     }
                     @Override
                     public void onSucess(JBoolean val) {
@@ -3133,7 +3133,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JBoolean>(main) {
                     @Override
                     public Call<JBoolean> apiFun() {
-                        return main.service.removeEntity(main.debugToken, "ESS2EnvValue", envValue.getOid());
+                        return main.service.deleteById(main.debugToken, "ESS2EnvValue", envValue.getOid());
                         }
                     @Override
                     public void onSucess(JBoolean val) {
