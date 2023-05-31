@@ -65,6 +65,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     private OwnDateTime userLoginTime = new OwnDateTime();
     private Meta2GUIForm prevForm=null;                         // Предыдущая форма (асинхр обновление)
     private boolean runtimeEditMode=false;
+    private boolean runtimeOnlyView=false;
     private final static int PopupLimitCount = 5;
     private final static int PopupLimitTime = 20;
     private PopupLimiter limiter = new PopupLimiter(PopupLimitCount,PopupLimitTime);
@@ -582,6 +583,12 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             if (par1==0)
                 editView.setVisible(false);
             }
+        if (code==EventRuntimeOnlyView){
+            runtimeOnlyView = par1!=0;
+            context.setRuntimeOnlyView(runtimeOnlyView);
+            if (par1==0)
+                editView.setVisible(false);
+        }
         if (code==EventRuntimeSelected){
             editView.setVisible(true);
             }
@@ -669,6 +676,8 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         }
     public synchronized void repaintValues(){       // По физическим устройствам
         if (!renderingOn)
+            return;
+        if (runtimeEditMode && runtimeOnlyView)
             return;
         testESSOnOffState();
         if (module!=null)

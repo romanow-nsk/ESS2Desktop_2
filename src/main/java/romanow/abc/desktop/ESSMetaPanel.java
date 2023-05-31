@@ -362,6 +362,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         jSeparator10 = new javax.swing.JSeparator();
         jLabel42 = new javax.swing.JLabel();
         ProfilerResults = new javax.swing.JButton();
+        OnlyView = new javax.swing.JCheckBox();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -1063,7 +1064,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(RuntimeEdit);
-        RuntimeEdit.setBounds(140, 460, 130, 20);
+        RuntimeEdit.setBounds(10, 460, 130, 20);
 
         RunTimeSaveChanges.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/save.png"))); // NOI18N
         RunTimeSaveChanges.setBorderPainted(false);
@@ -1420,6 +1421,15 @@ public class ESSMetaPanel extends ESSBasePanel {
         });
         add(ProfilerResults);
         ProfilerResults.setBounds(50, 580, 40, 30);
+
+        OnlyView.setText("Без данных");
+        OnlyView.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                OnlyViewItemStateChanged(evt);
+            }
+        });
+        add(OnlyView);
+        OnlyView.setBounds(140, 460, 110, 20);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ImportMetaDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportMetaDataActionPerformed
@@ -3428,6 +3438,10 @@ public class ESSMetaPanel extends ESSBasePanel {
             };
     }//GEN-LAST:event_ProfilerResultsActionPerformed
 
+    private void OnlyViewItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_OnlyViewItemStateChanged
+        main.sendEventPanel(BasePanel.EventRuntimeOnlyView,OnlyView.isSelected() ? 1 : 0 ,0,"");
+    }//GEN-LAST:event_OnlyViewItemStateChanged
+
     private void refreshIEC61850State(){
         new APICall<JInt>(main) {
             @Override
@@ -3655,6 +3669,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     private java.awt.Choice Nodes;
     private javax.swing.JButton OnOff;
     private javax.swing.JButton OnOffNode;
+    private javax.swing.JCheckBox OnlyView;
     private javax.swing.JPasswordField Password;
     private javax.swing.JButton ProfilerOnOff;
     private javax.swing.JButton ProfilerResults;

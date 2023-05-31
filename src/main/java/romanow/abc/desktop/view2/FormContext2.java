@@ -29,6 +29,7 @@ public class FormContext2 {
     @Getter @Setter private boolean infoMode = false;               // Индикатор тежима Info
     @Getter @Setter private long mainServerNodeId = 0;              // Номер узала на сервере ДЦ (0 - СНЭЭ)
     @Getter @Setter private boolean runtimeEditMode = false;        // Индикатор режима редактирования на лету
+    @Getter @Setter private boolean runtimeOnlyView = false;        // Редактирование на лету без данных
     @Getter @Setter private Meta2GUI selectedView=null;             // Выбранный элемент для клонирования
     @Getter @Setter private boolean localUser = false;              // Индикатор локального пользователя
     @Getter @Setter private boolean superUser = false;              // Индикатор суперпользователя
