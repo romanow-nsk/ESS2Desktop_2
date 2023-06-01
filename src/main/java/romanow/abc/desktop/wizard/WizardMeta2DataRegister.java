@@ -59,13 +59,11 @@ public class WizardMeta2DataRegister extends WizardMeta2Register {
         EnvValue = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
         });
-        getContentPane().setLayout(null);
 
         Power.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -77,7 +75,7 @@ public class WizardMeta2DataRegister extends WizardMeta2Register {
 
         jLabel2.setText("Ед.изм.");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(20, 135, 50, 14);
+        jLabel2.setBounds(20, 135, 50, 16);
 
         Unit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -87,17 +85,17 @@ public class WizardMeta2DataRegister extends WizardMeta2Register {
         getContentPane().add(Unit);
         Unit.setBounds(70, 130, 60, 25);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(10, 120, 720, 2);
+        jSeparator1.setBounds(10, 120, 720, 3);
 
         jLabel3.setText("Масштаб целого");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(140, 135, 100, 14);
+        jLabel3.setBounds(140, 135, 100, 16);
         getContentPane().add(StreamType);
         StreamType.setBounds(530, 130, 160, 25);
 
         jLabel1.setText("Тип ПД");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(480, 135, 60, 14);
+        jLabel1.setBounds(480, 135, 60, 16);
 
         SaveStreamType.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/save.png"))); // NOI18N
         SaveStreamType.setBorderPainted(false);
@@ -120,7 +118,7 @@ public class WizardMeta2DataRegister extends WizardMeta2Register {
 
         jLabel4.setText("Перем.окруж.");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(300, 135, 90, 14);
+        jLabel4.setBounds(300, 135, 90, 16);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

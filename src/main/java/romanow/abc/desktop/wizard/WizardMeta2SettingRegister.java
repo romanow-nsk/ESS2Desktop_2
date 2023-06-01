@@ -32,7 +32,7 @@ public class WizardMeta2SettingRegister extends WizardMeta2Register {
         DefValueFormula.setText(register.getDefValueFormula());
         MinValueFormula.setText(register.getMinValueFormula());
         Power.setText(""+register.getPower());
-        Unit.setText(""+register.getUnit());
+        Unit.setText(register.getUnit());
         DataRegNum.setText(getHEX().isSelected() ? "0x"+Integer.toString(register.getDataRegNum(),16) : ""+register.getDataRegNum());
         OverLimit.setSelected(register.isOverLimit());
         RemoteControl.setSelected(register.isRemoteEnable());
@@ -93,7 +93,6 @@ public class WizardMeta2SettingRegister extends WizardMeta2Register {
                 formWindowClosing(evt);
             }
         });
-        getContentPane().setLayout(null);
 
         Power.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -109,7 +108,7 @@ public class WizardMeta2SettingRegister extends WizardMeta2Register {
 
         jLabel2.setText("Ограничение по максимуму");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(20, 210, 160, 14);
+        jLabel2.setBounds(20, 210, 160, 16);
 
         MaxValueFormula.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -134,7 +133,7 @@ public class WizardMeta2SettingRegister extends WizardMeta2Register {
 
         jLabel4.setText("Ед.измерения");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(460, 140, 110, 14);
+        jLabel4.setBounds(460, 140, 110, 16);
 
         Unit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -146,11 +145,11 @@ public class WizardMeta2SettingRegister extends WizardMeta2Register {
 
         jLabel5.setText("Значение по умолчанию");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(20, 150, 160, 14);
+        jLabel5.setBounds(20, 150, 160, 16);
 
         jLabel6.setText("Ограничение по минимуму");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(20, 180, 160, 14);
+        jLabel6.setBounds(20, 180, 160, 16);
 
         MinValueFormula.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -167,7 +166,7 @@ public class WizardMeta2SettingRegister extends WizardMeta2Register {
             }
         });
         getContentPane().add(OverLimit);
-        OverLimit.setBounds(20, 240, 170, 23);
+        OverLimit.setBounds(20, 240, 170, 20);
 
         RemoteControl.setText("Удаленное управление");
         RemoteControl.addItemListener(new java.awt.event.ItemListener() {
@@ -176,13 +175,13 @@ public class WizardMeta2SettingRegister extends WizardMeta2Register {
             }
         });
         getContentPane().add(RemoteControl);
-        RemoteControl.setBounds(20, 270, 180, 23);
+        RemoteControl.setBounds(20, 270, 180, 20);
         getContentPane().add(FailType);
         FailType.setBounds(340, 240, 230, 25);
 
         jLabel7.setText("Перем.окружения");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(460, 200, 110, 14);
+        jLabel7.setBounds(460, 200, 110, 16);
 
         DataRegNum.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -207,7 +206,7 @@ public class WizardMeta2SettingRegister extends WizardMeta2Register {
         getContentPane().add(SaveFailType);
         SaveFailType.setBounds(580, 230, 30, 30);
         getContentPane().add(jSeparator2);
-        jSeparator2.setBounds(10, 120, 560, 2);
+        jSeparator2.setBounds(10, 120, 560, 3);
 
         MaxValue.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -243,7 +242,7 @@ public class WizardMeta2SettingRegister extends WizardMeta2Register {
 
         jLabel9.setText("Масштаб целого");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(460, 170, 110, 14);
+        jLabel9.setBounds(460, 170, 110, 16);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
