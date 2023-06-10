@@ -1883,33 +1883,6 @@ public class ESSMetaPanel extends ESSBasePanel {
         MainBaseFrame.viewUpdate(evt, true);
     }//GEN-LAST:event_SettingValueKeyPressed
 
-    private void StreamDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StreamDataActionPerformed
-        /*
-        try {
-            if (!main2.plm.isReady()) {
-                popup("Устройство не готово");
-                return;
-            }
-            int regNum = Integer.parseInt(RegNum.getText());
-            new APICall<DataSet>(main) {
-                @Override
-                public Call<DataSet> apiFun() {
-                    return main2.service2.getStreamData(main.debugToken, 0, regNum, 0, 0, 0, 0, 0);
-                }
-
-                @Override
-                public void onSucess(DataSet oo) {
-                    trendView.addTrendView(oo);
-                    trendView.toFront();
-                }
-            };
-        } catch (Exception ee) {
-            popup(ee.toString());
-        }
-
-         */
-    }//GEN-LAST:event_StreamDataActionPerformed
-
     public void refreshMetaData() {
         createMetaDataList();
         changesCount = 0;

@@ -3,6 +3,7 @@ package romanow.abc.drivers;
 import retrofit2.Call;
 import romanow.abc.core.API.RestAPIBase;
 import romanow.abc.core.API.RestAPIESS2;
+import romanow.abc.core.ErrorList;
 import romanow.abc.core.UniException;
 import romanow.abc.core.entity.baseentityes.JBoolean;
 import romanow.abc.core.entity.baseentityes.JEmpty;
@@ -23,9 +24,10 @@ public class ModBusClientProxyDriver implements I_ModbusGroupDriver {
     private String token;
     private ESSClient main;
     @Override
-    public void openConnection(Object needed[], HashMap<String, String> paramList) throws UniException {
+    public ErrorList openConnection(Object needed[], HashMap<String, String> paramList){
         ready=false;
         int ii=0;
+        ErrorList errors = new ErrorList();
         try {
             service = (RestAPIBase)needed[0];
             ii=1;
@@ -33,12 +35,12 @@ public class ModBusClientProxyDriver implements I_ModbusGroupDriver {
             ii=2;
             main = (ESSClient)needed[2];
             } catch (Exception ee){
-                throw UniException.bug("Недопустимый класс драйвера "+needed[ii].getClass().getSimpleName());
+                errors.addError("Недопустимый класс драйвера "+needed[ii].getClass().getSimpleName());
                 }
         String size = paramList.get("token");
         int vv;
         if (size==null)
-            throw UniException.user("Нет параметра token");
+            errors.addError("Нет параметра token");
         token = paramList.get("token");
         /*
         String id = paramList.get("id");
@@ -64,21 +66,24 @@ public class ModBusClientProxyDriver implements I_ModbusGroupDriver {
                 }
             }.call(main);
          */
-        ready=true;
+        if (errors.valid())
+            ready=true;
+        return errors;
         }
     @Override
-    public void closeConnection() throws UniException{
-        new APICall2<CallResult>(){
-            @Override
-            public Call<CallResult> apiFun() {
-                return service2.disconnectFromEquipment(token);
-            }
-        }.call(main);
-        ready=false;
+    public void closeConnection(){
+        try {
+            new APICall2<CallResult>() {
+                @Override
+                public Call<CallResult> apiFun() {
+                    return service2.disconnectFromEquipment(token);
+                }
+            }.call(main);
+            } catch (Exception ee){}
+            ready=false;
         }
-
     @Override
-    public void reopenConnection() {
+    public void reopenConnection(ErrorList errorList) {
         }
     @Override
     public int getState() {

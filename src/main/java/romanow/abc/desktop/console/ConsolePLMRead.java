@@ -14,33 +14,6 @@ public class ConsolePLMRead extends ConsoleCommand {
     @Override
     public String exec(ConsoleClient client, ArrayList<String> command) throws UniException {
         return "";
-        /*
-        try {
-            int sz = command.size();
-            if (!client.plm.isReady()){
-                return  "Устройство не готово\n";
-                }
-            if (sz==1)
-                return "Не хватает параметров\n";
-            int regNum = Integer.parseInt(command.get(1));
-            int regOffset = 0;
-            if (sz>2)
-                regOffset = Integer.parseInt(command.get(2));
-            MetaRegister register = client.meta.getRegisters().get(regNum);
-            if (register==null){
-                return  "Регистр "+regNum+" не найден\n";
-                }
-            int val = client.plm.readRegister("",0,regNum+regOffset);
-            String ss = hex ?  Integer.toString(val & 0xFFFF,16) : ""+val;
-            return "Регистр прочитан "+(regNum+regOffset)+":"+ss+"\n";
-            }
-        catch(UniException e1){
-            return  "Недопустимое значение параметра";
-            }
-        catch(Exception ee){
-            return "Недопустимое значение параметра";
-            }
-         */
         }
     @Override
     public String help() {
