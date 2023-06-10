@@ -758,6 +758,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                         public void run() {
                             asyncBusy=false;
                             limiter.popup("Ошибка сервера: "+ee.getSysMessage());
+                            main.sendEventPanel(EventPLMOffForce,0,0,"",null);
                             }
                         });
                      }

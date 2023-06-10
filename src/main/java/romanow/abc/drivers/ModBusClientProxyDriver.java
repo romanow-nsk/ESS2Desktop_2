@@ -83,7 +83,8 @@ public class ModBusClientProxyDriver implements I_ModbusGroupDriver {
             ready=false;
         }
     @Override
-    public void reopenConnection(ErrorList errorList) {
+    public String reopenConnection() {
+        return "";
         }
     @Override
     public int getState() {
