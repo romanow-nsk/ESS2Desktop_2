@@ -13,12 +13,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="Обработка ошибок Modbus">
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/drivers/ModBusBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/drivers/ModBusBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/drivers/ModBusRTU.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/drivers/ModBusRTU.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/drivers/ModBusServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/drivers/ModBusServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/drivers/ModBusTCP.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/drivers/ModBusTCP.java" afterDir="false" />
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="Обработка ошибок Modbus - лишние байты (запись)">
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/drivers/ModBusAcceptorTCP.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/drivers/ModBusAcceptorTCP.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ESS2Desktop.jar" beforeDir="false" afterPath="$PROJECT_DIR$/ESS2Desktop.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,13 +226,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00156" summary="Каталог результатов профилирования">
-      <created>1681057433802</created>
-      <option name="number" value="00156" />
-      <option name="presentableId" value="LOCAL-00156" />
-      <option name="project" value="LOCAL" />
-      <updated>1681057433802</updated>
     </task>
     <task id="LOCAL-00157" summary="Лишние библиотеки в jar">
       <created>1681308394984</created>
@@ -572,7 +563,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686498329196</updated>
     </task>
-    <option name="localTasksCounter" value="205" />
+    <task id="LOCAL-00205" summary="Обработка ошибок Modbus - лишние байты (запись)">
+      <created>1686548333072</created>
+      <option name="number" value="00205" />
+      <option name="presentableId" value="LOCAL-00205" />
+      <option name="project" value="LOCAL" />
+      <updated>1686548333072</updated>
+    </task>
+    <option name="localTasksCounter" value="206" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -599,7 +597,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Форматированые вывода, знаков после точки" />
     <MESSAGE value="Косяк с проверкой регистров по записи" />
     <MESSAGE value="Косяк cmd Button клонирование" />
     <MESSAGE value="Запись двойного регистра с проверкой" />
@@ -624,7 +621,8 @@
     <MESSAGE value="БАРС 0602" />
     <MESSAGE value="Регистр Данных - 2 байта" />
     <MESSAGE value="Обработка ошибок Modbus" />
-    <option name="LAST_COMMIT_MESSAGE" value="Обработка ошибок Modbus" />
+    <MESSAGE value="Обработка ошибок Modbus - лишние байты (запись)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Обработка ошибок Modbus - лишние байты (запись)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
