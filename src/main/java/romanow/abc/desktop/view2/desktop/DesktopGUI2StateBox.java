@@ -126,6 +126,7 @@ public class DesktopGUI2StateBox extends View2BaseDesktop {
                         try {
                             long vv = lastValue ^ (1<<bitNum);       // Инвертировать разряд
                             writeMainRegister((int)vv);
+                            context.getBack().forceRepaint();
                             } catch (UniException ex) {
                                 String ss = "Ошибка изменения разряда: "+ex.toString();
                                 context.popup(ss);

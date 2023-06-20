@@ -125,7 +125,8 @@ public class DesktopGUIBitStateCmd extends View2BaseDesktop {
                         try {
                             int cmd = lastBitValue==0 ? element.getCmdOn() : element.getCmdOff();
                             writeRegister(element.getCmdReg(),cmd);
-                            context.repaintValues();
+                            context.getBack().forceRepaint();
+                            //context.repaintValues();
                             } catch (UniException ex) {
                                 String ss = "Ошибка записи команды: "+ex.toString();
                                 context.popup(ss);

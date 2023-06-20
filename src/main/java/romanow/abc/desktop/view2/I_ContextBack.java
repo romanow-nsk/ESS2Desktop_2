@@ -7,4 +7,5 @@ public interface I_ContextBack {
     public void repaintView();
     public void repaintValues();
     public int getAcccessLevel();
+    public void forceRepaint();
 }

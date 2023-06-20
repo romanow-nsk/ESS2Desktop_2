@@ -19,7 +19,7 @@ public class FormContext2 {
     public final static int ModeNext=0;
     public final static int ModeCrearIdx=1;
     public final static int ModeForce=2;
-    private I_ContextBack back;
+    @Getter private I_ContextBack back;
     @Getter @Setter private MainBaseFrame main;
     @Getter @Setter private Meta2GUIView view;                      // Общие данные ЧМИ
     @Setter private ESS2View currentView=null;

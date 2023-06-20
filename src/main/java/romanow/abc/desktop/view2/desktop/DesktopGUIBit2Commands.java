@@ -131,7 +131,8 @@ public class DesktopGUIBit2Commands extends View2BaseDesktop {
                             ESS2Device device = getDevice();
                             cmd = vv !=0 ? element.getCmdOff() : element.getCmdOff();
                             device.getDriver().writeRegister(device.getShortName(),getDevUnit(),link.getRegNum(), cmd);
-                            } catch (UniException ex) {
+                            context.getBack().forceRepaint();
+                        } catch (UniException ex) {
                                 String ss = "Ошибка записи команды "+cmd+" в регистр: "+ link.getTitle() + ": "+ ex.toString();
                                 context.popup(ss);
                                 System.out.println(ss);

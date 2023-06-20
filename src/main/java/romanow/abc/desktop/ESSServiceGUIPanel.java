@@ -73,6 +73,11 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     JButton editView = null;
     private FormContext2 context = new FormContext2(new I_ContextBack() {
         @Override
+        public void forceRepaint(){
+            if (guiLoop!=null)
+                guiLoop.interrupt();
+            }
+        @Override
         public void popup(String ss) {
             limiter.popup(ss);
             }

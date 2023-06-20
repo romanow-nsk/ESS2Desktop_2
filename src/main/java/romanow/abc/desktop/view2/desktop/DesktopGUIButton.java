@@ -66,7 +66,8 @@ public class DesktopGUIButton extends View2BaseDesktop {
                     public void onPush() {
                         try {
                             writeMainRegister(cmd.getCode());
-                            } catch (UniException ex) {
+                            context.getBack().forceRepaint();
+                        } catch (UniException ex) {
                                 String ss = "Ошибка записи команды: "+ex.toString();
                                 context.popup(ss);
                                 System.out.println(ss);

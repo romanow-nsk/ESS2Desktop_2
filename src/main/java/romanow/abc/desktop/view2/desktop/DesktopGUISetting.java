@@ -82,7 +82,8 @@ public class DesktopGUISetting extends View2BaseDesktop {
                                     writeMainRegister(Float.floatToIntBits((float) value));
                                 else
                                     writeMainRegister(register.doubleToRegValueSet(getUnitIdx(),value));
-                                context.repaintValues();
+                                context.getBack().forceRepaint();
+                                //context.repaintValues();
                                 } catch (UniException ex) {
                                     String ss = "Ошибка записи уставки: "+ex.toString();
                                     context.popup(ss);
