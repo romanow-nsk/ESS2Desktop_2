@@ -3322,7 +3322,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         final ESS2Architecture architecture = architectures.get(Architectures.getSelectedIndex());
         if (Profilers.getItemCount() == 0)
             return;
-        final ESS2ProfilerModule module= architecture.getProfilers().get(Emulators.getSelectedIndex());
+        final ESS2ProfilerModule module= architecture.getProfilers().get(Profilers.getSelectedIndex());
         new OK(200, 200, "Удалить модуль профилирования " + module.getTitle(), new I_Button() {
             @Override
             public void onPush() {
