@@ -50,6 +50,7 @@ public class ESSClient extends Client {
         setPassword(Values.env().superUser().getPassword());
         addIP("10.200.200.70");
         addIP("10.200.200.71");
+        addIP("10.32.0.2");
         }
     public void initPanels() {
         super.initPanels();

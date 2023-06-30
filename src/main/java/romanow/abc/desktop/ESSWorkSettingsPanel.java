@@ -87,6 +87,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         jLabel32 = new javax.swing.JLabel();
         ProfilerBundle = new javax.swing.JCheckBox();
         ProfilerTrace = new javax.swing.JCheckBox();
+        InterruptRegisterOn = new javax.swing.JCheckBox();
 
         setLayout(null);
 
@@ -397,6 +398,15 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         });
         add(ProfilerTrace);
         ProfilerTrace.setBounds(410, 280, 170, 20);
+
+        InterruptRegisterOn.setText("Опрос регистров прерываний");
+        InterruptRegisterOn.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                InterruptRegisterOnItemStateChanged(evt);
+            }
+        });
+        add(InterruptRegisterOn);
+        InterruptRegisterOn.setBounds(20, 380, 280, 20);
     }// </editor-fold>//GEN-END:initComponents
 
     private void GUIrefreshPeriodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GUIrefreshPeriodKeyPressed
@@ -525,6 +535,10 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         procPressedBoolean(ProfilerTrace,"profilerTrace");
     }//GEN-LAST:event_ProfilerTraceItemStateChanged
 
+    private void InterruptRegisterOnItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_InterruptRegisterOnItemStateChanged
+        procPressedBoolean(InterruptRegisterOn,"interruptRegisterOn");
+    }//GEN-LAST:event_InterruptRegisterOnItemStateChanged
+
     private void procPressedInt(KeyEvent evt, JTextField text, String name){
         if(evt.getKeyCode()!=10) return;
         int vv=0;
@@ -580,6 +594,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             ProfilerPort.setText(""+ws.getProfilerPort());
             ProfilerScale.setText(""+ws.getProfilerScale());
             ProfilerFilesPath.setText(ws.getProfilerPath());
+            InterruptRegisterOn.setSelected(ws.isInterruptRegisterOn());
             refreshMainServerParams();
             } catch (Exception e) { popup(e.toString()); }
         }
@@ -624,16 +639,16 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         try {
             wsr = main.service.updateWorkSettings(main.debugToken,new DBRequest(ws,main.gson)).execute();
             if (!wsr.isSuccessful()){
-                popup("Ошибка обновления настроек  " + httpError(wsr));
+                popup("Ошибка обновления настроек  " + httpError(wsr),true);
                 return;
                 }
-            popup("Настройки обновлены");
+            popup("Настройки обновлены",true);
             if (evt!=null)
                 main.viewUpdate(evt,true);
             main.sendEventPanel(EventRefreshSettings,0,0,"");
             } catch (IOException e) {
                 main.viewUpdate(evt,false);
-                popup(e.toString());
+                popup(e.toString(),true);
                 }
         }
     private void updateSettings(KeyEvent evt, String name, int val){
@@ -641,16 +656,16 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         try {
             wsr = main.service.updateWorkSettings(main.debugToken,name,val).execute();
             if (!wsr.isSuccessful()){
-                popup("Ошибка обновления настроек  " + httpError(wsr));
+                popup("Ошибка обновления настроек  " + httpError(wsr),true);
                 return;
                 }
-            popup("Настройки обновлены");
+            popup("Настройки обновлены",true);
             if (evt!=null)
                 main.viewUpdate(evt,true);
             main.sendEventPanel(EventRefreshSettings,0,0,"");
             } catch (IOException e) {
                 main.viewUpdate(evt,false);
-                popup(e.toString());
+                popup(e.toString(),true);
                 }
         }
     private void updateSettings(KeyEvent evt, String name, boolean val){
@@ -658,16 +673,16 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         try {
             wsr = main.service.updateWorkSettings(main.debugToken,name,val).execute();
             if (!wsr.isSuccessful()){
-                popup("Ошибка обновления настроек  " + httpError(wsr));
+                popup("Ошибка обновления настроек  " + httpError(wsr),true);
                 return;
-            }
-            popup("Настройки обновлены");
+                }
+            popup("Настройки обновлены",true);
             if (evt!=null)
                 main.viewUpdate(evt,true);
             main.sendEventPanel(EventRefreshSettings,0,0,"");
             } catch (IOException e) {
                 main.viewUpdate(evt,false);
-                popup(e.toString());
+                popup(e.toString(),true);
                 }
         }
     private void updateSettings(KeyEvent evt, String name, String val){
@@ -675,16 +690,16 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         try {
             wsr = main.service.updateWorkSettings(main.debugToken,name,val).execute();
             if (!wsr.isSuccessful()){
-                popup("Ошибка обновления настроек  " + httpError(wsr));
+                popup("Ошибка обновления настроек  " + httpError(wsr),true);
                 return;
                 }
-            popup("Настройки обновлены");
+            popup("Настройки обновлены",true);
             if (evt!=null)
                 main.viewUpdate(evt,true);
             main.sendEventPanel(EventRefreshSettings,0,0,"");
             } catch (IOException e) {
                 main.viewUpdate(evt,false);
-                popup(e.toString());
+                popup(e.toString(),true);
                 }
             }
         private void updateSettings(Component evt, String name, String val){
@@ -693,16 +708,16 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
                 wsr = main.service.updateWorkSettings(main.debugToken,name,val).execute();
                 if (!wsr.isSuccessful()){
                     System.out.println("Ошибка обновления настроек  " + httpError(wsr));
-                    popup("Ошибка обновления настроек, см. панель трассировки");
+                    popup("Ошибка обновления настроек, см. панель трассировки",true);
                     return;
                     }
-                popup("Настройки обновлены");
+                popup("Настройки обновлены",true);
                 if (evt!=null)
                     main.viewUpdate(evt,true);
                 main.sendEventPanel(EventRefreshSettings,0,0,"");
             } catch (IOException e) {
                 main.viewUpdate(evt,false);
-                popup(e.getMessage());
+                popup(e.getMessage(),true);
             }
         }
 
@@ -714,6 +729,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     private javax.swing.JTextField FileScanPeriod;
     private javax.swing.JTextField GUIrefreshPeriod;
     private javax.swing.JTextField IEC61850Port;
+    private javax.swing.JCheckBox InterruptRegisterOn;
     private javax.swing.JTextField MainServerConnectPeriod;
     private javax.swing.JTextField MainServerIP;
     private javax.swing.JCheckBox MainServerMode;

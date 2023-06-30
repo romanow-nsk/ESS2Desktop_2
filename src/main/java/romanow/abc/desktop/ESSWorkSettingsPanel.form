@@ -512,5 +512,18 @@
         </Constraint>
       </Constraints>
     </Component>
+    <Component class="javax.swing.JCheckBox" name="InterruptRegisterOn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x41e;&#x43f;&#x440;&#x43e;&#x441; &#x440;&#x435;&#x433;&#x438;&#x441;&#x442;&#x440;&#x43e;&#x432; &#x43f;&#x440;&#x435;&#x440;&#x44b;&#x432;&#x430;&#x43d;&#x438;&#x439;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="InterruptRegisterOnItemStateChanged"/>
+      </Events>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="20" y="380" width="280" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
   </SubComponents>
 </Form>
