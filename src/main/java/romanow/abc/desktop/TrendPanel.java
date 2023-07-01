@@ -213,7 +213,7 @@ public class TrendPanel extends javax.swing.JPanel implements I_Trend{
             renderer.setDrawSeriesLineAsPath(true);
             }
         DateAxis axis = (DateAxis) plot.getDomainAxis();
-        axis.setDateFormatOverride(new SimpleDateFormat("dd.MM:k.m.s"));
+        axis.setDateFormatOverride(new SimpleDateFormat("dd.MM:h.m.s"));
         return chart;
         }
     //==========================================================================================
