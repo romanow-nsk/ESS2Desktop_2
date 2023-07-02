@@ -41,6 +41,8 @@ import java.util.ArrayList;
  * @author romanow
  */
 public class TrendPanel extends javax.swing.JPanel implements I_Trend{
+    private final static int ScaleRange=200;
+    private final static int ShiftRange=200;
     private ArrayList<StreamRegisterData> data = new ArrayList<>();
     private ArrayList<StreamRegisterData> view = new ArrayList<>();
     private boolean viewReady=false;
@@ -55,6 +57,12 @@ public class TrendPanel extends javax.swing.JPanel implements I_Trend{
     public TrendPanel(){}
     public void init(FormContext2 context, Runnable after) {
         initComponents();
+        Scale.setMaximum(ScaleRange);
+        Scale.setMinimum(0);
+        Scale.setValue(0);
+        Shift.setMinimum(ShiftRange);
+        Shift.setMinimum(0);
+        Shift.setValue(ShiftRange/2);
         StatList.add("...");
         setVisible(true);
         createJChartPanel(context);
@@ -79,6 +87,10 @@ public class TrendPanel extends javax.swing.JPanel implements I_Trend{
         Back = new javax.swing.JButton();
         Add = new javax.swing.JButton();
         StatListView = new java.awt.Choice();
+        Scale = new javax.swing.JSlider();
+        Shift = new javax.swing.JSlider();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setLayout(null);
 
@@ -119,7 +131,7 @@ public class TrendPanel extends javax.swing.JPanel implements I_Trend{
         add(Fore);
         Fore.setBounds(420, 0, 40, 30);
 
-        Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/left.png"))); // NOI18N
+        Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/left.PNG"))); // NOI18N
         Back.setBorderPainted(false);
         Back.setContentAreaFilled(false);
         Back.addActionListener(new java.awt.event.ActionListener() {
@@ -144,6 +156,45 @@ public class TrendPanel extends javax.swing.JPanel implements I_Trend{
         StatListView.setBackground(new java.awt.Color(204, 204, 204));
         add(StatListView);
         StatListView.setBounds(460, 5, 300, 30);
+
+        Scale.setValue(0);
+        Scale.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                ScaleStateChanged(evt);
+            }
+        });
+        Scale.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+                ScaleCaretPositionChanged(evt);
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+            }
+        });
+        add(Scale);
+        Scale.setBounds(150, 30, 240, 20);
+
+        Shift.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                ShiftStateChanged(evt);
+            }
+        });
+        Shift.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+                ShiftCaretPositionChanged(evt);
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+            }
+        });
+        add(Shift);
+        Shift.setBounds(500, 30, 260, 20);
+
+        jLabel1.setText("Масштаб");
+        add(jLabel1);
+        jLabel1.setBounds(80, 30, 70, 16);
+
+        jLabel2.setText("Сдвиг");
+        add(jLabel2);
+        jLabel2.setBounds(460, 30, 60, 16);
     }// </editor-fold>//GEN-END:initComponents
 
     //--------------------------------------------------------------------------
@@ -161,23 +212,46 @@ public class TrendPanel extends javax.swing.JPanel implements I_Trend{
         panel.setFillZoomRectangle(true);
         panel.setMouseWheelEnabled(true);
         if (context==null){
-            panel.setPreferredSize(new Dimension(Client.PanelW - 75, Client.PanelH - 100));
-            panel.setBounds(10, 35, Client.PanelW - 75, Client.PanelH - 100);
+            panel.setPreferredSize(new Dimension(Client.PanelW - 60, Client.PanelH - 110));
+            panel.setBounds(10, 55, Client.PanelW - 60, Client.PanelH - 110);
             }
         else {
-            panel.setPreferredSize(new Dimension(context.x(Client.PanelW - 75), context.y(Client.PanelH - 130)));
-            panel.setBounds(context.x(10), context.y(35), context.x(Client.PanelW - 75), context.y(Client.PanelH - 130));
+            panel.setPreferredSize(new Dimension(context.x(Client.PanelW - 75), context.y(Client.PanelH - 155)));
+            panel.setBounds(context.x(10), context.y(55), context.x(Client.PanelW - 75), context.y(Client.PanelH - 155));
             }
         add(panel);
         }
     private void refreshJChartPanel() {         // Со всех графиков
+        double scale = 1+Scale.getValue()*50./ScaleRange;
+        double shift = Shift.getValue();
         dataset.removeAllSeries();
+        long timeMin=-1,timeMax=-1;
+        for(StreamRegisterData set : view){
+            for(StreamDataValue dataValue : set.getValueList()){
+                if (timeMin==-1 || dataValue.timeStamp < timeMin)
+                    timeMin = dataValue.timeStamp;
+                if (timeMax==-1 || dataValue.timeStamp > timeMax)
+                    timeMax = dataValue.timeStamp;
+                }
+            }
+        if (timeMin==-1){
+            revalidate();
+            repaint();
+            return;
+            }
+        long ss = timeMax-timeMin;
+        long dt = (long)(ss/scale);
+        long dt0 = (ss-dt)/2;
+        long tMin=timeMin+(long)((2.*dt0)*shift/ShiftRange);
+        long tMax=tMin+dt;
         for(StreamRegisterData set : view){
             TimeSeries s1 = new TimeSeries(set.getTitle());
             for(StreamDataValue dataValue : set.getValueList()){
-                OwnDateTime tt = new OwnDateTime(dataValue.timeStamp);
-                Second sec = new Second(tt.second(),tt.minute(),tt.hour(),tt.day(),tt.month(),tt.year());
-                s1.add(sec,dataValue.value);
+                if (dataValue.timeStamp>=tMin && dataValue.timeStamp<=tMax){
+                    OwnDateTime tt = new OwnDateTime(dataValue.timeStamp);
+                    Second sec = new Second(tt.second(),tt.minute(),tt.hour(),tt.day(),tt.month(),tt.year());
+                    s1.add(sec,dataValue.value);
+                    }
                 }
             dataset.addSeries(s1);
             }
@@ -347,6 +421,22 @@ public class TrendPanel extends javax.swing.JPanel implements I_Trend{
         refreshJChartPanel();
     }//GEN-LAST:event_BackActionPerformed
 
+    private void ShiftCaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_ShiftCaretPositionChanged
+        refreshJChartPanel();
+    }//GEN-LAST:event_ShiftCaretPositionChanged
+
+    private void ScaleCaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_ScaleCaretPositionChanged
+        refreshJChartPanel();
+    }//GEN-LAST:event_ScaleCaretPositionChanged
+
+    private void ScaleStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ScaleStateChanged
+        refreshJChartPanel();
+    }//GEN-LAST:event_ScaleStateChanged
+
+    private void ShiftStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ShiftStateChanged
+        refreshJChartPanel();
+    }//GEN-LAST:event_ShiftStateChanged
+
 
     @Override
     public void toFront() { }
@@ -358,7 +448,11 @@ public class TrendPanel extends javax.swing.JPanel implements I_Trend{
     private javax.swing.JButton Clear;
     private javax.swing.JButton Fore;
     private javax.swing.JButton Remove;
+    private javax.swing.JSlider Scale;
+    private javax.swing.JSlider Shift;
     private java.awt.Choice StatList;
     private java.awt.Choice StatListView;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

@@ -127,7 +127,7 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
             }
         });
         add(ShowGraph);
-        ShowGraph.setBounds(420, 20, 40, 40);
+        ShowGraph.setBounds(420, 25, 40, 40);
 
         jLabel2.setText("До");
         add(jLabel2);

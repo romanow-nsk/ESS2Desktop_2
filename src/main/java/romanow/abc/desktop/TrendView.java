@@ -28,7 +28,7 @@ public class TrendView extends javax.swing.JFrame implements I_Trend{
         trend.init(null,new Runnable() {
             @Override
             public void run() {
-                trend.setBounds(0,30,Client.PanelW,Client.PanelH);
+                trend.setBounds(0,5,Client.PanelW,Client.PanelH);
                 add(trend);
                 }
             });
