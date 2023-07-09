@@ -53,16 +53,8 @@ public class DesktopGUIDateTime extends View2BaseDesktop {
         }
     public void showInfoMessage() {
         Meta2Register set =  getRegister();
-        String ss = "Регистр данных "+toHex(set.getRegNum()+getRegOffset())
+        String ss = "Регистр даты/времени "+toHex(set.getRegNum()+getRegOffset())
                 +" ["+toHex(set.getRegNum())+"] "+set.getShortName()+"$"+set.getTitle()+"$";
-        if (set instanceof Meta2DataRegister){
-            Meta2DataRegister set2 = (Meta2DataRegister)set;
-            ss+="Потоковый  - "+(set2.getStreamType()!=Values.DataStreamNone ? "да":"нет")+",";
-            ss+=" Ед.изм. "+ set2.getUnit();
-            }
-        else{
-            ss+=" Ед.изм. "+ ((Meta2SettingRegister)set).getUnit();
-            }
         new Message(300,300,ss,Values.PopupMessageDelay);
         }
     @Override

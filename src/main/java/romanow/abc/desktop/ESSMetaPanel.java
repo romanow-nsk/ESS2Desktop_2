@@ -3254,7 +3254,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         for(ESS2Equipment equipment : arch.getEquipments()){
             equipment.createCIDRecord(arch.getShortName());
             CIDCreateData data = equipment.getCidData();
-                    ff.setName(arch.getTitle()+"_"+equipment.getTitle()+".cid");
+            ff.setName(arch.getTitle()+"_"+equipment.getTitle()+".cid");
             try {
                 OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(ff.fullName()), "UTF-8");
                 writer.write(data.toString());

@@ -88,6 +88,8 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         ProfilerBundle = new javax.swing.JCheckBox();
         ProfilerTrace = new javax.swing.JCheckBox();
         InterruptRegisterOn = new javax.swing.JCheckBox();
+        jLabel35 = new javax.swing.JLabel();
+        EventsQueuePeriod = new javax.swing.JTextField();
 
         setLayout(null);
 
@@ -188,9 +190,9 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         add(jLabel33);
         jLabel33.setBounds(20, 80, 280, 16);
 
-        jLabel34.setText("Цикл опроса источников файлов (сек)");
+        jLabel34.setText("Цикл опроса очередей событий (сек)");
         add(jLabel34);
-        jLabel34.setBounds(20, 230, 260, 16);
+        jLabel34.setBounds(20, 380, 260, 16);
 
         StreamDataCompressMode.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -406,7 +408,19 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(InterruptRegisterOn);
-        InterruptRegisterOn.setBounds(20, 380, 280, 20);
+        InterruptRegisterOn.setBounds(20, 410, 280, 20);
+
+        jLabel35.setText("Цикл опроса источников файлов (сек)");
+        add(jLabel35);
+        jLabel35.setBounds(20, 230, 260, 16);
+
+        EventsQueuePeriod.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                EventsQueuePeriodKeyPressed(evt);
+            }
+        });
+        add(EventsQueuePeriod);
+        EventsQueuePeriod.setBounds(310, 370, 70, 25);
     }// </editor-fold>//GEN-END:initComponents
 
     private void GUIrefreshPeriodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GUIrefreshPeriodKeyPressed
@@ -539,6 +553,10 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         procPressedBoolean(InterruptRegisterOn,"interruptRegisterOn");
     }//GEN-LAST:event_InterruptRegisterOnItemStateChanged
 
+    private void EventsQueuePeriodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EventsQueuePeriodKeyPressed
+        procPressedInt(evt, EventsQueuePeriod,"eventsQueuePeriod");
+    }//GEN-LAST:event_EventsQueuePeriodKeyPressed
+
     private void procPressedInt(KeyEvent evt, JTextField text, String name){
         if(evt.getKeyCode()!=10) return;
         int vv=0;
@@ -595,6 +613,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             ProfilerScale.setText(""+ws.getProfilerScale());
             ProfilerFilesPath.setText(ws.getProfilerPath());
             InterruptRegisterOn.setSelected(ws.isInterruptRegisterOn());
+            EventsQueuePeriod.setText(""+ws.getEventsQueuePeriod());
             refreshMainServerParams();
             } catch (Exception e) { popup(e.toString()); }
         }
@@ -725,6 +744,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     private javax.swing.JTextField ArchiveDepthInDay;
     private javax.swing.JCheckBox ClockAcrossAPI;
     private javax.swing.JTextField EventsPeriod;
+    private javax.swing.JTextField EventsQueuePeriod;
     private javax.swing.JTextField FailureTestPeriod;
     private javax.swing.JTextField FileScanPeriod;
     private javax.swing.JTextField GUIrefreshPeriod;
@@ -769,5 +789,6 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
     // End of variables declaration//GEN-END:variables
 }
