@@ -116,7 +116,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         RemoveEnvValue.setEnabled(true);
         EditEnvValue.setEnabled(true);
         CIDLocal.setEnabled(false);
-        IECServerOnOff.setEnabled(false);
+        IEC61850OnOff.setEnabled(false);
         IEC61850ClientGUI.setEnabled(false);
         ProfilerResults.setVisible(false);
         metaTypesMap = Values.constMap().getGroupMapByValue("MetaType");
@@ -163,6 +163,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         OnOff.setVisible(!mainServerMode);
         OnOffNode.setVisible(mainServerMode);
         refreshIEC61850State();
+        refreshIEC60870State();
         refreshProfilerState();
         }
     private void setMetaTypeSelector(int type){
@@ -348,7 +349,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         FullScreen = new javax.swing.JCheckBox();
         OnOffNode = new javax.swing.JButton();
         CIDLocal = new javax.swing.JButton();
-        IECServerOnOff = new javax.swing.JButton();
+        IEC61850OnOff = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         IEC61850ClientGUI = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
@@ -363,6 +364,8 @@ public class ESSMetaPanel extends ESSBasePanel {
         jLabel42 = new javax.swing.JLabel();
         ProfilerResults = new javax.swing.JButton();
         OnlyView = new javax.swing.JCheckBox();
+        IEC60870OnOff = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -1320,16 +1323,16 @@ public class ESSMetaPanel extends ESSBasePanel {
         add(CIDLocal);
         CIDLocal.setBounds(270, 490, 40, 30);
 
-        IECServerOnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/status_gray.png"))); // NOI18N
-        IECServerOnOff.setBorderPainted(false);
-        IECServerOnOff.setContentAreaFilled(false);
-        IECServerOnOff.addActionListener(new java.awt.event.ActionListener() {
+        IEC61850OnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/status_gray.png"))); // NOI18N
+        IEC61850OnOff.setBorderPainted(false);
+        IEC61850OnOff.setContentAreaFilled(false);
+        IEC61850OnOff.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IECServerOnOffActionPerformed(evt);
+                IEC61850OnOffActionPerformed(evt);
             }
         });
-        add(IECServerOnOff);
-        IECServerOnOff.setBounds(230, 485, 40, 40);
+        add(IEC61850OnOff);
+        IEC61850OnOff.setBounds(230, 485, 40, 40);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel6.setText("Профилирование");
@@ -1348,9 +1351,9 @@ public class ESSMetaPanel extends ESSBasePanel {
         IEC61850ClientGUI.setBounds(310, 490, 40, 30);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel7.setText("IEC61850");
+        jLabel7.setText("МЭК 61850");
         add(jLabel7);
-        jLabel7.setBounds(140, 490, 70, 16);
+        jLabel7.setBounds(150, 510, 70, 16);
 
         ProfilerOnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/status_gray.png"))); // NOI18N
         ProfilerOnOff.setBorderPainted(false);
@@ -1430,6 +1433,22 @@ public class ESSMetaPanel extends ESSBasePanel {
         });
         add(OnlyView);
         OnlyView.setBounds(140, 460, 110, 20);
+
+        IEC60870OnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/status_gray.png"))); // NOI18N
+        IEC60870OnOff.setBorderPainted(false);
+        IEC60870OnOff.setContentAreaFilled(false);
+        IEC60870OnOff.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IEC60870OnOffActionPerformed(evt);
+            }
+        });
+        add(IEC60870OnOff);
+        IEC60870OnOff.setBounds(120, 485, 40, 40);
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel9.setText("МЭК 61850");
+        add(jLabel9);
+        jLabel9.setBounds(170, 490, 70, 16);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ImportMetaDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportMetaDataActionPerformed
@@ -2604,6 +2623,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                     int state = oo.getState();
                     boolean connected = state == Values.ASConnected;
                     refreshIEC61850State();
+                    refreshIEC60870State();
                     refreshProfilerState();
                     deployed.setArchitectureState(state);
                     System.out.println(oo);
@@ -3268,7 +3288,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 }
     }//GEN-LAST:event_CIDLocalActionPerformed
 
-    private void IECServerOnOffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IECServerOnOffActionPerformed
+    private void IEC61850OnOffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IEC61850OnOffActionPerformed
         if (!main2.deployed.isConnected()){
             System.out.println("Допустимо только при подключенном оборудовании");
             return;
@@ -3281,10 +3301,10 @@ public class ESSMetaPanel extends ESSBasePanel {
             @Override
             public void onSucess(CallResult vv) {
                 System.out.println(vv.toString());
-                viewServiceState(IECServerOnOff,vv.getState());
+                viewServiceState(IEC61850OnOff,vv.getState());
                 }
             };
-        }//GEN-LAST:event_IECServerOnOffActionPerformed
+        }//GEN-LAST:event_IEC61850OnOffActionPerformed
 
     private void IEC61850ClientGUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IEC61850ClientGUIActionPerformed
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -3415,6 +3435,24 @@ public class ESSMetaPanel extends ESSBasePanel {
         main.sendEventPanel(BasePanel.EventRuntimeOnlyView,OnlyView.isSelected() ? 1 : 0 ,0,"");
     }//GEN-LAST:event_OnlyViewItemStateChanged
 
+    private void IEC60870OnOffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IEC60870OnOffActionPerformed
+        if (!main2.deployed.isConnected()){
+            System.out.println("Допустимо только при подключенном оборудовании");
+            return;
+        }
+        new APICall<CallResult>(main) {
+            @Override
+            public Call<CallResult> apiFun() {
+                return main2.service2.iec60870ServerOnOff(main.debugToken);
+                }
+            @Override
+            public void onSucess(CallResult vv) {
+                System.out.println(vv.toString());
+                viewServiceState(IEC60870OnOff,vv.getState());
+               }
+            };
+    }//GEN-LAST:event_IEC60870OnOffActionPerformed
+
     private void refreshIEC61850State(){
         new APICall<JInt>(main) {
             @Override
@@ -3423,8 +3461,20 @@ public class ESSMetaPanel extends ESSBasePanel {
                 }
             @Override
             public void onSucess(JInt vv) {
-                viewServiceState(IECServerOnOff,vv.getValue());
+                viewServiceState(IEC61850OnOff,vv.getValue());
                 }
+            };
+        }
+    private void refreshIEC60870State(){
+        new APICall<JInt>(main) {
+            @Override
+            public Call<JInt> apiFun() {
+                return main2.service2.iec60870ServerState(main.debugToken);
+            }
+            @Override
+            public void onSucess(JInt vv) {
+                viewServiceState(IEC60870OnOff,vv.getValue());
+            }
             };
         }
     private I_EmptyEvent limitedProfile = new I_EmptyEvent() {
@@ -3570,7 +3620,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         ExecScriptServer.setEnabled(!enabled);
         //-----------------------------------------------
         CIDLocal.setEnabled(!enabled);
-        IECServerOnOff.setEnabled(!enabled);
+        IEC61850OnOff.setEnabled(!enabled);
         IEC61850ClientGUI.setEnabled(!enabled);
     }
 
@@ -3623,8 +3673,9 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JCheckBox FullScreen;
     private javax.swing.JCheckBox HEXReg;
     private javax.swing.JCheckBox HEXValue;
+    private javax.swing.JButton IEC60870OnOff;
     private javax.swing.JButton IEC61850ClientGUI;
-    private javax.swing.JButton IECServerOnOff;
+    private javax.swing.JButton IEC61850OnOff;
     private javax.swing.JButton ImportMetaData;
     private javax.swing.JButton ImportMetaEquipment2;
     private javax.swing.JButton ImportScript;
@@ -3719,6 +3770,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator2;

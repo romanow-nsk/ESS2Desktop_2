@@ -90,6 +90,8 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         InterruptRegisterOn = new javax.swing.JCheckBox();
         jLabel35 = new javax.swing.JLabel();
         EventsQueuePeriod = new javax.swing.JTextField();
+        jLabel36 = new javax.swing.JLabel();
+        IEC60870Port = new javax.swing.JTextField();
 
         setLayout(null);
 
@@ -170,7 +172,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         add(RegisterAge);
         RegisterAge.setBounds(310, 250, 70, 25);
 
-        jLabel23.setText("Порт  сервера IEC 61850");
+        jLabel23.setText("Порт  сервера МЭК 60870");
         add(jLabel23);
         jLabel23.setBounds(410, 170, 160, 16);
 
@@ -307,7 +309,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(IEC61850Port);
-        IEC61850Port.setBounds(600, 160, 70, 25);
+        IEC61850Port.setBounds(600, 140, 70, 25);
 
         ClockAcrossAPI.setText("События таймеров через API");
         ClockAcrossAPI.addItemListener(new java.awt.event.ItemListener() {
@@ -421,6 +423,18 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         });
         add(EventsQueuePeriod);
         EventsQueuePeriod.setBounds(310, 370, 70, 25);
+
+        jLabel36.setText("Порт  сервера МЭК 61850");
+        add(jLabel36);
+        jLabel36.setBounds(410, 150, 160, 16);
+
+        IEC60870Port.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                IEC60870PortKeyPressed(evt);
+            }
+        });
+        add(IEC60870Port);
+        IEC60870Port.setBounds(600, 170, 70, 25);
     }// </editor-fold>//GEN-END:initComponents
 
     private void GUIrefreshPeriodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GUIrefreshPeriodKeyPressed
@@ -557,6 +571,10 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         procPressedInt(evt, EventsQueuePeriod,"eventsQueuePeriod");
     }//GEN-LAST:event_EventsQueuePeriodKeyPressed
 
+    private void IEC60870PortKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IEC60870PortKeyPressed
+        procPressedInt(evt, IEC60870Port,"iec60870Port");
+    }//GEN-LAST:event_IEC60870PortKeyPressed
+
     private void procPressedInt(KeyEvent evt, JTextField text, String name){
         if(evt.getKeyCode()!=10) return;
         int vv=0;
@@ -604,6 +622,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             MainServerConnectPeriod.setText(""+ws.getMainServerConnectPeriod());
             MainServerMode.setSelected(ws.isMainServerMode());
             IEC61850Port.setText(""+ws.getIec61850Port());
+            IEC60870Port.setText(""+ws.getIec60870Port());
             ClockAcrossAPI.setSelected(ws.isClockAcrossAPI());
             PriorityDispatcher.setSelected(ws.isPriorityDispatcher());
             ProfilerOn.setSelected(ws.isProfilerOn());
@@ -748,6 +767,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     private javax.swing.JTextField FailureTestPeriod;
     private javax.swing.JTextField FileScanPeriod;
     private javax.swing.JTextField GUIrefreshPeriod;
+    private javax.swing.JTextField IEC60870Port;
     private javax.swing.JTextField IEC61850Port;
     private javax.swing.JCheckBox InterruptRegisterOn;
     private javax.swing.JTextField MainServerConnectPeriod;
@@ -790,5 +810,6 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
     // End of variables declaration//GEN-END:variables
 }
