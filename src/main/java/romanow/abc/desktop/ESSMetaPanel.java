@@ -1351,7 +1351,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         IEC61850ClientGUI.setBounds(310, 490, 40, 30);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel7.setText("МЭК 61850");
+        jLabel7.setText("МЭК 60870");
         add(jLabel7);
         jLabel7.setBounds(150, 510, 70, 16);
 
