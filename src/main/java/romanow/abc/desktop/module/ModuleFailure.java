@@ -177,8 +177,12 @@ public class ModuleFailure extends Module {
             System.out.println("Прочитано событий "+res.size());
             events1.clear();
             Gson gson = new Gson();
-            for(DBRequest request : res)
-                events1.add((Failure) request.get(gson));
+            for(DBRequest request : res){
+                Failure ff = (Failure) request.get(gson);
+                if (ff.getEndTime().dateTimeValid())
+                    System.out.println(ff);
+                events1.add(ff);
+                }
             res = new APICall2<ArrayList<DBRequest>>(){
                 @Override
                 public Call<ArrayList<DBRequest>> apiFun() {
