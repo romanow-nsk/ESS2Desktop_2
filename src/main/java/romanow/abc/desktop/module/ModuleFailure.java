@@ -99,8 +99,8 @@ public class ModuleFailure extends Module {
         super.repaintView();
         }
 
-    private String[] columnsHeader = new String[] {"дата","время", "тип","событие"};
-    private int sizes[] = {100,80,120,700};
+    private String[] columnsHeader = new String[] {"дата","начало", "оконч.","тип","событие"};
+    private int sizes[] = {100,80,80,120,700};
     private void showTable(){
             Vector<Vector<String>> data = new Vector<Vector<String>>();
             Vector<String> header = new Vector<String>();
@@ -111,6 +111,7 @@ public class ModuleFailure extends Module {
                 OwnDateTime dd = essEvent.getArrivalTime();
                 row.add(dd.dateToString());
                 row.add(dd.timeFullToString());
+                row.add(essEvent.getEndTime().timeFullToString());
                 row.add(Values.title("EventType",essEvent.getType()));
                 row.add(essEvent.getTitle());
                 data.add(row);

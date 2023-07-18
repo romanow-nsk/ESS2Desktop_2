@@ -27,11 +27,17 @@ import java.util.Vector;
 
 public class ModuleEventAll extends Module {
     public final static int EventsDeepth=5;                 // "Глубина" в днях чтения событий
+    public final boolean endTime;
     protected ArrayList<ArchESSEvent> events = new ArrayList<>();
     protected ArrayList<ArchESSEvent> selected = new ArrayList<>();
     protected JTable table;
     private ListSelectionListener listener;
-    public ModuleEventAll(){}
+    public ModuleEventAll(boolean endTime0){
+        endTime = endTime0;
+        }
+    public ModuleEventAll(){
+        endTime = false;
+        }
     private int types[] = {};
     public int[] eventTypes(){ return types; }
     @Override
@@ -40,17 +46,21 @@ public class ModuleEventAll extends Module {
         repaintView();
         }
     private String[] columnsHeader = new String[] {"дата","время", "тип","событие"};
+    private String[] columnsHeader2 = new String[] {"дата","начало", "оконч.","тип","событие"};
     private int sizes[] = {100,80,120,700};
+    private int sizes2[] = {100,80,80,120,700};
     private void showTable(){
             Vector<Vector<String>> data = new Vector<Vector<String>>();
             Vector<String> header = new Vector<String>();
-            for(String ss : columnsHeader)
+            for(String ss : endTime ? columnsHeader2 : columnsHeader)
                 header.add(ss);
             for(ArchESSEvent essEvent : selected){
                 Vector<String> row = new Vector<String>();
                 OwnDateTime dd = essEvent.getArrivalTime();
                 row.add(dd.dateToString());
                 row.add(dd.timeFullToString());
+                if (endTime)
+                    row.add(essEvent.getEndTime().timeFullToString());
                 row.add(Values.title("EventType",essEvent.getType()));
                 row.add(essEvent.getTitle());
                 data.add(row);
@@ -89,8 +99,9 @@ public class ModuleEventAll extends Module {
                 table.getSelectionModel().addListSelectionListener(listener);
                 panel.add(scroll);
                 }
-            for(int i=0;i<sizes.length;i++)
-                table.getColumnModel().getColumn(i).setPreferredWidth(sizes[i]);
+            int ss[] = endTime ? sizes2 : sizes;
+            for(int i=0;i<ss.length;i++)
+                table.getColumnModel().getColumn(i).setPreferredWidth(ss[i]);
             //panel.repaint();
         }
 
