@@ -70,6 +70,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     private final static int PopupLimitTime = 20;
     private PopupLimiter limiter = new PopupLimiter(PopupLimitCount,PopupLimitTime);
     private ESSGUIEditPanel editPanel = null;
+    private volatile int asyncCount=0;                          // Счетчик асинхронных вызовов
     JButton editView = null;
     private FormContext2 context = new FormContext2(new I_ContextBack() {
         @Override
@@ -138,7 +139,10 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                             continue;
                         java.awt.EventQueue.invokeLater(new Runnable() {
                             public void run() {
-                                repaintValues();
+                                if (asyncCount!=0)
+                                    System.out.println("Пропуск рендеринга, "+asyncCount+" незавершенных запросов");
+                                else
+                                    repaintValues();
                                 }
                             });
                         }
@@ -706,6 +710,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 }
             }
         renderSeqNum++;             // Установить след. номер запроса
+        asyncCount=0;
         for(ESS2Device device : main2.deployed.getDevices()){
             ArrayList<UnitRegisterList> list2 = device.createList(false);
                 for(UnitRegisterList list : list2){
@@ -715,15 +720,12 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 }
         }
     //------------------------------------------------------------------------
-    private volatile boolean asyncBusy=false;
     private synchronized void readPLMRegistersAsync(final ESS2Device device,final UnitRegisterList list, final Meta2GUIForm currentForm){
-        //if (asyncBusy)
-        //    return;
-        //asyncBusy=true;
         if (!renderingOn)
             return;
         final int currentRenderSeqNum = renderSeqNum;
         final long tt =  new OwnDateTime().timeInMS();
+            asyncCount++;
             new Thread(new Runnable() {
             @Override
             public void run() {
@@ -742,8 +744,8 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                     }.call(main);
                     java.awt.EventQueue.invokeLater(new Runnable() {
                         public void run() {
-                            asyncBusy=false;
                             synchronized (ESSServiceGUIPanel.this){
+                                asyncCount--;
                                 if (renderSeqNum!=currentRenderSeqNum){      // Совпадение посл.номера запроса
                                     System.out.println("Несовпадение номеров запроса (трассировка) "+renderSeqNum+" "+currentRenderSeqNum);
                                     return;
@@ -752,7 +754,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                             try {
                                 repaintValuesOnAnswer(device, list.getUnitIdx(), values,currentForm);
                                 //System.out.println("Ждали: " + (new OwnDateTime().timeInMS()-tt));
-                            } catch (UniException e) {
+                                } catch (UniException e) {
                                     limiter.popup("Ошибка GUI: "+e.getSysMessage());
                                     }
                         }
@@ -761,7 +763,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 } catch (final UniException ee){
                     java.awt.EventQueue.invokeLater(new Runnable() {
                         public void run() {
-                            asyncBusy=false;
+                            asyncCount--;
                             limiter.popup("Ошибка сервера: "+ee.getSysMessage());
                             main.sendEventPanel(EventPLMOffForce,0,0,"",null);
                             }
