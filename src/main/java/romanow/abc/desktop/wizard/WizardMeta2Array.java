@@ -31,7 +31,7 @@ public class WizardMeta2Array extends WizardBaseView {
         }
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
-        setSize(800,250);
+        setSize(850,250);
         array = (Meta2Array) entity;
         if (array.getElem()==null)
             Elem.setText("???");
