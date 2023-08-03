@@ -19,6 +19,7 @@ import java.util.ArrayList;
  * @author romanow0
  */
 public class WizardMeta2DataRegister extends WizardMeta2Register {
+    private boolean onStart=false;
     private ArrayList<ConstValue> streamTypes;
     private Meta2DataRegister register;
     public WizardMeta2DataRegister() {
@@ -26,7 +27,7 @@ public class WizardMeta2DataRegister extends WizardMeta2Register {
         }
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
-        setSize(800,200);
+        setSize(850,250);
         register = (Meta2DataRegister)entity;
         Unit.setText(register.getUnit());
         Power.setText(""+register.getPower());
@@ -38,6 +39,9 @@ public class WizardMeta2DataRegister extends WizardMeta2Register {
         for(int i=0; i<streamTypes.size(); i++)
             if(streamTypes.get(i).value()==register.getStreamType())
                 StreamType.select(i);
+        onStart=true;
+        IntAsFloat60870.setSelected(register.isAsFloat60870());
+        onStart=false;
         }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,6 +62,7 @@ public class WizardMeta2DataRegister extends WizardMeta2Register {
         SaveStreamType = new javax.swing.JButton();
         EnvValue = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        IntAsFloat60870 = new javax.swing.JCheckBox();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -120,6 +125,15 @@ public class WizardMeta2DataRegister extends WizardMeta2Register {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(300, 135, 90, 16);
 
+        IntAsFloat60870.setText("60879 int как float");
+        IntAsFloat60870.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                IntAsFloat60870ItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(IntAsFloat60870);
+        IntAsFloat60870.setBounds(20, 160, 150, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -166,8 +180,16 @@ public class WizardMeta2DataRegister extends WizardMeta2Register {
         });
     }//GEN-LAST:event_EnvValueKeyPressed
 
+    private void IntAsFloat60870ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_IntAsFloat60870ItemStateChanged
+        if (onStart)
+            return;
+        register.setAsFloat60870(IntAsFloat60870.isSelected());
+        back.onEnter("Изменено AsFloat60870"+": "+IntAsFloat60870.isSelected());
+    }//GEN-LAST:event_IntAsFloat60870ItemStateChanged
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField EnvValue;
+    private javax.swing.JCheckBox IntAsFloat60870;
     private javax.swing.JTextField Power;
     private javax.swing.JButton SaveStreamType;
     private java.awt.Choice StreamType;

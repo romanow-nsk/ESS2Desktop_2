@@ -26,7 +26,7 @@ public class WizardMeta2SettingRegister extends WizardMeta2Register {
         }
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
-        setSize(800,450);
+        setSize(850,450);
         register = (Meta2SettingRegister)entity;
         MaxValueFormula.setText(register.getMaxValueFormula());
         DefValueFormula.setText(register.getDefValueFormula());

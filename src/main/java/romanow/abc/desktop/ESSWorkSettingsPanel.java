@@ -30,6 +30,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     public void initPanel(MainBaseFrame main0){
         super.initPanel(main0);
         }
+    private boolean onStart=false;
 
 
     /**
@@ -94,6 +95,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         IEC60870Port = new javax.swing.JTextField();
         jLabel37 = new javax.swing.JLabel();
         IEC60870ASDU = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setLayout(null);
 
@@ -176,7 +178,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
 
         jLabel23.setText("Адрес ASDU МЭК 60870");
         add(jLabel23);
-        jLabel23.setBounds(410, 200, 160, 16);
+        jLabel23.setBounds(420, 200, 160, 16);
 
         jLabel24.setText("Глубина архива в днях");
         add(jLabel24);
@@ -320,7 +322,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(ClockAcrossAPI);
-        ClockAcrossAPI.setBounds(410, 260, 200, 20);
+        ClockAcrossAPI.setBounds(410, 270, 200, 20);
 
         PriorityDispatcher.setText("Диспетчер приоритетов для запросов к ModBus");
         PriorityDispatcher.addItemListener(new java.awt.event.ItemListener() {
@@ -329,7 +331,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(PriorityDispatcher);
-        PriorityDispatcher.setBounds(410, 230, 340, 20);
+        PriorityDispatcher.setBounds(410, 250, 340, 20);
 
         ProfilerOn.setText("Профилирование ");
         ProfilerOn.addItemListener(new java.awt.event.ItemListener() {
@@ -338,7 +340,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(ProfilerOn);
-        ProfilerOn.setBounds(410, 290, 170, 20);
+        ProfilerOn.setBounds(410, 300, 170, 20);
 
         ProfilerPort.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -346,7 +348,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(ProfilerPort);
-        ProfilerPort.setBounds(600, 290, 70, 25);
+        ProfilerPort.setBounds(600, 300, 70, 25);
 
         jLabel30.setText("IP/порт  сервера интегратора");
         add(jLabel30);
@@ -358,7 +360,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(ProfilerScale);
-        ProfilerScale.setBounds(690, 290, 70, 25);
+        ProfilerScale.setBounds(690, 300, 70, 25);
 
         ProfilerFileSelect.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/statistic.png"))); // NOI18N
         ProfilerFileSelect.setBorderPainted(false);
@@ -373,7 +375,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
 
         jLabel31.setText("Порт");
         add(jLabel31);
-        jLabel31.setBounds(610, 270, 60, 16);
+        jLabel31.setBounds(610, 280, 60, 16);
 
         ProfilerFilesPath.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -385,7 +387,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
 
         jLabel32.setText("Масштаб времени");
         add(jLabel32);
-        jLabel32.setBounds(690, 270, 110, 16);
+        jLabel32.setBounds(690, 280, 110, 16);
 
         ProfilerBundle.setText("Bundle");
         ProfilerBundle.addItemListener(new java.awt.event.ItemListener() {
@@ -394,7 +396,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(ProfilerBundle);
-        ProfilerBundle.setBounds(410, 330, 120, 20);
+        ProfilerBundle.setBounds(410, 340, 120, 20);
 
         ProfilerTrace.setText("Трассировка");
         ProfilerTrace.addItemListener(new java.awt.event.ItemListener() {
@@ -403,7 +405,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(ProfilerTrace);
-        ProfilerTrace.setBounds(410, 310, 170, 20);
+        ProfilerTrace.setBounds(410, 320, 170, 20);
 
         InterruptRegisterOn.setText("Опрос регистров прерываний");
         InterruptRegisterOn.addItemListener(new java.awt.event.ItemListener() {
@@ -428,7 +430,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
 
         jLabel36.setText("Порт  сервера МЭК 61850");
         add(jLabel36);
-        jLabel36.setBounds(410, 150, 160, 16);
+        jLabel36.setBounds(420, 150, 160, 16);
 
         IEC60870Port.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -440,7 +442,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
 
         jLabel37.setText("Порт  сервера МЭК 60870");
         add(jLabel37);
-        jLabel37.setBounds(410, 170, 160, 16);
+        jLabel37.setBounds(420, 175, 160, 16);
 
         IEC60870ASDU.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -449,6 +451,8 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         });
         add(IEC60870ASDU);
         IEC60870ASDU.setBounds(600, 200, 70, 25);
+        add(jSeparator1);
+        jSeparator1.setBounds(410, 240, 360, 3);
     }// </editor-fold>//GEN-END:initComponents
 
     private void GUIrefreshPeriodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GUIrefreshPeriodKeyPressed
@@ -494,6 +498,8 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     }//GEN-LAST:event_UserSilenceTimeKeyPressed
 
     private void WaitForMainServerItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_WaitForMainServerItemStateChanged
+        if (onStart)
+            return;
         procPressedBoolean(WaitForMainServer,"waitForMainServer");
     }//GEN-LAST:event_WaitForMainServerItemStateChanged
 
@@ -510,6 +516,8 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     }//GEN-LAST:event_SnapShotPeriodKeyPressed
 
     private void MainServerModeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MainServerModeItemStateChanged
+        if (onStart)
+            return;
         procPressedBoolean(MainServerMode,"mainServerMode");
         refreshMainServerParams();
     }//GEN-LAST:event_MainServerModeItemStateChanged
@@ -535,14 +543,20 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     }//GEN-LAST:event_IEC61850PortKeyPressed
 
     private void PriorityDispatcherItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PriorityDispatcherItemStateChanged
+        if (onStart)
+            return;
         procPressedBoolean(PriorityDispatcher,"priorityDispatcher");
     }//GEN-LAST:event_PriorityDispatcherItemStateChanged
 
     private void ClockAcrossAPIItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ClockAcrossAPIItemStateChanged
+        if (onStart)
+            return;
         procPressedBoolean(ClockAcrossAPI,"clockAcrossAPI");
     }//GEN-LAST:event_ClockAcrossAPIItemStateChanged
 
     private void ProfilerOnItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ProfilerOnItemStateChanged
+        if (onStart)
+            return;
         procPressedBoolean(ProfilerOn,"profilerOn");
     }//GEN-LAST:event_ProfilerOnItemStateChanged
 
@@ -570,14 +584,20 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     }//GEN-LAST:event_ProfilerFilesPathKeyPressed
 
     private void ProfilerBundleItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ProfilerBundleItemStateChanged
+        if (onStart)
+            return;
         procPressedBoolean(ProfilerBundle,"profilerBundle");
     }//GEN-LAST:event_ProfilerBundleItemStateChanged
 
     private void ProfilerTraceItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ProfilerTraceItemStateChanged
+        if (onStart)
+            return;
         procPressedBoolean(ProfilerTrace,"profilerTrace");
     }//GEN-LAST:event_ProfilerTraceItemStateChanged
 
     private void InterruptRegisterOnItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_InterruptRegisterOnItemStateChanged
+        if (onStart)
+            return;
         procPressedBoolean(InterruptRegisterOn,"interruptRegisterOn");
     }//GEN-LAST:event_InterruptRegisterOnItemStateChanged
 
@@ -620,6 +640,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         try {
             if (!main.getWorkSettings())
                 return;
+            onStart=true;
             ws = (WorkSettings)main.workSettings;
             GUIrefreshPeriod.setText(""+ws.getGUIrefreshPeriod());
             StreamDataPeriod.setText(""+ws.getStreamDataPeriod());
@@ -653,7 +674,11 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             InterruptRegisterOn.setSelected(ws.isInterruptRegisterOn());
             EventsQueuePeriod.setText(""+ws.getEventsQueuePeriod());
             refreshMainServerParams();
-            } catch (Exception e) { popup(e.toString()); }
+            onStart=false;
+            } catch (Exception e) {
+                onStart=false;
+                popup(e.toString());
+                }
         }
     private void refreshMainServerParams(){
         boolean disable = !MainServerMode.isSelected();
@@ -832,5 +857,6 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
+    private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

@@ -66,15 +66,13 @@ public class WizardMeta2Register extends WizardBaseView {
 
         jCheckBox1.setText("jCheckBox1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
         });
-        getContentPane().setLayout(null);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(10, 82, 560, 2);
+        jSeparator1.setBounds(10, 82, 560, 3);
 
         SaveDataFormat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/save.png"))); // NOI18N
         SaveDataFormat.setBorderPainted(false);
@@ -89,7 +87,7 @@ public class WizardMeta2Register extends WizardBaseView {
 
         jLabel9.setText("Номер рег.");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(70, 95, 65, 14);
+        jLabel9.setBounds(70, 95, 65, 16);
 
         RegNum.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -101,11 +99,11 @@ public class WizardMeta2Register extends WizardBaseView {
 
         jLabel10.setText("Формат ");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(340, 95, 60, 14);
+        jLabel10.setBounds(340, 95, 60, 16);
         getContentPane().add(DataFormat);
         DataFormat.setBounds(400, 90, 170, 25);
         getContentPane().add(jSeparator2);
-        jSeparator2.setBounds(10, 120, 560, 2);
+        jSeparator2.setBounds(10, 120, 560, 3);
 
         HEX.setText("hex");
         HEX.addItemListener(new java.awt.event.ItemListener() {
@@ -114,7 +112,7 @@ public class WizardMeta2Register extends WizardBaseView {
             }
         });
         getContentPane().add(HEX);
-        HEX.setBounds(20, 90, 60, 23);
+        HEX.setBounds(20, 90, 60, 20);
 
         SnapShot.setText("SnapShot");
         SnapShot.addItemListener(new java.awt.event.ItemListener() {
@@ -123,7 +121,7 @@ public class WizardMeta2Register extends WizardBaseView {
             }
         });
         getContentPane().add(SnapShot);
-        SnapShot.setBounds(230, 90, 100, 23);
+        SnapShot.setBounds(230, 90, 100, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

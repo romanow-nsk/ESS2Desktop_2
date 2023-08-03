@@ -30,7 +30,7 @@ public class WizardMeta2StateRegister extends WizardMeta2Register {
         }
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
-        setSize(800,230);
+        setSize(850,230);
         register = (Meta2StateRegister)entity;
         selector = new WizardMetaEntitySelector("Состояния", Values.MEState,callBack);
         selector.setBounds(10,130,750,40);
