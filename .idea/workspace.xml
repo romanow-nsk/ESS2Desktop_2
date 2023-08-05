@@ -13,8 +13,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="Сборка 74 - отказ для регистров 61850">
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java" afterDir="false" />
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="Сборка 74 - запись 61850">
+      <change afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/MessageCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/Meta2Clock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/Meta2MessageId.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS2MessagesQueueEmulator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/MainBaseFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/MainBaseFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/API/RestAPISecondClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/API/RestAPISecondClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/Meta2DateTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/Meta2DateTime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/subject2area/ESS2Equipment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/subject2area/ESS2Equipment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/datastreams/ClockEventsQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/datastreams/ClockEventsQueue.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -122,14 +131,14 @@
       <recent name="romanow.abc.ess2.emulators" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="romanow.abc.ess2.emulators" />
+      <recent name="romanow.abc.core.entity.metadata" />
       <recent name="romanow.abc.dataserver.iec60870" />
       <recent name="romanow.abc.dataserver.iec61850" />
       <recent name="romanow.abc.dataserver.cash" />
-      <recent name="romanow.abc.core.entity.subject2area.events" />
-      <recent name="romanow.abc.desktop.view2.desktop" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.BARSConsoleServer">
+  <component name="RunManager" selected="Application.ESSClient">
     <configuration name="BARSConsoleServer" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="romanow.abc.dataserver.BARSConsoleServer" />
       <module name="ESS2DataServer" />
@@ -223,10 +232,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ESSMainBase" />
         <item itemvalue="Application.ESSClient" />
-        <item itemvalue="Application.IEC60870Server" />
         <item itemvalue="Application.ESS40ConsoleServer" />
+        <item itemvalue="Application.ESSMainBase" />
+        <item itemvalue="Application.IEC60870Server" />
         <item itemvalue="Application.ESSConsoleServer" />
       </list>
     </recent_temporary>
@@ -239,13 +248,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00204" summary="Обработка ошибок Modbus">
-      <created>1686498329196</created>
-      <option name="number" value="00204" />
-      <option name="presentableId" value="LOCAL-00204" />
-      <option name="project" value="LOCAL" />
-      <updated>1686498329196</updated>
     </task>
     <task id="LOCAL-00205" summary="Обработка ошибок Modbus - лишние байты (запись)">
       <created>1686548333072</created>
@@ -583,7 +585,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691086133375</updated>
     </task>
-    <option name="localTasksCounter" value="253" />
+    <task id="LOCAL-00253" summary="Сборка 74 - запись 61850">
+      <created>1691127694473</created>
+      <option name="number" value="00253" />
+      <option name="presentableId" value="LOCAL-00253" />
+      <option name="project" value="LOCAL" />
+      <updated>1691127694473</updated>
+    </task>
+    <option name="localTasksCounter" value="254" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -610,7 +619,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="IEC61850 путаница с лог.и физич. юнитами" />
     <MESSAGE value="IEC61850 биты аварий и предупреждений" />
     <MESSAGE value="Комменты" />
     <MESSAGE value="Регистры потоков сообщений" />
@@ -635,7 +643,8 @@
     <MESSAGE value="Сборка 74 - пропуск таймера при незавершенном рендеринге" />
     <MESSAGE value="Сборка 74 - селекция для 60870" />
     <MESSAGE value="Сборка 74 - отказ для регистров 61850" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сборка 74 - отказ для регистров 61850" />
+    <MESSAGE value="Сборка 74 - запись 61850" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сборка 74 - запись 61850" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -852,6 +861,7 @@
       <configuration name="Application">
         <watch expression="priority" />
         <watch expression="oo.list.get(2).o2" />
+        <watch expression="out.get(2).value" />
       </configuration>
     </watches-manager>
   </component>
