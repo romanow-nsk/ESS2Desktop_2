@@ -20,6 +20,7 @@ public class WizardESS2Equipment extends WizardBaseViewDB {
 
     private ESS2Node node;
     private ESS2Equipment equipment;
+    private boolean onStart=false;
     private void selectChoice(){
         if (equipment.getMetaFile().getOid()==0){
             MetaFile.select(0);
@@ -38,6 +39,7 @@ public class WizardESS2Equipment extends WizardBaseViewDB {
         super("Оборудование",frame0,entity0,back0);
         initComponents();
         setSize(750,220);
+        onStart = true;
         equipment = (ESS2Equipment)entity0;
         MultiUnit.setSelected(equipment.isMultiUnit());
         MetaFile.removeAll();
@@ -45,7 +47,8 @@ public class WizardESS2Equipment extends WizardBaseViewDB {
         for(ESS2MetaFile metaFile : panel.getMetaData())
             MetaFile.add(metaFile.toString());
         selectChoice();
-    }
+        onStart = false;
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -64,7 +67,7 @@ public class WizardESS2Equipment extends WizardBaseViewDB {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(10, 120, 460, 2);
+        jSeparator1.setBounds(10, 120, 460, 3);
         getContentPane().add(MetaFile);
         MetaFile.setBounds(10, 90, 400, 20);
 
@@ -86,7 +89,7 @@ public class WizardESS2Equipment extends WizardBaseViewDB {
             }
         });
         getContentPane().add(MultiUnit);
-        MultiUnit.setBounds(10, 130, 120, 23);
+        MultiUnit.setBounds(10, 130, 120, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -106,6 +109,8 @@ public class WizardESS2Equipment extends WizardBaseViewDB {
     }//GEN-LAST:event_SetMetaFileActionPerformed
 
     private void MultiUnitItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MultiUnitItemStateChanged
+        if (onStart)
+            return;
         equipment.setMultiUnit(MultiUnit.isSelected());
         oneUpdate("Изменено multiUnit: "+MultiUnit.isSelected());
     }//GEN-LAST:event_MultiUnitItemStateChanged

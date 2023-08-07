@@ -8,7 +8,6 @@ package romanow.abc.desktop.wizard;
 import romanow.abc.core.entity.subject2area.ESS2Device;
 import romanow.abc.core.entity.subject2area.ESS2Entity;
 import romanow.abc.desktop.ESSMetaPanel;
-import romanow.abc.desktop.MainBaseFrame;
 
 /**
  *
@@ -31,6 +30,8 @@ public class WizardESS2Connector extends WizardBaseViewDB {
         RegInBlock.setText(""+connector.getRegsInBlock());
         TimeOut.setText(""+connector.getTimeOut());
         BaudRate.setText(""+connector.getBaudRate());
+        UniqueModule.setSelected(connector.isUniqueModule());
+        UniqueModuleClass.setText(connector.getUniqueModuleClass());
         setSize(750,230);
         onStart=false;
         UnitsNum.setText(""+connector.getUnitsNum());
@@ -61,6 +62,8 @@ public class WizardESS2Connector extends WizardBaseViewDB {
         BaudRate = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         Trace = new javax.swing.JCheckBox();
+        UniqueModule = new javax.swing.JCheckBox();
+        UniqueModuleClass = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -172,6 +175,23 @@ public class WizardESS2Connector extends WizardBaseViewDB {
         getContentPane().add(Trace);
         Trace.setBounds(570, 135, 110, 20);
 
+        UniqueModule.setText("Уникальный модуль");
+        UniqueModule.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                UniqueModuleItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(UniqueModule);
+        UniqueModule.setBounds(10, 90, 170, 20);
+
+        UniqueModuleClass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                UniqueModuleClassKeyPressed(evt);
+            }
+        });
+        getContentPane().add(UniqueModuleClass);
+        UniqueModuleClass.setBounds(170, 90, 170, 25);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -260,6 +280,21 @@ public class WizardESS2Connector extends WizardBaseViewDB {
         oneUpdate("Изменено Trace: "+Trace.isSelected());
     }//GEN-LAST:event_TraceItemStateChanged
 
+    private void UniqueModuleItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_UniqueModuleItemStateChanged
+        if (onStart)
+            return;
+        connector.setUniqueModule(UniqueModule.isSelected());
+        oneUpdate("Изменено uniqueModule: "+UniqueModule.isSelected());
+    }//GEN-LAST:event_UniqueModuleItemStateChanged
+
+    private void UniqueModuleClassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UniqueModuleClassKeyPressed
+        if(evt.getKeyCode()!=10) return;
+        connector.setUniqueModuleClass(UniqueModuleClass.getText());
+        if (evt!=null)
+            main.viewUpdate(evt,true);
+        back.onEnter("Изменено : uniqueModuleClass: "+UniqueModuleClass.getText());
+    }//GEN-LAST:event_UniqueModuleClassKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -304,6 +339,8 @@ public class WizardESS2Connector extends WizardBaseViewDB {
     private javax.swing.JTextField RegInBlock;
     private javax.swing.JTextField TimeOut;
     private javax.swing.JCheckBox Trace;
+    private javax.swing.JCheckBox UniqueModule;
+    private javax.swing.JTextField UniqueModuleClass;
     private javax.swing.JTextField UnitsNum;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
