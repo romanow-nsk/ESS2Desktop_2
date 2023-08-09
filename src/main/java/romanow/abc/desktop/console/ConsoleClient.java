@@ -48,7 +48,7 @@ public class ConsoleClient {
     boolean localUser=false;
     //------------------------------------------------------------------------------------
     public ESSClient createFrame(){
-        ESSClient main = new ESSClient(false);
+        ESSClient main = new ESSClient(false,false);
         main.setExternalData(debugToken,user,workSettings,service,service2,localUser);
         main.refreshArchtectureState();
         return main;

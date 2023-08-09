@@ -41,16 +41,19 @@ public class ESSClient extends Client {
     AccessManager manager;
     RestAPIESS2 service2;
     public ESSClient(){
-        this(true);
+        this(true,false);
         }
-    public ESSClient(boolean setLog){
+    public ESSClient(boolean setLog,boolean su){
         super(setLog);
         Values.init();
-        setLoginName(Values.env().superUser().getLoginPhone());
-        setPassword(Values.env().superUser().getPassword());
+        if (su){
+            setLoginName(Values.env().superUser().getLoginPhone());
+            setPassword(Values.env().superUser().getPassword());
+            }
         addIP("10.200.200.70");
         addIP("10.200.200.71");
         addIP("10.32.0.2");
+        addIP("10.30.0.2");
         }
     public void initPanels() {
         super.initPanels();
@@ -363,7 +366,7 @@ public class ESSClient extends Client {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Values.init();
-                new ESSClient().setVisible(false);
+                new ESSClient(true,true).setVisible(false);
             }
         });
     }
