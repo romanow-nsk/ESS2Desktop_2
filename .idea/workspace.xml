@@ -14,6 +14,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="Сборка 76 - МУ рефакторинг">
+      <change afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/uniquemodules/ESS2PLCStart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/uniquemodules/ESS2PLCCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/uniquemodules/ESS2PLCCommands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/uniquemodules/ESS2PLCMaps.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/uniquemodules/ESS2PLCMaps.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/uniquemodules/ESS2PLCModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/uniquemodules/ESS2PLCModule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/uniquemodules/ESS2PLCOnCycle.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/uniquemodules/ESS2PLCOnCycle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -130,7 +133,7 @@
       <recent name="romanow.abc.dataserver.cash" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ESSClient">
+  <component name="RunManager" selected="Application.ESS40ConsoleServer">
     <configuration name="BARSConsoleServer" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="romanow.abc.dataserver.BARSConsoleServer" />
       <module name="ESS2DataServer" />
@@ -224,8 +227,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ESSClient" />
         <item itemvalue="Application.ESS40ConsoleServer" />
+        <item itemvalue="Application.ESSClient" />
         <item itemvalue="Application.ESSMainBase" />
         <item itemvalue="Application.IEC60870Server" />
         <item itemvalue="Application.ESSConsoleServer" />
@@ -240,13 +243,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00217" summary="IEC61850 путаница с лог.и физич. юнитами">
-      <created>1688475199075</created>
-      <option name="number" value="00217" />
-      <option name="presentableId" value="LOCAL-00217" />
-      <option name="project" value="LOCAL" />
-      <updated>1688475199075</updated>
     </task>
     <task id="LOCAL-00218" summary="IEC61850 биты аварий и предупреждений">
       <created>1688488674450</created>
@@ -584,7 +580,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691819532321</updated>
     </task>
-    <option name="localTasksCounter" value="266" />
+    <task id="LOCAL-00266" summary="Сборка 76 - МУ рефакторинг">
+      <created>1691825936220</created>
+      <option name="number" value="00266" />
+      <option name="presentableId" value="LOCAL-00266" />
+      <option name="project" value="LOCAL" />
+      <updated>1691825936220</updated>
+    </task>
+    <option name="localTasksCounter" value="267" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -840,6 +843,26 @@
           <url>file://$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/MainBase.java</url>
           <line>33</line>
           <option name="timeStamp" value="813" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/uniquemodules/ESS2PLCCommands.java</url>
+          <line>176</line>
+          <option name="timeStamp" value="819" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/uniquemodules/ESS2PLCCommands.java</url>
+          <line>80</line>
+          <option name="timeStamp" value="822" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/uniquemodules/ESS2PLCOnCycle.java</url>
+          <line>142</line>
+          <option name="timeStamp" value="825" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/uniquemodules/ESS2PLCOnCycle.java</url>
+          <line>133</line>
+          <option name="timeStamp" value="826" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS4ACDCEmulator.java</url>
