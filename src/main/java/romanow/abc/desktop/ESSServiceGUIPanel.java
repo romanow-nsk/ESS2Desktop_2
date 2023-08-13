@@ -877,8 +877,30 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                     errorList.addError("Индекс Unit "+newElem.getUnitIdx()+" превышен  "+equipName+" для "+regGUI.getFullTitle());
                     return;
                     }
-                newElem.setDevice(equipment.getLogUnits().get(newElem.getUnitIdx()).getDevice().getRef());
-                newElem.setDevUnit(equipment.getLogUnits().get(newElem.getUnitIdx()).getUnit());        // Физический Unit
+                ESS2LogUnit unit = equipment.getLogUnits().get(newElem.getUnitIdx());
+                newElem.setDevice(unit.getDevice().getRef());
+                newElem.setDevUnit(unit.getUnit());        // Физический Unit
+                //----------------------ВТОРОЙ ЛИНК БЕЗ ИНДЕКСАЦИИ -----------------------------------------------------
+                ESS2Equipment equipment2 = null;
+                Meta2RegLink link2= meta.getSecondLink();
+                if (link2!=null){
+                    Meta2Register register2 = link2.getRegister();
+                    String equipName2= link2.getEquipName();
+                    equipment2 = main2.deployed.getEquipments().getByName(equipName2);
+                    if (equipment2==null){
+                        errorList.addError("Не найдено оборудование "+equipName2+" для "+regGUI.getFullTitle());
+                        return;
+                        }
+                    int connectorsSize2 = equipment2.getLogUnits().size();
+                    if (connectorsSize2==0){
+                        errorList.addError("Нет устройств для "+equipName2);
+                        return;
+                        }
+                    ESS2LogUnit unit2 = equipment2.getLogUnits().get(link2.getUnitIdx());
+                    newElem.setDeviceTwo(unit2.getDevice().getRef());
+                    newElem.setDevUnitTwo(unit2.getUnit());        // Физический Unit
+                    }
+                //-------------------------------------------------------------------------------------------------------
                 }
             guiList.add(newElem);
             }

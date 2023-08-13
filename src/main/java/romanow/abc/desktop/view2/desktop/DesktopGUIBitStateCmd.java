@@ -2,14 +2,12 @@ package romanow.abc.desktop.view2.desktop;
 
 import romanow.abc.core.UniException;
 import romanow.abc.core.constants.Values;
-import romanow.abc.core.entity.metadata.Meta2Bit;
-import romanow.abc.core.entity.metadata.Meta2BitRegister;
-import romanow.abc.core.entity.metadata.Meta2CommandRegister;
-import romanow.abc.core.entity.metadata.Meta2Register;
+import romanow.abc.core.entity.metadata.*;
 import romanow.abc.core.entity.metadata.view.Meta2GUI;
 import romanow.abc.core.entity.metadata.view.Meta2GUI2StateBox;
 import romanow.abc.core.entity.metadata.view.Meta2GUIBitStateCmd;
 import romanow.abc.core.entity.subject2area.ESS2Architecture;
+import romanow.abc.core.entity.subject2area.ESS2Device;
 import romanow.abc.desktop.I_Button;
 import romanow.abc.desktop.Message;
 import romanow.abc.desktop.OK;
@@ -124,7 +122,9 @@ public class DesktopGUIBitStateCmd extends View2BaseDesktop {
                     public void onPush() {
                         try {
                             int cmd = lastBitValue==0 ? element.getCmdOn() : element.getCmdOff();
-                            writeRegister(element.getCmdReg(),cmd);
+                            Meta2RegLink link = ((Meta2GUIBitStateCmd)element).getCmdReg();
+                            ESS2Device device = getDeviceTwo();
+                            device.getDriver().writeRegister(device.getShortName(),getDevUnitTwo(),link.getRegNum(), cmd);
                             context.getBack().forceRepaint();
                             //context.repaintValues();
                             } catch (UniException ex) {

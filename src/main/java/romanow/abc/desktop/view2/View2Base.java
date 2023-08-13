@@ -28,7 +28,9 @@ public abstract class View2Base implements I_View2 {
     @Getter @Setter ESS2Architecture architecture;
     @Getter @Setter I_GUI2Event onEvent=null;
     @Getter @Setter ESS2Device device=null;         // Описание unit-драйвер
+    @Setter ESS2Device deviceTwo=null;              // Для второго линка
     @Getter @Setter int devUnit=0;                  // Явный номер Unit-а (физический)
+    @Setter int devUnitTwo=0;                       // Для второго линка
     @Getter @Setter int unitIdx=0;                  // Явный индекс Unit-а (логический)
     @Getter @Setter int regOffset=0;
     @Getter @Setter int dxOffset=0;
@@ -49,6 +51,15 @@ public abstract class View2Base implements I_View2 {
     public void repaintValues(){}                               // После прочтения всех данных
     public void putValue(Meta2Register register, long value, int idx){}
     public abstract void showInfoMessage();
+    public ESS2Device getDeviceTwo() {
+        return deviceTwo==null ? device : deviceTwo;
+        }
+    public void setDeviceTwo(ESS2Device two){
+        deviceTwo = two;
+        }
+    public int getDevUnitTwo() {
+        return deviceTwo==null ? devUnit : devUnitTwo;
+        }
     @Override
     public String getTypeName() {
         return Values.constMap().getGroupMapByValue("GUIType").get(type).title(); }

@@ -128,9 +128,9 @@ public class DesktopGUIBit2Commands extends View2BaseDesktop {
                         try {
                             long vv = (lastValue >> bitNum) ^ 1;
                             link = element.getCmdRegLink();
-                            ESS2Device device = getDevice();
+                            ESS2Device device = getDeviceTwo();
                             cmd = vv !=0 ? element.getCmdOff() : element.getCmdOff();
-                            device.getDriver().writeRegister(device.getShortName(),getDevUnit(),link.getRegNum(), cmd);
+                            device.getDriver().writeRegister(device.getShortName(),getDevUnitTwo(),link.getRegNum(), cmd);
                             context.getBack().forceRepaint();
                         } catch (UniException ex) {
                                 String ss = "Ошибка записи команды "+cmd+" в регистр: "+ link.getTitle() + ": "+ ex.toString();
@@ -142,7 +142,6 @@ public class DesktopGUIBit2Commands extends View2BaseDesktop {
                     }
             });
         panel.add(cmdButton);
-
         }
     public void showInfoMessage() {
         Meta2GUI2StateBox element = (Meta2GUI2StateBox) getElement();
