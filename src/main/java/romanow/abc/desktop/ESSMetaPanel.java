@@ -91,7 +91,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             "/drawable/status_red.png",
             "/drawable/status_green.png",
             "/drawable/status_yellow.png",
-    };
+        };
     public ESSMetaPanel() {
         initComponents();
     }
@@ -2224,7 +2224,6 @@ public class ESSMetaPanel extends ESSBasePanel {
                 public Call<JBoolean> apiFun() {
                     return main.service.removeEntity(main.debugToken, "ESS2LogUnit", connector.getOid());
                 }
-
                 @Override
                 public void onSucess(JBoolean val) {
                 }
@@ -2239,9 +2238,9 @@ public class ESSMetaPanel extends ESSBasePanel {
             public void onSucess(JBoolean val) {
                 if (refresh)
                     refreshWithDelay(4);
-            }
-        };
-    }
+                }
+            };
+        }
 
     private void refreshWithDelay(int sec) {
         MainBaseFrame.delayInGUI(sec, new Runnable() {
@@ -2249,8 +2248,8 @@ public class ESSMetaPanel extends ESSBasePanel {
             public void run() {
                 refreshArchitectures();
             }
-        });
-    }
+            });
+        }
 
     private void RemoveArchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveArchActionPerformed
         if (Architectures.getItemCount() == 0)
@@ -2269,10 +2268,10 @@ public class ESSMetaPanel extends ESSBasePanel {
                     public void onSucess(JBoolean val) {
                         refreshWithDelay(4);
                     }
-                };
-            }
-        });
-    }//GEN-LAST:event_RemoveArchActionPerformed
+                    };
+                }
+            });
+        }//GEN-LAST:event_RemoveArchActionPerformed
 
     private void AddArchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddArchActionPerformed
         new OK(200, 200, "Добавить архитектуру", new I_Button() {
@@ -3201,7 +3200,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         new OK(200, 200, "Экспорт XML-файлов", new I_Button() {
             @Override
             public void onPush() {
-                FileNameExt ff = main.getOutputFileName("Каталог экспорта метда-данных","aaa","aaa");
+                FileNameExt ff = main.getOutputFileName("Каталог экспорта метаданных","aaa","aaa");
                 String loadDirectory = ff.getPath();
                 ArrayList<Artifact> artifacts = new ArrayList<>();
                 for(ESS2MetaFile metaFile : metaData)
@@ -3554,6 +3553,7 @@ public class ESSMetaPanel extends ESSBasePanel {
 
     @Override
     public void shutDown() {
+        profilerTimer.cancel();
         if (screen!=null){
             screen.shutDown();
             screen=null;
