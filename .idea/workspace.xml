@@ -13,18 +13,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="Сборка 76 - Копия значений регистров в метаданных">
-      <change afterPath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/GUITimer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/API/RestAPIBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/API/RestAPIBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/utils/StringFIFO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/utils/StringFIFO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCDataServer/src/main/java/romanow/abc/dataserver/APICommon.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCDataServer/src/main/java/romanow/abc/dataserver/APICommon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/ServerPanel.form" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/ServerPanel.form" afterDir="false" />
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="Сборка 76 - Лог в режиме опроса">
+      <change beforePath="$PROJECT_DIR$/../ABCDataServer/src/main/java/romanow/abc/dataserver/APIUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCDataServer/src/main/java/romanow/abc/dataserver/APIUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/ServerPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/ServerPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec60870/IEC60870Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec60870/IEC60870Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ESS2Desktop.jar" beforeDir="false" afterPath="$PROJECT_DIR$/ESS2Desktop.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/GUITimer.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +36,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../ABCDesktop" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../ABCDataServer" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
@@ -138,7 +131,7 @@
       <recent name="romanow.abc.dataserver.cash" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ESSClient">
+  <component name="RunManager" selected="Application.ESS40ConsoleServer">
     <configuration name="BARSConsoleServer" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="romanow.abc.dataserver.BARSConsoleServer" />
       <module name="ESS2DataServer" />
@@ -232,8 +225,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ESSClient" />
         <item itemvalue="Application.ESS40ConsoleServer" />
+        <item itemvalue="Application.ESSClient" />
         <item itemvalue="Application.StringFIFO" />
         <item itemvalue="Application.ESSMainBase" />
         <item itemvalue="Application.IEC60870Server" />
@@ -248,13 +241,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00224" summary="BroadCast отключен">
-      <created>1688972191162</created>
-      <option name="number" value="00224" />
-      <option name="presentableId" value="LOCAL-00224" />
-      <option name="project" value="LOCAL" />
-      <updated>1688972191162</updated>
     </task>
     <task id="LOCAL-00225" summary="IEC 60870">
       <created>1689191678690</created>
@@ -592,7 +578,14 @@
       <option name="project" value="LOCAL" />
       <updated>1692084083542</updated>
     </task>
-    <option name="localTasksCounter" value="273" />
+    <task id="LOCAL-00273" summary="Сборка 76 - Лог в режиме опроса">
+      <created>1692105180395</created>
+      <option name="number" value="00273" />
+      <option name="presentableId" value="LOCAL-00273" />
+      <option name="project" value="LOCAL" />
+      <updated>1692105180395</updated>
+    </task>
+    <option name="localTasksCounter" value="274" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -619,7 +612,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="60870 Опрос" />
     <MESSAGE value="60870" />
     <MESSAGE value="Косяк с последне" />
     <MESSAGE value="Косяк с последней ArchStreamDataSet" />
@@ -644,7 +636,8 @@
     <MESSAGE value="Сборка 76 - МУ (альфа)" />
     <MESSAGE value="Сборка 76 - Deploy для АДМИНА тоже" />
     <MESSAGE value="Сборка 76 - Копия значений регистров в метаданных" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сборка 76 - Копия значений регистров в метаданных" />
+    <MESSAGE value="Сборка 76 - Лог в режиме опроса" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сборка 76 - Лог в режиме опроса" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -666,12 +659,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java</url>
-          <line>151</line>
+          <line>152</line>
           <option name="timeStamp" value="303" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java</url>
-          <line>2926</line>
+          <line>2928</line>
           <option name="timeStamp" value="315" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -781,7 +774,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java</url>
-          <line>3426</line>
+          <line>3428</line>
           <option name="timeStamp" value="591" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -880,14 +873,14 @@
           <option name="timeStamp" value="864" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../ABCDataServer/src/main/java/romanow/abc/dataserver/APIUser.java</url>
-          <line>88</line>
-          <option name="timeStamp" value="865" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/utils/StringFIFO.java</url>
           <line>49</line>
           <option name="timeStamp" value="867" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../ABCDataServer/src/main/java/romanow/abc/dataserver/APIUser.java</url>
+          <line>90</line>
+          <option name="timeStamp" value="872" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS4ACDCEmulator.java</url>

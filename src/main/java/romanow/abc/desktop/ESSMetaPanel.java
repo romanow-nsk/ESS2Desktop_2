@@ -98,7 +98,8 @@ public class ESSMetaPanel extends ESSBasePanel {
 
     public void initPanel(MainBaseFrame main0) {
         super.initPanel(main0);
-        Password.setText(main.loginUser.getPassword());
+        String pass = main.loginUser.getAccount().getPassword();
+        Password.setText(pass);
         streamData.setBounds(370, 270, 470, 185);
         add(streamData);
         configSelector.setBounds(370, 450, 400, 125);
@@ -2574,7 +2575,8 @@ public class ESSMetaPanel extends ESSBasePanel {
             new APICall<CallResult>(main){
                 @Override
                 public Call<CallResult> apiFun() {
-                    return main2.service2.metaDataCancel(main.debugToken,Password.getText());
+                    String pass = Password.getText();
+                    return main2.service2.metaDataCancel(main.debugToken,pass);
                     }
                 @Override
                 public void onSucess(CallResult val) {
