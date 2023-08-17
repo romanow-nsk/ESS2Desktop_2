@@ -12,6 +12,7 @@ import java.util.HashMap;
 
 
 import romanow.abc.core.DBRequest;
+import romanow.abc.core.ErrorList;
 import romanow.abc.core.UniException;
 import romanow.abc.core.constants.ConstValue;
 import romanow.abc.core.constants.Values;
@@ -33,6 +34,7 @@ import romanow.abc.core.utils.Pair;
  * @author romanow
  */
 public class ESSStreamDataSelector extends javax.swing.JPanel {
+    private boolean withError=true;
     private OwnDateTime time1=new OwnDateTime(false);
     private OwnDateTime time2=new OwnDateTime(false);
     private ESS2Architecture architecture;
@@ -267,7 +269,6 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
 
     }
 
-
     private void TIME1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TIME1MouseClicked
         if (evt.getClickCount()<2) return;
         if (evt.getButton()==1){
@@ -314,26 +315,43 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
         refreshDataSet();
     }//GEN-LAST:event_DataSetListItemStateChanged
 
-    private void showData(boolean graph){
-        if (StreamRegister.getItemCount()==0)
-            return;
-        final  int logNum = StreamRegister.getSelectedIndex();
-        data = architecture.getStreamRegisterByLogNum(selectedMode.value(),logNum);
-        StreamDataOffset.setText(""+data.getRegOffset());
-        if (data==null)
-            return;
-        new APICall<ArrayList<StreamDataValue>>(main){
+    private String showData2(boolean graph){
+        String res = new APICall3<Pair<ErrorList,ArrayList<StreamDataValue>>>(){
+            @Override
+            public Call<Pair<ErrorList,ArrayList<StreamDataValue>>> apiFun() {
+                return main.service2.getStreamData2(main.debugToken,selectedMode.value(),StreamRegister.getSelectedIndex(),time1.timeInMS(),time2.timeInMS());
+                }
+            @Override
+            public void onSucess(Pair<ErrorList,ArrayList<StreamDataValue>> ans) {
+                ErrorList errors = ans.o1;
+                if (!errors.valid())
+                    System.out.print(errors);
+                data.setValueList(ans.o2);
+                if (graph)
+                    back.onEnter(data);
+                else {
+                    DataSetList.removeAll();
+                    for(StreamDataValue vv : ans.o2){
+                        DataSetList.add("["+vv.setOid+"] "+new OwnDateTime(vv.timeStamp).toString2());
+                        }
+                    refreshDataSet();
+                    }
+                }
+            }.call(main);
+        return res;
+        }
+    private String showData1(boolean graph){
+        String res = new APICall3<ArrayList<StreamDataValue>>(){
             @Override
             public Call<ArrayList<StreamDataValue>> apiFun() {
-                return main.service2.getStreamData(main.debugToken,selectedMode.value(),logNum,time1.timeInMS(),time2.timeInMS());
-            }
+                return main.service2.getStreamData(main.debugToken,selectedMode.value(),StreamRegister.getSelectedIndex(),time1.timeInMS(),time2.timeInMS());
+                }
             @Override
             public void onSucess(ArrayList<StreamDataValue> oo) {
                 data.setValueList(oo);
                 if (graph)
                     back.onEnter(data);
-                else
-                    {
+                else {
                     DataSetList.removeAll();
                     for(StreamDataValue vv : oo){
                         DataSetList.add("["+vv.setOid+"] "+new OwnDateTime(vv.timeStamp).toString2());
@@ -341,7 +359,28 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
                     refreshDataSet();
                     }
                 }
-            };
+            }.call(main);
+        return  res;
+        }
+
+        private void showData(boolean graph){
+        if (StreamRegister.getItemCount()==0)
+            return;
+        final  int logNum = StreamRegister.getSelectedIndex();
+        data = architecture.getStreamRegisterByLogNum(selectedMode.value(),logNum);
+        StreamDataOffset.setText(""+data.getRegOffset());
+        if (data==null)
+            return;
+        String ss = showData2(graph);
+        if (ss !=null){
+            if (ss.indexOf("404")!=-1) {
+                ss = showData1(graph);
+                if (ss!=null)
+                    System.out.println(ss);
+                }
+            else
+                System.out.println(ss);
+            }
         }
 
     private void ShowDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowDataActionPerformed

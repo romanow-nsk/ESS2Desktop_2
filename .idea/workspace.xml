@@ -13,12 +13,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="Сборка 76 - МУ восстановление состояния">
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/modules/ProfilerBroadCastLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/modules/ProfilerBroadCastLogger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/modules/ProfilerXLSBundleLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/modules/ProfilerXLSBundleLogger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/uniquemodules/ESS2PLCCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/uniquemodules/ESS2PLCCommands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/uniquemodules/ESS2PLCOnCycle.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/uniquemodules/ESS2PLCOnCycle.java" afterDir="false" />
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="Сборка 76 - МУ + профилирование">
+      <change afterPath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/APICall3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/GUITimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/GUITimer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/API/RestAPIESS2.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/API/RestAPIESS2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ESS2Desktop.jar" beforeDir="false" afterPath="$PROJECT_DIR$/ESS2Desktop.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSStreamDataSelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSStreamDataSelector.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +39,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../ESS2DataServer" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
@@ -125,20 +127,33 @@
       <recent name="romanow.abc.dataserver.profiler" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="romanow.abc.desktop" />
       <recent name="romanow.abc.ess2.emulators" />
       <recent name="romanow.abc.core.entity.metadata" />
       <recent name="romanow.abc.dataserver.iec60870" />
       <recent name="romanow.abc.dataserver.iec61850" />
-      <recent name="romanow.abc.dataserver.cash" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ESS40ConsoleServer">
+  <component name="RunManager" selected="Application.ESSClient">
     <configuration name="BARSConsoleServer" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="romanow.abc.dataserver.BARSConsoleServer" />
       <module name="ESS2DataServer" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="romanow.abc.dataserver.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Base64Coder" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="romanow.abc.core.utils.Base64Coder" />
+      <module name="ABCCore" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="romanow.abc.core.utils.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -185,19 +200,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IEC60870Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="romanow.abc.dataserver.iec60870.IEC60870Server" />
-      <module name="ESS2DataServer" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="romanow.abc.dataserver.iec60870.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="StringFIFO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="romanow.abc.core.utils.StringFIFO" />
       <module name="ABCCore" />
@@ -226,11 +228,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ESS40ConsoleServer" />
         <item itemvalue="Application.ESSClient" />
+        <item itemvalue="Application.Base64Coder" />
+        <item itemvalue="Application.ESS40ConsoleServer" />
         <item itemvalue="Application.StringFIFO" />
         <item itemvalue="Application.ESSMainBase" />
-        <item itemvalue="Application.IEC60870Server" />
       </list>
     </recent_temporary>
   </component>
@@ -242,13 +244,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00231" summary="IEC 60870">
-      <created>1689446179028</created>
-      <option name="number" value="00231" />
-      <option name="presentableId" value="LOCAL-00231" />
-      <option name="project" value="LOCAL" />
-      <updated>1689446179028</updated>
     </task>
     <task id="LOCAL-00232" summary="Дискретные события - косяк">
       <created>1689523613043</created>
@@ -586,7 +581,14 @@
       <option name="project" value="LOCAL" />
       <updated>1692183853947</updated>
     </task>
-    <option name="localTasksCounter" value="280" />
+    <task id="LOCAL-00280" summary="Сборка 76 - МУ + профилирование">
+      <created>1692203780306</created>
+      <option name="number" value="00280" />
+      <option name="presentableId" value="LOCAL-00280" />
+      <option name="project" value="LOCAL" />
+      <updated>1692203780306</updated>
+    </task>
+    <option name="localTasksCounter" value="281" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -613,7 +615,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="60870 Асинхронные ответы" />
     <MESSAGE value="60870 Причины запросов" />
     <MESSAGE value="60870 Сборка 74" />
     <MESSAGE value="60870 Сборка 74 - разрешение парсинга классов" />
@@ -638,7 +639,8 @@
     <MESSAGE value="Сборка 76 - Множественные 60870" />
     <MESSAGE value="Сборка 76 - Лог протоколов" />
     <MESSAGE value="Сборка 76 - МУ восстановление состояния" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сборка 76 - МУ восстановление состояния" />
+    <MESSAGE value="Сборка 76 - МУ + профилирование" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сборка 76 - МУ + профилирование" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -804,13 +806,8 @@
           <option name="timeStamp" value="709" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/subjectarea/ArchStreamDataSet.java</url>
-          <line>127</line>
-          <option name="timeStamp" value="749" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java</url>
-          <line>2514</line>
+          <line>2534</line>
           <option name="timeStamp" value="786" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -872,6 +869,16 @@
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec60870/IEC60870Connection.java</url>
           <line>43</line>
           <option name="timeStamp" value="883" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/GUITimer.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="888" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSStreamDataSelector.java</url>
+          <line>374</line>
+          <option name="timeStamp" value="890" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS4ACDCEmulator.java</url>
