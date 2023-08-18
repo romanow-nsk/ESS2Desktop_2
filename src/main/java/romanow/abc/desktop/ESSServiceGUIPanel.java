@@ -5,6 +5,8 @@
  */
 package romanow.abc.desktop;
 
+import lombok.Getter;
+import lombok.Setter;
 import romanow.abc.core.ErrorList;
 import romanow.abc.core.UniException;
 import romanow.abc.core.Utils;
@@ -46,6 +48,7 @@ import static romanow.abc.core.constants.Values.MTViewFullScreen;
  * @author romanow
  */
 public class ESSServiceGUIPanel extends ESSBasePanel {
+    @Getter @Setter private boolean secondPanel=false;
     private JButton OnOff=null;
     private final static String buttonEdit = "/drawable/edit.png";
     private final static String buttonToMain = "/refresh.png";
@@ -103,7 +106,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     private void setRenderingOnOff(boolean vv){
         renderingOn = vv;
         if (renderingOn)
-            context.setCurrentView(main2.currentView);
+            context.setCurrentView(currentView());
         }
     //private boolean repaintValuesOn=false;                           // Обновление данных
     //private boolean repaintBusy=false;                               // Обновление формы
@@ -151,6 +154,10 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         guiLoop.start();
         }
     //-----------------------------------------------------------------------------------------------------
+    public ESS2View currentView(){
+        return main2.currentView(secondPanel);
+        }
+    //-----------------------------------------------------------------------------------------------------
     public void setLogoutCallBack(I_Button logoutCallBack) {
         this.logoutCallBack = logoutCallBack; }
     public boolean isMainMode(){ return false; }
@@ -161,6 +168,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     public ESSServiceGUIPanel(ScreenMode screenMode) {
         initComponents();
         context.setScreen(screenMode);
+
         }
     public void initPanel(MainBaseFrame main){
         super.initPanel(main);
@@ -180,7 +188,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
 
     public boolean setMainForm(){
         if (context.getForm()==null){
-            Meta2GUIForm form = main2.currentView.getView().getForms().getByTitle(mainFormName);
+            Meta2GUIForm form = currentView().getView().getForms().getByTitle(mainFormName);
             context.setForm(form);
             context.setBaseForm(form);
             }
@@ -259,7 +267,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         };
     //------------------------------------------------------------------------------------------
     public void repaintMenu(boolean phoneMode){
-        Meta2GUIView currentView = main2.currentView.getView();
+        Meta2GUIView currentView = currentView().getView();
         Meta2EntityList<Meta2GUIForm> formList = currentView.getForms();
         Meta2GUIForm form = context.getForm();
         Meta2GUIForm baseForm = context.getBaseForm();
@@ -402,12 +410,12 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     //-------------------------------------------------------------------------------------------
     public synchronized void  repaintView() {
         setRenderingOnOff(true);
-        Meta2GUIView currentView = main2.currentView.getView();
+        Meta2GUIView currentView = currentView().getView();
         Meta2EntityList<Meta2GUIForm> formList = currentView.getForms();
         this.setBackground(new Color(currentView.getBackColor()));
         removeAll();
         errorList.clear();
-        if (main2.currentView == null || !context.isValid()) {
+        if (currentView() == null || !context.isValid()) {
             return;
             }
         if (context.getForm() == null )
@@ -571,19 +579,20 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
 
     @Override
     public void eventPanel(int code, int par1, long par2, String par3,Object oo) {
+        int second = isSecondPanel() ? 1 : 0;
         if (code==EventRefreshSettings){
             refresh();
             main.sendEventPanel(EventRefreshSettingsDone,0,0,"");
             }
-        if (code==EventPLMOn){
-            context.setView(main2.currentView.getView());
+        if (code==EventPLMOn && par2==second){
+            context.setView(currentView().getView());
             context.setMainServerNodeId(main2.mainServerNodeId);
             limiter.reset();
             repaintView();
             main.panelToFront(this);
             System.out.println(par3);
             }
-        if (code==EventPLMOff){
+        if (code==EventPLMOff && par2==second){
             repaintOff();
             }
         if (code==EventGUIToFront && renderingOn){

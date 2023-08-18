@@ -1,5 +1,7 @@
 package romanow.abc.desktop;
 
+import lombok.Getter;
+import lombok.Setter;
 import retrofit2.Call;
 import retrofit2.Response;
 import romanow.abc.core.API.RestAPIBase;
@@ -19,6 +21,7 @@ import romanow.abc.core.entity.subjectarea.*;
 import romanow.abc.core.entity.users.User;
 import romanow.abc.core.script.*;
 import romanow.abc.core.utils.Pair;
+import romanow.abc.desktop.view2.desktop.ESSServiceGUIPanel2;
 import romanow.abc.drivers.ModBusClientProxyDriver;
 import romanow.abc.drivers.ModBusMemoryEmulator;
 
@@ -33,13 +36,17 @@ import static romanow.abc.desktop.BasePanel.EventPLMOn;
 
 public class ESSClient extends Client {
     ESS2Architecture deployed=null;             // Развернутая архитектура
-    ESS2View currentView=null;                  // Текущий вид
+    @Getter @Setter private ESS2View currentView=null;  // Текущий вид
+    @Getter @Setter private ESS2View currentView2=null; // Второй экран
     long mainServerNodeId = 0;                  // oid текущего узла для ДЦ
     I_ModbusGroupDriver plm= new ModBusMemoryEmulator();
     MetaExternalSystem meta=null;               // Чтобы не удалять 1.0 (ESSMetaPanel ESSMainServiceGUIPanel
     ArrayList<ESSNode> nodes = new ArrayList<>();
     AccessManager manager;
     RestAPIESS2 service2;
+    public ESS2View currentView(boolean secondView){
+        return  secondView ? currentView2 : currentView;
+        }
     public ESSClient(){
         this(true,false);
         }
@@ -58,16 +65,18 @@ public class ESSClient extends Client {
     public void initPanels() {
         super.initPanels();
         panelDescList.add(new PanelDescriptor("Настройки СНЭЭ", ESSWorkSettingsPanel.class,new int[]
-                {UserSuperAdminType,UserESSServiceEngeneer,UserESSEngeneer}));
+                {UserSuperAdminType,UserAdminType,UserESSServiceEngeneer,UserESSEngeneer}));
         // Обязательна мета-панель, т.к. запускается соединение с ПЛК при инициализации
         panelDescList.add(new PanelDescriptor("Оператор", ESSServiceGUIPanel.class,new int[]
-                {UserSuperAdminType,UserESSServiceEngeneer,UserESSEngeneer,UserESSOperator}));
+                {UserSuperAdminType,UserAdminType,UserESSServiceEngeneer,UserESSEngeneer,UserESSOperator}));
+        panelDescList.add(new PanelDescriptor("Экран-2", ESSServiceGUIPanel2.class,new int[]
+                {UserSuperAdminType,UserAdminType}));
         panelDescList.add(new PanelDescriptor("Мета-данные", ESSMetaPanel.class,new int[]
-                {UserSuperAdminType,UserESSServiceEngeneer,UserESSEngeneer,UserESSOperator}));
+                {UserSuperAdminType,UserAdminType,UserESSServiceEngeneer,UserESSEngeneer,UserESSOperator}));
         panelDescList.add(new PanelDescriptor("Сервер интегратора", ESSMainServerPanel.class,new int[]
-                {UserSuperAdminType,UserESSServiceEngeneer}));
+                {UserSuperAdminType,UserAdminType,UserESSServiceEngeneer}));
         panelDescList.add(new PanelDescriptor("Интегратор", ESSMainServiceGUIPanel.class,new int[]
-                {UserSuperAdminType,UserESSServiceEngeneer,UserESSEngeneer,UserESSOperator}));
+                {UserSuperAdminType,UserAdminType,UserESSServiceEngeneer,UserESSEngeneer,UserESSOperator}));
         panelDescList.add(new PanelDescriptor("Тренды", ESSTrendPanel.class,new int[]
                 {UserSuperAdminType, UserAdminType,UserESSServiceEngeneer,UserESSEngeneer,UserESSOperator}));
         }
@@ -311,14 +320,17 @@ public class ESSClient extends Client {
         for(ESS2View view : deployed.getViews()){
            if (view.getMetaFile().getRef().getMetaType()== MTViewFullScreen){
                 mainServerNodeId = 0;
-                setRenderingOn(0,view,true);
+                setRenderingOn(0,view,true,false);
                 return;
                 }
             }
         System.out.println("Не найден ЧМИ для Desktop");
         }
-    public void setRenderingOn(long nodeOid,ESS2View view, boolean trace) {
-        currentView = view;
+    public void setRenderingOn(long nodeOid,ESS2View view, boolean trace, boolean secondView) {
+        if (secondView)
+            currentView2 = view;
+        else
+            currentView = view;
         mainServerNodeId = nodeOid;
         preCompileLocalScriptsAsync(trace);
         new APICall<ESS2EnvValuesList>(this){
@@ -334,7 +346,7 @@ public class ESSClient extends Client {
                 setLocalEnvValues(oo);
                 }
             };
-        sendEvent(EventPLMOn,0);
+        sendEvent(EventPLMOn,secondView ? 1 : 0);
         }
 
     //-------------------------------------------------------------------------------------------------------

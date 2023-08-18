@@ -147,7 +147,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                             popup("Не найден ЧМИ для ПК");
                         }
                         else
-                            main2.setRenderingOn(0,view,false);
+                            main2.setRenderingOn(0,view,false,false);
                     }
                 }
             getRootPane().setVisible(false);
@@ -367,6 +367,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         OnlyView = new javax.swing.JCheckBox();
         IEC60870OnOff = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
+        OnOff2 = new javax.swing.JButton();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -396,7 +397,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(OnOff);
-        OnOff.setBounds(85, 425, 40, 40);
+        OnOff.setBounds(90, 425, 30, 40);
 
         DeviceRead.setText("Чтение");
         DeviceRead.addActionListener(new java.awt.event.ActionListener() {
@@ -911,9 +912,9 @@ public class ESSMetaPanel extends ESSBasePanel {
         add(Deploy);
         Deploy.setBounds(10, 420, 40, 40);
 
-        ArchitectureLabel.setText("Архитектура не выбрана");
+        ArchitectureLabel.setText("Выбрать архитектуру");
         add(ArchitectureLabel);
-        ArchitectureLabel.setBounds(140, 425, 170, 16);
+        ArchitectureLabel.setBounds(165, 425, 130, 16);
 
         Connect.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/status_gray.png"))); // NOI18N
         Connect.setBorderPainted(false);
@@ -1079,11 +1080,11 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(RunTimeSaveChanges);
-        RunTimeSaveChanges.setBounds(280, 445, 30, 30);
+        RunTimeSaveChanges.setBounds(290, 445, 30, 30);
 
         RunTimeChanges.setEnabled(false);
         add(RunTimeChanges);
-        RunTimeChanges.setBounds(320, 450, 40, 25);
+        RunTimeChanges.setBounds(330, 450, 30, 25);
 
         RunTimeChangesLabel.setText("Изменений");
         add(RunTimeChangesLabel);
@@ -1300,7 +1301,7 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         FullScreen.setText("Полный экран");
         add(FullScreen);
-        FullScreen.setBounds(140, 440, 120, 20);
+        FullScreen.setBounds(160, 440, 120, 20);
 
         OnOffNode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/connect-off.png"))); // NOI18N
         OnOffNode.setBorderPainted(false);
@@ -1433,7 +1434,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(OnlyView);
-        OnlyView.setBounds(140, 460, 110, 20);
+        OnlyView.setBounds(160, 460, 110, 20);
 
         IEC60870OnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/status_gray.png"))); // NOI18N
         IEC60870OnOff.setBorderPainted(false);
@@ -1450,6 +1451,17 @@ public class ESSMetaPanel extends ESSBasePanel {
         jLabel9.setText("МЭК 61850");
         add(jLabel9);
         jLabel9.setBounds(170, 490, 70, 16);
+
+        OnOff2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/connect-off.png"))); // NOI18N
+        OnOff2.setBorderPainted(false);
+        OnOff2.setContentAreaFilled(false);
+        OnOff2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OnOff2ActionPerformed(evt);
+            }
+        });
+        add(OnOff2);
+        OnOff2.setBounds(125, 430, 30, 30);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ImportMetaDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportMetaDataActionPerformed
@@ -1678,13 +1690,23 @@ public class ESSMetaPanel extends ESSBasePanel {
         screen.dispose();
         screen = null;
         }
-    public void setRenderingOff(){
-        final ESS2View view = main2.currentView;
-        main2.currentView=null;
-        OnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/connect-off.png")));
+    public void setRenderingOff() {
+        setRenderingOff(false);
+        setRenderingOff(true);
+        }
+    public void setRenderingOff(boolean second){
+        final ESS2View view = main2.getCurrentView();
+        if (!second) {
+            main2.setCurrentView(null);
+            OnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/connect-off.png")));
+            setFullScreenOff();
+            }
+        else {
+            main2.setCurrentView2(null);
+            OnOff2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/connect-off.png")));
+            }
         OnOffNode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/connect-off.png")));
-        main.sendEvent(EventPLMOff,0);
-        setFullScreenOff();
+        main.sendEvent(EventPLMOff,second ? 1 : 0);
         boolean save = runTimeChangesCount!=0;
         clearRunTimeChanges();
         if (save)
@@ -1710,20 +1732,24 @@ public class ESSMetaPanel extends ESSBasePanel {
         screen.eventPanel(EventPLMOn,0,0,"",null);
         screen.refresh();
         }
-    public void setRenderingOn() {
-        main2.setRenderingOn(0,deployed.getViews().get(Views.getSelectedIndex()),Trace.isSelected());
-        OnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/connect-on.png")));
-        fullScreenOn();
-        }
+    public void setRenderingOn(boolean second) {
+        main2.setRenderingOn(0,deployed.getViews().get(Views.getSelectedIndex()),Trace.isSelected(),second);
+        if (!second){
+            OnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/connect-on.png")));
+            fullScreenOn();
+            }
+        else
+            OnOff2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/connect-on.png")));
+            }
 
     private void OnOffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnOffActionPerformed
-        if (main2.currentView!=null){
-            setRenderingOff();
+        if (main2.getCurrentView()!=null){
+            setRenderingOff(false);
             }
         else{
             if (!deployed.isConnected())
                 return;
-            setRenderingOn();
+            setRenderingOn(false);
             }
     }//GEN-LAST:event_OnOffActionPerformed
 
@@ -2541,7 +2567,8 @@ public class ESSMetaPanel extends ESSBasePanel {
         Deploy.setIcon(new javax.swing.ImageIcon(getClass().getResource(archStateIcons[0])));
         Connect.setIcon(new javax.swing.ImageIcon(getClass().getResource(connStateIcons[0])));
         main2.deployed = null;
-        main2.currentView = null;
+        main2.setCurrentView(null);
+        main2.setCurrentView2(null);
         }
 
     private void refreshDeployedMetaData(){
@@ -2944,6 +2971,8 @@ public class ESSMetaPanel extends ESSBasePanel {
     }//GEN-LAST:event_RuntimeEditItemStateChanged
 
     private void saveRunTimeChanges(ESS2View view){
+        if (view==null)
+            return;
         ESS2MetaFile metaFile2 = view.getMetaFile().getRef();
         String dataString = new Meta2XStream().toXML(view.getView());
         main.updateArtifactFromString(metaFile2.getFile().getRef(), dataString, new I_OK() {
@@ -2964,7 +2993,8 @@ public class ESSMetaPanel extends ESSBasePanel {
             });
         }
     private void RunTimeSaveChangesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RunTimeSaveChangesActionPerformed
-        saveRunTimeChanges(main2.currentView);
+        saveRunTimeChanges(main2.getCurrentView());
+        saveRunTimeChanges(main2.getCurrentView2());
         clearRunTimeChanges();
     }//GEN-LAST:event_RunTimeSaveChangesActionPerformed
 
@@ -3229,9 +3259,9 @@ public class ESSMetaPanel extends ESSBasePanel {
     }//GEN-LAST:event_ExportScriptsActionPerformed
 
     private void OnOffNodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnOffNodeActionPerformed
-        if (main2.currentView!=null) {
-            final ESS2View view = main2.currentView;
-            main2.currentView=null;
+        if (main2.getCurrentView()!=null) {
+            final ESS2View view = main2.getCurrentView();
+            main2.setCurrentView(null);
             OnOffNode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/connect-off.png")));
             main.sendEvent(EventPLMOff,0);
             setFullScreenOff();
@@ -3255,7 +3285,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         main2.deployed = arch;
         for(ESS2View view : deployed.getViews()){
             if (view.getMetaFile().getRef().getMetaType()== MTViewMainServer){
-                main2.setRenderingOn(node.getOid(),view,Trace.isSelected());
+                main2.setRenderingOn(node.getOid(),view,Trace.isSelected(),false);
                 OnOffNode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/connect-on.png")));
                 fullScreenOn();
                 return;
@@ -3453,6 +3483,18 @@ public class ESSMetaPanel extends ESSBasePanel {
                }
             };
     }//GEN-LAST:event_IEC60870OnOffActionPerformed
+
+    private void OnOff2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnOff2ActionPerformed
+        if (main2.getCurrentView2()!=null){
+            setRenderingOff(true);
+            }
+        else{
+            if (!deployed.isConnected())
+                return;
+            setRenderingOn(true);
+            }
+
+    }//GEN-LAST:event_OnOff2ActionPerformed
 
     private void refreshIEC61850State(){
         new APICall<JInt>(main) {
@@ -3694,6 +3736,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JTextField MinValueFormula;
     private java.awt.Choice Nodes;
     private javax.swing.JButton OnOff;
+    private javax.swing.JButton OnOff2;
     private javax.swing.JButton OnOffNode;
     private javax.swing.JCheckBox OnlyView;
     private javax.swing.JPasswordField Password;

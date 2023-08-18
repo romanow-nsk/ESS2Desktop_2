@@ -171,7 +171,7 @@ public class ESSLocalLoginScreen extends ESSBaseView {
             //System.out.println(out);  // ПЕРЕХВАЧЕН - виснет ??????
             ESSClient main = client.createFrame();
             main.setRenderingOn();
-            if (main.currentView==null)
+            if (main.currentView(false)==null)
                 return;
             screen = new ESSServiceGUIScreen(main, new I_Button() {
                 @Override
