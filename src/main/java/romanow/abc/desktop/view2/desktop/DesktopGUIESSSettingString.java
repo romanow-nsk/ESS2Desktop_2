@@ -68,7 +68,7 @@ public class DesktopGUIESSSettingString extends View2BaseDesktop {
                     return;
                     }
                 getSettings();
-                KeyBoardPanel digitPanel = new KeyBoardPanel(false, setValue, new I_Value<String>() {
+                KeyBoardPanel digitPanel = new KeyBoardPanel(false, null,setValue, new I_Value<String>() {
                     @Override
                     public void onEnter(String value) {
                         try {

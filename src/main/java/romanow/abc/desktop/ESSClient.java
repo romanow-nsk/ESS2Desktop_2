@@ -8,6 +8,7 @@ import romanow.abc.core.API.RestAPIBase;
 import romanow.abc.core.API.RestAPISecondClient;
 import romanow.abc.core.API.RestAPIESS2;
 import romanow.abc.core.DBRequest;
+import romanow.abc.core.ErrorList;
 import romanow.abc.core.UniException;
 import romanow.abc.core.Utils;
 import romanow.abc.core.constants.Values;
@@ -35,6 +36,7 @@ import static romanow.abc.desktop.BasePanel.EventPLMOn;
 
 
 public class ESSClient extends Client {
+    @Getter @Setter private  ErrorList errors = new ErrorList();
     ESS2Architecture deployed=null;             // Развернутая архитектура
     @Getter @Setter private ESS2View currentView=null;  // Текущий вид
     @Getter @Setter private ESS2View currentView2=null; // Второй экран
@@ -182,22 +184,25 @@ public class ESSClient extends Client {
         }
     //------------------------------------------------------------------------------------------------------
     public void refreshArchtectureState(){
-        new APICall<ArrayList<Long>>(this) {
-            @Override
-            public Call<ArrayList<Long>> apiFun() {
-                return service2.getArchitectureState(debugToken);
-            }
-            @Override
-            public void onSucess(ArrayList<Long> val) {
-                int state = val.get(0).intValue();
-                popup("Состояние "+Values.constMap().getGroupMapByValue("ArchState").get(state).title());
-                if (state==Values.ASNotDeployed)
-                    return;
-                long oid = val.get(1);
-                loadDeployedArchitecture(oid, state);
-                deployed.setArchitectureState(state);
+        try {
+            ArrayList<Long> val = new APICall2<ArrayList<Long>>() {
+                @Override
+                public Call<ArrayList<Long>> apiFun() {
+                    return service2.getArchitectureState(debugToken);
+                    }
+                }.call(this);
+            int state = val.get(0).intValue();
+            String ss = "Недопустимое состояние: "+Values.constMap().getGroupMapByValue("ArchState").get(state).title();
+            if (state!= ASConnected){
+                errors.addError(ss);
                 }
-            };
+            long oid = val.get(1);
+            loadDeployedArchitecture(oid, state);
+            deployed.setArchitectureState(state);
+            errors.addError(deployed.getErrors());
+            } catch (Exception ee){
+                errors.addError(ee.toString());
+                }
         }
     //-------------------------------------------------------------------------------------------------------
     public Syntax compileScriptLocal(ESS2ScriptFile scriptFile,String src, boolean trace){
@@ -316,15 +321,28 @@ public class ESSClient extends Client {
                     }
             }
     //------------------------------------------------------------------------------------------------------
-    public void setRenderingOn() {
+    public void setRenderingOn(String viewName) {
+        ESS2View  found = null;
         for(ESS2View view : deployed.getViews()){
-           if (view.getMetaFile().getRef().getMetaType()== MTViewFullScreen){
-                mainServerNodeId = 0;
-                setRenderingOn(0,view,true,false);
-                return;
+            if (viewName.length()!=0){
+                if (viewName.equals(view.getShortName())){
+                    found = view;
+                    break;
+                    }
+                }
+            else{
+                if(view.getMetaFile().getRef().getMetaType()== MTViewFullScreen)
+                    found = view;
+                    break;
                 }
             }
-        System.out.println("Не найден ЧМИ для Desktop");
+        if (found!=null){
+            mainServerNodeId = 0;
+            setRenderingOn(0,found,true,false);
+            return;
+            }
+        else
+            errors.addError("Не найден ЧМИ: "+viewName);
         }
     public void setRenderingOn(long nodeOid,ESS2View view, boolean trace, boolean secondView) {
         if (secondView)
@@ -333,20 +351,21 @@ public class ESSClient extends Client {
             currentView = view;
         mainServerNodeId = nodeOid;
         preCompileLocalScriptsAsync(trace);
-        new APICall<ESS2EnvValuesList>(this){
-            @Override
-            public Call<ESS2EnvValuesList> apiFun() {
-                if (nodeOid==0)
-                    return service2.getEnvValues(debugToken);
-                else
-                    return service2.getEnvValuesNode(debugToken,nodeOid);
+        try {
+            ESS2EnvValuesList oo = new APICall2<ESS2EnvValuesList>() {
+                @Override
+                public Call<ESS2EnvValuesList> apiFun() {
+                    if (nodeOid == 0)
+                        return service2.getEnvValues(debugToken);
+                    else
+                        return service2.getEnvValuesNode(debugToken, nodeOid);
+                    }
+                }.call(this);
+            setLocalEnvValues(oo);
+            sendEvent(EventPLMOn,secondView ? 1 : 0);
+            } catch (Exception ee){
+                errors.addError(ee.toString());
                 }
-            @Override
-            public void onSucess(ESS2EnvValuesList oo) {
-                setLocalEnvValues(oo);
-                }
-            };
-        sendEvent(EventPLMOn,secondView ? 1 : 0);
         }
 
     //-------------------------------------------------------------------------------------------------------

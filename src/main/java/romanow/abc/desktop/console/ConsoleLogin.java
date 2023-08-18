@@ -12,31 +12,48 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class ConsoleLogin extends ConsoleCommand {
-    public ConsoleLogin() {
+    String login="";
+    String pass="";
+    String guiName="";    public ConsoleLogin() {
         super("login");
         }
     @Override
     public String exec(ConsoleClient client, ArrayList<String> command) throws UniException {
         String out = "";
-        int portIdx=2;
-        int ipIdx=2;
         int sz=command.size();
-        if (sz==1)
-            return "Не хватает параметров\n";
-        if (sz>3)
-            return "Лишние параметры\n";
-        String login = command.get(1);
-        String pass="";
-        if (sz==3)
-            pass = command.get(2);
-        else{
-            System.out.print("password:");
-            try {
-                pass = client.reader.readLine();
-                } catch (Exception ee){
-                    throw UniException.io(ee.toString()+"\n");
-                    }
-            }
+        switch (sz){
+            case 2:
+                System.out.print("password:");
+                try {
+                    pass = client.reader.readLine();
+                    } catch (Exception ee){
+                        return "pass: "+ee.toString()+"\n";
+                        }
+                System.out.print("guiName:");
+                try {
+                    guiName = client.reader.readLine();
+                    } catch (Exception ee){
+                        return "guiName: "+ee.toString()+"\n";
+                        }
+                break;
+            case 3:
+                login = command.get(1);
+                guiName = command.get(2);
+                System.out.print("password:");
+                try {
+                    pass = client.reader.readLine();
+                    } catch (Exception ee){
+                        return "pass: "+ee.toString()+"\n";
+                        }
+                break;
+            case 4:
+                login = command.get(1);
+                pass = command.get(2);
+                guiName = command.get(3);
+                break;
+            default:
+                return "Недопустимое количество параметров\n";
+                }
         client.startClient();
         String finalPass = pass;
         client.user = new APICallC<User>(){
@@ -62,7 +79,8 @@ public class ConsoleLogin extends ConsoleCommand {
         if (!serverSubjectArea.equals(ownSubjectArea)){
             out += "Другой тип сервера: "+ serverSubjectArea+"\n";
             }
-        return out + new ConsoleSystemsList().exec(client,null);
+        out += new ConsoleSystemsList().exec(client,null);
+        return out;
         }
     @Override
     public String help() {

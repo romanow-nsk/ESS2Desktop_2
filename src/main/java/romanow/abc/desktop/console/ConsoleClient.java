@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import romanow.abc.core.API.RestAPIBase;
 import romanow.abc.core.API.RestAPIESS2;
 import romanow.abc.core.DBRequest;
+import romanow.abc.core.ErrorList;
 import romanow.abc.core.UniException;
 import romanow.abc.core.constants.Values;
 import romanow.abc.core.entity.artifacts.Artifact;
@@ -46,12 +47,9 @@ public class ConsoleClient {
     ESS2Architecture deployed = null;
     WorkSettings workSettings=null;
     boolean localUser=false;
-    //------------------------------------------------------------------------------------
-    public ESSClient createFrame(){
-        ESSClient main = new ESSClient(false,false);
+    //------------------------------------------------------------------------------------------------------------------
+    public void setExternalData(ESSClient main){
         main.setExternalData(debugToken,user,workSettings,service,service2,localUser);
-        main.refreshArchtectureState();
-        return main;
         }
     public RestAPIBase getService() {
         return service; }
