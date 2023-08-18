@@ -13,6 +13,8 @@ import romanow.abc.desktop.*;
 
 import java.awt.*;
 
+import static romanow.abc.desktop.BasePanel.EventRuntimeSelected;
+
 /**
  *
  * @author romanow0
@@ -89,6 +91,7 @@ public class WizardMeta2GUI extends WizardBaseView {
         MoveUp = new javax.swing.JButton();
         MoveAll = new javax.swing.JCheckBox();
         RepaintEtOnce = new javax.swing.JCheckBox();
+        SelecElem = new javax.swing.JButton();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -231,7 +234,7 @@ public class WizardMeta2GUI extends WizardBaseView {
             }
         });
         getContentPane().add(DeleteElem);
-        DeleteElem.setBounds(870, 110, 30, 30);
+        DeleteElem.setBounds(840, 120, 30, 30);
 
         CopyElem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/add.png"))); // NOI18N
         CopyElem.setBorderPainted(false);
@@ -242,7 +245,7 @@ public class WizardMeta2GUI extends WizardBaseView {
             }
         });
         getContentPane().add(CopyElem);
-        CopyElem.setBounds(800, 110, 30, 30);
+        CopyElem.setBounds(800, 120, 30, 30);
 
         MoveDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/down.png"))); // NOI18N
         MoveDown.setBorderPainted(false);
@@ -298,7 +301,18 @@ public class WizardMeta2GUI extends WizardBaseView {
 
         RepaintEtOnce.setText("Отображать сразу");
         getContentPane().add(RepaintEtOnce);
-        RepaintEtOnce.setBounds(800, 150, 140, 20);
+        RepaintEtOnce.setBounds(800, 160, 140, 20);
+
+        SelecElem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/arrow.png"))); // NOI18N
+        SelecElem.setBorderPainted(false);
+        SelecElem.setContentAreaFilled(false);
+        SelecElem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SelecElemActionPerformed(evt);
+            }
+        });
+        getContentPane().add(SelecElem);
+        SelecElem.setBounds(880, 120, 30, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -492,6 +506,11 @@ public class WizardMeta2GUI extends WizardBaseView {
             moveY(-step);
     }//GEN-LAST:event_MoveUpActionPerformed
 
+    private void SelecElemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelecElemActionPerformed
+        context.getMain().sendEventPanel(EventRuntimeSelected,0,0,"",elem);
+        dispose();
+    }//GEN-LAST:event_SelecElemActionPerformed
+
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -510,6 +529,7 @@ public class WizardMeta2GUI extends WizardBaseView {
     private javax.swing.JTextField MoveStep;
     private javax.swing.JButton MoveUp;
     private javax.swing.JCheckBox RepaintEtOnce;
+    private javax.swing.JButton SelecElem;
     private javax.swing.JTextField StringSize;
     private javax.swing.JTextField W;
     private javax.swing.JTextField X;

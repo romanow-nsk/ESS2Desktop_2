@@ -2000,8 +2000,13 @@ public class ESSMetaPanel extends ESSBasePanel {
         Meta2XML meta2XML;
         if (Values.isEquipmentType(newType))
             meta2XML = new Meta2Equipment();
-        else
+        else{
             meta2XML = new Meta2GUIView();
+            Meta2GUIForm newForm = new Meta2GUIForm();
+            newForm.setShortName("main");
+            newForm.setTitle("Главная");
+            ((Meta2GUIView)meta2XML).getForms().add(newForm);
+            }
         meta2XML.setShortName("newItem");
         meta2XML.setTitle("Новый");
         meta2XML.setXmlType(newType);
