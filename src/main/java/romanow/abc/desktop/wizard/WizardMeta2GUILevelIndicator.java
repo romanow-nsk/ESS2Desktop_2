@@ -26,7 +26,7 @@ public class WizardMeta2GUILevelIndicator extends WizardMeta2GUIRegW2 {
     @Override
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
-        setSize(800,350);
+        resizeHight(350);
         elem = (Meta2GUILevelIndicator)   entity;
         WizardRegLinkPanel linkPanel = new WizardRegLinkPanel(235,120,"MaxFail",elem.getMaxFail(),this);
         add(linkPanel);

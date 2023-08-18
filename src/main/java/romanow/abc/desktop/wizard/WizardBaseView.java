@@ -12,6 +12,7 @@ import romanow.abc.core.entity.metadata.Meta2Entity;
 import romanow.abc.core.entity.metadata.Meta2Face;
 import romanow.abc.desktop.I_Value;
 import romanow.abc.desktop.MainBaseFrame;
+import romanow.abc.desktop.view2.FormContext2;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,12 +25,13 @@ import java.util.HashMap;
  * @author romanow0
  */
 public class WizardBaseView extends javax.swing.JFrame {
-    @Setter private I_Value<String> onClose=null;
+    protected I_Value<String> onClose=null;
     protected MainBaseFrame main;
     protected WizardBaseView parentView;
     protected Meta2Entity entity;
     protected int level=0;
     protected I_Value<String> back;
+    protected FormContext2 context;
     protected boolean busy=false;
     public static String openWizard(MainBaseFrame main0, Meta2Entity entity,I_Value<String> back){
         String name = "Wizard"+entity.getClass().getSimpleName();
@@ -47,15 +49,16 @@ public class WizardBaseView extends javax.swing.JFrame {
                 }
             }
     public String openWizardByType(Meta2Entity entity){
-        return openWizardByType(entity,this,null,null);
+        return openWizardByType(entity,this,null,null,null);
         }
-    public static String openWizardByType(Meta2Entity entity,WizardBaseView parent, I_Value<String> closeCode,I_Value<String> back0){
+    public static String openWizardByType(Meta2Entity entity, WizardBaseView parent, I_Value<String> closeCode, I_Value<String> back0, FormContext2 context2){
         String name = "Wizard"+entity.getClass().getSimpleName();
         try {
             Class  cls = Class.forName("romanow.abc.desktop.wizard."+name);
             WizardBaseView view = (WizardBaseView)cls.newInstance();
-            view.setOnClose(closeCode);
+            view.onClose = closeCode;
             view.back = back0;
+            view.context = context2;
             view.openForm(parent,entity);
             view.revalidate();
             view.repaint(1000);
@@ -64,7 +67,9 @@ public class WizardBaseView extends javax.swing.JFrame {
                 return "Ошибка создания формы "+name+": "+ee.toString();
                 }
         }
-
+    public void resizeHight(int high){
+        setSize(getSize().width,high);
+        }
     public void openForm(WizardBaseView parentView0,Meta2Entity entity0) {
         busy = true;
         level = parentView0==null ? 0 : level+1;
@@ -77,6 +82,7 @@ public class WizardBaseView extends javax.swing.JFrame {
         entity = entity0;
         setVisible(true);
         setLocation(200+level*10,250+level*10);
+        setSize(800,170);
         setTitle("Уровень "+(level+1)+"  "+entity.getFullTitle());
         Title.setText(entity.getTitle());
         Comment.setText(entity.getComment());
@@ -182,7 +188,7 @@ public class WizardBaseView extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Not61850);
-        Not61850.setBounds(650, 10, 160, 20);
+        Not61850.setBounds(650, 10, 150, 20);
 
         In60870.setText("МЭК 60870 включен");
         In60870.addItemListener(new java.awt.event.ItemListener() {

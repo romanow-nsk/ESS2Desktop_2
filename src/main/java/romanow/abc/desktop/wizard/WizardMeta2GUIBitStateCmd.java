@@ -28,7 +28,7 @@ public class WizardMeta2GUIBitStateCmd extends WizardMeta2GUI {
         elem = (Meta2GUIBitStateCmd) entity;
         if (elem.getCmdReg()==null)
             elem.setCmdReg(new Meta2RegLink());
-        setSize(750,350);
+        resizeHight(350);
         WizardRegLinkPanel linkPanel = new WizardRegLinkPanel(10,120,"BitReg",elem.getRegLink(),this);
         add(linkPanel);
         linkPanel = new WizardRegLinkPanel(10,170,"CmdReg",elem.getCmdReg(),this);

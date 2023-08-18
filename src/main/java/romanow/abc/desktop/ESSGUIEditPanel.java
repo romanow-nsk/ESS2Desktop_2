@@ -174,7 +174,6 @@ public class ESSGUIEditPanel extends javax.swing.JFrame {
                 dispose();
                 }
             });
-
     }//GEN-LAST:event_CopyElemActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed

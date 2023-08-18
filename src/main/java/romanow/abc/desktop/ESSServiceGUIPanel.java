@@ -244,9 +244,12 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         repaint();
         }
     //---------------------------------------------------------------------------------------
-    private I_Value<String> onClose = new I_Value<String>() {               // Событие - закрытие визарда - обновитьь ЧМИ
+    private I_Value<String> onClose = new I_Value<String>() {               // Событие - закрытие визарда - обновить ЧМИ
         @Override
-        public void onEnter(String value) {}
+        public void onEnter(String value) {
+            repaintView();
+            context.getMain().sendEventPanel(BasePanel.EventRuntimeEdited,0,0,value);
+            }
         };
     private I_Value<String> onChange = new I_Value<String>() {               // Событие - Изменение элемента формы
         @Override
@@ -360,7 +363,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 bb.addMouseListener(new MouseAdapter() {
                     public void mousePressed(MouseEvent e) {
                         if (e.getButton() == MouseEvent.BUTTON3 && context.isRuntimeEditMode()){
-                            String ss = WizardBaseView.openWizardByType(next, null, onClose, onChange);
+                            String ss = WizardBaseView.openWizardByType(next, null, onClose, onChange, context);
                             if (ss!=null)
                                 new Message(300,300,ss,Values.PopupMessageDelay);
                             }

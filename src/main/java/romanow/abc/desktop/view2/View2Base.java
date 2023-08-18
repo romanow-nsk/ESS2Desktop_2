@@ -3,6 +3,7 @@ package romanow.abc.desktop.view2;
 import lombok.Getter;
 import lombok.Setter;
 import romanow.abc.core.ErrorList;
+import romanow.abc.core.I_EmptyEvent;
 import romanow.abc.core.UniException;
 import romanow.abc.core.constants.Values;
 import romanow.abc.core.entity.metadata.Meta2RegLink;
@@ -12,12 +13,14 @@ import romanow.abc.core.entity.metadata.view.Meta2GUIReg;
 import romanow.abc.core.entity.subject2area.ESS2Architecture;
 import romanow.abc.core.entity.subject2area.ESS2Device;
 import romanow.abc.desktop.BasePanel;
+import romanow.abc.desktop.GUITimer;
 import romanow.abc.desktop.I_Value;
 import romanow.abc.desktop.Message;
 import romanow.abc.desktop.wizard.WizardBaseView;
 
 
 import java.awt.*;
+import java.awt.dnd.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -97,7 +100,8 @@ public abstract class View2Base implements I_View2 {
                     else{
                         context.setSelectedView(element);
                         context.getMain().sendEventPanel(BasePanel.EventRuntimeSelected,0,0,"");
-                        String ss = WizardBaseView.openWizardByType(element, null, onClose, onChange);
+                        GUITimer.trace(textField,5, Color.PINK);
+                        String ss = WizardBaseView.openWizardByType(element, null, onClose, onChange,context);
                         if (ss!=null)
                             new Message(300,300,ss,Values.PopupMessageDelay);
                         }

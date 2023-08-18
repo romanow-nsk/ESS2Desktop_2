@@ -35,7 +35,7 @@ public class WizardMeta2GUIImageBit extends WizardMeta2GUI {
         } 
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
-        setSize(750,400);
+        resizeHight(400);
         elem = (Meta2GUIImageBit) entity;
         setRegNum();
         Equip.setText(elem.getEquipName());

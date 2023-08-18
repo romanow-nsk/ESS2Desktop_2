@@ -7,7 +7,9 @@ package romanow.abc.desktop.wizard;
 
 
 import romanow.abc.core.entity.metadata.Meta2Entity;
+import romanow.abc.core.entity.metadata.Meta2GUIForm;
 import romanow.abc.core.entity.metadata.view.Meta2GUI;
+import romanow.abc.desktop.*;
 
 import java.awt.*;
 
@@ -16,14 +18,14 @@ import java.awt.*;
  * @author romanow0
  */
 public class WizardMeta2GUI extends WizardBaseView {
-
     private Meta2GUI elem;
+    I_Value<String> baseBack;
     public WizardMeta2GUI() {
         initComponents();
         }
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
-        setSize(750,200);
+        setSize(950,200);
         elem = (Meta2GUI) entity;
         X.setText(""+elem.getX());
         Y.setText(""+elem.getY());
@@ -35,6 +37,16 @@ public class WizardMeta2GUI extends WizardBaseView {
         ColorVal.setText(""+String.format("%6x",elem.getColor()));
         ElemColor.setBackground(new Color(elem.getColor()));
         Bold.setSelected(elem.isBold());
+        baseBack = back;
+        back = new I_Value<String>() {
+            @Override
+            public void onEnter(String value) {
+                if (RepaintEtOnce.isSelected())
+                    onClose.onEnter(value);
+                else
+                    baseBack.onEnter(value);
+                }
+            };
         }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -67,22 +79,30 @@ public class WizardMeta2GUI extends WizardBaseView {
         FontSize = new javax.swing.JTextField();
         CommonColor = new javax.swing.JCheckBox();
         Bold = new javax.swing.JCheckBox();
+        jSeparator3 = new javax.swing.JSeparator();
+        DeleteElem = new javax.swing.JButton();
+        CopyElem = new javax.swing.JButton();
+        MoveDown = new javax.swing.JButton();
+        MoveLeft = new javax.swing.JButton();
+        MoveStep = new javax.swing.JTextField();
+        MoveRight = new javax.swing.JButton();
+        MoveUp = new javax.swing.JButton();
+        MoveAll = new javax.swing.JCheckBox();
+        RepaintEtOnce = new javax.swing.JCheckBox();
 
         jCheckBox1.setText("jCheckBox1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
         });
-        getContentPane().setLayout(null);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(10, 82, 700, 2);
+        jSeparator1.setBounds(10, 82, 700, 3);
 
         jLabel9.setText("Цвет");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(440, 90, 40, 14);
+        jLabel9.setBounds(440, 90, 40, 16);
         jLabel9.getAccessibleContext().setAccessibleName("Y");
 
         ColorVal.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -102,7 +122,7 @@ public class WizardMeta2GUI extends WizardBaseView {
             }
         });
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(10, 90, 30, 14);
+        jLabel11.setBounds(10, 90, 30, 16);
 
         X.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -114,7 +134,7 @@ public class WizardMeta2GUI extends WizardBaseView {
 
         jLabel12.setText("Y");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(70, 90, 30, 14);
+        jLabel12.setBounds(70, 90, 30, 16);
 
         Y.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -126,7 +146,7 @@ public class WizardMeta2GUI extends WizardBaseView {
 
         jLabel13.setText("W");
         getContentPane().add(jLabel13);
-        jLabel13.setBounds(130, 90, 30, 14);
+        jLabel13.setBounds(130, 90, 30, 16);
 
         W.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -146,7 +166,7 @@ public class WizardMeta2GUI extends WizardBaseView {
 
         jLabel10.setText("H");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(200, 90, 30, 14);
+        jLabel10.setBounds(200, 90, 30, 16);
         getContentPane().add(ElemColor);
         ElemColor.setBounds(555, 90, 25, 25);
         getContentPane().add(jLabel14);
@@ -162,15 +182,15 @@ public class WizardMeta2GUI extends WizardBaseView {
 
         jLabel15.setText("в строке");
         getContentPane().add(jLabel15);
-        jLabel15.setBounds(340, 100, 70, 14);
+        jLabel15.setBounds(340, 100, 70, 16);
 
         jLabel16.setText("Font");
         getContentPane().add(jLabel16);
-        jLabel16.setBounds(270, 90, 40, 14);
+        jLabel16.setBounds(270, 90, 40, 16);
 
         jLabel17.setText("Символов ");
         getContentPane().add(jLabel17);
-        jLabel17.setBounds(340, 90, 70, 14);
+        jLabel17.setBounds(340, 90, 70, 16);
 
         FontSize.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -187,7 +207,7 @@ public class WizardMeta2GUI extends WizardBaseView {
             }
         });
         getContentPane().add(CommonColor);
-        CommonColor.setBounds(590, 90, 61, 23);
+        CommonColor.setBounds(590, 90, 64, 20);
 
         Bold.setText("bold");
         Bold.addItemListener(new java.awt.event.ItemListener() {
@@ -196,7 +216,89 @@ public class WizardMeta2GUI extends WizardBaseView {
             }
         });
         getContentPane().add(Bold);
-        Bold.setBounds(660, 90, 50, 23);
+        Bold.setBounds(660, 90, 50, 20);
+
+        jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        getContentPane().add(jSeparator3);
+        jSeparator3.setBounds(790, 20, 10, 130);
+
+        DeleteElem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/remove.png"))); // NOI18N
+        DeleteElem.setBorderPainted(false);
+        DeleteElem.setContentAreaFilled(false);
+        DeleteElem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteElemActionPerformed(evt);
+            }
+        });
+        getContentPane().add(DeleteElem);
+        DeleteElem.setBounds(870, 110, 30, 30);
+
+        CopyElem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/add.png"))); // NOI18N
+        CopyElem.setBorderPainted(false);
+        CopyElem.setContentAreaFilled(false);
+        CopyElem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CopyElemActionPerformed(evt);
+            }
+        });
+        getContentPane().add(CopyElem);
+        CopyElem.setBounds(800, 110, 30, 30);
+
+        MoveDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/down.png"))); // NOI18N
+        MoveDown.setBorderPainted(false);
+        MoveDown.setContentAreaFilled(false);
+        MoveDown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MoveDownActionPerformed(evt);
+            }
+        });
+        getContentPane().add(MoveDown);
+        MoveDown.setBounds(830, 80, 40, 38);
+
+        MoveLeft.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/left.png"))); // NOI18N
+        MoveLeft.setBorderPainted(false);
+        MoveLeft.setContentAreaFilled(false);
+        MoveLeft.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MoveLeftActionPerformed(evt);
+            }
+        });
+        getContentPane().add(MoveLeft);
+        MoveLeft.setBounds(800, 60, 40, 38);
+
+        MoveStep.setText("5");
+        getContentPane().add(MoveStep);
+        MoveStep.setBounds(800, 10, 30, 25);
+
+        MoveRight.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/right.PNG"))); // NOI18N
+        MoveRight.setBorderPainted(false);
+        MoveRight.setContentAreaFilled(false);
+        MoveRight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MoveRightActionPerformed(evt);
+            }
+        });
+        getContentPane().add(MoveRight);
+        MoveRight.setBounds(860, 60, 40, 38);
+
+        MoveUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/up.PNG"))); // NOI18N
+        MoveUp.setBorderPainted(false);
+        MoveUp.setContentAreaFilled(false);
+        MoveUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MoveUpActionPerformed(evt);
+            }
+        });
+        getContentPane().add(MoveUp);
+        MoveUp.setBounds(830, 40, 40, 38);
+
+        MoveAll.setText("Весь экран");
+        getContentPane().add(MoveAll);
+        MoveAll.setBounds(840, 10, 100, 20);
+
+        RepaintEtOnce.setText("Отображать сразу");
+        getContentPane().add(RepaintEtOnce);
+        RepaintEtOnce.setBounds(800, 150, 140, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -282,15 +384,132 @@ public class WizardMeta2GUI extends WizardBaseView {
         back.onEnter("Изменено bold: "+elem.isBold());
     }//GEN-LAST:event_BoldItemStateChanged
 
+    private void DeleteElemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteElemActionPerformed
+        new OK(200,200,"Удалить элемент: "+elem.getFullTitle(), new I_Button() {
+            @Override
+            public void onPush() {
+                Meta2GUIForm form1 = context.getForm();
+                Meta2GUIForm form2 = context.getBaseForm();     //
+                if (form2!=null)
+                    form1 = form2;
+                form1.getControls().getList().remove(elem);     // Удалить из списка элементов управления GUI формы
+                onClose.onEnter("Удален "+form1.getTitle()+": "+elem.getFullTitle());
+                dispose();
+                }
+            });
+    }//GEN-LAST:event_DeleteElemActionPerformed
+
+    private MainBaseFrame getMain(){
+        return context==null ? main : context.getMain();
+        }
+
+    private void CopyElemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CopyElemActionPerformed
+        new OK(200,200,"Вставить элемент: "+elem.getFullTitle(), new I_Button() {
+            @Override
+            public void onPush() {
+                Meta2GUI copy = null;
+                try {
+                    copy = elem.getClass().newInstance();       // Клонировать элемент
+                } catch (Exception ee){
+                    dispose();
+                    getMain().popup("Ошибка создания клона для  "+elem.getFullTitle());
+                    return;
+                    }
+                copy.cloneGUIData(elem);                        // Метод клонирования содержимого для GUI
+                copy.shift(10,10);
+                Meta2GUIForm form1 = context.getForm();
+                Meta2GUIForm form2 = context.getBaseForm();     //
+                if (form2!=null)
+                    form1 = form2;
+                form1.getControls().add(copy);                  // Добавить в список элементов управления GUI формы
+                onClose.onEnter("Добавлен "+form1.getTitle()+": "+elem.getFullTitle());
+                }
+            });
+        }//GEN-LAST:event_CopyElemActionPerformed
+    private int getStep(){
+        int step=0;
+        try {
+            step = Integer.parseInt(MoveStep.getText());
+            }catch (Exception ee){
+                getMain().popup("Недопустимый формат целого");
+                return 0;
+                }
+        if (step==0){
+            getMain().popup("Выберите ненулевое перемещение ");
+            return 0;
+            }
+        return step;
+        }
+    private void moveY(int step){
+        if (!MoveAll.isSelected()){
+            elem.setY(elem.getY()+step);
+            Y.setText(""+elem.getY());
+            back.onEnter("Изменено Y: "+elem.getY());
+            onClose.onEnter("");
+            }
+        else{
+            final Meta2GUI view = context.getSelectedView();
+            Meta2GUIForm form = context.getForm();
+            int num = form.getControls().shift(0,step);
+            onClose.onEnter("Переместить все элементы на dy="+step);
+            }
+        }
+    private void moveX(int step){
+        if (!MoveAll.isSelected()){
+            elem.setX(elem.getX()+step);
+            X.setText(""+elem.getX());
+            back.onEnter("Изменено X: "+elem.getX());
+            onClose.onEnter("");
+            }
+        else{
+            final Meta2GUI view = context.getSelectedView();
+            Meta2GUIForm form = context.getForm();
+            int num = form.getControls().shift(step,0);
+            onClose.onEnter("Переместить все элементы на dx="+step);
+            }
+        }
+    private void MoveDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MoveDownActionPerformed
+        int step = getStep();
+        if (step!=0)
+            moveY(step);
+        }//GEN-LAST:event_MoveDownActionPerformed
+
+    private void MoveLeftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MoveLeftActionPerformed
+        int step = getStep();
+        if (step!=0)
+            moveX(-step);
+    }//GEN-LAST:event_MoveLeftActionPerformed
+
+    private void MoveRightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MoveRightActionPerformed
+        int step = getStep();
+        if (step!=0)
+            moveX(step);
+    }//GEN-LAST:event_MoveRightActionPerformed
+
+    private void MoveUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MoveUpActionPerformed
+        int step = getStep();
+        if (step!=0)
+            moveY(-step);
+    }//GEN-LAST:event_MoveUpActionPerformed
+
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox Bold;
     private javax.swing.JTextField ColorVal;
     private javax.swing.JCheckBox CommonColor;
+    private javax.swing.JButton CopyElem;
+    private javax.swing.JButton DeleteElem;
     private javax.swing.JButton ElemColor;
     private javax.swing.JTextField FontSize;
     private javax.swing.JTextField H;
+    private javax.swing.JCheckBox MoveAll;
+    private javax.swing.JButton MoveDown;
+    private javax.swing.JButton MoveLeft;
+    private javax.swing.JButton MoveRight;
+    private javax.swing.JTextField MoveStep;
+    private javax.swing.JButton MoveUp;
+    private javax.swing.JCheckBox RepaintEtOnce;
     private javax.swing.JTextField StringSize;
     private javax.swing.JTextField W;
     private javax.swing.JTextField X;
@@ -307,5 +526,6 @@ public class WizardMeta2GUI extends WizardBaseView {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     // End of variables declaration//GEN-END:variables
 }
