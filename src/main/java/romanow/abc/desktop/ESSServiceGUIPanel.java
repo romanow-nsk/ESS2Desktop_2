@@ -41,8 +41,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import static romanow.abc.core.constants.Values.MTViewAndroid;
-import static romanow.abc.core.constants.Values.MTViewFullScreen;
+import static romanow.abc.core.constants.Values.*;
 
 /**
  *
@@ -57,10 +56,16 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     private final static String buttonInfoOn = "/question.png";
     private final static String buttonInfoOff = "/question_gray.png";
     private final static String mainFormName="Главный";
-    private final static int levelYCoords[]={0,10,55,620,575};
+    //--------------------------------- Данные для меню
+    private final static int maxMenuLevels=5;
     public final static int buttonXSize=100;
     public final static int buttonYSize=40;
-    public final static int buttonSpace=5;
+    private final static int buttonSpace=5;
+    private int menuModes[] = new int[maxMenuLevels];
+    private final static int levelYCoords[]={10,55,ScreenDesktopHeight-100,ScreenDesktopHeight-145,10,10,10,10};
+    private final static int levelXCoords[]={10,10,10,10,ScreenDesktopWidth-100,ScreenDesktopWidth-200,10,110};
+    private final static boolean levelHoriz[] ={true,true,true,true,false,false,false,false};
+    //-----------------------------------------------------------------
     private int essOnOffState= Values.ESSStateNone;             // Состояние СНЭ
     private Module module=null;
     private ArrayList<View2Base> guiList = new ArrayList<>();
@@ -270,8 +275,25 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             }
         };
     //------------------------------------------------------------------------------------------
+    //          1
+    //          2
+    // 7 8     коды    6 5
+    //          4
+    //          3
+    //-----------------------------------------------------------------------------------------
     public void repaintMenu(boolean phoneMode){
+        phoneMode = false;
         Meta2GUIView currentView = currentView().getView();
+        int vv = currentView.getMenuModes();
+        boolean defaultMenu = vv==0;
+        for(int i=0;i<maxMenuLevels;i++){
+            if (defaultMenu)
+                menuModes[i]=i+1;
+            else{
+                menuModes[i] = vv%10;
+                vv=vv/10;
+                }
+            }
         Meta2EntityList<Meta2GUIForm> formList = currentView.getForms();
         Meta2GUIForm form = context.getForm();
         Meta2GUIForm baseForm = context.getBaseForm();
@@ -340,6 +362,9 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             int baseXY = 60 + (phoneMode ? 2*(buttonYSize + buttonSpace) : 0);
             String currentName = ff.getTitle();
             int ii = 0;
+            int baseX = levelXCoords[menuModes[level]-1];
+            int baseY = levelYCoords[menuModes[level]-1];
+            boolean horizontal = levelHoriz[menuModes[level]-1];
             for (Meta2GUIForm next : formList.getList()) {
                 if (!next.getParentName().equals(currentName))
                     continue;
@@ -362,10 +387,14 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                     }
                 else{
                     bb.setBounds(
-                        context.x(baseXY),
-                        context.y(levelYCoords[level + 1]),
+                        context.x(baseX),
+                        context.y(baseY),
                         context.dx(buttonSize),
                         context.dy(buttonYSize));
+                    if (horizontal)
+                        baseX += buttonSize + buttonSpace;
+                    else
+                        baseY += buttonSize + buttonSpace;
                     baseXY += buttonSize + buttonSpace;
                     }
                 final Meta2GUIForm zz = next;
@@ -388,8 +417,8 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 }
             if (level == 0) break;
             ff = formList.getByTitle(ff.getParentName());
-            if (form == null) {
-                popup("Не найден предок для формы " + form.getTitle());
+            if (ff == null) {
+                popup("Не найден предок для формы " + ff.getTitle());
                 break;
                     }
             level--;
