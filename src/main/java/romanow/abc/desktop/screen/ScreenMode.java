@@ -12,20 +12,22 @@ public class ScreenMode {
     private int realX;              // Размер монитора по ширине
     private double kX=1;
     private double kY=1;
-    private boolean resizeXY=true;  // Выравнивание пропорций
-    private boolean original=true;  // Разворачивание до размера экрана
+    private double kW=1;
+    private boolean origHW=false;    // Оригинальные пропорции
     public ScreenMode(){
-        this(false,true,ScreenDesktopWidth,ScreenDesktopHeight,ScreenDesktopWidth,ScreenDesktopHeight);
+        this(true,ScreenDesktopWidth,ScreenDesktopHeight,ScreenDesktopWidth,ScreenDesktopHeight);
         }
     public int ScreenW(){
-        return (int)(screenX*kX);
+        return (int)(ScreenDesktopWidth*kW);
         }
     public int ScreenH(){
-        return (int)(screenY*kY);
+        return (int)(ScreenDesktopHeight*kY);
         }
-    public ScreenMode(boolean original0, boolean resize, int screenX0, int screenY0,int realX0, int realY0){
-        resizeXY = resize;
-        original = original0;
+    public ScreenMode(int realX0, int realY0){
+        this(false,0,0,realX0,realY0);
+        }
+    public ScreenMode(boolean origHW0, int screenX0, int screenY0,int realX0, int realY0){
+        origHW = origHW0;
         if (realX0==0 || realY0==0){
             realX0 = ScreenDesktopWidth;
             realY0 = ScreenDesktopHeight;
@@ -38,26 +40,26 @@ public class ScreenMode {
         screenY = screenY0;
         realX = realX0;
         realY = realY0;
-        if (original){
-            kX=1;
-            kY=1;
-            }
-        else{
-            kX = ((double)realX)/screenX;
-            kY = ((double)realY)/screenY;
-            if (resizeXY) {
-                if (kY > kX)
-                    kY=kX;
-                else
-                    kX=kY;
+        kX = ((double)realX)/ScreenDesktopWidth;
+        kY = ((double)realY)/ScreenDesktopHeight;
+        kW=kX;
+        if (origHW) {
+            double k1 = ((double) ScreenDesktopHeight)/ScreenDesktopWidth;
+            double k2 = ((double) screenY)/screenX;
+            if (k1 !=k2){
+                if (k2<k1)
+                    kY *= k2/k1;
+                else{
+                    kW = kX*k1/k2;
+                    }
                 }
             }
         }
     public int x(int x){
-        return screenX/2+(int)((x-screenX/2)*kX);
+        return (int)(x*kX);
         }
     public int y(int y){
-        return screenY/2+(int)((y-screenY/2)*kY);
+        return (int)(y*kY);
         }
     public int dx(int dx){
         return (int)(dx*kX);

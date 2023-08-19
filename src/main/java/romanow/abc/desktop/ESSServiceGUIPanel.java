@@ -606,7 +606,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             refresh();
             main.sendEventPanel(EventRefreshSettingsDone,0,0,"");
             }
-        if (code==EventPLMOn && par2==second){
+        if (code==EventPLMOn && par1==second){
             context.setView(currentView().getView());
             context.setMainServerNodeId(main2.mainServerNodeId);
             limiter.reset();
@@ -615,7 +615,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             main.panelToFront(this);
             System.out.println(par3);
             }
-        if (code==EventPLMOff && par2==second){
+        if (code==EventPLMOff && par1==second){
             repaintOff();
             }
         if (code==EventGUIToFront && renderingOn){

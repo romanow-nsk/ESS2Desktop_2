@@ -33,6 +33,7 @@ import romanow.abc.desktop.wizard.*;
 import romanow.abc.drivers.ModBusClientProxyDriver;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -148,7 +149,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                             popup("Не найден ЧМИ для ПК");
                         }
                         else{
-                            ScreenMode screenMode = new ScreenMode(true,true,0,0,view.getView().getWidth(),view.getView().getHeight());
+                            ScreenMode screenMode = new ScreenMode(false,view.getView().getWidth(),view.getView().getHeight(),0,0);
                             main2.setRenderingOn(0,view,false,false,screenMode);
                             }
                     }
@@ -371,8 +372,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         IEC60870OnOff = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         OnOff2 = new javax.swing.JButton();
-        ResizeXY = new javax.swing.JCheckBox();
-        OriginalSize = new javax.swing.JCheckBox();
+        OrigHW = new javax.swing.JCheckBox();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -1468,13 +1468,14 @@ public class ESSMetaPanel extends ESSBasePanel {
         add(OnOff2);
         OnOff2.setBounds(125, 430, 30, 30);
 
-        ResizeXY.setText("Пропорции экрана");
-        add(ResizeXY);
-        ResizeXY.setBounds(160, 480, 150, 20);
-
-        OriginalSize.setText("Ориг.размер");
-        add(OriginalSize);
-        OriginalSize.setBounds(10, 480, 130, 20);
+        OrigHW.setText("Ориг. пропорции");
+        OrigHW.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OrigHWActionPerformed(evt);
+            }
+        });
+        add(OrigHW);
+        OrigHW.setBounds(10, 480, 140, 20);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ImportMetaDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportMetaDataActionPerformed
@@ -1741,13 +1742,16 @@ public class ESSMetaPanel extends ESSBasePanel {
                 screen = null;
                 }
             });
+        Dimension sSize = Toolkit.getDefaultToolkit ().getScreenSize ();
+        //System.out.println(sSize.height + " " + sSize.width);
+        ScreenMode screenMode = new ScreenMode(sSize.width,sSize.height);
         screen.setVisible(true);
-        screen.eventPanel(EventPLMOn,0,0,"",null);
+        screen.eventPanel(EventPLMOn,0,0,"",screenMode);
         screen.refresh();
         }
     public void setRenderingOn(boolean second) {
         ESS2View view = deployed.getViews().get(Views.getSelectedIndex());
-        ScreenMode screenMode = new ScreenMode(OriginalSize.isSelected(),ResizeXY.isSelected(),0,0,view.getView().getWidth(),view.getView().getHeight());
+        ScreenMode screenMode = new ScreenMode(OrigHW.isSelected(),view.getView().getWidth(),view.getView().getHeight(),0,0);
         main2.setRenderingOn(0,view,Trace.isSelected(),second,screenMode);
         if (!second){
             OnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/connect-on.png")));
@@ -3516,6 +3520,10 @@ public class ESSMetaPanel extends ESSBasePanel {
 
     }//GEN-LAST:event_OnOff2ActionPerformed
 
+    private void OrigHWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrigHWActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_OrigHWActionPerformed
+
     private void refreshIEC61850State(){
         new APICall<JInt>(main) {
             @Override
@@ -3759,7 +3767,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JButton OnOff2;
     private javax.swing.JButton OnOffNode;
     private javax.swing.JCheckBox OnlyView;
-    private javax.swing.JCheckBox OriginalSize;
+    private javax.swing.JCheckBox OrigHW;
     private javax.swing.JPasswordField Password;
     private javax.swing.JButton ProfilerOnOff;
     private javax.swing.JButton ProfilerResults;
@@ -3778,7 +3786,6 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JButton RemoveProfiler;
     private javax.swing.JButton RemoveScript;
     private javax.swing.JButton RemoveView;
-    private javax.swing.JCheckBox ResizeXY;
     private javax.swing.JTextField RunTimeChanges;
     private javax.swing.JLabel RunTimeChangesLabel;
     private javax.swing.JButton RunTimeSaveChanges;

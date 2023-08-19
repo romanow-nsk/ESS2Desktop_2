@@ -56,7 +56,7 @@ public class ESSKioskClient extends ESSBaseView {
         if (!min){
             setExtendedState(MAXIMIZED_BOTH);
             Dimension sSize = Toolkit.getDefaultToolkit ().getScreenSize ();
-            screenMode = new ScreenMode(true,true,0,0,sSize.width,sSize.height);
+            screenMode = new ScreenMode(sSize.width,sSize.height);
             xC = sSize.width/2;
             yC = sSize.height/2;
             setWH(sSize.width,sSize.height);
