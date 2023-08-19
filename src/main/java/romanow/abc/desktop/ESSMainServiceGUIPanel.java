@@ -13,7 +13,12 @@ import romanow.abc.core.constants.IntegerList;
 import romanow.abc.core.constants.Values;
 import romanow.abc.core.entity.EntityRefList;
 import romanow.abc.core.entity.baseentityes.JBoolean;
+import romanow.abc.core.entity.metadata.Meta2GUIElement;
+import romanow.abc.core.entity.metadata.Meta2GUIForm;
+import romanow.abc.core.entity.metadata.view.Meta2GUI;
+import romanow.abc.core.entity.metadata.view.Meta2GUICollection;
 import romanow.abc.core.entity.subjectarea.*;
+import romanow.abc.desktop.screen.ScreenMode;
 import romanow.abc.desktop.view.FormContext;
 import romanow.abc.desktop.view.GUIElementsFactory;
 import romanow.abc.desktop.view.GUIElement;
@@ -23,6 +28,8 @@ import romanow.abc.core.utils.Pair;
 import romanow.abc.desktop.console.APICallC;
 import romanow.abc.desktop.module.Module;
 import retrofit2.Call;
+import romanow.abc.desktop.view2.FormContext2;
+import romanow.abc.desktop.view2.I_ContextBack;
 
 import javax.swing.*;
 import java.awt.*;
@@ -55,31 +62,24 @@ public class ESSMainServiceGUIPanel extends ESSBasePanel {
     private ArrayList<ESSNodeViewData> nodeList = new ArrayList<>();
     private JScrollPane NodeListPanel=null;
     private JPanel panel=null;
-    private FormContext context = new FormContext(){
+    private FormContext2 context = new FormContext2(new I_ContextBack() {       // TODO - тут все от предыдущей версии
         @Override
-        public void reOpenForm() {
-            repaintView();
-            }
-        public void openForm(String formName, int level, int idx) {
-            MetaGUIForm form = main2.meta.getForms().getByTitle(formName);
-            if (form==null){
-                popup("Не найдена форма "+formName);
-                return;
-                }
-            openForm(form,level,idx);
+        public void popup(String ss) {
             }
         @Override
-        public void openForm(MetaGUIForm form,int level, int idx) {
-            if (main2.manager.getCurrentAccessLevel() > form.getAccessLevel()){
-                popup("Недостаточен уровень доступа");
-                return;
-                }
-            setForm(form);
-            if (level!=-1)
-                setIndex(level,idx);
-            repaintView();
+        public void repaintView() {
             }
-    };
+        @Override
+        public void repaintValues() {
+            }
+        @Override
+        public int getAcccessLevel() {
+            return 0;
+            }
+        @Override
+        public void forceRepaint() {
+            }
+        });
 
     public void setLogoutCallBack(I_Button logoutCallBack) {
         this.logoutCallBack = logoutCallBack; }
@@ -104,13 +104,10 @@ public class ESSMainServiceGUIPanel extends ESSBasePanel {
         userLoginTime = new OwnDateTime();
         refreshNodeList();
         }
-
-    private void setForm(MetaGUIForm aaa){
+    private void setForm(Meta2GUIForm aaa){
         context.setForm(aaa);
         repaintView();
         }
-
-
      private synchronized void breakCycle(){
         shutDown=true;
         if (guiLoop!=null)
@@ -152,13 +149,14 @@ public class ESSMainServiceGUIPanel extends ESSBasePanel {
                 }
             });
         guiLoop.start();
-    }
+        }
 
-    private synchronized int  repaintViewLevel01(ESSNodeViewData nodeView) {
-        MetaExternalSystem meta = nodeView.getMeta();
+    private synchronized int  repaintViewLevel01(ESSNodeViewData nodeView) {    // TODO - тут все по-другому
+         /*
+        MetaExternalSystem meta = nodeView.getGuiList();
         MetaGUIForm form = meta.getForms().getByTitle(mainFormName);
         int viewH=0;
-        for (MetaGUIElement element : form.getControls()) {
+        for (Meta2GUIElement element : form.getControls().getControls()) {
             try {
                 int type = element.getType();
                 GUIElement view = factory.getByType(type);
@@ -203,23 +201,26 @@ public class ESSMainServiceGUIPanel extends ESSBasePanel {
                     }
                 }
             return viewH;
+
+          */
+            return 0;
             }
 
 
-    private double[] getSettingsValues(MetaGUIElement element) {     // Поиск уставок по горизонтали
+    private double[] getSettingsValues(MetaGUIElement element) {     // TODO - тут все по-другому
         int yy= element.getY();
         int idx=-1;
         //for (int i=0;i<guiList.size();i++){
         //    GUIViewElement el = guiList.get(i);
         //    MetaGUIElement meta = el.getMetaElement();
-        EntityRefList<MetaGUIElement> elemList = context.getForm().getControls();
-        for (int i=0;i<elemList.size();i++){
-            MetaGUIElement meta = elemList.get(i);
+        Meta2GUICollection elemList = context.getForm().getControls();
+        for (int i=0;i<elemList.getList().size();i++){
+            Meta2GUI meta = elemList.getList().get(i);
             if (meta.getY()!=yy)
                 continue;
             if (meta.getType() != Values.GUISetting)
                 continue;
-            MetaRegister register = main2.meta.getRegisterByNum(meta.getRegNum());
+            MetaRegister register = null;   // main2.meta.getRegisterByNum(meta.getRegNum());
             if (register.getType()==Values.RegSetting){
                 idx=i;
                 break;
@@ -233,12 +234,12 @@ public class ESSMainServiceGUIPanel extends ESSBasePanel {
         for(int j=0;j<4;j++){
             //GUIViewElement el = guiList.get(j+idx);
             //MetaGUIElement meta = el.getMetaElement();
-            MetaGUIElement meta = elemList.get(idx+j);
+            Meta2GUI meta = elemList.getList().get(idx+j);
             if (meta.getType()!= Values.GUISetting){
                 popup("Недопустимый тип элемента для "+meta.getTitle() );
                 return null;
                 }
-            MetaRegister register = main2.meta.getRegisterByNum(meta.getRegNum());
+            MetaRegister register = null;   // main2.meta.getRegisterByNum(meta.getRegNum());
             if (register.getType()!=Values.RegSetting){
                 popup("Недопустимые тип регистра для "+meta.getTitle() );
                 return null;
@@ -258,10 +259,10 @@ public class ESSMainServiceGUIPanel extends ESSBasePanel {
     @Override
     public void paintComponent(Graphics g){
         ScreenMode screen = context.getScreen();
-        MetaGUIForm form = context.getForm();
+        Meta2GUIForm form = context.getForm();
         if (form==null || form.getBackImage().length()==0){
             g.setColor(new Color(240,240,240));
-            g.fillRect( 0, 0, screen.ScreenW, screen.ScreenH);
+            g.fillRect( context.x(0), context.y(0), screen.ScreenW(), screen.ScreenH());
             return;
             }
         Image im = null;
@@ -271,7 +272,7 @@ public class ESSMainServiceGUIPanel extends ESSBasePanel {
             } catch (Exception e) {
                 System.out.println(e.toString());
                 }
-        g.drawImage(im, 0, 0, screen.ScreenW, screen.ScreenH,null);
+        g.drawImage(im, 0, 0, screen.ScreenW(), screen.ScreenH(),null);
         }
     //---------------------------------------------------------------------------------------
     public synchronized void  repaintView() {
@@ -283,7 +284,7 @@ public class ESSMainServiceGUIPanel extends ESSBasePanel {
         NodeListPanel = new JScrollPane(panel);
         NodeListPanel.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
         NodeListPanel.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        NodeListPanel.setBounds(5, 5, context.getScreen().ScreenW - 40, context.getScreen().ScreenH - 60);
+        NodeListPanel.setBounds(5, 5, context.getScreen().ScreenW() - 40, context.getScreen().ScreenH() - 60);
         add(NodeListPanel);
         //-----------------------------------------------------------------------------------
         JButton toMain = new JButton();
@@ -297,7 +298,7 @@ public class ESSMainServiceGUIPanel extends ESSBasePanel {
             }
         });
         panel.add(toMain);
-        toMain.setBounds(context.x(820), context.y(10), context.x(40), context.y(40));
+        toMain.setBounds(context.x(820), context.y(10), context.dx(40), context.dy(40));
         //-----------------------------------------------------------------------------------
         JButton info = new JButton();
         info.setIcon(new javax.swing.ImageIcon(getClass().getResource(context.isInfoMode() ? buttonInfoOn : buttonInfoOff))); // NOI18N
@@ -309,7 +310,7 @@ public class ESSMainServiceGUIPanel extends ESSBasePanel {
                 }
             });
         panel.add(info);
-        info.setBounds(context.x(770), context.y(10), context.x(40), context.y(40));
+        info.setBounds(context.x(770), context.y(10), context.dx(40), context.dy(40));
         //-------------------------------------------------------------------------------------
         int offsetH = 20;
         for (ESSNodeViewData nodeView : nodeList) {
@@ -318,7 +319,7 @@ public class ESSMainServiceGUIPanel extends ESSBasePanel {
             String ss = node.getTitle();
             JLabel label = new JLabel();
             label.setFont(new Font("Arial Cyr", Font.BOLD, context.y(16)));
-            label.setBounds(context.x(50), context.y(offsetH), context.x(500), context.y(20));
+            label.setBounds(context.x(50), context.y(offsetH), context.dx(500), context.dy(20));
             label.setBackground(new Color(0xFFD8D8D8));
             panel.add(label);
             offsetH+=25;
@@ -340,12 +341,12 @@ public class ESSMainServiceGUIPanel extends ESSBasePanel {
         String ss = "  "+context.getManager().getUser().getTitle()+" ["+Values.title("AccessLevel",access)+"] ";
         userTitle.setText(ss);
         userTitle.setBounds(context.x(50),context.y(offsetH+20),
-                context.x(400),context.y(25));
+                context.dx(400),context.dy(25));
         userTitle.setEnabled(false);
         userTitle.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
         panel.add(userTitle);
         //-----------------------------------------------------------------------------------
-        panel.setBounds(0, 0, context.getScreen().ScreenW - 40, context.y(offsetH));
+        panel.setBounds(0, 0, context.getScreen().ScreenW() - 40, context.y(offsetH));
         repaintCycle();
         revalidate();
         }

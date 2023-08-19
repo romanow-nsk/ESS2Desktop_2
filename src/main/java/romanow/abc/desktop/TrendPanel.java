@@ -229,7 +229,7 @@ public class TrendPanel extends javax.swing.JPanel implements I_Trend{
             }
         else {
             panel.setPreferredSize(new Dimension(context.x(Client.PanelW - 75), context.y(Client.PanelH - 155)));
-            panel.setBounds(context.x(10), context.y(55), context.x(Client.PanelW - 75), context.y(Client.PanelH - 155));
+            panel.setBounds(context.x(10), context.y(55), context.dx(Client.PanelW - 75), context.dy(Client.PanelH - 155));
             }
         add(panel);
         }

@@ -21,7 +21,7 @@ public class WizardMeta2GUIFormButton extends WizardMeta2GUI {
         }
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
-        resizeHight(200);
+        resizeHeight(200);
         elem = (Meta2GUIFormButton) entity;
         FormName.setText(""+elem.getFormName());
         }

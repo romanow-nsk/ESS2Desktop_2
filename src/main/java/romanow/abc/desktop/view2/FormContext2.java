@@ -10,9 +10,8 @@ import romanow.abc.core.entity.metadata.Meta2GUIView;
 import romanow.abc.core.entity.metadata.view.Meta2GUI;
 import romanow.abc.core.entity.subject2area.ESS2View;
 import romanow.abc.core.entity.subjectarea.AccessManager;
-import romanow.abc.desktop.ESSServiceGUIPanel;
 import romanow.abc.desktop.MainBaseFrame;
-import romanow.abc.desktop.ScreenMode;
+import romanow.abc.desktop.screen.ScreenMode;
 
 
 public class FormContext2 {
@@ -88,12 +87,14 @@ public class FormContext2 {
         return service; }
     public void setService(RestAPIBase service) {
         this.service = service; }
-    public int x(int x){
-        return screen.x(x);
-        }
+    public int x(int x){ return screen.x(x); }
     public int y(int y){
         return screen.y(y);
         }
+    public int dx(int dx){ return screen.dx(dx); }
+    public int dy(int dy){
+        return screen.dy(dy);
+    }
     public void openForm(String formName){
         openForm(formName,ModeNext);
         }

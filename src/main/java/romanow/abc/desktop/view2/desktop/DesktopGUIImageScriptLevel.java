@@ -86,8 +86,8 @@ public class DesktopGUIImageScriptLevel extends View2BaseDesktop {
         imagePanel.setBounds(
                 context.x(element.getX()+getDxOffset()+element.getDx()+5),
                 context.y(element.getY()+getDyOffset()),
-                context.x(element.getImageW()),
-                context.y(element.getImageH()));
+                context.dx(element.getImageW()),
+                context.dy(element.getImageH()));
         panel.add(imagePanel);
         imagePanel.repaint();
         setInfoClick(imagePanel);

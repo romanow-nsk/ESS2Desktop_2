@@ -8,7 +8,6 @@ package romanow.abc.desktop.wizard;
 
 import romanow.abc.core.entity.metadata.Meta2Entity;
 import romanow.abc.core.entity.metadata.Meta2RegLink;
-import romanow.abc.core.entity.metadata.view.Meta2GUI2StateBox;
 import romanow.abc.core.entity.metadata.view.Meta2GUIBitStateCmd;
 
 import java.awt.*;
@@ -28,7 +27,7 @@ public class WizardMeta2GUIBitStateCmd extends WizardMeta2GUI {
         elem = (Meta2GUIBitStateCmd) entity;
         if (elem.getCmdReg()==null)
             elem.setCmdReg(new Meta2RegLink());
-        resizeHight(350);
+        resizeHeight(350);
         WizardRegLinkPanel linkPanel = new WizardRegLinkPanel(10,120,"BitReg",elem.getRegLink(),this);
         add(linkPanel);
         linkPanel = new WizardRegLinkPanel(10,170,"CmdReg",elem.getCmdReg(),this);

@@ -14,7 +14,6 @@ import romanow.abc.core.entity.artifacts.Artifact;
 import romanow.abc.core.entity.artifacts.ArtifactList;
 import romanow.abc.core.entity.metadata.Meta2Entity;
 import romanow.abc.core.entity.metadata.view.Meta2GUIImageScriptLevel;
-import romanow.abc.core.entity.metadata.view.Meta2GUIScript;
 import romanow.abc.core.utils.FileNameExt;
 import romanow.abc.desktop.APICall;
 
@@ -32,7 +31,7 @@ public class WizardMeta2GUIImageScriptLevel extends WizardMeta2GUI {
         }
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
-        resizeHight(300);
+        resizeHeight(300);
         elem = (Meta2GUIImageScriptLevel)  entity;
         ScriptName.setText(elem.getScripName());
         NoCalc.setSelected(elem.isNoCalc());

@@ -51,8 +51,8 @@ public class DesktopGUILevelIndicator extends View2BaseDesktop {
         textField.setBounds(
                 context.x(element.getX()+getDxOffset()+5),
                 context.y(element.getY()+getDyOffset()),
-                context.x(w2-1),
-                context.y(h));
+                context.dx(w2-1),
+                context.dy(h));
         panel.add(textField);
         backColor = new Color(element.getColor());
         setInfoClick(textField);
@@ -89,8 +89,8 @@ public class DesktopGUILevelIndicator extends View2BaseDesktop {
         textField.setBounds(
                 context.x(element.getX()+getDxOffset()+5),
                 context.y(element.getY()+getDyOffset()+h-hh),
-                context.x(w2-1),
-                context.y(hh));
+                context.dx(w2-1),
+                context.dy(hh));
         textField.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
         }
     @Override

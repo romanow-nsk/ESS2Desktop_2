@@ -5,7 +5,6 @@
  */
 package romanow.abc.desktop.wizard;
 
-import lombok.Setter;
 import romanow.abc.core.constants.ConstValue;
 import romanow.abc.core.constants.Values;
 import romanow.abc.core.entity.metadata.Meta2Entity;
@@ -67,7 +66,7 @@ public class WizardBaseView extends javax.swing.JFrame {
                 return "Ошибка создания формы "+name+": "+ee.toString();
                 }
         }
-    public void resizeHight(int high){
+    public void resizeHeight(int high){
         setSize(getSize().width,high);
         }
     public void openForm(WizardBaseView parentView0,Meta2Entity entity0) {

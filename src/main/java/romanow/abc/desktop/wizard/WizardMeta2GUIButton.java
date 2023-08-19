@@ -24,7 +24,7 @@ public class WizardMeta2GUIButton extends WizardMeta2GUI {
         }
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
-        resizeHight(240);
+        resizeHeight(240);
         elem = (Meta2GUIButton) entity;
         WizardRegLinkPanel linkPanel = new WizardRegLinkPanel(0,120,"",elem.getLink(),this);
         add(linkPanel);

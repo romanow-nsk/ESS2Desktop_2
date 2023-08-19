@@ -7,7 +7,6 @@ package romanow.abc.desktop.wizard;
 
 
 import romanow.abc.core.entity.metadata.Meta2Entity;
-import romanow.abc.core.entity.metadata.view.Meta2GUIScript;
 import romanow.abc.core.entity.metadata.view.Meta2GUIScriptLabel;
 
 /**
@@ -21,7 +20,7 @@ public class WizardMeta2GUIScriptLabel extends WizardMeta2GUI {
         }
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
-        resizeHight(200);
+        resizeHeight(200);
         script = (Meta2GUIScriptLabel)  entity;
         ScriptName.setText(script.getScripName());
         W2.setText(""+script.getW2());

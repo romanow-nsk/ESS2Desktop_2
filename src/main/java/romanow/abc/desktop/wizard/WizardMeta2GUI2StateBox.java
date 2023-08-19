@@ -24,7 +24,7 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
         }
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
-        resizeHight(240);
+        resizeHeight(240);
         FailMode.setVisible(false);
         elem = (Meta2GUI2StateBox) entity;
         WizardRegLinkPanel linkPanel = new WizardRegLinkPanel(10,120,"",elem.getRegLink(),this);

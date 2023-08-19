@@ -8,8 +8,6 @@ package romanow.abc.desktop.wizard;
 import romanow.abc.core.entity.metadata.Meta2Entity;
 import romanow.abc.core.entity.metadata.view.Meta2GUILevelIndicator;
 
-import javax.swing.*;
-
 /**
  *
  * @author romanow
@@ -26,7 +24,7 @@ public class WizardMeta2GUILevelIndicator extends WizardMeta2GUIRegW2 {
     @Override
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
-        resizeHight(350);
+        resizeHeight(350);
         elem = (Meta2GUILevelIndicator)   entity;
         WizardRegLinkPanel linkPanel = new WizardRegLinkPanel(235,120,"MaxFail",elem.getMaxFail(),this);
         add(linkPanel);

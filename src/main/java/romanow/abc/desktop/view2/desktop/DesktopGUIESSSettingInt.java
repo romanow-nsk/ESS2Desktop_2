@@ -39,8 +39,8 @@ public class DesktopGUIESSSettingInt extends View2BaseDesktop {
         textField.setBounds(
                 context.x(element.getX()+element.getDx()+5),
                 context.y(element.getY()),
-                context.x(w2),
-                context.y(25));
+                context.dx(w2),
+                context.dy(25));
         textField.setEditable(false);
         textField.setHorizontalAlignment(JTextField.CENTER);
         panel.add(textField);

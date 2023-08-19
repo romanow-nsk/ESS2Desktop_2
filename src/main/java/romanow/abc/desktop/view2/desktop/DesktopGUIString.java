@@ -38,9 +38,9 @@ public class DesktopGUIString extends View2BaseDesktop {
         textField.setBounds(
                 context.x(element.getX()+getDxOffset()+element.getDx()+5),
                 context.y(element.getY()+getDyOffset()),
-                context.x(dd),
-                context.y(hh));
-        textField.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
+                context.dx(dd),
+                context.dy(hh));
+        textField.setFont(new Font("Arial Cyr", Font.PLAIN, context.dy(12)));
         textField.setEditable(false);
         textField.setHorizontalAlignment(JTextField.LEFT);
         panel.add(textField);

@@ -13,7 +13,6 @@ import romanow.abc.core.constants.Values;
 import romanow.abc.core.entity.artifacts.Artifact;
 import romanow.abc.core.entity.artifacts.ArtifactList;
 import romanow.abc.core.entity.metadata.Meta2Entity;
-import romanow.abc.core.entity.metadata.view.Meta2GUI2StateBox;
 import romanow.abc.core.entity.metadata.view.Meta2GUIImageBit;
 import romanow.abc.core.utils.FileNameExt;
 import romanow.abc.desktop.APICall;
@@ -35,7 +34,7 @@ public class WizardMeta2GUIImageBit extends WizardMeta2GUI {
         } 
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
-        resizeHight(400);
+        resizeHeight(400);
         elem = (Meta2GUIImageBit) entity;
         setRegNum();
         Equip.setText(elem.getEquipName());

@@ -35,8 +35,8 @@ public class DesktopGUIMultiBitState extends View2BaseDesktop {
         textField.setBounds(
                 context.x(element.getX()+getDxOffset()+element.getDx()+5),
                 context.y(element.getY()+getDyOffset()),
-                context.x(dd),
-                context.y(25));
+                context.dx(dd),
+                context.dy(25));
         textField.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
         panel.add(textField);
         Color color=new Color(element.getColor());

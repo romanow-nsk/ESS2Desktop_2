@@ -9,8 +9,6 @@ package romanow.abc.desktop.wizard;
 import romanow.abc.core.entity.metadata.Meta2Entity;
 import romanow.abc.core.entity.metadata.view.*;
 
-import javax.swing.*;
-
 /**
  *
  * @author romanow0
@@ -24,7 +22,7 @@ public class WizardMeta2GUIRegW2 extends WizardMeta2GUI {
     public void onHex(){}
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
-        resizeHight(280);
+        resizeHeight(280);
         elem = (Meta2GUIRegW2)  entity;
         WizardRegLinkPanel linkPanel = new WizardRegLinkPanel(0,120,"",elem.getLink(),this);
         add(linkPanel);

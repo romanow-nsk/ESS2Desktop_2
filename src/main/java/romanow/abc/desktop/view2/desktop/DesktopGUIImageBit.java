@@ -74,8 +74,8 @@ public class DesktopGUIImageBit extends View2BaseDesktop {
         imagePanel.setBounds(
                 context.x(element.getX()+getDxOffset()+element.getDx()+5),
                 context.y(element.getY()+getDyOffset()),
-                context.x(element.getImageW()),
-                context.y(element.getImageH()));
+                context.dx(element.getImageW()),
+                context.dy(element.getImageH()));
         panel.add(imagePanel);
         imagePanel.repaint();
         imagePanel.setBorder(javax.swing.BorderFactory.createLineBorder(Color.BLUE,1));
@@ -126,7 +126,7 @@ public class DesktopGUIImageBit extends View2BaseDesktop {
             if (response.isSuccessful()) {
                 ResponseBody body = response.body();
                 BufferedImage originalImage = ImageIO.read(body.byteStream());
-                Image image = originalImage.getScaledInstance(context0.x(element0.getImageW()), context0.y(element0.getImageH()), Image.SCALE_DEFAULT);
+                Image image = originalImage.getScaledInstance(context0.dx(element0.getImageW()), context0.dy(element0.getImageH()), Image.SCALE_DEFAULT);
                 return new Pair<>(null,image);
                 }
             else{

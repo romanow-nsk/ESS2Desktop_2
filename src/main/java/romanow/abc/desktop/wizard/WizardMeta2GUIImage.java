@@ -7,7 +7,6 @@ package romanow.abc.desktop.wizard;
 
 
 import okhttp3.MultipartBody;
-import org.apache.tools.ant.types.selectors.TypeSelector;
 import retrofit2.Call;
 import romanow.abc.core.API.RestAPICommon;
 import romanow.abc.core.constants.Values;
@@ -17,8 +16,6 @@ import romanow.abc.core.entity.metadata.Meta2Entity;
 import romanow.abc.core.entity.metadata.view.Meta2GUIImage;
 import romanow.abc.core.utils.FileNameExt;
 import romanow.abc.desktop.APICall;
-
-import java.util.ArrayList;
 
 /**
  *
@@ -32,7 +29,7 @@ public class WizardMeta2GUIImage extends WizardMeta2GUI {
         }
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
-        resizeHight(250);
+        resizeHeight(250);
         elem = (Meta2GUIImage)  entity;
         ImageH.setText(""+elem.getImageH());
         ImageW.setText(""+elem.getImageW());

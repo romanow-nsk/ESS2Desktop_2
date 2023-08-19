@@ -23,7 +23,7 @@ public class WizardMeta2GUIMultiBitState extends WizardMeta2GUI {
         }   
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
-        resizeHight(250);
+        resizeHeight(250);
         elem = (Meta2GUIMultiBitState) entity;
         WizardRegLinkPanel linkPanel = new WizardRegLinkPanel(10,120,"",elem.getRegLink(),this);
         add(linkPanel);        

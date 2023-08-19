@@ -21,6 +21,7 @@ import romanow.abc.core.entity.metadata.view.Meta2GUICollection;
 import romanow.abc.core.entity.metadata.view.Meta2GUIReg;
 import romanow.abc.core.entity.subject2area.*;
 import romanow.abc.core.entity.subjectarea.*;
+import romanow.abc.desktop.screen.ScreenMode;
 import romanow.abc.desktop.view.*;
 import romanow.abc.core.utils.OwnDateTime;
 import romanow.abc.core.utils.Pair;
@@ -235,7 +236,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         Meta2GUIForm form = context.getForm();
         if (form==null || form.getBackImage().length()==0){
             g.setColor(new Color(240,240,240));
-            g.fillRect( 0, 0, screen.ScreenW, screen.ScreenH);
+            g.fillRect( context.x(0), context.y(0), screen.ScreenW(), screen.ScreenH());
             return;
             }
         Image im = null;
@@ -245,7 +246,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             } catch (Exception e) {
                 System.out.println(e.toString());
                 }
-        g.drawImage(im, 0, 0, screen.ScreenW, screen.ScreenH,null);
+        g.drawImage(im, 0, 0, screen.ScreenW(), screen.ScreenH(),null);
         }
     //---------------------------------------------------------------------------------------
     public synchronized void repaintOff(){
@@ -282,9 +283,9 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             String ss = "  "+context.getManager().getUser().getTitle()+" ["+Values.title("AccessLevel",access)+"] ";
             userTitle.setText(ss);
             userTitle.setBounds(context.x(50),context.y(610),
-                    context.x(400),context.y(25));
+                    context.dx(400),context.dy(25));
             userTitle.setEnabled(false);
-            userTitle.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
+            userTitle.setFont(new Font("Arial Cyr", Font.PLAIN, context.dy(12)));
             add(userTitle);
             }
         //-----------------------------------------------------------------------------------
@@ -296,17 +297,17 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             final ArrayList<String> names = new ArrayList<>();
             if (!currentName.equals(mainFormName)){
                 final Meta2GUIForm parent = baseForm.getParent();
-                JButton bb = new MultiTextButton(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
+                JButton bb = new MultiTextButton(new Font("Arial Cyr", Font.PLAIN, context.dy(12)));
                 parent.setButton(bb);
                 bb.setText(parent.getTitle().replace("_",""));
                 bb.setBackground(new Color(currentView.getMenuButtonOnColor()));
                 bb.setForeground(new Color(currentView.getTextColor()));
                 int buttonSize = (parent.getButtonSize()==0 ? 100 : parent.getButtonSize())*buttonXSize/100;
                 bb.setBounds(
-                    context.x(context.getScreen().ScreenW - 40 - buttonSize),
+                    context.x(context.getScreen().ScreenW() - 40 - buttonSize),
                     context.y(60),
-                    context.x(buttonSize),
-                    context.y(buttonYSize));
+                    context.dx(buttonSize),
+                    context.dy(buttonYSize));
                 bb.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -316,17 +317,17 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 add(bb);
                 }
             final Meta2GUIForm current = baseForm;
-            JButton bb = new MultiTextButton(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
+            JButton bb = new MultiTextButton(new Font("Arial Cyr", Font.PLAIN, context.dy(12)));
             current.setButton(bb);
             bb.setText(current.getTitle().replace("_",""));
             bb.setBackground(new Color(currentView.getMenuButtonOffColor()));
             bb.setForeground(new Color(currentView.getTextColor()));
             int buttonSize = (current.getButtonSize()==0 ? 100 : current.getButtonSize())*buttonXSize/100;
             bb.setBounds(
-                    context.x(context.getScreen().ScreenW - 40 - buttonSize),
+                    context.x(context.getScreen().ScreenW() - 40 - buttonSize),
                     context.y(60 + buttonYSize + buttonSpace),
-                    context.x(buttonSize),
-                    context.y(buttonYSize));
+                    context.dx(buttonSize),
+                    context.dy(buttonYSize));
             bb.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -344,7 +345,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                     continue;
                 if (next.isBaseForm())
                     continue;
-                JButton bb = new MultiTextButton(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
+                JButton bb = new MultiTextButton(new Font("Arial Cyr", Font.PLAIN, context.dy(12)));
                 bb.setText(next.getTitle().replace("_",""));
                 bb.setVisible(!next.isNoMenu());
                 next.setButton(bb);
@@ -353,18 +354,18 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 int buttonSize = (next.getButtonSize()==0 ? 100 : next.getButtonSize())*buttonXSize/100;
                 if (phoneMode) {
                     bb.setBounds(
-                        context.x(context.getScreen().ScreenW - 40 - buttonSize),
+                        context.x(context.getScreen().ScreenW() - 40 - buttonSize),
                         context.y(baseXY),
-                        context.x(buttonSize),
-                        context.y(buttonYSize));
+                        context.dx(buttonSize),
+                        context.dy(buttonYSize));
                     baseXY += buttonYSize + buttonSpace;
                     }
                 else{
                     bb.setBounds(
                         context.x(baseXY),
                         context.y(levelYCoords[level + 1]),
-                        context.x(buttonSize),
-                        context.y(buttonYSize));
+                        context.dx(buttonSize),
+                        context.dy(buttonYSize));
                     baseXY += buttonSize + buttonSpace;
                     }
                 final Meta2GUIForm zz = next;
@@ -473,7 +474,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 }
             });
         add(OnOff);
-        OnOff.setBounds(context.x(5), context.y(10), context.x(50), context.y(50));
+        OnOff.setBounds(context.x(5), context.y(10), context.dx(50), context.dy(50));
         testESSOnOffState();
         JButton toMain = new JButton();
         toMain.setIcon(new javax.swing.ImageIcon(getClass().getResource(buttonToMain))); // NOI18N
@@ -486,7 +487,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             }
         });
         add(toMain);
-        toMain.setBounds(context.x(870), context.y(620), context.x(40), context.y(40));
+        toMain.setBounds(context.x(870), context.y(620), context.dx(40), context.dy(40));
         //-------------------------------------------------------------------------------------
         insertSelected = new JButton();
         insertSelected.setIcon(new javax.swing.ImageIcon(getClass().getResource(buttonEdit))); // NOI18N
@@ -522,7 +523,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 }
             });
         add(insertSelected);
-        insertSelected.setBounds(context.x(820), context.y(620), context.x(40), context.y(40));
+        insertSelected.setBounds(context.x(820), context.y(620), context.dx(40), context.dy(40));
         insertSelected.setVisible(context.isRuntimeEditMode());
         //-----------------------------------------------------------------------------------
         JButton logout = new JButton();
@@ -537,7 +538,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 }
             });
         add(logout);
-        logout.setBounds(context.x(870), context.y(10), context.x(40), context.y(40));
+        logout.setBounds(context.x(870), context.y(10), context.dx(40), context.dy(40));
         //-----------------------------------------------------------------------------------
         JButton info = new JButton();
         info.setIcon(new javax.swing.ImageIcon(getClass().getResource(context.isInfoMode() ? buttonInfoOn : buttonInfoOff))); // NOI18N
@@ -549,7 +550,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 }
             });
         add(info);
-        info.setBounds(context.x(820), context.y(10), context.x(40), context.y(40));
+        info.setBounds(context.x(820), context.y(10), context.dx(40), context.dy(40));
         //-----------------------------------------------------------------------------------------
         Meta2GUIForm baseForm = context.getBaseForm();
         guiList.clear();
@@ -609,6 +610,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             context.setView(currentView().getView());
             context.setMainServerNodeId(main2.mainServerNodeId);
             limiter.reset();
+            context.setScreen((ScreenMode) oo);
             repaintView();
             main.panelToFront(this);
             System.out.println(par3);

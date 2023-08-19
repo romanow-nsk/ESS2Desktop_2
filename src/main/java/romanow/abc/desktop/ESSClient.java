@@ -22,6 +22,7 @@ import romanow.abc.core.entity.subjectarea.*;
 import romanow.abc.core.entity.users.User;
 import romanow.abc.core.script.*;
 import romanow.abc.core.utils.Pair;
+import romanow.abc.desktop.screen.ScreenMode;
 import romanow.abc.desktop.view2.desktop.ESSServiceGUIPanel2;
 import romanow.abc.drivers.ModBusClientProxyDriver;
 import romanow.abc.drivers.ModBusMemoryEmulator;
@@ -338,13 +339,13 @@ public class ESSClient extends Client {
             }
         if (found!=null){
             mainServerNodeId = 0;
-            setRenderingOn(0,found,true,false);
+            setRenderingOn(0,found,true,false,null);
             return;
             }
         else
             errors.addError("Не найден ЧМИ: "+viewName);
         }
-    public void setRenderingOn(long nodeOid,ESS2View view, boolean trace, boolean secondView) {
+    public void setRenderingOn(long nodeOid, ESS2View view, boolean trace, boolean secondView, ScreenMode screen) {
         if (secondView)
             currentView2 = view;
         else
@@ -362,7 +363,7 @@ public class ESSClient extends Client {
                     }
                 }.call(this);
             setLocalEnvValues(oo);
-            sendEvent(EventPLMOn,secondView ? 1 : 0);
+            sendEventPanel(EventPLMOn,secondView ? 1 : 0,0,"",screen);
             } catch (Exception ee){
                 errors.addError(ee.toString());
                 }

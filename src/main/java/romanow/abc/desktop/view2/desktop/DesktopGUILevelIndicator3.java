@@ -47,8 +47,8 @@ public class DesktopGUILevelIndicator3 extends View2BaseDesktop {
         high.setBounds(
                 context.x(element.getX()+getDxOffset()+5),
                 context.y(element.getY()+getDyOffset()),
-                context.x(w2),
-                context.x(h));
+                context.dx(w2),
+                context.dx(h));
         backColor = new Color(element.getColor());
         textField.setBackground(backColor);
         high.setBackground(backColor);
@@ -57,13 +57,13 @@ public class DesktopGUILevelIndicator3 extends View2BaseDesktop {
         high.setBounds(
                 context.x(element.getX()+getDxOffset()+5),
                 context.y(element.getY()+getDyOffset()),
-                context.x(w2),
-                context.y(h));
+                context.dx(w2),
+                context.dy(h));
         textField.setBounds(
-                context.x(element.getX()+getDxOffset()+5),
-                context.y(element.getY()+getDyOffset()+h),
-                context.x(w2),
-                context.y(0));
+                context.dx(element.getX()+getDxOffset()+5),
+                context.dy(element.getY()+getDyOffset()+h),
+                context.dx(w2),
+                context.dy(0));
         panel.add(textField);
         panel.add(high);
         }
@@ -76,8 +76,8 @@ public class DesktopGUILevelIndicator3 extends View2BaseDesktop {
             high.setBounds(
                     context.x(element.getX()+getDxOffset()+5),
                     context.y(element.getY()+getDyOffset()),
-                    context.x(w2),
-                    context.y(h));
+                    context.dx(w2),
+                    context.dy(h));
             return;
             }
         double vv = register.regValueToFloat(getUnitIdx(),(int)zz);
@@ -95,13 +95,13 @@ public class DesktopGUILevelIndicator3 extends View2BaseDesktop {
         high.setBounds(
                 context.x(element.getX()+getDxOffset()+5),
                 context.y(element.getY()+getDyOffset()),
-                context.x(w2),
-                context.y(h-hh+2));
+                context.dx(w2),
+                context.dy(h-hh+2));
         textField.setBounds(
                 context.x(element.getX()+getDxOffset()+5),
                 context.y(element.getY()+getDyOffset()+h-hh),
-                context.x(w2),
-                context.y(hh));
+                context.dx(w2),
+                context.dy(hh));
         textField.setBackground(color);
         }
 

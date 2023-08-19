@@ -11,6 +11,7 @@ import romanow.abc.core.constants.Values;
 import romanow.abc.desktop.console.ConsoleClient;
 import romanow.abc.desktop.console.ConsoleLogin;
 import romanow.abc.desktop.console.ConsoleSystemsList;
+import romanow.abc.desktop.screen.ScreenMode;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -32,6 +33,7 @@ public class ESSKioskClient extends ESSBaseView {
     private String loginText="9131111111";
     private String passText="1234";
     private String guiName="";
+    private ScreenMode screenMode;
     private ESSServiceGUIScreen screen=null;
     private final static int xMin=640;
     private final static int yMin=480;
@@ -54,7 +56,7 @@ public class ESSKioskClient extends ESSBaseView {
         if (!min){
             setExtendedState(MAXIMIZED_BOTH);
             Dimension sSize = Toolkit.getDefaultToolkit ().getScreenSize ();
-            ScreenMode screen = new ScreenMode(""+sSize.width+"x"+sSize.height,sSize.height,sSize.width);
+            screenMode = new ScreenMode(true,true,0,0,sSize.width,sSize.height);
             xC = sSize.width/2;
             yC = sSize.height/2;
             setWH(sSize.width,sSize.height);
@@ -203,7 +205,7 @@ public class ESSKioskClient extends ESSBaseView {
                 });
             setVisible(false);
             screen.setVisible(true);
-            screen.eventPanel(EventPLMOn,0,0,"",null);
+            screen.eventPanel(EventPLMOn,0,0,"",screenMode);
             screen.refresh();
             } catch (UniException ee){
                 Mes.setText(ee.toString());

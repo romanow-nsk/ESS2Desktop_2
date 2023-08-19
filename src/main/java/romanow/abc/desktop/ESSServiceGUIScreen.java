@@ -5,6 +5,8 @@
  */
 package romanow.abc.desktop;
 
+import romanow.abc.desktop.screen.ScreenMode;
+
 import java.awt.*;
 
 /**
@@ -26,7 +28,7 @@ public class ESSServiceGUIScreen extends javax.swing.JFrame implements I_PanelEv
         setExtendedState(MAXIMIZED_BOTH);
         Dimension sSize = Toolkit.getDefaultToolkit ().getScreenSize ();
         //System.out.println(sSize.height + " " + sSize.width);
-        ScreenMode screen = new ScreenMode(""+sSize.width+"x"+sSize.height,sSize.height,sSize.width);
+        ScreenMode screen = new ScreenMode(false,true,0,0,sSize.width,sSize.height);
         setSize(sSize.width,sSize.height);
         panel = new ESSServiceGUIPanel(screen);
         add(panel);

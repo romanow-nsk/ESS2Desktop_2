@@ -39,8 +39,8 @@ public class DesktopGUIFormSelector extends View2BaseDesktop {
         prev.setBounds(
                 context.x(element.getX()+element.getDx()+10),
                 context.y(element.getY()),
-                context.x(40),
-                context.y(40));
+                context.dx(40),
+                context.dy(40));
         prev.setIcon(new ImageIcon(getClass().getResource("/left.png"))); // NOI18N
         //textField.setBorderPainted(false);
         //textField.setContentAreaFilled(false);
@@ -77,16 +77,16 @@ public class DesktopGUIFormSelector extends View2BaseDesktop {
         list.setBounds(
                 context.x(element.getX()+element.getDx()+50),
                 context.y(element.getY()),
-                context.x(45),
-                context.y(40));
+                context.dx(45),
+                context.dy(40));
         list.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
         panel.add(list);
         next = new JButton();
         next.setBounds(
                 context.x(element.getX()+element.getDx()+95),
                 context.y(element.getY()),
-                context.x(40),
-                context.y(40));
+                context.dx(40),
+                context.dy(40));
         next.setIcon(new ImageIcon(getClass().getResource("/right.png"))); // NOI18N
         //textField.setBorderPainted(false);
         //textField.setContentAreaFilled(false);
@@ -106,8 +106,8 @@ public class DesktopGUIFormSelector extends View2BaseDesktop {
         down.setBounds(
                 context.x(element.getX()+element.getDx()+135),
                 context.y(element.getY()),
-                context.x(40),
-                context.y(40));
+                context.dx(40),
+                context.dy(40));
         down.setIcon(new ImageIcon(getClass().getResource("/down.png"))); // NOI18N
         //textField.setBorderPainted(false);
         //textField.setContentAreaFilled(false);
@@ -123,8 +123,8 @@ public class DesktopGUIFormSelector extends View2BaseDesktop {
         up.setBounds(
                 context.x(element.getX()+element.getDx()+175),
                 context.y(element.getY()),
-                context.x(40),
-                context.y(40));
+                context.dx(40),
+                context.dy(40));
         up.setIcon(new ImageIcon(getClass().getResource("/up.png"))); // NOI18N
         //textField.setBorderPainted(false);
         //textField.setContentAreaFilled(false);

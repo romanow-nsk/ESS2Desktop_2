@@ -79,8 +79,8 @@ public class DesktopGUIBitStateCmd extends View2BaseDesktop {
         textField.setBounds(
                 context.x(xx),
                 context.y(yy),
-                context.x(sz),
-                context.y(sz));
+                context.dx(sz),
+                context.dy(sz));
         viewComponent();
         setInfoClick(textField);
         panel.add(textField);
@@ -93,8 +93,8 @@ public class DesktopGUIBitStateCmd extends View2BaseDesktop {
         cmdButton.setBounds(
                 context.x(xx+sz+5),
                 context.y(yy),
-                context.x(bSize),
-                context.y(sz));
+                context.dx(bSize),
+                context.dy(sz));
         cmdButton.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
         cmdButton.setHorizontalAlignment(JTextField.CENTER);
         cmdButton.setText("");
