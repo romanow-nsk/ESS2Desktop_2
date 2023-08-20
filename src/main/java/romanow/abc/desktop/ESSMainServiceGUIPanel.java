@@ -11,6 +11,7 @@ import romanow.abc.core.DBRequest;
 import romanow.abc.core.UniException;
 import romanow.abc.core.constants.IntegerList;
 import romanow.abc.core.constants.Values;
+import romanow.abc.core.constants.ValuesBase;
 import romanow.abc.core.entity.EntityRefList;
 import romanow.abc.core.entity.baseentityes.JBoolean;
 import romanow.abc.core.entity.metadata.Meta2GUIElement;
@@ -340,10 +341,10 @@ public class ESSMainServiceGUIPanel extends ESSBasePanel {
         int  access = context.getManager().getCurrentAccessLevel();
         String ss = "  "+context.getManager().getUser().getTitle()+" ["+Values.title("AccessLevel",access)+"] ";
         userTitle.setText(ss);
-        userTitle.setBounds(context.x(50),context.y(offsetH+20),
-                context.dx(400),context.dy(25));
+        userTitle.setBounds(context.x(10),context.y(ValuesBase.ScreenDesktopHeight-60),
+                context.dx(700),context.dy(25));
         userTitle.setEnabled(false);
-        userTitle.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
+        userTitle.setFont(new Font("Arial Cyr", Font.PLAIN, context.dy(12)));
         panel.add(userTitle);
         //-----------------------------------------------------------------------------------
         panel.setBounds(0, 0, context.getScreen().ScreenW() - 40, context.y(offsetH));

@@ -57,12 +57,19 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     private final static String buttonInfoOff = "/question_gray.png";
     private final static String mainFormName="Главный";
     //--------------------------------- Данные для меню
+    //------------------------------------------------------------------------------------------
+    //          1
+    //          2
+    // 7 8     коды    6 5
+    //          4
+    //          3
+    //-----------------------------------------------------------------------------------------
     private final static int maxMenuLevels=5;
     public final static int buttonXSize=100;
     public final static int buttonYSize=40;
     private final static int buttonSpace=5;
     private int menuModes[] = new int[maxMenuLevels];
-    private final static int levelYCoords[]={10,55,ScreenDesktopHeight-100,ScreenDesktopHeight-145,10,10,10,10};
+    private final static int levelYCoords[]={10,55,ScreenDesktopHeight-100,ScreenDesktopHeight-145,55,55,55,55};
     private final static int levelXCoords[]={10,10,10,10,ScreenDesktopWidth-100,ScreenDesktopWidth-200,10,110};
     private final static boolean levelHoriz[] ={true,true,true,true,false,false,false,false};
     //-----------------------------------------------------------------
@@ -274,13 +281,6 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             context.getMain().sendEventPanel(BasePanel.EventRuntimeEdited,0,0,value);
             }
         };
-    //------------------------------------------------------------------------------------------
-    //          1
-    //          2
-    // 7 8     коды    6 5
-    //          4
-    //          3
-    //-----------------------------------------------------------------------------------------
     public void repaintMenu(boolean phoneMode){
         phoneMode = false;
         Meta2GUIView currentView = currentView().getView();
@@ -304,8 +304,8 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             int  access = context.getManager().getCurrentAccessLevel();
             String ss = "  "+context.getManager().getUser().getTitle()+" ["+Values.title("AccessLevel",access)+"] ";
             userTitle.setText(ss);
-            userTitle.setBounds(context.x(50),context.y(610),
-                    context.dx(400),context.dy(25));
+            userTitle.setBounds(context.x(10),context.y(ScreenDesktopHeight-60),
+                    context.dx(700),context.dy(25));
             userTitle.setEnabled(false);
             userTitle.setFont(new Font("Arial Cyr", Font.PLAIN, context.dy(12)));
             add(userTitle);
@@ -394,7 +394,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                     if (horizontal)
                         baseX += buttonSize + buttonSpace;
                     else
-                        baseY += buttonSize + buttonSpace;
+                        baseY += buttonYSize + buttonSpace;
                     baseXY += buttonSize + buttonSpace;
                     }
                 final Meta2GUIForm zz = next;
@@ -516,7 +516,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             }
         });
         add(toMain);
-        toMain.setBounds(context.x(870), context.y(620), context.dx(40), context.dy(40));
+        toMain.setBounds(context.x(ScreenDesktopWidth-50), context.y(10), context.dx(40), context.dy(40));
         //-------------------------------------------------------------------------------------
         insertSelected = new JButton();
         insertSelected.setIcon(new javax.swing.ImageIcon(getClass().getResource(buttonEdit))); // NOI18N
@@ -552,7 +552,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 }
             });
         add(insertSelected);
-        insertSelected.setBounds(context.x(820), context.y(620), context.dx(40), context.dy(40));
+        insertSelected.setBounds(context.x(ScreenDesktopWidth-50), context.y(ScreenDesktopHeight-80), context.dx(40), context.dy(40));
         insertSelected.setVisible(context.isRuntimeEditMode());
         //-----------------------------------------------------------------------------------
         JButton logout = new JButton();
@@ -567,7 +567,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 }
             });
         add(logout);
-        logout.setBounds(context.x(870), context.y(10), context.dx(40), context.dy(40));
+        logout.setBounds(context.x(ScreenDesktopWidth-100), context.y(10), context.dx(40), context.dy(40));
         //-----------------------------------------------------------------------------------
         JButton info = new JButton();
         info.setIcon(new javax.swing.ImageIcon(getClass().getResource(context.isInfoMode() ? buttonInfoOn : buttonInfoOff))); // NOI18N
@@ -579,7 +579,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 }
             });
         add(info);
-        info.setBounds(context.x(820), context.y(10), context.dx(40), context.dy(40));
+        info.setBounds(context.x(ScreenDesktopWidth-150), context.y(10), context.dx(40), context.dy(40));
         //-----------------------------------------------------------------------------------------
         Meta2GUIForm baseForm = context.getBaseForm();
         guiList.clear();
