@@ -1,11 +1,51 @@
 package romanow.abc.desktop.view2;
 
+import romanow.abc.core.entity.metadata.view.Meta2GUI;
+import romanow.abc.core.entity.metadata.view.Meta2GUIData;
 import romanow.abc.desktop.UtilsDesktop;
 
 import javax.swing.*;
 import java.awt.*;
 
 public abstract class View2BaseDesktop extends View2Base implements I_View2Desktop{
+    public void setTextFieldParams(JTextField textField){
+        setComponentParams(textField);
+        textField.setText(element.getTitle());
+        textField.setHorizontalAlignment(JTextField.CENTER);
+        }
+    public void setButtonParams(JButton textField){
+        setButtonParams(textField,false);
+        }
+    public void setButtonParams(JButton textField, boolean noOneString){
+        setComponentParams(textField);
+        String ss = element.getTitle();
+        textField.setText(!noOneString ? ss : "<html>" + ss.replaceAll(" ", "<br>") + "</html>");
+        textField.setHorizontalAlignment(JTextField.CENTER);
+        }
+    public Font createFont(){
+        int fontSize = element.getFontSize();
+        if (fontSize==0) fontSize=12;
+        int type = element.isBold()? Font.BOLD : Font.PLAIN;
+        return new Font("Arial Cyr", type, context.dy(fontSize));
+        }
+    public void setComponentParams(JComponent textField){
+        setComponentParams(textField,true);
+        }
+    public void setComponentParams(JComponent textField, boolean border){
+        textField.setFont(createFont());
+        Color textColor = new Color(context.getView().getTextColor());
+        if (border)
+            textField.setBorder(BorderFactory.createLineBorder(textColor,1));
+        textField.setForeground(textColor);
+        textField.setOpaque(true);
+        if (element.getColor()==0 || element.isCommonColor()){
+            textField.setBackground(new Color(context.getView().getLabelBackColor()));
+            }
+        else{
+            textField.setBackground(new Color(element.getColor()));
+            }
+        setInfoClick(textField);
+        }
     public JLabel setLabel(JPanel panel){
         String text = element.getTitle();
         //------------- TODO ------------------- подпись индекса --------------------------------
@@ -24,6 +64,8 @@ public abstract class View2BaseDesktop extends View2Base implements I_View2Deskt
             label.setText("  "+text);
         else
             UtilsDesktop.setLabelText(label,text,size);
+        setComponentParams(label,false);
+        /*
         label.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));
         label.setForeground(new Color(context.getView().getTextColor()));
         label.setOpaque(true);
@@ -37,6 +79,7 @@ public abstract class View2BaseDesktop extends View2Base implements I_View2Deskt
         if (fontSize==0) fontSize=12;
         int type = element.isBold()? Font.BOLD : Font.PLAIN;
         label.setFont(new Font("Arial Cyr", type, context.dy(fontSize)));
+         */
         panel.add(label);
         return label;
         }

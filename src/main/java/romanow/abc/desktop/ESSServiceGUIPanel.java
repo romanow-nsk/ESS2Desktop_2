@@ -68,7 +68,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     public final static int buttonYSize=40;
     private final static int buttonSpace=5;
     private int menuModes[] = new int[maxMenuLevels];
-    private final static int levelYCoords[]={10,55,ScreenDesktopHeight-100,ScreenDesktopHeight-145,55,55,55,55};
+    private final static int levelYCoords[]={10,55,ScreenDesktopHeight-100,ScreenDesktopHeight-145,155,155,155,155};
     private final static int levelXCoords[]={10,10,10,10,ScreenDesktopWidth-100,ScreenDesktopWidth-200,10,110};
     private final static boolean levelHoriz[] ={true,true,true,true,false,false,false,false};
     //-----------------------------------------------------------------
@@ -335,17 +335,27 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                     continue;
                 if (next.isBaseForm())
                     continue;
-                JButton bb = new MultiTextButton(new Font("Arial Cyr", Font.PLAIN, context.dy(12)));
-                bb.setText(next.getTitle().replace("_",""));
+                String text = next.getTitle().replace("_","");
+                text =  "<html>" + text.replaceAll(" ", "<br>") + "</html>";
+                //------------------------------------------------------------------------------------------------------
+                JButton bb = new JButton();
+                int fontSize = context.dy(currentView.getMenuFontSize()==0 ? 12 : currentView.getMenuFontSize());
+                int type = currentView.isMenuFontBold() ? Font.BOLD : Font.PLAIN;
+                Font font = new Font("Arial Cyr", type, context.dy(fontSize));
+                bb.setText(text);
+                bb.setFont(font);
+                bb.setHorizontalAlignment(JTextField.CENTER);
                 bb.setVisible(!next.isNoMenu());
                 next.setButton(bb);
                 bb.setBackground(new Color(currentView.getMenuButtonOffColor()));
-                bb.setForeground(new Color(currentView.getTextColor()));
+                bb.setForeground(new Color(currentView.getMenuTextСolor()));
+                //------------------------------------------------------------------------------------------------------
                 if (menuStringIdx==8)
                     menu8Buttons.add(bb);
                 if (menuStringIdx==6)
                     menu6Buttons.add(bb);
                 int buttonSize = next.getButtonSize()==0 ? buttonXSize : next.getButtonSize();
+                int buttonHSize = currentView.getMenuButtonH()==0 ? buttonYSize : currentView.getMenuButtonH();
                 if (buttonSize>maxButtonXSize[menuStringIdx])
                     maxButtonXSize[menuStringIdx] = buttonSize;
                     bb.setBounds(

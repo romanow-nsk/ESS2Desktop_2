@@ -324,6 +324,7 @@ public class ESSClient extends Client {
     //------------------------------------------------------------------------------------------------------
     public void setRenderingOn(String viewName) {
         ESS2View  found = null;
+        viewName = viewName.trim();
         for(ESS2View view : deployed.getViews()){
             if (viewName.length()!=0){
                 if (viewName.equals(view.getShortName())){

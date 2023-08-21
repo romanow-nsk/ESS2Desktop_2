@@ -6,6 +6,7 @@ import romanow.abc.core.entity.metadata.view.Meta2GUI;
 import romanow.abc.core.entity.metadata.view.Meta2GUIFormButton;
 import romanow.abc.core.entity.subject2area.ESS2Architecture;
 import romanow.abc.desktop.Message;
+import romanow.abc.desktop.view.MultiTextButton;
 import romanow.abc.desktop.view2.FormContext2;
 import romanow.abc.desktop.view2.I_GUI2Event;
 import romanow.abc.desktop.view2.View2BaseDesktop;
@@ -20,29 +21,25 @@ public class DesktopGUIFormButton extends View2BaseDesktop {
     public DesktopGUIFormButton(){
         setType(Values.GUIFormButton);
         }
-
     @Override
     public void addToPanel(JPanel panel) {
-        textField = new JButton();
         FormContext2 context= getContext();
         Meta2GUI element = getElement();
+        int hh = element.getH()==0 ? 25 : element.getH();
+        textField = new JButton();
         textField.setBounds(
                 context.x(element.getX()),
                 context.y(element.getY()),
                 context.dx(element.getDx()),
-                context.dy(25));
-        textField.setText(element.getTitle());
-        textField.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
-        textField.setHorizontalAlignment(JTextField.CENTER);
+                context.dy(hh));
+        setButtonParams(textField,true);
         textField.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 context.openForm(((Meta2GUIFormButton)element).getFormName(),FormContext2.ModeForce);
                 }
             });
-        setInfoClick(textField);
         panel.add(textField);
-        Color color=new Color(element.getColor());
         }
     @Override
     public void putValue(long vv) throws UniException {}

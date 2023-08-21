@@ -17,9 +17,13 @@ public class MultiTextButton extends JButton {
         else{
             JLabel label = new JLabel(text.substring(0,idx));
             label.setFont(font);
+            label.setHorizontalAlignment(JTextField.CENTER);
+            label.setVerticalAlignment(JTextField.CENTER);
             add(BorderLayout.NORTH,label);
             label = new JLabel(text.substring(idx+1));
             label.setFont(font);
+            label.setHorizontalAlignment(JTextField.CENTER);
+            label.setVerticalAlignment(JTextField.CENTER);
             add(BorderLayout.SOUTH,label);
             }
         }
