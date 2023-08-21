@@ -282,11 +282,20 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             }
         };
     public void repaintMenu(boolean phoneMode){
-        phoneMode = false;
+        ArrayList<JButton> menu6Buttons = new ArrayList<>();
+        ArrayList<JButton> menu8Buttons = new ArrayList<>();
+        int maxButtonXSize[] = new int[9];
+        for(int i=0;i<maxButtonXSize.length;i++)
+            maxButtonXSize[i]=0;
         Meta2GUIView currentView = currentView().getView();
-        int vv = currentView.getMenuModes();
+        int vv1 = currentView.getMenuModes();
+        int vv=0;
+        while(vv1!=0){                              // Перевернуть индексы размещения строк меню для уровней
+            vv = vv*10 + vv1%10;
+            vv1 /= 10;
+            }
         boolean defaultMenu = vv==0;
-        for(int i=0;i<maxMenuLevels;i++){
+        for(int i=0;i<maxMenuLevels;i++){           // Раскидать индексы размещения строк меню для уровней
             if (defaultMenu)
                 menuModes[i]=i+1;
             else{
@@ -313,58 +322,15 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         //-----------------------------------------------------------------------------------
         Meta2GUIForm ff = baseForm;
         level = ff.getLevel();
-        if (phoneMode){
-            String currentName = baseForm.getTitle();
-            final ArrayList<Meta2GUIForm> childs = new ArrayList<>();
-            final ArrayList<String> names = new ArrayList<>();
-            if (!currentName.equals(mainFormName)){
-                final Meta2GUIForm parent = baseForm.getParent();
-                JButton bb = new MultiTextButton(new Font("Arial Cyr", Font.PLAIN, context.dy(12)));
-                parent.setButton(bb);
-                bb.setText(parent.getTitle().replace("_",""));
-                bb.setBackground(new Color(currentView.getMenuButtonOnColor()));
-                bb.setForeground(new Color(currentView.getTextColor()));
-                int buttonSize = (parent.getButtonSize()==0 ? 100 : parent.getButtonSize())*buttonXSize/100;
-                bb.setBounds(
-                    context.x(context.getScreen().ScreenW() - 40 - buttonSize),
-                    context.y(60),
-                    context.dx(buttonSize),
-                    context.dy(buttonYSize));
-                bb.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        context.openForm(parent,FormContext2.ModeForce);
-                        }
-                    });
-                add(bb);
-                }
-            final Meta2GUIForm current = baseForm;
-            JButton bb = new MultiTextButton(new Font("Arial Cyr", Font.PLAIN, context.dy(12)));
-            current.setButton(bb);
-            bb.setText(current.getTitle().replace("_",""));
-            bb.setBackground(new Color(currentView.getMenuButtonOffColor()));
-            bb.setForeground(new Color(currentView.getTextColor()));
-            int buttonSize = (current.getButtonSize()==0 ? 100 : current.getButtonSize())*buttonXSize/100;
-            bb.setBounds(
-                    context.x(context.getScreen().ScreenW() - 40 - buttonSize),
-                    context.y(60 + buttonYSize + buttonSpace),
-                    context.dx(buttonSize),
-                    context.dy(buttonYSize));
-            bb.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    context.openForm(current,FormContext2.ModeCrearIdx);
-                    }
-                });
-            add(bb);
-            }
         while (true) {
             int baseXY = 60 + (phoneMode ? 2*(buttonYSize + buttonSpace) : 0);
             String currentName = ff.getTitle();
             int ii = 0;
-            int baseX = levelXCoords[menuModes[level]-1];
-            int baseY = levelYCoords[menuModes[level]-1];
-            boolean horizontal = levelHoriz[menuModes[level]-1];
+            int menuStringIdx = menuModes[level];
+            int baseX = levelXCoords[menuStringIdx-1];
+            int baseY = levelYCoords[menuStringIdx-1];
+            boolean horizontal = levelHoriz[menuStringIdx-1];
+            maxButtonXSize[menuStringIdx]=0;
             for (Meta2GUIForm next : formList.getList()) {
                 if (!next.getParentName().equals(currentName))
                     continue;
@@ -376,16 +342,13 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 next.setButton(bb);
                 bb.setBackground(new Color(currentView.getMenuButtonOffColor()));
                 bb.setForeground(new Color(currentView.getTextColor()));
-                int buttonSize = (next.getButtonSize()==0 ? 100 : next.getButtonSize())*buttonXSize/100;
-                if (phoneMode) {
-                    bb.setBounds(
-                        context.x(context.getScreen().ScreenW() - 40 - buttonSize),
-                        context.y(baseXY),
-                        context.dx(buttonSize),
-                        context.dy(buttonYSize));
-                    baseXY += buttonYSize + buttonSpace;
-                    }
-                else{
+                if (menuStringIdx==8)
+                    menu8Buttons.add(bb);
+                if (menuStringIdx==6)
+                    menu6Buttons.add(bb);
+                int buttonSize = next.getButtonSize()==0 ? buttonXSize : next.getButtonSize();
+                if (buttonSize>maxButtonXSize[menuStringIdx])
+                    maxButtonXSize[menuStringIdx] = buttonSize;
                     bb.setBounds(
                         context.x(baseX),
                         context.y(baseY),
@@ -396,7 +359,8 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                     else
                         baseY += buttonYSize + buttonSpace;
                     baseXY += buttonSize + buttonSpace;
-                    }
+                //-------------------------------------------------
+                //}
                 final Meta2GUIForm zz = next;
                 final boolean denied = main2.manager.getCurrentAccessLevel() > zz.getAccessLevel();
                 if (denied)
@@ -415,6 +379,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 add(bb);
                 ii++;
                 }
+            //----------------------------------------------------------------------------------------------------------
             if (level == 0) break;
             ff = formList.getByTitle(ff.getParentName());
             if (ff == null) {
@@ -422,9 +387,25 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 break;
                     }
             level--;
-            if (phoneMode)
-                break;
             }
+        //----------------------- коррекция начала след. столбцов при вертикальной строке меню ---------------------
+        if (maxButtonXSize[5]!=0 && maxButtonXSize[6]!=0){
+            for(JButton button : menu6Buttons){
+                Rectangle rr = button.getBounds();
+                rr.x = context.x(levelXCoords[6-1]-maxButtonXSize[5] - maxButtonXSize[6] + 2*buttonXSize - 2*buttonSpace);
+                button.setBounds(rr);
+                }
+            revalidate();
+            }
+        if (maxButtonXSize[7]!=0 && maxButtonXSize[8]!=0){
+            for(JButton button : menu6Buttons){
+                Rectangle rr = button.getBounds();
+                rr.x = context.x(levelXCoords[8-1]+maxButtonXSize[7] - buttonXSize + buttonSpace);
+                button.setBounds(rr);
+                }
+            revalidate();
+            }
+        //----------------------- коррекция начала след. столбцов при вертикальной строке меню ---------------------
         level = baseForm.getLevel();
         for(int ii=1;ii<=level;ii++){
             String formName = context.getName(ii);
