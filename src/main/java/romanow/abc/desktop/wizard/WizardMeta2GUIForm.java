@@ -32,7 +32,6 @@ public class WizardMeta2GUIForm extends WizardBaseView {
      */
     public WizardMeta2GUIForm() {
         initComponents();
-        setBounds(200,200,800,325);
         }
     private ArrayList<ConstValue> types = new ArrayList<>();
     private ArrayList<ConstValue> access = new ArrayList<>();
@@ -43,6 +42,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
     @Override
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
+        resizeHeight(350);
         view = (Meta2GUIForm) entity0;
         list = view.getControls();
         selector = new WizardMetaEntitySelector("Элементы ЧМИ", Values.MEGUIElement,callBack);

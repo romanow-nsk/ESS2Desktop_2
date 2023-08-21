@@ -2023,7 +2023,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             meta2XML = new Meta2GUIView();
             Meta2GUIForm newForm = new Meta2GUIForm();
             newForm.setShortName("main");
-            newForm.setTitle("Главная");
+            newForm.setTitle(MainFormName);
             ((Meta2GUIView)meta2XML).getForms().add(newForm);
             }
         meta2XML.setShortName("newItem");

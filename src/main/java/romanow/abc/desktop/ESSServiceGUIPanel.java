@@ -55,7 +55,6 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     private final static String buttonLogout = "/login.png";
     private final static String buttonInfoOn = "/question.png";
     private final static String buttonInfoOff = "/question_gray.png";
-    private final static String mainFormName="Главный";
     //--------------------------------- Данные для меню
     //------------------------------------------------------------------------------------------
     //          1
@@ -204,7 +203,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
 
     public boolean setMainForm(){
         if (context.getForm()==null){
-            Meta2GUIForm form = currentView().getView().getForms().getByTitle(mainFormName);
+            Meta2GUIForm form = currentView().getView().getForms().getByTitle(Values.MainFormName);
             context.setForm(form);
             context.setBaseForm(form);
             }
@@ -308,7 +307,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         Meta2GUIForm baseForm = context.getBaseForm();
         int level = form.getLevel();
         //-----------------------------------------------------------------------------------
-        if (context.getForm().getTitle().equals(mainFormName)){
+        if (context.getForm().getTitle().equals(Values.MainFormName)){
             TextField userTitle = new TextField();
             int  access = context.getManager().getCurrentAccessLevel();
             String ss = "  "+context.getManager().getUser().getTitle()+" ["+Values.title("AccessLevel",access)+"] ";
@@ -493,7 +492,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         toMain.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                context.openForm(mainFormName,FormContext2.ModeCrearIdx);
+                context.openForm(Values.MainFormName,FormContext2.ModeCrearIdx);
             }
         });
         add(toMain);
