@@ -26,12 +26,14 @@ public class WizardMeta2GUIRegW2 extends WizardMeta2GUI {
         elem = (Meta2GUIRegW2)  entity;
         WizardRegLinkPanel linkPanel = new WizardRegLinkPanel(0,120,"",elem.getLink(),this);
         add(linkPanel);
+        linkPanel.setVisible(true);
         W2.setText(""+elem.getW2());
         onStart=true;
         IntValue.setSelected(elem.isIntValue());
         ByteSize.setSelected(elem.isByteSize());
         AfterPoint.setText(""+elem.getAfterPoint());
         onStart=false;
+        revalidate();
         }
     /**
      * This method is called from within the constructor to initialize the form.

@@ -44,7 +44,6 @@ public abstract class View2BaseDesktop extends View2Base implements I_View2Deskt
         else{
             textField.setBackground(new Color(element.getColor()));
             }
-        setInfoClick(textField);
         }
     public JLabel setLabel(JPanel panel){
         String text = element.getTitle();

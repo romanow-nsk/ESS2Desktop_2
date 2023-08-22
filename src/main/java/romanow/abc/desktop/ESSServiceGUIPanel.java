@@ -114,10 +114,12 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     private boolean renderingOn=false;
     private void setRenderingOnOff(boolean vv){
         renderingOn = vv;
-        selected=null;
-        if (insertSelected!=null)
-            insertSelected.setVisible(false);
-        if (renderingOn)
+        if (!renderingOn){
+            selected=null;
+            if (insertSelected!=null)
+                insertSelected.setVisible(false);
+            }
+        else
             context.setCurrentView(currentView());
         }
     //private boolean repaintValuesOn=false;                           // Обновление данных
@@ -562,8 +564,11 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         insertSelected.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (insertSelected==null)
+                if (selected==null){
+                    if (insertSelected!=null)
+                        insertSelected.setVisible(false);
                     return;
+                    }
                 new OK(200,200,"Вставить элемент: "+selected.getFullTitle(), new I_Button() {
                     @Override
                     public void onPush() {
@@ -579,6 +584,8 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                         Meta2GUIForm form2 = context.getBaseForm();     //
                         if (form2!=null)
                             form1 = form2;
+                        copy.setY(ScreenDesktopHeight-100);
+                        copy.setX(20);
                         form1.getControls().add(copy);                  // Добавить в список элементов управления GUI формы
                         main.sendEventPanel(BasePanel.EventRuntimeEdited,0,0,"Добавлен "+form1.getTitle()+": "+copy.getFullTitle());
                         main.sendEventPanel(EventRuntimeUnSelected,0,0,"");
@@ -700,8 +707,9 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             insertSelected.setVisible(true);
             }
         if (code==EventRuntimeUnSelected){
-            selected = selected;
-            insertSelected.setSelected(false);
+            selected = null;
+            if (insertSelected!=null)
+                insertSelected.setSelected(false);
             }
         }
     //---------------------------------------------------------------------------------------------

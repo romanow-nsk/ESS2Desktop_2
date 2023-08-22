@@ -27,7 +27,8 @@ public class WizardMeta2GUI extends WizardBaseView {
         }
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
-        setSize(950,200);
+        setSize(950,250);
+        RepaintEtOnce.setSelected(true);
         elem = (Meta2GUI) entity;
         X.setText(""+elem.getX());
         Y.setText(""+elem.getY());
@@ -43,8 +44,12 @@ public class WizardMeta2GUI extends WizardBaseView {
         back = new I_Value<String>() {
             @Override
             public void onEnter(String value) {
-                if (RepaintEtOnce.isSelected())
-                    onClose.onEnter(value);
+                if (RepaintEtOnce.isSelected()){
+                    if (onClose!=null)
+                        onClose.onEnter(value);
+                    else
+                        baseBack.onEnter(value);
+                    }
                 else
                     baseBack.onEnter(value);
                 }
@@ -92,6 +97,7 @@ public class WizardMeta2GUI extends WizardBaseView {
         MoveAll = new javax.swing.JCheckBox();
         RepaintEtOnce = new javax.swing.JCheckBox();
         SelecElem = new javax.swing.JButton();
+        Step5_25 = new javax.swing.JCheckBox();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -295,9 +301,9 @@ public class WizardMeta2GUI extends WizardBaseView {
         getContentPane().add(MoveUp);
         MoveUp.setBounds(830, 40, 40, 38);
 
-        MoveAll.setText("Весь экран");
+        MoveAll.setText("Все");
         getContentPane().add(MoveAll);
-        MoveAll.setBounds(840, 10, 100, 20);
+        MoveAll.setBounds(870, 30, 50, 20);
 
         RepaintEtOnce.setText("Отображать сразу");
         getContentPane().add(RepaintEtOnce);
@@ -313,6 +319,15 @@ public class WizardMeta2GUI extends WizardBaseView {
         });
         getContentPane().add(SelecElem);
         SelecElem.setBounds(880, 120, 30, 30);
+
+        Step5_25.setText("Шаг 5/25");
+        Step5_25.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                Step5_25ItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(Step5_25);
+        Step5_25.setBounds(850, 10, 71, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -511,6 +526,10 @@ public class WizardMeta2GUI extends WizardBaseView {
         dispose();
     }//GEN-LAST:event_SelecElemActionPerformed
 
+    private void Step5_25ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_Step5_25ItemStateChanged
+        MoveStep.setText(Step5_25.isSelected() ? "25" : "5");
+    }//GEN-LAST:event_Step5_25ItemStateChanged
+
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -530,6 +549,7 @@ public class WizardMeta2GUI extends WizardBaseView {
     private javax.swing.JButton MoveUp;
     private javax.swing.JCheckBox RepaintEtOnce;
     private javax.swing.JButton SelecElem;
+    private javax.swing.JCheckBox Step5_25;
     private javax.swing.JTextField StringSize;
     private javax.swing.JTextField W;
     private javax.swing.JTextField X;
