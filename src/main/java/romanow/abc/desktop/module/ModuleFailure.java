@@ -46,8 +46,8 @@ public class ModuleFailure extends Module {
         bb.setBounds(
                 context.x(20),
                 context.y(600),
-                context.x(ESSServiceGUIPanel.buttonXSize),
-                context.y(ESSServiceGUIPanel.buttonYSize));
+                context.x(Values.MenuButtonW),
+                context.y(Values.MenuButtonH));
         bb.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

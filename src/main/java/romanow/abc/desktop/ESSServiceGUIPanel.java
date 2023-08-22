@@ -56,7 +56,6 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     private final static String buttonInfoOn = "/question.png";
     private final static String buttonInfoOff = "/question_gray.png";
     //--------------------------------- Данные для меню
-    //------------------------------------------------------------------------------------------
     //          1
     //          2
     // 7 8     коды    6 5
@@ -64,9 +63,6 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     //          3
     //-----------------------------------------------------------------------------------------
     private final static int maxMenuLevels=5;
-    public final static int buttonXSize=100;
-    public final static int buttonYSize=40;
-    private final static int buttonSpace=5;
     private int menuModes[] = new int[maxMenuLevels];
     private final static int levelYCoords[]={10,55,ScreenDesktopHeight-100,ScreenDesktopHeight-145,155,155,155,155};
     private final static int levelXCoords[]={10,10,10,10,ScreenDesktopWidth-100,ScreenDesktopWidth-200,10,110};
@@ -280,12 +276,13 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             context.getMain().sendEventPanel(BasePanel.EventRuntimeEdited,0,0,value);
             }
         };
-    public void repaintMenu(boolean phoneMode){
+    public void repaintMenu(){
         ArrayList<JButton> menu6Buttons = new ArrayList<>();
         ArrayList<JButton> menu8Buttons = new ArrayList<>();
         int maxButtonXSize[] = new int[9];
+        int maxButtonYSize[] = new int[9];
         for(int i=0;i<maxButtonXSize.length;i++)
-            maxButtonXSize[i]=0;
+            maxButtonXSize[i]=maxButtonYSize[i]=0;
         Meta2GUIView currentView = currentView().getView();
         int vv1 = currentView.getMenuModes();
         int vv=0;
@@ -322,7 +319,6 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         Meta2GUIForm ff = baseForm;
         level = ff.getLevel();
         while (true) {
-            int baseXY = 60 + (phoneMode ? 2*(buttonYSize + buttonSpace) : 0);
             String currentName = ff.getTitle();
             int ii = 0;
             int menuStringIdx = menuModes[level];
@@ -337,39 +333,63 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                     continue;
                 String text = next.getTitle().replace("_","");
                 text =  "<html>" + text.replaceAll(" ", "<br>") + "</html>";
-                //------------------------------------------------------------------------------------------------------
+                //---------------------------------------------------- Параметры кнопки --------------------------------
                 JButton bb = new JButton();
-                int fontSize = context.dy(currentView.getMenuFontSize()==0 ? 12 : currentView.getMenuFontSize());
-                int type = currentView.isMenuFontBold() ? Font.BOLD : Font.PLAIN;
+                int fontSize = currentView.getMenuButtonFontSize();
+                if (fontSize==0 && next.getMenuButtonFontSize()!=0)
+                    fontSize = next.getMenuButtonFontSize();
+                if (fontSize==0)
+                    fontSize = MenuButtonFontSize;
+                boolean bold = currentView.isMenuFontBold() || next.isMenuFontBold();
+                int type = bold ? Font.BOLD : Font.PLAIN;
                 Font font = new Font("Arial Cyr", type, context.dy(fontSize));
-                bb.setText(text);
                 bb.setFont(font);
+                int buttonW = next.getMenuButtonW();
+                if (buttonW==0 && currentView.getMenuButtonW()!=0)
+                    buttonW = currentView.getMenuButtonW();
+                if (buttonW==0)
+                    buttonW = MenuButtonW;
+                if (buttonW > maxButtonXSize[menuStringIdx])
+                    maxButtonXSize[menuStringIdx] = buttonW;
+                int buttonH = next.getMenuButtonH();
+                if (buttonH==0 && currentView.getMenuButtonH()!=0)
+                    buttonH = currentView.getMenuButtonH();
+                if (buttonH==0)
+                    buttonH = MenuButtonH;
+                if (buttonH > maxButtonYSize[menuStringIdx])
+                    maxButtonYSize[menuStringIdx] = buttonH;
+                int color = next.getMenuButtonOffColor();
+                if (color==0 && currentView.getMenuButtonOffColor()!=0)
+                    color = currentView.getMenuButtonOffColor();
+                if (color==0)
+                    color = MenuButtonOffColor;
+                bb.setBackground(new Color(color));
+                color = next.getMenuButtonTextColor();
+                if (color==0 && currentView.getMenuButtonTextColor()!=0)
+                    color = currentView.getMenuButtonTextColor();
+                if (color==0)
+                    color = MenuButtonTextСolor;
+                bb.setForeground(new Color(color));
+                bb.setText(text);
                 bb.setHorizontalAlignment(JTextField.CENTER);
                 bb.setVisible(!next.isNoMenu());
                 next.setButton(bb);
-                bb.setBackground(new Color(currentView.getMenuButtonOffColor()));
-                bb.setForeground(new Color(currentView.getMenuTextСolor()));
                 //------------------------------------------------------------------------------------------------------
                 if (menuStringIdx==8)
                     menu8Buttons.add(bb);
                 if (menuStringIdx==6)
                     menu6Buttons.add(bb);
-                int buttonSize = next.getButtonSize()==0 ? buttonXSize : next.getButtonSize();
-                int buttonHSize = currentView.getMenuButtonH()==0 ? buttonYSize : currentView.getMenuButtonH();
-                if (buttonSize>maxButtonXSize[menuStringIdx])
-                    maxButtonXSize[menuStringIdx] = buttonSize;
-                    bb.setBounds(
-                        context.x(baseX),
-                        context.y(baseY),
-                        context.dx(buttonSize),
-                        context.dy(buttonYSize));
-                    if (horizontal)
-                        baseX += buttonSize + buttonSpace;
-                    else
-                        baseY += buttonYSize + buttonSpace;
-                    baseXY += buttonSize + buttonSpace;
-                //-------------------------------------------------
-                //}
+                if (buttonW>maxButtonXSize[menuStringIdx])
+                    maxButtonXSize[menuStringIdx] = buttonW;
+                bb.setBounds(
+                    context.x(baseX),
+                    context.y(baseY),
+                    context.dx(buttonW),
+                    context.dy(buttonH));
+                if (horizontal)
+                    baseX += buttonW + MenuButtonSpace;
+                else
+                    baseY += buttonH + MenuButtonSpace;
                 final Meta2GUIForm zz = next;
                 final boolean denied = main2.manager.getCurrentAccessLevel() > zz.getAccessLevel();
                 if (denied)
@@ -401,7 +421,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         if (maxButtonXSize[5]!=0 && maxButtonXSize[6]!=0){
             for(JButton button : menu6Buttons){
                 Rectangle rr = button.getBounds();
-                rr.x = context.x(levelXCoords[6-1]-maxButtonXSize[5] - maxButtonXSize[6] + 2*buttonXSize - 2*buttonSpace);
+                rr.x = context.x(ScreenDesktopWidth - maxButtonXSize[5] - maxButtonXSize[6] - 2*MenuButtonSpace);
                 button.setBounds(rr);
                 }
             revalidate();
@@ -409,7 +429,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         if (maxButtonXSize[7]!=0 && maxButtonXSize[8]!=0){
             for(JButton button : menu6Buttons){
                 Rectangle rr = button.getBounds();
-                rr.x = context.x(levelXCoords[8-1]+maxButtonXSize[7] - buttonXSize + buttonSpace);
+                rr.x = context.x(levelXCoords[8-1] + maxButtonXSize[7]  + MenuButtonSpace);
                 button.setBounds(rr);
                 }
             revalidate();
@@ -462,7 +482,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             device.clearCash();
             }
         //----------------------------------------------------------------------------------------
-        repaintMenu(currentView.getXmlType() == MTViewAndroid);
+        repaintMenu();
         //----------------------------------------------------------------------------------------
         OnOff = new JButton();
         OnOff.setBorderPainted(false);

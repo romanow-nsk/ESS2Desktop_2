@@ -42,7 +42,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
     @Override
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
-        resizeHeight(400);
+        resizeHeight(450);
         view = (Meta2GUIForm) entity0;
         list = view.getControls();
         selector = new WizardMetaEntitySelector("Элементы ЧМИ", Values.MEGUIElement,callBack);
@@ -114,8 +114,19 @@ public class WizardMeta2GUIForm extends WizardBaseView {
             GroupIndex.setText(""+view.getBaseFormIndex());
             LinkForm.setSelected(view.isLinkForm());
             BaseForm.setSelected(view.isBaseForm());
-            ButtonSize.setText(""+view.getButtonSize());
             SnapShot.setSelected(view.isSnapShot());
+            //---------------------------------------------------------------------------
+            MenuOnColor.setText(""+String.format("%6x",view.getMenuButtonOnColor()));
+            MenuOnColorButton.setBackground(new Color(view.getMenuButtonOnColor()));
+            MenuOffColor.setText(""+String.format("%6x",view.getMenuButtonOffColor()));
+            MenuOffColorButton.setBackground(new Color(view.getMenuButtonOffColor()));
+            MenuTextColor.setText(""+String.format("%6x",view.getMenuButtonTextColor()));
+            MenuTextColorButton.setBackground(new Color(view.getMenuButtonTextColor()));
+            MenuBold.setSelected(view.isMenuFontBold());
+            MenuFontSize.setText(""+view.getMenuButtonFontSize());
+            MenuButtonW.setText(""+view.getMenuButtonW());
+            MenuButtonH.setText(""+view.getMenuButtonH());
+            //-------------------------------------------------------------------------
             }
     private I_WizardEntitySelector callBack = new I_WizardEntitySelector() {
         @Override
@@ -199,22 +210,36 @@ public class WizardMeta2GUIForm extends WizardBaseView {
         label123 = new javax.swing.JLabel();
         BaseForm = new javax.swing.JCheckBox();
         LinkForm = new javax.swing.JCheckBox();
-        ButtonSize = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
         SnapShot = new javax.swing.JCheckBox();
+        jLabel10 = new javax.swing.JLabel();
+        MenuOnColor = new javax.swing.JTextField();
+        MenuOnColorButton = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        MenuOffColor = new javax.swing.JTextField();
+        MenuOffColorButton = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        MenuTextColor = new javax.swing.JTextField();
+        MenuTextColorButton = new javax.swing.JButton();
+        jLabel19 = new javax.swing.JLabel();
+        MenuBold = new javax.swing.JCheckBox();
+        jLabel20 = new javax.swing.JLabel();
+        MenuButtonW = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        MenuFontSize = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        MenuButtonH = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        getContentPane().setLayout(null);
         getContentPane().add(Types);
         Types.setBounds(610, 140, 140, 25);
 
         jLabel1.setText("Элемент ЧМИ+");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(500, 150, 100, 14);
+        jLabel1.setBounds(500, 150, 100, 16);
 
         label111.setText("Модуль");
         getContentPane().add(label111);
-        label111.setBounds(10, 190, 60, 14);
+        label111.setBounds(10, 190, 60, 16);
 
         FormLevel.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -240,7 +265,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
 
         label113.setText("Предок");
         getContentPane().add(label113);
-        label113.setBounds(250, 150, 60, 14);
+        label113.setBounds(250, 150, 60, 16);
 
         Empty.setText("пустая");
         Empty.addItemListener(new java.awt.event.ItemListener() {
@@ -249,7 +274,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
             }
         });
         getContentPane().add(Empty);
-        Empty.setBounds(690, 260, 61, 23);
+        Empty.setBounds(610, 250, 59, 20);
 
         NoMenu.setText("без меню");
         NoMenu.addItemListener(new java.awt.event.ItemListener() {
@@ -258,7 +283,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
             }
         });
         getContentPane().add(NoMenu);
-        NoMenu.setBounds(610, 260, 90, 23);
+        NoMenu.setBounds(500, 210, 90, 20);
 
         SaveParent.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/save.png"))); // NOI18N
         SaveParent.setBorderPainted(false);
@@ -275,7 +300,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
 
         label114.setText("Доступ");
         getContentPane().add(label114);
-        label114.setBounds(250, 190, 60, 14);
+        label114.setBounds(250, 190, 60, 16);
 
         SaveAccessLevel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/save.png"))); // NOI18N
         SaveAccessLevel.setBorderPainted(false);
@@ -292,7 +317,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
 
         label115.setText("Запись");
         getContentPane().add(label115);
-        label115.setBounds(250, 230, 60, 14);
+        label115.setBounds(250, 230, 60, 16);
 
         SaveWriteLevel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/save.png"))); // NOI18N
         SaveWriteLevel.setBorderPainted(false);
@@ -307,7 +332,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
 
         label116.setText("Фон (файл)");
         getContentPane().add(label116);
-        label116.setBounds(500, 185, 80, 14);
+        label116.setBounds(500, 185, 80, 16);
 
         Image.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -319,7 +344,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
 
         label117.setText(" элементов");
         getContentPane().add(label117);
-        label117.setBounds(130, 165, 70, 14);
+        label117.setBounds(130, 165, 70, 16);
 
         ElemCount.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -331,11 +356,11 @@ public class WizardMeta2GUIForm extends WizardBaseView {
 
         label118.setText("Уровень");
         getContentPane().add(label118);
-        label118.setBounds(10, 155, 60, 14);
+        label118.setBounds(10, 155, 60, 16);
 
         label119.setText("Уровень");
         getContentPane().add(label119);
-        label119.setBounds(10, 230, 60, 14);
+        label119.setBounds(10, 230, 60, 16);
 
         Level.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -347,15 +372,15 @@ public class WizardMeta2GUIForm extends WizardBaseView {
 
         label120.setText("Групповых");
         getContentPane().add(label120);
-        label120.setBounds(130, 150, 70, 14);
+        label120.setBounds(130, 150, 70, 16);
 
         label121.setText("Индекс");
         getContentPane().add(label121);
-        label121.setBounds(140, 220, 70, 14);
+        label121.setBounds(140, 220, 70, 16);
 
         label122.setText("формы");
         getContentPane().add(label122);
-        label122.setBounds(140, 250, 70, 14);
+        label122.setBounds(140, 250, 70, 16);
 
         GroupIndex.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -367,7 +392,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
 
         label123.setText("базовой");
         getContentPane().add(label123);
-        label123.setBounds(140, 235, 70, 14);
+        label123.setBounds(140, 235, 70, 16);
 
         BaseForm.setText("Базовая");
         BaseForm.addItemListener(new java.awt.event.ItemListener() {
@@ -376,7 +401,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
             }
         });
         getContentPane().add(BaseForm);
-        BaseForm.setBounds(310, 260, 81, 23);
+        BaseForm.setBounds(500, 230, 81, 20);
 
         LinkForm.setText("Ссылка на базовую");
         LinkForm.addItemListener(new java.awt.event.ItemListener() {
@@ -385,19 +410,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
             }
         });
         getContentPane().add(LinkForm);
-        LinkForm.setBounds(410, 260, 150, 23);
-
-        ButtonSize.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                ButtonSizeKeyPressed(evt);
-            }
-        });
-        getContentPane().add(ButtonSize);
-        ButtonSize.setBounds(610, 220, 40, 25);
-
-        jLabel2.setText("Размер кнопки (%)");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(500, 230, 110, 14);
+        LinkForm.setBounds(610, 230, 150, 20);
 
         SnapShot.setText("SnapShot");
         SnapShot.addItemListener(new java.awt.event.ItemListener() {
@@ -406,7 +419,101 @@ public class WizardMeta2GUIForm extends WizardBaseView {
             }
         });
         getContentPane().add(SnapShot);
-        SnapShot.setBounds(690, 220, 80, 23);
+        SnapShot.setBounds(610, 210, 80, 20);
+
+        jLabel10.setText("Меню+");
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(10, 290, 50, 16);
+
+        MenuOnColor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                MenuOnColorKeyPressed(evt);
+            }
+        });
+        getContentPane().add(MenuOnColor);
+        MenuOnColor.setBounds(60, 280, 60, 25);
+        getContentPane().add(MenuOnColorButton);
+        MenuOnColorButton.setBounds(120, 280, 25, 25);
+
+        jLabel11.setText("Меню-");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(10, 315, 50, 16);
+
+        MenuOffColor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                MenuOffColorKeyPressed(evt);
+            }
+        });
+        getContentPane().add(MenuOffColor);
+        MenuOffColor.setBounds(60, 310, 60, 25);
+        getContentPane().add(MenuOffColorButton);
+        MenuOffColorButton.setBounds(120, 310, 25, 25);
+
+        jLabel15.setText("Ширина");
+        getContentPane().add(jLabel15);
+        jLabel15.setBounds(160, 315, 50, 16);
+
+        MenuTextColor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                MenuTextColorKeyPressed(evt);
+            }
+        });
+        getContentPane().add(MenuTextColor);
+        MenuTextColor.setBounds(210, 280, 60, 25);
+        getContentPane().add(MenuTextColorButton);
+        MenuTextColorButton.setBounds(270, 280, 25, 25);
+
+        jLabel19.setText("Высота");
+        getContentPane().add(jLabel19);
+        jLabel19.setBounds(160, 340, 50, 16);
+
+        MenuBold.setText("Bold");
+        MenuBold.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MenuBoldItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(MenuBold);
+        MenuBold.setBounds(260, 340, 60, 20);
+
+        jLabel20.setText("Текст ");
+        getContentPane().add(jLabel20);
+        jLabel20.setBounds(160, 290, 50, 16);
+
+        MenuButtonW.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                MenuButtonWKeyPressed(evt);
+            }
+        });
+        getContentPane().add(MenuButtonW);
+        MenuButtonW.setBounds(210, 310, 40, 25);
+
+        jLabel21.setText("Шрифт");
+        getContentPane().add(jLabel21);
+        jLabel21.setBounds(260, 315, 50, 16);
+
+        MenuFontSize.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                MenuFontSizeKeyPressed(evt);
+            }
+        });
+        getContentPane().add(MenuFontSize);
+        MenuFontSize.setBounds(310, 310, 40, 25);
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel22.setText("Меню");
+        getContentPane().add(jLabel22);
+        jLabel22.setBounds(60, 340, 50, 16);
+
+        MenuButtonH.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                MenuButtonHKeyPressed(evt);
+            }
+        });
+        getContentPane().add(MenuButtonH);
+        MenuButtonH.setBounds(210, 340, 40, 25);
+        getContentPane().add(jSeparator1);
+        jSeparator1.setBounds(10, 270, 340, 10);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -500,27 +607,75 @@ public class WizardMeta2GUIForm extends WizardBaseView {
         back.onEnter("Изменено linkForm"+view.isLinkForm());
     }//GEN-LAST:event_LinkFormItemStateChanged
 
-    private void ButtonSizeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ButtonSizeKeyPressed
-        onKeyPressed("buttonSize", ButtonSize, evt, new I_WizardAction() {
-            @Override
-            public void onAction(int value) {
-                view.setButtonSize(value);
-            }
-        });
-    }//GEN-LAST:event_ButtonSizeKeyPressed
-
     private void SnapShotItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SnapShotItemStateChanged
         view.setSnapShot(SnapShot.isSelected());
         back.onEnter("Изменено snapShot"+SnapShot.isSelected());
 
     }//GEN-LAST:event_SnapShotItemStateChanged
 
+    private void MenuOnColorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MenuOnColorKeyPressed
+        onColorKeyPressed("menuOnColor", MenuOnColor, MenuOnColorButton, evt, new I_WizardAction() {
+            @Override
+            public void onAction(int value) { view.setMenuButtonOnColor(value);
+            }
+        });
+    }//GEN-LAST:event_MenuOnColorKeyPressed
+
+    private void MenuOffColorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MenuOffColorKeyPressed
+        onColorKeyPressed("menuOffColor", MenuOffColor, MenuOffColorButton, evt, new I_WizardAction() {
+            @Override
+            public void onAction(int value) { view.setMenuButtonOffColor(value);
+            }
+        });
+    }//GEN-LAST:event_MenuOffColorKeyPressed
+
+    private void MenuTextColorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MenuTextColorKeyPressed
+        onColorKeyPressed("menuButtonTextColor", MenuTextColor, MenuTextColorButton, evt, new I_WizardAction() {
+            @Override
+            public void onAction(int value) { view.setMenuButtonTextColor(value);
+            }
+        });
+    }//GEN-LAST:event_MenuTextColorKeyPressed
+
+    private void MenuBoldItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MenuBoldItemStateChanged
+        if (busy)
+        return;
+        view.setMenuFontBold(MenuBold.isSelected());
+        back.onEnter("Изменено MenuBold="+MenuBold.isSelected());
+    }//GEN-LAST:event_MenuBoldItemStateChanged
+
+    private void MenuButtonWKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MenuButtonWKeyPressed
+        onKeyPressed("MenuButtonW", MenuButtonW, evt, new I_WizardAction() {
+            @Override
+            public void onAction(int value) {
+                view.setMenuButtonW(value);
+            }
+        });
+    }//GEN-LAST:event_MenuButtonWKeyPressed
+
+    private void MenuFontSizeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MenuFontSizeKeyPressed
+        onKeyPressed("MenuButtonFontSize", MenuFontSize, evt, new I_WizardAction() {
+            @Override
+            public void onAction(int value) {
+                view.setMenuButtonFontSize(value);
+            }
+        });
+    }//GEN-LAST:event_MenuFontSizeKeyPressed
+
+    private void MenuButtonHKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MenuButtonHKeyPressed
+        onKeyPressed("MenuButtonH", MenuButtonH, evt, new I_WizardAction() {
+            @Override
+            public void onAction(int value) {
+                view.setMenuButtonH(value);
+            }
+        });
+    }//GEN-LAST:event_MenuButtonHKeyPressed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Choice AccessLevel;
     private javax.swing.JCheckBox BaseForm;
-    private javax.swing.JTextField ButtonSize;
     private javax.swing.JTextField ElemCount;
     private javax.swing.JCheckBox Empty;
     private javax.swing.JTextField FormLevel;
@@ -528,6 +683,16 @@ public class WizardMeta2GUIForm extends WizardBaseView {
     private javax.swing.JTextField Image;
     private javax.swing.JTextField Level;
     private javax.swing.JCheckBox LinkForm;
+    private javax.swing.JCheckBox MenuBold;
+    private javax.swing.JTextField MenuButtonH;
+    private javax.swing.JTextField MenuButtonW;
+    private javax.swing.JTextField MenuFontSize;
+    private javax.swing.JTextField MenuOffColor;
+    private javax.swing.JButton MenuOffColorButton;
+    private javax.swing.JTextField MenuOnColor;
+    private javax.swing.JButton MenuOnColorButton;
+    private javax.swing.JTextField MenuTextColor;
+    private javax.swing.JButton MenuTextColorButton;
     private javax.swing.JTextField Module;
     private javax.swing.JCheckBox NoMenu;
     private java.awt.Choice Parents;
@@ -538,7 +703,14 @@ public class WizardMeta2GUIForm extends WizardBaseView {
     private java.awt.Choice Types;
     private java.awt.Choice WriteLevel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel label111;
     private javax.swing.JLabel label112;
     private javax.swing.JLabel label113;
