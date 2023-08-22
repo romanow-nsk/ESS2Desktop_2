@@ -64,9 +64,10 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     //-----------------------------------------------------------------------------------------
     private final static int maxMenuLevels=5;
     private int menuModes[] = new int[maxMenuLevels];
-    private final static int levelYCoords[]={10,55,ScreenDesktopHeight-100,ScreenDesktopHeight-145,155,155,155,155};
-    private final static int levelXCoords[]={10,10,10,10,ScreenDesktopWidth-100,ScreenDesktopWidth-200,10,110};
-    private final static boolean levelHoriz[] ={true,true,true,true,false,false,false,false};
+    private final static int levelYCoords[]={0, MenuButtonMargin,0,0,0,80,80,80,80};
+    private final static int levelXCoords[]={0,MenuButtonMargin,MenuButtonMargin,MenuButtonMargin,MenuButtonMargin,
+            0,0,MenuButtonMargin,0};
+    private final static boolean levelHoriz[] ={true,true,true,true,true,false,false,false,false};
     //-----------------------------------------------------------------
     private int essOnOffState= Values.ESSStateNone;             // Состояние СНЭ
     private Module module=null;
@@ -277,12 +278,13 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             }
         };
     public void repaintMenu(){
-        ArrayList<JButton> menu6Buttons = new ArrayList<>();
-        ArrayList<JButton> menu8Buttons = new ArrayList<>();
-        int maxButtonXSize[] = new int[9];
-        int maxButtonYSize[] = new int[9];
-        for(int i=0;i<maxButtonXSize.length;i++)
-            maxButtonXSize[i]=maxButtonYSize[i]=0;
+        ArrayList<JButton> menuButtons[] = new ArrayList[9];
+        for(int i=0;i<menuButtons.length;i++)
+            menuButtons[i]=null;
+        int maxButtonWSize[] = new int[9];
+        int maxButtonHSize[] = new int[9];
+        for(int i=0;i<maxButtonWSize.length;i++)
+            maxButtonWSize[i]=maxButtonHSize[i]=0;
         Meta2GUIView currentView = currentView().getView();
         int vv1 = currentView.getMenuModes();
         int vv=0;
@@ -322,10 +324,9 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             String currentName = ff.getTitle();
             int ii = 0;
             int menuStringIdx = menuModes[level];
-            int baseX = levelXCoords[menuStringIdx-1];
-            int baseY = levelYCoords[menuStringIdx-1];
-            boolean horizontal = levelHoriz[menuStringIdx-1];
-            maxButtonXSize[menuStringIdx]=0;
+            int baseX = levelXCoords[menuStringIdx];
+            int baseY = levelYCoords[menuStringIdx];
+            boolean horizontal = levelHoriz[menuStringIdx];
             for (Meta2GUIForm next : formList.getList()) {
                 if (!next.getParentName().equals(currentName))
                     continue;
@@ -349,15 +350,15 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                     buttonW = currentView.getMenuButtonW();
                 if (buttonW==0)
                     buttonW = MenuButtonW;
-                if (buttonW > maxButtonXSize[menuStringIdx])
-                    maxButtonXSize[menuStringIdx] = buttonW;
+                if (buttonW > maxButtonWSize[menuStringIdx])
+                    maxButtonWSize[menuStringIdx] = buttonW;
                 int buttonH = next.getMenuButtonH();
                 if (buttonH==0 && currentView.getMenuButtonH()!=0)
                     buttonH = currentView.getMenuButtonH();
                 if (buttonH==0)
                     buttonH = MenuButtonH;
-                if (buttonH > maxButtonYSize[menuStringIdx])
-                    maxButtonYSize[menuStringIdx] = buttonH;
+                if (buttonH > maxButtonHSize[menuStringIdx])
+                    maxButtonHSize[menuStringIdx] = buttonH;
                 int color = next.getMenuButtonOffColor();
                 if (color==0 && currentView.getMenuButtonOffColor()!=0)
                     color = currentView.getMenuButtonOffColor();
@@ -375,12 +376,11 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 bb.setVisible(!next.isNoMenu());
                 next.setButton(bb);
                 //------------------------------------------------------------------------------------------------------
-                if (menuStringIdx==8)
-                    menu8Buttons.add(bb);
-                if (menuStringIdx==6)
-                    menu6Buttons.add(bb);
-                if (buttonW>maxButtonXSize[menuStringIdx])
-                    maxButtonXSize[menuStringIdx] = buttonW;
+                if (menuButtons[menuStringIdx]==null)
+                    menuButtons[menuStringIdx] = new ArrayList<>();
+                menuButtons[menuStringIdx].add(bb);
+                if (buttonW>maxButtonWSize[menuStringIdx])
+                    maxButtonWSize[menuStringIdx] = buttonW;
                 bb.setBounds(
                     context.x(baseX),
                     context.y(baseY),
@@ -417,23 +417,50 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                     }
             level--;
             }
-        //----------------------- коррекция начала след. столбцов при вертикальной строке меню ---------------------
-        if (maxButtonXSize[5]!=0 && maxButtonXSize[6]!=0){
-            for(JButton button : menu6Buttons){
+        //----------------------- коррекция начала след. столбцов в строке меню ---------------------
+        if (maxButtonHSize[2]!=0){
+            for(JButton button : menuButtons[2]){
                 Rectangle rr = button.getBounds();
-                rr.x = context.x(ScreenDesktopWidth - maxButtonXSize[5] - maxButtonXSize[6] - 2*MenuButtonSpace);
+                rr.y = context.y(maxButtonHSize[1] + MenuButtonSpace + MenuButtonMargin);
                 button.setBounds(rr);
                 }
-            revalidate();
             }
-        if (maxButtonXSize[7]!=0 && maxButtonXSize[8]!=0){
-            for(JButton button : menu6Buttons){
+        if (maxButtonHSize[4]!=0){
+            for(JButton button : menuButtons[4]){
                 Rectangle rr = button.getBounds();
-                rr.x = context.x(levelXCoords[8-1] + maxButtonXSize[7]  + MenuButtonSpace);
+                rr.y = context.y(ScreenDesktopHeight - maxButtonHSize[3] - maxButtonHSize[4] - 2*MenuButtonSpace  - MenuButtonMargin);
                 button.setBounds(rr);
                 }
-            revalidate();
             }
+        if (maxButtonHSize[3]!=0){
+            for(JButton button : menuButtons[3]){
+                Rectangle rr = button.getBounds();
+                rr.y = context.y(ScreenDesktopHeight - maxButtonHSize[3] - 2*MenuButtonSpace  - MenuButtonMargin);
+                button.setBounds(rr);
+                }
+            }
+        if (maxButtonHSize[5]!=0){
+            for(JButton button : menuButtons[5]){
+                Rectangle rr = button.getBounds();
+                rr.x = context.x(ScreenDesktopWidth - maxButtonWSize[5] - MenuButtonSpace - MenuButtonMargin);
+                button.setBounds(rr);
+                }
+            }
+        if (maxButtonHSize[6]!=0){
+            for(JButton button : menuButtons[6]){
+                Rectangle rr = button.getBounds();
+                rr.x = context.x(ScreenDesktopWidth - maxButtonWSize[5] - maxButtonWSize[6]- 2*MenuButtonSpace -  MenuButtonMargin);
+                button.setBounds(rr);
+                }
+            }
+        if (maxButtonHSize[8]!=0){
+            for(JButton button : menuButtons[8]){
+                Rectangle rr = button.getBounds();
+                rr.x = context.x(maxButtonWSize[7] + MenuButtonSpace + MenuButtonMargin);
+                button.setBounds(rr);
+                }
+            }
+        revalidate();
         //----------------------- коррекция начала след. столбцов при вертикальной строке меню ---------------------
         level = baseForm.getLevel();
         for(int ii=1;ii<=level;ii++){
