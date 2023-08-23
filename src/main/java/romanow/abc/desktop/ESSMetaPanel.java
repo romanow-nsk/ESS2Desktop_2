@@ -1089,7 +1089,7 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         RunTimeChanges.setEnabled(false);
         add(RunTimeChanges);
-        RunTimeChanges.setBounds(330, 450, 30, 25);
+        RunTimeChanges.setBounds(325, 450, 40, 25);
 
         RunTimeChangesLabel.setText("Изменений");
         add(RunTimeChangesLabel);

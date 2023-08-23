@@ -11,7 +11,7 @@ public abstract class View2BaseDesktop extends View2Base implements I_View2Deskt
     public void setTextFieldParams(JTextField textField) {
         setComponentParams(textField);
         textField.setText(element.getTitle());
-        textField.setHorizontalAlignment(JTextField.CENTER);
+        textField.setHorizontalAlignment(element.isOnCenter() ? JTextField.CENTER : JTextField.LEFT);
         }
     public void setButtonParams(JButton textField) {
         setButtonParams(textField, false);
@@ -20,7 +20,7 @@ public abstract class View2BaseDesktop extends View2Base implements I_View2Deskt
         setComponentParams(textField,false);
         String ss = element.getTitle();
         textField.setText(!noOneString ? ss : "<html>" + ss.replaceAll(" ", "<br>") + "</html>");
-        textField.setHorizontalAlignment(JTextField.CENTER);
+        textField.setHorizontalAlignment(element.isOnCenter() ? JTextField.CENTER : JTextField.LEFT);
         }
     public Font createFont() {
         int fontSize = element.getFontSize();
@@ -84,6 +84,7 @@ public abstract class View2BaseDesktop extends View2Base implements I_View2Deskt
         if (fontSize==0) fontSize=12;
         int type = element.isLabelBold()? Font.BOLD : Font.PLAIN;
         label.setFont(new Font("Arial Cyr", type, context.dy(fontSize)));
+        label.setHorizontalAlignment(element.isLabelOnCenter() ? JTextField.CENTER : JTextField.LEFT);
         panel.add(label);
         return label;
         }

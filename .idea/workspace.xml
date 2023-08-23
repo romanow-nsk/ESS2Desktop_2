@@ -13,22 +13,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="Сборка 77 - Меню">
-      <change beforePath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/Message.java" afterDir="false" />
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="Сборка 77 - Редактор">
       <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/view/Meta2GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/view/Meta2GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/view/Meta2GUIFormButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/view/Meta2GUIFormButton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSServiceGUIPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSServiceGUIPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/View2BaseDesktop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/View2BaseDesktop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUIFormButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUIFormButton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUI.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIForm.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIFormButton.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIFormButton.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIFormButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIFormButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIView.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIView.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -252,13 +246,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00248" summary="Сборка 74 - селекция для 60870">
-      <created>1691052692769</created>
-      <option name="number" value="00248" />
-      <option name="presentableId" value="LOCAL-00248" />
-      <option name="project" value="LOCAL" />
-      <updated>1691052692769</updated>
     </task>
     <task id="LOCAL-00249" summary="Сборка 74 - селекция для 60870">
       <created>1691054286372</created>
@@ -596,7 +583,14 @@
       <option name="project" value="LOCAL" />
       <updated>1692723905242</updated>
     </task>
-    <option name="localTasksCounter" value="297" />
+    <task id="LOCAL-00297" summary="Сборка 77 - Редактор">
+      <created>1692782111836</created>
+      <option name="number" value="00297" />
+      <option name="presentableId" value="LOCAL-00297" />
+      <option name="project" value="LOCAL" />
+      <updated>1692782111836</updated>
+    </task>
+    <option name="localTasksCounter" value="298" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -623,7 +617,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Сборка 76 - PLM - имена регистров" />
     <MESSAGE value="Сборка 76 - убран логин/пароль su" />
     <MESSAGE value="Сборка 76 - МУ рефакторинг" />
     <MESSAGE value="Сборка 76 - Второй линк с ДРУГОГО устройства" />
@@ -648,7 +641,8 @@
     <MESSAGE value="Сборка 77 - Кнопки в вертик. рядах" />
     <MESSAGE value="Сборка 77 - ...." />
     <MESSAGE value="Сборка 77 - Меню" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сборка 77 - Меню" />
+    <MESSAGE value="Сборка 77 - Редактор" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сборка 77 - Редактор" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -875,7 +869,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUI.java</url>
-          <line>490</line>
+          <line>513</line>
           <option name="timeStamp" value="898" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

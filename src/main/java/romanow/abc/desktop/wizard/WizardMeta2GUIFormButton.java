@@ -63,11 +63,11 @@ public class WizardMeta2GUIFormButton extends WizardMeta2GUI {
             }
         });
         getContentPane().add(FormName);
-        FormName.setBounds(90, 130, 150, 25);
+        FormName.setBounds(90, 150, 150, 25);
 
         jLabel13.setText("Уровень");
         getContentPane().add(jLabel13);
-        jLabel13.setBounds(410, 135, 70, 16);
+        jLabel13.setBounds(410, 150, 70, 16);
 
         OwnUnit.setText("Оборуд./Unit");
         OwnUnit.addItemListener(new java.awt.event.ItemListener() {
@@ -76,7 +76,7 @@ public class WizardMeta2GUIFormButton extends WizardMeta2GUI {
             }
         });
         getContentPane().add(OwnUnit);
-        OwnUnit.setBounds(250, 135, 110, 20);
+        OwnUnit.setBounds(250, 150, 110, 20);
 
         UnitIdx.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -84,11 +84,11 @@ public class WizardMeta2GUIFormButton extends WizardMeta2GUI {
             }
         });
         getContentPane().add(UnitIdx);
-        UnitIdx.setBounds(360, 130, 40, 25);
+        UnitIdx.setBounds(360, 150, 40, 25);
 
         jLabel14.setText("Форма");
         getContentPane().add(jLabel14);
-        jLabel14.setBounds(20, 135, 70, 16);
+        jLabel14.setBounds(20, 150, 70, 16);
 
         UnitLevel.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -96,7 +96,7 @@ public class WizardMeta2GUIFormButton extends WizardMeta2GUI {
             }
         });
         getContentPane().add(UnitLevel);
-        UnitLevel.setBounds(470, 130, 40, 25);
+        UnitLevel.setBounds(470, 150, 40, 25);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

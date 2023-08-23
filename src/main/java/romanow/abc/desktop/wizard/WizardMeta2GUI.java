@@ -20,6 +20,7 @@ import static romanow.abc.desktop.BasePanel.EventRuntimeSelected;
  * @author romanow0
  */
 public class WizardMeta2GUI extends WizardBaseView {
+    private boolean busy=false;
     private Meta2GUI elem;
     I_Value<String> baseBack;
     public WizardMeta2GUI() {
@@ -27,6 +28,7 @@ public class WizardMeta2GUI extends WizardBaseView {
         }
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
+        busy = true;
         setSize(950,250);
         RepaintEtOnce.setSelected(true);
         elem = (Meta2GUI) entity;
@@ -40,24 +42,26 @@ public class WizardMeta2GUI extends WizardBaseView {
         ColorVal.setText(""+String.format("%6x",elem.getColor()));
         ElemColor.setBackground(new Color(elem.getColor()));
         Bold.setSelected(elem.isBold());
+        OnCenter.setSelected(elem.isOnCenter());
         LabelCommonColor.setSelected(elem.isLabelCommonColor());
         LabelBold.setSelected(elem.isLabelBold());
         LabelColorVal.setText(""+String.format("%6x",elem.getLabelColor()));
         LabelElemColor.setBackground(new Color(elem.getLabelColor()));
+        LabelOnCenter.setSelected(elem.isLabelOnCenter());
         baseBack = back;
         back = new I_Value<String>() {
             @Override
             public void onEnter(String value) {
+                baseBack.onEnter(value);
                 if (RepaintEtOnce.isSelected()){
                     if (onClose!=null)
                         onClose.onEnter(value);
-                    else
-                        baseBack.onEnter(value);
                     }
                 else
                     baseBack.onEnter(value);
                 }
             };
+        busy = false;
         }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -83,7 +87,6 @@ public class WizardMeta2GUI extends WizardBaseView {
         ElemColor = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         StringSize = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         FontSize = new javax.swing.JTextField();
@@ -107,6 +110,8 @@ public class WizardMeta2GUI extends WizardBaseView {
         LabelCommonColor = new javax.swing.JCheckBox();
         LabelBold = new javax.swing.JCheckBox();
         jLabel19 = new javax.swing.JLabel();
+        LabelOnCenter = new javax.swing.JCheckBox();
+        OnCenter = new javax.swing.JCheckBox();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -124,9 +129,9 @@ public class WizardMeta2GUI extends WizardBaseView {
             }
         });
         getContentPane().add(ColorVal);
-        ColorVal.setBounds(450, 90, 60, 25);
+        ColorVal.setBounds(330, 95, 60, 25);
         getContentPane().add(jSeparator2);
-        jSeparator2.setBounds(10, 120, 760, 10);
+        jSeparator2.setBounds(20, 125, 760, 10);
 
         jLabel11.setText("X");
         jLabel11.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -135,7 +140,7 @@ public class WizardMeta2GUI extends WizardBaseView {
             }
         });
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(10, 90, 30, 16);
+        jLabel11.setBounds(30, 80, 30, 16);
 
         X.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -143,11 +148,11 @@ public class WizardMeta2GUI extends WizardBaseView {
             }
         });
         getContentPane().add(X);
-        X.setBounds(25, 90, 40, 25);
+        X.setBounds(25, 95, 40, 25);
 
         jLabel12.setText("Y");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(70, 90, 30, 16);
+        jLabel12.setBounds(80, 80, 30, 16);
 
         Y.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -155,11 +160,11 @@ public class WizardMeta2GUI extends WizardBaseView {
             }
         });
         getContentPane().add(Y);
-        Y.setBounds(80, 90, 40, 25);
+        Y.setBounds(70, 95, 40, 25);
 
         jLabel13.setText("W");
         getContentPane().add(jLabel13);
-        jLabel13.setBounds(130, 90, 30, 16);
+        jLabel13.setBounds(120, 80, 30, 16);
 
         W.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -167,7 +172,7 @@ public class WizardMeta2GUI extends WizardBaseView {
             }
         });
         getContentPane().add(W);
-        W.setBounds(150, 90, 40, 25);
+        W.setBounds(120, 95, 40, 25);
 
         H.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -175,13 +180,13 @@ public class WizardMeta2GUI extends WizardBaseView {
             }
         });
         getContentPane().add(H);
-        H.setBounds(220, 90, 40, 25);
+        H.setBounds(170, 95, 40, 25);
 
         jLabel10.setText("H");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(200, 90, 30, 16);
+        jLabel10.setBounds(170, 80, 30, 16);
         getContentPane().add(ElemColor);
-        ElemColor.setBounds(510, 90, 25, 25);
+        ElemColor.setBounds(390, 95, 25, 25);
         getContentPane().add(jLabel14);
         jLabel14.setBounds(420, 90, 40, 0);
 
@@ -191,19 +196,15 @@ public class WizardMeta2GUI extends WizardBaseView {
             }
         });
         getContentPane().add(StringSize);
-        StringSize.setBounds(400, 90, 30, 25);
-
-        jLabel15.setText("в строке");
-        getContentPane().add(jLabel15);
-        jLabel15.setBounds(340, 100, 70, 16);
+        StringSize.setBounds(260, 95, 30, 25);
 
         jLabel16.setText("Font");
         getContentPane().add(jLabel16);
-        jLabel16.setBounds(270, 90, 40, 16);
+        jLabel16.setBounds(220, 80, 40, 16);
 
-        jLabel17.setText("Символов ");
+        jLabel17.setText("В строке");
         getContentPane().add(jLabel17);
-        jLabel17.setBounds(340, 90, 70, 16);
+        jLabel17.setBounds(260, 80, 70, 16);
 
         FontSize.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -211,7 +212,7 @@ public class WizardMeta2GUI extends WizardBaseView {
             }
         });
         getContentPane().add(FontSize);
-        FontSize.setBounds(300, 90, 30, 25);
+        FontSize.setBounds(220, 95, 30, 25);
 
         CommonColor.setText("Общий");
         CommonColor.addItemListener(new java.awt.event.ItemListener() {
@@ -220,16 +221,16 @@ public class WizardMeta2GUI extends WizardBaseView {
             }
         });
         getContentPane().add(CommonColor);
-        CommonColor.setBounds(540, 80, 64, 20);
+        CommonColor.setBounds(470, 100, 64, 20);
 
-        Bold.setText("bold");
+        Bold.setText("Bold");
         Bold.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 BoldItemStateChanged(evt);
             }
         });
         getContentPane().add(Bold);
-        Bold.setBounds(540, 100, 50, 20);
+        Bold.setBounds(420, 100, 50, 20);
 
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
         getContentPane().add(jSeparator3);
@@ -335,7 +336,7 @@ public class WizardMeta2GUI extends WizardBaseView {
 
         jLabel18.setText("Надпись");
         getContentPane().add(jLabel18);
-        jLabel18.setBounds(630, 75, 80, 16);
+        jLabel18.setBounds(540, 80, 80, 16);
 
         LabelColorVal.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -343,9 +344,9 @@ public class WizardMeta2GUI extends WizardBaseView {
             }
         });
         getContentPane().add(LabelColorVal);
-        LabelColorVal.setBounds(630, 90, 60, 25);
+        LabelColorVal.setBounds(540, 95, 60, 25);
         getContentPane().add(LabelElemColor);
-        LabelElemColor.setBounds(690, 90, 25, 25);
+        LabelElemColor.setBounds(600, 95, 25, 25);
 
         LabelCommonColor.setText("Общий");
         LabelCommonColor.addItemListener(new java.awt.event.ItemListener() {
@@ -354,20 +355,38 @@ public class WizardMeta2GUI extends WizardBaseView {
             }
         });
         getContentPane().add(LabelCommonColor);
-        LabelCommonColor.setBounds(720, 80, 64, 20);
+        LabelCommonColor.setBounds(680, 100, 64, 20);
 
-        LabelBold.setText("bold");
+        LabelBold.setText("Bold");
         LabelBold.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 LabelBoldItemStateChanged(evt);
             }
         });
         getContentPane().add(LabelBold);
-        LabelBold.setBounds(720, 100, 50, 20);
+        LabelBold.setBounds(630, 100, 50, 20);
 
         jLabel19.setText("Элемент");
         getContentPane().add(jLabel19);
-        jLabel19.setBounds(450, 75, 80, 16);
+        jLabel19.setBounds(330, 80, 60, 16);
+
+        LabelOnCenter.setText("По центру");
+        LabelOnCenter.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                LabelOnCenterItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(LabelOnCenter);
+        LabelOnCenter.setBounds(630, 80, 80, 20);
+
+        OnCenter.setText("По центру");
+        OnCenter.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                OnCenterItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(OnCenter);
+        OnCenter.setBounds(420, 80, 80, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -444,11 +463,15 @@ public class WizardMeta2GUI extends WizardBaseView {
     }//GEN-LAST:event_FontSizeKeyPressed
 
     private void CommonColorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CommonColorItemStateChanged
+        if (busy)
+            return;
         elem.setCommonColor(CommonColor.isSelected());
         back.onEnter("Изменено commonColor: "+elem.isCommonColor());
     }//GEN-LAST:event_CommonColorItemStateChanged
 
     private void BoldItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_BoldItemStateChanged
+        if (busy)
+            return;
         elem.setBold(Bold.isSelected());
         back.onEnter("Изменено bold: "+elem.isBold());
     }//GEN-LAST:event_BoldItemStateChanged
@@ -581,15 +604,33 @@ public class WizardMeta2GUI extends WizardBaseView {
     }//GEN-LAST:event_LabelColorValKeyPressed
 
     private void LabelCommonColorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_LabelCommonColorItemStateChanged
+        if (busy)
+            return;
         elem.setLabelCommonColor(LabelCommonColor.isSelected());
         back.onEnter("Изменено labelCommonColor: "+elem.isLabelCommonColor());
     }//GEN-LAST:event_LabelCommonColorItemStateChanged
 
     private void LabelBoldItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_LabelBoldItemStateChanged
+        if (busy)
+            return;
         elem.setLabelBold(LabelBold.isSelected());
         back.onEnter("Изменено labelBold: "+elem.isLabelBold());
 
     }//GEN-LAST:event_LabelBoldItemStateChanged
+
+    private void LabelOnCenterItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_LabelOnCenterItemStateChanged
+        if (busy)
+            return;
+        elem.setLabelOnCenter(LabelOnCenter.isSelected());
+        back.onEnter("Изменено labelOnCenter: "+elem.isLabelOnCenter());
+    }//GEN-LAST:event_LabelOnCenterItemStateChanged
+
+    private void OnCenterItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_OnCenterItemStateChanged
+        if (busy)
+            return;
+        elem.setOnCenter(OnCenter.isSelected());
+        back.onEnter("Изменено OnCenter: "+elem.isOnCenter());
+    }//GEN-LAST:event_OnCenterItemStateChanged
 
  
 
@@ -606,12 +647,14 @@ public class WizardMeta2GUI extends WizardBaseView {
     private javax.swing.JTextField LabelColorVal;
     private javax.swing.JCheckBox LabelCommonColor;
     private javax.swing.JButton LabelElemColor;
+    private javax.swing.JCheckBox LabelOnCenter;
     private javax.swing.JCheckBox MoveAll;
     private javax.swing.JButton MoveDown;
     private javax.swing.JButton MoveLeft;
     private javax.swing.JButton MoveRight;
     private javax.swing.JTextField MoveStep;
     private javax.swing.JButton MoveUp;
+    private javax.swing.JCheckBox OnCenter;
     private javax.swing.JCheckBox RepaintEtOnce;
     private javax.swing.JButton SelecElem;
     private javax.swing.JCheckBox Step5_25;
@@ -625,7 +668,6 @@ public class WizardMeta2GUI extends WizardBaseView {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
