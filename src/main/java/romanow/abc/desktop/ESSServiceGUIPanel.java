@@ -198,7 +198,17 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         context.setMain(main);
         userLoginTime = new OwnDateTime();
         createLoopThread();
-        }
+        addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                if (e.getButton() == MouseEvent.BUTTON3 && renderingOn && context.isRuntimeEditMode()){
+                    String ss = WizardBaseView.openWizardByType(context.getForm(), null, onClose, onChange, context);
+                    if (ss!=null)
+                        new Message(300,300,ss,Values.PopupMessageDelay);
+                    }
+                }
+            });
+
+    }
 
     public boolean setMainForm(){
         if (context.getForm()==null){
@@ -306,7 +316,20 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         Meta2EntityList<Meta2GUIForm> formList = currentView.getForms();
         Meta2GUIForm form = context.getForm();
         Meta2GUIForm baseForm = context.getBaseForm();
-        int level = form.getLevel();
+        //int level = form.getLevel();
+        int level = 0;
+        Meta2GUIForm ff = baseForm;
+        while(true){
+            String ss= ff.getTitle();
+            if (ss.equals(MainFormName))
+                break;
+            ff = formList.getByTitle(ff.getParentName());
+            if (ff == null) {
+                popup("Не найден предок для формы " + ss);
+                break;
+                }
+            level++;
+            }
         //-----------------------------------------------------------------------------------
         if (context.getForm().getTitle().equals(Values.MainFormName)){
             TextField userTitle = new TextField();
@@ -320,8 +343,8 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             add(userTitle);
             }
         //-----------------------------------------------------------------------------------
-        Meta2GUIForm ff = baseForm;
-        level = ff.getLevel();
+        ff = baseForm;
+        //level = ff.getLevel();
         while (true) {
             String currentName = ff.getTitle();
             int ii = 0;
@@ -338,9 +361,9 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 text =  "<html>" + text.replaceAll(" ", "<br>") + "</html>";
                 //---------------------------------------------------- Параметры кнопки --------------------------------
                 JButton bb = new JButton();
-                int fontSize = currentView.getMenuButtonFontSize();
-                if (fontSize==0 && next.getMenuButtonFontSize()!=0)
-                    fontSize = next.getMenuButtonFontSize();
+                int fontSize = next.getMenuButtonFontSize();
+                if (fontSize==0 && currentView.getMenuButtonFontSize()!=0)
+                    fontSize = currentView.getMenuButtonFontSize();
                 if (fontSize==0)
                     fontSize = MenuButtonFontSize;
                 boolean bold = currentView.isMenuFontBold() || next.isMenuFontBold();
@@ -412,9 +435,10 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 }
             //----------------------------------------------------------------------------------------------------------
             if (level == 0) break;
+            String ss= ff.getTitle();
             ff = formList.getByTitle(ff.getParentName());
             if (ff == null) {
-                popup("Не найден предок для формы " + ff.getTitle());
+                popup("Не найден предок для формы " + ss);
                 break;
                     }
             level--;
@@ -474,8 +498,10 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 }
             if (!ff.isColoured()){
                 JButton button = (JButton) ff.getButton();
-                button.setBackground(new Color(currentView.getMenuButtonOnColor()));
-                button.setForeground(Color.black);
+                if (button!=null){                  // У базовой формы
+                    button.setBackground(new Color(currentView.getMenuButtonOnColor()));
+                    button.setForeground(Color.black);
+                    }
                 }
             }
         }
@@ -948,7 +974,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 int treeLevel = register.getArrayLevel()-1;         // Кол-во массивов в дереве Meta-элементов (+device+units) -1
                 int grlevel = groupLevel-1;                         // Кол-во массивов в форме
                 int stacklevel = context.getForm().getLevel()-1;    // Вершина стека индексов форм для тек. уровня
-                if (!link.isOwnUnit() && treeLevel > stacklevel){
+                if (!link.isOwnUnit() && treeLevel > stacklevel+1){
                     errorList.addError("Уровень массива мета-данных > уровня формы "+
                             equipName+" для "+regGUI.getFullTitle()+"="+(treeLevel+1)+" "+
                             context.getForm().getTitle()+"="+(stacklevel+1));

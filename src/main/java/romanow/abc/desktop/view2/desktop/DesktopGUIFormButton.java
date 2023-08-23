@@ -33,10 +33,15 @@ public class DesktopGUIFormButton extends View2BaseDesktop {
                 context.dx(element.getDx()),
                 context.dy(hh));
         setButtonParams(textField,true);
+        setInfoClick(textField);
         textField.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                context.openForm(((Meta2GUIFormButton)element).getFormName(),FormContext2.ModeForce);
+                Meta2GUIFormButton elem =(Meta2GUIFormButton)element;
+                if (elem.isOwnUnit()){
+                    context.setIndex(elem.getUnitLevel()+1,elem.getUnitIdx());
+                    }
+                context.openForm(elem.getFormName(),FormContext2.ModeForce);
                 }
             });
         panel.add(textField);

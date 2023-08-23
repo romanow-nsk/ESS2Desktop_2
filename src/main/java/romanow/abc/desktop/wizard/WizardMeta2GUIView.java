@@ -153,9 +153,9 @@ public class WizardMeta2GUIView extends WizardBaseView {
         getContentPane().add(jSeparator1);
         jSeparator1.setBounds(10, 130, 750, 10);
 
-        jLabel9.setText("Фон экрана");
+        jLabel9.setText("Фон элементов");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(10, 150, 80, 16);
+        jLabel9.setBounds(10, 150, 100, 16);
 
         BackColor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {

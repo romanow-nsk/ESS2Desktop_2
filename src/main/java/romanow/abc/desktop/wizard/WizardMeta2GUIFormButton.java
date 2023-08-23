@@ -14,16 +14,23 @@ import romanow.abc.core.entity.metadata.view.*;
  * @author romanow0
  */
 public class WizardMeta2GUIFormButton extends WizardMeta2GUI {
-
+    private boolean busy=false;
     private Meta2GUIFormButton elem;
     public WizardMeta2GUIFormButton() {
         initComponents();
         }
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
-        resizeHeight(200);
+        resizeHeight(250);
+        busy=true;
         elem = (Meta2GUIFormButton) entity;
         FormName.setText(""+elem.getFormName());
+        UnitIdx.setText(""+elem.getUnitIdx());
+        OwnUnit.setSelected(elem.isOwnUnit());
+        UnitLevel.setText(""+elem.getUnitLevel());
+        UnitLevel.setEnabled(elem.isOwnUnit());
+        UnitIdx.setEnabled(elem.isOwnUnit());
+        busy=false;
         }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,16 +44,18 @@ public class WizardMeta2GUIFormButton extends WizardMeta2GUI {
         jCheckBox1 = new javax.swing.JCheckBox();
         FormName = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
+        OwnUnit = new javax.swing.JCheckBox();
+        UnitIdx = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        UnitLevel = new javax.swing.JTextField();
 
         jCheckBox1.setText("jCheckBox1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
         });
-        getContentPane().setLayout(null);
 
         FormName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -56,9 +65,38 @@ public class WizardMeta2GUIFormButton extends WizardMeta2GUI {
         getContentPane().add(FormName);
         FormName.setBounds(90, 130, 150, 25);
 
-        jLabel13.setText("Форма");
+        jLabel13.setText("Уровень");
         getContentPane().add(jLabel13);
-        jLabel13.setBounds(20, 135, 70, 14);
+        jLabel13.setBounds(410, 135, 70, 16);
+
+        OwnUnit.setText("Оборуд./Unit");
+        OwnUnit.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                OwnUnitItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(OwnUnit);
+        OwnUnit.setBounds(250, 135, 110, 20);
+
+        UnitIdx.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                UnitIdxKeyPressed(evt);
+            }
+        });
+        getContentPane().add(UnitIdx);
+        UnitIdx.setBounds(360, 130, 40, 25);
+
+        jLabel14.setText("Форма");
+        getContentPane().add(jLabel14);
+        jLabel14.setBounds(20, 135, 70, 16);
+
+        UnitLevel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                UnitLevelKeyPressed(evt);
+            }
+        });
+        getContentPane().add(UnitLevel);
+        UnitLevel.setBounds(470, 130, 40, 25);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -76,11 +114,41 @@ public class WizardMeta2GUIFormButton extends WizardMeta2GUI {
         });
     }//GEN-LAST:event_FormNameKeyPressed
 
+    private void UnitIdxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UnitIdxKeyPressed
+        onKeyPressed("unitIdx", UnitIdx, evt, new I_WizardAction() {
+            @Override
+            public void onAction(int value) {
+                elem.setUnitIdx(value);
+            }
+        });
+    }//GEN-LAST:event_UnitIdxKeyPressed
+
+    private void OwnUnitItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_OwnUnitItemStateChanged
+        elem.setOwnUnit(OwnUnit.isSelected());
+        UnitLevel.setEnabled(elem.isOwnUnit());
+        UnitIdx.setEnabled(elem.isOwnUnit());
+        back.onEnter("Изменено ownUnit"+OwnUnit.isSelected());
+    }//GEN-LAST:event_OwnUnitItemStateChanged
+
+    private void UnitLevelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UnitLevelKeyPressed
+        onKeyPressed("unitLevel", UnitLevel, evt, new I_WizardAction() {
+            @Override
+            public void onAction(int value) {
+                elem.setUnitLevel(value);
+            }
+        });
+
+    }//GEN-LAST:event_UnitLevelKeyPressed
+
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField FormName;
+    private javax.swing.JCheckBox OwnUnit;
+    private javax.swing.JTextField UnitIdx;
+    private javax.swing.JTextField UnitLevel;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     // End of variables declaration//GEN-END:variables
 }

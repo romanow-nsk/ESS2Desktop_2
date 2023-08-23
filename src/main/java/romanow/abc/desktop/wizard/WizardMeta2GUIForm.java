@@ -229,9 +229,10 @@ public class WizardMeta2GUIForm extends WizardBaseView {
         jLabel22 = new javax.swing.JLabel();
         MenuButtonH = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
+        label124 = new javax.swing.JLabel();
 
         getContentPane().add(Types);
-        Types.setBounds(610, 140, 140, 25);
+        Types.setBounds(610, 150, 140, 25);
 
         jLabel1.setText("Элемент ЧМИ+");
         getContentPane().add(jLabel1);
@@ -263,9 +264,9 @@ public class WizardMeta2GUIForm extends WizardBaseView {
         getContentPane().add(Module);
         Module.setBounds(70, 190, 170, 25);
 
-        label113.setText("Предок");
+        label113.setText("Тип добавляемого");
         getContentPane().add(label113);
-        label113.setBounds(250, 150, 60, 16);
+        label113.setBounds(610, 130, 140, 16);
 
         Empty.setText("пустая");
         Empty.addItemListener(new java.awt.event.ItemListener() {
@@ -274,7 +275,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
             }
         });
         getContentPane().add(Empty);
-        Empty.setBounds(610, 250, 59, 20);
+        Empty.setBounds(500, 250, 59, 20);
 
         NoMenu.setText("без меню");
         NoMenu.addItemListener(new java.awt.event.ItemListener() {
@@ -340,7 +341,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
             }
         });
         getContentPane().add(Image);
-        Image.setBounds(610, 180, 140, 25);
+        Image.setBounds(610, 190, 140, 25);
 
         label117.setText(" элементов");
         getContentPane().add(label117);
@@ -419,7 +420,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
             }
         });
         getContentPane().add(SnapShot);
-        SnapShot.setBounds(610, 210, 80, 20);
+        SnapShot.setBounds(610, 250, 80, 20);
 
         jLabel10.setText("Меню+");
         getContentPane().add(jLabel10);
@@ -514,6 +515,10 @@ public class WizardMeta2GUIForm extends WizardBaseView {
         MenuButtonH.setBounds(210, 340, 40, 25);
         getContentPane().add(jSeparator1);
         jSeparator1.setBounds(10, 270, 340, 10);
+
+        label124.setText("Предок");
+        getContentPane().add(label124);
+        label124.setBounds(250, 150, 60, 16);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -724,5 +729,6 @@ public class WizardMeta2GUIForm extends WizardBaseView {
     private javax.swing.JLabel label121;
     private javax.swing.JLabel label122;
     private javax.swing.JLabel label123;
+    private javax.swing.JLabel label124;
     // End of variables declaration//GEN-END:variables
 }
