@@ -67,12 +67,12 @@ public class WizardMeta2GUILevelIndicator extends WizardMeta2GUIRegW2 {
         jLabel21.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel21.setText("Авария");
         getContentPane().add(jLabel21);
-        jLabel21.setBounds(240, 190, 100, 14);
+        jLabel21.setBounds(240, 235, 100, 14);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-     // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;

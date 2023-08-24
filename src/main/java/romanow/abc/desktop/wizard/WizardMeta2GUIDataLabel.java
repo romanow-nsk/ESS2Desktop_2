@@ -15,23 +15,7 @@ import java.awt.*;
  *
  * @author romanow0
  */
-public class WizardMeta2GUIDataLabel extends WizardMeta2GUI {
-
-    private Meta2GUIDataLabel elem;
-    public WizardMeta2GUIDataLabel() {
-        initComponents();
-        }
-    public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
-        super.openForm(parentView0,entity0);
-        resizeHeight(250);
-        elem = (Meta2GUIDataLabel)  entity;
-        WizardRegLinkPanel linkPanel = new WizardRegLinkPanel(10,120,"BitReg",elem.getRegLink(),this);
-        add(linkPanel);        
-        ColorYes.setText(""+String.format("%6x",elem.getColorYes()));
-        ColorYesButton.setBackground(new Color(elem.getColorYes()));
-        ColorNo.setText(""+String.format("%6x",elem.getColorNo()));
-        ColorNoButton.setBackground(new Color(elem.getColorNo()));
-        }
+public class WizardMeta2GUIDataLabel extends WizardMeta2GUIRegW2 {
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,64 +28,18 @@ public class WizardMeta2GUIDataLabel extends WizardMeta2GUI {
         jCheckBox1 = new javax.swing.JCheckBox();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
-        ColorYes = new javax.swing.JTextField();
-        ColorYesButton = new javax.swing.JButton();
-        jLabel14 = new javax.swing.JLabel();
-        ColorNo = new javax.swing.JTextField();
-        ColorNoButton = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
 
         jCheckBox1.setText("jCheckBox1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
         });
-        getContentPane().setLayout(null);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(10, 82, 560, 2);
+        jSeparator1.setBounds(10, 82, 560, 3);
         getContentPane().add(jSeparator2);
-        jSeparator2.setBounds(10, 120, 560, 2);
-
-        ColorYes.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                ColorYesKeyPressed(evt);
-            }
-        });
-        getContentPane().add(ColorYes);
-        ColorYes.setBounds(320, 150, 80, 25);
-        getContentPane().add(ColorYesButton);
-        ColorYesButton.setBounds(410, 145, 30, 30);
-
-        jLabel14.setText("Цвет \"0\"");
-        jLabel14.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jLabel14KeyPressed(evt);
-            }
-        });
-        getContentPane().add(jLabel14);
-        jLabel14.setBounds(450, 130, 60, 14);
-
-        ColorNo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                ColorNoKeyPressed(evt);
-            }
-        });
-        getContentPane().add(ColorNo);
-        ColorNo.setBounds(450, 150, 80, 25);
-        getContentPane().add(ColorNoButton);
-        ColorNoButton.setBounds(540, 145, 30, 30);
-
-        jLabel12.setText("Цвет \"1\"");
-        jLabel12.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jLabel12KeyPressed(evt);
-            }
-        });
-        getContentPane().add(jLabel12);
-        jLabel12.setBounds(320, 130, 60, 14);
+        jSeparator2.setBounds(10, 120, 560, 3);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -110,42 +48,10 @@ public class WizardMeta2GUIDataLabel extends WizardMeta2GUI {
         closeForm();
     }//GEN-LAST:event_formWindowClosing
 
-    private void ColorYesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ColorYesKeyPressed
-        onColorKeyPressed("colorYes", ColorYes, ColorYesButton, evt, new I_WizardAction() {
-            @Override
-            public void onAction(int value) {
-                elem.setColorYes(value);
-            }
-        });
-    }//GEN-LAST:event_ColorYesKeyPressed
-
-    private void jLabel14KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel14KeyPressed
-
-    }//GEN-LAST:event_jLabel14KeyPressed
-
-    private void ColorNoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ColorNoKeyPressed
-        onColorKeyPressed("colorNo", ColorNo, ColorNoButton, evt, new I_WizardAction() {
-            @Override
-            public void onAction(int value) {
-                elem.setColorNo(value);
-            }
-        });
-    }//GEN-LAST:event_ColorNoKeyPressed
-
-    private void jLabel12KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel12KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel12KeyPressed
-
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField ColorNo;
-    private javax.swing.JButton ColorNoButton;
-    private javax.swing.JTextField ColorYes;
-    private javax.swing.JButton ColorYesButton;
     private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables

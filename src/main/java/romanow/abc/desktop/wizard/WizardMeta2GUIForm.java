@@ -116,11 +116,11 @@ public class WizardMeta2GUIForm extends WizardBaseView {
             BaseForm.setSelected(view.isBaseForm());
             SnapShot.setSelected(view.isSnapShot());
             //---------------------------------------------------------------------------
-            MenuOnColor.setText(""+String.format("%6x",view.getMenuButtonOnColor()));
+            MenuOnColor.setText(""+String.format("%06x",view.getMenuButtonOnColor()));
             MenuOnColorButton.setBackground(new Color(view.getMenuButtonOnColor()));
-            MenuOffColor.setText(""+String.format("%6x",view.getMenuButtonOffColor()));
+            MenuOffColor.setText(""+String.format("%06x",view.getMenuButtonOffColor()));
             MenuOffColorButton.setBackground(new Color(view.getMenuButtonOffColor()));
-            MenuTextColor.setText(""+String.format("%6x",view.getMenuButtonTextColor()));
+            MenuTextColor.setText(""+String.format("%06x",view.getMenuButtonTextColor()));
             MenuTextColorButton.setBackground(new Color(view.getMenuButtonTextColor()));
             MenuBold.setSelected(view.isMenuFontBold());
             MenuFontSize.setText(""+view.getMenuButtonFontSize());

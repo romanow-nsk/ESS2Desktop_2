@@ -35,9 +35,9 @@ public class WizardMeta2GUIBitStateCmd extends WizardMeta2GUI {
         BitNum.setText(""+elem.getBitNum());
         CmdOn.setText(""+elem.getCmdOn());
         CmdOff.setText(""+elem.getCmdOff());
-        ColorYes.setText(""+String.format("%6x",elem.getColorYes()));
+        ColorYes.setText(""+String.format("%06x",elem.getColorYes()));
         ColorYesButton.setBackground(new Color(elem.getColorYes()));
-        ColorNo.setText(""+String.format("%6x",elem.getColorNo()));
+        ColorNo.setText(""+String.format("%06x",elem.getColorNo()));
         ColorNoButton.setBackground(new Color(elem.getColorNo()));
         W2.setText(""+elem.getW2());
         ButtonSize.setText(""+elem.getButtonSize());

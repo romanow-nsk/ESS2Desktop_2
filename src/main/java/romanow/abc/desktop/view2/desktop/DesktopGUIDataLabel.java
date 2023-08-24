@@ -6,6 +6,7 @@ import romanow.abc.core.entity.metadata.Meta2DataRegister;
 import romanow.abc.core.entity.metadata.Meta2Register;
 import romanow.abc.core.entity.metadata.Meta2SettingRegister;
 import romanow.abc.core.entity.metadata.view.Meta2GUI;
+import romanow.abc.core.entity.metadata.view.Meta2GUIRegW2;
 import romanow.abc.core.entity.subject2area.ESS2Architecture;
 import romanow.abc.desktop.Message;
 import romanow.abc.desktop.view2.FormContext2;
@@ -26,9 +27,10 @@ public class DesktopGUIDataLabel extends View2BaseDesktop {
         setInfoClick(label);
         }
     public void showInfoMessage() {
-        Meta2DataRegister set = (Meta2DataRegister) getRegister();
-        String ss = "Регистр данных "+(set.getRegNum()+getRegOffset()+" ["+set.getRegNum()+"] "+set.getShortName()+"$"+set.getTitle()+"$");
-        ss+="Потоковый  - "+(set.getStreamType()!=Values.DataStreamNone ? "да":"нет")+",";
+        Meta2Register set = (Meta2Register) getRegister();
+        String ss = "Регистр данных/уставка "+(set.getRegNum()+getRegOffset()+" ["+set.getRegNum()+"] "+set.getShortName()+"$"+set.getTitle()+"$");
+        if (set instanceof Meta2DataRegister)
+            ss+="Потоковый  - "+(((Meta2DataRegister)set).getStreamType()!=Values.DataStreamNone ? "да":"нет")+",";
         ss+=" Ед.изм. "+ set.getUnit();
         new Message(300,300,ss,Values.PopupMessageDelay);
         }
@@ -36,10 +38,9 @@ public class DesktopGUIDataLabel extends View2BaseDesktop {
     public void putValue(long vv) throws UniException {
         Meta2Register register = (Meta2Register) getRegister();
         int type = register.getFormat();
-        if (type == Values.FloatValue)
-            label.setText(" " + getElement().getTitle() + " = " + Double.longBitsToDouble(vv) + " " + register.getUnit());
-        else
-            label.setText(" " + getElement().getTitle() + " = " + register.regValueToFloat(getUnitIdx(),(int)vv) + " " + register.getUnit());
+        Meta2GUIRegW2 metaGUI = (Meta2GUIRegW2)getElement();
+        String ss = register.regValueToString(getUnitIdx(),(int)vv,metaGUI);
+        label.setText(" " + getElement().getTitle() + " = " + ss + " " + register.getUnit());
         }
     @Override
     public String setParams(FormContext2 context0, ESS2Architecture meta0, Meta2GUI element0, I_GUI2Event onEvent0) {

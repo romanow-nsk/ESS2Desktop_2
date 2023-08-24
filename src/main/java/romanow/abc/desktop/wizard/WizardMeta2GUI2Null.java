@@ -27,9 +27,9 @@ public class WizardMeta2GUI2Null extends WizardMeta2GUI {
         elem = (Meta2GUI2StateBox) entity;
         RegNum.setText(""+elem.getRegNum());
         BitNum.setText(""+elem.getBitNum());
-        ColorYes.setText(""+String.format("%6x",elem.getColorYes()));
+        ColorYes.setText(""+String.format("%06x",elem.getColorYes()));
         ColorYesButton.setBackground(new Color(elem.getColorYes()));
-        ColorNo.setText(""+String.format("%6x",elem.getColorNo()));
+        ColorNo.setText(""+String.format("%06x",elem.getColorNo()));
         ColorNoButton.setBackground(new Color(elem.getColorNo()));
         }
     /**

@@ -39,13 +39,13 @@ public class WizardMeta2GUI extends WizardBaseView {
         CommonColor.setSelected(elem.isCommonColor());
         FontSize.setText(""+elem.getFontSize());
         StringSize.setText(""+elem.getStringSize());
-        ColorVal.setText(""+String.format("%6x",elem.getColor()));
+        ColorVal.setText(""+String.format("%06x",elem.getColor()));
         ElemColor.setBackground(new Color(elem.getColor()));
         Bold.setSelected(elem.isBold());
         OnCenter.setSelected(elem.isOnCenter());
         LabelCommonColor.setSelected(elem.isLabelCommonColor());
         LabelBold.setSelected(elem.isLabelBold());
-        LabelColorVal.setText(""+String.format("%6x",elem.getLabelColor()));
+        LabelColorVal.setText(""+String.format("%06x",elem.getLabelColor()));
         LabelElemColor.setBackground(new Color(elem.getLabelColor()));
         LabelOnCenter.setSelected(elem.isLabelOnCenter());
         baseBack = back;

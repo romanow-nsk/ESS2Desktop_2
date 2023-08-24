@@ -35,21 +35,21 @@ public class WizardMeta2GUIView extends WizardBaseView {
        super.openForm(parentView0,entity0);
        resizeHeight(300);
        view = (Meta2GUIView) entity0;
-       BackColor.setText(""+String.format("%6x",view.getBackColor()));
+       BackColor.setText(""+String.format("%06x",view.getBackColor()));
        BackColorButton.setBackground(new Color(view.getBackColor()));
-       TextColor.setText(""+String.format("%6x",view.getTextColor()));
+       TextColor.setText(""+String.format("%06x",view.getTextColor()));
        TextColorButton.setBackground(new Color(view.getTextColor()));
-       LabelColor.setText(""+String.format("%6x",view.getLabelBackColor()));
+       LabelColor.setText(""+String.format("%06x",view.getLabelBackColor()));
        LabelColorButton.setBackground(new Color(view.getLabelBackColor()));
        MenuModes.setText(""+view.getMenuModes());
        Height.setText(""+view.getHeight());
        Width.setText(""+view.getWidth());
        //---------------------------------------------------------------------------
-       MenuOnColor.setText(""+String.format("%6x",view.getMenuButtonOnColor()));
+       MenuOnColor.setText(""+String.format("%06x",view.getMenuButtonOnColor()));
        MenuOnColorButton.setBackground(new Color(view.getMenuButtonOnColor()));
-       MenuOffColor.setText(""+String.format("%6x",view.getMenuButtonOffColor()));
+       MenuOffColor.setText(""+String.format("%06x",view.getMenuButtonOffColor()));
        MenuOffColorButton.setBackground(new Color(view.getMenuButtonOffColor()));
-       MenuTextColor.setText(""+String.format("%6x",view.getMenuButtonTextColor()));
+       MenuTextColor.setText(""+String.format("%06x",view.getMenuButtonTextColor()));
        MenuTextColorButton.setBackground(new Color(view.getMenuButtonTextColor()));
        MenuBold.setSelected(view.isMenuFontBold());
        MenuFontSize.setText(""+view.getMenuButtonFontSize());

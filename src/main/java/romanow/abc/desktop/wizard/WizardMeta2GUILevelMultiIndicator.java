@@ -23,6 +23,7 @@ public class WizardMeta2GUILevelMultiIndicator extends WizardMeta2GUI {
         super.openForm(parentView0,entity0);
         resizeHeight(350);
         elem = (Meta2GUILevelMultiIndicator) entity;
+        W2.setText(""+elem.getW2());
         WizardRegLinkPanel linkPanel = new WizardRegLinkPanel(235,120,"MaxFail",elem.getMaxFail(),this);
         add(linkPanel);
         linkPanel = new WizardRegLinkPanel(235,175,"MinFail",elem.getMinFail(),this);

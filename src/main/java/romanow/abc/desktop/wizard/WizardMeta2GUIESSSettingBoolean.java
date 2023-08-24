@@ -28,9 +28,9 @@ public class WizardMeta2GUIESSSettingBoolean extends WizardMeta2GUI {
         FieldNum.setText(""+elem.getFieldName());
         W2.setText(""+elem.getW2());
         EditDisable.setSelected(elem.isEditDisable());
-        ColorYes.setText(""+String.format("%6x",elem.getColorYes()));
+        ColorYes.setText(""+String.format("%06x",elem.getColorYes()));
         ColorYesButton.setBackground(new Color(elem.getColorYes()));
-        ColorNo.setText(""+String.format("%6x",elem.getColorNo()));
+        ColorNo.setText(""+String.format("%06x",elem.getColorNo()));
         ColorNoButton.setBackground(new Color(elem.getColorNo()));
         }
     /**

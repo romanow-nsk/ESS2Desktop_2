@@ -28,10 +28,10 @@ public class WizardMeta2GUIMultiBitState extends WizardMeta2GUI {
         WizardRegLinkPanel linkPanel = new WizardRegLinkPanel(10,120,"",elem.getRegLink(),this);
         add(linkPanel);        
         W2.setText(""+elem.getW2());
-        BitMask.setText(""+String.format("%6x",elem.getBitMask()));
-        ColorYes.setText(""+String.format("%6x",elem.getColorYes()));
+        BitMask.setText(""+String.format("%06x",elem.getBitMask()));
+        ColorYes.setText(""+String.format("%06x",elem.getColorYes()));
         ColorYesButton.setBackground(new Color(elem.getColorYes()));
-        ColorNo.setText(""+String.format("%6x",elem.getColorNo()));
+        ColorNo.setText(""+String.format("%06x",elem.getColorNo()));
         ColorNoButton.setBackground(new Color(elem.getColorNo()));
         }
     /**
