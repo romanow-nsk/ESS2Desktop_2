@@ -263,6 +263,21 @@ public class WizardBaseView extends javax.swing.JFrame {
         back.onEnter("Изменено 61850 включен="+In60870.isSelected());
     }//GEN-LAST:event_In60870ItemStateChanged
 
+    public void onKeyPressedFloat(String name, JTextField fld, KeyEvent evt, I_WizardActionFloat action){
+        if(evt.getKeyCode()!=10) return;
+        float xx=0;
+        try {
+            xx = Float.parseFloat(fld.getText());
+            action.onAction(xx);
+            if (evt!=null)
+                main.viewUpdate(evt,true);
+            back.onEnter("Изменено "+name+": "+fld.getText());
+        } catch (Exception ee){
+            System.out.println("Ошибка вещественного: "+fld.getText());
+            if (evt!=null)
+                main.viewUpdate(evt,false);
+        }
+    }
 
     public void onKeyPressed(String name, JTextField fld, KeyEvent evt, I_WizardAction action){
         if(evt.getKeyCode()!=10) return;
