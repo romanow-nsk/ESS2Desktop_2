@@ -126,6 +126,10 @@ public class WizardMeta2GUIForm extends WizardBaseView {
             MenuFontSize.setText(""+view.getMenuButtonFontSize());
             MenuButtonW.setText(""+view.getMenuButtonW());
             MenuButtonH.setText(""+view.getMenuButtonH());
+            ModuleX0.setText(""+view.getModuleX0());
+            ModuleY0.setText(""+view.getModuleY0());
+            ModuleDX.setText(""+view.getModuleDX());
+            ModuleDY.setText(""+view.getModuleDY());
             //-------------------------------------------------------------------------
             }
     private I_WizardEntitySelector callBack = new I_WizardEntitySelector() {
@@ -230,6 +234,14 @@ public class WizardMeta2GUIForm extends WizardBaseView {
         MenuButtonH = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         label124 = new javax.swing.JLabel();
+        ModuleDX = new javax.swing.JTextField();
+        label125 = new javax.swing.JLabel();
+        label126 = new javax.swing.JLabel();
+        ModuleX0 = new javax.swing.JTextField();
+        ModuleDY = new javax.swing.JTextField();
+        ModuleY0 = new javax.swing.JTextField();
+        label127 = new javax.swing.JLabel();
+        label128 = new javax.swing.JLabel();
 
         getContentPane().add(Types);
         Types.setBounds(610, 150, 140, 25);
@@ -238,9 +250,9 @@ public class WizardMeta2GUIForm extends WizardBaseView {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(500, 150, 100, 16);
 
-        label111.setText("Модуль");
+        label111.setText("Y0");
         getContentPane().add(label111);
-        label111.setBounds(10, 190, 60, 16);
+        label111.setBounds(390, 340, 30, 16);
 
         FormLevel.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -248,11 +260,11 @@ public class WizardMeta2GUIForm extends WizardBaseView {
             }
         });
         getContentPane().add(FormLevel);
-        FormLevel.setBounds(70, 230, 40, 25);
+        FormLevel.setBounds(70, 190, 40, 25);
 
         label112.setText("группы");
         getContentPane().add(label112);
-        label112.setBounds(10, 245, 60, 10);
+        label112.setBounds(10, 205, 60, 10);
         getContentPane().add(Parents);
         Parents.setBounds(310, 150, 140, 20);
 
@@ -262,7 +274,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
             }
         });
         getContentPane().add(Module);
-        Module.setBounds(70, 190, 170, 25);
+        Module.setBounds(430, 280, 170, 25);
 
         label113.setText("Тип добавляемого");
         getContentPane().add(label113);
@@ -361,7 +373,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
 
         label119.setText("Уровень");
         getContentPane().add(label119);
-        label119.setBounds(10, 230, 60, 16);
+        label119.setBounds(10, 190, 60, 16);
 
         Level.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -377,11 +389,11 @@ public class WizardMeta2GUIForm extends WizardBaseView {
 
         label121.setText("Индекс");
         getContentPane().add(label121);
-        label121.setBounds(140, 220, 70, 16);
+        label121.setBounds(130, 190, 70, 10);
 
         label122.setText("формы");
         getContentPane().add(label122);
-        label122.setBounds(140, 250, 70, 16);
+        label122.setBounds(130, 215, 70, 16);
 
         GroupIndex.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -389,11 +401,11 @@ public class WizardMeta2GUIForm extends WizardBaseView {
             }
         });
         getContentPane().add(GroupIndex);
-        GroupIndex.setBounds(200, 230, 40, 25);
+        GroupIndex.setBounds(200, 190, 40, 25);
 
         label123.setText("базовой");
         getContentPane().add(label123);
-        label123.setBounds(140, 235, 70, 16);
+        label123.setBounds(130, 200, 70, 16);
 
         BaseForm.setText("Базовая");
         BaseForm.addItemListener(new java.awt.event.ItemListener() {
@@ -424,7 +436,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
 
         jLabel10.setText("Меню+");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(10, 290, 50, 16);
+        jLabel10.setBounds(10, 285, 50, 16);
 
         MenuOnColor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -479,7 +491,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
 
         jLabel20.setText("Текст ");
         getContentPane().add(jLabel20);
-        jLabel20.setBounds(160, 290, 50, 16);
+        jLabel20.setBounds(160, 285, 50, 16);
 
         MenuButtonW.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -514,11 +526,59 @@ public class WizardMeta2GUIForm extends WizardBaseView {
         getContentPane().add(MenuButtonH);
         MenuButtonH.setBounds(210, 340, 40, 25);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(10, 270, 340, 10);
+        jSeparator1.setBounds(10, 270, 760, 10);
 
         label124.setText("Предок");
         getContentPane().add(label124);
         label124.setBounds(250, 150, 60, 16);
+
+        ModuleDX.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ModuleDXKeyPressed(evt);
+            }
+        });
+        getContentPane().add(ModuleDX);
+        ModuleDX.setBounds(510, 310, 40, 25);
+
+        label125.setText("Модуль");
+        getContentPane().add(label125);
+        label125.setBounds(370, 285, 60, 16);
+
+        label126.setText("DY");
+        getContentPane().add(label126);
+        label126.setBounds(480, 340, 30, 16);
+
+        ModuleX0.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ModuleX0KeyPressed(evt);
+            }
+        });
+        getContentPane().add(ModuleX0);
+        ModuleX0.setBounds(430, 310, 40, 25);
+
+        ModuleDY.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ModuleDYKeyPressed(evt);
+            }
+        });
+        getContentPane().add(ModuleDY);
+        ModuleDY.setBounds(510, 340, 40, 25);
+
+        ModuleY0.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ModuleY0KeyPressed(evt);
+            }
+        });
+        getContentPane().add(ModuleY0);
+        ModuleY0.setBounds(430, 340, 40, 25);
+
+        label127.setText("X0");
+        getContentPane().add(label127);
+        label127.setBounds(390, 315, 30, 16);
+
+        label128.setText("DX");
+        getContentPane().add(label128);
+        label128.setBounds(480, 315, 30, 16);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -676,6 +736,45 @@ public class WizardMeta2GUIForm extends WizardBaseView {
         });
     }//GEN-LAST:event_MenuButtonHKeyPressed
 
+    private void ModuleX0KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ModuleX0KeyPressed
+        onKeyPressed("ModuleX0", ModuleX0, evt, new I_WizardAction() {
+            @Override
+            public void onAction(int value) {
+                view.setModuleX0(value);
+            }
+        });
+    }//GEN-LAST:event_ModuleX0KeyPressed
+
+    private void ModuleY0KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ModuleY0KeyPressed
+        onKeyPressed("ModuleY0", ModuleY0, evt, new I_WizardAction() {
+            @Override
+            public void onAction(int value) {
+                view.setModuleY0(value);
+            }
+        });
+
+    }//GEN-LAST:event_ModuleY0KeyPressed
+
+    private void ModuleDXKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ModuleDXKeyPressed
+        onKeyPressed("ModuleDX", ModuleDX, evt, new I_WizardAction() {
+            @Override
+            public void onAction(int value) {
+                view.setModuleDX(value);
+            }
+        });
+
+    }//GEN-LAST:event_ModuleDXKeyPressed
+
+    private void ModuleDYKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ModuleDYKeyPressed
+        onKeyPressed("ModuleDY", ModuleDY, evt, new I_WizardAction() {
+            @Override
+            public void onAction(int value) {
+                view.setModuleDY(value);
+            }
+        });
+
+    }//GEN-LAST:event_ModuleDYKeyPressed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -699,6 +798,10 @@ public class WizardMeta2GUIForm extends WizardBaseView {
     private javax.swing.JTextField MenuTextColor;
     private javax.swing.JButton MenuTextColorButton;
     private javax.swing.JTextField Module;
+    private javax.swing.JTextField ModuleDX;
+    private javax.swing.JTextField ModuleDY;
+    private javax.swing.JTextField ModuleX0;
+    private javax.swing.JTextField ModuleY0;
     private javax.swing.JCheckBox NoMenu;
     private java.awt.Choice Parents;
     private javax.swing.JButton SaveAccessLevel;
@@ -730,5 +833,9 @@ public class WizardMeta2GUIForm extends WizardBaseView {
     private javax.swing.JLabel label122;
     private javax.swing.JLabel label123;
     private javax.swing.JLabel label124;
+    private javax.swing.JLabel label125;
+    private javax.swing.JLabel label126;
+    private javax.swing.JLabel label127;
+    private javax.swing.JLabel label128;
     // End of variables declaration//GEN-END:variables
 }

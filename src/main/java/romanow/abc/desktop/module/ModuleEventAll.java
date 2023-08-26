@@ -79,10 +79,10 @@ public class ModuleEventAll extends Module {
                 table.setVisible(true);
                 JScrollPane scroll = new JScrollPane(table);
                 scroll.setBounds(
-                        context.x(10),
-                        context.y(100),
-                        context.x(Client.PanelW-20),
-                        context.y(Client.PanelH-150));
+                        context.x(form.getModuleX0()),
+                        context.y(form.getModuleY0()),
+                        context.dx(form.getModuleDX()),
+                        context.dy(form.getModuleDY()));
                 table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
                 table.setAutoscrolls(true);
                 table.setShowGrid(true);

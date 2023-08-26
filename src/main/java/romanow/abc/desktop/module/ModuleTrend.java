@@ -27,8 +27,8 @@ public class ModuleTrend extends Module {
             trend.setBounds(
                     context.x(0),
                     context.y(60),
-                    context.x(Client.PanelW-10),
-                    context.y(Client.PanelH-50));
+                    context.dx(Client.PanelW-10),
+                    context.dy(Client.PanelH-50));
             panel.add(trend);
             panel.revalidate();
             trend.setBack(new I_Success() {

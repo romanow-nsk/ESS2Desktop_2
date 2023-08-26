@@ -125,10 +125,10 @@ public class ModuleFailure extends Module {
                 table = new JTable(data,header);
                 JScrollPane scroll = new JScrollPane(table);
                 scroll.setBounds(
-                        context.x(10),
-                        context.y(100),
-                        context.x(Client.PanelW-20),
-                        context.y(Client.PanelH-150));
+                        context.x(form.getModuleX0()),
+                        context.y(form.getModuleY0()),
+                        context.dx(form.getModuleDX()),
+                        context.dy(form.getModuleDY()));
                 panel.add(scroll);
                 table.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
                 table.setRowHeight(context.y(20));

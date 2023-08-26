@@ -346,7 +346,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 if (next.isBaseForm())
                     continue;
                 String text = next.getTitle().replace("_","");
-                text =  "<html>" + text.replaceAll(" ", "<br>") + "</html>";
+                text =  "<html><center>" + text.replaceAll(" ", "<br>") + "</html>";
                 //---------------------------------------------------- Параметры кнопки --------------------------------
                 JButton bb = new JButton();
                 int fontSize = next.getMenuButtonFontSize();
