@@ -289,6 +289,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             context.getMain().sendEventPanel(BasePanel.EventRuntimeEdited,0,0,value);
             }
         };
+    //-----------------------------------------------------------------------------------------------------------------
     public void repaintMenu(){
         ArrayList<JButton> menuButtons[] = new ArrayList[9];
         for(int i=0;i<menuButtons.length;i++)
@@ -316,20 +317,8 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         Meta2EntityList<Meta2GUIForm> formList = currentView.getForms();
         Meta2GUIForm form = context.getForm();
         Meta2GUIForm baseForm = context.getBaseForm();
-        //int level = form.getLevel();
-        int level = 0;
+        int level = form.getLevel();
         Meta2GUIForm ff = baseForm;
-        while(true){
-            String ss= ff.getTitle();
-            if (ss.equals(MainFormName))
-                break;
-            ff = formList.getByTitle(ff.getParentName());
-            if (ff == null) {
-                popup("Не найден предок для формы " + ss);
-                break;
-                }
-            level++;
-            }
         //-----------------------------------------------------------------------------------
         if (context.getForm().getTitle().equals(Values.MainFormName)){
             TextField userTitle = new TextField();
@@ -344,7 +333,6 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             }
         //-----------------------------------------------------------------------------------
         ff = baseForm;
-        //level = ff.getLevel();
         while (true) {
             String currentName = ff.getTitle();
             int ii = 0;
@@ -508,6 +496,10 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     //-------------------------------------------------------------------------------------------
     public synchronized void  repaintView() {
         setRenderingOnOff(true);
+        if (currentView()==null){
+            setRenderingOnOff(false);
+            return;
+            }
         Meta2GUIView currentView = currentView().getView();
         Meta2EntityList<Meta2GUIForm> formList = currentView.getForms();
         this.setBackground(new Color(currentView.getBackColor()));
@@ -623,7 +615,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             });
         add(insertSelected);
         insertSelected.setBounds(context.x(ScreenDesktopWidth-50), context.y(ScreenDesktopHeight-80), context.dx(40), context.dy(40));
-        insertSelected.setVisible(context.isRuntimeEditMode());
+        insertSelected.setVisible(selected!=null && context.isRuntimeEditMode());
         //-----------------------------------------------------------------------------------
         JButton logout = new JButton();
         logout.setIcon(new javax.swing.ImageIcon(getClass().getResource(buttonLogout))); // NOI18N
@@ -680,6 +672,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             limiter.popup(""+errorList.getErrCount()+ " ошибок рендеринга");
             System.out.println(errorList);
             }
+        revalidate();
         wokeUp();
         }
     /**

@@ -40,15 +40,16 @@ public class DesktopGUIString extends View2BaseDesktop {
                 context.y(element.getY()+getDyOffset()),
                 context.dx(dd),
                 context.dy(hh));
-        textField.setFont(new Font("Arial Cyr", Font.PLAIN, context.dy(12)));
+        setTextFieldParams(textField);
+        //textField.setFont(new Font("Arial Cyr", Font.PLAIN, context.dy(12)));
         textField.setEditable(false);
-        textField.setHorizontalAlignment(JTextField.LEFT);
+        //textField.setHorizontalAlignment(JTextField.LEFT);
         panel.add(textField);
-        Color color=new Color(element.getColor());
-        textField.setBackground(color);
-        Color textColor = new Color(context.getView().getTextColor());
-        textField.setBorder(BorderFactory.createLineBorder(textColor,1));
-        textField.setForeground(textColor);
+        //Color color=new Color(element.getColor());
+        //textField.setBackground(color);
+        //Color textColor = new Color(context.getView().getTextColor());
+        //textField.setBorder(BorderFactory.createLineBorder(textColor,1));
+        //textField.setForeground(textColor);
         setInfoClick(textField);
         }
     public void showInfoMessage() {

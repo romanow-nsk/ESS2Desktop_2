@@ -43,16 +43,17 @@ public class DesktopGUISetting extends View2BaseDesktop {
                 context.dx(w2),
                 context.dy(hh));
         textField.setEditable(false);
-        textField.setHorizontalAlignment(JTextField.CENTER);
+        setTextFieldParams(textField);
+        //textField.setHorizontalAlignment(JTextField.CENTER);
         panel.add(textField);
-        textField.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
+        //textField.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
         setInfoClick(textField);
         final boolean remoteDisable = !context.isSuperUser() &&  !context.isLocalUser() && !(register).isRemoteEnable();
-        Color color=new Color(remoteDisable || !context.isActionEnable() ? Values.AccessDisableColor : element.getColor());
-        textField.setBackground(color);
-        Color textColor = new Color(context.getView().getTextColor());
-        textField.setBorder(javax.swing.BorderFactory.createLineBorder(textColor,1));
-        textField.setForeground(textColor);
+        if (remoteDisable || !context.isActionEnable())
+            textField.setBackground(new Color(Values.AccessDisableColor));
+        //Color textColor = new Color(context.getView().getTextColor());
+        //textField.setBorder(javax.swing.BorderFactory.createLineBorder(textColor,1));
+        //textField.setForeground(textColor);
         textField.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
