@@ -153,7 +153,7 @@ public class WizardMeta2GUIView extends WizardBaseView {
         getContentPane().add(jSeparator1);
         jSeparator1.setBounds(10, 130, 750, 10);
 
-        jLabel9.setText("Фон элементов");
+        jLabel9.setText("Фон общий");
         getContentPane().add(jLabel9);
         jLabel9.setBounds(10, 150, 100, 16);
 

@@ -74,11 +74,16 @@ public abstract class View2BaseDesktop extends View2Base implements I_View2Deskt
         label.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));
         label.setForeground(new Color(context.getView().getTextColor()));
         label.setOpaque(true);
-        if (element.getLabelColor()==0 || element.isLabelCommonColor()){
-            label.setBackground(new Color(context.getView().getLabelBackColor()));
+        if (element.isLabelBackColor()){
+            label.setBackground(new Color(context.getView().getBackColor()));
             }
         else{
-            label.setBackground(new Color(element.getLabelColor()));
+            if (element.getLabelColor()==0 || element.isLabelCommonColor()){
+                label.setBackground(new Color(context.getView().getLabelBackColor()));
+                }
+            else{
+                label.setBackground(new Color(element.getLabelColor()));
+                }
             }
         int fontSize = element.getFontSize();
         if (fontSize==0) fontSize=12;

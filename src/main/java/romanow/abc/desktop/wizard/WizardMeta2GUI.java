@@ -48,6 +48,7 @@ public class WizardMeta2GUI extends WizardBaseView {
         LabelColorVal.setText(""+String.format("%06x",elem.getLabelColor()));
         LabelElemColor.setBackground(new Color(elem.getLabelColor()));
         LabelOnCenter.setSelected(elem.isLabelOnCenter());
+        LabelBackColor.setSelected(elem.isLabelBackColor());
         baseBack = back;
         back = new I_Value<String>() {
             @Override
@@ -112,6 +113,7 @@ public class WizardMeta2GUI extends WizardBaseView {
         jLabel19 = new javax.swing.JLabel();
         LabelOnCenter = new javax.swing.JCheckBox();
         OnCenter = new javax.swing.JCheckBox();
+        LabelBackColor = new javax.swing.JCheckBox();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -355,7 +357,7 @@ public class WizardMeta2GUI extends WizardBaseView {
             }
         });
         getContentPane().add(LabelCommonColor);
-        LabelCommonColor.setBounds(680, 100, 64, 20);
+        LabelCommonColor.setBounds(710, 100, 64, 20);
 
         LabelBold.setText("Bold");
         LabelBold.addItemListener(new java.awt.event.ItemListener() {
@@ -387,6 +389,15 @@ public class WizardMeta2GUI extends WizardBaseView {
         });
         getContentPane().add(OnCenter);
         OnCenter.setBounds(420, 80, 80, 20);
+
+        LabelBackColor.setText("Фон");
+        LabelBackColor.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                LabelBackColorItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(LabelBackColor);
+        LabelBackColor.setBounds(710, 80, 70, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -632,6 +643,14 @@ public class WizardMeta2GUI extends WizardBaseView {
         back.onEnter("Изменено OnCenter: "+elem.isOnCenter());
     }//GEN-LAST:event_OnCenterItemStateChanged
 
+    private void LabelBackColorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_LabelBackColorItemStateChanged
+        if (busy)
+            return;
+        elem.setLabelBackColor(LabelBackColor.isSelected());
+        back.onEnter("Изменено LabelBackColor: "+elem.isLabelBackColor());
+
+    }//GEN-LAST:event_LabelBackColorItemStateChanged
+
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -643,6 +662,7 @@ public class WizardMeta2GUI extends WizardBaseView {
     private javax.swing.JButton ElemColor;
     private javax.swing.JTextField FontSize;
     private javax.swing.JTextField H;
+    private javax.swing.JCheckBox LabelBackColor;
     private javax.swing.JCheckBox LabelBold;
     private javax.swing.JTextField LabelColorVal;
     private javax.swing.JCheckBox LabelCommonColor;

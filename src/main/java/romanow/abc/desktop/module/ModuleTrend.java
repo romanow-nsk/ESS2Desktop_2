@@ -25,10 +25,10 @@ public class ModuleTrend extends Module {
         @Override
         public void run() {
             trend.setBounds(
-                    context.x(0),
-                    context.y(60),
-                    context.dx(Client.PanelW-10),
-                    context.dy(Client.PanelH-50));
+                    context.x(form.getModuleX0()),
+                    context.y(form.getModuleY0()),
+                    context.dx(form.getModuleDX()),
+                    context.dy(form.getModuleDY()));
             panel.add(trend);
             panel.revalidate();
             trend.setBack(new I_Success() {
