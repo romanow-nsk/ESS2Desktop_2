@@ -602,12 +602,15 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                         Meta2GUIForm form2 = context.getBaseForm();     //
                         if (form2!=null)
                             form1 = form2;
-                        copy.setY(ScreenDesktopHeight-100);
-                        copy.setX(20);
+                        copy.setY(selected.getY()+50);
+                        copy.setX(selected.getX()+50);
                         form1.getControls().add(copy);                  // Добавить в список элементов управления GUI формы
                         main.sendEventPanel(BasePanel.EventRuntimeEdited,0,0,"Добавлен "+form1.getTitle()+": "+copy.getFullTitle());
                         main.sendEventPanel(EventRuntimeUnSelected,0,0,"");
                         insertSelected.setVisible(false);
+                        String ss = WizardBaseView.openWizardByType(copy, null, onClose, onChange,context);
+                        if (ss!=null)
+                            new Message(300,300,ss,Values.PopupMessageDelay);
                         repaintView();
                         }
                     });

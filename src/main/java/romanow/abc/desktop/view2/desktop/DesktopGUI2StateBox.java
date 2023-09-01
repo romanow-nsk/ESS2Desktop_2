@@ -95,9 +95,9 @@ public class DesktopGUI2StateBox extends View2BaseDesktop {
         cmdButton = new JButton();
         cmdButton.setBounds(
                 context.x(xx+sz+5),
-                context.y(yy),
+                context.y(yy-(hh-sz)/2),
                 context.dx(bSize),
-                context.dy(sz));
+                context.dy(hh));
         setButtonParams(cmdButton);
         if (remoteDisable)
             cmdButton.setBackground(new Color(Values.AccessDisableColor));
