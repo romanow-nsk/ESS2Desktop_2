@@ -242,6 +242,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
         ModuleY0 = new javax.swing.JTextField();
         label127 = new javax.swing.JLabel();
         label128 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
 
         getContentPane().add(Types);
         Types.setBounds(610, 150, 140, 25);
@@ -280,16 +281,16 @@ public class WizardMeta2GUIForm extends WizardBaseView {
         getContentPane().add(label113);
         label113.setBounds(610, 130, 140, 16);
 
-        Empty.setText("пустая");
+        Empty.setText("Пустая");
         Empty.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 EmptyItemStateChanged(evt);
             }
         });
         getContentPane().add(Empty);
-        Empty.setBounds(500, 250, 59, 20);
+        Empty.setBounds(500, 250, 80, 20);
 
-        NoMenu.setText("без меню");
+        NoMenu.setText("Без меню");
         NoMenu.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 NoMenuItemStateChanged(evt);
@@ -375,6 +376,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
         getContentPane().add(label119);
         label119.setBounds(10, 190, 60, 16);
 
+        Level.setEnabled(false);
         Level.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 LevelKeyPressed(evt);
@@ -487,7 +489,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
             }
         });
         getContentPane().add(MenuBold);
-        MenuBold.setBounds(260, 340, 60, 20);
+        MenuBold.setBounds(310, 285, 60, 20);
 
         jLabel20.setText("Текст ");
         getContentPane().add(jLabel20);
@@ -579,6 +581,10 @@ public class WizardMeta2GUIForm extends WizardBaseView {
         label128.setText("DX");
         getContentPane().add(label128);
         label128.setBounds(480, 315, 30, 16);
+
+        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        getContentPane().add(jSeparator2);
+        jSeparator2.setBounds(357, 280, 10, 100);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -819,6 +825,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel label111;
     private javax.swing.JLabel label112;
     private javax.swing.JLabel label113;

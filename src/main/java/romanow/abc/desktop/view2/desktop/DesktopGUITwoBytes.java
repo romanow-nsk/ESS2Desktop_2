@@ -40,15 +40,16 @@ public class DesktopGUITwoBytes extends View2BaseDesktop {
                 context.y(element.getY()+getDyOffset()),
                 context.dx(dd),
                 context.dy(hh));
-        textField.setFont(new Font("Arial Cyr", Font.PLAIN, context.dy(12)));
+        setTextFieldParams(textField);
         textField.setEditable(false);
-        textField.setHorizontalAlignment(JTextField.CENTER);
         panel.add(textField);
-        Color color=new Color(element.getColor());
-        textField.setBackground(color);
-        Color textColor = new Color(context.getView().getTextColor());
-        textField.setBorder(BorderFactory.createLineBorder(textColor,1));
-        textField.setForeground(textColor);
+        //textField.setFont(new Font("Arial Cyr", Font.PLAIN, context.dy(12)));
+        //textField.setHorizontalAlignment(JTextField.CENTER);
+        //Color color=new Color(element.getColor());
+        //textField.setBackground(color);
+        //Color textColor = new Color(context.getView().getTextColor());
+        //textField.setBorder(BorderFactory.createLineBorder(textColor,1));
+        //textField.setForeground(textColor);
         setInfoClick(textField);
         }
     public void showInfoMessage() {

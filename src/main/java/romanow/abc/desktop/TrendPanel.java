@@ -97,7 +97,7 @@ public class TrendPanel extends javax.swing.JPanel implements I_Trend{
 
         StatList.setBackground(new java.awt.Color(204, 204, 204));
         add(StatList);
-        StatList.setBounds(80, 5, 300, 30);
+        StatList.setBounds(80, 5, 250, 30);
 
         Remove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/problem.png"))); // NOI18N
         Remove.setBorderPainted(false);
@@ -130,7 +130,7 @@ public class TrendPanel extends javax.swing.JPanel implements I_Trend{
             }
         });
         add(Fore);
-        Fore.setBounds(420, 0, 40, 30);
+        Fore.setBounds(370, 0, 40, 30);
 
         Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/left.PNG"))); // NOI18N
         Back.setBorderPainted(false);
@@ -141,7 +141,7 @@ public class TrendPanel extends javax.swing.JPanel implements I_Trend{
             }
         });
         add(Back);
-        Back.setBounds(380, 0, 40, 30);
+        Back.setBounds(330, 0, 40, 30);
 
         Add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/add.png"))); // NOI18N
         Add.setBorderPainted(false);
@@ -152,11 +152,11 @@ public class TrendPanel extends javax.swing.JPanel implements I_Trend{
             }
         });
         add(Add);
-        Add.setBounds(770, 0, 40, 30);
+        Add.setBounds(670, 0, 40, 30);
 
         StatListView.setBackground(new java.awt.Color(204, 204, 204));
         add(StatListView);
-        StatListView.setBounds(460, 5, 300, 30);
+        StatListView.setBounds(420, 0, 250, 30);
 
         Scale.setValue(0);
         Scale.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -172,7 +172,7 @@ public class TrendPanel extends javax.swing.JPanel implements I_Trend{
             }
         });
         add(Scale);
-        Scale.setBounds(150, 30, 240, 20);
+        Scale.setBounds(80, 30, 290, 20);
 
         Shift.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -187,15 +187,15 @@ public class TrendPanel extends javax.swing.JPanel implements I_Trend{
             }
         });
         add(Shift);
-        Shift.setBounds(500, 30, 260, 20);
+        Shift.setBounds(420, 30, 300, 20);
 
         jLabel1.setText("Масштаб");
         add(jLabel1);
-        jLabel1.setBounds(80, 30, 70, 16);
+        jLabel1.setBounds(10, 30, 70, 16);
 
         jLabel2.setText("Сдвиг");
         add(jLabel2);
-        jLabel2.setBounds(460, 30, 60, 16);
+        jLabel2.setBounds(380, 30, 60, 16);
 
         Export.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/load.png"))); // NOI18N
         Export.setBorderPainted(false);
@@ -206,7 +206,7 @@ public class TrendPanel extends javax.swing.JPanel implements I_Trend{
             }
         });
         add(Export);
-        Export.setBounds(810, 0, 40, 30);
+        Export.setBounds(710, 0, 40, 30);
     }// </editor-fold>//GEN-END:initComponents
 
     //--------------------------------------------------------------------------
@@ -228,8 +228,8 @@ public class TrendPanel extends javax.swing.JPanel implements I_Trend{
             panel.setBounds(10, 55, Client.PanelW - 60, Client.PanelH - 110);
             }
         else {
-            panel.setPreferredSize(new Dimension(context.x(Client.PanelW - 75), context.y(Client.PanelH - 155)));
-            panel.setBounds(context.x(10), context.y(55), context.dx(Client.PanelW - 75), context.dy(Client.PanelH - 155));
+            panel.setPreferredSize(new Dimension(context.x(context.getForm().getModuleDX()-20), context.getForm().getModuleDY()-55));
+            panel.setBounds(context.x(10), context.y(55), context.dx(context.getForm().getModuleDX()-20), context.dy(context.getForm().getModuleDY()-55));
             }
         add(panel);
         }

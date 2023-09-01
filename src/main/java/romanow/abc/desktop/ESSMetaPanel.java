@@ -38,6 +38,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
@@ -1527,8 +1528,16 @@ public class ESSMetaPanel extends ESSBasePanel {
                         metaData.add(file);
                         //ConstValue cc = metaTypesMap.get(file.getMetaType());
                         //MetaFile.add((cc==null ? "" : cc.title()+" ")+file.toString());
-                        MetaFile.add(file.toString());
                         }
+                    metaData.sort(new Comparator<ESS2MetaFile>() {
+                        @Override
+                        public int compare(ESS2MetaFile o1, ESS2MetaFile o2) {
+                            long diff = o2.getFile().getRef().getDate().timeInMS() - o1.getFile().getRef().getDate().timeInMS();
+                            return diff<0 ? -1 :(diff>0 ? 1 : 0);
+                            }
+                        });
+                    for(ESS2MetaFile file : metaData)
+                        MetaFile.add(file.toString());
                     if (MetaFile.getItemCount()!=0)
                         setMetaTypeSelector(metaData.get(MetaFile.getSelectedIndex()).getMetaType());
                     } catch (Exception ee) {

@@ -64,7 +64,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     //-----------------------------------------------------------------------------------------
     private final static int maxMenuLevels=5;
     private int menuModes[] = new int[maxMenuLevels];
-    private final static int levelYCoords[]={0, MenuButtonMargin,0,0,0,80,80,80,80};
+    private final static int levelYCoords[]={0, MenuButtonMargin,0,0,0,100,100,100,100};
     private final static int levelXCoords[]={0,MenuButtonMargin,MenuButtonMargin,MenuButtonMargin,MenuButtonMargin,
             0,0,MenuButtonMargin,0};
     private final static boolean levelHoriz[] ={true,true,true,true,true,false,false,false,false};

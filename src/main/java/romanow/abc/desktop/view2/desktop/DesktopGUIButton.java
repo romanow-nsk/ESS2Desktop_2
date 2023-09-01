@@ -38,14 +38,14 @@ public class DesktopGUIButton extends View2BaseDesktop {
                 context.dx(element.getDx()),
                 context.dy(element.getH()==0 ? 25 : element.getH()));
         setButtonParams(textField);
-        textField.setText(element.getTitle());
-        textField.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
-        textField.setHorizontalAlignment(JTextField.CENTER);
+        //textField.setText(element.getTitle());
+        //textField.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
+        //textField.setHorizontalAlignment(JTextField.CENTER);
         Meta2CommandRegister register = (Meta2CommandRegister)getRegister();
         final Meta2Command cmd = register.getCommands().getByCode(element.getCmdCode());
         final boolean remoteDisable = !context.isSuperUser() &&  !context.isLocalUser() && !cmd.isRemoteEnable();
-        Color color=new Color(remoteDisable || !context.isActionEnable() ? Values.AccessDisableColor : element.getColor());
-        textField.setBackground(color);
+        if (remoteDisable || !context.isActionEnable())
+            textField.setBackground(new Color(Values.AccessDisableColor));
         setInfoClick(textField);
         textField.addActionListener(new ActionListener() {
             @Override

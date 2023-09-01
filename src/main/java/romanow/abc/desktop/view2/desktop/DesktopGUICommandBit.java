@@ -39,10 +39,11 @@ public class DesktopGUICommandBit extends View2BaseDesktop {
                 context.x(element.getX()),
                 context.y(element.getY()),
                 context.dx(element.getDx()),
-                context.dy(25));
-        textField.setText(element.getTitle());
-        textField.setFont(new Font("Arial Cyr", Font.PLAIN, context.dy(12)));
-        textField.setHorizontalAlignment(JTextField.CENTER);
+                context.dy(element.getH()==0 ? 25 : element.getH()));
+        setButtonParams(textField,true);
+        //textField.setText(element.getTitle());
+        //textField.setFont(new Font("Arial Cyr", Font.PLAIN, context.dy(12)));
+        //textField.setHorizontalAlignment(JTextField.CENTER);
         Meta2BitRegister register = (Meta2BitRegister) getRegister();
         bit = register.getBits().getByCode(element.getBitNum());
         if (bit==null){
@@ -50,8 +51,8 @@ public class DesktopGUICommandBit extends View2BaseDesktop {
             return;
             }
         final boolean remoteDisable = !context.isSuperUser() &&  !context.isLocalUser() && !bit.isRemoteEnable();
-        Color color=new Color(remoteDisable || !context.isActionEnable() ? Values.AccessDisableColor : element.getColor());
-        textField.setBackground(color);
+        if (remoteDisable)
+            textField.setBackground(new Color(Values.AccessDisableColor));
         setInfoClick(textField);
         textField.addActionListener(new ActionListener() {
             @Override

@@ -98,8 +98,11 @@ public class DesktopGUI2StateBox extends View2BaseDesktop {
                 context.y(yy),
                 context.dx(bSize),
                 context.dy(sz));
-        cmdButton.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
-        cmdButton.setHorizontalAlignment(JTextField.CENTER);
+        setButtonParams(cmdButton);
+        if (remoteDisable)
+            cmdButton.setBackground(new Color(Values.AccessDisableColor));
+        //cmdButton.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
+        //cmdButton.setHorizontalAlignment(JTextField.CENTER);
         cmdButton.setText("");
         cmdButton.addActionListener(new ActionListener() {
             @Override

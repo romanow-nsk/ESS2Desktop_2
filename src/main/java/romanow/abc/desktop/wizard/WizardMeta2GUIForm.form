@@ -98,20 +98,20 @@
     </Component>
     <Component class="javax.swing.JCheckBox" name="Empty">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#x43f;&#x443;&#x441;&#x442;&#x430;&#x44f;"/>
+        <Property name="text" type="java.lang.String" value="&#x41f;&#x443;&#x441;&#x442;&#x430;&#x44f;"/>
       </Properties>
       <Events>
         <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="EmptyItemStateChanged"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="500" y="250" width="-1" height="-1"/>
+          <AbsoluteConstraints x="500" y="250" width="80" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JCheckBox" name="NoMenu">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#x431;&#x435;&#x437; &#x43c;&#x435;&#x43d;&#x44e;"/>
+        <Property name="text" type="java.lang.String" value="&#x411;&#x435;&#x437; &#x43c;&#x435;&#x43d;&#x44e;"/>
       </Properties>
       <Events>
         <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="NoMenuItemStateChanged"/>
@@ -268,6 +268,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="Level">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="LevelKeyPressed"/>
       </Events>
@@ -466,7 +469,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="260" y="340" width="60" height="-1"/>
+          <AbsoluteConstraints x="310" y="285" width="60" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -627,6 +630,16 @@
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="480" y="315" width="30" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JSeparator" name="jSeparator2">
+      <Properties>
+        <Property name="orientation" type="int" value="1"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="357" y="280" width="10" height="100"/>
         </Constraint>
       </Constraints>
     </Component>

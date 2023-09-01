@@ -43,6 +43,7 @@ public class WizardMeta2GUI extends WizardBaseView {
         ElemColor.setBackground(new Color(elem.getColor()));
         Bold.setSelected(elem.isBold());
         OnCenter.setSelected(elem.isOnCenter());
+        ElemBackColor.setSelected(elem.isBackColor());
         LabelCommonColor.setSelected(elem.isLabelCommonColor());
         LabelBold.setSelected(elem.isLabelBold());
         LabelColorVal.setText(""+String.format("%06x",elem.getLabelColor()));
@@ -114,6 +115,7 @@ public class WizardMeta2GUI extends WizardBaseView {
         LabelOnCenter = new javax.swing.JCheckBox();
         OnCenter = new javax.swing.JCheckBox();
         LabelBackColor = new javax.swing.JCheckBox();
+        ElemBackColor = new javax.swing.JCheckBox();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -131,7 +133,7 @@ public class WizardMeta2GUI extends WizardBaseView {
             }
         });
         getContentPane().add(ColorVal);
-        ColorVal.setBounds(330, 95, 60, 25);
+        ColorVal.setBounds(300, 95, 60, 25);
         getContentPane().add(jSeparator2);
         jSeparator2.setBounds(20, 125, 760, 10);
 
@@ -188,7 +190,7 @@ public class WizardMeta2GUI extends WizardBaseView {
         getContentPane().add(jLabel10);
         jLabel10.setBounds(170, 80, 30, 16);
         getContentPane().add(ElemColor);
-        ElemColor.setBounds(390, 95, 25, 25);
+        ElemColor.setBounds(360, 95, 25, 25);
         getContentPane().add(jLabel14);
         jLabel14.setBounds(420, 90, 40, 0);
 
@@ -232,7 +234,7 @@ public class WizardMeta2GUI extends WizardBaseView {
             }
         });
         getContentPane().add(Bold);
-        Bold.setBounds(420, 100, 50, 20);
+        Bold.setBounds(390, 100, 50, 20);
 
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
         getContentPane().add(jSeparator3);
@@ -370,7 +372,7 @@ public class WizardMeta2GUI extends WizardBaseView {
 
         jLabel19.setText("Элемент");
         getContentPane().add(jLabel19);
-        jLabel19.setBounds(330, 80, 60, 16);
+        jLabel19.setBounds(320, 80, 60, 16);
 
         LabelOnCenter.setText("По центру");
         LabelOnCenter.addItemListener(new java.awt.event.ItemListener() {
@@ -388,7 +390,7 @@ public class WizardMeta2GUI extends WizardBaseView {
             }
         });
         getContentPane().add(OnCenter);
-        OnCenter.setBounds(420, 80, 80, 20);
+        OnCenter.setBounds(390, 80, 80, 20);
 
         LabelBackColor.setText("Фон");
         LabelBackColor.addItemListener(new java.awt.event.ItemListener() {
@@ -398,6 +400,15 @@ public class WizardMeta2GUI extends WizardBaseView {
         });
         getContentPane().add(LabelBackColor);
         LabelBackColor.setBounds(710, 80, 70, 20);
+
+        ElemBackColor.setText("Фон");
+        ElemBackColor.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ElemBackColorItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(ElemBackColor);
+        ElemBackColor.setBounds(470, 80, 60, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -651,6 +662,13 @@ public class WizardMeta2GUI extends WizardBaseView {
 
     }//GEN-LAST:event_LabelBackColorItemStateChanged
 
+    private void ElemBackColorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ElemBackColorItemStateChanged
+        if (busy)
+            return;
+        elem.setBackColor(ElemBackColor.isSelected());
+        back.onEnter("Изменено ElemBackColor: "+elem.isBackColor());
+    }//GEN-LAST:event_ElemBackColorItemStateChanged
+
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -659,6 +677,7 @@ public class WizardMeta2GUI extends WizardBaseView {
     private javax.swing.JCheckBox CommonColor;
     private javax.swing.JButton CopyElem;
     private javax.swing.JButton DeleteElem;
+    private javax.swing.JCheckBox ElemBackColor;
     private javax.swing.JButton ElemColor;
     private javax.swing.JTextField FontSize;
     private javax.swing.JTextField H;

@@ -39,8 +39,8 @@ public class WizardMeta2GUIView extends WizardBaseView {
        BackColorButton.setBackground(new Color(view.getBackColor()));
        TextColor.setText(""+String.format("%06x",view.getTextColor()));
        TextColorButton.setBackground(new Color(view.getTextColor()));
-       LabelColor.setText(""+String.format("%06x",view.getLabelBackColor()));
-       LabelColorButton.setBackground(new Color(view.getLabelBackColor()));
+       ElemColor.setText(""+String.format("%06x",view.getCommonBackColor()));
+       ElemColorButton.setBackground(new Color(view.getCommonBackColor()));
        MenuModes.setText(""+view.getMenuModes());
        Height.setText(""+view.getHeight());
        Width.setText(""+view.getWidth());
@@ -127,9 +127,8 @@ public class WizardMeta2GUIView extends WizardBaseView {
         jLabel12 = new javax.swing.JLabel();
         TextColor = new javax.swing.JTextField();
         TextColorButton = new javax.swing.JButton();
-        jLabel13 = new javax.swing.JLabel();
-        LabelColor = new javax.swing.JTextField();
-        LabelColorButton = new javax.swing.JButton();
+        ElemColor = new javax.swing.JTextField();
+        ElemColorButton = new javax.swing.JButton();
         Height = new javax.swing.JTextField();
         Width = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
@@ -148,10 +147,9 @@ public class WizardMeta2GUIView extends WizardBaseView {
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         MenuButtonH = new javax.swing.JTextField();
-        jSeparator3 = new javax.swing.JSeparator();
 
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(10, 130, 750, 10);
+        jSeparator1.setBounds(10, 80, 750, 10);
 
         jLabel9.setText("Фон общий");
         getContentPane().add(jLabel9);
@@ -209,19 +207,15 @@ public class WizardMeta2GUIView extends WizardBaseView {
         getContentPane().add(TextColorButton);
         TextColorButton.setBounds(330, 140, 25, 25);
 
-        jLabel13.setText("меню");
-        getContentPane().add(jLabel13);
-        jLabel13.setBounds(10, 215, 80, 16);
-
-        LabelColor.addKeyListener(new java.awt.event.KeyAdapter() {
+        ElemColor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                LabelColorKeyPressed(evt);
+                ElemColorKeyPressed(evt);
             }
         });
-        getContentPane().add(LabelColor);
-        LabelColor.setBounds(110, 170, 60, 25);
-        getContentPane().add(LabelColorButton);
-        LabelColorButton.setBounds(170, 170, 25, 25);
+        getContentPane().add(ElemColor);
+        ElemColor.setBounds(110, 170, 60, 25);
+        getContentPane().add(ElemColorButton);
+        ElemColorButton.setBounds(170, 170, 25, 25);
 
         Height.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -243,13 +237,13 @@ public class WizardMeta2GUIView extends WizardBaseView {
         getContentPane().add(jLabel15);
         jLabel15.setBounds(520, 175, 50, 16);
 
-        jLabel16.setText("Фон надписи");
+        jLabel16.setText("Фон элементов");
         getContentPane().add(jLabel16);
-        jLabel16.setBounds(10, 175, 90, 16);
+        jLabel16.setBounds(10, 175, 100, 16);
 
         jLabel17.setText("Расположение");
         getContentPane().add(jLabel17);
-        jLabel17.setBounds(10, 200, 100, 16);
+        jLabel17.setBounds(340, 200, 100, 16);
 
         MenuModes.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -257,7 +251,7 @@ public class WizardMeta2GUIView extends WizardBaseView {
             }
         });
         getContentPane().add(MenuModes);
-        MenuModes.setBounds(110, 202, 60, 25);
+        MenuModes.setBounds(440, 200, 60, 25);
 
         MenuTextColor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -310,10 +304,9 @@ public class WizardMeta2GUIView extends WizardBaseView {
         getContentPane().add(MenuFontSize);
         MenuFontSize.setBounds(670, 170, 40, 25);
 
-        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel22.setText("Меню");
+        jLabel22.setText("меню");
         getContentPane().add(jLabel22);
-        jLabel22.setBounds(420, 200, 50, 16);
+        jLabel22.setBounds(390, 215, 50, 16);
 
         jLabel23.setText("Ширина");
         getContentPane().add(jLabel23);
@@ -326,10 +319,6 @@ public class WizardMeta2GUIView extends WizardBaseView {
         });
         getContentPane().add(MenuButtonH);
         MenuButtonH.setBounds(570, 200, 40, 25);
-
-        jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        getContentPane().add(jSeparator3);
-        jSeparator3.setBounds(360, 140, 10, 80);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -368,14 +357,14 @@ public class WizardMeta2GUIView extends WizardBaseView {
 
     }//GEN-LAST:event_TextColorKeyPressed
 
-    private void LabelColorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LabelColorKeyPressed
-        onColorKeyPressed("labelBackColor", LabelColor, LabelColorButton, evt, new I_WizardAction() {
+    private void ElemColorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ElemColorKeyPressed
+        onColorKeyPressed("labelBackColor", ElemColor, ElemColorButton, evt, new I_WizardAction() {
             @Override
-            public void onAction(int value) { view.setLabelBackColor(value);
+            public void onAction(int value) { view.setCommonBackColor(value);
             }
         });
 
-    }//GEN-LAST:event_LabelColorKeyPressed
+    }//GEN-LAST:event_ElemColorKeyPressed
 
     private void WidthKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_WidthKeyPressed
         onKeyPressed("Width", Width, evt, new I_WizardAction() {
@@ -452,9 +441,9 @@ public class WizardMeta2GUIView extends WizardBaseView {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField BackColor;
     private javax.swing.JButton BackColorButton;
+    private javax.swing.JTextField ElemColor;
+    private javax.swing.JButton ElemColorButton;
     private javax.swing.JTextField Height;
-    private javax.swing.JTextField LabelColor;
-    private javax.swing.JButton LabelColorButton;
     private javax.swing.JCheckBox MenuBold;
     private javax.swing.JTextField MenuButtonH;
     private javax.swing.JTextField MenuButtonW;
@@ -472,7 +461,6 @@ public class WizardMeta2GUIView extends WizardBaseView {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -484,6 +472,5 @@ public class WizardMeta2GUIView extends WizardBaseView {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator3;
     // End of variables declaration//GEN-END:variables
 }

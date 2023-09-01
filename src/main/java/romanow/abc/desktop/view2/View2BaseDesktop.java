@@ -1,7 +1,5 @@
 package romanow.abc.desktop.view2;
 
-import romanow.abc.core.entity.metadata.view.Meta2GUI;
-import romanow.abc.core.entity.metadata.view.Meta2GUIData;
 import romanow.abc.desktop.UtilsDesktop;
 
 import javax.swing.*;
@@ -9,7 +7,7 @@ import java.awt.*;
 
 public abstract class View2BaseDesktop extends View2Base implements I_View2Desktop {
     public void setTextFieldParams(JTextField textField) {
-        setComponentParams(textField);
+        setComponentParams(textField,true);
         textField.setText(element.getTitle());
         textField.setHorizontalAlignment(element.isOnCenter() ? JTextField.CENTER : JTextField.LEFT);
         }
@@ -19,7 +17,7 @@ public abstract class View2BaseDesktop extends View2Base implements I_View2Deskt
     public void setButtonParams(JButton textField, boolean noOneString) {
         setComponentParams(textField,false);
         String ss = element.getTitle();
-        textField.setText(!noOneString ? ss : "<html>" + ss.replaceAll(" ", "<br>") + "</html>");
+        textField.setText(!noOneString ? ss : "<html>"+(element.isOnCenter() ? "<center>" : "") + ss.replaceAll(" ", "<br>") + "</html>");
         textField.setHorizontalAlignment(element.isOnCenter() ? JTextField.CENTER : JTextField.LEFT);
         }
     public Font createFont() {
@@ -28,21 +26,17 @@ public abstract class View2BaseDesktop extends View2Base implements I_View2Deskt
         int type = element.isBold() ? Font.BOLD : Font.PLAIN;
         return new Font("Arial Cyr", type, context.dy(fontSize));
         }
-    public void setComponentParams(JComponent textField) {
-        setComponentParams(textField, true);
-        }
     public void setComponentParams(JComponent textField, boolean border){
-         setComponentParams(textField,border,false);
-        }
-    public void setComponentParams(JComponent textField, boolean border, boolean label){
-        if (element.getColor()==0 || element.isCommonColor()){
-            if (label)
-                textField.setBackground(new Color(context.getView().getLabelBackColor()));
-            else
-                textField.setBackground(new Color(context.getView().getBackColor()));
-                }
+        if (element.isBackColor()){
+            textField.setBackground(new Color(context.getView().getBackColor()));
+            }
         else{
-            textField.setBackground(new Color(element.getColor()));
+            if (element.getColor()==0 || element.isCommonColor()){
+                textField.setBackground(new Color(context.getView().getCommonBackColor()));
+                }
+            else{
+                textField.setBackground(new Color(element.getColor()));
+                }
             }
         textField.setFont(createFont());
         Color textColor = new Color(context.getView().getTextColor());
@@ -79,7 +73,7 @@ public abstract class View2BaseDesktop extends View2Base implements I_View2Deskt
             }
         else{
             if (element.getLabelColor()==0 || element.isLabelCommonColor()){
-                label.setBackground(new Color(context.getView().getLabelBackColor()));
+                label.setBackground(new Color(context.getView().getCommonBackColor()));
                 }
             else{
                 label.setBackground(new Color(element.getLabelColor()));
