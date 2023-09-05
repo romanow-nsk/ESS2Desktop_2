@@ -26,7 +26,7 @@ public class WizardMeta2GUIButton extends WizardMeta2GUI {
         super.openForm(parentView0,entity0);
         resizeHeight(240);
         elem = (Meta2GUIButton) entity;
-        WizardRegLinkPanel linkPanel = new WizardRegLinkPanel(0,120,"",elem.getLink(),this);
+        WizardRegLinkPanel linkPanel = new WizardRegLinkPanel(0,120,"",elem.getRegLink(),this);
         add(linkPanel);
         CmdCode.setText(""+elem.getCmdCode());
         }

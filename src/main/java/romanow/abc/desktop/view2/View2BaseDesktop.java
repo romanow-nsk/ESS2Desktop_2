@@ -26,18 +26,34 @@ public abstract class View2BaseDesktop extends View2Base implements I_View2Deskt
         int type = element.isBold() ? Font.BOLD : Font.PLAIN;
         return new Font("Arial Cyr", type, context.dy(fontSize));
         }
-    public void setComponentParams(JComponent textField, boolean border){
+    public Color getElemBackColor(){
         if (element.isBackColor()){
-            textField.setBackground(new Color(context.getView().getBackColor()));
+            return  new Color(context.getView().getBackColor());
             }
         else{
             if (element.getColor()==0 || element.isCommonColor()){
-                textField.setBackground(new Color(context.getView().getCommonBackColor()));
+                return  new Color(context.getView().getCommonBackColor());
                 }
             else{
-                textField.setBackground(new Color(element.getColor()));
+                return new Color(element.getColor());
                 }
             }
+        }
+    public Color getLabelColor(){
+        if (element.isLabelBackColor()){
+            return  new Color(context.getView().getBackColor());
+            }
+        else{
+            if (element.getLabelColor()==0 || element.isLabelCommonColor()){
+                return new Color(context.getView().getCommonBackColor());
+                }
+            else{
+                return new Color(element.getLabelColor());
+                }
+            }
+        }
+    public void setComponentParams(JComponent textField, boolean border){
+        textField.setBackground(getElemBackColor());
         textField.setFont(createFont());
         Color textColor = new Color(context.getView().getTextColor());
         if (border){
@@ -68,17 +84,7 @@ public abstract class View2BaseDesktop extends View2Base implements I_View2Deskt
         label.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));
         label.setForeground(new Color(context.getView().getTextColor()));
         label.setOpaque(true);
-        if (element.isLabelBackColor()){
-            label.setBackground(new Color(context.getView().getBackColor()));
-            }
-        else{
-            if (element.getLabelColor()==0 || element.isLabelCommonColor()){
-                label.setBackground(new Color(context.getView().getCommonBackColor()));
-                }
-            else{
-                label.setBackground(new Color(element.getLabelColor()));
-                }
-            }
+        label.setBackground(getLabelColor());
         int fontSize = element.getFontSize();
         if (fontSize==0) fontSize=12;
         int type = element.isLabelBold()? Font.BOLD : Font.PLAIN;

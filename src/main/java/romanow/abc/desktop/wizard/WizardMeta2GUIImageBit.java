@@ -29,22 +29,13 @@ public class WizardMeta2GUIImageBit extends WizardMeta2GUI {
     public WizardMeta2GUIImageBit() {
         initComponents();
         }
-    private void setRegNum(){
-        RegNum.setText(HEX.isSelected() ? "0x"+Integer.toString(elem.getRegNum(),16) : ""+elem.getRegNum());
-        } 
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
         resizeHeight(400);
         elem = (Meta2GUIImageBit) entity;
-        setRegNum();
-        Equip.setText(elem.getEquipName());
+        WizardRegLinkPanel linkPanel = new WizardRegLinkPanel(10,120,"",elem.getRegLink(),this);
+        add(linkPanel);
         BitNum.setText(""+elem.getBitNum());
-        ColorYes.setText(""+String.format("%06x",elem.getColorYes()));
-        ColorYesButton.setBackground(new Color(elem.getColorYes()));
-        ColorNo.setText(""+String.format("%06x",elem.getColorNo()));
-        ColorNoButton.setBackground(new Color(elem.getColorNo()));
-        W2.setText(""+elem.getW2());
-        ButtonSize.setText(""+elem.getButtonSize());
         RemoteEnable.setSelected(elem.isRemoteEnable());
         ImageH.setText(""+elem.getImageH());
         ImageW.setText(""+elem.getImageW());
@@ -100,23 +91,8 @@ public class WizardMeta2GUIImageBit extends WizardMeta2GUI {
         jCheckBox1 = new javax.swing.JCheckBox();
         jCheckBox2 = new javax.swing.JCheckBox();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel11 = new javax.swing.JLabel();
-        ColorYes = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        RegNum = new javax.swing.JTextField();
         BitNum = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        ColorYesButton = new javax.swing.JButton();
-        jLabel14 = new javax.swing.JLabel();
-        ColorNo = new javax.swing.JTextField();
-        ColorNoButton = new javax.swing.JButton();
-        jLabel15 = new javax.swing.JLabel();
-        Equip = new javax.swing.JTextField();
-        HEX = new javax.swing.JCheckBox();
-        jLabel1 = new javax.swing.JLabel();
-        W2 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        ButtonSize = new javax.swing.JTextField();
         RemoteEnable = new javax.swing.JCheckBox();
         jLabel16 = new javax.swing.JLabel();
         ImageH = new javax.swing.JTextField();
@@ -134,39 +110,13 @@ public class WizardMeta2GUIImageBit extends WizardMeta2GUI {
 
         jCheckBox2.setText("jCheckBox2");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
         });
-        getContentPane().setLayout(null);
         getContentPane().add(jSeparator1);
         jSeparator1.setBounds(10, 84, 670, 0);
-
-        jLabel11.setText("Цвет \"1\"");
-        getContentPane().add(jLabel11);
-        jLabel11.setBounds(290, 130, 60, 14);
-
-        ColorYes.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                ColorYesKeyPressed(evt);
-            }
-        });
-        getContentPane().add(ColorYes);
-        ColorYes.setBounds(290, 150, 80, 25);
-
-        jLabel12.setText("Оборудование");
-        getContentPane().add(jLabel12);
-        jLabel12.setBounds(20, 130, 110, 14);
-
-        RegNum.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                RegNumKeyPressed(evt);
-            }
-        });
-        getContentPane().add(RegNum);
-        RegNum.setBounds(160, 150, 70, 25);
 
         BitNum.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -178,68 +128,7 @@ public class WizardMeta2GUIImageBit extends WizardMeta2GUI {
 
         jLabel13.setText("Бит");
         getContentPane().add(jLabel13);
-        jLabel13.setBounds(240, 130, 40, 14);
-        getContentPane().add(ColorYesButton);
-        ColorYesButton.setBounds(380, 150, 25, 25);
-
-        jLabel14.setText("Цвет \"0\"");
-        getContentPane().add(jLabel14);
-        jLabel14.setBounds(420, 130, 60, 14);
-
-        ColorNo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                ColorNoKeyPressed(evt);
-            }
-        });
-        getContentPane().add(ColorNo);
-        ColorNo.setBounds(420, 150, 80, 25);
-        getContentPane().add(ColorNoButton);
-        ColorNoButton.setBounds(510, 150, 25, 25);
-
-        jLabel15.setText("Регистр");
-        getContentPane().add(jLabel15);
-        jLabel15.setBounds(160, 130, 70, 14);
-
-        Equip.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                EquipKeyPressed(evt);
-            }
-        });
-        getContentPane().add(Equip);
-        Equip.setBounds(20, 150, 80, 25);
-
-        HEX.setText("hex");
-        HEX.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                HEXItemStateChanged(evt);
-            }
-        });
-        getContentPane().add(HEX);
-        HEX.setBounds(110, 150, 50, 23);
-
-        jLabel1.setText("W2");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(540, 130, 30, 14);
-
-        W2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                W2KeyPressed(evt);
-            }
-        });
-        getContentPane().add(W2);
-        W2.setBounds(540, 150, 40, 25);
-
-        jLabel2.setText("Кнопка (size)");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(590, 130, 80, 14);
-
-        ButtonSize.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                ButtonSizeKeyPressed(evt);
-            }
-        });
-        getContentPane().add(ButtonSize);
-        ButtonSize.setBounds(590, 150, 40, 25);
+        jLabel13.setBounds(240, 130, 40, 16);
 
         RemoteEnable.setText("Удаленно");
         RemoteEnable.addItemListener(new java.awt.event.ItemListener() {
@@ -248,11 +137,11 @@ public class WizardMeta2GUIImageBit extends WizardMeta2GUI {
             }
         });
         getContentPane().add(RemoteEnable);
-        RemoteEnable.setBounds(590, 180, 90, 23);
+        RemoteEnable.setBounds(450, 150, 90, 20);
 
         jLabel16.setText("H image");
         getContentPane().add(jLabel16);
-        jLabel16.setBounds(20, 190, 50, 14);
+        jLabel16.setBounds(20, 180, 50, 16);
 
         ImageH.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -260,11 +149,11 @@ public class WizardMeta2GUIImageBit extends WizardMeta2GUI {
             }
         });
         getContentPane().add(ImageH);
-        ImageH.setBounds(20, 210, 50, 25);
+        ImageH.setBounds(20, 200, 50, 25);
 
         jLabel17.setText("Alias");
         getContentPane().add(jLabel17);
-        jLabel17.setBounds(470, 190, 110, 14);
+        jLabel17.setBounds(290, 130, 110, 16);
 
         ImageW.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -272,9 +161,9 @@ public class WizardMeta2GUIImageBit extends WizardMeta2GUI {
             }
         });
         getContentPane().add(ImageW);
-        ImageW.setBounds(80, 210, 50, 25);
+        ImageW.setBounds(80, 200, 50, 25);
         getContentPane().add(ImageList0);
-        ImageList0.setBounds(150, 210, 270, 20);
+        ImageList0.setBounds(150, 200, 270, 20);
 
         SetImage0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/save.png"))); // NOI18N
         SetImage0.setBorderPainted(false);
@@ -285,7 +174,7 @@ public class WizardMeta2GUIImageBit extends WizardMeta2GUI {
             }
         });
         getContentPane().add(SetImage0);
-        SetImage0.setBounds(430, 205, 30, 30);
+        SetImage0.setBounds(430, 200, 30, 30);
 
         UploadImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/upload.png"))); // NOI18N
         UploadImage.setBorderPainted(false);
@@ -296,15 +185,15 @@ public class WizardMeta2GUIImageBit extends WizardMeta2GUI {
             }
         });
         getContentPane().add(UploadImage);
-        UploadImage.setBounds(590, 205, 30, 30);
+        UploadImage.setBounds(410, 150, 30, 30);
         getContentPane().add(ImageAlias);
-        ImageAlias.setBounds(470, 210, 110, 25);
+        ImageAlias.setBounds(290, 150, 110, 25);
 
         jLabel18.setText("W image");
         getContentPane().add(jLabel18);
-        jLabel18.setBounds(80, 190, 60, 14);
+        jLabel18.setBounds(80, 180, 60, 16);
         getContentPane().add(ImageList1);
-        ImageList1.setBounds(150, 250, 270, 20);
+        ImageList1.setBounds(150, 240, 270, 20);
 
         SetImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/save.png"))); // NOI18N
         SetImage1.setBorderPainted(false);
@@ -315,7 +204,7 @@ public class WizardMeta2GUIImageBit extends WizardMeta2GUI {
             }
         });
         getContentPane().add(SetImage1);
-        SetImage1.setBounds(430, 245, 30, 30);
+        SetImage1.setBounds(430, 240, 30, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -323,24 +212,6 @@ public class WizardMeta2GUIImageBit extends WizardMeta2GUI {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         closeForm();
     }//GEN-LAST:event_formWindowClosing
-
-    private void ColorYesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ColorYesKeyPressed
-        onColorKeyPressed("colorYes", ColorYes, ColorYesButton, evt, new I_WizardAction() {
-            @Override
-            public void onAction(int value) {
-                elem.setColorYes(value);
-            }
-        });
-    }//GEN-LAST:event_ColorYesKeyPressed
-
-    private void RegNumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RegNumKeyPressed
-        onKeyPressed("regNum", HEX, RegNum, evt, new I_WizardAction() {
-            @Override
-            public void onAction(int value) {
-                elem.setRegNum(value);
-            }
-        });
-    }//GEN-LAST:event_RegNumKeyPressed
 
     private void BitNumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BitNumKeyPressed
         onKeyPressed("bitNum", BitNum, evt, new I_WizardAction() {
@@ -350,46 +221,6 @@ public class WizardMeta2GUIImageBit extends WizardMeta2GUI {
             }
         });
     }//GEN-LAST:event_BitNumKeyPressed
-
-    private void ColorNoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ColorNoKeyPressed
-        onColorKeyPressed("colorNo", ColorNo, ColorNoButton, evt, new I_WizardAction() {
-            @Override
-            public void onAction(int value) {
-                elem.setColorNo(value);
-            }
-        });
-    }//GEN-LAST:event_ColorNoKeyPressed
-
-    private void EquipKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EquipKeyPressed
-        onStringKeyPressed("equipName", Equip, evt, new I_WizardActionString() {
-            @Override
-            public void onAction(String value) {
-                elem.setEquipName(value);
-            }
-        });
-    }//GEN-LAST:event_EquipKeyPressed
-
-    private void HEXItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_HEXItemStateChanged
-        setRegNum();
-    }//GEN-LAST:event_HEXItemStateChanged
-
-    private void W2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_W2KeyPressed
-        onKeyPressed("W2", W2, evt, new I_WizardAction() {
-            @Override
-            public void onAction(int value) {
-                elem.setW2(value);
-            }
-        });
-    }//GEN-LAST:event_W2KeyPressed
-
-    private void ButtonSizeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ButtonSizeKeyPressed
-        onKeyPressed("buttonSize", ButtonSize, evt, new I_WizardAction() {
-            @Override
-            public void onAction(int value) {
-                elem.setButtonSize(value);
-            }
-        });
-    }//GEN-LAST:event_ButtonSizeKeyPressed
 
     private void RemoteEnableItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_RemoteEnableItemStateChanged
         elem.setRemoteEnable(RemoteEnable.isSelected());
@@ -451,36 +282,21 @@ public class WizardMeta2GUIImageBit extends WizardMeta2GUI {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField BitNum;
-    private javax.swing.JTextField ButtonSize;
-    private javax.swing.JTextField ColorNo;
-    private javax.swing.JButton ColorNoButton;
-    private javax.swing.JTextField ColorYes;
-    private javax.swing.JButton ColorYesButton;
-    private javax.swing.JTextField Equip;
-    private javax.swing.JCheckBox HEX;
     private javax.swing.JTextField ImageAlias;
     private javax.swing.JTextField ImageH;
     private java.awt.Choice ImageList0;
     private java.awt.Choice ImageList1;
     private javax.swing.JTextField ImageW;
-    private javax.swing.JTextField RegNum;
     private javax.swing.JCheckBox RemoteEnable;
     private javax.swing.JButton SetImage0;
     private javax.swing.JButton SetImage1;
     private javax.swing.JButton UploadImage;
-    private javax.swing.JTextField W2;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

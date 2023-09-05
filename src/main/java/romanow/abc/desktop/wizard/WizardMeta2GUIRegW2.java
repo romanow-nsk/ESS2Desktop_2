@@ -24,7 +24,7 @@ public class WizardMeta2GUIRegW2 extends WizardMeta2GUI {
         super.openForm(parentView0,entity0);
         resizeHeight(280);
         elem = (Meta2GUIRegW2)  entity;
-        WizardRegLinkPanel linkPanel = new WizardRegLinkPanel(0,120,"",elem.getLink(),this);
+        WizardRegLinkPanel linkPanel = new WizardRegLinkPanel(0,120,"",elem.getRegLink(),this);
         add(linkPanel);
         linkPanel.setVisible(true);
         W2.setText(""+elem.getW2());

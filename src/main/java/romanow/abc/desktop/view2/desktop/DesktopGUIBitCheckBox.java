@@ -48,8 +48,6 @@ public class DesktopGUIBitCheckBox extends View2BaseDesktop {
         if (element.getDx()!=0)
             setLabel(panel);
         FormContext2 context = getContext();
-        int dd=element.getW2();
-        if (dd==0) dd=100;
         int hh = element.getH();
         if (hh==0) hh=25;
         final boolean remoteDisable = !context.isSuperUser() &&  !context.isLocalUser() && !element.isRemoteEnable();
@@ -57,7 +55,7 @@ public class DesktopGUIBitCheckBox extends View2BaseDesktop {
         cmdButton.setBounds(
                 context.x(element.getX()+getDxOffset()+element.getDx()+5),
                 context.y(element.getY()+getDyOffset()),
-                context.dx(dd),
+                context.dx(hh),
                 context.dy(hh));
         if (remoteDisable)
             cmdButton.setEnabled(false);
