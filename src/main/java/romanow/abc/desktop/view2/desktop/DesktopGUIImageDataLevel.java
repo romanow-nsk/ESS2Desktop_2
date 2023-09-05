@@ -125,8 +125,6 @@ public class DesktopGUIImageDataLevel extends View2BaseDesktop{
                 ResponseBody body = response.body();
                 BufferedImage originalImage = ImageIO.read(body.byteStream());
                 image = originalImage.getScaledInstance(context0.x(element.getImageW()), context0.y(element.getImageH()), Image.SCALE_DEFAULT);
-                //ImageProducer filteredImgProd = new FilteredImageSource(, filter);
-                //Image transparentImg = Toolkit.getDefaultToolkit().createImage(filteredImgProd);
                 }
             else{
                 return httpError(response);

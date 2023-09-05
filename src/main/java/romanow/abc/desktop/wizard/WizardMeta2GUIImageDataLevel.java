@@ -306,11 +306,14 @@ public class WizardMeta2GUIImageDataLevel extends WizardMeta2GUI {
             @Override
             public void onSucess(ArtifactList oo) {
                 artifacts = oo;
+                setArtifactsChoice(artifacts,ImageList,elem.getPicture().getOid());
+                /*
                 ImageList.removeAll();
                 artifacts.sortById();
                 ImageList.add("...");
                 for(Artifact ctr : artifacts)
                     ImageList.add(ctr.getTitle());
+                 */
                 }
             };
         }

@@ -5,6 +5,8 @@
  */
 package romanow.abc.desktop;
 
+import okhttp3.ResponseBody;
+import retrofit2.Response;
 import romanow.abc.core.API.RestAPIBase;
 import romanow.abc.core.API.RestAPIESS2;
 import romanow.abc.core.DBRequest;
@@ -32,12 +34,16 @@ import retrofit2.Call;
 import romanow.abc.desktop.view2.FormContext2;
 import romanow.abc.desktop.view2.I_ContextBack;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import static romanow.abc.core.Utils.httpError;
 
 /**
  *
@@ -261,19 +267,47 @@ public class ESSMainServiceGUIPanel extends ESSBasePanel {
     public void paintComponent(Graphics g){
         ScreenMode screen = context.getScreen();
         Meta2GUIForm form = context.getForm();
-        if (form==null || form.getBackImage().length()==0){
-            g.setColor(new Color(240,240,240));
-            g.fillRect( context.x(0), context.y(0), screen.ScreenW(), screen.ScreenH());
+        g.setColor(new Color(context.getView().getBackColor()));
+        g.fillRect( context.x(0), context.y(0), screen.ScreenW(), screen.ScreenH());
+        if (form==null || form.getPicture().getOid()==0)
             return;
-            }
-        Image im = null;
-        try {
-            ImageIcon icon = new javax.swing.ImageIcon(getClass().getResource("/"+form.getBackImage()));
-            im = icon.getImage();
-            } catch (Exception e) {
-                System.out.println(e.toString());
+        if (form.isBackgroundError())
+            return;
+        Image background = form.getBackground();
+        if (background==null){
+            try {
+                Call<ResponseBody> call2 = context.getService().downLoad(context.getToken(),form.getPicture().getOid());
+                Response<ResponseBody> response = call2.execute();
+                if (response.isSuccessful()) {
+                    ResponseBody body = response.body();
+                    BufferedImage originalImage = ImageIO.read(body.byteStream());
+                    background  = originalImage.getScaledInstance(context.x(form.getImageW()), context.y(form.getImageH()), Image.SCALE_DEFAULT);
+                    form.setBackground(background);
+                    }
+                else{
+                    form.setBackgroundError(true);
+                    return;
+                    }
+                } catch (Exception ee){
+                    form.setBackgroundError(true);
+                    String ss = "Ошибка загрузки: "+form.getPicture().getTitle();
+                    popup(ss);
+                    System.out.println(ss+"\n"+ee.toString());
+                    }
                 }
-        g.drawImage(im, 0, 0, screen.ScreenW(), screen.ScreenH(),null);
+        g.drawImage(background,
+                context.x(form.getImageX0()),
+                context.y(form.getImageY0()),
+                context.dx(form.getImageW()),
+                context.dy(form.getImageH()),null);
+        //Image im = null;
+        //try {
+        //    ImageIcon icon = new javax.swing.ImageIcon(getClass().getResource("/"+form.getBackImage()));
+        //    im = icon.getImage();
+        //    } catch (Exception e) {
+        //        System.out.println(e.toString());
+        //        }
+        //g.drawImage(im, 0, 0, screen.ScreenW(), screen.ScreenH(),null);
         }
     //---------------------------------------------------------------------------------------
     public synchronized void  repaintView() {

@@ -5,11 +5,18 @@
  */
 package romanow.abc.desktop.wizard;
 
+import okhttp3.MultipartBody;
+import retrofit2.Call;
+import romanow.abc.core.API.RestAPICommon;
 import romanow.abc.core.constants.ConstValue;
 import romanow.abc.core.constants.Values;
+import romanow.abc.core.entity.artifacts.Artifact;
+import romanow.abc.core.entity.artifacts.ArtifactList;
 import romanow.abc.core.entity.metadata.*;
 import romanow.abc.core.entity.metadata.view.Meta2GUI;
 import romanow.abc.core.entity.metadata.view.Meta2GUICollection;
+import romanow.abc.core.utils.FileNameExt;
+import romanow.abc.desktop.APICall;
 import romanow.abc.desktop.I_Button;
 
 import romanow.abc.desktop.OK;
@@ -33,6 +40,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
     public WizardMeta2GUIForm() {
         initComponents();
         }
+    private ArtifactList artifacts = new ArtifactList();
     private ArrayList<ConstValue> types = new ArrayList<>();
     private ArrayList<ConstValue> access = new ArrayList<>();
     private Meta2GUIForm view;
@@ -42,7 +50,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
     @Override
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
-        resizeHeight(450);
+        resizeHeight(480);
         view = (Meta2GUIForm) entity0;
         list = view.getControls();
         selector = new WizardMetaEntitySelector("Элементы ЧМИ", Values.MEGUIElement,callBack);
@@ -116,6 +124,12 @@ public class WizardMeta2GUIForm extends WizardBaseView {
             BaseForm.setSelected(view.isBaseForm());
             SnapShot.setSelected(view.isSnapShot());
             //---------------------------------------------------------------------------
+            ImageX0.setText(""+view.getImageX0());
+            ImageY0.setText(""+view.getImageY0());
+            ImageW.setText(""+view.getImageW());
+            ImageH.setText(""+view.getImageH());
+            refreshImageList();
+            //---------------------------------------------------------------------------
             MenuOnColor.setText(""+String.format("%06x",view.getMenuButtonOnColor()));
             MenuOnColorButton.setBackground(new Color(view.getMenuButtonOnColor()));
             MenuOffColor.setText(""+String.format("%06x",view.getMenuButtonOffColor()));
@@ -132,6 +146,20 @@ public class WizardMeta2GUIForm extends WizardBaseView {
             ModuleDY.setText(""+view.getModuleDY());
             //-------------------------------------------------------------------------
             }
+    private void refreshImageList(){
+        new APICall<ArtifactList>(main) {
+            @Override
+            public Call<ArtifactList> apiFun() {
+                return main.getService().getArtifactConditionList(main.getDebugToken(), Values.ArtifactImageType,"",
+                        Values.ESSImageFileDescription,"",0,0,0,0);
+            }
+            @Override
+            public void onSucess(ArtifactList oo) {
+                artifacts = oo;
+                setArtifactsChoice(artifacts,ImageList,view.getPicture().getOid());
+                }
+            };
+        }
     private I_WizardEntitySelector callBack = new I_WizardEntitySelector() {
         @Override
         public void onEdit(int type, int idx) {
@@ -243,6 +271,20 @@ public class WizardMeta2GUIForm extends WizardBaseView {
         label127 = new javax.swing.JLabel();
         label128 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
+        jLabel12 = new javax.swing.JLabel();
+        ImageH = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        ImageW = new javax.swing.JTextField();
+        ImageList = new java.awt.Choice();
+        SetImage = new javax.swing.JButton();
+        UploadImage = new javax.swing.JButton();
+        ImageAlias = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        ImageX0 = new javax.swing.JTextField();
+        ImageY0 = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
 
         getContentPane().add(Types);
         Types.setBounds(610, 150, 140, 25);
@@ -586,6 +628,89 @@ public class WizardMeta2GUIForm extends WizardBaseView {
         getContentPane().add(jSeparator2);
         jSeparator2.setBounds(357, 280, 10, 100);
 
+        jLabel12.setText("W");
+        getContentPane().add(jLabel12);
+        jLabel12.setBounds(210, 370, 30, 16);
+
+        ImageH.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ImageHKeyPressed(evt);
+            }
+        });
+        getContentPane().add(ImageH);
+        ImageH.setBounds(260, 390, 40, 25);
+
+        jLabel14.setText("Alias");
+        getContentPane().add(jLabel14);
+        jLabel14.setBounds(670, 370, 80, 16);
+
+        ImageW.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ImageWKeyPressed(evt);
+            }
+        });
+        getContentPane().add(ImageW);
+        ImageW.setBounds(210, 390, 40, 25);
+        getContentPane().add(ImageList);
+        ImageList.setBounds(310, 390, 270, 20);
+
+        SetImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/save.png"))); // NOI18N
+        SetImage.setBorderPainted(false);
+        SetImage.setContentAreaFilled(false);
+        SetImage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SetImageActionPerformed(evt);
+            }
+        });
+        getContentPane().add(SetImage);
+        SetImage.setBounds(590, 380, 30, 30);
+
+        UploadImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/upload.png"))); // NOI18N
+        UploadImage.setBorderPainted(false);
+        UploadImage.setContentAreaFilled(false);
+        UploadImage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UploadImageActionPerformed(evt);
+            }
+        });
+        getContentPane().add(UploadImage);
+        UploadImage.setBounds(750, 380, 30, 30);
+        getContentPane().add(ImageAlias);
+        ImageAlias.setBounds(630, 390, 110, 25);
+
+        jLabel16.setText("H");
+        getContentPane().add(jLabel16);
+        jLabel16.setBounds(260, 370, 30, 16);
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel13.setText("Фон-картинка");
+        getContentPane().add(jLabel13);
+        jLabel13.setBounds(10, 390, 90, 16);
+
+        ImageX0.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ImageX0KeyPressed(evt);
+            }
+        });
+        getContentPane().add(ImageX0);
+        ImageX0.setBounds(110, 390, 40, 25);
+
+        ImageY0.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ImageY0KeyPressed(evt);
+            }
+        });
+        getContentPane().add(ImageY0);
+        ImageY0.setBounds(160, 390, 40, 25);
+
+        jLabel17.setText("Y0");
+        getContentPane().add(jLabel17);
+        jLabel17.setBounds(160, 370, 30, 16);
+
+        jLabel18.setText("X0");
+        getContentPane().add(jLabel18);
+        jLabel18.setBounds(110, 370, 40, 16);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -781,6 +906,68 @@ public class WizardMeta2GUIForm extends WizardBaseView {
 
     }//GEN-LAST:event_ModuleDYKeyPressed
 
+    private void ImageHKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ImageHKeyPressed
+        onKeyPressed("imageH", ImageH, evt, new I_WizardAction() {
+            @Override
+            public void onAction(int value) {
+                view.setImageH(value);
+            }
+        });
+    }//GEN-LAST:event_ImageHKeyPressed
+
+    private void ImageWKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ImageWKeyPressed
+        onKeyPressed("imageW", ImageW, evt, new I_WizardAction() {
+            @Override
+            public void onAction(int value) {
+                view.setImageW(value);
+            }
+        });
+    }//GEN-LAST:event_ImageWKeyPressed
+
+    private void SetImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SetImageActionPerformed
+        if (artifacts.size()==0)
+        return;
+        int idx = ImageList.getSelectedIndex();
+        Artifact art = idx==0 ? new Artifact() : artifacts.get(idx-1);
+        view.getPicture().setOidRef(art);
+        back.onEnter("Выбрана картинка "+art.getTitle());
+    }//GEN-LAST:event_SetImageActionPerformed
+
+    private void UploadImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UploadImageActionPerformed
+        FileNameExt fname = main.getInputFileName("Импорт картинок 2.0", "*.*", null);
+        final MultipartBody.Part body = RestAPICommon.createMultipartBody(fname);
+        new APICall<Artifact>(main) {
+            @Override
+            public Call<Artifact> apiFun() {
+                return main.getService().upload(main.getDebugToken(), Values.ESSImageFileDescription+" "+ImageAlias.getText(), fname.fileName(), body);
+                }
+            @Override
+            public void onSucess(final Artifact art) {
+                view.getPicture().setOidRef(art);
+                back.onEnter("Выбрана картинка "+art.getTitle());
+                refreshImageList();
+                }
+            };
+    }//GEN-LAST:event_UploadImageActionPerformed
+
+    private void ImageX0KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ImageX0KeyPressed
+        onKeyPressed("imageX0", ImageX0, evt, new I_WizardAction() {
+            @Override
+            public void onAction(int value) {
+                view.setImageX0(value);
+            }
+        });
+    }//GEN-LAST:event_ImageX0KeyPressed
+
+    private void ImageY0KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ImageY0KeyPressed
+        onKeyPressed("imageY0", ImageY0, evt, new I_WizardAction() {
+            @Override
+            public void onAction(int value) {
+                view.setImageY0(value);
+            }
+        });
+    }//GEN-LAST:event_ImageY0KeyPressed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -791,6 +978,12 @@ public class WizardMeta2GUIForm extends WizardBaseView {
     private javax.swing.JTextField FormLevel;
     private javax.swing.JTextField GroupIndex;
     private javax.swing.JTextField Image;
+    private javax.swing.JTextField ImageAlias;
+    private javax.swing.JTextField ImageH;
+    private java.awt.Choice ImageList;
+    private javax.swing.JTextField ImageW;
+    private javax.swing.JTextField ImageX0;
+    private javax.swing.JTextField ImageY0;
     private javax.swing.JTextField Level;
     private javax.swing.JCheckBox LinkForm;
     private javax.swing.JCheckBox MenuBold;
@@ -813,13 +1006,21 @@ public class WizardMeta2GUIForm extends WizardBaseView {
     private javax.swing.JButton SaveAccessLevel;
     private javax.swing.JButton SaveParent;
     private javax.swing.JButton SaveWriteLevel;
+    private javax.swing.JButton SetImage;
     private javax.swing.JCheckBox SnapShot;
     private java.awt.Choice Types;
+    private javax.swing.JButton UploadImage;
     private java.awt.Choice WriteLevel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;

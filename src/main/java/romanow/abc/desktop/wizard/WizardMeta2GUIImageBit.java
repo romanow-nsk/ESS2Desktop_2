@@ -67,6 +67,9 @@ public class WizardMeta2GUIImageBit extends WizardMeta2GUI {
             @Override
             public void onSucess(ArtifactList oo) {
                 artifacts = oo;
+                setArtifactsChoice(artifacts,ImageList0,elem.getPictureFor0().getOid());
+                setArtifactsChoice(artifacts,ImageList1,elem.getPictureFor1().getOid());
+                /*
                 ImageList0.removeAll();
                 ImageList1.removeAll();
                 artifacts.sortById();
@@ -76,6 +79,7 @@ public class WizardMeta2GUIImageBit extends WizardMeta2GUI {
                     ImageList0.add(ctr.getTitle());
                     ImageList1.add(ctr.getTitle());
                     }
+                 */
                 }
             };
         }

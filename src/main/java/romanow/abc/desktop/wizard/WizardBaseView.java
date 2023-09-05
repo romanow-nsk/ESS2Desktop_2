@@ -7,6 +7,8 @@ package romanow.abc.desktop.wizard;
 
 import romanow.abc.core.constants.ConstValue;
 import romanow.abc.core.constants.Values;
+import romanow.abc.core.entity.artifacts.Artifact;
+import romanow.abc.core.entity.artifacts.ArtifactList;
 import romanow.abc.core.entity.metadata.Meta2Entity;
 import romanow.abc.core.entity.metadata.Meta2Face;
 import romanow.abc.desktop.I_Value;
@@ -47,6 +49,21 @@ public class WizardBaseView extends javax.swing.JFrame {
                 return "Ошибка создания формы "+name+": "+ee.toString();
                 }
             }
+    public static void setArtifactsChoice(ArtifactList artifacts, Choice ImageList, long oid){
+        ImageList.removeAll();
+        artifacts.sortById();
+        ImageList.add("...");
+        for(Artifact ctr : artifacts)
+            ImageList.add(ctr.getTitle());
+        if (oid==0)
+            return;
+        int idx=0;
+        for(idx=0;idx<artifacts.size();idx++)
+            if (artifacts.get(idx).getOid()==oid){
+                ImageList.select(idx+1);
+                break;
+            }
+        }
     public String openWizardByType(Meta2Entity entity){
         return openWizardByType(entity,this,null,null,null);
         }
@@ -55,6 +72,7 @@ public class WizardBaseView extends javax.swing.JFrame {
         try {
             Class  cls = Class.forName("romanow.abc.desktop.wizard."+name);
             WizardBaseView view = (WizardBaseView)cls.newInstance();
+            view.main = parent!=null ?parent.main : context2.getMain();
             view.onClose = closeCode;
             view.back = back0;
             view.context = context2;
