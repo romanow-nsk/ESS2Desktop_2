@@ -14,17 +14,16 @@ import romanow.abc.core.UniException;
 import romanow.abc.core.Utils;
 import romanow.abc.core.constants.IntegerList;
 import romanow.abc.core.constants.Values;
-import romanow.abc.core.entity.EntityRefList;
 import romanow.abc.core.entity.UnitRegisterList;
 import romanow.abc.core.entity.metadata.*;
+import romanow.abc.core.entity.metadata.render.I_ContextBack;
+import romanow.abc.core.entity.metadata.render.ScreenMode;
 import romanow.abc.core.entity.metadata.view.Meta2GUI;
 import romanow.abc.core.entity.metadata.view.Meta2GUIArray;
 import romanow.abc.core.entity.metadata.view.Meta2GUICollection;
 import romanow.abc.core.entity.metadata.view.Meta2GUIReg;
 import romanow.abc.core.entity.subject2area.*;
 import romanow.abc.core.entity.subjectarea.*;
-import romanow.abc.desktop.screen.ScreenMode;
-import romanow.abc.desktop.view.*;
 import romanow.abc.core.utils.OwnDateTime;
 import romanow.abc.core.utils.Pair;
 import romanow.abc.desktop.module.I_Module;
@@ -43,7 +42,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import static romanow.abc.core.constants.Values.*;
 

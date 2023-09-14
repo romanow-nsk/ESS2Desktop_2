@@ -5,7 +5,7 @@
  */
 package romanow.abc.desktop;
 
-import romanow.abc.desktop.screen.ScreenMode;
+import romanow.abc.core.entity.metadata.render.ScreenMode;
 
 import java.awt.*;
 

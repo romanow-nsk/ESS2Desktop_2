@@ -14,15 +14,13 @@ import romanow.abc.core.UniException;
 import romanow.abc.core.constants.IntegerList;
 import romanow.abc.core.constants.Values;
 import romanow.abc.core.constants.ValuesBase;
-import romanow.abc.core.entity.EntityRefList;
 import romanow.abc.core.entity.baseentityes.JBoolean;
-import romanow.abc.core.entity.metadata.Meta2GUIElement;
 import romanow.abc.core.entity.metadata.Meta2GUIForm;
+import romanow.abc.core.entity.metadata.render.I_ContextBack;
+import romanow.abc.core.entity.metadata.render.ScreenMode;
 import romanow.abc.core.entity.metadata.view.Meta2GUI;
 import romanow.abc.core.entity.metadata.view.Meta2GUICollection;
 import romanow.abc.core.entity.subjectarea.*;
-import romanow.abc.desktop.screen.ScreenMode;
-import romanow.abc.desktop.view.FormContext;
 import romanow.abc.desktop.view.GUIElementsFactory;
 import romanow.abc.desktop.view.GUIElement;
 import romanow.abc.desktop.view.I_GUIEvent;
@@ -32,7 +30,6 @@ import romanow.abc.desktop.console.APICallC;
 import romanow.abc.desktop.module.Module;
 import retrofit2.Call;
 import romanow.abc.desktop.view2.FormContext2;
-import romanow.abc.desktop.view2.I_ContextBack;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -42,8 +39,6 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import static romanow.abc.core.Utils.httpError;
 
 /**
  *

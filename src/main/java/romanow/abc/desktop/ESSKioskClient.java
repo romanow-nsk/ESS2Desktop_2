@@ -8,10 +8,10 @@ package romanow.abc.desktop;
 import romanow.abc.core.ErrorList;
 import romanow.abc.core.UniException;
 import romanow.abc.core.constants.Values;
+import romanow.abc.core.entity.metadata.render.ScreenMode;
 import romanow.abc.desktop.console.ConsoleClient;
 import romanow.abc.desktop.console.ConsoleLogin;
 import romanow.abc.desktop.console.ConsoleSystemsList;
-import romanow.abc.desktop.screen.ScreenMode;
 
 import java.awt.*;
 import java.util.ArrayList;

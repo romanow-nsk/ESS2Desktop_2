@@ -1,9 +1,9 @@
 package romanow.abc.desktop.view;
 
 import romanow.abc.core.API.RestAPIBase;
+import romanow.abc.core.entity.metadata.render.ScreenMode;
 import romanow.abc.core.entity.subjectarea.AccessManager;
 import romanow.abc.core.entity.subjectarea.MetaGUIForm;
-import romanow.abc.desktop.screen.ScreenMode;
 
 
 public abstract class FormContext {

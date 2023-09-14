@@ -1,7 +1,7 @@
 package romanow.abc.desktop.view2.desktop;
 
+import romanow.abc.core.entity.metadata.render.ScreenMode;
 import romanow.abc.desktop.ESSServiceGUIPanel;
-import romanow.abc.desktop.screen.ScreenMode;
 
 public class ESSServiceGUIPanel2 extends ESSServiceGUIPanel {
     public ESSServiceGUIPanel2() {
