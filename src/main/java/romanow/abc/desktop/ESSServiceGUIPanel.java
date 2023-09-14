@@ -351,6 +351,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         int level = form.getLevel();
         Meta2GUIForm ff = baseForm;
         //-----------------------------------------------------------------------------------
+        /*
         if (context.getForm().getTitle().equals(Values.MainFormName)){
             TextField userTitle = new TextField();
             int  access = context.getManager().getCurrentAccessLevel();
@@ -362,6 +363,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             userTitle.setFont(new Font("Arial Cyr", Font.PLAIN, context.dy(12)));
             add(userTitle);
             }
+         */
         //-----------------------------------------------------------------------------------
         ff = baseForm;
         while (true) {
