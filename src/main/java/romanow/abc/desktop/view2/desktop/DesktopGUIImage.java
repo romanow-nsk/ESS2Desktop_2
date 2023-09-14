@@ -37,6 +37,7 @@ public class DesktopGUIImage extends View2BaseDesktop {
     private Image image = null;
     private JPanel imagePanel=null;
     private Meta2GUIImage element;
+    private int dx,dy;
     public DesktopGUIImage(){
         setType(Values.GUIImage);
         }
@@ -49,7 +50,7 @@ public class DesktopGUIImage extends View2BaseDesktop {
             @Override
             public void paint(Graphics g) {
                 g.setColor(new Color(0xfff0f0f0));
-                g.fillRect(0,0,imagePanel.getWidth(),imagePanel.getHeight());
+                g.fillRect(0,0,dx,dy);
                 if (image != null) {
                     g.drawImage(image, 0, 0, null);
                     imagePanel.setBorder(javax.swing.BorderFactory.createLineBorder(Color.BLUE,0));
@@ -61,11 +62,12 @@ public class DesktopGUIImage extends View2BaseDesktop {
                 super.paintBorder(g);
                 }
             };
+        dx = context.dx(element.getImageW());
+        dy = context.dy(element.getImageH());
         imagePanel.setBounds(
                 context.x(element.getX()+getDxOffset()+element.getDx()+5),
                 context.y(element.getY()+getDyOffset()),
-                context.dx(element.getImageW()),
-                context.dy(element.getImageH()));
+                dx,dy);
         panel.add(imagePanel);
         imagePanel.repaint();
         setInfoClick(imagePanel);
@@ -88,7 +90,7 @@ public class DesktopGUIImage extends View2BaseDesktop {
             if (response.isSuccessful()) {
                 ResponseBody body = response.body();
                 BufferedImage originalImage = ImageIO.read(body.byteStream());
-                image = originalImage.getScaledInstance(context0.x(element.getImageW()), context0.y(element.getImageH()), Image.SCALE_DEFAULT);
+                image = originalImage.getScaledInstance(context0.dx(element.getImageW()), context0.dy(element.getImageH()), Image.SCALE_DEFAULT);
                 return null;
                 }
             else{
