@@ -47,7 +47,7 @@ public class DesktopGUIData extends View2BaseDesktop {
         }
     public void showInfoMessage() {
         Meta2Register set =  getRegister();
-        String ss = "Регистр данных "+toHex(set.getRegNum()+getRegOffset())
+        String ss = "Регистр данных ["+getUnitIdx()+"] "+toHex(set.getRegNum()+getRegOffset())
                 +" ["+toHex(set.getRegNum())+"] "+set.getShortName()+"$"+set.getTitle()+"$";
         if (set instanceof Meta2DataRegister){
             Meta2DataRegister set2 = (Meta2DataRegister)set;

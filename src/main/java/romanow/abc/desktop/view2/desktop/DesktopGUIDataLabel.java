@@ -24,6 +24,7 @@ public class DesktopGUIDataLabel extends View2BaseDesktop {
     @Override
     public void addToPanel(JPanel panel) {
         label = setLabel(panel);
+        label.setForeground(getElemBackColor());
         setInfoClick(label);
         }
     public void showInfoMessage() {
@@ -40,7 +41,7 @@ public class DesktopGUIDataLabel extends View2BaseDesktop {
         int type = register.getFormat();
         Meta2GUIRegW2 metaGUI = (Meta2GUIRegW2)getElement();
         String ss = register.regValueToString(getUnitIdx(),(int)vv,metaGUI);
-        label.setText(" " + getElement().getTitle() + " = " + ss + " " + register.getUnit());
+        label.setText("" + getElement().getTitle() + "=" + ss + " " + register.getUnit());
         }
     @Override
     public String setParams(FormContext2 context0, ESS2Architecture meta0, Meta2GUI element0, I_GUI2Event onEvent0) {

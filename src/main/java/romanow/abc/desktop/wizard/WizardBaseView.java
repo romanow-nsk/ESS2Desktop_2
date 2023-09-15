@@ -98,7 +98,7 @@ public class WizardBaseView extends javax.swing.JFrame {
             }
         entity = entity0;
         setVisible(true);
-        setLocation(200+level*10,250+level*10);
+        setLocation(800+level*10,500+level*10);
         setSize(800,170);
         setTitle("Уровень "+(level+1)+"  "+entity.getFullTitle());
         Title.setText(entity.getTitle());

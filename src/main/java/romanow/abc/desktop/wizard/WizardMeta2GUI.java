@@ -124,6 +124,7 @@ public class WizardMeta2GUI extends WizardBaseView {
                 formWindowClosing(evt);
             }
         });
+        getContentPane().setLayout(null);
         getContentPane().add(Элемент);
         Элемент.setBounds(10, 65, 770, 0);
 
@@ -284,7 +285,12 @@ public class WizardMeta2GUI extends WizardBaseView {
         getContentPane().add(MoveLeft);
         MoveLeft.setBounds(800, 60, 40, 38);
 
-        MoveStep.setText("5");
+        MoveStep.setText("25");
+        MoveStep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MoveStepActionPerformed(evt);
+            }
+        });
         getContentPane().add(MoveStep);
         MoveStep.setBounds(800, 10, 30, 25);
 
@@ -329,6 +335,7 @@ public class WizardMeta2GUI extends WizardBaseView {
         getContentPane().add(SelecElem);
         SelecElem.setBounds(880, 120, 30, 30);
 
+        Step5_25.setSelected(true);
         Step5_25.setText("Шаг 5/25");
         Step5_25.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -507,6 +514,7 @@ public class WizardMeta2GUI extends WizardBaseView {
                 if (form2!=null)
                     form1 = form2;
                 form1.getControls().getList().remove(elem);     // Удалить из списка элементов управления GUI формы
+                back.onEnter("Удален "+form1.getTitle()+": "+elem.getFullTitle());
                 onClose.onEnter("Удален "+form1.getTitle()+": "+elem.getFullTitle());
                 dispose();
                 }
@@ -668,6 +676,10 @@ public class WizardMeta2GUI extends WizardBaseView {
         elem.setBackColor(ElemBackColor.isSelected());
         back.onEnter("Изменено ElemBackColor: "+elem.isBackColor());
     }//GEN-LAST:event_ElemBackColorItemStateChanged
+
+    private void MoveStepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MoveStepActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MoveStepActionPerformed
 
  
 
