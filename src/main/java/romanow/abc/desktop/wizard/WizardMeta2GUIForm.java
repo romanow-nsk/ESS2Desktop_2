@@ -123,6 +123,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
             LinkForm.setSelected(view.isLinkForm());
             BaseForm.setSelected(view.isBaseForm());
             SnapShot.setSelected(view.isSnapShot());
+            DebugForm.setSelected(view.isDebugForm());
             //---------------------------------------------------------------------------
             ImageX0.setText(""+view.getImageX0());
             ImageY0.setText(""+view.getImageY0());
@@ -291,6 +292,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
         SetIcon = new javax.swing.JButton();
         UploadIcon = new javax.swing.JButton();
         IconAlias = new javax.swing.JTextField();
+        DebugForm = new javax.swing.JCheckBox();
 
         getContentPane().setLayout(null);
         getContentPane().add(Types);
@@ -298,7 +300,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
 
         jLabel1.setText("Элемент ЧМИ+");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(500, 150, 100, 16);
+        jLabel1.setBounds(510, 150, 100, 16);
 
         label111.setText("Y0");
         getContentPane().add(label111);
@@ -395,7 +397,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
 
         label116.setText("Фон (файл)");
         getContentPane().add(label116);
-        label116.setBounds(500, 185, 80, 16);
+        label116.setBounds(510, 185, 80, 16);
 
         Image.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -403,7 +405,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
             }
         });
         getContentPane().add(Image);
-        Image.setBounds(610, 190, 140, 25);
+        Image.setBounds(610, 180, 140, 25);
 
         label117.setText(" элементов");
         getContentPane().add(label117);
@@ -748,6 +750,15 @@ public class WizardMeta2GUIForm extends WizardBaseView {
         getContentPane().add(IconAlias);
         IconAlias.setBounds(630, 350, 90, 25);
 
+        DebugForm.setText("Отладочная");
+        DebugForm.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                DebugFormItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(DebugForm);
+        DebugForm.setBounds(610, 210, 130, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1031,11 +1042,19 @@ public class WizardMeta2GUIForm extends WizardBaseView {
             };
     }//GEN-LAST:event_UploadIconActionPerformed
 
+    private void DebugFormItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DebugFormItemStateChanged
+        if (busy)
+            return;
+        view.setDebugForm(DebugForm.isSelected());
+        back.onEnter("Изменено DebugForm="+DebugForm.isSelected());
+    }//GEN-LAST:event_DebugFormItemStateChanged
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Choice AccessLevel;
     private javax.swing.JCheckBox BaseForm;
+    private javax.swing.JCheckBox DebugForm;
     private javax.swing.JTextField ElemCount;
     private javax.swing.JCheckBox Empty;
     private javax.swing.JTextField FormLevel;

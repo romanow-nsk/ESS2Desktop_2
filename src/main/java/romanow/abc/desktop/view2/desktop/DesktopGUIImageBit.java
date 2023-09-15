@@ -83,17 +83,14 @@ public class DesktopGUIImageBit extends View2BaseDesktop {
         bitNum = element.getBitNum();
         }
     public void showInfoMessage() {
-        Meta2GUI2StateBox element = (Meta2GUI2StateBox) getElement();
-        int bitNumElem = element.getBitNum();
         Meta2BitRegister set = (Meta2BitRegister) getRegister();
-        Meta2Bit bit = set.getBits().getByCode(bitNumElem);
+        Meta2Bit bit = set.getBits().getByCode(bitNum);
         String ss = "Разряд регистра "+toHex(set.getRegNum()+getRegOffset())+" ["+toHex(set.getRegNum())+"]("+bitNum+") "+set.getShortName()+"$"+set.getTitle()+"$";
         ss+=bit==null ? " не найден " : bit.getTitle();
         new Message(300,300,ss,Values.PopupMessageDelay);
         }
     @Override
     public void putValue(long vv) throws UniException {
-        Meta2GUI2StateBox element = (Meta2GUI2StateBox) getElement();
         lastBitValue = (int)(vv>>bitNum) & 01;
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

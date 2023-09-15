@@ -378,6 +378,8 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                     continue;
                 if (next.isBaseForm())
                     continue;
+                if (next.isDebugForm() && !runtimeEditMode)
+                    continue;
                 String text = next.getTitle().replace("_","");
                 text =  "<html><center>" + text.replaceAll(" ", "<br>") + "</html>";
                 //---------------------------------------------------- Параметры кнопки --------------------------------

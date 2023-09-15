@@ -51,8 +51,7 @@ public class DesktopGUILevelWB extends View2BaseDesktop {
                 context.dx(w2-1),
                 context.dy(5));
         panel.add(textField);
-        backColor = new Color(element.getColor());
-        textField.setBackground(backColor);
+        textField.setBackground(Color.GRAY);
         setInfoClick(textField);
         }
     public void showInfoMessage() {
@@ -85,7 +84,7 @@ public class DesktopGUILevelWB extends View2BaseDesktop {
                 context.x(element.getX()+getDxOffset()+5),
                 context.y(element.getY()+getDyOffset()+h-hh),
                 context.dx(w2-1),
-                context.dy(hh+15));
+                context.dy(hh+10));
         textField.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
         }
     @Override
