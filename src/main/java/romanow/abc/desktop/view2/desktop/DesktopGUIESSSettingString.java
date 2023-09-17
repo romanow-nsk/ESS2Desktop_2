@@ -27,6 +27,7 @@ public class DesktopGUIESSSettingString extends View2BaseDesktop {
     public DesktopGUIESSSettingString(){ setType(Values.GUIESSSettingString); }
     @Override
     public void addToPanel(JPanel panel) {
+        setLabel(panel);
         FormContext2 context= getContext();
         Meta2GUIESSSettingString element = (Meta2GUIESSSettingString) getElement();
         setLabel(panel);

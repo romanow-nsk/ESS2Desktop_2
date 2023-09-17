@@ -44,6 +44,7 @@ public class DesktopGUIBitCheckBox extends View2BaseDesktop {
     //-----------------------------------------------------------------------
     @Override
     public void addToPanel(JPanel panel) {
+        setLabel(panel);
         Meta2GUIBitCheckBox element = (Meta2GUIBitCheckBox) getElement();
         if (element.getDx()!=0)
             setLabel(panel);

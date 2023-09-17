@@ -29,6 +29,7 @@ public class DesktopGUIButton extends View2BaseDesktop {
     public Component getComponent(){ return textField; }
     @Override
     public void addToPanel(JPanel panel) {
+        setLabel(panel);
         textField = new JButton();
         FormContext2 context = getContext();
         Meta2GUIButton element = (Meta2GUIButton) getElement();

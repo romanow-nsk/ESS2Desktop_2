@@ -49,6 +49,7 @@ public class DesktopGUI3StateBox extends View2BaseDesktop {
     }
     @Override
     public void addToPanel(JPanel panel) {
+        setLabel(panel);
         failMode=true;
         FormContext2 context= getContext();
         Meta2GUI2StateBox element = (Meta2GUI2StateBox) getElement();

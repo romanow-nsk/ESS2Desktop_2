@@ -28,6 +28,7 @@ public class DesktopGUIScriptLabel extends View2BaseDesktop {
         }
     @Override
     public void addToPanel(JPanel panel) {
+        setLabel(panel);
         element = (Meta2GUIScriptLabel)getElement();
         label = setLabel(panel);
         setInfoClick(label);

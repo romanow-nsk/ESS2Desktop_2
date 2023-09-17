@@ -32,6 +32,7 @@ public class DesktopGUICommandBit extends View2BaseDesktop {
         }
     @Override
     public void addToPanel(JPanel panel) {
+        setLabel(panel);
         textField = new JButton();
         FormContext2 context = getContext();
         Meta2GUICommandBit element = (Meta2GUICommandBit) getElement();

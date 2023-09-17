@@ -692,7 +692,8 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             desktop.addToPanel(this);                   // Добавить на панель
             Meta2GUI selected = context.getSelectedView();
             if (desktop.getElement()==selected && runtimeEditMode){
-                GUITimer.trace(desktop.getLabel(),3,Color.PINK);
+                if (desktop.getLabel()!=null)
+                    GUITimer.trace(desktop.getLabel(),3,Color.PINK);
                 if (desktop.getComponent()!=null)
                     GUITimer.trace(desktop.getComponent(),3,Color.PINK);
                 }

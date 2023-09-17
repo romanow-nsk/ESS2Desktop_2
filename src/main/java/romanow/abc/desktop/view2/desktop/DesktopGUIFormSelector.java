@@ -30,6 +30,7 @@ public class DesktopGUIFormSelector extends View2BaseDesktop {
     private boolean busy=false;
     @Override
     public void addToPanel(JPanel panel) {
+        setLabel(panel);
         busy=true;
         setLabel(panel);
         prev = new JButton();

@@ -65,6 +65,7 @@ public class DesktopGUIBit2Commands extends View2BaseDesktop {
         }
     @Override
     public void addToPanel(JPanel panel) {
+        setLabel(panel);
         Meta2GUIBit2Commands element = (Meta2GUIBit2Commands) getElement();
         int hh = element.getH();
         if (hh==0) hh=25;

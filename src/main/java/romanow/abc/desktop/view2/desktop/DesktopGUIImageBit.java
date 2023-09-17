@@ -47,6 +47,7 @@ public class DesktopGUIImageBit extends View2BaseDesktop {
     //-----------------------------------------------------------------------
     @Override
     public void addToPanel(JPanel panel) {
+        setLabel(panel);
         element = (Meta2GUIImageBit) getElement();
         int hh = element.getH();
         if (hh==0) hh=25;

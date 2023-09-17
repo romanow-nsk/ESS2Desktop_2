@@ -26,6 +26,7 @@ public class DesktopGUIESSSettingBoolean extends View2BaseDesktop {
     public DesktopGUIESSSettingBoolean(){ setType(Values.GUIESSSettingBoolean); }
     @Override
     public void addToPanel(JPanel panel) {
+        setLabel(panel);
         FormContext2 context= getContext();
         Meta2GUIESSSettingBoolean element = (Meta2GUIESSSettingBoolean) getElement();
         int hh = element.getH();

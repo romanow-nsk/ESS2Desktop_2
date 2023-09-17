@@ -62,6 +62,7 @@ public class DesktopGUIBitStateCmd extends View2BaseDesktop {
         }
     @Override
     public void addToPanel(JPanel panel) {
+        setLabel(panel);
         Meta2GUIBitStateCmd element = (Meta2GUIBitStateCmd)  getElement();
         int hh = element.getH();
         if (hh==0) hh=25;
