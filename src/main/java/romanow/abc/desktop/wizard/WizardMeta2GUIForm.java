@@ -145,6 +145,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
             ModuleY0.setText(""+view.getModuleY0());
             ModuleDX.setText(""+view.getModuleDX());
             ModuleDY.setText(""+view.getModuleDY());
+            ScrollScale.setText(""+view.getFormScrollScale());
             //-------------------------------------------------------------------------
             }
     private void refreshImageList(){
@@ -293,6 +294,8 @@ public class WizardMeta2GUIForm extends WizardBaseView {
         UploadIcon = new javax.swing.JButton();
         IconAlias = new javax.swing.JTextField();
         DebugForm = new javax.swing.JCheckBox();
+        label129 = new javax.swing.JLabel();
+        ScrollScale = new javax.swing.JTextField();
 
         getContentPane().setLayout(null);
         getContentPane().add(Types);
@@ -593,9 +596,9 @@ public class WizardMeta2GUIForm extends WizardBaseView {
         getContentPane().add(ModuleDX);
         ModuleDX.setBounds(640, 310, 40, 25);
 
-        label125.setText("Модуль");
+        label125.setText("Скролл ↑↓");
         getContentPane().add(label125);
-        label125.setBounds(370, 285, 60, 16);
+        label125.setBounds(370, 320, 60, 16);
 
         label126.setText("DY");
         getContentPane().add(label126);
@@ -758,6 +761,18 @@ public class WizardMeta2GUIForm extends WizardBaseView {
         });
         getContentPane().add(DebugForm);
         DebugForm.setBounds(610, 210, 130, 20);
+
+        label129.setText("Модуль");
+        getContentPane().add(label129);
+        label129.setBounds(370, 290, 60, 16);
+
+        ScrollScale.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ScrollScaleKeyPressed(evt);
+            }
+        });
+        getContentPane().add(ScrollScale);
+        ScrollScale.setBounds(430, 315, 60, 25);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1049,6 +1064,15 @@ public class WizardMeta2GUIForm extends WizardBaseView {
         back.onEnter("Изменено DebugForm="+DebugForm.isSelected());
     }//GEN-LAST:event_DebugFormItemStateChanged
 
+    private void ScrollScaleKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ScrollScaleKeyPressed
+        onKeyPressedFloat("formScrollScale", ScrollScale, evt, new I_WizardActionFloat() {
+            @Override
+            public void onAction(float value) {
+                view.setFormScrollScale(value);
+                }
+        });
+    }//GEN-LAST:event_ScrollScaleKeyPressed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1090,6 +1114,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
     private javax.swing.JButton SaveAccessLevel;
     private javax.swing.JButton SaveParent;
     private javax.swing.JButton SaveWriteLevel;
+    private javax.swing.JTextField ScrollScale;
     private javax.swing.JButton SetIcon;
     private javax.swing.JButton SetImage;
     private javax.swing.JCheckBox SnapShot;
@@ -1132,5 +1157,6 @@ public class WizardMeta2GUIForm extends WizardBaseView {
     private javax.swing.JLabel label126;
     private javax.swing.JLabel label127;
     private javax.swing.JLabel label128;
+    private javax.swing.JLabel label129;
     // End of variables declaration//GEN-END:variables
 }

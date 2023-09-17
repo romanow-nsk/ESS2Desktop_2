@@ -80,6 +80,10 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     private Meta2GUIForm prevForm=null;                         // Предыдущая форма (асинхр обновление)
     private boolean runtimeEditMode=false;
     private boolean runtimeOnlyView=false;
+    private boolean forMobile=false;                            // Рендеринг со скролом для мобильных
+    private JPanel mobileDelegate=null;
+    private JScrollPane mobileScroll=null;
+    private String currentBaseFormName="";
     private final static int PopupLimitCount = 5;
     private final static int PopupLimitTime = 20;
     private PopupLimiter limiter = new PopupLimiter(PopupLimitCount,PopupLimitTime);
@@ -117,6 +121,8 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         renderingOn = vv;
         if (!renderingOn){
             context.setSelectedView(null);
+            mobileScroll=null;
+            mobileDelegate=null;
             if (insertSelected!=null)
                 insertSelected.setVisible(false);
             }
@@ -250,7 +256,6 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
          OnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource(Values.ESSStateIcon[essOnOffState])));
          */
          }
-    //---------------------------------------------------------------------------------------
     //---------------------------------------------------------------------------------------
     @Override
     public void paintComponent(Graphics g){
@@ -529,6 +534,20 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 }
             }
         }
+    //----------------------------- Scroll для мобильных ---------------------------------------
+    public Component add(Component comp) {
+        if (!forMobile)
+            super.add(comp);
+        else
+            mobileDelegate.add(comp);
+        return comp;
+        }
+    public void revalidate(){
+        if (!forMobile)
+            super.revalidate();
+        else
+            mobileDelegate.revalidate();
+        }
     //-------------------------------------------------------------------------------------------
     public synchronized void  repaintView() {
         setRenderingOnOff(true);
@@ -539,7 +558,6 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         Meta2GUIView currentView = currentView().getView();
         Meta2EntityList<Meta2GUIForm> formList = currentView.getForms();
         this.setBackground(new Color(currentView.getBackColor()));
-        removeAll();
         errorList.clear();
         if (currentView() == null || !context.isValid()) {
             return;
@@ -549,6 +567,43 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 //repaintBusy = false;
                 return;
                 }
+        //---------------------------- Вложенный скролл для Android ---------------------
+        forMobile=false;
+        if (currentView.getXmlType()== MTViewAndroid){
+            if (mobileScroll!=null && context.getBaseForm().getTitle().equals(currentBaseFormName))
+                mobileDelegate.removeAll();
+            else{
+                removeAll();
+                currentBaseFormName = context.getBaseForm().getTitle();
+                mobileDelegate = new JPanel(){          // Перенаправить прорисовку фона в скролле на имеющуюся
+                    @Override
+                    public void paintComponent(Graphics g){
+                        ESSServiceGUIPanel.this.paintComponent(g);
+                    }
+                };
+                GroupLayout layout = new GroupLayout(mobileDelegate);
+                mobileDelegate.setLayout(layout);
+                layout.setHorizontalGroup(              // Для панелей - из визарда NetBeans
+                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGap(0, 400, Short.MAX_VALUE));
+                layout.setVerticalGroup(
+                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGap(0, 300, Short.MAX_VALUE));
+                double scale = context.getBaseForm().getFormScrollScale();
+                if (scale==0)
+                    scale=1;
+                mobileDelegate.setPreferredSize(new Dimension(Client.PanelW,(int)(Client.PanelH*scale)));
+                mobileScroll = new JScrollPane(mobileDelegate);
+                mobileScroll.setBounds(0,0,Client.PanelW,Client.PanelH);
+                mobileScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+                add(mobileScroll);                // Добавить еще в старое
+                }
+            forMobile = true;
+            }
+        else{
+            removeAll();
+            }
+        //------------------------------------------------------------------------------------------
         Meta2GUIForm fff = context.getForm();
         if (fff.isEmpty()){         // пропустить пустые экраны
             while (fff.isEmpty()){
