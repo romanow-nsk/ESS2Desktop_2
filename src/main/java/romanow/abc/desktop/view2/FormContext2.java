@@ -16,7 +16,7 @@ import romanow.abc.desktop.MainBaseFrame;
 
 
 public class FormContext2 extends FormContextBase {
-    @Getter @Setter private MainBaseFrame main;
+    @Getter @Setter private MainBaseFrame main=null;
     public FormContext2(I_ContextBack back0, int idx1, int idx2, int idx3) {
         super(back0, idx1, idx2, idx3);
         }

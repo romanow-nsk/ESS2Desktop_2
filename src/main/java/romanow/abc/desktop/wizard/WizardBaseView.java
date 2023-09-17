@@ -26,6 +26,7 @@ import java.util.HashMap;
  * @author romanow0
  */
 public class WizardBaseView extends javax.swing.JFrame {
+    private boolean isClosed=false;
     protected I_Value<String> onClose=null;
     protected MainBaseFrame main;
     protected WizardBaseView parentView;
@@ -98,7 +99,7 @@ public class WizardBaseView extends javax.swing.JFrame {
             }
         entity = entity0;
         setVisible(true);
-        setLocation(800+level*10,500+level*10);
+        setLocation(300+level*10,700+level*10);
         setSize(800,170);
         setTitle("Уровень "+(level+1)+"  "+entity.getFullTitle());
         Title.setText(entity.getTitle());
@@ -220,10 +221,13 @@ public class WizardBaseView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public void closeForm(){
+        if (isClosed)
+            return;
         if (parentView!=null)
             parentView.setVisible(true);
         if (onClose!=null)
             onClose.onEnter(entity.getTitle());
+        isClosed=true;
         dispose();
     }
 

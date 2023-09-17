@@ -1,11 +1,14 @@
 package romanow.abc.desktop.view2;
 
+import lombok.Getter;
 import romanow.abc.desktop.UtilsDesktop;
 
 import javax.swing.*;
 import java.awt.*;
 
 public abstract class View2BaseDesktop extends View2Base implements I_View2Desktop {
+    @Getter private JLabel label;
+    public Component getComponent(){ return null; }
     public void setTextFieldParams(JTextField textField) {
         setComponentParams(textField,true);
         textField.setText(element.getTitle());
@@ -69,7 +72,7 @@ public abstract class View2BaseDesktop extends View2Base implements I_View2Deskt
         //    text += " "+(groupIndex+1);
         int hh = element.getH();
         if (hh==0) hh=25;
-        JLabel label = new JLabel();
+        label = new JLabel();
         label.setBounds(
                 context.x(element.getX()+dxOffset),
                 context.y(element.getY()+dyOffset),
@@ -90,6 +93,7 @@ public abstract class View2BaseDesktop extends View2Base implements I_View2Deskt
         int type = element.isLabelBold()? Font.BOLD : Font.PLAIN;
         label.setFont(new Font("Arial Cyr", type, context.dy(fontSize)));
         label.setHorizontalAlignment(element.isLabelOnCenter() ? JTextField.CENTER : JTextField.LEFT);
+        setInfoClick(label);
         panel.add(label);
         return label;
         }

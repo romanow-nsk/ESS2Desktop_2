@@ -45,6 +45,7 @@ public class DesktopGUIData extends View2BaseDesktop {
         panel.add(textField);
         setInfoClick(textField);
         }
+    public Component getComponent(){ return textField; }
     public void showInfoMessage() {
         Meta2Register set =  getRegister();
         String ss = "Регистр данных ["+getUnitIdx()+"] "+toHex(set.getRegNum()+getRegOffset())

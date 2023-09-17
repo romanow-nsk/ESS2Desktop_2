@@ -262,6 +262,8 @@ public class ESSMainServiceGUIPanel extends ESSBasePanel {
     public void paintComponent(Graphics g){
         ScreenMode screen = context.getScreen();
         Meta2GUIForm form = context.getForm();
+        g.setColor(new Color(context.getView().getBackColor()-0x101010));
+        g.fillRect( context.x(0), context.y(0), screen.getRealX(), screen.getRealY());
         g.setColor(new Color(context.getView().getBackColor()));
         g.fillRect( context.x(0), context.y(0), screen.ScreenW(), screen.ScreenH());
         if (form==null || form.getPicture().getOid()==0)

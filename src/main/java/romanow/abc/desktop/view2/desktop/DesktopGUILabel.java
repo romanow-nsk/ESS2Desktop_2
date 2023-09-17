@@ -18,7 +18,6 @@ public class DesktopGUILabel extends View2BaseDesktop {
     @Override
     public void addToPanel(JPanel panel) {
         JLabel label = setLabel(panel);          // Power==1 - с цветом
-        setInfoClick(label);
         }
 
     @Override

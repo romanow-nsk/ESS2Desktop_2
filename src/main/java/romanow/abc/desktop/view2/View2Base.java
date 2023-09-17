@@ -98,9 +98,7 @@ public abstract class View2Base implements I_View2 {
                     if (!context.isRuntimeEditMode())
                         showInfoMessage();
                     else{
-                        context.setSelectedView(element);
-                        context.getMain().sendEventPanel(BasePanel.EventRuntimeSelected,0,0,"");
-                        GUITimer.trace(textField,5, Color.PINK);
+                        context.getMain().sendEventPanel(BasePanel.EventRuntimeSelected,0,0,"",element);
                         String ss = WizardBaseView.openWizardByType(element, null, onClose, onChange,context);
                         if (ss!=null)
                             new Message(300,300,ss,Values.PopupMessageDelay);

@@ -26,7 +26,7 @@ public class DesktopGUIButton extends View2BaseDesktop {
     public DesktopGUIButton(){
         setType(Values.GUIButton);
         }
-
+    public Component getComponent(){ return textField; }
     @Override
     public void addToPanel(JPanel panel) {
         textField = new JButton();

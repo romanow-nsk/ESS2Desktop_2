@@ -19,6 +19,7 @@ public class WizardRegLinkPanel extends javax.swing.JPanel {
     private Meta2RegLink elem;
     private WizardMeta2GUI base;
     private String prefix;
+    private boolean busy=false;
     public WizardRegLinkPanel(int x0, int y0, String prefix0, Meta2RegLink link0,WizardMeta2GUI base0) {
         initComponents();
         prefix = prefix0;
@@ -31,10 +32,12 @@ public class WizardRegLinkPanel extends javax.swing.JPanel {
         setRegNum();
         }
     private void setRegNum(){
+        busy = true;
         Equip.setText(elem.getEquipName());
         RegNum.setText(HEX.isSelected() ? "0x"+Integer.toString(elem.getRegNum(),16) : ""+elem.getRegNum());
         UnitIdx.setText(""+elem.getUnitIdx());
         OwnUnit.setSelected(elem.isOwnUnit());
+        busy = false;
         }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -137,6 +140,8 @@ public class WizardRegLinkPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_UnitIdxKeyPressed
 
     private void OwnUnitItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_OwnUnitItemStateChanged
+        if (busy)
+            return;
         elem.setOwnUnit(OwnUnit.isSelected());
         base.back.onEnter("Изменено ownUnit"+OwnUnit.isSelected());
     }//GEN-LAST:event_OwnUnitItemStateChanged

@@ -26,10 +26,10 @@ public class DesktopGUI3StateBox extends View2BaseDesktop {
         setType(Values.GUI3StateBox);
         }
     private String iconsWarning[]={
-        "/balllightgray.png","/ballyellow.png","/ballred.png","/ballwhite.png"
+        "/balllightgray.png","/ballyellow.png","/ballred.png","/ballblue.png"
         };
     private String iconsWorking[]={
-         "/balllightgray.png","/ballgreen.png","/ballred.png","/ballwhite.png"
+         "/balllightgray.png","/ballgreen.png","/ballred.png","/ballblue.png"
         };
     //----------------------------------------------------------------------
     protected JComponent createComponent(){

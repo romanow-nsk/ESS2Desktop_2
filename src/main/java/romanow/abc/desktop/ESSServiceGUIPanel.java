@@ -83,7 +83,6 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     private final static int PopupLimitCount = 5;
     private final static int PopupLimitTime = 20;
     private PopupLimiter limiter = new PopupLimiter(PopupLimitCount,PopupLimitTime);
-    private Meta2GUI selected=null;
     private volatile int asyncCount=0;                          // Счетчик асинхронных вызовов
     JButton insertSelected = null;
     private FormContext2 context = new FormContext2(new I_ContextBack() {
@@ -117,7 +116,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     private void setRenderingOnOff(boolean vv){
         renderingOn = vv;
         if (!renderingOn){
-            selected=null;
+            context.setSelectedView(null);
             if (insertSelected!=null)
                 insertSelected.setVisible(false);
             }
@@ -257,6 +256,8 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     public void paintComponent(Graphics g){
         ScreenMode screen = context.getScreen();
         Meta2GUIForm form = context.getForm();
+        g.setColor(new Color(context.getView().getBackColor()-0x101010));
+        g.fillRect( context.x(0), context.y(0), screen.getRealX(), screen.getRealY());
         g.setColor(new Color(context.getView().getBackColor()));
         g.fillRect( context.x(0), context.y(0), screen.ScreenW(), screen.ScreenH());
         if (form==null || form.getPicture().getOid()==0)
@@ -617,6 +618,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         insertSelected.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Meta2GUI selected = context.getSelectedView();
                 if (selected==null){
                     if (insertSelected!=null)
                         insertSelected.setVisible(false);
@@ -653,7 +655,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             });
         add(insertSelected);
         insertSelected.setBounds(context.x(ScreenDesktopWidth-50), context.y(ScreenDesktopHeight-80), context.dx(40), context.dy(40));
-        insertSelected.setVisible(selected!=null && context.isRuntimeEditMode());
+        insertSelected.setVisible(context.getSelectedView()!=null && context.isRuntimeEditMode());
         //-----------------------------------------------------------------------------------
         JButton logout = new JButton();
         logout.setIcon(new javax.swing.ImageIcon(getClass().getResource(buttonLogout))); // NOI18N
@@ -685,8 +687,16 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         guiList.clear();
         int idx[] = new int[Values.FormStackSize];
         renderGuiElement(baseForm.getControls(),0,0,0,idx);  // Рекурсивный рендеринг для всех уровней
-        for(View2Base view :  guiList)
-            ((View2BaseDesktop)view).addToPanel(this);                      // Добавить на панель
+        for(View2Base view :  guiList) {
+            View2BaseDesktop desktop = (View2BaseDesktop)view;
+            desktop.addToPanel(this);                   // Добавить на панель
+            Meta2GUI selected = context.getSelectedView();
+            if (desktop.getElement()==selected && runtimeEditMode){
+                GUITimer.trace(desktop.getLabel(),3,Color.PINK);
+                if (desktop.getComponent()!=null)
+                    GUITimer.trace(desktop.getComponent(),3,Color.PINK);
+                }
+            }
         //----------------------------------------------------------------------------------
         module=null;
         if (!context.getForm().noModule()){
@@ -760,13 +770,15 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             context.setRuntimeOnlyView(runtimeOnlyView);
             }
         if (code==EventRuntimeSelected && currentView()!=null && runtimeEditMode){
-            selected = (Meta2GUI) oo;
+            context.setSelectedView((Meta2GUI) oo);
             insertSelected.setVisible(true);
+            repaintView();
             }
         if (code==EventRuntimeUnSelected){
-            selected = null;
+            context.setSelectedView(null);
             if (insertSelected!=null)
                 insertSelected.setSelected(false);
+            repaintView();
             }
         }
     //---------------------------------------------------------------------------------------------
@@ -987,37 +999,36 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             for(int i=0;i<Values.FormStackSize;i++)
                 vv[i]=groupIndexes[i];
             if (meta instanceof Meta2GUIReg) {          // Для регистров - индексы массивов по индесам View
-                Meta2GUIReg regGUI = (Meta2GUIReg)meta;
+                Meta2GUIReg regGUI = (Meta2GUIReg) meta;
                 Meta2RegLink link = regGUI.getRegLink();
                 Meta2Register register = link.getRegister();
-                String equipName= regGUI.getEquipName();
+                String equipName = regGUI.getEquipName();
                 ESS2Equipment equipment = main2.deployed.getEquipments().getByName(equipName);
-                if (equipment==null){
-                    errorList.addError("Не найдено оборудование "+equipName+" для "+regGUI.getFullTitle());
+                if (equipment == null) {
+                    errorList.addError("Не найдено оборудование " + equipName + " для " + regGUI.getFullTitle());
                     return;
                     }
                 int connectorsSize = equipment.getLogUnits().size();
-                    if (connectorsSize==0){
-                        errorList.addError("Нет устройств для "+equipName);
-                        return;
-                        }
-                //------------- Подсчет смещения регистров, индексов контроллеров и Unit  ---------------------
-                int treeLevel = register.getArrayLevel()-1;         // Кол-во массивов в дереве Meta-элементов (+device+units) -1
-                int grlevel = groupLevel-1;                         // Кол-во массивов в форме
-                int stacklevel = context.getForm().getLevel()-1;    // Вершина стека индексов форм для тек. уровня
-                if (!link.isOwnUnit() && treeLevel > stacklevel+1){
-                    errorList.addError("Уровень массива мета-данных > уровня формы "+
-                            equipName+" для "+regGUI.getFullTitle()+"="+(treeLevel+1)+" "+
-                            context.getForm().getTitle()+"="+(stacklevel+1));
+                if (connectorsSize == 0) {
+                    errorList.addError("Нет устройств для " + equipName);
                     return;
                     }
-                int regOffset=0;
+                //------------- Подсчет смещения регистров, индексов контроллеров и Unit  ---------------------
+                int treeLevel = register.getArrayLevel() - 1;         // Кол-во массивов в дереве Meta-элементов (+device+units) -1
+                int grlevel = groupLevel - 1;                         // Кол-во массивов в форме
+                int stacklevel = context.getForm().getLevel() - 1;    // Вершина стека индексов форм для тек. уровня
+                if (!link.isOwnUnit() && treeLevel > stacklevel + 1) {
+                    errorList.addError("Уровень массива мета-данных > уровня формы " +
+                            equipName + " для " + regGUI.getFullTitle() + "=" + (treeLevel + 1) + " " +
+                            context.getForm().getTitle() + "=" + (stacklevel + 1));
+                    return;
+                    }
+                int regOffset = 0;
                 stacklevel = treeLevel;
-                if (link.isOwnUnit()){      // Unit задан явно - не групповые = явно перечисленные
+                if (link.isOwnUnit()) {      // Unit задан явно - не групповые = явно перечисленные
                     newElem.setRegOffset(0);
                     newElem.setUnitIdx(link.getUnitIdx());
-                    }
-                else{                       // Иначе генерация по массивам
+                } else {                       // Иначе генерация по массивам
                     for (Meta2Entity cc = register.getHigh(); cc != null; cc = cc.getHigh()) {
                         if (!(cc instanceof Meta2Array))
                             continue;
@@ -1039,9 +1050,9 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                         stacklevel--;
                         }
                     newElem.setRegOffset(regOffset);
-                    }
-                if (newElem.getUnitIdx() >= connectorsSize){
-                    errorList.addError("Индекс Unit "+newElem.getUnitIdx()+" превышен  "+equipName+" для "+regGUI.getFullTitle());
+                }
+                if (newElem.getUnitIdx() >= connectorsSize) {
+                    errorList.addError("Индекс Unit " + newElem.getUnitIdx() + " превышен  " + equipName + " для " + regGUI.getFullTitle());
                     return;
                     }
                 ESS2LogUnit unit = equipment.getLogUnits().get(newElem.getUnitIdx());
@@ -1049,18 +1060,18 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 newElem.setDevUnit(unit.getUnit());        // Физический Unit
                 //----------------------ВТОРОЙ ЛИНК БЕЗ ИНДЕКСАЦИИ -----------------------------------------------------
                 ESS2Equipment equipment2 = null;
-                Meta2RegLink link2= meta.getSecondLink();
-                if (link2!=null){
+                Meta2RegLink link2 = meta.getSecondLink();
+                if (link2 != null) {
                     Meta2Register register2 = link2.getRegister();
-                    String equipName2= link2.getEquipName();
+                    String equipName2 = link2.getEquipName();
                     equipment2 = main2.deployed.getEquipments().getByName(equipName2);
-                    if (equipment2==null){
-                        errorList.addError("Не найдено оборудование "+equipName2+" для "+regGUI.getFullTitle());
+                    if (equipment2 == null) {
+                        errorList.addError("Не найдено оборудование " + equipName2 + " для " + regGUI.getFullTitle());
                         return;
                         }
                     int connectorsSize2 = equipment2.getLogUnits().size();
-                    if (connectorsSize2==0){
-                        errorList.addError("Нет устройств для "+equipName2);
+                    if (connectorsSize2 == 0) {
+                        errorList.addError("Нет устройств для " + equipName2);
                         return;
                         }
                     ESS2LogUnit unit2 = equipment2.getLogUnits().get(link2.getUnitIdx());

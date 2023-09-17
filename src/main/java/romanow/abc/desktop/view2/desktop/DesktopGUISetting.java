@@ -25,7 +25,7 @@ public class DesktopGUISetting extends View2BaseDesktop {
     public DesktopGUISetting(){
         setType(Values.GUISetting);
         }
-
+    public Component getComponent(){ return textField; }
     @Override
     public void addToPanel(JPanel panel) {
         setLabel(panel);
