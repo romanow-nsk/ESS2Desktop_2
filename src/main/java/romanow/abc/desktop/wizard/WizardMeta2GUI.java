@@ -615,7 +615,7 @@ public class WizardMeta2GUI extends WizardBaseView {
     }//GEN-LAST:event_MoveUpActionPerformed
 
     private void SelecElemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelecElemActionPerformed
-        context.getMain().sendEventPanel(EventRuntimeSelected,0,0,"",elem);
+        context.getMain().sendEventPanel(EventRuntimeSelected,1,0,"",elem);
         dispose();
     }//GEN-LAST:event_SelecElemActionPerformed
 

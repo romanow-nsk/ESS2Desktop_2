@@ -23,7 +23,7 @@ import static romanow.abc.core.entity.metadata.Meta2Entity.toHex;
 public class DesktopGUITwoBytes extends View2BaseDesktop {
     @Getter private JTextField textField;
     public DesktopGUITwoBytes(){
-        setType(Values.GUIData);
+        setType(Values.GUITwoBytes);
         }
     @Override
     public void addToPanel(JPanel panel) {
@@ -70,7 +70,7 @@ public class DesktopGUITwoBytes extends View2BaseDesktop {
     public void putValue(long vv) throws UniException {
         Meta2Register register = getRegister();
         Meta2GUIRegW2 metaGUI = (Meta2GUIRegW2)getElement();
-        textField.setText(""+((vv>>8) & 0x0FF) +"," + (vv & 0x0FF));
+        textField.setText("["+((vv>>8) & 0x0FF) +"][" + (vv & 0x0FF)+"]");
         }
 
     @Override

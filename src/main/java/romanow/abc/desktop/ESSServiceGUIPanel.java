@@ -121,6 +121,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         renderingOn = vv;
         if (!renderingOn){
             context.setSelectedView(null);
+            context.setShowInsertButtion(false);
             mobileScroll=null;
             mobileDelegate=null;
             if (insertSelected!=null)
@@ -679,9 +680,10 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                         insertSelected.setVisible(false);
                     return;
                     }
-                new OK(200,200,"Вставить элемент: "+selected.getFullTitle(), new I_Button() {
-                    @Override
-                    public void onPush() {
+                //-------------- Убрать подтверждение -----------------------------------------
+                //new OK(200,200,"Вставить элемент: "+selected.getFullTitle(), new I_Button() {
+                //    @Override
+                //    public void onPush() {
                         Meta2GUI copy = null;
                         try {
                             copy = selected.getClass().newInstance();   // Клонировать элемент
@@ -704,13 +706,17 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                         if (ss!=null)
                             new Message(300,300,ss,Values.PopupMessageDelay);
                         repaintView();
-                        }
-                    });
+                //        }
+                //    });
                 }
             });
         add(insertSelected);
-        insertSelected.setBounds(context.x(ScreenDesktopWidth-50), context.y(ScreenDesktopHeight-80), context.dx(40), context.dy(40));
-        insertSelected.setVisible(context.getSelectedView()!=null && context.isRuntimeEditMode());
+        int selectedY = ScreenDesktopHeight-80;
+        Meta2GUI selected = context.getSelectedView();
+        if (selected!=null && selected.getY() > selectedY)
+            selectedY = selected.getY();
+        insertSelected.setBounds(context.x(ScreenDesktopWidth-50), context.y(selectedY), context.dx(40), context.dy(40));
+        insertSelected.setVisible(context.getSelectedView()!=null && context.isRuntimeEditMode() && context.isShowInsertButtion());
         //-----------------------------------------------------------------------------------
         JButton logout = new JButton();
         logout.setIcon(new javax.swing.ImageIcon(getClass().getResource(buttonLogout))); // NOI18N
@@ -745,7 +751,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         for(View2Base view :  guiList) {
             View2BaseDesktop desktop = (View2BaseDesktop)view;
             desktop.addToPanel(this);                   // Добавить на панель
-            Meta2GUI selected = context.getSelectedView();
+            selected = context.getSelectedView();
             if (desktop.getElement()==selected && runtimeEditMode){
                 if (desktop.getLabel()!=null)
                     GUITimer.trace(desktop.getLabel(),3,Color.PINK);
@@ -827,11 +833,12 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             }
         if (code==EventRuntimeSelected && currentView()!=null && runtimeEditMode){
             context.setSelectedView((Meta2GUI) oo);
-            insertSelected.setVisible(true);
+            context.setShowInsertButtion(par1!=0);
             repaintView();
             }
         if (code==EventRuntimeUnSelected){
             context.setSelectedView(null);
+            context.setShowInsertButtion(false);
             if (insertSelected!=null)
                 insertSelected.setSelected(false);
             repaintView();

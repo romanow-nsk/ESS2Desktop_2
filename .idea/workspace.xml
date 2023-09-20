@@ -13,13 +13,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="Косяки">
-      <change beforePath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/Meta2GUIForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/Meta2GUIForm.java" afterDir="false" />
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="Скролл для мобильных">
+      <change afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIDateTime.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/view/Meta2GUIDateTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/view/Meta2GUIDateTime.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ESS2Desktop.jar" beforeDir="false" afterPath="$PROJECT_DIR$/ESS2Desktop.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSServiceGUIPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSServiceGUIPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIForm.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/FormContext2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/FormContext2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUIDateTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUIDateTime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUITwoBytes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUITwoBytes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIDateTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIDateTime.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -243,13 +248,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00269" summary="Сборка 76 - МУ">
-      <created>1691931419622</created>
-      <option name="number" value="00269" />
-      <option name="presentableId" value="LOCAL-00269" />
-      <option name="project" value="LOCAL" />
-      <updated>1691931419622</updated>
     </task>
     <task id="LOCAL-00270" summary="Сборка 76 - МУ (альфа)">
       <created>1692024386583</created>
@@ -587,7 +585,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694932144655</updated>
     </task>
-    <option name="localTasksCounter" value="318" />
+    <task id="LOCAL-00318" summary="Скролл для мобильных">
+      <created>1694966111838</created>
+      <option name="number" value="00318" />
+      <option name="presentableId" value="LOCAL-00318" />
+      <option name="project" value="LOCAL" />
+      <updated>1694966111839</updated>
+    </task>
+    <option name="localTasksCounter" value="319" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -614,7 +619,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Сборка 76 - МУ восстановление состояния" />
     <MESSAGE value="Сборка 76 - МУ + профилирование" />
     <MESSAGE value="Сборка 77 - Вторая функция потоковых данных" />
     <MESSAGE value="Сборка 77 - Не возвращает 0 при ошибке" />
@@ -639,7 +643,8 @@
     <MESSAGE value="Сборка 77 - Киоск-клиент, потоковые метаданные" />
     <MESSAGE value="Сборка 77 - масштабирование" />
     <MESSAGE value="Подсветка выделенных" />
-    <option name="LAST_COMMIT_MESSAGE" value="Подсветка выделенных" />
+    <MESSAGE value="Скролл для мобильных" />
+    <option name="LAST_COMMIT_MESSAGE" value="Скролл для мобильных" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -858,11 +863,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMainServiceGUIPanel.java</url>
           <line>262</line>
           <option name="timeStamp" value="1043" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSServiceGUIPanel.java</url>
-          <line>591</line>
-          <option name="timeStamp" value="1052" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS4ACDCEmulator.java</url>

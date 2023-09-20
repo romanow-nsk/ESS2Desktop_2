@@ -22,6 +22,7 @@ import static romanow.abc.core.entity.metadata.Meta2Entity.toHex;
 
 public class DesktopGUIDateTime extends View2BaseDesktop {
     private JTextField textField;
+    private Meta2GUIDateTime element;
     public DesktopGUIDateTime(){
         setType(Values.GUIDateTime);
         }
@@ -29,7 +30,7 @@ public class DesktopGUIDateTime extends View2BaseDesktop {
     public void addToPanel(JPanel panel) {
         setLabel(panel);
         FormContext2 context= getContext();
-        Meta2GUIDateTime element = (Meta2GUIDateTime) getElement();
+        element = (Meta2GUIDateTime) getElement();
         textField = new JTextField();
         int dd=element.getW2();
         if (dd==0) dd=100;
@@ -40,15 +41,16 @@ public class DesktopGUIDateTime extends View2BaseDesktop {
                 context.y(element.getY()+getDyOffset()),
                 context.dx(dd),
                 context.dy(hh));
-        textField.setFont(new Font("Arial Cyr", Font.PLAIN, context.dy(12)));
-        textField.setEditable(false);
-        textField.setHorizontalAlignment(JTextField.LEFT);
+        setTextFieldParams(textField);
+        //textField.setFont(new Font("Arial Cyr", Font.PLAIN, context.dy(12)));
+        //textField.setEditable(false);
+        //textField.setHorizontalAlignment(JTextField.LEFT);
+        //Color color=new Color(element.getColor());
+        //textField.setBackground(color);
+        //Color textColor = new Color(context.getView().getTextColor());
+        //textField.setBorder(BorderFactory.createLineBorder(textColor,1));
+        //textField.setForeground(textColor);
         panel.add(textField);
-        Color color=new Color(element.getColor());
-        textField.setBackground(color);
-        Color textColor = new Color(context.getView().getTextColor());
-        textField.setBorder(BorderFactory.createLineBorder(textColor,1));
-        textField.setForeground(textColor);
         setInfoClick(textField);
         }
     public void showInfoMessage() {
@@ -73,7 +75,7 @@ public class DesktopGUIDateTime extends View2BaseDesktop {
         ss2 = ss2+String.format("%2d-",vv & 0x0FF);
         vv >>=8;
         ss2 = ss2+String.format("%2d",(vv & 0x0FF)+2000);
-        textField.setText(" "+ss2+" "+ss);
+        textField.setText(" "+(element.isOnlyTime() ? "" : ss2)+" "+ss);
         /*
         if (type==Values.FloatValue)
             textField.setText(""+Float.intBitsToFloat(vv));
