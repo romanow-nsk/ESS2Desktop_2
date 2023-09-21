@@ -1,5 +1,6 @@
 package romanow.abc.desktop.view2.desktop;
 
+import retrofit2.http.Url;
 import romanow.abc.core.UniException;
 import romanow.abc.core.constants.Values;
 import romanow.abc.core.entity.metadata.Meta2Bit;
@@ -20,6 +21,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 
 import static romanow.abc.core.entity.metadata.Meta2Entity.toHex;
 
@@ -44,7 +46,8 @@ public class DesktopGUI2StateBox extends View2BaseDesktop {
         }
     protected void putValueOwn(int cc){
         JButton bb = (JButton)textField;
-        bb.setIcon(new ImageIcon(getClass().getResource(getColorIconName(cc))));
+        URL url = getClass().getResource(getColorIconName(cc));
+        bb.setIcon(new ImageIcon(url));
         }
     protected int getSize(){
         return 24;

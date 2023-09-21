@@ -13,18 +13,25 @@ import romanow.abc.core.entity.metadata.Meta2Register;
 import romanow.abc.core.entity.metadata.Meta2SettingRegister;
 import romanow.abc.core.entity.metadata.view.Meta2GUI;
 import romanow.abc.core.entity.metadata.view.Meta2GUIData;
+import romanow.abc.core.entity.metadata.view.Meta2GUIFormButton;
 import romanow.abc.core.entity.metadata.view.Meta2GUIImage;
 import romanow.abc.core.entity.subject2area.ESS2Architecture;
 import romanow.abc.desktop.APICall;
+import romanow.abc.desktop.BasePanel;
 import romanow.abc.desktop.I_DownLoad;
 import romanow.abc.desktop.Message;
 import romanow.abc.desktop.view2.FormContext2;
 import romanow.abc.desktop.view2.I_GUI2Event;
 import romanow.abc.desktop.view2.View2BaseDesktop;
+import romanow.abc.desktop.wizard.WizardBaseView;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -68,6 +75,19 @@ public class DesktopGUIImage extends View2BaseDesktop {
                 context.x(element.getX()+getDxOffset()+element.getDx()+5),
                 context.y(element.getY()+getDyOffset()),
                 dx,dy);
+        String formName = element.getFormName();
+        if (formName!=null && formName.length()!=0){
+            imagePanel.addMouseListener(new MouseAdapter() {
+                public void mousePressed(MouseEvent e) {
+                    if (e.getButton() == MouseEvent.BUTTON1){
+                        if (element.isOwnUnit() && element.getUnitLevel()!=0){
+                            context.setIndex(element.getUnitLevel(),element.getUnitIdx());
+                            }
+                        context.openForm(element.getFormName(),FormContext2.ModeNext);
+                        }
+                    }
+                });
+            }
         panel.add(imagePanel);
         imagePanel.repaint();
         setInfoClick(imagePanel);

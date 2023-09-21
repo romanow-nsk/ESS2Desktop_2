@@ -27,6 +27,8 @@ import romanow.abc.desktop.view2.View2BaseDesktop;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.*;
 
 import static romanow.abc.core.Utils.httpError;
@@ -94,6 +96,19 @@ public class DesktopGUIImageDataLevel extends View2BaseDesktop{
                 context.y(element.getY()+getDyOffset()),
                 context.dx(element.getImageW()),
                 context.dy(element.getImageH()));
+        String formName = element.getFormName();
+        if (formName!=null && formName.length()!=0){
+            imagePanel.addMouseListener(new MouseAdapter() {
+                public void mousePressed(MouseEvent e) {
+                    if (e.getButton() == MouseEvent.BUTTON1){
+                        if (element.isOwnUnit() && element.getUnitLevel()!=0){
+                            context.setIndex(element.getUnitLevel(),element.getUnitIdx());
+                            }
+                        context.openForm(element.getFormName(),FormContext2.ModeNext);
+                        }
+                    }
+                });
+            }
         panel.add(imagePanel);
         imagePanel.repaint();
         setInfoClick(imagePanel);

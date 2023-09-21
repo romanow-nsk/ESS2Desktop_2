@@ -24,17 +24,26 @@ import romanow.abc.desktop.APICall;
 public class WizardMeta2GUIImage extends WizardMeta2GUI {
     private Meta2GUIImage elem;
     private ArtifactList artifacts = new ArtifactList();
+    private boolean busy=false;
     public WizardMeta2GUIImage() {
         initComponents();
         }
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
         resizeHeight(250);
-        elem = (Meta2GUIImage)  entity;
+        busy=true;
+        elem = (Meta2GUIImage) entity;
+        FormName.setText(""+elem.getFormName());
+        UnitIdx.setText(""+elem.getUnitIdx());
+        OwnUnit.setSelected(elem.isOwnUnit());
+        UnitLevel.setText(""+elem.getUnitLevel());
+        UnitLevel.setEnabled(elem.isOwnUnit());
+        UnitIdx.setEnabled(elem.isOwnUnit());
         ImageH.setText(""+elem.getImageH());
         ImageW.setText(""+elem.getImageW());
         refreshImageList();
         selectCurrentImage();
+        busy=false;
         }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -57,6 +66,12 @@ public class WizardMeta2GUIImage extends WizardMeta2GUI {
         UploadImage = new javax.swing.JButton();
         ImageAlias = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
+        FormName = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        OwnUnit = new javax.swing.JCheckBox();
+        UnitIdx = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        UnitLevel = new javax.swing.JTextField();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -67,13 +82,13 @@ public class WizardMeta2GUIImage extends WizardMeta2GUI {
         });
         getContentPane().setLayout(null);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(10, 82, 560, 2);
+        jSeparator1.setBounds(10, 82, 560, 3);
         getContentPane().add(jSeparator2);
-        jSeparator2.setBounds(10, 120, 560, 2);
+        jSeparator2.setBounds(10, 120, 560, 3);
 
         jLabel11.setText("H image");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(30, 130, 50, 14);
+        jLabel11.setBounds(30, 130, 50, 16);
 
         ImageH.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -85,7 +100,7 @@ public class WizardMeta2GUIImage extends WizardMeta2GUI {
 
         jLabel14.setText("Alias");
         getContentPane().add(jLabel14);
-        jLabel14.setBounds(480, 130, 110, 14);
+        jLabel14.setBounds(480, 130, 110, 16);
 
         ImageW.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -123,7 +138,48 @@ public class WizardMeta2GUIImage extends WizardMeta2GUI {
 
         jLabel15.setText("W image");
         getContentPane().add(jLabel15);
-        jLabel15.setBounds(90, 130, 60, 14);
+        jLabel15.setBounds(90, 130, 60, 16);
+
+        FormName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                FormNameKeyPressed(evt);
+            }
+        });
+        getContentPane().add(FormName);
+        FormName.setBounds(160, 190, 150, 25);
+
+        jLabel13.setText("Уровень");
+        getContentPane().add(jLabel13);
+        jLabel13.setBounds(480, 195, 70, 16);
+
+        OwnUnit.setText("Оборуд./Unit");
+        OwnUnit.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                OwnUnitItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(OwnUnit);
+        OwnUnit.setBounds(320, 195, 110, 20);
+
+        UnitIdx.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                UnitIdxKeyPressed(evt);
+            }
+        });
+        getContentPane().add(UnitIdx);
+        UnitIdx.setBounds(430, 190, 40, 25);
+
+        jLabel16.setText("Форма");
+        getContentPane().add(jLabel16);
+        jLabel16.setBounds(90, 195, 70, 16);
+
+        UnitLevel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                UnitLevelKeyPressed(evt);
+            }
+        });
+        getContentPane().add(UnitLevel);
+        UnitLevel.setBounds(540, 190, 40, 25);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -210,19 +266,59 @@ public class WizardMeta2GUIImage extends WizardMeta2GUI {
             };
     }//GEN-LAST:event_UploadImageActionPerformed
 
+    private void FormNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FormNameKeyPressed
+        onStringKeyPressed("formName", FormName, evt, new I_WizardActionString() {
+            @Override
+            public void onAction(String value) {
+                elem.setFormName(value);
+            }
+        });
+    }//GEN-LAST:event_FormNameKeyPressed
+
+    private void OwnUnitItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_OwnUnitItemStateChanged
+        elem.setOwnUnit(OwnUnit.isSelected());
+        UnitLevel.setEnabled(elem.isOwnUnit());
+        UnitIdx.setEnabled(elem.isOwnUnit());
+        back.onEnter("Изменено ownUnit"+OwnUnit.isSelected());
+    }//GEN-LAST:event_OwnUnitItemStateChanged
+
+    private void UnitIdxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UnitIdxKeyPressed
+        onKeyPressed("unitIdx", UnitIdx, evt, new I_WizardAction() {
+            @Override
+            public void onAction(int value) {
+                elem.setUnitIdx(value);
+            }
+        });
+    }//GEN-LAST:event_UnitIdxKeyPressed
+
+    private void UnitLevelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UnitLevelKeyPressed
+        onKeyPressed("unitLevel", UnitLevel, evt, new I_WizardAction() {
+            @Override
+            public void onAction(int value) {
+                elem.setUnitLevel(value);
+            }
+        });
+    }//GEN-LAST:event_UnitLevelKeyPressed
+
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField FormName;
     private javax.swing.JTextField ImageAlias;
     private javax.swing.JTextField ImageH;
     private java.awt.Choice ImageList;
     private javax.swing.JTextField ImageW;
+    private javax.swing.JCheckBox OwnUnit;
     private javax.swing.JButton SetImage;
+    private javax.swing.JTextField UnitIdx;
+    private javax.swing.JTextField UnitLevel;
     private javax.swing.JButton UploadImage;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables

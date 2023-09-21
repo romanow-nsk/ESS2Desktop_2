@@ -19,6 +19,7 @@ import romanow.abc.core.utils.FileNameExt;
 import romanow.abc.desktop.APICall;
 
 import java.awt.*;
+import romanow.abc.core.entity.metadata.view.Meta2GUIImage;
 
 /**
  *
@@ -26,6 +27,7 @@ import java.awt.*;
  */
 public class WizardMeta2GUIImageDataLevel extends WizardMeta2GUI {
     private Meta2GUIImageDataLevel elem;
+    private boolean busy=false;
     private ArtifactList artifacts = new ArtifactList();
     public WizardMeta2GUIImageDataLevel() {
         initComponents();
@@ -36,6 +38,17 @@ public class WizardMeta2GUIImageDataLevel extends WizardMeta2GUI {
         elem = (Meta2GUIImageDataLevel)  entity;
         WizardRegLinkPanel linkPanel = new WizardRegLinkPanel(10,125,"",elem.getRegLink(),this);
         add(linkPanel);
+        busy=true;
+        FormName.setText(""+elem.getFormName());
+        UnitIdx.setText(""+elem.getUnitIdx());
+        OwnUnit.setSelected(elem.isOwnUnit());
+        UnitLevel.setText(""+elem.getUnitLevel());
+        UnitLevel.setEnabled(elem.isOwnUnit());
+        UnitIdx.setEnabled(elem.isOwnUnit());
+        ImageH.setText(""+elem.getImageH());
+        ImageW.setText(""+elem.getImageW());
+        refreshImageList();
+        selectCurrentImage();
         Alpha.setText(""+elem.getAlphaProc());
         LowLevel.setText(""+elem.getLowLevel());
         HighLevel.setText(""+elem.getHighLevel());
@@ -45,6 +58,7 @@ public class WizardMeta2GUIImageDataLevel extends WizardMeta2GUI {
         ImageW.setText(""+elem.getImageW());
         refreshImageList();
         selectCurrentImage();
+        busy=false;
         }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -72,6 +86,12 @@ public class WizardMeta2GUIImageDataLevel extends WizardMeta2GUI {
         LowLevel = new javax.swing.JTextField();
         FailLevel = new javax.swing.JTextField();
         WarnLevel = new javax.swing.JTextField();
+        FormName = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        OwnUnit = new javax.swing.JCheckBox();
+        UnitIdx = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        UnitLevel = new javax.swing.JTextField();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -80,6 +100,7 @@ public class WizardMeta2GUIImageDataLevel extends WizardMeta2GUI {
                 formWindowClosing(evt);
             }
         });
+        getContentPane().setLayout(null);
 
         jLabel11.setText("H image");
         getContentPane().add(jLabel11);
@@ -183,6 +204,47 @@ public class WizardMeta2GUIImageDataLevel extends WizardMeta2GUI {
         getContentPane().add(WarnLevel);
         WarnLevel.setBounds(520, 150, 60, 25);
 
+        FormName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                FormNameKeyPressed(evt);
+            }
+        });
+        getContentPane().add(FormName);
+        FormName.setBounds(160, 230, 150, 25);
+
+        jLabel16.setText("Уровень");
+        getContentPane().add(jLabel16);
+        jLabel16.setBounds(480, 235, 70, 16);
+
+        OwnUnit.setText("Оборуд./Unit");
+        OwnUnit.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                OwnUnitItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(OwnUnit);
+        OwnUnit.setBounds(320, 235, 110, 20);
+
+        UnitIdx.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                UnitIdxKeyPressed(evt);
+            }
+        });
+        getContentPane().add(UnitIdx);
+        UnitIdx.setBounds(430, 230, 40, 25);
+
+        jLabel17.setText("Форма");
+        getContentPane().add(jLabel17);
+        jLabel17.setBounds(90, 235, 70, 16);
+
+        UnitLevel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                UnitLevelKeyPressed(evt);
+            }
+        });
+        getContentPane().add(UnitLevel);
+        UnitLevel.setBounds(540, 230, 40, 25);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -281,6 +343,40 @@ public class WizardMeta2GUIImageDataLevel extends WizardMeta2GUI {
 
     }//GEN-LAST:event_WarnLevelKeyPressed
 
+    private void FormNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FormNameKeyPressed
+        onStringKeyPressed("formName", FormName, evt, new I_WizardActionString() {
+            @Override
+            public void onAction(String value) {
+                elem.setFormName(value);
+            }
+        });
+    }//GEN-LAST:event_FormNameKeyPressed
+
+    private void OwnUnitItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_OwnUnitItemStateChanged
+        elem.setOwnUnit(OwnUnit.isSelected());
+        UnitLevel.setEnabled(elem.isOwnUnit());
+        UnitIdx.setEnabled(elem.isOwnUnit());
+        back.onEnter("Изменено ownUnit"+OwnUnit.isSelected());
+    }//GEN-LAST:event_OwnUnitItemStateChanged
+
+    private void UnitIdxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UnitIdxKeyPressed
+        onKeyPressed("unitIdx", UnitIdx, evt, new I_WizardAction() {
+            @Override
+            public void onAction(int value) {
+                elem.setUnitIdx(value);
+            }
+        });
+    }//GEN-LAST:event_UnitIdxKeyPressed
+
+    private void UnitLevelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UnitLevelKeyPressed
+        onKeyPressed("unitLevel", UnitLevel, evt, new I_WizardAction() {
+            @Override
+            public void onAction(int value) {
+                elem.setUnitLevel(value);
+            }
+        });
+    }//GEN-LAST:event_UnitLevelKeyPressed
+
     private void selectCurrentImage(){
         long ownOid = elem.getPicture().getOid();
         if (ownOid==0){
@@ -322,13 +418,17 @@ public class WizardMeta2GUIImageDataLevel extends WizardMeta2GUI {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Alpha;
     private javax.swing.JTextField FailLevel;
+    private javax.swing.JTextField FormName;
     private javax.swing.JTextField HighLevel;
     private javax.swing.JTextField ImageAlias;
     private javax.swing.JTextField ImageH;
     private java.awt.Choice ImageList;
     private javax.swing.JTextField ImageW;
     private javax.swing.JTextField LowLevel;
+    private javax.swing.JCheckBox OwnUnit;
     private javax.swing.JButton SetImage;
+    private javax.swing.JTextField UnitIdx;
+    private javax.swing.JTextField UnitLevel;
     private javax.swing.JButton UploadImage;
     private javax.swing.JTextField WarnLevel;
     private javax.swing.JCheckBox jCheckBox1;
@@ -337,5 +437,7 @@ public class WizardMeta2GUIImageDataLevel extends WizardMeta2GUI {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     // End of variables declaration//GEN-END:variables
 }
