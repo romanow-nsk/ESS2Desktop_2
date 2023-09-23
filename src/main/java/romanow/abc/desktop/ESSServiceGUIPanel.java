@@ -88,6 +88,9 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     private final static int PopupLimitTime = 20;
     private PopupLimiter limiter = new PopupLimiter(PopupLimitCount,PopupLimitTime);
     private volatile int asyncCount=0;                          // Счетчик асинхронных вызовов
+    private int realHeight=ScreenDesktopHeight;
+    private int realWidth=ScreenDesktopWidth;
+    private Meta2GUIView currentView=null;
     JButton insertSelected = null;
     private FormContext2 context = new FormContext2(new I_ContextBack() {
         @Override
@@ -484,28 +487,28 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         if (maxButtonHSize[4]!=0){
             for(JButton button : menuButtons[4]){
                 Rectangle rr = button.getBounds();
-                rr.y = context.y(ScreenDesktopHeight - maxButtonHSize[3] - maxButtonHSize[4] - 2*MenuButtonSpace  - MenuButtonMargin);
+                rr.y = context.y(realHeight - maxButtonHSize[3] - maxButtonHSize[4] - 2*MenuButtonSpace  - MenuButtonMargin);
                 button.setBounds(rr);
                 }
             }
         if (maxButtonHSize[3]!=0){
             for(JButton button : menuButtons[3]){
                 Rectangle rr = button.getBounds();
-                rr.y = context.y(ScreenDesktopHeight - maxButtonHSize[3] - 2*MenuButtonSpace  - MenuButtonMargin);
+                rr.y = context.y(realHeight - maxButtonHSize[3] - 2*MenuButtonSpace  - MenuButtonMargin);
                 button.setBounds(rr);
                 }
             }
         if (maxButtonHSize[5]!=0){
             for(JButton button : menuButtons[5]){
                 Rectangle rr = button.getBounds();
-                rr.x = context.x(ScreenDesktopWidth - maxButtonWSize[5] - MenuButtonSpace - MenuButtonMargin);
+                rr.x = context.x(realWidth - maxButtonWSize[5] - MenuButtonSpace - MenuButtonMargin);
                 button.setBounds(rr);
                 }
             }
         if (maxButtonHSize[6]!=0){
             for(JButton button : menuButtons[6]){
                 Rectangle rr = button.getBounds();
-                rr.x = context.x(ScreenDesktopWidth - maxButtonWSize[5] - maxButtonWSize[6]- 2*MenuButtonSpace -  MenuButtonMargin);
+                rr.x = context.x(realWidth - maxButtonWSize[5] - maxButtonWSize[6]- 2*MenuButtonSpace -  MenuButtonMargin);
                 button.setBounds(rr);
                 }
             }
@@ -556,7 +559,13 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             setRenderingOnOff(false);
             return;
             }
-        Meta2GUIView currentView = currentView().getView();
+        currentView = currentView().getView();
+        realHeight = currentView.getHeight();
+        if (realHeight==0)
+            realHeight = ScreenDesktopHeight;
+        realWidth = currentView.getWidth();
+        if (realWidth==0 || currentView.getXmlType()== MTViewAndroid)
+            realWidth = ScreenDesktopWidth;
         Meta2EntityList<Meta2GUIForm> formList = currentView.getForms();
         this.setBackground(new Color(currentView.getBackColor()));
         errorList.clear();
@@ -654,6 +663,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         add(OnOff);
         OnOff.setBounds(context.x(5), context.y(10), context.dx(50), context.dy(50));
         testESSOnOffState();
+        //---------------------------------------------------------------------------------------------------
         JButton toMain = new JButton();
         toMain.setIcon(new javax.swing.ImageIcon(getClass().getResource(buttonToMain))); // NOI18N
         //toMain.setBorderPainted(false);
@@ -665,7 +675,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             }
         });
         add(toMain);
-        toMain.setBounds(context.x(ScreenDesktopWidth-50), context.y(10), context.dx(40), context.dy(40));
+        toMain.setBounds(context.x(realWidth-50), context.y(10), context.dx(40), context.dy(40));
         //-------------------------------------------------------------------------------------
         insertSelected = new JButton();
         insertSelected.setIcon(new javax.swing.ImageIcon(getClass().getResource(buttonEdit))); // NOI18N
@@ -711,11 +721,11 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 }
             });
         add(insertSelected);
-        int selectedY = ScreenDesktopHeight-80;
+        int selectedY = realHeight-80;
         Meta2GUI selected = context.getSelectedView();
         if (selected!=null && selected.getY() > selectedY)
             selectedY = selected.getY();
-        insertSelected.setBounds(context.x(ScreenDesktopWidth-50), context.y(selectedY), context.dx(40), context.dy(40));
+        insertSelected.setBounds(context.x(realWidth-50), context.y(selectedY), context.dx(40), context.dy(40));
         insertSelected.setVisible(context.getSelectedView()!=null && context.isRuntimeEditMode() && context.isShowInsertButtion());
         //-----------------------------------------------------------------------------------
         JButton logout = new JButton();
@@ -730,7 +740,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 }
             });
         add(logout);
-        logout.setBounds(context.x(ScreenDesktopWidth-100), context.y(10), context.dx(40), context.dy(40));
+        logout.setBounds(context.x(realWidth-100), context.y(10), context.dx(40), context.dy(40));
         //-----------------------------------------------------------------------------------
         JButton info = new JButton();
         info.setIcon(new javax.swing.ImageIcon(getClass().getResource(context.isInfoMode() ? buttonInfoOn : buttonInfoOff))); // NOI18N
@@ -742,7 +752,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 }
             });
         add(info);
-        info.setBounds(context.x(ScreenDesktopWidth-150), context.y(10), context.dx(40), context.dy(40));
+        info.setBounds(context.x(realWidth-150), context.y(10), context.dx(40), context.dy(40));
         //-----------------------------------------------------------------------------------------
         Meta2GUIForm baseForm = context.getBaseForm();
         guiList.clear();
@@ -1087,7 +1097,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                     return;
                     }
                 int regOffset = 0;
-                stacklevel = treeLevel;
+                int regLevel = treeLevel;
                 if (link.isOwnUnit()) {      // Unit задан явно - не групповые = явно перечисленные
                     newElem.setRegOffset(0);
                     newElem.setUnitIdx(link.getUnitIdx());
@@ -1096,7 +1106,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                         if (!(cc instanceof Meta2Array))
                             continue;
                         Meta2Array array = (Meta2Array) cc;
-                        int elemIdx = context.getIndex(stacklevel + 1);
+                        int elemIdx = context.getIndex(regLevel + 1);
                         elemIdx += grlevel < 0 ? 0 : groupIndexes[grlevel];
                         if (elemIdx >= array.getSize())          // Выход за пределы массива
                             return;
@@ -1110,7 +1120,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                                 break;
                             }
                         grlevel--;
-                        stacklevel--;
+                        regLevel--;
                         }
                     newElem.setRegOffset(regOffset);
                 }

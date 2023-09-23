@@ -39,9 +39,10 @@ public class DesktopGUICommandBit extends View2BaseDesktop {
         textField.setBounds(
                 context.x(element.getX()),
                 context.y(element.getY()),
-                context.dx(element.getDx()),
+                context.dx(element.getButtonSize()),
                 context.dy(element.getH()==0 ? 25 : element.getH()));
         setButtonParams(textField,true);
+        textField.setText(element.getTitle());
         //textField.setText(element.getTitle());
         //textField.setFont(new Font("Arial Cyr", Font.PLAIN, context.dy(12)));
         //textField.setHorizontalAlignment(JTextField.CENTER);

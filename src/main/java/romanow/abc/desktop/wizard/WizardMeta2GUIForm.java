@@ -145,7 +145,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
             ModuleY0.setText(""+view.getModuleY0());
             ModuleDX.setText(""+view.getModuleDX());
             ModuleDY.setText(""+view.getModuleDY());
-            ScrollScale.setText(""+view.getFormScrollScale());
+            ScrollScale.setText(""+String.format("%5.2f",view.getFormScrollScale()));
             //-------------------------------------------------------------------------
             }
     private void refreshImageList(){

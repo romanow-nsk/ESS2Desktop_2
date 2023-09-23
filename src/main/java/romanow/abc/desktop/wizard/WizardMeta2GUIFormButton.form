@@ -42,26 +42,26 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel13">
+    <Component class="javax.swing.JLabel" name="&#x418;&#x43d;&#x434;&#x435;&#x43a;&#x441;">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#x423;&#x440;&#x43e;&#x432;&#x435;&#x43d;&#x44c;"/>
+        <Property name="text" type="java.lang.String" value="&#x418;&#x43d;&#x434;&#x435;&#x43a;&#x441;"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="410" y="150" width="70" height="-1"/>
+          <AbsoluteConstraints x="460" y="160" width="70" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JCheckBox" name="OwnUnit">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#x41e;&#x431;&#x43e;&#x440;&#x443;&#x434;./Unit"/>
+        <Property name="text" type="java.lang.String" value="&#x417;&#x430;&#x434;&#x430;&#x442;&#x44c; &#x437;&#x434;&#x435;&#x441;&#x44c;"/>
       </Properties>
       <Events>
         <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="OwnUnitItemStateChanged"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="250" y="150" width="110" height="-1"/>
+          <AbsoluteConstraints x="250" y="160" width="110" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -71,7 +71,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="360" y="150" width="40" height="25"/>
+          <AbsoluteConstraints x="510" y="160" width="40" height="25"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -91,7 +91,43 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="470" y="150" width="40" height="25"/>
+          <AbsoluteConstraints x="410" y="160" width="40" height="25"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel15">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="&#x423;&#x440;&#x43e;&#x432;&#x435;&#x43d;&#x44c; &#x438; &#x438;&#x43d;&#x434;&#x435;&#x43a;&#x441; &#x433;&#x440;&#x443;&#x43f;&#x43f;&#x44b; &#x432; &#x444;&#x43e;&#x440;&#x43c;&#x435;"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="250" y="140" width="230" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="OnlyIndex">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x411;&#x435;&#x437; &#x43f;&#x435;&#x440;&#x435;&#x445;&#x43e;&#x434;&#x430;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="OnlyIndexItemStateChanged"/>
+      </Events>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="250" y="180" width="140" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel16">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x423;&#x440;&#x43e;&#x432;&#x435;&#x43d;&#x44c;"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="360" y="160" width="70" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

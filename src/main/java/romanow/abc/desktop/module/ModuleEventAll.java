@@ -82,7 +82,7 @@ public class ModuleEventAll extends Module {
                         context.x(form.getModuleX0()),
                         context.y(form.getModuleY0()),
                         context.dx(form.getModuleDX()),
-                        context.dy(form.getModuleDY()));
+                        context.dy(form.getModuleDY()-100));
                 table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
                 table.setAutoscrolls(true);
                 table.setShowGrid(true);

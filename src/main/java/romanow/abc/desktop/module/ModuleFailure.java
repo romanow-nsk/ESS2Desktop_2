@@ -41,13 +41,13 @@ public class ModuleFailure extends Module {
     @Override
     public void init(MainBaseFrame client, JPanel panel, RestAPIBase service, RestAPIESS2 service2, String token, Meta2GUIForm form, FormContext2 formContext) {
         super.init(client,panel, service, service2,token, form, formContext);
-        JButton bb = new MultiTextButton(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
+        JButton bb = new MultiTextButton(new Font("Arial Cyr", Font.PLAIN, context.dy(12)));
         bb.setText("Квитировать всё");
         bb.setBounds(
-                context.x(20),
-                context.y(600),
-                context.x(Values.MenuButtonW),
-                context.y(Values.MenuButtonH));
+                context.x(10),
+                context.y(form.getModuleY0()-100),
+                context.dx(Values.MenuButtonW),
+                context.dy(Values.MenuButtonH));
         bb.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

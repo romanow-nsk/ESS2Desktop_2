@@ -30,6 +30,7 @@ public class WizardMeta2GUIFormButton extends WizardMeta2GUI {
         UnitLevel.setText(""+elem.getUnitLevel());
         UnitLevel.setEnabled(elem.isOwnUnit());
         UnitIdx.setEnabled(elem.isOwnUnit());
+        OnlyIndex.setSelected(elem.isOnlyIndex());
         busy=false;
         }
     /**
@@ -43,11 +44,14 @@ public class WizardMeta2GUIFormButton extends WizardMeta2GUI {
 
         jCheckBox1 = new javax.swing.JCheckBox();
         FormName = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
+        Индекс = new javax.swing.JLabel();
         OwnUnit = new javax.swing.JCheckBox();
         UnitIdx = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         UnitLevel = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        OnlyIndex = new javax.swing.JCheckBox();
+        jLabel16 = new javax.swing.JLabel();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -56,6 +60,7 @@ public class WizardMeta2GUIFormButton extends WizardMeta2GUI {
                 formWindowClosing(evt);
             }
         });
+        getContentPane().setLayout(null);
 
         FormName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -65,18 +70,18 @@ public class WizardMeta2GUIFormButton extends WizardMeta2GUI {
         getContentPane().add(FormName);
         FormName.setBounds(90, 150, 150, 25);
 
-        jLabel13.setText("Уровень");
-        getContentPane().add(jLabel13);
-        jLabel13.setBounds(410, 150, 70, 16);
+        Индекс.setText("Индекс");
+        getContentPane().add(Индекс);
+        Индекс.setBounds(460, 160, 70, 16);
 
-        OwnUnit.setText("Оборуд./Unit");
+        OwnUnit.setText("Задать здесь");
         OwnUnit.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 OwnUnitItemStateChanged(evt);
             }
         });
         getContentPane().add(OwnUnit);
-        OwnUnit.setBounds(250, 150, 110, 20);
+        OwnUnit.setBounds(250, 160, 110, 20);
 
         UnitIdx.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -84,7 +89,7 @@ public class WizardMeta2GUIFormButton extends WizardMeta2GUI {
             }
         });
         getContentPane().add(UnitIdx);
-        UnitIdx.setBounds(360, 150, 40, 25);
+        UnitIdx.setBounds(510, 160, 40, 25);
 
         jLabel14.setText("Форма");
         getContentPane().add(jLabel14);
@@ -96,7 +101,25 @@ public class WizardMeta2GUIFormButton extends WizardMeta2GUI {
             }
         });
         getContentPane().add(UnitLevel);
-        UnitLevel.setBounds(470, 150, 40, 25);
+        UnitLevel.setBounds(410, 160, 40, 25);
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel15.setText("Уровень и индекс группы в форме");
+        getContentPane().add(jLabel15);
+        jLabel15.setBounds(250, 140, 230, 16);
+
+        OnlyIndex.setText("Без перехода");
+        OnlyIndex.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                OnlyIndexItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(OnlyIndex);
+        OnlyIndex.setBounds(250, 180, 140, 20);
+
+        jLabel16.setText("Уровень");
+        getContentPane().add(jLabel16);
+        jLabel16.setBounds(360, 160, 70, 16);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -140,15 +163,23 @@ public class WizardMeta2GUIFormButton extends WizardMeta2GUI {
 
     }//GEN-LAST:event_UnitLevelKeyPressed
 
+    private void OnlyIndexItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_OnlyIndexItemStateChanged
+        elem.setOnlyIndex(OnlyIndex.isSelected());
+        back.onEnter("Изменено onlyIndex"+OnlyIndex.isSelected());
+    }//GEN-LAST:event_OnlyIndexItemStateChanged
+
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField FormName;
+    private javax.swing.JCheckBox OnlyIndex;
     private javax.swing.JCheckBox OwnUnit;
     private javax.swing.JTextField UnitIdx;
     private javax.swing.JTextField UnitLevel;
     private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel Индекс;
     // End of variables declaration//GEN-END:variables
 }

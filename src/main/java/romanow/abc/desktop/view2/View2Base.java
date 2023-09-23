@@ -26,7 +26,7 @@ import java.awt.event.MouseEvent;
 
 
 public abstract class View2Base implements I_View2 {
-    @Getter @Setter int type= Values.GUI;
+    @Getter int type= Values.GUI;
     @Getter @Setter Meta2GUI element=null;          // Элемент мета-данных
     @Getter @Setter ESS2Architecture architecture;
     @Getter @Setter I_GUI2Event onEvent=null;
@@ -41,6 +41,8 @@ public abstract class View2Base implements I_View2 {
     @Getter @Setter int groupLevel=0;                           // Уровень групповых элементов
     @Getter int groupIndexes[]=new int[Values.FormStackSize];   // Индексы МЕТАЭЛЕМЕНТОВ в группах
     @Getter @Setter FormContext2 context;
+    public void setType(int type) {
+        this.type = type;}
     public Meta2RegLink getRegLink(){                           // Линк регистра в мета-данных
         return element.getRegLink();
         }
