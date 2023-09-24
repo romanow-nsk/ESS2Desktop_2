@@ -65,15 +65,28 @@ public class ModuleEventAll extends Module {
                 row.add(essEvent.getTitle());
                 data.add(row);
                 }
+            /*
+            int minRows=50;
+            while (data.size()<minRows){
+                    Vector<String> row = new Vector<String>();
+                    row.add("");
+                    row.add("");
+                    row.add("");
+                    row.add("");
+                    if (endTime)
+                        row.add("");
+                    data.add(row);
+                    }
+             */
             if (table!=null){
                 DefaultTableModel model = (DefaultTableModel) table.getModel();
-                model.setRowCount(selected.size());
+                model.setRowCount(data.size());
                 model.setDataVector(data,header);
                 }
             else{
                 table = new JTable(data, header);
-                table.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
-                table.setRowHeight(context.y(20));
+                table.setFont(new Font("Arial Cyr", Font.PLAIN, context.dy(12)));
+                table.setRowHeight(context.dy(20));
                 table.setSelectionForeground(Color.blue);
                 table.setSelectionBackground(Color.yellow);
                 table.setVisible(true);
@@ -102,7 +115,7 @@ public class ModuleEventAll extends Module {
             int ss[] = endTime ? sizes2 : sizes;
             for(int i=0;i<ss.length;i++)
                 table.getColumnModel().getColumn(i).setPreferredWidth(ss[i]);
-            //panel.repaint();
+            panel.repaint();
         }
 
     @Override
