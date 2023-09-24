@@ -34,7 +34,7 @@ public class WizardMeta2GUIImageDataLevel extends WizardMeta2GUI {
         }
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
-        resizeHeight(300);
+        resizeHeight(350);
         elem = (Meta2GUIImageDataLevel)  entity;
         WizardRegLinkPanel linkPanel = new WizardRegLinkPanel(10,125,"",elem.getRegLink(),this);
         add(linkPanel);
@@ -42,6 +42,7 @@ public class WizardMeta2GUIImageDataLevel extends WizardMeta2GUI {
         FormName.setText(""+elem.getFormName());
         UnitIdx.setText(""+elem.getUnitIdx());
         OwnUnit.setSelected(elem.isOwnUnit());
+        OnlyIndex.setSelected(elem.isOnlyIndex());
         UnitLevel.setText(""+elem.getUnitLevel());
         UnitLevel.setEnabled(elem.isOwnUnit());
         UnitIdx.setEnabled(elem.isOwnUnit());
@@ -92,6 +93,9 @@ public class WizardMeta2GUIImageDataLevel extends WizardMeta2GUI {
         UnitIdx = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         UnitLevel = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        OnlyIndex = new javax.swing.JCheckBox();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -212,18 +216,18 @@ public class WizardMeta2GUIImageDataLevel extends WizardMeta2GUI {
         getContentPane().add(FormName);
         FormName.setBounds(160, 230, 150, 25);
 
-        jLabel16.setText("Уровень");
+        jLabel16.setText("Индекс");
         getContentPane().add(jLabel16);
-        jLabel16.setBounds(480, 235, 70, 16);
+        jLabel16.setBounds(530, 245, 70, 16);
 
-        OwnUnit.setText("Оборуд./Unit");
+        OwnUnit.setText("Задать здесь");
         OwnUnit.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 OwnUnitItemStateChanged(evt);
             }
         });
         getContentPane().add(OwnUnit);
-        OwnUnit.setBounds(320, 235, 110, 20);
+        OwnUnit.setBounds(320, 240, 110, 20);
 
         UnitIdx.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -231,7 +235,7 @@ public class WizardMeta2GUIImageDataLevel extends WizardMeta2GUI {
             }
         });
         getContentPane().add(UnitIdx);
-        UnitIdx.setBounds(430, 230, 40, 25);
+        UnitIdx.setBounds(580, 240, 40, 25);
 
         jLabel17.setText("Форма");
         getContentPane().add(jLabel17);
@@ -243,7 +247,25 @@ public class WizardMeta2GUIImageDataLevel extends WizardMeta2GUI {
             }
         });
         getContentPane().add(UnitLevel);
-        UnitLevel.setBounds(540, 230, 40, 25);
+        UnitLevel.setBounds(480, 240, 40, 25);
+
+        jLabel18.setText("Уровень");
+        getContentPane().add(jLabel18);
+        jLabel18.setBounds(420, 245, 70, 16);
+
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel19.setText("Уровень и индекс группы в форме");
+        getContentPane().add(jLabel19);
+        jLabel19.setBounds(330, 220, 230, 16);
+
+        OnlyIndex.setText("Без перехода");
+        OnlyIndex.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                OnlyIndexItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(OnlyIndex);
+        OnlyIndex.setBounds(320, 260, 100, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -353,6 +375,8 @@ public class WizardMeta2GUIImageDataLevel extends WizardMeta2GUI {
     }//GEN-LAST:event_FormNameKeyPressed
 
     private void OwnUnitItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_OwnUnitItemStateChanged
+        if (busy)
+            return;
         elem.setOwnUnit(OwnUnit.isSelected());
         UnitLevel.setEnabled(elem.isOwnUnit());
         UnitIdx.setEnabled(elem.isOwnUnit());
@@ -376,6 +400,13 @@ public class WizardMeta2GUIImageDataLevel extends WizardMeta2GUI {
             }
         });
     }//GEN-LAST:event_UnitLevelKeyPressed
+
+    private void OnlyIndexItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_OnlyIndexItemStateChanged
+        if (busy)
+            return;
+        elem.setOnlyIndex(OnlyIndex.isSelected());
+        back.onEnter("Изменено onlyIndex"+OnlyIndex.isSelected());
+    }//GEN-LAST:event_OnlyIndexItemStateChanged
 
     private void selectCurrentImage(){
         long ownOid = elem.getPicture().getOid();
@@ -425,6 +456,7 @@ public class WizardMeta2GUIImageDataLevel extends WizardMeta2GUI {
     private java.awt.Choice ImageList;
     private javax.swing.JTextField ImageW;
     private javax.swing.JTextField LowLevel;
+    private javax.swing.JCheckBox OnlyIndex;
     private javax.swing.JCheckBox OwnUnit;
     private javax.swing.JButton SetImage;
     private javax.swing.JTextField UnitIdx;
@@ -439,5 +471,7 @@ public class WizardMeta2GUIImageDataLevel extends WizardMeta2GUI {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     // End of variables declaration//GEN-END:variables
 }

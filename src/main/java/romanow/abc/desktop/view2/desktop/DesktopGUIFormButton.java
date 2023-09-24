@@ -43,6 +43,8 @@ public class DesktopGUIFormButton extends View2BaseDesktop {
                     }
                 if (!elem.isOnlyIndex())
                     context.openForm(elem.getFormName(),FormContext2.ModeNext);
+                else
+                    context.repaintView();
                 }
             });
         panel.add(textField);

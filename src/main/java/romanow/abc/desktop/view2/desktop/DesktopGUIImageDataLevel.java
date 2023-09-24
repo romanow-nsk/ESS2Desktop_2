@@ -104,7 +104,10 @@ public class DesktopGUIImageDataLevel extends View2BaseDesktop{
                         if (element.isOwnUnit() && element.getUnitLevel()!=0){
                             context.setIndex(element.getUnitLevel(),element.getUnitIdx());
                             }
-                        context.openForm(element.getFormName(),FormContext2.ModeNext);
+                        if (!element.isOnlyIndex())
+                            context.openForm(element.getFormName(),FormContext2.ModeNext);
+                        else
+                            context.repaintView();
                         }
                     }
                 });
