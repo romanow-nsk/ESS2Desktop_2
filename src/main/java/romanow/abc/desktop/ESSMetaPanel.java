@@ -1745,10 +1745,8 @@ public class ESSMetaPanel extends ESSBasePanel {
                 }
             });
         Dimension sSize = Toolkit.getDefaultToolkit ().getScreenSize ();
-        //System.out.println(sSize.height + " " + sSize.width);
         ESS2View view = deployed.getViews().get(Views.getSelectedIndex());
         ScreenMode screenMode = new ScreenMode(false,view.getView().getWidth(),view.getView().getHeight(),sSize.width,sSize.height);
-        //ScreenMode screenMode = new ScreenMode(sSize.width,sSize.height);
         screen.setVisible(true);
         screen.eventPanel(EventPLMOn,0,0,"",screenMode);
         screen.refresh();

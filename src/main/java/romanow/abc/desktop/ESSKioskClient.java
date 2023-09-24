@@ -205,7 +205,7 @@ public class ESSKioskClient extends ESSBaseView {
                 });
             setVisible(false);
             screen.setVisible(true);
-            screen.eventPanel(EventPLMOn,0,0,"",screenMode);
+            screen.eventPanel(EventPLMOn,0,0,"",null);  // Здесь ScreenMode не нужен, уже установлен
             screen.refresh();
             } catch (UniException ee){
                 Mes.setText(ee.toString());

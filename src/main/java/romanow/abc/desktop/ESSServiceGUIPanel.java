@@ -193,7 +193,6 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     public ESSServiceGUIPanel(ScreenMode screenMode) {
         initComponents();
         context.setScreen(screenMode);
-
         }
     public void initPanel(MainBaseFrame main){
         super.initPanel(main);
@@ -822,7 +821,8 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             context.setView(currentView().getView());
             context.setMainServerNodeId(main2.mainServerNodeId);
             limiter.reset();
-            context.setScreen((ScreenMode) oo);
+            if (oo!=null)
+                context.setScreen((ScreenMode) oo);
             repaintView();
             main.panelToFront(this);
             System.out.println(par3);

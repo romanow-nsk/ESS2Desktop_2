@@ -5,6 +5,7 @@
  */
 package romanow.abc.desktop;
 
+import romanow.abc.core.entity.metadata.Meta2GUIView;
 import romanow.abc.core.entity.metadata.render.ScreenMode;
 
 import java.awt.*;
@@ -27,9 +28,9 @@ public class ESSServiceGUIScreen extends javax.swing.JFrame implements I_PanelEv
         back = back0;
         setExtendedState(MAXIMIZED_BOTH);
         Dimension sSize = Toolkit.getDefaultToolkit ().getScreenSize ();
-        //System.out.println(sSize.height + " " + sSize.width);
-        ScreenMode screen = new ScreenMode(sSize.width,sSize.height);
-        setSize(sSize.width,sSize.height);
+        ESSClient essClient = (ESSClient)main;
+        Meta2GUIView view = essClient.currentView(false).getView();
+        ScreenMode screen = new ScreenMode(false,view.getWidth(), view.getHeight(),sSize.width,sSize.height);
         panel = new ESSServiceGUIPanel(screen);
         add(panel);
         panel.initPanel(main);
