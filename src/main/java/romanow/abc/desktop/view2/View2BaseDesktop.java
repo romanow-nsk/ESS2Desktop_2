@@ -92,7 +92,12 @@ public abstract class View2BaseDesktop extends View2Base implements I_View2Deskt
         if (fontSize==0) fontSize=12;
         int type = element.isLabelBold()? Font.BOLD : Font.PLAIN;
         label.setFont(new Font("Arial Cyr", type, context.dy(fontSize)));
-        label.setHorizontalAlignment(element.isLabelOnCenter() ? JTextField.CENTER : JTextField.LEFT);
+        label.setHorizontalAlignment(JTextField.LEFT);
+        if (element.isLabelOnCenter())
+            label.setHorizontalAlignment(JTextField.CENTER);
+        else
+            if (element.isLabelOnRight())
+                label.setHorizontalAlignment(JTextField.RIGHT);
         setInfoClick(label);
         panel.add(label);
         return label;
