@@ -79,10 +79,18 @@ public class DesktopGUISetting extends View2BaseDesktop {
                         public void onEvent(double value) {
                             Meta2SettingRegister register = (Meta2SettingRegister) getRegister();
                             try {
-                                if (register.getFormat()==Values.FloatValue)
-                                    writeMainRegister(Float.floatToIntBits((float) value));
-                                else
-                                    writeMainRegister(register.doubleToRegValueSet(getUnitIdx(),value));
+                                if (register.getFormat()==Values.FloatValue){
+                                    if (element.isTwoUnits())
+                                        writeMainRegisterTwo(Float.floatToIntBits((float) value));
+                                    else
+                                        writeMainRegister(Float.floatToIntBits((float) value));
+                                    }
+                                else{
+                                    if (element.isTwoUnits())
+                                        writeMainRegisterTwo(register.doubleToRegValueSet(getUnitIdx(),value));
+                                    else
+                                        writeMainRegister(register.doubleToRegValueSet(getUnitIdx(),value));
+                                    }
                                 context.getBack().forceRepaint();
                                 //context.repaintValues();
                                 } catch (UniException ex) {

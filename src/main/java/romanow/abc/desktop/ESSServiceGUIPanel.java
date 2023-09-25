@@ -65,8 +65,9 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     //          3
     //-----------------------------------------------------------------------------------------
     private final static int maxMenuLevels=5;
+    private final static int MenuButtonMarginY=70;
     private int menuModes[] = new int[maxMenuLevels];
-    private final static int levelYCoords[]={0, MenuButtonMargin,0,0,0,100,100,100,100};
+    private final static int levelYCoords[]={0, MenuButtonMargin,0,0,0,MenuButtonMarginY,MenuButtonMarginY,MenuButtonMarginY,MenuButtonMarginY};
     private final static int levelXCoords[]={0,MenuButtonMargin,MenuButtonMargin,MenuButtonMargin,MenuButtonMargin,
             0,0,MenuButtonMargin,0};
     private final static boolean levelHoriz[] ={true,true,true,true,true,false,false,false,false};
@@ -389,8 +390,9 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                     continue;
                 if (next.isDebugForm() && !runtimeEditMode)
                     continue;
-                String text = next.getTitle().replace("_","");
+                String text = next.getTitle();
                 text =  "<html><center>" + text.replaceAll(" ", "<br>") + "</html>";
+                text = text.replaceAll("_"," ");
                 //---------------------------------------------------- Параметры кнопки --------------------------------
                 JButton bb = new JButton();
                 int fontSize = next.getMenuButtonFontSize();
@@ -1094,7 +1096,8 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                     errorList.addInfo("Уровень массива мета-данных > уровня формы " +
                             equipName + " для " + regGUI.getFullTitle() + "=" + (treeLevel + 1) + " " +
                             context.getForm().getTitle() + "=" + (stacklevel + 1));
-                    //return;
+                    // Предупреждение
+                    // return;
                     }
                 int regOffset = 0;
                 int regLevel = treeLevel;
@@ -1106,6 +1109,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                         if (!(cc instanceof Meta2Array))
                             continue;
                         Meta2Array array = (Meta2Array) cc;
+                        //----------------------TODO индекс с 0 -----------------------------------
                         int elemIdx = context.getIndex(regLevel + 1);
                         elemIdx += grlevel < 0 ? 0 : groupIndexes[grlevel];
                         if (elemIdx >= array.getSize())          // Выход за пределы массива

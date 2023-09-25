@@ -75,7 +75,10 @@ public class DesktopGUICommandBit extends View2BaseDesktop {
                     @Override
                     public void onPush() {
                         try {
-                            writeMainRegister(1<<element.getBitNum());
+                            if (element.isTwoUnits())
+                                writeMainRegisterTwo(1<<element.getBitNum());
+                            else
+                                writeMainRegister(1<<element.getBitNum());
                             } catch (UniException ex) {
                                 String ss = "Ошибка записи бита команды: "+ex.toString();
                                 context.popup(ss);

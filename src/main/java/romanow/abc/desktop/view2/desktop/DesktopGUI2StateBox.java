@@ -102,7 +102,7 @@ public class DesktopGUI2StateBox extends View2BaseDesktop {
                 context.y(yy-(hh-sz)/2),
                 context.dx(bSize),
                 context.dy(hh));
-        setButtonParams(cmdButton);
+        setButtonParams(cmdButton,true);
         if (remoteDisable)
             cmdButton.setBackground(new Color(Values.AccessDisableColor));
         //cmdButton.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
@@ -132,7 +132,10 @@ public class DesktopGUI2StateBox extends View2BaseDesktop {
                     public void onPush() {
                         try {
                             long vv = lastValue ^ (1<<bitNum);       // Инвертировать разряд
-                            writeMainRegister((int)vv);
+                            if (element.isTwoUnits())
+                                writeMainRegisterTwo((int)vv);
+                            else
+                                writeMainRegister((int)vv);
                             context.getBack().forceRepaint();
                             } catch (UniException ex) {
                                 String ss = "Ошибка изменения разряда: "+ex.toString();

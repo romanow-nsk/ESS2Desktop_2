@@ -38,7 +38,7 @@ public class DesktopGUIButton extends View2BaseDesktop {
                 context.y(element.getY()),
                 context.dx(element.getDx()),
                 context.dy(element.getH()==0 ? 25 : element.getH()));
-        setButtonParams(textField);
+        setButtonParams(textField,true);
         //textField.setText(element.getTitle());
         //textField.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
         //textField.setHorizontalAlignment(JTextField.CENTER);

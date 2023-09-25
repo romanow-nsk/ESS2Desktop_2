@@ -41,6 +41,7 @@ public class WizardMeta2GUIArray extends WizardBaseView {
             Elem.setText(""+array.getElem().getFullTitle());
         DXY.setText(""+array.getDxy());
         Size.setText(""+array.getSize());
+        AbsoluteIndex.setSelected(array.isAbsoluteIndex());
         Types.removeAll();
         types = Values.constMap().getGroupList("GUIType");
         types.sort(new Comparator<ConstValue>() {
@@ -76,6 +77,7 @@ public class WizardMeta2GUIArray extends WizardBaseView {
         ChangeElem = new javax.swing.JButton();
         Edit = new javax.swing.JButton();
         Types = new java.awt.Choice();
+        AbsoluteIndex = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -91,11 +93,11 @@ public class WizardMeta2GUIArray extends WizardBaseView {
 
         jLabel1.setText("Элемент");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(20, 135, 90, 14);
+        jLabel1.setBounds(20, 135, 90, 16);
 
         jLabel3.setText("Размерность");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(20, 95, 100, 14);
+        jLabel3.setBounds(20, 95, 100, 16);
 
         Size.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -103,11 +105,11 @@ public class WizardMeta2GUIArray extends WizardBaseView {
             }
         });
         getContentPane().add(Size);
-        Size.setBounds(110, 90, 80, 25);
+        Size.setBounds(110, 90, 60, 25);
 
         jLabel4.setText("Шаг (dxy)");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(200, 95, 60, 14);
+        jLabel4.setBounds(180, 95, 60, 16);
 
         DXY.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -115,9 +117,9 @@ public class WizardMeta2GUIArray extends WizardBaseView {
             }
         });
         getContentPane().add(DXY);
-        DXY.setBounds(270, 90, 80, 25);
+        DXY.setBounds(250, 90, 50, 25);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(10, 82, 560, 2);
+        jSeparator1.setBounds(10, 82, 560, 3);
 
         ChangeElem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/up.PNG"))); // NOI18N
         ChangeElem.setBorderPainted(false);
@@ -142,6 +144,15 @@ public class WizardMeta2GUIArray extends WizardBaseView {
         Edit.setBounds(530, 130, 30, 30);
         getContentPane().add(Types);
         Types.setBounds(270, 170, 210, 20);
+
+        AbsoluteIndex.setText("Индекс с 0");
+        AbsoluteIndex.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                AbsoluteIndexItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(AbsoluteIndex);
+        AbsoluteIndex.setBounds(320, 95, 110, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -197,8 +208,16 @@ public class WizardMeta2GUIArray extends WizardBaseView {
         openWizardByType(array.getElem());
     }//GEN-LAST:event_EditActionPerformed
 
+    private void AbsoluteIndexItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_AbsoluteIndexItemStateChanged
+        if (busy)
+        return;
+        array.setAbsoluteIndex(AbsoluteIndex.isSelected());
+        back.onEnter("Изменено absoluteIndex="+AbsoluteIndex.isSelected());
+    }//GEN-LAST:event_AbsoluteIndexItemStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox AbsoluteIndex;
     private javax.swing.JButton ChangeElem;
     private javax.swing.JTextField DXY;
     private javax.swing.JButton Edit;

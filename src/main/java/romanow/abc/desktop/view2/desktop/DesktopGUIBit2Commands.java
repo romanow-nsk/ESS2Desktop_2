@@ -99,9 +99,10 @@ public class DesktopGUIBit2Commands extends View2BaseDesktop {
                 context.y(yy),
                 context.dx(bSize),
                 context.dy(sz));
-        cmdButton.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
-        cmdButton.setHorizontalAlignment(JTextField.CENTER);
-        cmdButton.setText("");
+        setButtonParams(cmdButton,true);
+        //cmdButton.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
+        //cmdButton.setHorizontalAlignment(JTextField.CENTER);
+        //cmdButton.setText("");
         cmdButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

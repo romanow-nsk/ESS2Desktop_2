@@ -148,14 +148,22 @@ public abstract class View2Base implements I_View2 {
         if (link.getRegister().doubleSize())
             device.getDriver().writeRegister(device.getShortName(),devUnit,regNumFull+1,vv>>16 & 0x0FFFF);
             }
+    //------------------------ Запись пары физических unit подряд ----- ЗАПЛАТКА ---------------------------------------
     public void writeMainRegister(int vv) throws UniException {
+        writeMainRegister(vv,devUnit);
+        }
+    public void writeMainRegisterTwo(int vv) throws UniException {
+        writeMainRegister(vv,devUnit);
+        writeMainRegister(vv,devUnit+1);
+        }
+    public void writeMainRegister(int vv, int devUnitParam) throws UniException {
         if (!(getElement() instanceof Meta2GUIReg))
             throw UniException.config(getElement().getFullTitle()+" на является регистром");
         Meta2RegLink link = (Meta2RegLink)((Meta2GUIReg) getElement()).getRegLink();
         int regNumFull = link.getRegNum()+getRegOffset();
-        device.getDriver().writeRegister(device.getShortName(),devUnit,regNumFull,vv & 0x0FFFF);
+        device.getDriver().writeRegister(device.getShortName(),devUnitParam,regNumFull,vv & 0x0FFFF);
         if (link.getRegister().doubleSize())
-            device.getDriver().writeRegister(device.getShortName(),devUnit,regNumFull+1,vv>>16 & 0x0FFFF);
+            device.getDriver().writeRegister(device.getShortName(),devUnitParam,regNumFull+1,vv>>16 & 0x0FFFF);
         }
     public int readRegister(Meta2RegLink link, int regOffset) throws UniException {
         int regNumFull = link.getRegNum()+regOffset;

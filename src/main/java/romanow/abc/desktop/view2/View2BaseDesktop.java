@@ -20,7 +20,9 @@ public abstract class View2BaseDesktop extends View2Base implements I_View2Deskt
     public void setButtonParams(JButton textField, boolean noOneString) {
         setComponentParams(textField,false);
         String ss = element.getTitle();
-        textField.setText(!noOneString ? ss : "<html>"+(element.isOnCenter() ? "<center>" : "") + ss.replaceAll(" ", "<br>") + "</html>");
+        if (noOneString) ss ="<html>"+(element.isOnCenter() ? "<center>" : "") + ss.replaceAll(" ", "<br>") + "</html>";
+        ss = ss.replaceAll("_"," ");
+        textField.setText(ss);
         textField.setHorizontalAlignment(element.isOnCenter() ? JTextField.CENTER : JTextField.LEFT);
         }
     public Font createFont() {

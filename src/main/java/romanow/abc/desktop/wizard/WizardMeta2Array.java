@@ -77,6 +77,7 @@ public class WizardMeta2Array extends WizardBaseView {
                 formWindowClosing(evt);
             }
         });
+        getContentPane().setLayout(null);
 
         Elem.setEnabled(false);
         getContentPane().add(Elem);
@@ -96,11 +97,11 @@ public class WizardMeta2Array extends WizardBaseView {
             }
         });
         getContentPane().add(Size);
-        Size.setBounds(110, 90, 80, 25);
+        Size.setBounds(110, 90, 50, 25);
 
         jLabel4.setText("Шаг");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(210, 95, 60, 16);
+        jLabel4.setBounds(180, 95, 60, 16);
 
         Step.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -108,7 +109,7 @@ public class WizardMeta2Array extends WizardBaseView {
             }
         });
         getContentPane().add(Step);
-        Step.setBounds(270, 90, 80, 25);
+        Step.setBounds(220, 90, 50, 25);
         getContentPane().add(jSeparator1);
         jSeparator1.setBounds(10, 82, 560, 3);
 

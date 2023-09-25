@@ -21,7 +21,7 @@ import java.awt.*;
 import static romanow.abc.core.entity.metadata.Meta2Entity.toHex;
 
 public class DesktopGUIDateTime extends View2BaseDesktop {
-    private JTextField textField;
+    private JButton textField;
     private Meta2GUIDateTime element;
     public DesktopGUIDateTime(){
         setType(Values.GUIDateTime);
@@ -31,7 +31,7 @@ public class DesktopGUIDateTime extends View2BaseDesktop {
         setLabel(panel);
         FormContext2 context= getContext();
         element = (Meta2GUIDateTime) getElement();
-        textField = new JTextField();
+        textField = new JButton();
         int dd=element.getW2();
         if (dd==0) dd=100;
         int hh = element.getH();
@@ -41,7 +41,7 @@ public class DesktopGUIDateTime extends View2BaseDesktop {
                 context.y(element.getY()+getDyOffset()),
                 context.dx(dd),
                 context.dy(hh));
-        setTextFieldParams(textField);
+        setButtonParams(textField,true);
         //textField.setFont(new Font("Arial Cyr", Font.PLAIN, context.dy(12)));
         //textField.setEditable(false);
         //textField.setHorizontalAlignment(JTextField.LEFT);
@@ -63,29 +63,22 @@ public class DesktopGUIDateTime extends View2BaseDesktop {
     public void putValue(long vv) throws UniException {
         Meta2Register register = getRegister();
         int type = register.getFormat();
-        String ss = String.format("%2d",vv & 0x0FF);
+        String ss = String.format("%02d",vv & 0x0FF);
         vv >>=8;
-        ss = String.format("%2d:",vv & 0x0FF)+ss;
+        ss = String.format("%02d:",vv & 0x0FF)+ss;
         textField.setText(ss);
         vv >>=8;
-        ss = String.format("%2d:",vv & 0x0FF)+ss;
+        ss = String.format("%02d:",vv & 0x0FF)+ss;
         vv >>=8;
-        String ss2 = String.format("%2d-",vv & 0x0FF);
+        String ss2 = String.format("%02d-",vv & 0x0FF);
         vv >>=8;
-        ss2 = ss2+String.format("%2d-",vv & 0x0FF);
+        ss2 = ss2+String.format("%02d-",vv & 0x0FF);
         vv >>=8;
-        ss2 = ss2+String.format("%2d",(vv & 0x0FF)+2000);
-        textField.setText(" "+(element.isOnlyTime() ? "" : ss2)+" "+ss);
-        /*
-        if (type==Values.FloatValue)
-            textField.setText(""+Float.intBitsToFloat(vv));
-        else{
-            if (register instanceof Meta2DataRegister)
-                textField.setText(((Meta2DataRegister)register).valueWithPower(vv));
-            else
-                textField.setText(((Meta2SettingRegister)register).valueWithPower(vv));
-            }
-         */
+        ss2 = ss2+String.format("%02d",(vv & 0x0FF)+2000);
+        if (element.isOnlyTime())
+            textField.setText(ss);
+        else
+            textField.setText("<html>"+(element.isLabelOnCenter() ? "<center>" : "")+ss2 + "<br>"+ss+"</html>");
         }
 
     @Override
