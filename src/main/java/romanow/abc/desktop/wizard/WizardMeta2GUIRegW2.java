@@ -59,6 +59,7 @@ public class WizardMeta2GUIRegW2 extends WizardMeta2GUI {
                 formWindowClosing(evt);
             }
         });
+        getContentPane().setLayout(null);
 
         W2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -79,7 +80,7 @@ public class WizardMeta2GUIRegW2 extends WizardMeta2GUI {
             }
         });
         getContentPane().add(IntValue);
-        IntValue.setBounds(100, 180, 130, 20);
+        IntValue.setBounds(100, 180, 120, 20);
 
         ByteSize.setText("Размерность байт");
         ByteSize.addItemListener(new java.awt.event.ItemListener() {

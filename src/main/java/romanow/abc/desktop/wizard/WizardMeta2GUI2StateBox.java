@@ -24,7 +24,7 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
         }
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
-        resizeHeight(240);
+        resizeHeight(250);
         FailMode.setVisible(false);
         elem = (Meta2GUI2StateBox) entity;
         WizardRegLinkPanel linkPanel = new WizardRegLinkPanel(10,120,"",elem.getRegLink(),this);
@@ -40,6 +40,7 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
         RemoteEnable.setSelected(elem.isRemoteEnable());
         MixedRegister.setSelected(elem.isMixedRegister());
         FailMode.setSelected(elem.isFailMode());
+        TwoUnits.setSelected(elem.isTwoUnits());
         start=false;
         }
     public JCheckBox FailMode(){
@@ -72,6 +73,7 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
         RemoteEnable = new javax.swing.JCheckBox();
         MixedRegister = new javax.swing.JCheckBox();
         FailMode = new javax.swing.JCheckBox();
+        TwoUnits = new javax.swing.JCheckBox();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -82,6 +84,7 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
                 formWindowClosing(evt);
             }
         });
+        getContentPane().setLayout(null);
         getContentPane().add(jSeparator1);
         jSeparator1.setBounds(10, 84, 670, 0);
 
@@ -156,7 +159,7 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
             }
         });
         getContentPane().add(RemoteEnable);
-        RemoteEnable.setBounds(640, 150, 90, 20);
+        RemoteEnable.setBounds(640, 155, 90, 20);
 
         MixedRegister.setText("Рег.данных");
         MixedRegister.addItemListener(new java.awt.event.ItemListener() {
@@ -175,6 +178,15 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
         });
         getContentPane().add(FailMode);
         FailMode.setBounds(510, 180, 130, 20);
+
+        TwoUnits.setText("Второй Unit");
+        TwoUnits.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TwoUnitsItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(TwoUnits);
+        TwoUnits.setBounds(240, 180, 130, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -248,8 +260,14 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
             return;
         elem.setFailMode(FailMode.isSelected());
         back.onEnter("Изменено FailMode"+": "+elem.isFailMode());
-
     }//GEN-LAST:event_FailModeItemStateChanged
+
+    private void TwoUnitsItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TwoUnitsItemStateChanged
+        if (start)
+            return;
+        elem.setTwoUnits(TwoUnits.isSelected());
+        back.onEnter("Изменено twoUnits"+": "+elem.isTwoUnits());
+    }//GEN-LAST:event_TwoUnitsItemStateChanged
 
  
 
@@ -263,6 +281,7 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
     private javax.swing.JCheckBox FailMode;
     private javax.swing.JCheckBox MixedRegister;
     private javax.swing.JCheckBox RemoteEnable;
+    private javax.swing.JCheckBox TwoUnits;
     private javax.swing.JTextField W2;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;

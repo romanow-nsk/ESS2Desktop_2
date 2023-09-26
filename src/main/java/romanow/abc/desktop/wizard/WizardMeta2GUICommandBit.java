@@ -14,7 +14,7 @@ import romanow.abc.core.entity.metadata.view.Meta2GUICommandBit;
  * @author romanow0
  */
 public class WizardMeta2GUICommandBit extends WizardMeta2GUI {
-
+    private boolean start=false;
     private Meta2GUICommandBit elem;
     public WizardMeta2GUICommandBit() {
         initComponents();
@@ -22,6 +22,7 @@ public class WizardMeta2GUICommandBit extends WizardMeta2GUI {
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
         resizeHeight(240);
+        start = true;
         elem = (Meta2GUICommandBit) entity;
         WizardRegLinkPanel linkPanel = new WizardRegLinkPanel(10,120,"",elem.getRegLink(),this);
         add(linkPanel);
@@ -29,6 +30,8 @@ public class WizardMeta2GUICommandBit extends WizardMeta2GUI {
         W2.setText(""+elem.getW2());
         ButtonSize.setText(""+elem.getButtonSize());
         RemoteEnable.setSelected(elem.isRemoteEnable());
+        TwoUnits.setSelected(elem.isTwoUnits());
+        start = false;
         }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,6 +52,7 @@ public class WizardMeta2GUICommandBit extends WizardMeta2GUI {
         jLabel2 = new javax.swing.JLabel();
         ButtonSize = new javax.swing.JTextField();
         RemoteEnable = new javax.swing.JCheckBox();
+        TwoUnits = new javax.swing.JCheckBox();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -59,6 +63,7 @@ public class WizardMeta2GUICommandBit extends WizardMeta2GUI {
                 formWindowClosing(evt);
             }
         });
+        getContentPane().setLayout(null);
         getContentPane().add(jSeparator1);
         jSeparator1.setBounds(10, 84, 670, 0);
 
@@ -107,6 +112,15 @@ public class WizardMeta2GUICommandBit extends WizardMeta2GUI {
         getContentPane().add(RemoteEnable);
         RemoteEnable.setBounds(390, 150, 90, 20);
 
+        TwoUnits.setText("Второй Unit");
+        TwoUnits.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TwoUnitsItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(TwoUnits);
+        TwoUnits.setBounds(390, 170, 120, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -146,12 +160,20 @@ public class WizardMeta2GUICommandBit extends WizardMeta2GUI {
         });
     }//GEN-LAST:event_W2KeyPressed
 
+    private void TwoUnitsItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TwoUnitsItemStateChanged
+        if (start)
+            return;
+        elem.setTwoUnits(TwoUnits.isSelected());
+        back.onEnter("Изменено twoUnits"+": "+elem.isTwoUnits());
+    }//GEN-LAST:event_TwoUnitsItemStateChanged
+
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField BitNum;
     private javax.swing.JTextField ButtonSize;
     private javax.swing.JCheckBox RemoteEnable;
+    private javax.swing.JCheckBox TwoUnits;
     private javax.swing.JTextField W2;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
