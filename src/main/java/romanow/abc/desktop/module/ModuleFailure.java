@@ -17,6 +17,7 @@ import romanow.abc.core.utils.OwnDateTime;
 
 import retrofit2.Call;
 import romanow.abc.desktop.view2.FormContext2;
+import romanow.abc.desktop.view2.View2BaseDesktop;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -38,16 +39,16 @@ public class ModuleFailure extends Module {
     protected JTable table;
     private ListSelectionListener listener;
     public ModuleFailure(){}
-    @Override
-    public void init(MainBaseFrame client, JPanel panel, RestAPIBase service, RestAPIESS2 service2, String token, Meta2GUIForm form, FormContext2 formContext) {
-        super.init(client,panel, service, service2,token, form, formContext);
-        JButton bb = new MultiTextButton(new Font("Arial Cyr", Font.PLAIN, context.dy(12)));
-        bb.setText("Квитировать всё");
+    private void addQuitedButton(){
+        //JButton bb = new MultiTextButton(new Font("Arial Cyr", Font.PLAIN, context.dy(12)));
+        JButton bb = new JButton();
+        View2BaseDesktop.setButtonParams(bb,"Квитировать всё",false,context);
         bb.setBounds(
                 context.x(10),
-                context.y(form.getModuleY0()-100),
-                context.dx(Values.MenuButtonW),
+                context.y(form.getModuleDY()-40),
+                context.dx(Values.MenuButtonW*3),
                 context.dy(Values.MenuButtonH));
+        bb.setVisible(true);
         bb.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -61,7 +62,7 @@ public class ModuleFailure extends Module {
                                     return service2.quitAllFailures(token);
                                 }
                             }.call(client);
-                        repaintValues();
+                            repaintValues();
                         } catch (UniException ex) {
                             System.out.println("Ошибка API: "+ex.toString());
                             }
@@ -70,6 +71,10 @@ public class ModuleFailure extends Module {
                 }
             });
         panel.add(bb);
+        }
+    @Override
+    public void init(MainBaseFrame client, JPanel panel, RestAPIBase service, RestAPIESS2 service2, String token, Meta2GUIForm form, FormContext2 formContext) {
+        super.init(client,panel, service, service2,token, form, formContext);
         repaintView();
         }
     //------------------------------------------------------------------------------------
@@ -122,16 +127,17 @@ public class ModuleFailure extends Module {
                 model.setDataVector(data,header);
                 }
             else{
+                addQuitedButton();
                 table = new JTable(data,header);
                 JScrollPane scroll = new JScrollPane(table);
                 scroll.setBounds(
-                        context.x(form.getModuleX0()),
-                        context.y(form.getModuleY0()),
-                        context.dx(form.getModuleDX()),
-                        context.dy(form.getModuleDY()));
+                       context.x(form.getModuleX0()),
+                       context.y(form.getModuleY0()),
+                       context.dx(form.getModuleDX()),
+                       context.dy(form.getModuleDY()-50));
                 panel.add(scroll);
-                table.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
-                table.setRowHeight(context.y(20));
+                table.setFont(new Font("Arial Cyr", Font.PLAIN, context.dy(12)));
+                table.setRowHeight(context.dy(20));
                 table.setSelectionForeground(Color.blue);
                 table.setSelectionBackground(Color.yellow);
                 table.setVisible(true);

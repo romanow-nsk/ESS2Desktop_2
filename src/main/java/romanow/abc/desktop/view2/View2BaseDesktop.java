@@ -1,6 +1,8 @@
 package romanow.abc.desktop.view2;
 
 import lombok.Getter;
+import romanow.abc.core.entity.metadata.Meta2GUIView;
+import romanow.abc.core.entity.metadata.view.Meta2GUI;
 import romanow.abc.desktop.UtilsDesktop;
 
 import javax.swing.*;
@@ -56,6 +58,22 @@ public abstract class View2BaseDesktop extends View2Base implements I_View2Deskt
                 return new Color(element.getLabelColor());
                 }
             }
+        }
+    public static void setButtonParams(JButton textField, String title, boolean noOneString, FormContext2 context){
+        Meta2GUIView view = context.getView();
+        textField.setBackground(new Color(view.getMenuButtonOffColor()));
+        int fontSize = view.getMenuButtonFontSize();
+        if (fontSize == 0) fontSize = 12;
+        int type = view.isMenuFontBold()? Font.BOLD : Font.PLAIN;
+        Font font = new Font("Arial Cyr", type, context.dy(fontSize));
+        textField.setFont(font);
+        Color textColor = new Color(view.getMenuButtonTextColor());
+        textField.setForeground(textColor);
+        String ss = title;
+        if (noOneString) ss ="<html><center>" + ss.replaceAll(" ", "<br>") + "</html>";
+        ss = ss.replaceAll("_"," ");
+        textField.setText(ss);
+        textField.setHorizontalAlignment(JTextField.CENTER);
         }
     public void setComponentParams(JComponent textField, boolean border){
         textField.setBackground(getElemBackColor());

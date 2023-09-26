@@ -53,7 +53,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     @Getter @Setter private boolean secondPanel=false;
     private JButton OnOff=null;
     private final static String buttonEdit = "/drawable/add.png";
-    private final static String buttonToMain = "/refresh.png";
+    private final static String buttonToMain = "/drawable/home.png";
     private final static String buttonLogout = "/login.png";
     private final static String buttonInfoOn = "/question.png";
     private final static String buttonInfoOff = "/question_gray.png";
