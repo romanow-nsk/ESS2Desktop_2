@@ -5,29 +5,29 @@
 package romanow.abc.desktop.wizard;
 
 import romanow.abc.core.entity.metadata.Meta2Entity;
+import romanow.abc.core.entity.metadata.view.Meta2GUICurrentDateTime;
 import romanow.abc.core.entity.metadata.view.Meta2GUIDateTime;
-import romanow.abc.core.entity.metadata.view.Meta2GUIRegW2;
-
-import javax.swing.*;
 
 /**
  *
  * @author Admin
  */
-public class WizardMeta2GUIDateTime extends WizardMeta2GUIRegW2 {
+public class WizardMeta2GUICurrentDateTime extends WizardMeta2GUILabel {
+
+    /**
+     * Creates new form WizardMeta2GUICurrentDateTime
+     */
     private boolean onStart=false;
-    private Meta2GUIDateTime elem;
+    private Meta2GUICurrentDateTime elem;
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
-        elem = (Meta2GUIDateTime)  entity;
+        elem = (Meta2GUICurrentDateTime)  entity;
         onStart=true;
         OnlyTime.setSelected(elem.isOnlyTime());
         onStart=false;
+        resizeHeight(250);
         }
-    /**
-     * Creates new form WizardMeta2GUIDateTime
-     */
-    public WizardMeta2GUIDateTime() {
+    public WizardMeta2GUICurrentDateTime() {
         initComponents();
     }
 
@@ -52,7 +52,7 @@ public class WizardMeta2GUIDateTime extends WizardMeta2GUIRegW2 {
             }
         });
         getContentPane().add(OnlyTime);
-        OnlyTime.setBounds(230, 180, 130, 20);
+        OnlyTime.setBounds(20, 130, 140, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -81,20 +81,20 @@ public class WizardMeta2GUIDateTime extends WizardMeta2GUIRegW2 {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(WizardMeta2GUIDateTime.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(WizardMeta2GUICurrentDateTime.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(WizardMeta2GUIDateTime.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(WizardMeta2GUICurrentDateTime.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(WizardMeta2GUIDateTime.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(WizardMeta2GUICurrentDateTime.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(WizardMeta2GUIDateTime.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(WizardMeta2GUICurrentDateTime.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new WizardMeta2GUIDateTime().setVisible(true);
+                new WizardMeta2GUICurrentDateTime().setVisible(true);
             }
         });
     }

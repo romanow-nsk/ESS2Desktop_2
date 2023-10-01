@@ -61,6 +61,8 @@ public class DesktopGUI2StateBox extends View2BaseDesktop {
             case 0x00C0C0C0: return "/balllightgray.png";
             case 0x00FF0000: return "/ballred.png";
             case 0x0000FF00: return "/ballgreen.png";
+            case 0x00F0A000: return "/balldarkyellow.png";
+            case 0x0000A000: return "/balldarkgreen.png";
             case 0x00FFFF00: return "/ballyellow.png";
             case 0x000000FF: return "/ballblue.png";
             }

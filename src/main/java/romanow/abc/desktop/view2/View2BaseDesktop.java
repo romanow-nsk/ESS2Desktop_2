@@ -20,12 +20,12 @@ public abstract class View2BaseDesktop extends View2Base implements I_View2Deskt
         setButtonParams(textField, false);
         }
     public void setButtonParams(JButton textField, boolean noOneString) {
-        setComponentParams(textField,false);
         String ss = element.getTitle();
         if (noOneString) ss ="<html>"+(element.isOnCenter() ? "<center>" : "") + ss.replaceAll(" ", "<br>") + "</html>";
         ss = ss.replaceAll("_"," ");
         textField.setText(ss);
         textField.setHorizontalAlignment(element.isOnCenter() ? JTextField.CENTER : JTextField.LEFT);
+        setComponentParams(textField,false);
         }
     public Font createFont() {
         int fontSize = element.getFontSize();
@@ -35,27 +35,27 @@ public abstract class View2BaseDesktop extends View2Base implements I_View2Deskt
         }
     public Color getElemBackColor(){
         if (element.isBackColor()){
-            return  new Color(context.getView().getBackColor());
+            return  new Color(context.getView().getBackColor() | 0xFF000000);
             }
         else{
             if (element.getColor()==0 || element.isCommonColor()){
-                return  new Color(context.getView().getCommonBackColor());
+                return  new Color(context.getView().getCommonBackColor() | 0xFF000000);
                 }
             else{
-                return new Color(element.getColor());
+                return new Color(element.getColor() | 0xFF000000);
                 }
             }
         }
     public Color getLabelColor(){
         if (element.isLabelBackColor()){
-            return  new Color(context.getView().getBackColor());
+            return  new Color(context.getView().getBackColor() | 0xFF000000);
             }
         else{
             if (element.getLabelColor()==0 || element.isLabelCommonColor()){
-                return new Color(context.getView().getCommonBackColor());
+                return new Color(context.getView().getCommonBackColor()  | 0xFF000000);
                 }
             else{
-                return new Color(element.getLabelColor());
+                return new Color(element.getLabelColor()  | 0xFF000000);
                 }
             }
         }
@@ -76,7 +76,6 @@ public abstract class View2BaseDesktop extends View2Base implements I_View2Deskt
         textField.setHorizontalAlignment(JTextField.CENTER);
         }
     public void setComponentParams(JComponent textField, boolean border){
-        textField.setBackground(getElemBackColor());
         textField.setFont(createFont());
         Color textColor = new Color(context.getView().getTextColor());
         if (border){
@@ -84,6 +83,8 @@ public abstract class View2BaseDesktop extends View2Base implements I_View2Deskt
             textField.setOpaque(true);
             }
         textField.setForeground(textColor);
+        Color cc = getElemBackColor();
+        textField.setBackground(cc);
         }
     public JLabel setLabel(JPanel panel){
         String text = element.getTitle();

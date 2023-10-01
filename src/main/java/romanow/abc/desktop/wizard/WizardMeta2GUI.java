@@ -606,7 +606,7 @@ public class WizardMeta2GUI extends WizardBaseView {
             }
         else{
             final Meta2GUI view = context.getSelectedView();
-            Meta2GUIForm form = context.getForm();
+            Meta2GUIForm form = context.getBaseForm();
             int num = form.getControls().shift(0,step);
             onClose.onEnter("Переместить все элементы на dy="+step);
             }
@@ -620,7 +620,7 @@ public class WizardMeta2GUI extends WizardBaseView {
             }
         else{
             final Meta2GUI view = context.getSelectedView();
-            Meta2GUIForm form = context.getForm();
+            Meta2GUIForm form = context.getBaseForm();
             int num = form.getControls().shift(step,0);
             onClose.onEnter("Переместить все элементы на dx="+step);
             }
