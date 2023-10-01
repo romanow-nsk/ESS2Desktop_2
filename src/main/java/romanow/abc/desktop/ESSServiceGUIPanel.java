@@ -1058,6 +1058,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             if (newElem==null)
                 return;
             try {
+                newElem.setType(meta.getType());
                 String mes = newElem.setParams(context, main2.deployed, meta, retryPaintValues);
                 if (mes!=null){
                     errorList.addError("Ошибка настройки элемента "+newElem.getTitle()+"\n"+ mes);

@@ -51,6 +51,7 @@ public class WizardMeta2GUI extends WizardBaseView {
         LabelElemColor.setBackground(new Color(elem.getLabelColor()));
         LabelOnCenter.setSelected(elem.isLabelOnCenter());
         LabelBackColor.setSelected(elem.isLabelBackColor());
+        NoEditThere.setSelected(elem.isNoEditThere());
         baseBack = back;
         back = new I_Value<String>() {
             @Override
@@ -118,6 +119,7 @@ public class WizardMeta2GUI extends WizardBaseView {
         LabelBackColor = new javax.swing.JCheckBox();
         ElemBackColor = new javax.swing.JCheckBox();
         OnRight = new javax.swing.JCheckBox();
+        NoEditThere = new javax.swing.JCheckBox();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -373,7 +375,7 @@ public class WizardMeta2GUI extends WizardBaseView {
             }
         });
         getContentPane().add(LabelCommonColor);
-        LabelCommonColor.setBounds(710, 105, 64, 20);
+        LabelCommonColor.setBounds(720, 105, 64, 20);
 
         LabelBold.setText("Bold");
         LabelBold.addItemListener(new java.awt.event.ItemListener() {
@@ -420,7 +422,7 @@ public class WizardMeta2GUI extends WizardBaseView {
             }
         });
         getContentPane().add(LabelBackColor);
-        LabelBackColor.setBounds(710, 85, 70, 20);
+        LabelBackColor.setBounds(720, 85, 70, 20);
 
         ElemBackColor.setText("Фон");
         ElemBackColor.addItemListener(new java.awt.event.ItemListener() {
@@ -440,6 +442,15 @@ public class WizardMeta2GUI extends WizardBaseView {
         });
         getContentPane().add(OnRight);
         OnRight.setBounds(650, 85, 50, 20);
+
+        NoEditThere.setText("noEdit");
+        NoEditThere.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                NoEditThereItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(NoEditThere);
+        NoEditThere.setBounds(650, 105, 57, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -720,6 +731,13 @@ public class WizardMeta2GUI extends WizardBaseView {
         // TODO add your handling code here:
     }//GEN-LAST:event_LabelCommonColorActionPerformed
 
+    private void NoEditThereItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_NoEditThereItemStateChanged
+        if (busy)
+            return;
+        elem.setNoEditThere(NoEditThere.isSelected());
+        back.onEnter("Изменено noEditThere: "+elem.isNoEditThere());
+    }//GEN-LAST:event_NoEditThereItemStateChanged
+
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -744,6 +762,7 @@ public class WizardMeta2GUI extends WizardBaseView {
     private javax.swing.JButton MoveRight;
     private javax.swing.JTextField MoveStep;
     private javax.swing.JButton MoveUp;
+    private javax.swing.JCheckBox NoEditThere;
     private javax.swing.JCheckBox OnCenter;
     private javax.swing.JCheckBox OnRight;
     private javax.swing.JCheckBox RepaintEtOnce;

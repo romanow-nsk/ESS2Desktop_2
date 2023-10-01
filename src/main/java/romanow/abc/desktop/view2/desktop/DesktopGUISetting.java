@@ -49,7 +49,7 @@ public class DesktopGUISetting extends View2BaseDesktop {
         //textField.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
         setInfoClick(textField);
         final boolean remoteDisable = !context.isSuperUser() &&  !context.isLocalUser() && !(register).isRemoteEnable();
-        if (remoteDisable || !context.isActionEnable())
+        if (!element.isNoEditThere() && (remoteDisable || !context.isActionEnable()))
             textField.setBackground(new Color(Values.AccessDisableColor));
         //Color textColor = new Color(context.getView().getTextColor());
         //textField.setBorder(javax.swing.BorderFactory.createLineBorder(textColor,1));
@@ -63,6 +63,8 @@ public class DesktopGUISetting extends View2BaseDesktop {
                     showInfoMessage();
                     return;
                     }
+                if (element.isNoEditThere())
+                    return;
                 if (remoteDisable){
                     new Message(300,300,"Запрет удаленного управления",Values.PopupMessageDelay);
                     return;

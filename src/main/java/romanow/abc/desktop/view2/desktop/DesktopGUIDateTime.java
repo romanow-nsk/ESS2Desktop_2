@@ -21,7 +21,7 @@ import java.awt.*;
 import static romanow.abc.core.entity.metadata.Meta2Entity.toHex;
 
 public class DesktopGUIDateTime extends View2BaseDesktop {
-    private JButton textField;
+    private JTextField textField;
     private Meta2GUIDateTime element;
     public DesktopGUIDateTime(){
         setType(Values.GUIDateTime);
@@ -31,7 +31,7 @@ public class DesktopGUIDateTime extends View2BaseDesktop {
         setLabel(panel);
         FormContext2 context= getContext();
         element = (Meta2GUIDateTime) getElement();
-        textField = new JButton();
+        textField = new JTextField();
         int dd=element.getW2();
         if (dd==0) dd=100;
         int hh = element.getH();
@@ -41,7 +41,7 @@ public class DesktopGUIDateTime extends View2BaseDesktop {
                 context.y(element.getY()+getDyOffset()),
                 context.dx(dd),
                 context.dy(hh));
-        setButtonParams(textField,true);
+        setTextFieldParams(textField);
         //textField.setFont(new Font("Arial Cyr", Font.PLAIN, context.dy(12)));
         //textField.setEditable(false);
         //textField.setHorizontalAlignment(JTextField.LEFT);
