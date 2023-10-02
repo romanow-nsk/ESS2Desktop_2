@@ -109,7 +109,7 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
             }
         });
         add(TIME1);
-        TIME1.setBounds(90, 70, 110, 25);
+        TIME1.setBounds(90, 70, 180, 25);
 
         TIME2.setEnabled(false);
         TIME2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -118,7 +118,7 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
             }
         });
         add(TIME2);
-        TIME2.setBounds(240, 70, 100, 25);
+        TIME2.setBounds(320, 70, 150, 25);
 
         ShowGraph.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/statistic.png"))); // NOI18N
         ShowGraph.setBorderPainted(false);
@@ -133,7 +133,7 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
 
         jLabel2.setText("До");
         add(jLabel2);
-        jLabel2.setBounds(210, 70, 34, 16);
+        jLabel2.setBounds(290, 70, 34, 16);
 
         jLabel3.setText("От");
         add(jLabel3);
@@ -161,11 +161,11 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
 
         jLabel4.setText("hex/dec");
         add(jLabel4);
-        jLabel4.setBounds(400, 120, 70, 16);
+        jLabel4.setBounds(410, 115, 70, 16);
 
         StreamDataOffset.setEnabled(false);
         add(StreamDataOffset);
-        StreamDataOffset.setBounds(420, 70, 70, 25);
+        StreamDataOffset.setBounds(410, 150, 70, 25);
 
         DataValueAPI.setEnabled(false);
         add(DataValueAPI);
@@ -173,7 +173,7 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
 
         jLabel5.setText("Смещение");
         add(jLabel5);
-        jLabel5.setBounds(350, 70, 70, 16);
+        jLabel5.setBounds(410, 130, 70, 16);
 
         jLabel6.setText("Сжатое (байт)");
         add(jLabel6);
@@ -195,7 +195,7 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
         add(DataValueSet);
         DataValueSet.setBounds(320, 100, 70, 25);
 
-        jLabel8.setText("тип сжатия");
+        jLabel8.setText("Тип сжатия");
         add(jLabel8);
         jLabel8.setBounds(280, 130, 110, 16);
 
@@ -220,7 +220,7 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
 
         jLabel11.setText("Значение");
         add(jLabel11);
-        jLabel11.setBounds(400, 100, 70, 16);
+        jLabel11.setBounds(410, 100, 110, 16);
     }// </editor-fold>//GEN-END:initComponents
 
 

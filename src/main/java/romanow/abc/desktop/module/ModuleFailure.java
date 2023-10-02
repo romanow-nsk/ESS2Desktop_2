@@ -45,7 +45,7 @@ public class ModuleFailure extends Module {
         View2BaseDesktop.setButtonParams(bb,"Квитировать всё",false,context);
         bb.setBounds(
                 context.x(10),
-                context.y(form.getModuleDY()-40),
+                context.y(form.getModuleDY()),
                 context.dx(Values.MenuButtonW*3),
                 context.dy(Values.MenuButtonH));
         bb.setVisible(true);
@@ -71,6 +71,8 @@ public class ModuleFailure extends Module {
                 }
             });
         panel.add(bb);
+        panel.revalidate();
+        panel.repaint();
         }
     @Override
     public void init(MainBaseFrame client, JPanel panel, RestAPIBase service, RestAPIESS2 service2, String token, Meta2GUIForm form, FormContext2 formContext) {
@@ -167,7 +169,8 @@ public class ModuleFailure extends Module {
                 }
             for(int i=0;i<sizes.length;i++)
                 table.getColumnModel().getColumn(i).setPreferredWidth(sizes[i]);
-            //panel.repaint();
+            panel.repaint();
+            panel.revalidate();
         }
 
     @Override
