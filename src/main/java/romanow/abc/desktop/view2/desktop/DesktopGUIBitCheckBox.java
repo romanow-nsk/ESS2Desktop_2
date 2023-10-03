@@ -28,7 +28,9 @@ public class DesktopGUIBitCheckBox extends View2BaseDesktop {
     private boolean busy=false;
     protected JComponent textField;
     private int bitNum=0;
+    private boolean validValue=false;
     private JCheckBox cmdButton=null;    // Кнопка
+    Meta2GUIBitCheckBox element;
     private long lastBitValue=-1;        // Последнее значение разряда
     private long lastValue=0;            //
     public DesktopGUIBitCheckBox(){
@@ -45,7 +47,8 @@ public class DesktopGUIBitCheckBox extends View2BaseDesktop {
     @Override
     public void addToPanel(JPanel panel) {
         setLabel(panel);
-        Meta2GUIBitCheckBox element = (Meta2GUIBitCheckBox) getElement();
+        element = (Meta2GUIBitCheckBox) getElement();
+        bitNum = element.getBitNum();
         if (element.getDx()!=0)
             setLabel(panel);
         FormContext2 context = getContext();
@@ -66,6 +69,11 @@ public class DesktopGUIBitCheckBox extends View2BaseDesktop {
             public void itemStateChanged(ItemEvent e) {
                 if (busy)
                     return;
+                if (!validValue)
+                    return;
+                busy = true;
+                    cmdButton.setSelected(!cmdButton.isSelected());     // Вернуть пока назад !!!!!!!!!!!!!!!!!!!!
+                busy = false;
                 if (context.isInfoMode()){
                     showInfoMessage();
                     return;
@@ -86,16 +94,21 @@ public class DesktopGUIBitCheckBox extends View2BaseDesktop {
                     @Override
                     public void onPush(boolean yes) {
                         if (!yes){
-                            busy=true;
-                            cmdButton.setSelected(!cmdButton.isSelected());
-                            busy=false;
                             return;
                             }
                         try {
                             int mask = 1<<bitNum;
                             long vv = lastValue & ~mask;       // Инвертировать разряд
-                            if (cmdButton.isSelected())
+                            if (lastBitValue==0){
                                 vv |= mask;
+                                busy=true;
+                                cmdButton.setSelected(lastBitValue==0);
+                                busy=false;
+                                }
+                            if (element.isTwoUnits())
+                                writeMainRegisterTwo((int)vv);
+                            else
+                                writeMainRegister((int)vv);
                             writeMainRegister((int)vv);
                             context.getBack().forceRepaint();
                             } catch (UniException ex) {
@@ -110,10 +123,8 @@ public class DesktopGUIBitCheckBox extends View2BaseDesktop {
         panel.add(cmdButton);
         }
     public void showInfoMessage() {
-        Meta2GUIBitCheckBox element = (Meta2GUIBitCheckBox) getElement();
-        int bitNumElem = element.getBitNum();
         Meta2BitRegister set = (Meta2BitRegister) getRegister();
-        Meta2Bit bit = set.getBits().getByCode(bitNumElem);
+        Meta2Bit bit = set.getBits().getByCode(bitNum);
         String ss = "Разряд регистра "+toHex(set.getRegNum()+getRegOffset())+" ["+toHex(set.getRegNum())+"]("+bitNum+") "+set.getShortName()+"$"+set.getTitle()+"$";
         ss+=bit==null ? " не найден " : bit.getTitle();
         new Message(300,300,ss,Values.PopupMessageDelay);
@@ -125,6 +136,7 @@ public class DesktopGUIBitCheckBox extends View2BaseDesktop {
         lastValue = vv;
         lastBitValue = (vv>>bitNum) & 01;
         cmdButton.setSelected(lastBitValue!=0);
+        validValue=true;
         busy = false;
         }
 
