@@ -13,13 +13,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="79 - селектор трендов">
-      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/view/Meta2GUISetting.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/view/Meta2GUISetting.java" afterDir="false" />
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="79 - Состояние - селектор">
+      <change afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/view/Meta2GUIStateSelector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUIStateSelector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIStateSelector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/Meta2StateRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/Meta2StateRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/Meta2XStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/Meta2XStream.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ESS2Desktop.jar" beforeDir="false" afterPath="$PROJECT_DIR$/ESS2Desktop.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUIBitCheckBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUIBitCheckBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIBitCheckBox.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIBitCheckBox.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIBitCheckBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIBitCheckBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUIStateSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUIStateSet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,8 +130,8 @@
       <recent name="romanow.abc.dataserver.profiler.modules" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="romanow.abc.core.entity.metadata.view" />
       <recent name="romanow.abc.desktop.view2.desktop" />
+      <recent name="romanow.abc.core.entity.metadata.view" />
       <recent name="romanow.abc.desktop.wizard" />
       <recent name="romanow.abc.desktop" />
       <recent name="romanow.abc.ess2.emulators" />
@@ -243,13 +247,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00288" summary="Сборка 77 - Масштабирование">
-      <created>1692461551209</created>
-      <option name="number" value="00288" />
-      <option name="presentableId" value="LOCAL-00288" />
-      <option name="project" value="LOCAL" />
-      <updated>1692461551209</updated>
     </task>
     <task id="LOCAL-00289" summary="Сборка 77 - Размещение меню">
       <created>1692467814752</created>
@@ -587,7 +584,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696216657705</updated>
     </task>
-    <option name="localTasksCounter" value="337" />
+    <task id="LOCAL-00337" summary="79">
+      <created>1696350869020</created>
+      <option name="number" value="00337" />
+      <option name="presentableId" value="LOCAL-00337" />
+      <option name="project" value="LOCAL" />
+      <updated>1696350869021</updated>
+    </task>
+    <option name="localTasksCounter" value="338" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -614,8 +618,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Сборка 77 - Размещение модулей" />
-    <MESSAGE value="Сборка 77 - рендеринг" />
     <MESSAGE value="Сборка 77 - перевернутый ЛОГ" />
     <MESSAGE value="Сборка 77 -BitCheckBox" />
     <MESSAGE value="Сборка 77 - ImageDataLevel" />
@@ -639,7 +641,9 @@
     <MESSAGE value="79 - запрет изменения значений для View" />
     <MESSAGE value="79 - текущее время" />
     <MESSAGE value="79 - селектор трендов" />
-    <option name="LAST_COMMIT_MESSAGE" value="79 - селектор трендов" />
+    <MESSAGE value="79" />
+    <MESSAGE value="79 - Состояние - селектор" />
+    <option name="LAST_COMMIT_MESSAGE" value="79 - Состояние - селектор" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -890,9 +894,9 @@
           <option name="timeStamp" value="1120" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUIBitCheckBox.java</url>
-          <line>111</line>
-          <option name="timeStamp" value="1124" />
+          <url>file://$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/Meta2Entity.java</url>
+          <line>74</line>
+          <option name="timeStamp" value="1123" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS4ACDCEmulator.java</url>

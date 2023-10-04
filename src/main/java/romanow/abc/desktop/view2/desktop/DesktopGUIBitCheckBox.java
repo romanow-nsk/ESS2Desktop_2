@@ -109,7 +109,6 @@ public class DesktopGUIBitCheckBox extends View2BaseDesktop {
                                 writeMainRegisterTwo((int)vv);
                             else
                                 writeMainRegister((int)vv);
-                            writeMainRegister((int)vv);
                             context.getBack().forceRepaint();
                             } catch (UniException ex) {
                                 String ss = "Ошибка изменения разряда: "+ex.toString();
