@@ -50,6 +50,7 @@ public class WizardMeta2Collection extends WizardBaseView {
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
         setSize(850,450);
+        resizeHeight();
         list = ((Meta2Collection)entity).getList();
         for(int i=0; i<choices.length;i++){
             choices[i]=null;

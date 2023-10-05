@@ -88,8 +88,17 @@ public class WizardBaseView extends javax.swing.JFrame {
                 return "Ошибка создания формы "+name+": "+ee.toString();
                 }
         }
+    public void resizeHeight(){
+        resizeHeight(getSize().height);
+        }
     public void resizeHeight(int high){
-        setSize(getSize().width,high);
+        Dimension sSize = Toolkit.getDefaultToolkit ().getScreenSize ();
+        Dimension dim = getSize();
+        Rectangle rec = getBounds();
+        rec.height = high;
+        if (rec.y + high > sSize.height - 50)
+            rec.y -= rec.y + high - sSize.height + 50;
+        setBounds(rec);
         }
     public void openForm(WizardBaseView parentView0,Meta2Entity entity0) {
         busy = true;
@@ -104,6 +113,7 @@ public class WizardBaseView extends javax.swing.JFrame {
         setVisible(true);
         setLocation(WizardX0+level*10,WizardY0+level*10);
         setSize(800,170);
+        resizeHeight(170);
         setTitle("Уровень "+(level+1)+"  "+entity.getFullTitle());
         Title.setText(entity.getTitle());
         Comment.setText(entity.getComment());

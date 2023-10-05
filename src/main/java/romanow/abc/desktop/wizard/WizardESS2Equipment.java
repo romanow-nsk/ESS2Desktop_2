@@ -39,6 +39,7 @@ public class WizardESS2Equipment extends WizardBaseViewDB {
         super("Оборудование",frame0,entity0,back0);
         initComponents();
         setSize(750,220);
+        resizeHeight(220);
         onStart = true;
         equipment = (ESS2Equipment)entity0;
         MultiUnit.setSelected(equipment.isMultiUnit());

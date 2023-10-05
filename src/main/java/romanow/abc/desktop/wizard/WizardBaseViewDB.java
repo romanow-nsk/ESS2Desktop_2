@@ -46,7 +46,18 @@ public class WizardBaseViewDB extends javax.swing.JFrame {
         SaveChanges.setVisible(false);
         ChangesCount.setVisible(false);
         }
-
+    public void resizeHeight(){
+        resizeHeight(getSize().height);
+    }
+    public void resizeHeight(int high){
+        Dimension sSize = Toolkit.getDefaultToolkit ().getScreenSize ();
+        Dimension dim = getSize();
+        Rectangle rec = getBounds();
+        rec.height = high;
+        if (rec.y + high > sSize.height - 50)
+            rec.y -= rec.y + high - sSize.height + 50;
+        setBounds(rec);
+        }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

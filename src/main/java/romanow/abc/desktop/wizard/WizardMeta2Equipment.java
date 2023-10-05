@@ -28,6 +28,7 @@ public class WizardMeta2Equipment extends WizardBaseView {
             super.openForm(parentView0,entity0);
             collection = ((Meta2Equipment)entity0).getRegisters();
             setSize(850,160);
+            resizeHeight();
             }
     /**
      * This method is called from within the constructor to initialize the form.
