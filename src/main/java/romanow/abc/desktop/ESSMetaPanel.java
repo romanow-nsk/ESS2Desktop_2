@@ -2073,7 +2073,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                     metaXML.createMap();
                     metaXML.testLocalConfiguration();
                     System.out.println(metaXML.getErrors());
-                    String zz = WizardBaseView.openWizard(main, metaXML, new I_Value<String>() {
+                    String zz = WizardBaseView.openWizard(metaFile.getFile().getRef().createArtifactFileName(),main, metaXML, new I_Value<String>() {
                         @Override
                         public void onEnter(String value) {
                             changesCount++;

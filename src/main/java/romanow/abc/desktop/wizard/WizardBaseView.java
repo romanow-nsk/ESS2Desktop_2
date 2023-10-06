@@ -11,6 +11,7 @@ import romanow.abc.core.entity.artifacts.Artifact;
 import romanow.abc.core.entity.artifacts.ArtifactList;
 import romanow.abc.core.entity.metadata.Meta2Entity;
 import romanow.abc.core.entity.metadata.Meta2Face;
+import romanow.abc.desktop.ESSBaseView;
 import romanow.abc.desktop.I_Value;
 import romanow.abc.desktop.MainBaseFrame;
 import romanow.abc.desktop.view2.FormContext2;
@@ -28,7 +29,7 @@ import static romanow.abc.core.constants.Values.WizardY0;
  *
  * @author romanow0
  */
-public class WizardBaseView extends javax.swing.JFrame {
+public class WizardBaseView extends ESSBaseView {
     private boolean isClosed=false;
     protected I_Value<String> onClose=null;
     protected MainBaseFrame main;
@@ -38,16 +39,20 @@ public class WizardBaseView extends javax.swing.JFrame {
     protected I_Value<String> back;
     protected FormContext2 context;
     protected boolean busy=false;
-    public static String openWizard(MainBaseFrame main0, Meta2Entity entity,I_Value<String> back){
+    protected String fileName="";
+    public static String openWizard(String fileName0,MainBaseFrame main0, Meta2Entity entity,I_Value<String> back){
         String name = "Wizard"+entity.getClass().getSimpleName();
         try {
             Class  cls = Class.forName("romanow.abc.desktop.wizard."+name);
             WizardBaseView view = (WizardBaseView)cls.newInstance();
+            view.fileName = fileName0;
             view.back = back;
             view.main = main0;
             view.openForm(null,entity);
             view.revalidate();
             view.repaint(1000);
+            view.setSilenceMode(true);
+            view.delayIt(Values.WizardPause);
             return null;
             } catch (Exception ee){
                 return "Ошибка создания формы "+name+": "+ee.toString();
@@ -81,6 +86,8 @@ public class WizardBaseView extends javax.swing.JFrame {
             view.back = back0;
             view.context = context2;
             view.openForm(parent,entity);
+            view.setSilenceMode(true);
+            view.delayIt(Values.WizardPause);
             view.revalidate();
             view.repaint(1000);
             return null;
@@ -234,6 +241,7 @@ public class WizardBaseView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public void closeForm(){
+        super.closeView();
         if (isClosed)
             return;
         if (parentView!=null)
@@ -299,6 +307,7 @@ public class WizardBaseView extends javax.swing.JFrame {
     }//GEN-LAST:event_In60870ItemStateChanged
 
     public void onKeyPressedFloat(String name, JTextField fld, KeyEvent evt, I_WizardActionFloat action){
+        noSilence();
         if(evt.getKeyCode()!=10) return;
         float xx=0;
         try {
@@ -315,6 +324,7 @@ public class WizardBaseView extends javax.swing.JFrame {
     }
 
     public void onKeyPressed(String name, JTextField fld, KeyEvent evt, I_WizardAction action){
+        noSilence();
         if(evt.getKeyCode()!=10) return;
         int xx=0;
         try {
@@ -330,6 +340,7 @@ public class WizardBaseView extends javax.swing.JFrame {
         }
     }
     public void onKeyPressed(String name, JCheckBox hex, JTextField fld, KeyEvent evt, I_WizardAction action){
+        noSilence();
         if(evt.getKeyCode()!=10) return;
         int xx=0;
         String ss = fld.getText();
@@ -350,6 +361,7 @@ public class WizardBaseView extends javax.swing.JFrame {
         }
     }
     public void onColorKeyPressed(String name,JTextField fld, JButton button, KeyEvent evt, I_WizardAction action){
+        noSilence();
         if(evt.getKeyCode()!=10) return;
         long xx=0;
         try {
@@ -366,6 +378,7 @@ public class WizardBaseView extends javax.swing.JFrame {
         }
     }
     public void onStringKeyPressed(String name,JTextField fld, KeyEvent evt, I_WizardActionString action){
+        noSilence();
         if(evt.getKeyCode()!=10) return;
         action.onAction(fld.getText());
         if (evt!=null)
@@ -373,6 +386,7 @@ public class WizardBaseView extends javax.swing.JFrame {
         back.onEnter("Изменено "+name+": "+fld.getText());
     }
     public void onKey16Pressed(String name,JTextField fld, KeyEvent evt, I_WizardAction action){
+        noSilence();
         if(evt.getKeyCode()!=10) return;
         long xx=0;
         try {

@@ -27,6 +27,7 @@ public class WizardMeta2Equipment extends WizardBaseView {
         public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
             super.openForm(parentView0,entity0);
             collection = ((Meta2Equipment)entity0).getRegisters();
+            FileName.setText(fileName);
             setSize(850,160);
             resizeHeight();
             }
@@ -40,6 +41,10 @@ public class WizardMeta2Equipment extends WizardBaseView {
     private void initComponents() {
 
         Registers = new javax.swing.JButton();
+        FileName = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+
+        getContentPane().setLayout(null);
 
         Registers.setText("Элементы");
         Registers.addActionListener(new java.awt.event.ActionListener() {
@@ -48,7 +53,15 @@ public class WizardMeta2Equipment extends WizardBaseView {
             }
         });
         getContentPane().add(Registers);
-        Registers.setBounds(20, 90, 100, 22);
+        Registers.setBounds(560, 80, 100, 22);
+
+        FileName.setEnabled(false);
+        getContentPane().add(FileName);
+        FileName.setBounds(120, 80, 410, 22);
+
+        jLabel1.setText("Артефакт");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(20, 80, 80, 16);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -62,6 +75,8 @@ public class WizardMeta2Equipment extends WizardBaseView {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField FileName;
     private javax.swing.JButton Registers;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

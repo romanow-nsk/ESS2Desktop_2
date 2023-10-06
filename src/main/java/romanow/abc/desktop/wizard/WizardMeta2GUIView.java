@@ -44,6 +44,7 @@ public class WizardMeta2GUIView extends WizardBaseView {
        MenuModes.setText(""+view.getMenuModes());
        Height.setText(""+view.getHeight());
        Width.setText(""+view.getWidth());
+       FileName.setText(fileName);
        //---------------------------------------------------------------------------
        MenuOnColor.setText(""+String.format("%06x",view.getMenuButtonOnColor()));
        MenuOnColorButton.setBackground(new Color(view.getMenuButtonOnColor()));
@@ -147,13 +148,16 @@ public class WizardMeta2GUIView extends WizardBaseView {
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         MenuButtonH = new javax.swing.JTextField();
+        FileName = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
 
+        getContentPane().setLayout(null);
         getContentPane().add(jSeparator1);
         jSeparator1.setBounds(10, 80, 750, 10);
 
-        jLabel9.setText("Фон общий");
+        jLabel9.setText("Артекфакт");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(10, 150, 100, 16);
+        jLabel9.setBounds(10, 120, 100, 16);
 
         BackColor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -320,6 +324,14 @@ public class WizardMeta2GUIView extends WizardBaseView {
         getContentPane().add(MenuButtonH);
         MenuButtonH.setBounds(570, 200, 40, 25);
 
+        FileName.setEnabled(false);
+        getContentPane().add(FileName);
+        FileName.setBounds(110, 110, 400, 22);
+
+        jLabel13.setText("Фон общий");
+        getContentPane().add(jLabel13);
+        jLabel13.setBounds(10, 150, 100, 16);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -443,6 +455,7 @@ public class WizardMeta2GUIView extends WizardBaseView {
     private javax.swing.JButton BackColorButton;
     private javax.swing.JTextField ElemColor;
     private javax.swing.JButton ElemColorButton;
+    private javax.swing.JTextField FileName;
     private javax.swing.JTextField Height;
     private javax.swing.JCheckBox MenuBold;
     private javax.swing.JTextField MenuButtonH;
@@ -461,6 +474,7 @@ public class WizardMeta2GUIView extends WizardBaseView {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
