@@ -529,6 +529,7 @@ public class WizardMeta2GUI extends WizardBaseView {
     private void CommonColorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CommonColorItemStateChanged
         if (busy)
             return;
+        noSilence();
         elem.setCommonColor(CommonColor.isSelected());
         back.onEnter("Изменено commonColor: "+elem.isCommonColor());
     }//GEN-LAST:event_CommonColorItemStateChanged
@@ -536,6 +537,7 @@ public class WizardMeta2GUI extends WizardBaseView {
     private void BoldItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_BoldItemStateChanged
         if (busy)
             return;
+        noSilence();
         elem.setBold(Bold.isSelected());
         back.onEnter("Изменено bold: "+elem.isBold());
     }//GEN-LAST:event_BoldItemStateChanged
@@ -564,6 +566,7 @@ public class WizardMeta2GUI extends WizardBaseView {
         new OK(200,200,"Вставить элемент: "+elem.getFullTitle(), new I_Button() {
             @Override
             public void onPush() {
+                noSilence();
                 Meta2GUI copy = null;
                 try {
                     copy = elem.getClass().newInstance();       // Клонировать элемент
@@ -598,6 +601,7 @@ public class WizardMeta2GUI extends WizardBaseView {
         return step;
         }
     private void moveY(int step){
+        noSilence();
         if (!MoveAll.isSelected()){
             elem.setY(elem.getY()+step);
             Y.setText(""+elem.getY());
@@ -608,10 +612,13 @@ public class WizardMeta2GUI extends WizardBaseView {
             final Meta2GUI view = context.getSelectedView();
             Meta2GUIForm form = context.getBaseForm();
             int num = form.getControls().shift(0,step);
-            onClose.onEnter("Переместить все элементы на dy="+step);
+            String ss = "Перемещение "+num+" элементов на dy="+step;
+            back.onEnter(ss);
+            onClose.onEnter(ss);
             }
         }
     private void moveX(int step){
+        noSilence();
         if (!MoveAll.isSelected()){
             elem.setX(elem.getX()+step);
             X.setText(""+elem.getX());
@@ -622,7 +629,9 @@ public class WizardMeta2GUI extends WizardBaseView {
             final Meta2GUI view = context.getSelectedView();
             Meta2GUIForm form = context.getBaseForm();
             int num = form.getControls().shift(step,0);
-            onClose.onEnter("Переместить все элементы на dx="+step);
+            String ss = "Перемещение "+num+" элементов на dy="+step;
+            back.onEnter(ss);
+            onClose.onEnter(ss);
             }
         }
     private void MoveDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MoveDownActionPerformed
@@ -655,6 +664,7 @@ public class WizardMeta2GUI extends WizardBaseView {
     }//GEN-LAST:event_SelecElemActionPerformed
 
     private void Step5_25ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_Step5_25ItemStateChanged
+        noSilence();
         MoveStep.setText(Step5_25.isSelected() ? "25" : "5");
     }//GEN-LAST:event_Step5_25ItemStateChanged
 
@@ -671,6 +681,7 @@ public class WizardMeta2GUI extends WizardBaseView {
     private void LabelCommonColorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_LabelCommonColorItemStateChanged
         if (busy)
             return;
+        noSilence();
         elem.setLabelCommonColor(LabelCommonColor.isSelected());
         back.onEnter("Изменено labelCommonColor: "+elem.isLabelCommonColor());
     }//GEN-LAST:event_LabelCommonColorItemStateChanged
@@ -678,6 +689,7 @@ public class WizardMeta2GUI extends WizardBaseView {
     private void LabelBoldItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_LabelBoldItemStateChanged
         if (busy)
             return;
+        noSilence();
         elem.setLabelBold(LabelBold.isSelected());
         back.onEnter("Изменено labelBold: "+elem.isLabelBold());
 
@@ -686,6 +698,7 @@ public class WizardMeta2GUI extends WizardBaseView {
     private void LabelOnCenterItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_LabelOnCenterItemStateChanged
         if (busy)
             return;
+        noSilence();
         elem.setLabelOnCenter(LabelOnCenter.isSelected());
         back.onEnter("Изменено labelOnCenter: "+elem.isLabelOnCenter());
     }//GEN-LAST:event_LabelOnCenterItemStateChanged
@@ -693,6 +706,7 @@ public class WizardMeta2GUI extends WizardBaseView {
     private void OnCenterItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_OnCenterItemStateChanged
         if (busy)
             return;
+        noSilence();
         elem.setOnCenter(OnCenter.isSelected());
         back.onEnter("Изменено OnCenter: "+elem.isOnCenter());
     }//GEN-LAST:event_OnCenterItemStateChanged
@@ -700,6 +714,7 @@ public class WizardMeta2GUI extends WizardBaseView {
     private void LabelBackColorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_LabelBackColorItemStateChanged
         if (busy)
             return;
+        noSilence();
         elem.setLabelBackColor(LabelBackColor.isSelected());
         back.onEnter("Изменено LabelBackColor: "+elem.isLabelBackColor());
 
@@ -708,6 +723,7 @@ public class WizardMeta2GUI extends WizardBaseView {
     private void ElemBackColorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ElemBackColorItemStateChanged
         if (busy)
             return;
+        noSilence();
         elem.setBackColor(ElemBackColor.isSelected());
         back.onEnter("Изменено ElemBackColor: "+elem.isBackColor());
     }//GEN-LAST:event_ElemBackColorItemStateChanged
@@ -723,6 +739,7 @@ public class WizardMeta2GUI extends WizardBaseView {
     private void OnRightItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_OnRightItemStateChanged
         if (busy)
             return;
+        noSilence();
         elem.setLabelOnRight(OnRight.isSelected());
         back.onEnter("Изменено OnLeft: "+elem.isLabelOnRight());
     }//GEN-LAST:event_OnRightItemStateChanged
@@ -734,6 +751,7 @@ public class WizardMeta2GUI extends WizardBaseView {
     private void NoEditThereItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_NoEditThereItemStateChanged
         if (busy)
             return;
+        noSilence();
         elem.setNoEditThere(NoEditThere.isSelected());
         back.onEnter("Изменено noEditThere: "+elem.isNoEditThere());
     }//GEN-LAST:event_NoEditThereItemStateChanged

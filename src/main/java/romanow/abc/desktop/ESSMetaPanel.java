@@ -66,6 +66,8 @@ public class ESSMetaPanel extends ESSBasePanel {
     private GUITimer profilerTimer = new GUITimer();                    // Таймер профилирования
     private final static int profilerTimerDelay=3;                      // Таймер повтора профилирования
     private boolean oldProfilerState=false;
+    //---------------------------------------------------------------------------------------------------
+    private int  lastViewIndex=-1;
     private String archStateIcons[]={
             "/drawable/settings-gray.png",
             "/drawable/settings-red.png",
@@ -1752,6 +1754,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         screen.refresh();
         }
     public void setRenderingOn(boolean second) {
+        lastViewIndex = Views.getSelectedIndex();
         ESS2View view = deployed.getViews().get(Views.getSelectedIndex());
         ScreenMode screenMode = new ScreenMode(OrigHW.isSelected(),view.getView().getWidth(),view.getView().getHeight(),0,0);
         main2.setRenderingOn(0,view,Trace.isSelected(),second,screenMode);
@@ -2709,6 +2712,8 @@ public class ESSMetaPanel extends ESSBasePanel {
                 Connect.setIcon(new javax.swing.ImageIcon(getClass().getResource(connStateIcons[state])));
                 streamData.setVisible(connected);
                 initStreamData();
+                if (lastViewIndex!=-1 && lastViewIndex < Views.getItemCount())          // Восстановить последний ЧМИ
+                    Views.select(lastViewIndex);
                 }
             };
         }//GEN-LAST:event_ConnectActionPerformed
