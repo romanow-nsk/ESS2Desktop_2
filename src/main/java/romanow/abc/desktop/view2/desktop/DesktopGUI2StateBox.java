@@ -70,7 +70,6 @@ public class DesktopGUI2StateBox extends View2BaseDesktop {
         }
     @Override
     public void addToPanel(JPanel panel) {
-        setLabel(panel);
         Meta2GUI2StateBox element = (Meta2GUI2StateBox) getElement();
         int hh = element.getH();
         if (hh==0) hh=25;

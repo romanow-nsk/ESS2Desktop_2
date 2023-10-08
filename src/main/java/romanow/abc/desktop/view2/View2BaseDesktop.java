@@ -34,12 +34,18 @@ public abstract class View2BaseDesktop extends View2Base implements I_View2Deskt
         return new Font("Arial Cyr", type, context.dy(fontSize));
         }
     public Color getElemBackColor(){
+        return getElemBackColor(null);
+        }
+    public Color getElemBackColor(JComponent textField){
         if (element.isBackColor()){
             return  new Color(context.getView().getBackColor() | 0xFF000000);
             }
         else{
             if (element.getColor()==0 || element.isCommonColor()){
-                return  new Color(context.getView().getCommonBackColor() | 0xFF000000);
+                if (textField!=null && textField instanceof JButton)
+                    return  new Color(context.getView().getMenuButtonOffColor() | 0xFF000000);
+                else
+                    return  new Color(context.getView().getCommonBackColor() | 0xFF000000);
                 }
             else{
                 return new Color(element.getColor() | 0xFF000000);
@@ -83,7 +89,7 @@ public abstract class View2BaseDesktop extends View2Base implements I_View2Deskt
             textField.setOpaque(true);
             }
         textField.setForeground(textColor);
-        Color cc = getElemBackColor();
+        Color cc = getElemBackColor(textField);
         textField.setBackground(cc);
         }
     public JLabel setLabel(JPanel panel){

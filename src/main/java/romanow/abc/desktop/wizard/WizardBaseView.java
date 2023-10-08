@@ -121,7 +121,8 @@ public class WizardBaseView extends ESSBaseView {
         setLocation(WizardX0+level*10,WizardY0+level*10);
         setSize(800,170);
         resizeHeight(170);
-        setTitle("Уровень "+(level+1)+"  "+entity.getFullTitle());
+        String ss = "Уровень "+(level+1)+"  "+entity.getFullTitle();
+        setTitle(ss);
         Title.setText(entity.getTitle());
         Comment.setText(entity.getComment());
         ShortName.setText(entity.getShortName());
