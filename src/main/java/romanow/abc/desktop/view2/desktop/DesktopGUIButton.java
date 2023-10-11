@@ -22,63 +22,75 @@ import java.awt.event.ActionListener;
 import static romanow.abc.core.entity.metadata.Meta2Entity.toHex;
 
 public class DesktopGUIButton extends View2BaseDesktop {
-    private JButton textField;
+    private JButton cmdButton;
+    private Meta2Command cmd;
+    private Meta2GUIButton element;
     public DesktopGUIButton(){
         setType(Values.GUIButton);
         }
-    public Component getComponent(){ return textField; }
     @Override
     public void addToPanel(JPanel panel) {
         setLabel(panel);
-        textField = new JButton();
         FormContext2 context = getContext();
-        Meta2GUIButton element = (Meta2GUIButton) getElement();
-        textField.setBounds(
-                context.x(element.getX()),
+        element = (Meta2GUIButton) getElement();
+        int bSize = element.getButtonSize();
+        if (bSize==0)
+            return;
+        final boolean remoteDisable = !context.isSuperUser() &&  !context.isLocalUser() && !element.isRemoteEnable();
+        cmdButton = new JButton();
+        cmdButton.setBounds(
+                context.x(element.getX()+element.getDx()+5),
                 context.y(element.getY()),
-                context.dx(element.getDx()),
+                context.dx(element.getButtonSize()),
                 context.dy(element.getH()==0 ? 25 : element.getH()));
-        setButtonParams(textField,true);
-        //textField.setText(element.getTitle());
-        //textField.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
-        //textField.setHorizontalAlignment(JTextField.CENTER);
-        Meta2CommandRegister register = (Meta2CommandRegister)getRegister();
-        final Meta2Command cmd = register.getCommands().getByCode(element.getCmdCode());
-        final boolean remoteDisable = !context.isSuperUser() &&  !context.isLocalUser() && !cmd.isRemoteEnable();
+        setButtonParams(cmdButton,true);
+        cmdButton.setText(element.getButtonText());
         if (remoteDisable || !context.isActionEnable())
-            textField.setBackground(new Color(Values.AccessDisableColor));
-        setInfoClick(textField);
-        textField.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (context.isInfoMode()){
-                    showInfoMessage();
-                    return;
-                    }
-                if (remoteDisable){
-                    new Message(300,300,"Запрет удаленного управления",Values.PopupMessageDelay);
-                    return;
-                    }
-                if (!context.isActionEnable()){
-                    new Message(300,300,"Недостаточен уровень доступа",Values.PopupMessageDelay);
-                    return;
-                    }
-                new OK(200, 200, cmd.getTitle(), new I_Button() {
-                    @Override
-                    public void onPush() {
-                        try {
-                            writeMainRegister(cmd.getCode());
-                            context.getBack().forceRepaint();
-                        } catch (UniException ex) {
-                                String ss = "Ошибка записи команды: "+ex.toString();
-                                context.popup(ss);
-                                System.out.println(ss);
-                                }
-                        }
-                    });
+            cmdButton.setBackground(new Color(Values.AccessDisableColor));
+        Meta2CommandRegister register = (Meta2CommandRegister)getRegister();
+        cmd = register.getCommands().getByCode(element.getCmdCode());
+        /*
+        if (!context.isRuntimeEditMode()){
+            JLabel label = getLabel();
+            Rectangle rectangle = label.getBounds();
+            if (rectangle.width==0) {
+                rectangle.width = 10;
+                label.setBounds(rectangle);
                 }
-            });
-        panel.add(textField);
+            }
+         */
+        setInfoClick(cmdButton,true);
+        panel.add(cmdButton);
+        }
+    @Override
+    public void onFullClick(){
+        FormContext2 context = getContext();
+        if (context.isInfoMode()){
+            showInfoMessage();
+            return;
+            }
+        boolean remoteDisable = !context.isSuperUser() &&  !context.isLocalUser() && !cmd.isRemoteEnable();
+        if (remoteDisable){
+            new Message(300,300,"Запрет удаленного управления",Values.PopupMessageDelay);
+            return;
+            }
+        if (!context.isActionEnable()){
+            new Message(300,300,"Недостаточен уровень доступа",Values.PopupMessageDelay);
+            return;
+            }
+        new OK(200, 200, cmd.getTitle(), new I_Button() {
+            @Override
+            public void onPush() {
+                try {
+                    writeMainRegister(cmd.getCode());
+                    context.getBack().forceRepaint();
+                } catch (UniException ex) {
+                    String ss = "Ошибка записи команды: "+ex.toString();
+                    context.popup(ss);
+                    System.out.println(ss);
+                }
+            }
+        });
         }
     @Override
     public void showInfoMessage(){

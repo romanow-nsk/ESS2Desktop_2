@@ -38,7 +38,7 @@ public abstract class View2Base implements I_View2 {
     @Getter @Setter int regOffset=0;
     @Getter @Setter int dxOffset=0;
     @Getter @Setter int dyOffset=0;
-    @Getter @Setter int groupLevel=0;                           // Уровень групповых элементов
+    @Getter @Setter int groupLevel=0;               // Уровень групповых элементов
     @Getter int groupIndexes[]=new int[Values.FormStackSize];   // Индексы МЕТАЭЛЕМЕНТОВ в группах
     @Getter @Setter FormContext2 context;
     public void setType(int type) {
@@ -93,9 +93,15 @@ public abstract class View2Base implements I_View2 {
             context.getMain().sendEventPanel(BasePanel.EventRuntimeEdited,0,0,value);
             }
         };
+    public void onFullClick(){}
     public void setInfoClick(Component textField){
+        setInfoClick(textField,false);
+        }
+    public void setInfoClick(Component textField,final boolean onLeftClick){        // Перехват левого клика
         textField.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
+                if (onLeftClick && e.getButton() == MouseEvent.BUTTON1)
+                        onFullClick();
                 if (context.isInfoMode() || e.getButton() == MouseEvent.BUTTON3){
                     if (!context.isRuntimeEditMode())
                         showInfoMessage();
@@ -104,10 +110,10 @@ public abstract class View2Base implements I_View2 {
                         String ss = WizardBaseView.openWizardByType(element, null, onClose, onChange,context);
                         if (ss!=null)
                             new Message(300,300,ss,Values.PopupMessageDelay);
-                        }
                     }
-                }});
-            }
+                }
+            }});
+        }
     public void setBitNum(int nbit){}
     public String toString(){
         return getTitle()+" "+Values.title("GUITypeName",getType())+" x="+element.getX()+" y="+element.getY();

@@ -29,8 +29,10 @@ public class DesktopGUI2StateBox extends View2BaseDesktop {
     protected JComponent textField;
     private int bitNum=0;
     private JButton cmdButton=null;     // Кнопка
-    private long lastBitValue=-1;        // Последнее значение разряда
-    private long lastValue=0;            //
+    private long lastBitValue=-1;       // Последнее значение разряда
+    private long lastValue=0;           //
+    private Meta2GUI2StateBox element;
+    private boolean remoteDisable;
     public DesktopGUI2StateBox(){
         setType(Values.GUI2StateBox);
         }
@@ -70,7 +72,7 @@ public class DesktopGUI2StateBox extends View2BaseDesktop {
         }
     @Override
     public void addToPanel(JPanel panel) {
-        Meta2GUI2StateBox element = (Meta2GUI2StateBox) getElement();
+        element = (Meta2GUI2StateBox) getElement();
         int hh = element.getH();
         if (hh==0) hh=25;
         if (element.getDx()!=0){
@@ -96,7 +98,7 @@ public class DesktopGUI2StateBox extends View2BaseDesktop {
         int bSize = element.getButtonSize();
         if (bSize==0)
             return;
-        final boolean remoteDisable = !context.isSuperUser() &&  !context.isLocalUser() && !element.isRemoteEnable();
+        remoteDisable = !context.isSuperUser() &&  !context.isLocalUser() && !element.isRemoteEnable();
         cmdButton = new JButton();
         cmdButton.setBounds(
                 context.x(xx+sz+5),
@@ -106,49 +108,51 @@ public class DesktopGUI2StateBox extends View2BaseDesktop {
         setButtonParams(cmdButton,true);
         if (remoteDisable)
             cmdButton.setBackground(new Color(Values.AccessDisableColor));
-        //cmdButton.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
-        //cmdButton.setHorizontalAlignment(JTextField.CENTER);
         cmdButton.setText("");
-        cmdButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (context.isInfoMode()){
-                    showInfoMessage();
-                    return;
-                    }
-                if (remoteDisable){
-                    new Message(300,300,"Запрет удаленного управления", Values.PopupMessageDelay);
-                    return;
-                    }
-                if (!context.isActionEnable()){
-                    new Message(300,300,"Недостаточен уровень доступа",Values.PopupMessageDelay);
-                    return;
-                    }
-                if (lastBitValue==-1){
-                    new Message(300,300,"Разряд еще не прочитан",Values.PopupMessageDelay);
-                    return;
-                    }
-                new OK(200, 200, element.getTitle()+" "+(lastBitValue!=0 ? "ОТКЛ" : "ВКЛ"), new I_Button() {
-                    @Override
-                    public void onPush() {
-                        try {
-                            long vv = lastValue ^ (1<<bitNum);       // Инвертировать разряд
-                            if (element.isTwoUnits())
-                                writeMainRegisterTwo((int)vv);
-                            else
-                                writeMainRegister((int)vv);
-                            context.getBack().forceRepaint();
-                            } catch (UniException ex) {
-                                String ss = "Ошибка изменения разряда: "+ex.toString();
-                                context.popup(ss);
-                                System.out.println(ss);
-                                }
-                            }
-                        });
-                    }
-            });
+        //cmdButton.addActionListener(new ActionListener() {
+        //    @Override
+        //    public void actionPerformed(ActionEvent e) {
+        //
+        //    }});
+        setInfoClick(cmdButton,true);
         panel.add(cmdButton);
-
+        }
+    @Override
+    public void onFullClick(){
+            FormContext2 context = getContext();
+            if (context.isInfoMode()){
+                showInfoMessage();
+                return;
+                }
+            if (remoteDisable){
+                new Message(300,300,"Запрет удаленного управления", Values.PopupMessageDelay);
+                return;
+                }
+            if (!context.isActionEnable()){
+                new Message(300,300,"Недостаточен уровень доступа",Values.PopupMessageDelay);
+                return;
+                }
+            if (lastBitValue==-1){
+                new Message(300,300,"Разряд еще не прочитан",Values.PopupMessageDelay);
+                return;
+                }
+            new OK(200, 200, element.getTitle()+" "+(lastBitValue!=0 ? "ОТКЛ" : "ВКЛ"), new I_Button() {
+                @Override
+                public void onPush() {
+                    try {
+                        long vv = lastValue ^ (1<<bitNum);       // Инвертировать разряд
+                        if (element.isTwoUnits())
+                            writeMainRegisterTwo((int)vv);
+                        else
+                            writeMainRegister((int)vv);
+                        context.getBack().forceRepaint();
+                    } catch (UniException ex) {
+                        String ss = "Ошибка изменения разряда: "+ex.toString();
+                        context.popup(ss);
+                        System.out.println(ss);
+                    }
+                }
+            });
         }
     public void showInfoMessage() {
         Meta2GUI2StateBox element = (Meta2GUI2StateBox) getElement();
