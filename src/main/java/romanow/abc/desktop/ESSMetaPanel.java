@@ -3282,9 +3282,12 @@ public class ESSMetaPanel extends ESSBasePanel {
                 FileNameExt ff = main.getOutputFileName("Каталог экспорта скриптов","aaa","aaa");
                 String loadDirectory = ff.getPath();
                 ArrayList<Artifact> artifacts = new ArrayList<>();
-                for(ESS2ScriptFile metaFile : architecture.getScripts())
+                ArrayList<String> outTitles = new ArrayList<>();
+                for(ESS2ScriptFile metaFile : architecture.getScripts()){
                     artifacts.add(metaFile.getFile().getRef());
-                main.loadFileGroup(loadDirectory,artifacts,0);
+                    outTitles.add(metaFile.getTitle());
+                    }
+                main.loadFileGroup(loadDirectory,outTitles,artifacts,0);
                 }
             });
     }//GEN-LAST:event_ExportScriptsActionPerformed
