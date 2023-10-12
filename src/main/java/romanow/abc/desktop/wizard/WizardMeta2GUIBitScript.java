@@ -25,7 +25,7 @@ public class WizardMeta2GUIBitScript extends WizardMeta2GUIScript {
     private Meta2GUIBitScript elem;
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
-        resizeHeight(200);
+        resizeHeight(230);
         elem = (Meta2GUIBitScript)   entity;
         ColorYes.setText(""+String.format("%06x",elem.getColorYes()));
         ColorYesButton.setBackground(new Color(elem.getColorYes()));
@@ -54,7 +54,7 @@ public class WizardMeta2GUIBitScript extends WizardMeta2GUIScript {
 
         jLabel11.setText("Цвет \"1\"");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(450, 110, 60, 16);
+        jLabel11.setBounds(450, 160, 60, 16);
 
         ColorYes.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -68,7 +68,7 @@ public class WizardMeta2GUIBitScript extends WizardMeta2GUIScript {
 
         jLabel14.setText("Цвет \"0\"");
         getContentPane().add(jLabel14);
-        jLabel14.setBounds(580, 110, 60, 16);
+        jLabel14.setBounds(580, 160, 60, 16);
 
         ColorNo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {

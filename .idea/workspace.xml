@@ -13,16 +13,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="79 - Командный батон">
-      <change afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/view/Meta2GUIBitScript.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUIBitScript.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIBitScript.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIBitScript.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/MainBaseFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/MainBaseFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" afterDir="false" />
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="79 - РАзряд-скрипт">
+      <change afterPath="$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/script/functions/FStdAlertBool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/constants/ValuesBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/constants/ValuesBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUIScript.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUIScript.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIBitScript.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIBitScript.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIBitScript.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIBitScript.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +37,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../ABCDesktop" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
@@ -129,11 +125,11 @@
       <recent name="romanow.abc.dataserver.profiler.modules" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="romanow.abc.core.script.functions" />
       <recent name="romanow.abc.desktop.view2.desktop" />
       <recent name="romanow.abc.core.entity.metadata.view" />
       <recent name="romanow.abc.desktop.wizard" />
       <recent name="romanow.abc.desktop" />
-      <recent name="romanow.abc.ess2.emulators" />
     </key>
   </component>
   <component name="RunManager" selected="Application.ESSClient">
@@ -246,13 +242,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00296" summary="Сборка 77 - Меню">
-      <created>1692723905242</created>
-      <option name="number" value="00296" />
-      <option name="presentableId" value="LOCAL-00296" />
-      <option name="project" value="LOCAL" />
-      <updated>1692723905242</updated>
     </task>
     <task id="LOCAL-00297" summary="Сборка 77 - Редактор">
       <created>1692782111836</created>
@@ -590,7 +579,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697043028310</updated>
     </task>
-    <option name="localTasksCounter" value="345" />
+    <task id="LOCAL-00345" summary="79 - РАзряд-скрипт">
+      <created>1697100270951</created>
+      <option name="number" value="00345" />
+      <option name="presentableId" value="LOCAL-00345" />
+      <option name="project" value="LOCAL" />
+      <updated>1697100270951</updated>
+    </task>
+    <option name="localTasksCounter" value="346" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -617,7 +613,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Сборка 77 - масштабирование" />
     <MESSAGE value="Подсветка выделенных" />
     <MESSAGE value="Скролл для мобильных" />
     <MESSAGE value="Редактирование" />
@@ -642,7 +637,8 @@
     <MESSAGE value="79 - Пауза на wizard, подробности ошибок view" />
     <MESSAGE value="79 -" />
     <MESSAGE value="79 - Командный батон" />
-    <option name="LAST_COMMIT_MESSAGE" value="79 - Командный батон" />
+    <MESSAGE value="79 - РАзряд-скрипт" />
+    <option name="LAST_COMMIT_MESSAGE" value="79 - РАзряд-скрипт" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -916,11 +912,6 @@
           <url>file://$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/view/Meta2GUI3StateBox.java</url>
           <line>6</line>
           <option name="timeStamp" value="1159" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java</url>
-          <line>3289</line>
-          <option name="timeStamp" value="1160" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/MainBaseFrame.java</url>
