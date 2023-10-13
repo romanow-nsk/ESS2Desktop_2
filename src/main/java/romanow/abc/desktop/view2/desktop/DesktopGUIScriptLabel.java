@@ -56,11 +56,16 @@ public class DesktopGUIScriptLabel extends View2BaseDesktop {
                 new Message(300,300,"Ошибка исполнения скрипта\nОтстутствует результат",Values.PopupMessageDelay);
             else{
                 String ss = element.getTitle();
+                String res;
+                if (element.getAfterPoint()!=0)
+                    res=String.format("%6."+element.getAfterPoint()+"f",result.getRealValue()).trim();
+                else
+                    res=result.valueToString();
                 int idx=ss.indexOf("$");
                 if(idx==-1)
-                    label.setText(" "+ss+" = "+result.valueToString());
+                    label.setText(" "+ss+" = "+res);
                 else
-                    label.setText(" "+ss.substring(0,idx)+" = "+result.valueToString()+" "+ss.substring(idx+1));
+                    label.setText(" "+ss.substring(0,idx)+" = "+res+" "+ss.substring(idx+1));
                 }
             } catch (ScriptException e) {
                 getContext().popup("Ошибка исполнения скрипта\n"+e.toString());

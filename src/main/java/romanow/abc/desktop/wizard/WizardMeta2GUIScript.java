@@ -15,17 +15,21 @@ import romanow.abc.core.entity.metadata.view.Meta2GUIScript;
  */
 public class WizardMeta2GUIScript extends WizardMeta2GUI {
     private Meta2GUIScript script;
+    private boolean start=false;
     public WizardMeta2GUIScript() {
         initComponents();
         }
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
         resizeHeight(200);
+        start = true;
         script = (Meta2GUIScript)  entity;
         ScriptName.setText(script.getScripName());
         W2.setText(""+script.getW2());
         NoCalc.setSelected(script.isNoCalc());
-    }
+        AfterPoint.setText(""+script.getAfterPoint());
+        start = false;
+        }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,6 +45,8 @@ public class WizardMeta2GUIScript extends WizardMeta2GUI {
         jLabel2 = new javax.swing.JLabel();
         W2 = new javax.swing.JTextField();
         NoCalc = new javax.swing.JCheckBox();
+        jLabel13 = new javax.swing.JLabel();
+        AfterPoint = new javax.swing.JTextField();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -54,7 +60,7 @@ public class WizardMeta2GUIScript extends WizardMeta2GUI {
 
         jLabel1.setText("Скрипт ");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(20, 135, 70, 14);
+        jLabel1.setBounds(20, 135, 70, 16);
 
         ScriptName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -66,7 +72,7 @@ public class WizardMeta2GUIScript extends WizardMeta2GUI {
 
         jLabel2.setText("W2");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(200, 135, 30, 14);
+        jLabel2.setBounds(200, 135, 30, 16);
 
         W2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -83,7 +89,19 @@ public class WizardMeta2GUIScript extends WizardMeta2GUI {
             }
         });
         getContentPane().add(NoCalc);
-        NoCalc.setBounds(300, 130, 120, 23);
+        NoCalc.setBounds(300, 135, 120, 20);
+
+        jLabel13.setText("Цифр после точки ");
+        getContentPane().add(jLabel13);
+        jLabel13.setBounds(460, 135, 120, 16);
+
+        AfterPoint.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AfterPointKeyPressed(evt);
+            }
+        });
+        getContentPane().add(AfterPoint);
+        AfterPoint.setBounds(410, 130, 40, 25);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -111,18 +129,31 @@ public class WizardMeta2GUIScript extends WizardMeta2GUI {
     }//GEN-LAST:event_W2KeyPressed
 
     private void NoCalcItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_NoCalcItemStateChanged
+        if (start)
+            return;
         script.setNoCalc(NoCalc.isSelected());
         back.onEnter("Изменено noCalc"+": "+script.isNoCalc());
     }//GEN-LAST:event_NoCalcItemStateChanged
 
+    private void AfterPointKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AfterPointKeyPressed
+        onKeyPressed("AfterPoint", AfterPoint, evt, new I_WizardAction() {
+            @Override
+            public void onAction(int value) {
+                script.setAfterPoint(value);
+            }
+        });
+    }//GEN-LAST:event_AfterPointKeyPressed
+
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField AfterPoint;
     private javax.swing.JCheckBox NoCalc;
     private javax.swing.JTextField ScriptName;
     private javax.swing.JTextField W2;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

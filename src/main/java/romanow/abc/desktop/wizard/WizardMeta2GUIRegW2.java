@@ -69,7 +69,7 @@ public class WizardMeta2GUIRegW2 extends WizardMeta2GUI {
         getContentPane().add(W2);
         W2.setBounds(50, 180, 40, 25);
 
-        jLabel13.setText("цифр после точки ");
+        jLabel13.setText("Цифр после точки ");
         getContentPane().add(jLabel13);
         jLabel13.setBounds(105, 220, 120, 16);
 

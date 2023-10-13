@@ -91,7 +91,6 @@ public class TrendPanel extends javax.swing.JPanel implements I_Trend{
         Shift = new javax.swing.JSlider();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        Export = new javax.swing.JButton();
 
         setLayout(null);
 
@@ -196,17 +195,6 @@ public class TrendPanel extends javax.swing.JPanel implements I_Trend{
         jLabel2.setText("Сдвиг");
         add(jLabel2);
         jLabel2.setBounds(380, 30, 60, 16);
-
-        Export.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/load.png"))); // NOI18N
-        Export.setBorderPainted(false);
-        Export.setContentAreaFilled(false);
-        Export.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ExportActionPerformed(evt);
-            }
-        });
-        add(Export);
-        Export.setBounds(710, 0, 40, 30);
     }// </editor-fold>//GEN-END:initComponents
 
     //--------------------------------------------------------------------------
@@ -449,10 +437,6 @@ public class TrendPanel extends javax.swing.JPanel implements I_Trend{
         refreshJChartPanel();
     }//GEN-LAST:event_ShiftStateChanged
 
-    private void ExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExportActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ExportActionPerformed
-
 
     @Override
     public void toFront() { }
@@ -462,7 +446,6 @@ public class TrendPanel extends javax.swing.JPanel implements I_Trend{
     private javax.swing.JButton Add;
     private javax.swing.JButton Back;
     private javax.swing.JButton Clear;
-    private javax.swing.JButton Export;
     private javax.swing.JButton Fore;
     private javax.swing.JButton Remove;
     private javax.swing.JSlider Scale;

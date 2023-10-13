@@ -65,8 +65,14 @@ public class DesktopGUIScript extends View2BaseDesktop {
             TypeFace result = scriptFile.getScriptCode().getVariables().get(Values.ScriptResultVariable);
             if (result==null)
                 new Message(300,300,"Ошибка исполнения скрипта\nОтстутствует результат",Values.PopupMessageDelay);
-            else
-                textField.setText(result.valueToString());
+            else{
+                String ss;
+                if (element.getAfterPoint()!=0)
+                    ss=String.format("%6."+element.getAfterPoint()+"f",result.getRealValue()).trim();
+                else
+                    ss=result.valueToString();
+                textField.setText(ss);
+                }
             } catch (ScriptException e) {
                 getContext().popup("Ошибка исполнения скрипта\n"+e.toString());
                 }
