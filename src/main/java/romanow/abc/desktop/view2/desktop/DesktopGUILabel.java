@@ -23,7 +23,7 @@ public class DesktopGUILabel extends View2BaseDesktop {
         FormContext2 context = getContext();
         Color out;
         Meta2GUILabel element = (Meta2GUILabel) getElement();
-        if (element.getColor()==0 || element.isCommonColor()){
+        if (element.getColor()==0 || element.getColor()==0xf0f0f0 || element.isCommonColor()){  // Заплатка
             out =   new Color(context.getView().getTextColor() | 0xFF000000);
             }
         else{

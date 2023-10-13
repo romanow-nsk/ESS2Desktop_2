@@ -90,8 +90,6 @@ public class DesktopGUIScript extends View2BaseDesktop {
             return "Cкрипт "+script.getScripName()+" - недопустимый тип "+scriptFile.getScriptType();
         if (!scriptFile.isPreCompiled())
             return "Cкрипт "+script.getScripName()+" не компилируется предварительно";
-        if (!scriptFile.isValid())
-            return "Cкрипт "+script.getScripName()+" нет кода";
         return null;
         }
     }

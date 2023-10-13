@@ -41,15 +41,18 @@ public class DesktopGUIESSSettingInt extends View2BaseDesktop {
                 context.y(element.getY()),
                 context.dx(w2),
                 context.dy(25));
-        textField.setEditable(false);
-        textField.setHorizontalAlignment(JTextField.CENTER);
         panel.add(textField);
-        textField.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
         setInfoClick(textField);
-        Color color=new Color(!context.isActionEnable() ? Values.AccessDisableColor : element.getColor());
-        textField.setBackground(color);
-        boolean enabled= element.isEditDisable();
-        textField.setEnabled(enabled);
+        setTextFieldParams(textField);
+        getSettings();
+        textField.setText(""+setValue);
+        final boolean remoteDisable = !context.isSuperUser() &&  !context.isLocalUser();
+        boolean editDisable = remoteDisable || !context.isActionEnable() || element.isEditDisable();
+        if (editDisable){
+            Color color=new Color(Values.AccessDisableColor);
+            textField.setBackground(color);
+            }
+        if (!editDisable)
             textField.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {

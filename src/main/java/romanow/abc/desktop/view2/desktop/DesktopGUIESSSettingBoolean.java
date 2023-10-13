@@ -42,11 +42,17 @@ public class DesktopGUIESSSettingBoolean extends View2BaseDesktop {
                 context.dy(sz));
         panel.add(textField);
         setInfoClick(textField);
-        final boolean remoteDisable = !context.isSuperUser() &&  !context.isLocalUser();
-        Color color=new Color(remoteDisable || !context.isActionEnable() ? Values.AccessDisableColor : element.getColor());
-        textField.setBackground(color);
+        setButtonParams(textField);
         getSettings();
-        textField.addActionListener(new ActionListener() {
+        textField.setText(""+setValue);
+        final boolean remoteDisable = !context.isSuperUser() &&  !context.isLocalUser();
+        boolean editDisable = remoteDisable || !context.isActionEnable() || element.isEditDisable();
+        if (editDisable){
+            Color color=new Color(Values.AccessDisableColor);
+            textField.setBackground(color);
+            }
+        if (!editDisable)
+            textField.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (((Meta2GUIESSSettingBoolean)element).isEditDisable()){

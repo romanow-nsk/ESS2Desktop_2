@@ -127,8 +127,6 @@ public class DesktopGUIImageScriptLevel extends View2BaseDesktop {
             return "Cкрипт "+element.getScripName()+" - недопустимый тип "+scriptFile.getScriptType();
         if (!scriptFile.isPreCompiled())
             return "Cкрипт "+element.getScripName()+" не компилируется предварительно";
-        if (!scriptFile.isValid())
-            return "Cкрипт "+element.getScripName()+" нет кода";
         return null;
         }
     @Override
