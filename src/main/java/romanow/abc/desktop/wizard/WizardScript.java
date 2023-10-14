@@ -30,8 +30,10 @@ public class WizardScript extends javax.swing.JFrame {
     private ESS2ScriptFile scriptFile;
     private I_Value<String> saveEvent;
     private String scriptText;
+    private boolean start=false;
     public WizardScript(MainBaseFrame main0, ESS2ScriptFile file, String scriptText0, I_Value<String> saveEvent0) {
         initComponents();
+        start=true;
         setVisible(true);
         scriptText = scriptText0;
         ScriptText.setText(scriptText);
@@ -53,6 +55,7 @@ public class WizardScript extends javax.swing.JFrame {
         for(int i=0;i<scriptTypes.size();i++)
             if (scriptTypes.get(i).value()==scriptFile.getScriptType())
                 ScriptType.select(i);
+        start=false;
         }
     public void wasChanged(boolean text){
         ChangesCount.setVisible(true);
@@ -267,6 +270,8 @@ public class WizardScript extends javax.swing.JFrame {
     }//GEN-LAST:event_TitleKeyPressed
 
     private void ScriptTypeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ScriptTypeItemStateChanged
+        if (start)
+            return;
         ConstValue value = scriptTypes.get(ScriptType.getSelectedIndex());
         scriptFile.setScriptType(value.value());
         wasChanged(false);
@@ -289,6 +294,8 @@ public class WizardScript extends javax.swing.JFrame {
     }//GEN-LAST:event_PreCompiledItemStateChanged
 
     private void ServerModeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ServerModeItemStateChanged
+        if (start)
+            return;
         wasChanged(false);
         scriptFile.setServerScript(ServerMode.isSelected());
 

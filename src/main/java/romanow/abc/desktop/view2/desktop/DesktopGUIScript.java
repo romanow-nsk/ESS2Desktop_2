@@ -66,12 +66,15 @@ public class DesktopGUIScript extends View2BaseDesktop {
             if (result==null)
                 new Message(300,300,"Ошибка исполнения скрипта\nОтстутствует результат",Values.PopupMessageDelay);
             else{
-                String ss;
-                if (element.getAfterPoint()!=0)
-                    ss=String.format("%6."+element.getAfterPoint()+"f",result.getRealValue()).trim();
+                String res;
+                if (element.getAfterPoint()>0)
+                    res=String.format("%6."+element.getAfterPoint()+"f",result.getRealValue()).trim();
                 else
-                    ss=result.valueToString();
-                textField.setText(ss);
+                if (element.getAfterPoint()==0)
+                    res=""+result.valueToInt();
+                else
+                    res=""+result.valueToString();
+                textField.setText(res);
                 }
             } catch (ScriptException e) {
                 getContext().popup("Ошибка исполнения скрипта\n"+e.toString());
@@ -87,7 +90,7 @@ public class DesktopGUIScript extends View2BaseDesktop {
         if (scriptFile.isServerScript())
             return "Cкрипт "+script.getScripName()+" серверный";
         if (scriptFile.getScriptType()!=Values.STCalcClient)
-            return "Cкрипт "+script.getScripName()+" - недопустимый тип "+scriptFile.getScriptType();
+            return "Cкрипт "+script.getScripName()+" - недопустимый тип скрипта "+Values.constMap().getGroupMapByValue("ScriptType").get(scriptFile.getScriptType()).title();
         if (!scriptFile.isPreCompiled())
             return "Cкрипт "+script.getScripName()+" не компилируется предварительно";
         return null;

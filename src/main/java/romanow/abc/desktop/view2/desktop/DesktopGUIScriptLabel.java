@@ -57,10 +57,13 @@ public class DesktopGUIScriptLabel extends View2BaseDesktop {
             else{
                 String ss = element.getTitle();
                 String res;
-                if (element.getAfterPoint()!=0)
+                if (element.getAfterPoint()>0)
                     res=String.format("%6."+element.getAfterPoint()+"f",result.getRealValue()).trim();
                 else
-                    res=result.valueToString();
+                if (element.getAfterPoint()==0)
+                    res=""+result.valueToInt();
+                else
+                    res=""+result.valueToString();
                 int idx=ss.indexOf("$");
                 if(idx==-1)
                     label.setText(" "+ss+" = "+res);
@@ -81,7 +84,7 @@ public class DesktopGUIScriptLabel extends View2BaseDesktop {
         if (scriptFile.isServerScript())
             return "Cкрипт "+script.getScripName()+" серверный";
         if (scriptFile.getScriptType()!=Values.STCalcClient)
-            return "Cкрипт "+script.getScripName()+" - недопустимый тип "+scriptFile.getScriptType();
+            return "Cкрипт "+script.getScripName()+" - недопустимый тип скрипта "+Values.constMap().getGroupMapByValue("ScriptType").get(scriptFile.getScriptType()).title();
         if (!scriptFile.isPreCompiled())
             return "Cкрипт "+script.getScripName()+" не компилируется предварительно";
         return null;

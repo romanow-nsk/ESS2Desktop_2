@@ -75,9 +75,7 @@ public class DesktopGUI2StateBox extends View2BaseDesktop {
         element = (Meta2GUI2StateBox) getElement();
         int hh = element.getH();
         if (hh==0) hh=25;
-        if (element.getDx()!=0){
-            setLabel(panel);
-            }
+        setLabel(panel);
         textField = createComponent();
         int dd = element.getW2();
         if (dd==0) dd=10;
