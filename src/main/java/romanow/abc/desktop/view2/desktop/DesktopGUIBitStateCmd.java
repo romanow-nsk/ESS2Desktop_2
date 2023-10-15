@@ -95,7 +95,7 @@ public class DesktopGUIBitStateCmd extends View2BaseDesktop {
                 context.x(xx+sz+5),
                 context.y(yy),
                 context.dx(bSize),
-                context.dy(sz));
+                context.dy(hh));
         setButtonParams(cmdButton);
         //cmdButton.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
         //cmdButton.setHorizontalAlignment(JTextField.CENTER);

@@ -34,7 +34,7 @@ public class DesktopGUIBitCheckBox extends View2BaseDesktop {
     private long lastBitValue=-1;        // Последнее значение разряда
     private long lastValue=0;            //
     public DesktopGUIBitCheckBox(){
-        setType(Values.GUI2StateBox);
+        setType(Values.GUIBitCheckBox);
         }
     //----------------------------------------------------------------------
     protected int getSize(){
