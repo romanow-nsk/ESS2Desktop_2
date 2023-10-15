@@ -917,8 +917,6 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 }
             element.repaintValues();
             }
-        if (module!=null)
-            module.repaintValues();
         revalidate();
         }
     //public synchronized void repaintValues(){       // По физическим устройствам

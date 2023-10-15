@@ -8,6 +8,7 @@ import romanow.abc.core.entity.metadata.view.Meta2GUIStateSelector;
 import romanow.abc.core.entity.metadata.view.Meta2GUIStateSet;
 import romanow.abc.core.entity.subject2area.ESS2Architecture;
 import romanow.abc.desktop.I_Button;
+import romanow.abc.desktop.Message;
 import romanow.abc.desktop.OK;
 import romanow.abc.desktop.view2.FormContext2;
 import romanow.abc.desktop.view2.I_GUI2Event;
@@ -18,6 +19,8 @@ import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
+
+import static romanow.abc.core.entity.metadata.Meta2Entity.toHex;
 
 public class DesktopGUIStateSelector extends View2BaseDesktop {
     private Choice list;
@@ -116,6 +119,9 @@ public class DesktopGUIStateSelector extends View2BaseDesktop {
 
     @Override
     public void showInfoMessage() {
-
+        Meta2SettingRegister set = (Meta2SettingRegister)getRegister();
+        String ss = "Значения уставки из списка:  "+toHex(set.getRegNum())+" "+set.getShortName()+"$"+set.getTitle()+"$";
+        ss+="Удаленное управление - "+(set.isRemoteEnable() ? "да":"нет");
+        new Message(300,300,ss,Values.PopupMessageDelay);
     }
 }

@@ -9,6 +9,8 @@ package romanow.abc.desktop.wizard;
 import romanow.abc.core.entity.metadata.Meta2Entity;
 import romanow.abc.core.entity.metadata.view.*;
 
+import javax.swing.*;
+
 /**
  *
  * @author romanow0
@@ -35,6 +37,9 @@ public class WizardMeta2GUIRegW2 extends WizardMeta2GUI {
         onStart=false;
         revalidate();
         }
+    public JTextField getAfterPoint(){ return AfterPoint; }
+    public JCheckBox getIntValue(){ return IntValue; }
+    public JCheckBox getByteSize(){ return ByteSize; }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
