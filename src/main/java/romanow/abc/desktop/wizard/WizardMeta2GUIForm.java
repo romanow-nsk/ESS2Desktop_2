@@ -1007,7 +1007,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
             @Override
             public void onSucess(final Artifact art) {
                 view.getPicture().setOidRef(art);
-                back.onEnter("Выбрана картинка "+art.getTitle());
+                back.onEnter("Загружена картинка для фона: "+art.getTitle());
                 refreshImageList();
                 }
             };
@@ -1051,7 +1051,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
             @Override
             public void onSucess(final Artifact art) {
                 view.getIcon().setOidRef(art);
-                back.onEnter("Выбрана иконка "+art.getTitle());
+                back.onEnter("Загружена иконка "+art.getTitle());
                 refreshImageList();
                 }
             };

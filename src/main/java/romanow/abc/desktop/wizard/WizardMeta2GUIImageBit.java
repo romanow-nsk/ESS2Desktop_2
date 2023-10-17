@@ -109,6 +109,13 @@ public class WizardMeta2GUIImageBit extends WizardMeta2GUI {
         jLabel18 = new javax.swing.JLabel();
         ImageList1 = new java.awt.Choice();
         SetImage1 = new javax.swing.JButton();
+        UploadImage1 = new javax.swing.JButton();
+        ImageAlias1 = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        UploadImage0 = new javax.swing.JButton();
+        IconAlias = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -119,6 +126,7 @@ public class WizardMeta2GUIImageBit extends WizardMeta2GUI {
                 formWindowClosing(evt);
             }
         });
+        getContentPane().setLayout(null);
         getContentPane().add(jSeparator1);
         jSeparator1.setBounds(10, 84, 670, 0);
 
@@ -210,6 +218,44 @@ public class WizardMeta2GUIImageBit extends WizardMeta2GUI {
         getContentPane().add(SetImage1);
         SetImage1.setBounds(430, 240, 30, 30);
 
+        UploadImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/upload.png"))); // NOI18N
+        UploadImage1.setBorderPainted(false);
+        UploadImage1.setContentAreaFilled(false);
+        UploadImage1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UploadImage1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(UploadImage1);
+        UploadImage1.setBounds(570, 240, 30, 30);
+        getContentPane().add(ImageAlias1);
+        ImageAlias1.setBounds(470, 240, 90, 25);
+
+        jLabel24.setText("Картинка для 0");
+        getContentPane().add(jLabel24);
+        jLabel24.setBounds(320, 180, 100, 16);
+
+        UploadImage0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/upload.png"))); // NOI18N
+        UploadImage0.setBorderPainted(false);
+        UploadImage0.setContentAreaFilled(false);
+        UploadImage0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UploadImage0ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(UploadImage0);
+        UploadImage0.setBounds(570, 200, 30, 30);
+        getContentPane().add(IconAlias);
+        IconAlias.setBounds(470, 200, 90, 25);
+
+        jLabel25.setText("Alias");
+        getContentPane().add(jLabel25);
+        jLabel25.setBounds(470, 270, 80, 16);
+
+        jLabel26.setText("Картинка для 1");
+        getContentPane().add(jLabel26);
+        jLabel26.setBounds(320, 260, 100, 16);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -282,11 +328,47 @@ public class WizardMeta2GUIImageBit extends WizardMeta2GUI {
         back.onEnter("Выбрана картинка "+art.getTitle());
     }//GEN-LAST:event_SetImage1ActionPerformed
 
+    private void UploadImage1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UploadImage1ActionPerformed
+        FileNameExt fname = main.getInputFileName("Импорт картинок 2.0", "*.*", null);
+        final MultipartBody.Part body = RestAPICommon.createMultipartBody(fname);
+        new APICall<Artifact>(main) {
+            @Override
+            public Call<Artifact> apiFun() {
+                return main.getService().upload(main.getDebugToken(), Values.ESSImageFileDescription+" "+ImageAlias.getText(), fname.fileName(), body);
+            }
+            @Override
+            public void onSucess(final Artifact art) {
+                elem.getPictureFor1().setOidRef(art);
+                back.onEnter("Загружена картинка для 1: "+art.getTitle());
+                refreshImageList();
+            }
+        };
+    }//GEN-LAST:event_UploadImage1ActionPerformed
+
+    private void UploadImage0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UploadImage0ActionPerformed
+        FileNameExt fname = main.getInputFileName("Импорт картинок 2.0", "*.*", null);
+        final MultipartBody.Part body = RestAPICommon.createMultipartBody(fname);
+        new APICall<Artifact>(main) {
+            @Override
+            public Call<Artifact> apiFun() {
+                return main.getService().upload(main.getDebugToken(), Values.ESSImageFileDescription+" "+IconAlias.getText(), fname.fileName(), body);
+            }
+            @Override
+            public void onSucess(final Artifact art) {
+                elem.getPictureFor0().setOidRef(art);
+                back.onEnter("Загружена картинка для 1:"+art.getTitle());
+                refreshImageList();
+            }
+        };
+    }//GEN-LAST:event_UploadImage0ActionPerformed
+
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField BitNum;
+    private javax.swing.JTextField IconAlias;
     private javax.swing.JTextField ImageAlias;
+    private javax.swing.JTextField ImageAlias1;
     private javax.swing.JTextField ImageH;
     private java.awt.Choice ImageList0;
     private java.awt.Choice ImageList1;
@@ -295,12 +377,17 @@ public class WizardMeta2GUIImageBit extends WizardMeta2GUI {
     private javax.swing.JButton SetImage0;
     private javax.swing.JButton SetImage1;
     private javax.swing.JButton UploadImage;
+    private javax.swing.JButton UploadImage0;
+    private javax.swing.JButton UploadImage1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
