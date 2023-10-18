@@ -155,7 +155,7 @@ public class WizardMeta2GUIView extends WizardBaseView {
         getContentPane().add(jSeparator1);
         jSeparator1.setBounds(10, 80, 750, 10);
 
-        jLabel9.setText("Артекфакт");
+        jLabel9.setText("Артефакт");
         getContentPane().add(jLabel9);
         jLabel9.setBounds(10, 120, 100, 16);
 
@@ -165,13 +165,13 @@ public class WizardMeta2GUIView extends WizardBaseView {
             }
         });
         getContentPane().add(BackColor);
-        BackColor.setBounds(110, 140, 60, 25);
+        BackColor.setBounds(110, 150, 60, 25);
         getContentPane().add(BackColorButton);
-        BackColorButton.setBounds(170, 140, 25, 25);
+        BackColorButton.setBounds(170, 150, 25, 25);
 
         jLabel10.setText("Меню+");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(370, 150, 50, 16);
+        jLabel10.setBounds(370, 155, 50, 16);
 
         MenuOnColor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -179,13 +179,13 @@ public class WizardMeta2GUIView extends WizardBaseView {
             }
         });
         getContentPane().add(MenuOnColor);
-        MenuOnColor.setBounds(420, 140, 60, 25);
+        MenuOnColor.setBounds(420, 150, 60, 25);
         getContentPane().add(MenuOnColorButton);
-        MenuOnColorButton.setBounds(480, 140, 25, 25);
+        MenuOnColorButton.setBounds(480, 150, 25, 25);
 
         jLabel11.setText("Меню-");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(370, 175, 50, 16);
+        jLabel11.setBounds(370, 185, 50, 16);
 
         MenuOffColor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -193,13 +193,13 @@ public class WizardMeta2GUIView extends WizardBaseView {
             }
         });
         getContentPane().add(MenuOffColor);
-        MenuOffColor.setBounds(420, 170, 60, 25);
+        MenuOffColor.setBounds(420, 180, 60, 25);
         getContentPane().add(MenuOffColorButton);
-        MenuOffColorButton.setBounds(480, 170, 25, 25);
+        MenuOffColorButton.setBounds(480, 180, 25, 25);
 
         jLabel12.setText("Высота");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(210, 200, 50, 16);
+        jLabel12.setBounds(210, 210, 50, 16);
 
         TextColor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -207,9 +207,9 @@ public class WizardMeta2GUIView extends WizardBaseView {
             }
         });
         getContentPane().add(TextColor);
-        TextColor.setBounds(270, 140, 60, 25);
+        TextColor.setBounds(270, 150, 60, 25);
         getContentPane().add(TextColorButton);
-        TextColorButton.setBounds(330, 140, 25, 25);
+        TextColorButton.setBounds(330, 150, 25, 25);
 
         ElemColor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -217,9 +217,9 @@ public class WizardMeta2GUIView extends WizardBaseView {
             }
         });
         getContentPane().add(ElemColor);
-        ElemColor.setBounds(110, 170, 60, 25);
+        ElemColor.setBounds(110, 180, 60, 25);
         getContentPane().add(ElemColorButton);
-        ElemColorButton.setBounds(170, 170, 25, 25);
+        ElemColorButton.setBounds(170, 180, 25, 25);
 
         Height.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -227,7 +227,7 @@ public class WizardMeta2GUIView extends WizardBaseView {
             }
         });
         getContentPane().add(Height);
-        Height.setBounds(270, 200, 60, 25);
+        Height.setBounds(270, 210, 60, 25);
 
         Width.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -235,19 +235,19 @@ public class WizardMeta2GUIView extends WizardBaseView {
             }
         });
         getContentPane().add(Width);
-        Width.setBounds(270, 170, 60, 25);
+        Width.setBounds(270, 180, 60, 25);
 
         jLabel15.setText("Ширина");
         getContentPane().add(jLabel15);
-        jLabel15.setBounds(520, 175, 50, 16);
+        jLabel15.setBounds(520, 185, 50, 16);
 
         jLabel16.setText("Фон элементов");
         getContentPane().add(jLabel16);
-        jLabel16.setBounds(10, 175, 100, 16);
+        jLabel16.setBounds(10, 185, 100, 16);
 
         jLabel17.setText("Расположение");
         getContentPane().add(jLabel17);
-        jLabel17.setBounds(340, 200, 100, 16);
+        jLabel17.setBounds(340, 210, 100, 16);
 
         MenuModes.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -255,7 +255,7 @@ public class WizardMeta2GUIView extends WizardBaseView {
             }
         });
         getContentPane().add(MenuModes);
-        MenuModes.setBounds(440, 200, 60, 25);
+        MenuModes.setBounds(440, 210, 60, 25);
 
         MenuTextColor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -263,17 +263,17 @@ public class WizardMeta2GUIView extends WizardBaseView {
             }
         });
         getContentPane().add(MenuTextColor);
-        MenuTextColor.setBounds(570, 140, 60, 25);
+        MenuTextColor.setBounds(570, 150, 60, 25);
         getContentPane().add(MenuTextColorButton);
-        MenuTextColorButton.setBounds(630, 140, 25, 25);
+        MenuTextColorButton.setBounds(630, 150, 25, 25);
 
         jLabel18.setText("Текст");
         getContentPane().add(jLabel18);
-        jLabel18.setBounds(210, 150, 50, 16);
+        jLabel18.setBounds(210, 155, 50, 16);
 
         jLabel19.setText("Высота");
         getContentPane().add(jLabel19);
-        jLabel19.setBounds(520, 200, 50, 16);
+        jLabel19.setBounds(520, 210, 50, 16);
 
         MenuBold.setText("Bold");
         MenuBold.addItemListener(new java.awt.event.ItemListener() {
@@ -282,11 +282,11 @@ public class WizardMeta2GUIView extends WizardBaseView {
             }
         });
         getContentPane().add(MenuBold);
-        MenuBold.setBounds(620, 200, 60, 20);
+        MenuBold.setBounds(620, 210, 60, 20);
 
         jLabel20.setText("Текст ");
         getContentPane().add(jLabel20);
-        jLabel20.setBounds(520, 150, 50, 16);
+        jLabel20.setBounds(520, 155, 50, 16);
 
         MenuButtonW.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -294,11 +294,11 @@ public class WizardMeta2GUIView extends WizardBaseView {
             }
         });
         getContentPane().add(MenuButtonW);
-        MenuButtonW.setBounds(570, 170, 40, 25);
+        MenuButtonW.setBounds(570, 180, 40, 25);
 
         jLabel21.setText("Шрифт");
         getContentPane().add(jLabel21);
-        jLabel21.setBounds(620, 175, 50, 16);
+        jLabel21.setBounds(620, 185, 50, 16);
 
         MenuFontSize.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -306,15 +306,15 @@ public class WizardMeta2GUIView extends WizardBaseView {
             }
         });
         getContentPane().add(MenuFontSize);
-        MenuFontSize.setBounds(670, 170, 40, 25);
+        MenuFontSize.setBounds(670, 180, 40, 25);
 
         jLabel22.setText("меню");
         getContentPane().add(jLabel22);
-        jLabel22.setBounds(390, 215, 50, 16);
+        jLabel22.setBounds(390, 220, 50, 16);
 
         jLabel23.setText("Ширина");
         getContentPane().add(jLabel23);
-        jLabel23.setBounds(210, 175, 50, 16);
+        jLabel23.setBounds(210, 185, 50, 16);
 
         MenuButtonH.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -322,15 +322,15 @@ public class WizardMeta2GUIView extends WizardBaseView {
             }
         });
         getContentPane().add(MenuButtonH);
-        MenuButtonH.setBounds(570, 200, 40, 25);
+        MenuButtonH.setBounds(570, 210, 40, 25);
 
         FileName.setEnabled(false);
         getContentPane().add(FileName);
-        FileName.setBounds(110, 110, 400, 22);
+        FileName.setBounds(150, 115, 480, 22);
 
         jLabel13.setText("Фон общий");
         getContentPane().add(jLabel13);
-        jLabel13.setBounds(10, 150, 100, 16);
+        jLabel13.setBounds(10, 155, 100, 16);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

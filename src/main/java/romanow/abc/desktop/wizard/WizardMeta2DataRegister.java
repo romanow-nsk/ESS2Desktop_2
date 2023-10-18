@@ -69,6 +69,7 @@ public class WizardMeta2DataRegister extends WizardMeta2Register {
                 formWindowClosing(evt);
             }
         });
+        getContentPane().setLayout(null);
 
         Power.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -125,7 +126,7 @@ public class WizardMeta2DataRegister extends WizardMeta2Register {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(300, 135, 90, 16);
 
-        IntAsFloat60870.setText("60879 int как float");
+        IntAsFloat60870.setText("МЭК 60870 int как float");
         IntAsFloat60870.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 IntAsFloat60870ItemStateChanged(evt);

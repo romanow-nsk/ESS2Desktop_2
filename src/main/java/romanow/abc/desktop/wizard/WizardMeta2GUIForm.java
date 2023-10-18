@@ -33,7 +33,6 @@ import static romanow.abc.core.entity.metadata.view.Meta2GUI.createByType;
  * @author romanow0
  */
 public class WizardMeta2GUIForm extends WizardBaseView {
-
     /**
      * Creates new form WizardMeta2Equipment
      */
@@ -51,6 +50,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
         resizeHeight(480);
+        busy = true;
         view = (Meta2GUIForm) entity0;
         list = view.getControls();
         selector = new WizardMetaEntitySelector("Элементы ЧМИ", Values.MEGUIElement,callBack);
@@ -95,6 +95,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
                 }
             }
         refreshList();
+        busy=false;
         }
     public void selectCoice(int value, Choice cc){
         for(int i=0;i<access.size();i++)
@@ -778,11 +779,15 @@ public class WizardMeta2GUIForm extends WizardBaseView {
     }// </editor-fold>//GEN-END:initComponents
 
     private void EmptyItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_EmptyItemStateChanged
+        if (busy)
+            return;
         view.setEmpty(Empty.isSelected());
         back.onEnter("Изменено empty"+view.isEmpty());
     }//GEN-LAST:event_EmptyItemStateChanged
 
     private void NoMenuItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_NoMenuItemStateChanged
+        if (busy)
+            return;
         view.setNoMenu(NoMenu.isSelected());
         back.onEnter("Изменено noMenu"+view.isNoMenu());
     }//GEN-LAST:event_NoMenuItemStateChanged
@@ -857,16 +862,22 @@ public class WizardMeta2GUIForm extends WizardBaseView {
     }//GEN-LAST:event_GroupIndexKeyPressed
 
     private void BaseFormItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_BaseFormItemStateChanged
+        if (busy)
+            return;
         view.setBaseForm(BaseForm.isSelected());
         back.onEnter("Изменено baseForm"+view.isBaseForm());
     }//GEN-LAST:event_BaseFormItemStateChanged
 
     private void LinkFormItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_LinkFormItemStateChanged
+        if (busy)
+            return;
         view.setLinkForm(LinkForm.isSelected());
         back.onEnter("Изменено linkForm"+view.isLinkForm());
     }//GEN-LAST:event_LinkFormItemStateChanged
 
     private void SnapShotItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SnapShotItemStateChanged
+        if (busy)
+            return;
         view.setSnapShot(SnapShot.isSelected());
         back.onEnter("Изменено snapShot"+SnapShot.isSelected());
 
@@ -898,7 +909,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
 
     private void MenuBoldItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MenuBoldItemStateChanged
         if (busy)
-        return;
+            return;
         view.setMenuFontBold(MenuBold.isSelected());
         back.onEnter("Изменено MenuBold="+MenuBold.isSelected());
     }//GEN-LAST:event_MenuBoldItemStateChanged
