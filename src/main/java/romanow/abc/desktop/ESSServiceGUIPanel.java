@@ -1090,6 +1090,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 int treeLevel = register.getArrayLevel() - 1;         // Кол-во массивов в дереве Meta-элементов (+device+units) -1
                 int grlevel = groupLevel - 1;                         // Кол-во массивов в форме
                 int stacklevel = context.getForm().getLevel() - 1;    // Вершина стека индексов форм для тек. уровня
+                // System.out.println("!!!!"+grlevel+" "+treeLevel+" "+stacklevel);
                 if (!link.isOwnUnit() && treeLevel > stacklevel + 1) {
                     errorList.addInfo("Уровень массива мета-данных > уровня формы " +
                             equipName + " для " + regGUI.getFullTitle() + "=" + (treeLevel + 1) + " " +

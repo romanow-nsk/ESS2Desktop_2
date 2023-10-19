@@ -93,7 +93,7 @@ public class WizardMeta2GUIImageScriptLevel extends WizardMeta2GUI {
 
         jLabel1.setText("Скрипт ");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(20, 130, 70, 14);
+        jLabel1.setBounds(20, 130, 70, 16);
 
         ScriptName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -110,11 +110,11 @@ public class WizardMeta2GUIImageScriptLevel extends WizardMeta2GUI {
             }
         });
         getContentPane().add(NoCalc);
-        NoCalc.setBounds(70, 125, 110, 23);
+        NoCalc.setBounds(70, 125, 110, 20);
 
         jLabel11.setText("H image");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(20, 180, 50, 14);
+        jLabel11.setBounds(20, 180, 50, 16);
 
         ImageH.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -126,7 +126,7 @@ public class WizardMeta2GUIImageScriptLevel extends WizardMeta2GUI {
 
         jLabel14.setText("Alias");
         getContentPane().add(jLabel14);
-        jLabel14.setBounds(500, 180, 80, 14);
+        jLabel14.setBounds(500, 180, 80, 16);
 
         ImageW.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -164,11 +164,11 @@ public class WizardMeta2GUIImageScriptLevel extends WizardMeta2GUI {
 
         jLabel15.setText("W image");
         getContentPane().add(jLabel15);
-        jLabel15.setBounds(80, 180, 60, 14);
+        jLabel15.setBounds(80, 180, 60, 16);
 
         jLabel12.setText("Прозрачн.");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(180, 130, 60, 14);
+        jLabel12.setBounds(180, 130, 60, 16);
 
         Alpha.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -182,7 +182,7 @@ public class WizardMeta2GUIImageScriptLevel extends WizardMeta2GUI {
 
         jLabel16.setText("Цвет уровня");
         getContentPane().add(jLabel16);
-        jLabel16.setBounds(380, 130, 100, 14);
+        jLabel16.setBounds(380, 130, 100, 16);
 
         ColorLevel.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -202,9 +202,9 @@ public class WizardMeta2GUIImageScriptLevel extends WizardMeta2GUI {
         getContentPane().add(HighLevel);
         HighLevel.setBounds(570, 150, 60, 25);
 
-        jLabel13.setText("Уровни 0...100%");
+        jLabel13.setText("Уровни: нижный, верхний");
         getContentPane().add(jLabel13);
-        jLabel13.setBounds(510, 130, 100, 14);
+        jLabel13.setBounds(490, 130, 160, 16);
 
         ColorBack.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -216,7 +216,7 @@ public class WizardMeta2GUIImageScriptLevel extends WizardMeta2GUI {
 
         jLabel17.setText("Цвет фона");
         getContentPane().add(jLabel17);
-        jLabel17.setBounds(260, 130, 80, 14);
+        jLabel17.setBounds(260, 130, 80, 16);
 
         LowLevel.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {

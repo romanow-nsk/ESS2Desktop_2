@@ -162,11 +162,11 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel13">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#x423;&#x440;&#x43e;&#x432;&#x43d;&#x438;: &#x43d;&#x438;&#x436;&#x43d;&#x438;&#x439;(0%)  &#x430;&#x432;&#x430;&#x440;&#x438;&#x44f; &#x43f;&#x440;&#x435;&#x434;&#x443;&#x43f;&#x440;&#x435;&#x436;&#x434;. &#x432;&#x435;&#x440;&#x445;&#x43d;&#x438;&#x439; (100%)"/>
+        <Property name="text" type="java.lang.String" value="&#x423;&#x440;&#x43e;&#x432;&#x43d;&#x438;: &#x43d;&#x438;&#x436;&#x43d;&#x438;&#x439;,        &#x430;&#x432;&#x430;&#x440;&#x438;&#x44f;,      &#x43f;&#x440;&#x435;&#x434;&#x443;&#x43f;&#x440;&#x435;&#x436;&#x434;.,  &#x432;&#x435;&#x440;&#x445;&#x43d;&#x438;&#x439;"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="330" y="130" width="330" height="-1"/>
+          <AbsoluteConstraints x="340" y="130" width="330" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

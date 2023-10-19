@@ -180,9 +180,9 @@ public class WizardMeta2GUIImageDataLevel extends WizardMeta2GUI {
         getContentPane().add(HighLevel);
         HighLevel.setBounds(590, 150, 60, 25);
 
-        jLabel13.setText("Уровни: нижний(0%)  авария предупрежд. верхний (100%)");
+        jLabel13.setText("Уровни: нижний,        авария,      предупрежд.,  верхний");
         getContentPane().add(jLabel13);
-        jLabel13.setBounds(330, 130, 330, 16);
+        jLabel13.setBounds(340, 130, 330, 16);
 
         LowLevel.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {

@@ -6,6 +6,7 @@
 package romanow.abc.desktop.wizard;
 
 
+import lombok.Getter;
 import romanow.abc.core.entity.metadata.Meta2Entity;
 import romanow.abc.core.entity.metadata.view.*;
 
@@ -17,7 +18,7 @@ import javax.swing.*;
  */
 public class WizardMeta2GUIRegW2 extends WizardMeta2GUI {
     private boolean onStart=false;
-    private Meta2GUIRegW2 elem;
+    @Getter private Meta2GUIRegW2 elem;
     public WizardMeta2GUIRegW2() {
         initComponents();
         }

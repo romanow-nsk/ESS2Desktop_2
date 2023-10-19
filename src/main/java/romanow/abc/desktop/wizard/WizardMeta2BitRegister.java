@@ -32,7 +32,8 @@ public class WizardMeta2BitRegister extends WizardMeta2Register {
         }
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
-        setSize(850,270);
+        resizeHeight(300);
+        busy = true;
         register = (Meta2BitRegister)entity;
         selector = new WizardMetaEntitySelector("Биты", Values.MEBit,callBack);
         selector.setBounds(10,130,750,40);

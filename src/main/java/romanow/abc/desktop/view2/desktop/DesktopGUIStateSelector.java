@@ -119,7 +119,7 @@ public class DesktopGUIStateSelector extends View2BaseDesktop {
 
     @Override
     public void showInfoMessage() {
-        Meta2SettingRegister set = (Meta2SettingRegister)getRegister();
+        Meta2StateRegister set = (Meta2StateRegister) getRegister();
         String ss = "Значения уставки из списка:  "+toHex(set.getRegNum())+" "+set.getShortName()+"$"+set.getTitle()+"$";
         ss+="Удаленное управление - "+(set.isRemoteEnable() ? "да":"нет");
         new Message(300,300,ss,Values.PopupMessageDelay);
