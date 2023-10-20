@@ -34,7 +34,7 @@ public class WizardMeta2Register extends WizardBaseView {
 
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
-        setSize(750,200);
+        setSize(800,200);
         register = (Meta2Register)entity;
         RegNum.setText(HEX.isSelected() ? "0x"+Integer.toString(register.getRegNum(),16) : ""+register.getRegNum());
         dataTypes = Values.constMap().getGroupList("ValueType");
@@ -43,6 +43,7 @@ public class WizardMeta2Register extends WizardBaseView {
             DataFormat.add(vv.title());
         DataFormat.select(register.getFormat());
         SnapShot.setSelected(register.isSnapShot());
+        IEC60870RegNum.setText(""+register.getIEC60870RegNum());
         }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -63,6 +64,9 @@ public class WizardMeta2Register extends WizardBaseView {
         jSeparator2 = new javax.swing.JSeparator();
         HEX = new javax.swing.JCheckBox();
         SnapShot = new javax.swing.JCheckBox();
+        Регистр1 = new javax.swing.JLabel();
+        Регистр = new javax.swing.JLabel();
+        IEC60870RegNum = new javax.swing.JTextField();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -71,6 +75,7 @@ public class WizardMeta2Register extends WizardBaseView {
                 formWindowClosing(evt);
             }
         });
+        getContentPane().setLayout(null);
         getContentPane().add(jSeparator1);
         jSeparator1.setBounds(10, 82, 560, 3);
 
@@ -83,11 +88,11 @@ public class WizardMeta2Register extends WizardBaseView {
             }
         });
         getContentPane().add(SaveDataFormat);
-        SaveDataFormat.setBounds(580, 85, 30, 30);
+        SaveDataFormat.setBounds(470, 90, 30, 30);
 
-        jLabel9.setText("Номер рег.");
+        jLabel9.setText("Номер");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(70, 95, 65, 16);
+        jLabel9.setBounds(70, 95, 50, 16);
 
         RegNum.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -95,13 +100,13 @@ public class WizardMeta2Register extends WizardBaseView {
             }
         });
         getContentPane().add(RegNum);
-        RegNum.setBounds(140, 90, 80, 25);
+        RegNum.setBounds(120, 90, 80, 25);
 
         jLabel10.setText("Формат ");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(340, 95, 60, 16);
+        jLabel10.setBounds(280, 95, 60, 16);
         getContentPane().add(DataFormat);
-        DataFormat.setBounds(400, 90, 170, 25);
+        DataFormat.setBounds(340, 90, 120, 25);
         getContentPane().add(jSeparator2);
         jSeparator2.setBounds(10, 120, 560, 3);
 
@@ -112,7 +117,7 @@ public class WizardMeta2Register extends WizardBaseView {
             }
         });
         getContentPane().add(HEX);
-        HEX.setBounds(20, 90, 60, 20);
+        HEX.setBounds(20, 95, 60, 20);
 
         SnapShot.setText("SnapShot");
         SnapShot.addItemListener(new java.awt.event.ItemListener() {
@@ -121,7 +126,23 @@ public class WizardMeta2Register extends WizardBaseView {
             }
         });
         getContentPane().add(SnapShot);
-        SnapShot.setBounds(230, 90, 100, 20);
+        SnapShot.setBounds(200, 95, 100, 20);
+
+        Регистр1.setText("Регистр");
+        getContentPane().add(Регистр1);
+        Регистр1.setBounds(510, 90, 60, 16);
+
+        Регистр.setText("МЭК 60870");
+        getContentPane().add(Регистр);
+        Регистр.setBounds(510, 105, 80, 16);
+
+        IEC60870RegNum.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                IEC60870RegNumKeyPressed(evt);
+            }
+        });
+        getContentPane().add(IEC60870RegNum);
+        IEC60870RegNum.setBounds(590, 90, 50, 25);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -154,11 +175,21 @@ public class WizardMeta2Register extends WizardBaseView {
         back.onEnter("Изменено snapShot: "+register.isSnapShot());
     }//GEN-LAST:event_SnapShotItemStateChanged
 
+    private void IEC60870RegNumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IEC60870RegNumKeyPressed
+        onKeyPressed("IEC60870RegNum", IEC60870RegNum, evt, new I_WizardAction() {
+            @Override
+            public void onAction(int value) {
+                register.setIEC60870RegNum(value);
+            }
+        });
+    }//GEN-LAST:event_IEC60870RegNumKeyPressed
+
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Choice DataFormat;
     private javax.swing.JCheckBox HEX;
+    private javax.swing.JTextField IEC60870RegNum;
     private javax.swing.JTextField RegNum;
     private javax.swing.JButton SaveDataFormat;
     private javax.swing.JCheckBox SnapShot;
@@ -167,5 +198,7 @@ public class WizardMeta2Register extends WizardBaseView {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel Регистр;
+    private javax.swing.JLabel Регистр1;
     // End of variables declaration//GEN-END:variables
 }

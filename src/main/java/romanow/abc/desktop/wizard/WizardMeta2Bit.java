@@ -38,6 +38,7 @@ public class WizardMeta2Bit extends WizardBaseView {
         SettingsReg.setText(""+bit.getSettingRegNum());
         FailBy0.setSelected(bit.isInvert());
         BitNum.setText(""+bit.getBitNum());
+        IEC60870RegNum.setText(""+bit.getIEC60870RegNum());
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,7 +51,7 @@ public class WizardMeta2Bit extends WizardBaseView {
 
         jSeparator1 = new javax.swing.JSeparator();
         BitType = new java.awt.Choice();
-        jLabel1 = new javax.swing.JLabel();
+        Регистр = new javax.swing.JLabel();
         SaveBitType = new javax.swing.JButton();
         DataReg = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -59,20 +60,24 @@ public class WizardMeta2Bit extends WizardBaseView {
         jLabel4 = new javax.swing.JLabel();
         SettingsReg = new javax.swing.JTextField();
         FailBy0 = new javax.swing.JCheckBox();
+        IEC60870RegNum = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        Регистр1 = new javax.swing.JLabel();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
         });
+        getContentPane().setLayout(null);
         getContentPane().add(jSeparator1);
         jSeparator1.setBounds(10, 82, 560, 3);
         getContentPane().add(BitType);
         BitType.setBounds(380, 100, 160, 25);
 
-        jLabel1.setText("Тип бита");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(310, 105, 60, 16);
+        Регистр.setText("МЭК 60870");
+        getContentPane().add(Регистр);
+        Регистр.setBounds(450, 145, 80, 16);
 
         SaveBitType.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/save.png"))); // NOI18N
         SaveBitType.setBorderPainted(false);
@@ -130,6 +135,22 @@ public class WizardMeta2Bit extends WizardBaseView {
         getContentPane().add(FailBy0);
         FailBy0.setBounds(240, 160, 180, 20);
 
+        IEC60870RegNum.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                IEC60870RegNumKeyPressed(evt);
+            }
+        });
+        getContentPane().add(IEC60870RegNum);
+        IEC60870RegNum.setBounds(530, 130, 50, 25);
+
+        jLabel5.setText("Тип бита");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(310, 105, 60, 16);
+
+        Регистр1.setText("Регистр");
+        getContentPane().add(Регистр1);
+        Регистр1.setBounds(450, 130, 60, 16);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -178,7 +199,7 @@ public class WizardMeta2Bit extends WizardBaseView {
             System.out.println("Ошибка целого: "+SettingsReg.getText());
             if (evt!=null)
                 main.viewUpdate(evt,false);
-        }
+                }
 
     }//GEN-LAST:event_SettingsRegKeyPressed
 
@@ -199,18 +220,30 @@ public class WizardMeta2Bit extends WizardBaseView {
 
     }//GEN-LAST:event_BitNumKeyPressed
 
+    private void IEC60870RegNumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IEC60870RegNumKeyPressed
+        onKeyPressed("IEC60870RegNum", IEC60870RegNum, evt, new I_WizardAction() {
+            @Override
+            public void onAction(int value) {
+                bit.setIEC60870RegNum(value);
+            }
+        });
+    }//GEN-LAST:event_IEC60870RegNumKeyPressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField BitNum;
     private java.awt.Choice BitType;
     private javax.swing.JTextField DataReg;
     private javax.swing.JCheckBox FailBy0;
+    private javax.swing.JTextField IEC60870RegNum;
     private javax.swing.JButton SaveBitType;
     private javax.swing.JTextField SettingsReg;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel Регистр;
+    private javax.swing.JLabel Регистр1;
     // End of variables declaration//GEN-END:variables
 }
