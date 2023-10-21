@@ -27,7 +27,7 @@ import java.awt.event.MouseEvent;
 
 public abstract class View2Base implements I_View2 {
     @Getter int type= Values.GUI;
-    @Getter @Setter Meta2GUI element=null;          // Элемент мета-данных
+    @Getter @Setter Meta2GUI element=null;          // Элемент метаданных
     @Getter @Setter ESS2Architecture architecture;
     @Getter @Setter I_GUI2Event onEvent=null;
     @Getter @Setter ESS2Device device=null;         // Описание unit-драйвер
@@ -43,7 +43,7 @@ public abstract class View2Base implements I_View2 {
     @Getter @Setter FormContext2 context;
     public void setType(int type) {
         this.type = type;}
-    public Meta2RegLink getRegLink(){                           // Линк регистра в мета-данных
+    public Meta2RegLink getRegLink(){                           // Линк регистра в метаданных
         return element.getRegLink();
         }
     public Meta2RegLink[] getSettingsLinks(){

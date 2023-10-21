@@ -74,7 +74,7 @@ public class ESSClient extends Client {
                 {UserSuperAdminType,UserAdminType,UserESSServiceEngeneer,UserESSEngeneer,UserESSOperator}));
         panelDescList.add(new PanelDescriptor("Экран-2", ESSServiceGUIPanel2.class,new int[]
                 {UserSuperAdminType,UserAdminType}));
-        panelDescList.add(new PanelDescriptor("Мета-данные", ESSMetaPanel.class,new int[]
+        panelDescList.add(new PanelDescriptor("Метаданные", ESSMetaPanel.class,new int[]
                 {UserSuperAdminType,UserAdminType,UserESSServiceEngeneer,UserESSEngeneer,UserESSOperator}));
         panelDescList.add(new PanelDescriptor("Сервер интегратора", ESSMainServerPanel.class,new int[]
                 {UserSuperAdminType,UserAdminType,UserESSServiceEngeneer}));
@@ -109,7 +109,7 @@ public class ESSClient extends Client {
         localUser = ip.equals("localhost") || port.equals("127.0.0.1");
         return service;
         }
-    //----------------------- Загрузка мета-данных для всех клиентов ---------------------------------------
+    //----------------------- Загрузка метаданных для всех клиентов ---------------------------------------
     public ESS2Architecture loadFullArchitecture(long oid){
         ESS2Architecture arch = new ESS2Architecture();
         try {

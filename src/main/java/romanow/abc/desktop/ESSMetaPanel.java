@@ -669,7 +669,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         MetaDataChanges.setBounds(880, 10, 30, 25);
 
         jLabel26.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel26.setText("Мета-данные ");
+        jLabel26.setText("метаданные ");
         add(jLabel26);
         jLabel26.setBounds(650, 30, 100, 14);
         add(Views);
@@ -1475,7 +1475,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ImportMetaDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportMetaDataActionPerformed
-        FileNameExt fname = main.getInputFileName("Импорт Excel-файла мета-данных оборудования, формат СНЭЭ-1", "*.xls", null);
+        FileNameExt fname = main.getInputFileName("Импорт Excel-файла метаданных оборудования, формат СНЭЭ-1", "*.xls", null);
         final MultipartBody.Part body = RestAPICommon.createMultipartBody(fname);
         new APICall<Artifact>(main) {
             @Override
@@ -1494,11 +1494,11 @@ public class ESSMetaPanel extends ESSBasePanel {
                         System.out.print(oo.get(0));
                         System.out.print(oo.get(1));
                         if (oo.get(0).valid() && oo.get(1).valid())
-                            popup("Импорт мета-данных выполнен");
+                            popup("Импорт метаданных выполнен");
                         else
                             main.sendEventPanel(EventLogToFront,0,0,"Ошибки импорта");
-                        //popup("Импорт мета-данных оборудования" + (!oo.o1.valid() ? " не" : "") + " выполнен");
-                        //popup("Импорт мета-данных ЧМИ" + (!oo.o2.valid() ? " не" : "") + " выполнен");
+                        //popup("Импорт метаданных оборудования" + (!oo.o1.valid() ? " не" : "") + " выполнен");
+                        //popup("Импорт метаданных ЧМИ" + (!oo.o2.valid() ? " не" : "") + " выполнен");
                         refreshMetaData();
                     }
                 };
@@ -2694,7 +2694,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             return;
             }
         if (deployed.getArchitectureState()!=Values.ASDeployed){
-            popup("Недопустимое состояние мета-данных и оборудования для соединения");
+            popup("Недопустимое состояние метаданных и оборудования для соединения");
             return;
             }
         new APICall<CallResult>(main){
@@ -2947,7 +2947,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     }//GEN-LAST:event_ExecScriptServerActionPerformed
 
     private void ImportMetaEquipment2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportMetaEquipment2ActionPerformed
-        FileNameExt fname = main.getInputFileName("Импорт Excel-файла мета-данных оборудования, формат СНЭЭ-2", "*.xls", null);
+        FileNameExt fname = main.getInputFileName("Импорт Excel-файла метаданных оборудования, формат СНЭЭ-2", "*.xls", null);
         final MultipartBody.Part body = RestAPICommon.createMultipartBody(fname);
         new APICall<Artifact>(main) {
             @Override
@@ -2966,9 +2966,9 @@ public class ESSMetaPanel extends ESSBasePanel {
                         for(OidString ss : oo){
                             System.out.print(ss);
                             if (!ss.valid())
-                                main.sendEventPanel(EventLogToFront,0,0,"Импорт мета-данных оборудования не выполнен");
+                                main.sendEventPanel(EventLogToFront,0,0,"Импорт метаданных оборудования не выполнен");
                             else
-                                popup("Импорт мета-данных оборудования выполнен");
+                                popup("Импорт метаданных оборудования выполнен");
                             }
                         refreshMetaData();
                     }
@@ -3034,7 +3034,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     }//GEN-LAST:event_MetaFileItemStateChanged
 
     private void ImportXMLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportXMLActionPerformed
-        FileNameExt fname = main.getInputFileName("Импорт xml-файла мета-данных", "*.xml", null);
+        FileNameExt fname = main.getInputFileName("Импорт xml-файла метаданных", "*.xml", null);
         final MultipartBody.Part body = RestAPICommon.createMultipartBody(fname);
         new APICall<Artifact>(main) {
             @Override
@@ -3052,11 +3052,11 @@ public class ESSMetaPanel extends ESSBasePanel {
                     public void onSucess(OidString oo) {
                         System.out.print(oo);
                         if (oo.valid())
-                            popup("Загрузка мета-данных выполнена");
+                            popup("Загрузка метаданных выполнена");
                         else
                             main.sendEventPanel(EventLogToFront,0,0,"Ошибки загрузки");
-                        //popup("Импорт мета-данных оборудования" + (!oo.o1.valid() ? " не" : "") + " выполнен");
-                        //popup("Импорт мета-данных ЧМИ" + (!oo.o2.valid() ? " не" : "") + " выполнен");
+                        //popup("Импорт метаданных оборудования" + (!oo.o1.valid() ? " не" : "") + " выполнен");
+                        //popup("Импорт метаданных ЧМИ" + (!oo.o2.valid() ? " не" : "") + " выполнен");
                         refreshMetaData();
                     }
                 };

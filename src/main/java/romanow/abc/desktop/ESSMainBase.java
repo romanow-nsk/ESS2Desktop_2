@@ -18,6 +18,7 @@ public class ESSMainBase extends MainBase{
                 java.awt.EventQueue.invokeLater(new Runnable() {
                     public void run() {
                         try {
+                            System.setProperty("file.encoding","UTF-8");
                             UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
                             ClientGui gui = new ClientGui();
                             gui.setVisible(true);

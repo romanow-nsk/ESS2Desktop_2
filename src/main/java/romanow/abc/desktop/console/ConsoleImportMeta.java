@@ -31,12 +31,12 @@ public class ConsoleImportMeta extends ConsoleCommand {
                 return client.service2.importMetaDataXls(client.debugToken,client.sysPassword,art.getOid());
                 }}.call();
         String zz = ss.getValue();
-        zz += "Импорт мета-данных  выполнен\n";
+        zz += "Импорт метаданных  выполнен\n";
         zz += new ConsoleSystemsList().exec(client,null);
         return zz;
         }
     @Override
     public String help() {
-        return cmd+" file\t- импорт мета-данных (имя без .xls)\n";
+        return cmd+" file\t- импорт метаданных (имя без .xls)\n";
     }
 }

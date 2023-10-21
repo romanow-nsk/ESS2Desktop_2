@@ -26,7 +26,7 @@ public class ConsolePLMConnect extends ConsoleCommand {
                 } catch (Exception ee){ return "Формат индекса конфигурации: "+command.get(1)+"\n"; }
             }
         long oid = client.systems.get(idx).getOid();
-        DBRequest res = new APICallC<DBRequest>() {             // Получить мета-данные для себя
+        DBRequest res = new APICallC<DBRequest>() {             // Получить метаданные для себя
             @Override
             public Call<DBRequest> apiFun() {
                 return client.service.getEntity(client.debugToken, "MetaExternalSystem",
@@ -45,7 +45,7 @@ public class ConsolePLMConnect extends ConsoleCommand {
             }.call();
         int plmVersion = client.plm.readRegister("",0,client.meta.getVersionRegNum());
         if (plmVersion!=client.meta.getVersionRegValue())
-            return  "Несовпадение версий ПЛК="+plmVersion+" мета-данные="+client.meta.getVersionRegValue()+"\n";
+            return  "Несовпадение версий ПЛК="+plmVersion+" метаданные="+client.meta.getVersionRegValue()+"\n";
         client.connected = true;
         return "Соединение с ПЛК установлено\n";
          */

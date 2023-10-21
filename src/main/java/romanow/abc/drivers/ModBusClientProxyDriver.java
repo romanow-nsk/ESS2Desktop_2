@@ -20,7 +20,7 @@ public class ModBusClientProxyDriver implements I_ModbusGroupDriver {
     private RestAPIBase service;
     private RestAPIESS2 service2;
     private boolean ready=false;
-    private long oid=0;  // =0, не включает соединение с ПЛК, иначе включает и выбирает мета-данные
+    private long oid=0;  // =0, не включает соединение с ПЛК, иначе включает и выбирает метаданные
     private String token;
     private ESSClient main;
     @Override

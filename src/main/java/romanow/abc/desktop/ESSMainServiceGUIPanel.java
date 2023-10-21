@@ -576,7 +576,7 @@ public class ESSMainServiceGUIPanel extends ESSBasePanel {
                     nodeView.setService2(conn2);
                     nodeView.setToken(conn.o2);
                     node.setStateTestTime(new OwnDateTime());
-                    popup("Считаны мета-данные "+ node.getTitle());
+                    popup("Считаны метаданные "+ node.getTitle());
                     JBoolean plcReady = new APICallC<JBoolean>(){
                         @Override
                         public Call<JBoolean> apiFun() {

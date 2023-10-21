@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class ESSNodeViewData {
     private ESSNode node;
     //------------------------------ Для СУ АГЭУ ------------------------------------
-    private MetaExternalSystem meta=null; // Мета-данные СМУ СНЭ для СУ АГЭУ
+    private MetaExternalSystem meta=null; // метаданные СМУ СНЭ для СУ АГЭУ
     private RestAPIBase service = null;   // Клиент СМУ СНЭ
     private RestAPIESS2 service2 = null;   // Клиент СМУ СНЭ
     private String token = "";            // Токен соединения со СМУ СНЭ
