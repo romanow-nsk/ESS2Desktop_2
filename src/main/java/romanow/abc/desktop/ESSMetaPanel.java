@@ -3382,7 +3382,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     }//GEN-LAST:event_IEC61850ClientGUIActionPerformed
 
     private void ProfilerOnOffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfilerOnOffActionPerformed
-        if (!main2.deployed.isConnected()){
+        if (main2.deployed==null || !main2.deployed.isConnected()){
             System.out.println("Допустимо только при подключенном оборудовании");
             return;
             }
