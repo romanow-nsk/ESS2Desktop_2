@@ -27,6 +27,9 @@ public class DesktopGUIBitStateCmd extends View2BaseDesktop {
     private int bitNum=0;
     private JButton cmdButton=null;     // Кнопка
     private int lastBitValue=-1;        // Последнее значение разряда
+    private boolean actionDisable=false;
+    private Color normalColor;
+    private Color disableColor;
     public DesktopGUIBitStateCmd(){
         setType(Values.GUIBitStateCmd);
         }
@@ -97,9 +100,11 @@ public class DesktopGUIBitStateCmd extends View2BaseDesktop {
                 context.dx(bSize),
                 context.dy(hh));
         setButtonParams(cmdButton);
-        //cmdButton.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
-        //cmdButton.setHorizontalAlignment(JTextField.CENTER);
-        //cmdButton.setText("");
+        disableColor = new Color(Values.AccessDisableColor);
+        if (remoteDisable)
+            cmdButton.setBackground(disableColor);
+        normalColor = cmdButton.getBackground();
+        cmdButton.setText("");
         cmdButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -117,6 +122,10 @@ public class DesktopGUIBitStateCmd extends View2BaseDesktop {
                     }
                 if (lastBitValue==-1){
                     new Message(300,300,"Разряд еще не прочитан",Values.PopupMessageDelay);
+                    return;
+                    }
+                if (actionDisable){
+                    new Message(300,300,"Запрет исполнения от СМУ СНЭЭ",Values.PopupMessageDelay);
                     return;
                     }
                 new OK(200, 200, element.getTitle()+" "+(lastBitValue!=0 ? "ОТКЛ" : "ВКЛ"), new I_Button() {
@@ -154,10 +163,13 @@ public class DesktopGUIBitStateCmd extends View2BaseDesktop {
     public void putValue(long vv) throws UniException {
         Meta2GUIBitStateCmd element = (Meta2GUIBitStateCmd) getElement();
         lastBitValue = (int)(vv>>bitNum) & 01;
-        if (cmdButton!=null)
-            cmdButton.setText(lastBitValue!=0 ? "ОТКЛ" : "ВКЛ");
         int cc = (lastBitValue!=0 ? element.getColorYes() : element.getColorNo()) & 0x00FFFFFF;
         putValueOwn(cc);
+        actionDisable = setActionDisable(element.getDisableIndexIn(),element.getDisableIndexOut(),lastBitValue);
+        if (cmdButton!=null){
+            cmdButton.setText(lastBitValue!=0 ? "ОТКЛ" : "ВКЛ");
+            cmdButton.setBackground(actionDisable ? disableColor : normalColor);
+            }
         }
 
     @Override

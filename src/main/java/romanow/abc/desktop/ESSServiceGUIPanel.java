@@ -148,11 +148,18 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             @Override
             public void run() {
                 while(!shutDown){
-                    long tt =  new OwnDateTime().timeInMS();
                     try {
                         Thread.sleep(((WorkSettings) main.workSettings).getGUIrefreshPeriod() * 1000);
                         } catch (InterruptedException e) {
-                            //System.out.println("Разбудили: " + (new OwnDateTime().timeInMS()-tt));
+                            long tm = System.currentTimeMillis();
+                            if (asyncCount!=0){
+                                while (asyncCount!=0){
+                                    try {
+                                        Thread.sleep(500);                  // При пробужении - ждать завершения предыдущего
+                                        } catch (InterruptedException ex) {}
+                                    }
+                                System.out.println("Завершение предыдущего рендеринга: " + (System.currentTimeMillis()-tm)/1000.+" с");
+                                }
                             }
                         if (shutDown){
                             repaintOff();
@@ -170,8 +177,9 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                             public void run() {
                                 if (asyncCount!=0)
                                     System.out.println("Пропуск рендеринга, "+asyncCount+" незавершенных запросов");
-                                else
+                                else{
                                     repaintValues();
+                                    }
                                 }
                             });
                         }

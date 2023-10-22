@@ -24,7 +24,7 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
         }
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
-        resizeHeight(250);
+        resizeHeight(270);
         FailMode.setVisible(false);
         elem = (Meta2GUI2StateBox) entity;
         WizardRegLinkPanel linkPanel = new WizardRegLinkPanel(10,120,"",elem.getRegLink(),this);
@@ -41,6 +41,8 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
         MixedRegister.setSelected(elem.isMixedRegister());
         FailMode.setSelected(elem.isFailMode());
         TwoUnits.setSelected(elem.isTwoUnits());
+        DisableIndexIn.setText(""+elem.getDisableIndexIn());
+        DisableIndexOut.setText(""+elem.getDisableIndexOut());
         start=false;
         }
     public JCheckBox FailMode(){
@@ -74,6 +76,11 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
         MixedRegister = new javax.swing.JCheckBox();
         FailMode = new javax.swing.JCheckBox();
         TwoUnits = new javax.swing.JCheckBox();
+        DisableIndexOut = new javax.swing.JTextField();
+        DisableIndexIn = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -188,6 +195,34 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
         getContentPane().add(TwoUnits);
         TwoUnits.setBounds(240, 180, 130, 20);
 
+        DisableIndexOut.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                DisableIndexOutKeyPressed(evt);
+            }
+        });
+        getContentPane().add(DisableIndexOut);
+        DisableIndexOut.setBounds(460, 180, 38, 25);
+
+        DisableIndexIn.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                DisableIndexInKeyPressed(evt);
+            }
+        });
+        getContentPane().add(DisableIndexIn);
+        DisableIndexIn.setBounds(420, 180, 38, 25);
+
+        jLabel3.setText("реакция / генерация");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(410, 205, 120, 16);
+
+        jLabel4.setText("Событие ");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(340, 180, 70, 16);
+
+        jLabel5.setText("запрещения");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(340, 195, 80, 16);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -269,6 +304,25 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
         back.onEnter("Изменено twoUnits"+": "+elem.isTwoUnits());
     }//GEN-LAST:event_TwoUnitsItemStateChanged
 
+    private void DisableIndexInKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DisableIndexInKeyPressed
+        onKeyPressed("disableIndexIn", DisableIndexIn, evt, new I_WizardAction() {
+            @Override
+            public void onAction(int value) {
+                elem.setDisableIndexIn(value);
+            }
+        });
+    }//GEN-LAST:event_DisableIndexInKeyPressed
+
+    private void DisableIndexOutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DisableIndexOutKeyPressed
+        onKeyPressed("disableIndexOut", DisableIndexOut, evt, new I_WizardAction() {
+            @Override
+            public void onAction(int value) {
+                elem.setDisableIndexOut(value);
+            }
+        });
+
+    }//GEN-LAST:event_DisableIndexOutKeyPressed
+
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -278,6 +332,8 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
     private javax.swing.JButton ColorNoButton;
     private javax.swing.JTextField ColorYes;
     private javax.swing.JButton ColorYesButton;
+    private javax.swing.JTextField DisableIndexIn;
+    private javax.swing.JTextField DisableIndexOut;
     private javax.swing.JCheckBox FailMode;
     private javax.swing.JCheckBox MixedRegister;
     private javax.swing.JCheckBox RemoteEnable;
@@ -290,6 +346,9 @@ public class WizardMeta2GUI2StateBox extends WizardMeta2GUI {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

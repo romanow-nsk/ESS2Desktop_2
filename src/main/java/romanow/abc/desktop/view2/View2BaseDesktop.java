@@ -129,6 +129,33 @@ public abstract class View2BaseDesktop extends View2Base implements I_View2Deskt
         panel.add(label);
         return label;
         }
-
+    //------------------------------------------------------------------------------------------------------------------
+    public boolean setActionDisable(int disableCodeIn, int disableCodeOut, long lastBitValue){
+        boolean actionDisable=false;
+        if (disableCodeIn!=0){
+            long disableMode = getContext().getDisableMask() >> (Math.abs(disableCodeIn)-1) & 1;   // Разряд из маски запрещений
+            if (disableMode!=0){
+                actionDisable = disableCodeIn>0 && lastBitValue==0 || disableCodeIn<0 && lastBitValue==1;
+                }
+            }
+        if (disableCodeOut!=0){
+            boolean setMask = disableCodeOut>0 && lastBitValue==0 || disableCodeOut<0 && lastBitValue==1;
+            long mask = getContext().getDisableMask();
+            long bitMask = 1 << (Math.abs(disableCodeOut)-1);
+            boolean isSet = (mask & bitMask) !=0;
+            if (setMask)
+                mask |=bitMask;     // Устновка бита
+            else
+                mask &= ~bitMask;   // Очистка бита
+            getContext().setDisableMask(mask);
+            if (setMask!=isSet){
+                getContext().getBack().forceRepaint();
+                //System.out.println("force: "+getTitle());
+                }
+            }
+        //if (actionDisable)
+        //    System.out.println("disable: "+getTitle());
+        return actionDisable;
+    }
 
 }

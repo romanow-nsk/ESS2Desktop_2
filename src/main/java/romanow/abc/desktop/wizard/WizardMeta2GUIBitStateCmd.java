@@ -27,7 +27,7 @@ public class WizardMeta2GUIBitStateCmd extends WizardMeta2GUI {
         elem = (Meta2GUIBitStateCmd) entity;
         if (elem.getCmdReg()==null)
             elem.setCmdReg(new Meta2RegLink());
-        resizeHeight(350);
+        resizeHeight(300);
         WizardRegLinkPanel linkPanel = new WizardRegLinkPanel(10,120,"BitReg",elem.getRegLink(),this);
         add(linkPanel);
         linkPanel = new WizardRegLinkPanel(10,170,"CmdReg",elem.getCmdReg(),this);
@@ -42,6 +42,8 @@ public class WizardMeta2GUIBitStateCmd extends WizardMeta2GUI {
         W2.setText(""+elem.getW2());
         ButtonSize.setText(""+elem.getButtonSize());
         RemoteEnable.setSelected(elem.isRemoteEnable());
+        DisableIndexIn.setText(""+elem.getDisableIndexIn());
+        DisableIndexOut.setText(""+elem.getDisableIndexOut());        
         }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -72,6 +74,11 @@ public class WizardMeta2GUIBitStateCmd extends WizardMeta2GUI {
         jLabel16 = new javax.swing.JLabel();
         CmdOn = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        DisableIndexIn = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        DisableIndexOut = new javax.swing.JTextField();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -89,7 +96,7 @@ public class WizardMeta2GUIBitStateCmd extends WizardMeta2GUI {
 
         jLabel11.setText("Цвет \"1\"");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(290, 130, 60, 14);
+        jLabel11.setBounds(290, 130, 60, 16);
 
         ColorYes.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -109,13 +116,13 @@ public class WizardMeta2GUIBitStateCmd extends WizardMeta2GUI {
 
         jLabel13.setText("Выкл");
         getContentPane().add(jLabel13);
-        jLabel13.setBounds(380, 185, 40, 14);
+        jLabel13.setBounds(380, 185, 40, 16);
         getContentPane().add(ColorYesButton);
         ColorYesButton.setBounds(380, 150, 25, 25);
 
         jLabel14.setText("Цвет \"0\"");
         getContentPane().add(jLabel14);
-        jLabel14.setBounds(420, 130, 60, 14);
+        jLabel14.setBounds(420, 130, 60, 16);
 
         ColorNo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -129,7 +136,7 @@ public class WizardMeta2GUIBitStateCmd extends WizardMeta2GUI {
 
         jLabel1.setText("W2");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(540, 130, 30, 14);
+        jLabel1.setBounds(540, 130, 30, 16);
 
         W2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -141,7 +148,7 @@ public class WizardMeta2GUIBitStateCmd extends WizardMeta2GUI {
 
         jLabel2.setText("Кнопка (size)");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(590, 130, 80, 14);
+        jLabel2.setBounds(590, 130, 80, 16);
 
         ButtonSize.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -158,7 +165,7 @@ public class WizardMeta2GUIBitStateCmd extends WizardMeta2GUI {
             }
         });
         getContentPane().add(RemoteEnable);
-        RemoteEnable.setBounds(590, 180, 90, 23);
+        RemoteEnable.setBounds(640, 150, 90, 20);
 
         BitNum.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -170,7 +177,7 @@ public class WizardMeta2GUIBitStateCmd extends WizardMeta2GUI {
 
         jLabel16.setText("Бит");
         getContentPane().add(jLabel16);
-        jLabel16.setBounds(240, 130, 40, 14);
+        jLabel16.setBounds(240, 130, 40, 16);
 
         CmdOn.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -182,7 +189,35 @@ public class WizardMeta2GUIBitStateCmd extends WizardMeta2GUI {
 
         jLabel17.setText("Вкл");
         getContentPane().add(jLabel17);
-        jLabel17.setBounds(240, 185, 40, 14);
+        jLabel17.setBounds(240, 185, 40, 16);
+
+        jLabel4.setText("Событие ");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(510, 180, 70, 16);
+
+        jLabel5.setText("запрещения");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(510, 190, 80, 16);
+
+        DisableIndexIn.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                DisableIndexInKeyPressed(evt);
+            }
+        });
+        getContentPane().add(DisableIndexIn);
+        DisableIndexIn.setBounds(590, 180, 38, 25);
+
+        jLabel3.setText("реакция / генерация");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(580, 200, 120, 16);
+
+        DisableIndexOut.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                DisableIndexOutKeyPressed(evt);
+            }
+        });
+        getContentPane().add(DisableIndexOut);
+        DisableIndexOut.setBounds(630, 180, 38, 25);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -259,6 +294,24 @@ public class WizardMeta2GUIBitStateCmd extends WizardMeta2GUI {
         });
     }//GEN-LAST:event_CmdOnKeyPressed
 
+    private void DisableIndexInKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DisableIndexInKeyPressed
+        onKeyPressed("disableIndexIn", DisableIndexIn, evt, new I_WizardAction() {
+            @Override
+            public void onAction(int value) {
+                elem.setDisableIndexIn(value);
+            }
+        });
+    }//GEN-LAST:event_DisableIndexInKeyPressed
+
+    private void DisableIndexOutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DisableIndexOutKeyPressed
+        onKeyPressed("disableIndexOut", DisableIndexOut, evt, new I_WizardAction() {
+            @Override
+            public void onAction(int value) {
+                elem.setDisableIndexOut(value);
+            }
+        });
+    }//GEN-LAST:event_DisableIndexOutKeyPressed
+
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -270,6 +323,8 @@ public class WizardMeta2GUIBitStateCmd extends WizardMeta2GUI {
     private javax.swing.JButton ColorNoButton;
     private javax.swing.JTextField ColorYes;
     private javax.swing.JButton ColorYesButton;
+    private javax.swing.JTextField DisableIndexIn;
+    private javax.swing.JTextField DisableIndexOut;
     private javax.swing.JCheckBox RemoteEnable;
     private javax.swing.JTextField W2;
     private javax.swing.JCheckBox jCheckBox1;
@@ -281,6 +336,9 @@ public class WizardMeta2GUIBitStateCmd extends WizardMeta2GUI {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
