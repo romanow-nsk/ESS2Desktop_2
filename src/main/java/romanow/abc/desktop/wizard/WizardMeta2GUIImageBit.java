@@ -100,12 +100,9 @@ public class WizardMeta2GUIImageBit extends WizardMeta2GUI {
         RemoteEnable = new javax.swing.JCheckBox();
         jLabel16 = new javax.swing.JLabel();
         ImageH = new javax.swing.JTextField();
-        jLabel17 = new javax.swing.JLabel();
         ImageW = new javax.swing.JTextField();
         ImageList0 = new java.awt.Choice();
         SetImage0 = new javax.swing.JButton();
-        UploadImage = new javax.swing.JButton();
-        ImageAlias = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         ImageList1 = new java.awt.Choice();
         SetImage1 = new javax.swing.JButton();
@@ -113,7 +110,7 @@ public class WizardMeta2GUIImageBit extends WizardMeta2GUI {
         ImageAlias1 = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
         UploadImage0 = new javax.swing.JButton();
-        IconAlias = new javax.swing.JTextField();
+        ImageAlias0 = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
 
@@ -163,10 +160,6 @@ public class WizardMeta2GUIImageBit extends WizardMeta2GUI {
         getContentPane().add(ImageH);
         ImageH.setBounds(20, 200, 50, 25);
 
-        jLabel17.setText("Alias");
-        getContentPane().add(jLabel17);
-        jLabel17.setBounds(290, 130, 110, 16);
-
         ImageW.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 ImageWKeyPressed(evt);
@@ -187,19 +180,6 @@ public class WizardMeta2GUIImageBit extends WizardMeta2GUI {
         });
         getContentPane().add(SetImage0);
         SetImage0.setBounds(430, 200, 30, 30);
-
-        UploadImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/upload.png"))); // NOI18N
-        UploadImage.setBorderPainted(false);
-        UploadImage.setContentAreaFilled(false);
-        UploadImage.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UploadImageActionPerformed(evt);
-            }
-        });
-        getContentPane().add(UploadImage);
-        UploadImage.setBounds(410, 150, 30, 30);
-        getContentPane().add(ImageAlias);
-        ImageAlias.setBounds(290, 150, 110, 25);
 
         jLabel18.setText("W image");
         getContentPane().add(jLabel18);
@@ -245,8 +225,8 @@ public class WizardMeta2GUIImageBit extends WizardMeta2GUI {
         });
         getContentPane().add(UploadImage0);
         UploadImage0.setBounds(570, 200, 30, 30);
-        getContentPane().add(IconAlias);
-        IconAlias.setBounds(470, 200, 90, 25);
+        getContentPane().add(ImageAlias0);
+        ImageAlias0.setBounds(470, 200, 90, 25);
 
         jLabel25.setText("Alias");
         getContentPane().add(jLabel25);
@@ -304,21 +284,6 @@ public class WizardMeta2GUIImageBit extends WizardMeta2GUI {
         back.onEnter("Выбрана картинка "+art.getTitle());
     }//GEN-LAST:event_SetImage0ActionPerformed
 
-    private void UploadImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UploadImageActionPerformed
-        FileNameExt fname = main.getInputFileName("Импорт картинок 2.0", "*.*", null);
-        final MultipartBody.Part body = RestAPICommon.createMultipartBody(fname);
-        new APICall<Artifact>(main) {
-            @Override
-            public Call<Artifact> apiFun() {
-                return main.getService().upload(main.getDebugToken(), Values.ESSImageFileDescription+" "+ImageAlias.getText(), fname.fileName(), body);
-            }
-            @Override
-            public void onSucess(final Artifact art) {
-                refreshImageList();
-                }
-        };
-    }//GEN-LAST:event_UploadImageActionPerformed
-
     private void SetImage1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SetImage1ActionPerformed
         if (artifacts.size()==0)
             return;
@@ -334,7 +299,7 @@ public class WizardMeta2GUIImageBit extends WizardMeta2GUI {
         new APICall<Artifact>(main) {
             @Override
             public Call<Artifact> apiFun() {
-                return main.getService().upload(main.getDebugToken(), Values.ESSImageFileDescription+" "+ImageAlias.getText(), fname.fileName(), body);
+                return main.getService().upload(main.getDebugToken(), Values.ESSImageFileDescription+" "+ImageAlias1.getText(), fname.fileName(), body);
             }
             @Override
             public void onSucess(final Artifact art) {
@@ -351,7 +316,7 @@ public class WizardMeta2GUIImageBit extends WizardMeta2GUI {
         new APICall<Artifact>(main) {
             @Override
             public Call<Artifact> apiFun() {
-                return main.getService().upload(main.getDebugToken(), Values.ESSImageFileDescription+" "+IconAlias.getText(), fname.fileName(), body);
+                return main.getService().upload(main.getDebugToken(), Values.ESSImageFileDescription+" "+ImageAlias0.getText(), fname.fileName(), body);
             }
             @Override
             public void onSucess(final Artifact art) {
@@ -366,8 +331,7 @@ public class WizardMeta2GUIImageBit extends WizardMeta2GUI {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField BitNum;
-    private javax.swing.JTextField IconAlias;
-    private javax.swing.JTextField ImageAlias;
+    private javax.swing.JTextField ImageAlias0;
     private javax.swing.JTextField ImageAlias1;
     private javax.swing.JTextField ImageH;
     private java.awt.Choice ImageList0;
@@ -376,14 +340,12 @@ public class WizardMeta2GUIImageBit extends WizardMeta2GUI {
     private javax.swing.JCheckBox RemoteEnable;
     private javax.swing.JButton SetImage0;
     private javax.swing.JButton SetImage1;
-    private javax.swing.JButton UploadImage;
     private javax.swing.JButton UploadImage0;
     private javax.swing.JButton UploadImage1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;

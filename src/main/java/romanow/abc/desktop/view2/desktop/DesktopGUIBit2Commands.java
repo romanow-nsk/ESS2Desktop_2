@@ -128,10 +128,9 @@ public class DesktopGUIBit2Commands extends View2BaseDesktop {
                             int cmd=0;
                             Meta2RegLink link = null;
                         try {
-                            long vv = (lastValue >> bitNum) ^ 1;
                             link = element.getCmdRegLink();
                             ESS2Device device = getDeviceTwo();
-                            cmd = vv !=0 ? element.getCmdOff() : element.getCmdOff();
+                            cmd = lastBitValue !=0 ? element.getCmdOff() : element.getCmdOn();
                             device.getDriver().writeRegister(device.getShortName(),getDevUnitTwo(),link.getRegNum(), cmd);
                             context.getBack().forceRepaint();
                         } catch (UniException ex) {

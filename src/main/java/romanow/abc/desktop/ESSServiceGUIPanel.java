@@ -1134,7 +1134,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                         regLevel--;
                         }
                     newElem.setRegOffset(regOffset);
-                }
+                    }
                 if (newElem.getUnitIdx() >= connectorsSize) {
                     errorList.addError("Индекс Unit " + newElem.getUnitIdx() + " превышен  " + equipName + " для " + regGUI.getFullTitle());
                     return;

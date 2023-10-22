@@ -300,7 +300,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
 
         getContentPane().setLayout(null);
         getContentPane().add(Types);
-        Types.setBounds(610, 150, 140, 25);
+        Types.setBounds(610, 150, 150, 25);
 
         jLabel1.setText("Элемент ЧМИ+");
         getContentPane().add(jLabel1);
@@ -409,7 +409,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
             }
         });
         getContentPane().add(Image);
-        Image.setBounds(610, 180, 140, 25);
+        Image.setBounds(610, 180, 150, 25);
 
         label117.setText(" элементов");
         getContentPane().add(label117);
