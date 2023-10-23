@@ -77,9 +77,9 @@ public class DesktopGUIImageDataLevel extends View2BaseDesktop{
                     if (scriptValue<element.getWarnLevel())
                         res = Color.yellow;
                 g.setColor(new Color(getLabelColor().getRGB() | 0xFF000000));
-                g.fillRect(0,0,context.dx(imagePanel.getWidth()),context.dy(imagePanel.getHeight()-yy));
+                g.fillRect(0,0,context.dx(imagePanel.getWidth()),imagePanel.getHeight()-yy);
                 g.setColor(new Color(res.getRGB() | 0xFF000000));
-                g.fillRect(0,context.dy(imagePanel.getHeight()-yy),context.dx(imagePanel.getWidth()),context.dy(yy));
+                g.fillRect(0,imagePanel.getHeight()-yy,imagePanel.getWidth(),yy);
                 if (image != null) {
                     g.drawImage(image, 0, 0, null);
                     imagePanel.setBorder(BorderFactory.createLineBorder(getElemBackColor(),2));
