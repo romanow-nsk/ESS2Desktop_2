@@ -1742,9 +1742,10 @@ public class ESSMetaPanel extends ESSBasePanel {
         screen = new ESSServiceGUIScreen(main, new I_Button() {
              @Override
              public void onPush() {
-                screen.dispose();
-                screen = null;
-                }
+                 if (screen!=null)
+                    screen.dispose();
+                 screen = null;
+                 }
             });
         Dimension sSize = Toolkit.getDefaultToolkit ().getScreenSize ();
         ESS2View view = deployed.getViews().get(Views.getSelectedIndex());
@@ -3648,6 +3649,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         if (SS.getErrorList().size()==0){
             CallContext context = new CallContext(SS,deployed);
             try {
+                context.setScriptName(scriptFile.getTitle());
                 context.call(Trace.isSelected());
                 } catch (ScriptException ee){
                     res = true;

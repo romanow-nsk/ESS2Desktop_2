@@ -50,6 +50,7 @@ public class DesktopGUIScriptLabel extends View2BaseDesktop {
         try {
             CallContext context = scriptFile.getScriptCode();
             context.reset();
+            context.setScriptName(scriptFile.getTitle());
             context.call(false);
             TypeFace result = scriptFile.getScriptCode().getVariables().get(Values.ScriptResultVariable);
             if (result==null)

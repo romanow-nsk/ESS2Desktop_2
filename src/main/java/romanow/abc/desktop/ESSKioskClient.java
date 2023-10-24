@@ -198,7 +198,8 @@ public class ESSKioskClient extends ESSBaseView {
             screen = new ESSServiceGUIScreen(main, new I_Button() {
                 @Override
                 public void onPush() {
-                    screen.dispose();
+                    if (screen!=null)
+                        screen.dispose();
                     screen = null;
                     setVisible(true);
                     }
