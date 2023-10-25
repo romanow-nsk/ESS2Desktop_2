@@ -9,6 +9,8 @@ import romanow.abc.core.ErrorList;
 import romanow.abc.core.UniException;
 import romanow.abc.core.constants.Values;
 import romanow.abc.core.entity.metadata.render.ScreenMode;
+import romanow.abc.dataserver.CommandStringData;
+import romanow.abc.dataserver.ESSCommandStringData;
 import romanow.abc.desktop.console.ConsoleClient;
 import romanow.abc.desktop.console.ConsoleLogin;
 import romanow.abc.desktop.console.ConsoleSystemsList;
@@ -33,17 +35,19 @@ public class ESSKioskClient extends ESSBaseView {
     private String loginText="9131111111";
     private String passText="1234";
     private String guiName="";
+    private String host="localhost";
+    private int port=4567;
     private ScreenMode screenMode;
     private ESSServiceGUIScreen screen=null;
     private final static int xMin=640;
     private final static int yMin=480;
-    public ESSKioskClient(String guiName){
-        this(false,guiName);
+    public ESSKioskClient(String pars[]){
+        this(false,pars);
     }
     public ESSKioskClient(){
-        this(false,"");
+        this(false,new String[]{});
         }
-    public ESSKioskClient(boolean min, String guiName0){
+    public ESSKioskClient(boolean min, String pars[]){
         super(xMin,yMin);
         Values.init();
         setUndecorated(true);
@@ -51,7 +55,22 @@ public class ESSKioskClient extends ESSBaseView {
         setTitle("СМУ СНЭЭ");
         Login.setText(loginText);
         Password.setText(passText);
-        guiName = guiName0;
+        ESSCommandStringData data = new ESSCommandStringData();
+        data.parse(pars);
+        ErrorList errors = data.getErrors();
+        if (!errors.valid()){
+            Mes.append("Ошибки командной строки:\n"+errors.toString());
+            return;
+            }
+        if (!data.hasConf()){
+            Mes.append("Конфигурация клиента по умолчанию");
+            }
+            guiName = data.getConf();
+        if (data.getPort()!=0)
+            port = data.getPort();
+        if (data.getHost()!=null)
+            host = data.getHost();
+        Mes.append("сервер:"+host+":"+port+" клиент:"+guiName);
         setVisible(true);
         if (!min){
             setExtendedState(MAXIMIZED_BOTH);
@@ -165,8 +184,8 @@ public class ESSKioskClient extends ESSBaseView {
 
     private void LButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LButtonActionPerformed
         try {
-            client.setClientIP("localhost");
-            client.setClientPort(4567);
+            client.setClientIP(host);
+            client.setClientPort(port);
             client.startClient();
             client.getWorkSettings();
             String out="";
@@ -179,7 +198,7 @@ public class ESSKioskClient extends ESSBaseView {
             xx.add(passText);
             xx.add(guiName);
             out += new ConsoleLogin().exec(client,xx);
-            Mes.setText(out);
+            Mes.append(out);
             //System.out.println(out);  // ПЕРЕХВАЧЕН - виснет ??????
             main.setVisible(false);
             main.getErrors().clear();
@@ -188,7 +207,7 @@ public class ESSKioskClient extends ESSBaseView {
             main.setRenderingOn(guiName);
             ErrorList errors = main.getErrors();
             if (!errors.valid()){
-                Mes.setText(errors.toString());
+                Mes.append(errors.toString());
                 main.show();
                 main.setVisible(false);
                 return;
@@ -274,7 +293,7 @@ public class ESSKioskClient extends ESSBaseView {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ESSKioskClient(args.length==0 ? "" : args[0]).setVisible(true);
+                new ESSKioskClient(args).setVisible(true);
             }
         });
     }

@@ -14,13 +14,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="79 -Скрипты GUI в потоках">
-      <change afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/AsyncSyncRun.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/AsyncSyncRunV.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/ESSMonitorClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ABCDataServer/src/main/java/romanow/abc/dataserver/CommandStringData.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCDataServer/src/main/java/romanow/abc/dataserver/CommandStringData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUIBitScript.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUIBitScript.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUIImageScriptLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUIImageScriptLevel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUIScript.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUIScript.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUIScriptLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUIScriptLabel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ESS2Desktop.jar" beforeDir="false" afterPath="$PROJECT_DIR$/ESS2Desktop.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSKioskClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSKioskClient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +132,7 @@
       <recent name="romanow.abc.desktop" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ESSClient">
+  <component name="RunManager" selected="Application.ESSMonitorClient">
     <configuration name="BARSConsoleServer" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="romanow.abc.dataserver.BARSConsoleServer" />
       <module name="ESS2DataServer" />
@@ -174,8 +172,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ESSKioskClientKLIAB100" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="romanow.abc.desktop.ESSKioskClientKLIAB100" />
+    <configuration name="ESSMainBase" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="romanow.abc.desktop.ESSMainBase" />
       <module name="ESS2Desktop" />
       <extension name="coverage">
         <pattern>
@@ -187,12 +185,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ESSMainBase" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="romanow.abc.desktop.ESSMainBase" />
+    <configuration name="ESSMonitorClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="romanow.abc.desktop.view2.desktop.ESSMonitorClient" />
       <module name="ESS2Desktop" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="romanow.abc.desktop.*" />
+          <option name="PATTERN" value="romanow.abc.desktop.view2.desktop.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -228,11 +226,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ESSMonitorClient" />
         <item itemvalue="Application.ESSClient" />
         <item itemvalue="Application.ESS40ConsoleServer" />
         <item itemvalue="Application.ESSMainBase" />
         <item itemvalue="Application.IEC60870Connection" />
-        <item itemvalue="Application.ESSKioskClientKLIAB100" />
       </list>
     </recent_temporary>
   </component>
@@ -244,13 +242,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00316" summary="Сборка 77 - масштабирование">
-      <created>1694802814990</created>
-      <option name="number" value="00316" />
-      <option name="presentableId" value="LOCAL-00316" />
-      <option name="project" value="LOCAL" />
-      <updated>1694802814990</updated>
     </task>
     <task id="LOCAL-00317" summary="Подсветка выделенных">
       <created>1694932144654</created>
@@ -588,7 +579,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698166529742</updated>
     </task>
-    <option name="localTasksCounter" value="365" />
+    <task id="LOCAL-00365" summary="79 -Скрипты GUI в потоках">
+      <created>1698220376772</created>
+      <option name="number" value="00365" />
+      <option name="presentableId" value="LOCAL-00365" />
+      <option name="project" value="LOCAL" />
+      <updated>1698220376772</updated>
+    </task>
+    <option name="localTasksCounter" value="366" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
