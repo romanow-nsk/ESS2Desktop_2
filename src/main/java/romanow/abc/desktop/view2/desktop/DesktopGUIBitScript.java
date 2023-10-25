@@ -21,6 +21,7 @@ import java.awt.*;
 import java.net.URL;
 
 public class DesktopGUIBitScript extends View2BaseDesktop {
+    private final static boolean async=true;
     private JButton textField;
     private Meta2GUIBitScript element;
     @Getter
@@ -99,21 +100,42 @@ public class DesktopGUIBitScript extends View2BaseDesktop {
             textField.setText("...");
             return;
             }
-        try {
-            CallContext context = scriptFile.getScriptCode();
-            context.reset();
-            context.setScriptName(scriptFile.getTitle());
-            context.call(false);
-            TypeFace result = scriptFile.getScriptCode().getVariables().get(Values.ScriptResultVariable);
-            if (result==null)
-                new Message(300,300,"Ошибка исполнения скрипта\nОтстутствует результат",Values.PopupMessageDelay);
-            else{
-                putValueOwn(result.isBoolValue() ? element.getColorYes() : element.getColorNo());
-                }
-            } catch (ScriptException e) {
-                getContext().popup("Ошибка исполнения скрипта\n"+e.toString());
-                }
-        }
+        final CallContext context = scriptFile.getScriptCode();
+        context.reset();
+        context.setScriptName(scriptFile.getTitle());
+            new AsyncSyncRunV(async) {
+                @Override
+                public void runCode() throws Exception {
+                    context.call(false);
+                    }
+                @Override
+                public void onExeption(Exception ee) {
+                    getContext().popup("Ошибка исполнения скрипта\n" + ee.toString());
+                    }
+                @Override
+                public void onSuccess() {
+                    TypeFace result =  scriptFile.getScriptCode().getVariables().get(Values.ScriptResultVariable);
+                    if (result == null)
+                        new Message(300, 300, "Ошибка исполнения скрипта\nОтстутствует результат", Values.PopupMessageDelay);
+                    else {
+                        putValueOwn(result.isBoolValue() ? element.getColorYes() : element.getColorNo());
+                        }
+                    }
+                };
+            /*
+            try {
+                context.call(false);
+                TypeFace result = scriptFile.getScriptCode().getVariables().get(Values.ScriptResultVariable);
+                if (result == null)
+                    new Message(300, 300, "Ошибка исполнения скрипта\nОтстутствует результат", Values.PopupMessageDelay);
+                else {
+                    putValueOwn(result.isBoolValue() ? element.getColorYes() : element.getColorNo());
+                    }
+                } catch (ScriptException e) {
+                    getContext().popup("Ошибка исполнения скрипта\n" + e.toString());
+                    }
+             */
+            }
     @Override
     public String setParams(FormContext2 context0, ESS2Architecture meta0, Meta2GUI element0, I_GUI2Event onEvent0) {
         super.setParams(context0,meta0, element0,onEvent0);

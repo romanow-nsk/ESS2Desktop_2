@@ -8,9 +8,7 @@ import romanow.abc.core.UniException;
 import romanow.abc.core.constants.Values;
 import romanow.abc.core.entity.metadata.Meta2Register;
 import romanow.abc.core.entity.metadata.view.Meta2GUI;
-import romanow.abc.core.entity.metadata.view.Meta2GUIImage;
 import romanow.abc.core.entity.metadata.view.Meta2GUIImageScriptLevel;
-import romanow.abc.core.entity.metadata.view.Meta2GUIScript;
 import romanow.abc.core.entity.subject2area.ESS2Architecture;
 import romanow.abc.core.entity.subject2area.ESS2ScriptFile;
 import romanow.abc.core.script.CallContext;
@@ -31,6 +29,7 @@ import java.awt.image.RGBImageFilter;
 import static romanow.abc.core.Utils.httpError;
 
 public class DesktopGUIImageScriptLevel extends View2BaseDesktop {
+    private final static boolean async=true;
     private Image image = null;
     private JPanel imagePanel=null;
     private Meta2GUIImageScriptLevel element;
@@ -136,27 +135,57 @@ public class DesktopGUIImageScriptLevel extends View2BaseDesktop {
             imagePanel.repaint();
             return;
             }
-        try {
-            CallContext context = scriptFile.getScriptCode();
-            context.reset();
-            context.setScriptName(scriptFile.getTitle());
-            context.call(false);
-            TypeFace result = scriptFile.getScriptCode().getVariables().get(Values.ScriptResultVariable);
-            if (result==null) {
-                calculaded=false;
-                imagePanel.repaint();
-                new Message(300, 300, "Ошибка исполнения скрипта\nОтстутствует результат", Values.PopupMessageDelay);
+        final CallContext context = scriptFile.getScriptCode();
+        context.reset();
+        context.setScriptName(scriptFile.getTitle());
+        new AsyncSyncRunV(async) {
+            @Override
+            public void runCode() throws Exception {
+                context.call(false);
                 }
-            else{
-                calculaded=true;
-                scriptValue = result.getRealValue();
-                imagePanel.repaint();
-                }
-            } catch (ScriptException e) {
+            @Override
+            public void onExeption(Exception e) {
                 calculaded=false;
                 imagePanel.repaint();
                 new Message(300,300,"Ошибка исполнения скрипта\n"+e.toString(),Values.PopupMessageDelay);
                 }
-            }
+            @Override
+                public void onSuccess() {
+                TypeFace result = scriptFile.getScriptCode().getVariables().get(Values.ScriptResultVariable);
+                if (result==null) {
+                    calculaded=false;
+                    imagePanel.repaint();
+                    new Message(300, 300, "Ошибка исполнения скрипта\nОтстутствует результат", Values.PopupMessageDelay);
+                    }
+                else{
+                    calculaded=true;
+                    scriptValue = result.getRealValue();
+                    imagePanel.repaint();
+                    }
+                }
+            };
+        }
+            /*
+            try {
+                context.call(false);
+                TypeFace result = scriptFile.getScriptCode().getVariables().get(Values.ScriptResultVariable);
+                if (result==null) {
+                    calculaded=false;
+                    imagePanel.repaint();
+                    new Message(300, 300, "Ошибка исполнения скрипта\nОтстутствует результат", Values.PopupMessageDelay);
+                    }
+                else{
+                    calculaded=true;
+                    scriptValue = result.getRealValue();
+                    imagePanel.repaint();
+                    }
+                } catch (ScriptException e) {
+                    calculaded=false;
+                    imagePanel.repaint();
+                    new Message(300,300,"Ошибка исполнения скрипта\n"+e.toString(),Values.PopupMessageDelay);
+                    }
+                }
+             */
+
 
 }

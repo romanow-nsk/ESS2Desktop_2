@@ -19,6 +19,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class DesktopGUIScript extends View2BaseDesktop {
+    private final static boolean async=true;
     private JTextField textField;
     private Meta2GUIScript element;
     @Getter private ESS2ScriptFile scriptFile=null;
@@ -58,28 +59,56 @@ public class DesktopGUIScript extends View2BaseDesktop {
             textField.setText("...");
             return;
             }
-        try {
-            CallContext context = scriptFile.getScriptCode();
-            context.reset();
-            context.setScriptName(scriptFile.getTitle());
-            context.call(false);
-            TypeFace result = scriptFile.getScriptCode().getVariables().get(Values.ScriptResultVariable);
-            if (result==null)
-                new Message(300,300,"Ошибка исполнения скрипта\nОтстутствует результат",Values.PopupMessageDelay);
-            else{
-                String res;
-                if (element.getAfterPoint()>0)
-                    res=String.format("%6."+element.getAfterPoint()+"f",result.getRealValue()).trim();
-                else
-                if (element.getAfterPoint()==0)
-                    res=""+result.valueToInt();
-                else
-                    res=""+result.valueToString();
-                textField.setText(res);
+        final CallContext context = scriptFile.getScriptCode();
+        context.reset();
+        context.setScriptName(scriptFile.getTitle());
+            new AsyncSyncRunV(async) {
+                @Override
+                public void runCode() throws Exception{
+                    context.call(false);
+                    }
+                @Override
+                public void onExeption(Exception e) {
+                    getContext().popup("Ошибка исполнения скрипта\n" + e.toString());
+                    }
+                @Override
+                public void onSuccess() {
+                    TypeFace result = scriptFile.getScriptCode().getVariables().get(Values.ScriptResultVariable);
+                    if (result == null)
+                        new Message(300, 300, "Ошибка исполнения скрипта\nОтстутствует результат", Values.PopupMessageDelay);
+                    else {
+                        String res;
+                        if (element.getAfterPoint() > 0)
+                            res = String.format("%6." + element.getAfterPoint() + "f", result.getRealValue()).trim();
+                        else if (element.getAfterPoint() == 0)
+                            res = "" + result.valueToInt();
+                        else
+                            res = "" + result.valueToString();
+                        textField.setText(res);
+                        }
+                    }
+                };
+        /*
+            try {
+                context.call(false);
+                TypeFace result = scriptFile.getScriptCode().getVariables().get(Values.ScriptResultVariable);
+                if (result == null)
+                    new Message(300, 300, "Ошибка исполнения скрипта\nОтстутствует результат", Values.PopupMessageDelay);
+                else {
+                    String res;
+                    if (element.getAfterPoint() > 0)
+                        res = String.format("%6." + element.getAfterPoint() + "f", result.getRealValue()).trim();
+                    else if (element.getAfterPoint() == 0)
+                        res = "" + result.valueToInt();
+                    else
+                        res = "" + result.valueToString();
+                    textField.setText(res);
+                    }
+                } catch (ScriptException e) {
+                    getContext().popup("Ошибка исполнения скрипта\n" + e.toString());
                 }
-            } catch (ScriptException e) {
-                getContext().popup("Ошибка исполнения скрипта\n"+e.toString());
-                }
+
+         */
     }
     @Override
     public String setParams(FormContext2 context0, ESS2Architecture meta0, Meta2GUI element0, I_GUI2Event onEvent0) {
