@@ -47,9 +47,14 @@ public class ESSKioskClient extends ESSBaseView {
     public ESSKioskClient(){
         this(false,new String[]{});
         }
+    public void mes(String ss){
+        Mes.append(ss);
+        System.out.println(ss);
+        }
     public ESSKioskClient(boolean min, String pars[]){
         super(xMin,yMin);
         Values.init();
+        setVisible(false);
         setUndecorated(true);
         initComponents();
         setTitle("СМУ СНЭЭ");
@@ -59,20 +64,20 @@ public class ESSKioskClient extends ESSBaseView {
         data.parse(pars);
         ErrorList errors = data.getErrors();
         if (!errors.valid()){
-            Mes.append("Ошибки командной строки:\n"+errors.toString());
+            System.out.println();
+            mes("Ошибки командной строки:\n"+errors.toString());
             return;
             }
         if (!data.hasConf()){
-            Mes.append("Конфигурация клиента по умолчанию");
+            mes("Конфигурация клиента по умолчанию");
             }
             guiName = data.getConf();
         if (data.getPort()!=0)
             port = data.getPort();
         if (data.getHost()!=null)
             host = data.getHost();
-        Mes.append("сервер:"+host+":"+port+" клиент:"+guiName);
-        setVisible(true);
-        if (!min){
+        mes("сервер:"+host+":"+port+" клиент:"+guiName);
+        if (!min){;
             setExtendedState(MAXIMIZED_BOTH);
             Dimension sSize = Toolkit.getDefaultToolkit ().getScreenSize ();
             screenMode = new ScreenMode(sSize.width,sSize.height);
@@ -80,7 +85,8 @@ public class ESSKioskClient extends ESSBaseView {
             yC = sSize.height/2;
             setWH(sSize.width,sSize.height);
             setSize(sSize.width,sSize.height);
-            System.out.println(sSize.width+" "+sSize.height);
+            setVisible(true);
+            mes(" screen:"+sSize.width+"x"+sSize.height);
             }
         else{
             setSize(xMin, yMin);
