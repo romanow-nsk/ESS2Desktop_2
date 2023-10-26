@@ -350,7 +350,7 @@ public class ESSMainServiceGUIPanel extends ESSBasePanel {
             nodeView.setOffsetH(offsetH);
             String ss = node.getTitle();
             JLabel label = new JLabel();
-            label.setFont(new Font("Arial Cyr", Font.BOLD, context.y(16)));
+            label.setFont(new Font(Values.FontName, Font.BOLD, context.y(16)));
             label.setBounds(context.x(50), context.y(offsetH), context.dx(500), context.dy(20));
             label.setBackground(new Color(0xFFD8D8D8));
             panel.add(label);
@@ -375,7 +375,7 @@ public class ESSMainServiceGUIPanel extends ESSBasePanel {
         userTitle.setBounds(context.x(10),context.y(ValuesBase.ScreenDesktopHeight-60),
                 context.dx(700),context.dy(25));
         userTitle.setEnabled(false);
-        userTitle.setFont(new Font("Arial Cyr", Font.PLAIN, context.dy(12)));
+        userTitle.setFont(new Font(Values.FontName, Font.PLAIN, context.dy(12)));
         panel.add(userTitle);
         //-----------------------------------------------------------------------------------
         panel.setBounds(0, 0, context.getScreen().ScreenW() - 40, context.y(offsetH));

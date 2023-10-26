@@ -43,7 +43,7 @@ public class DesktopGUIDateTime extends View2BaseDesktop {
                 context.dy(hh));
         setButtonParams(textField,true);
         //textField.setBackground(new Color(context.getView().getMenuButtonOffColor()));
-        //textField.setFont(new Font("Arial Cyr", Font.PLAIN, context.dy(12)));
+        //textField.setFont(new Font(Values.FontName, Font.PLAIN, context.dy(12)));
         //textField.setEditable(false);
         //textField.setHorizontalAlignment(JTextField.LEFT);
         //Color color=new Color(element.getColor());

@@ -32,7 +32,7 @@ public class GUISetting extends GUIElement {
         textField.setEditable(false);
         textField.setHorizontalAlignment(JTextField.CENTER);
         panel.add(textField);
-        textField.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
+        textField.setFont(new Font(Values.FontName, Font.PLAIN, context.y(12)));
         setInfoClick(textField);
         final boolean remoteDisable = !context.isSuperUser() &&  !context.isLocalUser() && !((MetaSettingRegister)register).isRemoteEnable();
         Color color=new Color(remoteDisable || !context.isActionEnable() ? Values.AccessDisableColor : element.getColor());

@@ -44,7 +44,7 @@ public class DesktopGUICommandBit extends View2BaseDesktop {
         setButtonParams(textField,true);
         textField.setText(element.getTitle());
         //textField.setText(element.getTitle());
-        //textField.setFont(new Font("Arial Cyr", Font.PLAIN, context.dy(12)));
+        //textField.setFont(new Font(Values.FontName, Font.PLAIN, context.dy(12)));
         //textField.setHorizontalAlignment(JTextField.CENTER);
         Meta2BitRegister register = (Meta2BitRegister) getRegister();
         bit = register.getBits().getByCode(element.getBitNum());

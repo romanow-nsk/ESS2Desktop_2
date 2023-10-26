@@ -80,7 +80,7 @@ public class DesktopGUIFormSelector extends View2BaseDesktop {
                 context.y(element.getY()),
                 context.dx(45),
                 context.dy(40));
-        list.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
+        list.setFont(new Font(Values.FontName, Font.PLAIN, context.y(12)));
         panel.add(list);
         next = new JButton();
         next.setBounds(

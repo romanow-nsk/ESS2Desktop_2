@@ -158,7 +158,7 @@ public abstract class GUIElement implements I_ViewElement{
             }
         int fontSize = element.getFontSize();
         if (fontSize==0) fontSize=12;
-        label.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(fontSize)));
+        label.setFont(new Font(Values.FontName, Font.PLAIN, context.y(fontSize)));
         panel.add(label);
         return label;
         }

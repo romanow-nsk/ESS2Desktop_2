@@ -44,7 +44,7 @@ public class DesktopGUIEnvVar extends View2BaseDesktop {
                 context.y(element.getY()+getDyOffset()),
                 context.dx(dd),
                 context.dy(hh));
-        textField.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
+        textField.setFont(new Font(Values.FontName, Font.PLAIN, context.y(12)));
         textField.setEditable(false);
         textField.setHorizontalAlignment(JTextField.CENTER);
         panel.add(textField);

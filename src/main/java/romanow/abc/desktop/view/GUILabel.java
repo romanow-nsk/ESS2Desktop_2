@@ -17,7 +17,7 @@ public class GUILabel extends GUIElement {
         setLabel(panel,element.getPower()==0);          // Power==1 - с цветом
         //JLabel ll = new JLabel();
         //ll.setBounds(element.getX(),element.getY(),element.getDx(),25);
-        //ll.setFont(new Font("Arial Cyr", Font.PLAIN, element.getFontSize()));
+        //ll.setFont(new Font(Values.FontName, Font.PLAIN, element.getFontSize()));
         //ll.setText("  "+element.getTitle());
         //panel.add(ll);
         //Color color=new Color(element.getColor());

@@ -26,7 +26,7 @@ public class GUIFormButton extends GUIElement {
                 context.x(element.getDx()),
                 context.y(25));
         textField.setText(element.getTitle());
-        textField.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
+        textField.setFont(new Font(Values.FontName, Font.PLAIN, context.y(12)));
         textField.setHorizontalAlignment(JTextField.CENTER);
         textField.addActionListener(new ActionListener() {
             @Override

@@ -67,7 +67,7 @@ public class GUIFormSelector extends GUIElement {
                 context.y(element.getY()),
                 context.x(45),
                 context.y(40));
-        list.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
+        list.setFont(new Font(Values.FontName, Font.PLAIN, context.y(12)));
         panel.add(list);
         up = new JButton();
         up.setBounds(

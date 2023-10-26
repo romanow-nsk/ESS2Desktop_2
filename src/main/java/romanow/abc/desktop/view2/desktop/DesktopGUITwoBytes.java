@@ -43,7 +43,7 @@ public class DesktopGUITwoBytes extends View2BaseDesktop {
         setTextFieldParams(textField);
         textField.setEditable(false);
         panel.add(textField);
-        //textField.setFont(new Font("Arial Cyr", Font.PLAIN, context.dy(12)));
+        //textField.setFont(new Font(Values.FontName, Font.PLAIN, context.dy(12)));
         //textField.setHorizontalAlignment(JTextField.CENTER);
         //Color color=new Color(element.getColor());
         //textField.setBackground(color);

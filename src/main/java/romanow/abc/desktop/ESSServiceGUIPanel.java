@@ -378,7 +378,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             userTitle.setBounds(context.x(10),context.y(ScreenDesktopHeight-60),
                     context.dx(700),context.dy(25));
             userTitle.setEnabled(false);
-            userTitle.setFont(new Font("Arial Cyr", Font.PLAIN, context.dy(12)));
+            userTitle.setFont(new Font(Values.FontName, Font.PLAIN, context.dy(12)));
             add(userTitle);
             }
          */
@@ -410,7 +410,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                     fontSize = MenuButtonFontSize;
                 boolean bold = currentView.isMenuFontBold() || next.isMenuFontBold();
                 int type = bold ? Font.BOLD : Font.PLAIN;
-                Font font = new Font("Arial Cyr", type, context.dy(fontSize));
+                Font font = new Font(Values.FontName, type, context.dy(fontSize));
                 bb.setFont(font);
                 int buttonW = next.getMenuButtonW();
                 if (buttonW==0 && currentView.getMenuButtonW()!=0)

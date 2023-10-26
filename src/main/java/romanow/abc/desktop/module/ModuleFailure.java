@@ -40,7 +40,7 @@ public class ModuleFailure extends Module {
     private ListSelectionListener listener;
     public ModuleFailure(){}
     private void addQuitedButton(){
-        //JButton bb = new MultiTextButton(new Font("Arial Cyr", Font.PLAIN, context.dy(12)));
+        //JButton bb = new MultiTextButton(new Font(Values.FontName, Font.PLAIN, context.dy(12)));
         JButton bb = new JButton();
         View2BaseDesktop.setButtonParams(bb,"Квитировать всё",false,context);
         bb.setBounds(
@@ -138,7 +138,7 @@ public class ModuleFailure extends Module {
                        context.dx(form.getModuleDX()),
                        context.dy(form.getModuleDY()-50));
                 panel.add(scroll);
-                table.setFont(new Font("Arial Cyr", Font.PLAIN, context.dy(12)));
+                table.setFont(new Font(Values.FontName, Font.PLAIN, context.dy(12)));
                 table.setRowHeight(context.dy(20));
                 table.setSelectionForeground(Color.blue);
                 table.setSelectionBackground(Color.yellow);

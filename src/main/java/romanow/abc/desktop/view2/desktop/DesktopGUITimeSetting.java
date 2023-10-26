@@ -40,7 +40,7 @@ public class DesktopGUITimeSetting extends View2BaseDesktop {
                 context.dx(w2),
                 context.dy(25));
         textField.setEditable(false);
-        textField.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
+        textField.setFont(new Font(Values.FontName, Font.PLAIN, context.y(12)));
         textField.setHorizontalAlignment(JTextField.CENTER);
         panel.add(textField);
         Color color=new Color(element.getColor());

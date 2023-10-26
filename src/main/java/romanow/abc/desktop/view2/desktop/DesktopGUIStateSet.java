@@ -30,7 +30,7 @@ public class DesktopGUIStateSet extends View2BaseDesktop {
                 context.dx(element.getW2()),
                 context.dy(25));
         setTextFieldParams(textField);
-        //textField.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
+        //textField.setFont(new Font(Values.FontName, Font.PLAIN, context.y(12)));
         //textField.setEditable(false);
         //textField.setHorizontalAlignment(JTextField.CENTER);
         //Color color=new Color(element.getColor());

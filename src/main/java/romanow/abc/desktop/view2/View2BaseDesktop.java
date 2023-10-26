@@ -1,6 +1,8 @@
 package romanow.abc.desktop.view2;
 
 import lombok.Getter;
+import romanow.abc.core.constants.Values;
+import romanow.abc.core.constants.ValuesBase;
 import romanow.abc.core.entity.metadata.Meta2GUIView;
 import romanow.abc.core.entity.metadata.view.Meta2GUI;
 import romanow.abc.desktop.UtilsDesktop;
@@ -31,7 +33,7 @@ public abstract class View2BaseDesktop extends View2Base implements I_View2Deskt
         int fontSize = element.getFontSize();
         if (fontSize == 0) fontSize = 12;
         int type = element.isBold() ? Font.BOLD : Font.PLAIN;
-        return new Font("Arial Cyr", type, context.dy(fontSize));
+        return new Font(ValuesBase.FontName, type, context.dy(fontSize));
         }
     public Color getElemBackColor(){
         return getElemBackColor(null);
@@ -71,7 +73,7 @@ public abstract class View2BaseDesktop extends View2Base implements I_View2Deskt
         int fontSize = view.getMenuButtonFontSize();
         if (fontSize == 0) fontSize = 12;
         int type = view.isMenuFontBold()? Font.BOLD : Font.PLAIN;
-        Font font = new Font("Arial Cyr", type, context.dy(fontSize));
+        Font font = new Font(ValuesBase.FontName, type, context.dy(fontSize));
         textField.setFont(font);
         Color textColor = new Color(view.getMenuButtonTextColor());
         textField.setForeground(textColor);
@@ -118,7 +120,7 @@ public abstract class View2BaseDesktop extends View2Base implements I_View2Deskt
         int fontSize = element.getFontSize();
         if (fontSize==0) fontSize=12;
         int type = element.isLabelBold()? Font.BOLD : Font.PLAIN;
-        label.setFont(new Font("Arial Narrow", type, context.dy(fontSize)));
+        label.setFont(new Font(Values.FontName, type, context.dy(fontSize)));
         label.setHorizontalAlignment(JTextField.LEFT);
         if (element.isLabelOnCenter())
             label.setHorizontalAlignment(JTextField.CENTER);

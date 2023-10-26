@@ -85,7 +85,7 @@ public class ModuleEventAll extends Module {
                 }
             else{
                 table = new JTable(data, header);
-                table.setFont(new Font("Arial Cyr", Font.PLAIN, context.dy(12)));
+                table.setFont(new Font(Values.FontName, Font.PLAIN, context.dy(12)));
                 table.setRowHeight(context.dy(20));
                 table.setSelectionForeground(Color.blue);
                 table.setSelectionBackground(Color.yellow);

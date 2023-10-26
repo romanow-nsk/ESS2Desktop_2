@@ -24,7 +24,7 @@ public class GUIStateSet extends GUIElement {
                 context.y(element.getY()),
                 context.x(element.getW2()),
                 context.y(25));
-        textField.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
+        textField.setFont(new Font(Values.FontName, Font.PLAIN, context.y(12)));
         textField.setEditable(false);
         textField.setHorizontalAlignment(JTextField.CENTER);
         panel.add(textField);

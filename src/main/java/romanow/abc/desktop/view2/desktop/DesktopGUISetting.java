@@ -46,7 +46,7 @@ public class DesktopGUISetting extends View2BaseDesktop {
         setTextFieldParams(textField);
         //textField.setHorizontalAlignment(JTextField.CENTER);
         panel.add(textField);
-        //textField.setFont(new Font("Arial Cyr", Font.PLAIN, context.y(12)));
+        //textField.setFont(new Font(Values.FontName, Font.PLAIN, context.y(12)));
         setInfoClick(textField);
         final boolean remoteDisable = !context.isSuperUser() &&  !context.isLocalUser() && !(register).isRemoteEnable();
         if (!element.isNoEditThere() && (remoteDisable || !context.isActionEnable()))
