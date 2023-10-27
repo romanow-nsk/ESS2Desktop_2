@@ -49,6 +49,13 @@ import static romanow.abc.core.constants.Values.*;
  *
  * @author romanow
  */
+//--------------------------------- Данные для меню
+//          1
+//          2
+// 7 8     коды    6 5
+//          4
+//          3
+//-----------------------------------------------------------------------------------------
 public class ESSServiceGUIPanel extends ESSBasePanel {
     @Getter @Setter private boolean secondPanel=false;
     private JButton OnOff=null;
@@ -57,13 +64,6 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     private final static String buttonLogout = "/login.png";
     private final static String buttonInfoOn = "/question.png";
     private final static String buttonInfoOff = "/question_gray.png";
-    //--------------------------------- Данные для меню
-    //          1
-    //          2
-    // 7 8     коды    6 5
-    //          4
-    //          3
-    //-----------------------------------------------------------------------------------------
     private final static int maxMenuLevels=5;
     private final static int MenuButtonMarginY=70;
     private int menuModes[] = new int[maxMenuLevels];
@@ -823,11 +823,11 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     @Override
     public void eventPanel(int code, int par1, long par2, String par3,Object oo) {
         int second = isSecondPanel() ? 1 : 0;
-        if (code==EventRefreshSettings){
+        if (code==EventRefreshSettings){        // Обновление настроек
             refresh();
             main.sendEventPanel(EventRefreshSettingsDone,0,0,"");
             }
-        if (code==EventPLMOn && par1==second){
+        if (code==EventPLMOn && par1==second){  // Рендеринг для второго экрана
             context.setView(currentView().getView());
             context.setMainServerNodeId(main2.mainServerNodeId);
             limiter.reset();
@@ -837,26 +837,26 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             main.panelToFront(this);
             System.out.println(par3);
             }
-        if (code==EventPLMOff && par1==second){
+        if (code==EventPLMOff && par1==second){  // Рендеринг для второго экрана
             repaintOff();
             }
-        if (code==EventGUIToFront && renderingOn){
+        if (code==EventGUIToFront && renderingOn){  // Перевод на передний план
             repaintView();
             }
-        if (code==EventRuntimeEditMode){
+        if (code==EventRuntimeEditMode){    // Режим редактирования на "лету"
             runtimeEditMode = par1!=0;
             context.setRuntimeEditMode(runtimeEditMode);
             }
-        if (code==EventRuntimeOnlyView){
+        if (code==EventRuntimeOnlyView){    // Режим рендеринга без вывода данных
             runtimeOnlyView = par1!=0;
             context.setRuntimeOnlyView(runtimeOnlyView);
             }
         if (code==EventRuntimeSelected && currentView()!=null && runtimeEditMode){
-            context.setSelectedView((Meta2GUI) oo);
-            context.setShowInsertButtion(par1!=0);
+            context.setSelectedView((Meta2GUI) oo); // Выбор элемента управления
+            context.setShowInsertButtion(par1!=0);  // при редактировании "на лету"
             repaintView();
             }
-        if (code==EventRuntimeUnSelected){
+        if (code==EventRuntimeUnSelected){          // Снятие выбора элемента
             context.setSelectedView(null);
             context.setShowInsertButtion(false);
             if (insertSelected!=null)
