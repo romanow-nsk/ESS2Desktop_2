@@ -54,7 +54,7 @@ public class WizardMeta2GUIBitScript extends WizardMeta2GUIScript {
 
         jLabel11.setText("Цвет \"1\"");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(450, 160, 60, 16);
+        jLabel11.setBounds(580, 160, 60, 16);
 
         ColorYes.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -62,13 +62,13 @@ public class WizardMeta2GUIBitScript extends WizardMeta2GUIScript {
             }
         });
         getContentPane().add(ColorYes);
-        ColorYes.setBounds(450, 130, 80, 25);
+        ColorYes.setBounds(580, 130, 80, 25);
         getContentPane().add(ColorYesButton);
-        ColorYesButton.setBounds(540, 130, 25, 25);
+        ColorYesButton.setBounds(670, 130, 25, 25);
 
         jLabel14.setText("Цвет \"0\"");
         getContentPane().add(jLabel14);
-        jLabel14.setBounds(580, 160, 60, 16);
+        jLabel14.setBounds(710, 160, 60, 16);
 
         ColorNo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -76,9 +76,9 @@ public class WizardMeta2GUIBitScript extends WizardMeta2GUIScript {
             }
         });
         getContentPane().add(ColorNo);
-        ColorNo.setBounds(580, 130, 80, 25);
+        ColorNo.setBounds(710, 130, 80, 25);
         getContentPane().add(ColorNoButton);
-        ColorNoButton.setBounds(670, 130, 25, 25);
+        ColorNoButton.setBounds(800, 130, 25, 25);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
