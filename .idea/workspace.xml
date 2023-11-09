@@ -13,16 +13,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="80 -">
-      <change beforePath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/ServerPanel.form" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/ServerPanel.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/ServerPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/ServerPanel.java" afterDir="false" />
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="80 - toString">
       <change beforePath="$PROJECT_DIR$/../ESS2Core/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/subject2area/ESS2Architecture.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/subject2area/ESS2Architecture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/subject2area/ESS2Equipment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/subject2area/ESS2Equipment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/subject2area/ESS2MetaFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/subject2area/ESS2MetaFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/Meta2GUIForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/Meta2GUIForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ESS2Desktop.jar" beforeDir="false" afterPath="$PROJECT_DIR$/ESS2Desktop.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIForm.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIForm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +38,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../ABCDesktop" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
@@ -114,8 +111,8 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;F:/YandexDisk/Проекты/СНЭЭ 4.0/МЭК 60870-5-104/j60870-master&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/BRS0/solus_rex-brs_desktop&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.3218391&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.statistic.project.settings&quot;
@@ -247,13 +244,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00324" summary="полный экран">
-      <created>1695534079178</created>
-      <option name="number" value="00324" />
-      <option name="presentableId" value="LOCAL-00324" />
-      <option name="project" value="LOCAL" />
-      <updated>1695534079179</updated>
     </task>
     <task id="LOCAL-00325" summary="выравнивание слева">
       <created>1695544264050</created>
@@ -591,7 +581,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698909578669</updated>
     </task>
-    <option name="localTasksCounter" value="373" />
+    <task id="LOCAL-00373" summary="80 - toString">
+      <created>1699332918354</created>
+      <option name="number" value="00373" />
+      <option name="presentableId" value="LOCAL-00373" />
+      <option name="project" value="LOCAL" />
+      <updated>1699332918354</updated>
+    </task>
+    <option name="localTasksCounter" value="374" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -618,7 +615,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="79 - Состояние - селектор" />
     <MESSAGE value="79 - Индикация импорта" />
     <MESSAGE value="79 - Размещение окошек" />
     <MESSAGE value="79 - Пауза на wizard, подробности ошибок view" />
@@ -643,7 +639,8 @@
     <MESSAGE value="79 - ACDC настройка" />
     <MESSAGE value="79 - косяки" />
     <MESSAGE value="80 -" />
-    <option name="LAST_COMMIT_MESSAGE" value="80 -" />
+    <MESSAGE value="80 - toString" />
+    <option name="LAST_COMMIT_MESSAGE" value="80 - toString" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

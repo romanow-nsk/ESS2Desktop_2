@@ -147,6 +147,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
             ModuleDX.setText(""+view.getModuleDX());
             ModuleDY.setText(""+view.getModuleDY());
             ScrollScale.setText(""+String.format("%5.2f",view.getFormScrollScale()));
+            Horizontal.setSelected(view.isScrollHorizontal());
             //-------------------------------------------------------------------------
             }
     private void refreshImageList(){
@@ -297,6 +298,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
         DebugForm = new javax.swing.JCheckBox();
         label129 = new javax.swing.JLabel();
         ScrollScale = new javax.swing.JTextField();
+        Horizontal = new javax.swing.JCheckBox();
 
         getContentPane().setLayout(null);
         getContentPane().add(Types);
@@ -521,7 +523,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
 
         jLabel15.setText("Ширина");
         getContentPane().add(jLabel15);
-        jLabel15.setBounds(160, 315, 50, 16);
+        jLabel15.setBounds(150, 315, 50, 16);
 
         MenuTextColor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -529,13 +531,13 @@ public class WizardMeta2GUIForm extends WizardBaseView {
             }
         });
         getContentPane().add(MenuTextColor);
-        MenuTextColor.setBounds(210, 280, 60, 25);
+        MenuTextColor.setBounds(200, 280, 60, 25);
         getContentPane().add(MenuTextColorButton);
-        MenuTextColorButton.setBounds(270, 280, 25, 25);
+        MenuTextColorButton.setBounds(260, 280, 25, 25);
 
         jLabel19.setText("Высота");
         getContentPane().add(jLabel19);
-        jLabel19.setBounds(160, 340, 50, 16);
+        jLabel19.setBounds(150, 340, 50, 16);
 
         MenuBold.setText("Bold");
         MenuBold.addItemListener(new java.awt.event.ItemListener() {
@@ -548,7 +550,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
 
         jLabel20.setText("Текст ");
         getContentPane().add(jLabel20);
-        jLabel20.setBounds(160, 285, 50, 16);
+        jLabel20.setBounds(150, 285, 50, 16);
 
         MenuButtonW.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -556,11 +558,11 @@ public class WizardMeta2GUIForm extends WizardBaseView {
             }
         });
         getContentPane().add(MenuButtonW);
-        MenuButtonW.setBounds(210, 310, 40, 25);
+        MenuButtonW.setBounds(200, 310, 40, 25);
 
         jLabel21.setText("Шрифт");
         getContentPane().add(jLabel21);
-        jLabel21.setBounds(260, 315, 50, 16);
+        jLabel21.setBounds(250, 320, 50, 16);
 
         MenuFontSize.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -581,7 +583,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
             }
         });
         getContentPane().add(MenuButtonH);
-        MenuButtonH.setBounds(210, 340, 40, 25);
+        MenuButtonH.setBounds(200, 340, 40, 25);
         getContentPane().add(jSeparator1);
         jSeparator1.setBounds(10, 270, 760, 10);
 
@@ -693,7 +695,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
 
         jLabel13.setText("Иконка");
         getContentPane().add(jLabel13);
-        jLabel13.setBounds(510, 330, 90, 16);
+        jLabel13.setBounds(250, 350, 60, 16);
 
         ImageX0.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -774,6 +776,15 @@ public class WizardMeta2GUIForm extends WizardBaseView {
         });
         getContentPane().add(ScrollScale);
         ScrollScale.setBounds(430, 315, 60, 25);
+
+        Horizontal.setText("горизонталь...");
+        Horizontal.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                HorizontalItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(Horizontal);
+        Horizontal.setBounds(500, 320, 110, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1084,6 +1095,13 @@ public class WizardMeta2GUIForm extends WizardBaseView {
         });
     }//GEN-LAST:event_ScrollScaleKeyPressed
 
+    private void HorizontalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_HorizontalItemStateChanged
+        if (busy)
+            return;
+        view.setScrollHorizontal(Horizontal.isSelected());
+        back.onEnter("Изменено ScrollHorizontal="+Horizontal.isSelected());
+    }//GEN-LAST:event_HorizontalItemStateChanged
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1094,6 +1112,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
     private javax.swing.JCheckBox Empty;
     private javax.swing.JTextField FormLevel;
     private javax.swing.JTextField GroupIndex;
+    private javax.swing.JCheckBox Horizontal;
     private javax.swing.JTextField IconAlias;
     private java.awt.Choice IconList;
     private javax.swing.JTextField Image;
