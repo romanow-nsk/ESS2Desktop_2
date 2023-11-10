@@ -92,8 +92,13 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     private int realHeight=ScreenDesktopHeight;
     private int realWidth=ScreenDesktopWidth;
     private Meta2GUIView currentView=null;
+    private boolean scriptTraceEnable=false;
     JButton insertSelected = null;
     private FormContext2 context = new FormContext2(new I_ContextBack() {
+        @Override
+        public boolean isScriptTraceEnabled(){
+            return scriptTraceEnable;
+            }
         @Override
         public void forceRepaint(){
             if (guiLoop!=null)
@@ -831,6 +836,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             context.setView(currentView().getView());
             context.setMainServerNodeId(main2.mainServerNodeId);
             limiter.reset();
+            scriptTraceEnable = par2 !=0;
             if (oo!=null)
                 context.setScreen((ScreenMode) oo);
             repaintView();

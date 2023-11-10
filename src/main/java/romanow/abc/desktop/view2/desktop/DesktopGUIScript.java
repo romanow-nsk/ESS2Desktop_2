@@ -65,7 +65,7 @@ public class DesktopGUIScript extends View2BaseDesktop {
             new AsyncSyncRunV(async) {
                 @Override
                 public void runCode() throws Exception{
-                    context.call(false);
+                    context.call(getContext().getBack().isScriptTraceEnabled());
                     }
                 @Override
                 public void onExeption(Exception e) {

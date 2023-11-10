@@ -81,7 +81,11 @@ public class ESSMainServiceGUIPanel extends ESSBasePanel {
         @Override
         public void forceRepaint() {
             }
-        });
+        @Override
+        public boolean isScriptTraceEnabled() {
+            return false;
+            }
+    });
 
     public void setLogoutCallBack(I_Button logoutCallBack) {
         this.logoutCallBack = logoutCallBack; }

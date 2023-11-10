@@ -29,6 +29,7 @@ public class ESSKioskClient extends ESSBaseView {
     /**
      * Creates new form ESSServiceGUIScreen
      */
+    public final static int FullScreenHightMinus=50;
     ConsoleClient client = new ConsoleClient();
     ESSClient main = new ESSClient(false,false);
     private int xC,yC;
@@ -80,13 +81,14 @@ public class ESSKioskClient extends ESSBaseView {
         if (!min){;
             setExtendedState(MAXIMIZED_BOTH);
             Dimension sSize = Toolkit.getDefaultToolkit ().getScreenSize ();
-            screenMode = new ScreenMode(sSize.width,sSize.height);
+            int hh = sSize.height - FullScreenHightMinus;
+            screenMode = new ScreenMode(sSize.width,hh);
             xC = sSize.width/2;
-            yC = sSize.height/2;
-            setWH(sSize.width,sSize.height);
-            setSize(sSize.width,sSize.height);
+            yC = hh/2;
+            setWH(sSize.width,hh);
+            setSize(sSize.width,hh);
             setVisible(true);
-            mes(" screen:"+sSize.width+"x"+sSize.height);
+            mes(" screen:"+sSize.width+"x"+hh);
             }
         else{
             setSize(xMin, yMin);

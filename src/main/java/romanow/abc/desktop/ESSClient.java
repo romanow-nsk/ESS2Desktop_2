@@ -364,7 +364,7 @@ public class ESSClient extends Client {
                     }
                 }.call(this);
             setLocalEnvValues(oo);
-            sendEventPanel(EventPLMOn,secondView ? 1 : 0,0,"",screen);
+            sendEventPanel(EventPLMOn,secondView ? 1 : 0,trace ? 1 : 0,"",screen);
             } catch (Exception ee){
                 errors.addError(ee.toString());
                 }

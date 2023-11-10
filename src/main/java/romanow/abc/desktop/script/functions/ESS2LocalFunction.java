@@ -1,7 +1,6 @@
 package romanow.abc.desktop.script.functions;
 
 import romanow.abc.core.Pair;
-import romanow.abc.core.UniException;
 import romanow.abc.core.constants.ValuesBase;
 import romanow.abc.core.entity.subject2area.ESS2Architecture;
 import romanow.abc.core.entity.subject2area.ESS2Device;
@@ -19,7 +18,7 @@ public class ESS2LocalFunction extends FunctionCall {
     @Override
     public int[] getParamTypes() {return new int[0];}
     @Override
-    public void call(CallContext context) throws ScriptException {}
+    public void call(CallContext context, boolean trace) throws ScriptException {}
     public Pair<ESS2Device,Integer> findDevice(ESS2Architecture architecture, String devName, int unit) throws ScriptException {
         ESS2Equipment equipment = architecture.getEquipments().getByName(devName);
         if (equipment==null){

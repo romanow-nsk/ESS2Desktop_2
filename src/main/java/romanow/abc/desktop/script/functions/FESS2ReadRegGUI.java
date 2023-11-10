@@ -26,7 +26,7 @@ public class FESS2ReadRegGUI extends ESS2LocalFunction {
         return new int[]{ ValuesBase.DTString,ValuesBase.DTLong,ValuesBase.DTLong  };
     }
     @Override
-    public void call(CallContext context) throws ScriptException {
+    public void call(CallContext context, boolean trace) throws ScriptException {
         Object env = context.getCallEnvironment();
         if (env==null)
             throw new ScriptException(ValuesBase.SEIllegalFunEnv,"Объект окружения = null");

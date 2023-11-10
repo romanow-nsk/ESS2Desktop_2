@@ -1756,7 +1756,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         ESS2View view = deployed.getViews().get(Views.getSelectedIndex());
         ScreenMode screenMode = new ScreenMode(false,view.getView().getWidth(),view.getView().getHeight(),sSize.width,sSize.height);
         screen.setVisible(true);
-        screen.eventPanel(EventPLMOn,0,0,"",screenMode);
+        screen.eventPanel(EventPLMOn,0,Trace.isSelected() ? 1 : 0,"",screenMode);
         screen.refresh();
         }
     public void setRenderingOn(boolean second) {
