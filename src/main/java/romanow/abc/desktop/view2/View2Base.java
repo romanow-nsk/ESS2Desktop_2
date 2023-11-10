@@ -141,6 +141,11 @@ public abstract class View2Base implements I_View2 {
             return null;
         return (Meta2Register) ((Meta2GUIReg) getElement()).getRegLink().getRegister();
         }
+    public String getRegisterTitle() {
+        if (!(getElement() instanceof Meta2GUIReg))
+            return "???";
+        return getElement().getRegLink().getTitle();
+    }
     public int readMainRegister() throws UniException {
         if (!(getElement() instanceof Meta2GUIReg))
             throw UniException.config(getElement().getFullTitle()+" на является регистром");

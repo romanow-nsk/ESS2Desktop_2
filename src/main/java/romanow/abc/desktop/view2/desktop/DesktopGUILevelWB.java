@@ -91,6 +91,8 @@ public class DesktopGUILevelWB extends View2BaseDesktop {
     public String setParams(FormContext2 context0, ESS2Architecture meta0, Meta2GUI element0, I_GUI2Event onEvent0) {
         super.setParams(context0,meta0, element0,onEvent0);
         Meta2Register register = getRegister();
+        if (register==null)
+            return getRegisterTitle();
         if (!(register instanceof Meta2DataRegister || register instanceof Meta2SettingRegister))
             return "Недопустимый "+register.getTypeName()+" для "+getTypeName();
         return null;

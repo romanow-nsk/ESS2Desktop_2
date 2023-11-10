@@ -92,7 +92,8 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     private int realHeight=ScreenDesktopHeight;
     private int realWidth=ScreenDesktopWidth;
     private Meta2GUIView currentView=null;
-    private boolean scriptTraceEnable=false;
+    private boolean scriptTraceEnable=false;                    // Трассировка исполнения скриптов
+    private boolean renderForceEnable=false;                    // Игнорнировать ошибки рендеринга
     JButton insertSelected = null;
     private FormContext2 context = new FormContext2(new I_ContextBack() {
         @Override
@@ -487,7 +488,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             if (ff == null) {
                 popup("Не найден предок для формы " + ss);
                 break;
-                    }
+                }
             level--;
             }
         //----------------------- коррекция начала след. столбцов в строке меню ---------------------
@@ -836,7 +837,8 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             context.setView(currentView().getView());
             context.setMainServerNodeId(main2.mainServerNodeId);
             limiter.reset();
-            scriptTraceEnable = par2 !=0;
+            scriptTraceEnable = (par2 & 1)!=0;
+            renderForceEnable = (par2 & 2)!=0;
             if (oo!=null)
                 context.setScreen((ScreenMode) oo);
             repaintView();
@@ -1092,13 +1094,17 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 String equipName = regGUI.getEquipName();
                 ESS2Equipment equipment = main2.deployed.getEquipments().getByName(equipName);
                 if (equipment == null) {
-                    errorList.addError("Не найдено оборудование " + equipName + " для " + regGUI.getFullTitle());
-                    return;
+                    if (!renderForceEnable){
+                        errorList.addError("Не найдено оборудование " + equipName + " для " + regGUI.getFullTitle());
+                        return;
+                        }
                     }
                 int connectorsSize = equipment.getLogUnits().size();
                 if (connectorsSize == 0) {
-                    errorList.addError("Нет устройств для " + equipName);
-                    return;
+                    if (!renderForceEnable){
+                        errorList.addError("Нет устройств для " + equipName);
+                        return;
+                        }
                     }
                 //------------- Подсчет смещения регистров, индексов контроллеров и Unit  ---------------------
                 int treeLevel = register.getArrayLevel() - 1;         // Кол-во массивов в дереве Meta-элементов (+device+units) -1
@@ -1142,8 +1148,10 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                     newElem.setRegOffset(regOffset);
                     }
                 if (newElem.getUnitIdx() >= connectorsSize) {
-                    errorList.addError("Индекс Unit " + newElem.getUnitIdx() + " превышен  " + equipName + " для " + regGUI.getFullTitle());
-                    return;
+                    if (!renderForceEnable){
+                        errorList.addError("Индекс Unit " + newElem.getUnitIdx() + " превышен  " + equipName + " для " + regGUI.getFullTitle());
+                        return;
+                        }
                     }
                 ESS2LogUnit unit = equipment.getLogUnits().get(newElem.getUnitIdx());
                 newElem.setDevice(unit.getDevice().getRef());
@@ -1156,13 +1164,17 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                     String equipName2 = link2.getEquipName();
                     equipment2 = main2.deployed.getEquipments().getByName(equipName2);
                     if (equipment2 == null) {
-                        errorList.addError("Не найдено оборудование " + equipName2 + " для " + regGUI.getFullTitle());
-                        return;
+                        if (!renderForceEnable){
+                            errorList.addError("Не найдено оборудование " + equipName2 + " для " + regGUI.getFullTitle());
+                            return;
+                            }
                         }
                     int connectorsSize2 = equipment2.getLogUnits().size();
                     if (connectorsSize2 == 0) {
-                        errorList.addError("Нет устройств для " + equipName2);
-                        return;
+                        if (!renderForceEnable){
+                            errorList.addError("Нет устройств для " + equipName2);
+                            return;
+                            }
                         }
                     ESS2LogUnit unit2 = equipment2.getLogUnits().get(link2.getUnitIdx());
                     newElem.setDeviceTwo(unit2.getDevice().getRef());

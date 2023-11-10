@@ -340,13 +340,13 @@ public class ESSClient extends Client {
             }
         if (found!=null){
             mainServerNodeId = 0;
-            setRenderingOn(0,found,true,false,null);
+            setRenderingOn(0,found,true,false,false,null);
             return;
             }
         else
             errors.addError("Не найден ЧМИ: "+viewName);
         }
-    public void setRenderingOn(long nodeOid, ESS2View view, boolean trace, boolean secondView, ScreenMode screen) {
+    public void setRenderingOn(long nodeOid, ESS2View view, boolean trace, boolean force, boolean secondView, ScreenMode screen) {
         if (secondView)
             currentView2 = view;
         else
@@ -364,7 +364,7 @@ public class ESSClient extends Client {
                     }
                 }.call(this);
             setLocalEnvValues(oo);
-            sendEventPanel(EventPLMOn,secondView ? 1 : 0,trace ? 1 : 0,"",screen);
+            sendEventPanel(EventPLMOn,secondView ? 1 : 0,trace ? 1 : 0 + (force ? 2 : 0),"",screen);
             } catch (Exception ee){
                 errors.addError(ee.toString());
                 }

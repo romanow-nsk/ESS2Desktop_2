@@ -107,6 +107,8 @@ public class DesktopGUIButton extends View2BaseDesktop {
     @Override
     public String setParams(FormContext2 context, ESS2Architecture meta, Meta2GUI element0, I_GUI2Event onEvent0) {
         super.setParams(context,meta, element0,onEvent0);
+        if (getRegister()==null)
+            return getRegisterTitle();
         if (!(getRegister() instanceof Meta2CommandRegister))
             return "Недопустимый "+getRegister().getTypeName()+" для "+getElement().getFullTitle();
         return null;

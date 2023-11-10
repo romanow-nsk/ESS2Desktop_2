@@ -151,6 +151,8 @@ public class DesktopGUIImageDataLevel extends View2BaseDesktop{
                 return "Ошибка загрузки: "+element.getPicture().getTitle()+"\n"+ee.toString();
                 }
         Meta2Register register = getRegister();
+        if (register==null)
+            return getRegisterTitle();
         if (!(register instanceof Meta2DataRegister || register instanceof Meta2SettingRegister))
             return "Недопустимый "+register.getTypeName()+" для "+getTypeName();
         return null;

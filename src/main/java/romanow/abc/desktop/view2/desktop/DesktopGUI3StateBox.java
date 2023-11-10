@@ -91,7 +91,9 @@ public class DesktopGUI3StateBox extends View2BaseDesktop {
 
     @Override
     public String setParams(FormContext2 context, ESS2Architecture meta, Meta2GUI element0, I_GUI2Event onEvent0) {
-        super.setParams(context,meta, element0,onEvent0);
+        String ss = super.setParams(context,meta, element0,onEvent0);
+        if (ss!=null)
+            return ss;
         if (!(getRegister() instanceof Meta2BitRegister))
             return "Недопустимый "+getRegister().getTypeName()+" для "+getTypeName();
         return null;

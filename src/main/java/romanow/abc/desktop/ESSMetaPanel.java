@@ -146,7 +146,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                         }
                         else{
                             ScreenMode screenMode = new ScreenMode(false,view.getView().getWidth(),view.getView().getHeight(),0,0);
-                            main2.setRenderingOn(0,view,false,false,screenMode);
+                            main2.setRenderingOn(0,view,false,false,false,screenMode);
                             }
                     }
                 }
@@ -369,7 +369,10 @@ public class ESSMetaPanel extends ESSBasePanel {
         jLabel9 = new javax.swing.JLabel();
         OnOff2 = new javax.swing.JButton();
         OrigHW = new javax.swing.JCheckBox();
-        Force = new javax.swing.JCheckBox();
+        ForceConnect = new javax.swing.JCheckBox();
+        jLabel22 = new javax.swing.JLabel();
+        ForceRender = new javax.swing.JCheckBox();
+        ForceDeploy = new javax.swing.JCheckBox();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -1473,10 +1476,16 @@ public class ESSMetaPanel extends ESSBasePanel {
         });
         add(OrigHW);
         OrigHW.setBounds(10, 490, 140, 20);
+        add(ForceConnect);
+        ForceConnect.setBounds(60, 415, 30, 19);
 
-        Force.setText("Выполнить всегда");
-        add(Force);
-        Force.setBounds(10, 415, 150, 20);
+        jLabel22.setText("Игнорировать ошибки");
+        add(jLabel22);
+        jLabel22.setBounds(130, 420, 160, 16);
+        add(ForceRender);
+        ForceRender.setBounds(95, 415, 30, 19);
+        add(ForceDeploy);
+        ForceDeploy.setBounds(20, 415, 30, 19);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ImportMetaDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportMetaDataActionPerformed
@@ -1763,7 +1772,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         lastViewIndex = Views.getSelectedIndex();
         ESS2View view = deployed.getViews().get(Views.getSelectedIndex());
         ScreenMode screenMode = new ScreenMode(OrigHW.isSelected(),view.getView().getWidth(),view.getView().getHeight(),0,0);
-        main2.setRenderingOn(0,view,Trace.isSelected(),second,screenMode);
+        main2.setRenderingOn(0,view,Trace.isSelected(),ForceRender.isSelected(),second,screenMode);
         if (!second){
             OnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/connect-on.png")));
             fullScreenOn();
@@ -2658,7 +2667,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             new APICall<CallResult>(main) {
                 @Override
                 public Call<CallResult> apiFun() {
-                    return main2.service2.metaDataDeployForce(main.debugToken, Password.getText(), oid,Force.isSelected());
+                    return main2.service2.metaDataDeployForce(main.debugToken, Password.getText(), oid,ForceDeploy.isSelected());
                     }
                 @Override
                 public void onSucess(CallResult val) {
@@ -2706,7 +2715,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         new APICall<CallResult>(main){
             @Override
             public Call<CallResult> apiFun() {
-                return main2.service2.connectToEquipmentForce(main2.debugToken,Force.isSelected());
+                return main2.service2.connectToEquipmentForce(main2.debugToken,ForceConnect.isSelected());
                 }
             @Override
             public void onSucess(CallResult oo) {
@@ -3325,7 +3334,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         main2.deployed = arch;
         for(ESS2View view : deployed.getViews()){
             if (view.getMetaFile().getRef().getMetaType()== MTViewMainServer){
-                main2.setRenderingOn(node.getOid(),view,Trace.isSelected(),false,new ScreenMode());
+                main2.setRenderingOn(node.getOid(),view,Trace.isSelected(),ForceRender.isSelected(),false,new ScreenMode());
                 OnOffNode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/connect-on.png")));
                 fullScreenOn();
                 return;
@@ -3759,7 +3768,9 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JButton ExportXMLAll;
     private javax.swing.JButton ExportXMLEquipment;
     private javax.swing.JButton ExportXMLView;
-    private javax.swing.JCheckBox Force;
+    private javax.swing.JCheckBox ForceConnect;
+    private javax.swing.JCheckBox ForceDeploy;
+    private javax.swing.JCheckBox ForceRender;
     private javax.swing.JCheckBox FullScreen;
     private javax.swing.JCheckBox HEXReg;
     private javax.swing.JCheckBox HEXValue;
@@ -3837,6 +3848,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
