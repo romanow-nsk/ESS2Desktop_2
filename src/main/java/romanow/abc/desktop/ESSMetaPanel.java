@@ -2706,7 +2706,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         new APICall<CallResult>(main){
             @Override
             public Call<CallResult> apiFun() {
-                return main2.service2.connectToEquipment(main2.debugToken);
+                return main2.service2.connectToEquipmentForce(main2.debugToken,Force.isSelected());
                 }
             @Override
             public void onSucess(CallResult oo) {

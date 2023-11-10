@@ -59,6 +59,8 @@ public class DesktopGUIESSSettingBoolean extends View2BaseDesktop {
                     new Message(300,300,"Настройка не редактируется",Values.PopupMessageDelay);
                     return;
                     }
+                if (isNoEditThereMes())
+                    return;
                 if (remoteDisable){
                     new Message(300,300,"Запрет удаленного управления",Values.PopupMessageDelay);
                     return;

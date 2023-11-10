@@ -69,6 +69,8 @@ public class DesktopGUIButton extends View2BaseDesktop {
             showInfoMessage();
             return;
             }
+        if (isNoEditThereMes())
+            return;
         boolean remoteDisable = !context.isSuperUser() &&  !context.isLocalUser() && !cmd.isRemoteEnable();
         if (remoteDisable){
             new Message(300,300,"Запрет удаленного управления",Values.PopupMessageDelay);

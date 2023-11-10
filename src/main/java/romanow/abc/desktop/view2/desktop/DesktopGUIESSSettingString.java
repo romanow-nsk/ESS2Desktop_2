@@ -61,6 +61,8 @@ public class DesktopGUIESSSettingString extends View2BaseDesktop {
                     showInfoMessage();
                     return;
                     }
+                if (isNoEditThereMes())
+                    return;
                 if (element.isEditDisable()){
                     new Message(300,300,"Настройка не редактируется",Values.PopupMessageDelay);
                     return;

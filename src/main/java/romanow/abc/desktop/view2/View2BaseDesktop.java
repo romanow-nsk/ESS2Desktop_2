@@ -159,5 +159,16 @@ public abstract class View2BaseDesktop extends View2Base implements I_View2Deskt
         //    System.out.println("disable: "+getTitle());
         return actionDisable;
     }
-
+    public boolean isNoEditThere(){
+        return getElement().isNoEditThere() || getContext().getForm().isNoEditThere() || getContext().getView().isNoEditThere();
+        }
+    public boolean isNoEditThereMes(){
+        boolean bb = isNoEditThere();
+        if (bb){
+            String сс = "Запрет изменения элемента";
+            context.popup(сс);
+            System.out.println(сс);
+            }
+        return bb;
+        }
 }

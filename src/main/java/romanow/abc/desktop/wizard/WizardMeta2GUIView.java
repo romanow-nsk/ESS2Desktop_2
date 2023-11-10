@@ -45,6 +45,7 @@ public class WizardMeta2GUIView extends WizardBaseView {
        Height.setText(""+view.getHeight());
        Width.setText(""+view.getWidth());
        FileName.setText(fileName);
+       NoEditThere.setSelected(view.isNoEditThere());
        //---------------------------------------------------------------------------
        MenuOnColor.setText(""+String.format("%06x",view.getMenuButtonOnColor()));
        MenuOnColorButton.setBackground(new Color(view.getMenuButtonOnColor()));
@@ -150,6 +151,7 @@ public class WizardMeta2GUIView extends WizardBaseView {
         MenuButtonH = new javax.swing.JTextField();
         FileName = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
+        NoEditThere = new javax.swing.JCheckBox();
 
         getContentPane().setLayout(null);
         getContentPane().add(jSeparator1);
@@ -332,6 +334,15 @@ public class WizardMeta2GUIView extends WizardBaseView {
         getContentPane().add(jLabel13);
         jLabel13.setBounds(10, 155, 100, 16);
 
+        NoEditThere.setText("noEdit");
+        NoEditThere.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                NoEditThereItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(NoEditThere);
+        NoEditThere.setBounds(110, 210, 57, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -448,6 +459,14 @@ public class WizardMeta2GUIView extends WizardBaseView {
         });
     }//GEN-LAST:event_MenuButtonHKeyPressed
 
+    private void NoEditThereItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_NoEditThereItemStateChanged
+        if (busy)
+        return;
+        noSilence();
+        view.setNoEditThere(NoEditThere.isSelected());
+        back.onEnter("Изменено noEditThere: "+view.isNoEditThere());
+    }//GEN-LAST:event_NoEditThereItemStateChanged
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -468,6 +487,7 @@ public class WizardMeta2GUIView extends WizardBaseView {
     private javax.swing.JButton MenuOnColorButton;
     private javax.swing.JTextField MenuTextColor;
     private javax.swing.JButton MenuTextColorButton;
+    private javax.swing.JCheckBox NoEditThere;
     private javax.swing.JTextField TextColor;
     private javax.swing.JButton TextColorButton;
     private javax.swing.JTextField Width;

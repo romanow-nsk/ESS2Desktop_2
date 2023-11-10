@@ -112,6 +112,8 @@ public class DesktopGUIImageBitCmd extends View2BaseDesktop {
             showInfoMessage();
             return;
             }
+        if (isNoEditThereMes())
+            return;
         if (remoteDisable){
             new Message(300,300,"Запрет удаленного управления", Values.PopupMessageDelay);
             return;

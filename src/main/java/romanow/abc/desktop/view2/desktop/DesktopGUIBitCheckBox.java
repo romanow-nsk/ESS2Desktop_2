@@ -71,6 +71,8 @@ public class DesktopGUIBitCheckBox extends View2BaseDesktop {
                     return;
                 if (!validValue)
                     return;
+                if (isNoEditThereMes())
+                    return;
                 busy = true;
                     cmdButton.setSelected(!cmdButton.isSelected());     // Вернуть пока назад !!!!!!!!!!!!!!!!!!!!
                 busy = false;

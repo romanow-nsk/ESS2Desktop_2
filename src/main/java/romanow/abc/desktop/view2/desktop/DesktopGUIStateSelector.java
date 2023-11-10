@@ -60,6 +60,8 @@ public class DesktopGUIStateSelector extends View2BaseDesktop {
             public void itemStateChanged(ItemEvent e) {
                 if (busy)
                     return;
+                if (isNoEditThereMes())
+                    return;
                 int idx = list.getSelectedIndex();
                 if (idx==0){
                     selectCurrent();

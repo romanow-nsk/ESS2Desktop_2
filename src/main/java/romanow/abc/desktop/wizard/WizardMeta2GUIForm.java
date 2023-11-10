@@ -130,6 +130,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
             ImageY0.setText(""+view.getImageY0());
             ImageW.setText(""+view.getImageW());
             ImageH.setText(""+view.getImageH());
+            NoEditThere.setSelected(view.isNoEditThere());
             refreshImageList();
             //---------------------------------------------------------------------------
             MenuOnColor.setText(""+String.format("%06x",view.getMenuButtonOnColor()));
@@ -299,6 +300,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
         label129 = new javax.swing.JLabel();
         ScrollScale = new javax.swing.JTextField();
         Horizontal = new javax.swing.JCheckBox();
+        NoEditThere = new javax.swing.JCheckBox();
 
         getContentPane().setLayout(null);
         getContentPane().add(Types);
@@ -786,6 +788,15 @@ public class WizardMeta2GUIForm extends WizardBaseView {
         getContentPane().add(Horizontal);
         Horizontal.setBounds(500, 320, 110, 20);
 
+        NoEditThere.setText("noEdit");
+        NoEditThere.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                NoEditThereItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(NoEditThere);
+        NoEditThere.setBounds(700, 250, 57, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1102,6 +1113,14 @@ public class WizardMeta2GUIForm extends WizardBaseView {
         back.onEnter("Изменено ScrollHorizontal="+Horizontal.isSelected());
     }//GEN-LAST:event_HorizontalItemStateChanged
 
+    private void NoEditThereItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_NoEditThereItemStateChanged
+        if (busy)
+        return;
+        noSilence();
+        view.setNoEditThere(NoEditThere.isSelected());
+        back.onEnter("Изменено noEditThere: "+view.isNoEditThere());
+    }//GEN-LAST:event_NoEditThereItemStateChanged
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1139,6 +1158,7 @@ public class WizardMeta2GUIForm extends WizardBaseView {
     private javax.swing.JTextField ModuleDY;
     private javax.swing.JTextField ModuleX0;
     private javax.swing.JTextField ModuleY0;
+    private javax.swing.JCheckBox NoEditThere;
     private javax.swing.JCheckBox NoMenu;
     private java.awt.Choice Parents;
     private javax.swing.JButton SaveAccessLevel;
