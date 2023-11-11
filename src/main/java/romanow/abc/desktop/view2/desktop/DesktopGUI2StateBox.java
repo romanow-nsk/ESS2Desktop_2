@@ -112,11 +112,6 @@ public class DesktopGUI2StateBox extends View2BaseDesktop {
             cmdButton.setBackground(disableColor);
         normalColor = cmdButton.getBackground();
         cmdButton.setText("");
-        //cmdButton.addActionListener(new ActionListener() {
-        //    @Override
-        //    public void actionPerformed(ActionEvent e) {
-        //
-        //    }});
         setInfoClick(cmdButton,true);
         panel.add(cmdButton);
         }

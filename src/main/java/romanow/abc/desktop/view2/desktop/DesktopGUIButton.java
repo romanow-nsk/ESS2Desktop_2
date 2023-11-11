@@ -49,16 +49,6 @@ public class DesktopGUIButton extends View2BaseDesktop {
             cmdButton.setBackground(new Color(Values.AccessDisableColor));
         Meta2CommandRegister register = (Meta2CommandRegister)getRegister();
         cmd = register.getCommands().getByCode(element.getCmdCode());
-        /*
-        if (!context.isRuntimeEditMode()){
-            JLabel label = getLabel();
-            Rectangle rectangle = label.getBounds();
-            if (rectangle.width==0) {
-                rectangle.width = 10;
-                label.setBounds(rectangle);
-                }
-            }
-         */
         setInfoClick(cmdButton,true);
         panel.add(cmdButton);
         }
@@ -96,7 +86,7 @@ public class DesktopGUIButton extends View2BaseDesktop {
         }
     @Override
     public void showInfoMessage(){
-        int cmdCode = ((Meta2GUIButton)getElement()).getCode();
+        int cmdCode = ((Meta2GUIButton)getElement()).getCmdCode();
         Meta2CommandRegister register = (Meta2CommandRegister)  getRegister();
         String ss = register.getCommands().getByCode(cmdCode).getTitle();
         new Message(200,200,"Команда "+toHex(register.getRegNum())+":="+cmdCode+"$"+ ss,Values.PopupMessageDelay);

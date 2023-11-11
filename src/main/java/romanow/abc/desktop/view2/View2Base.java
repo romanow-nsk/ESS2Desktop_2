@@ -139,7 +139,8 @@ public abstract class View2Base implements I_View2 {
     public Meta2Register getRegister() {
         if (!(getElement() instanceof Meta2GUIReg))
             return null;
-        return (Meta2Register) ((Meta2GUIReg) getElement()).getRegLink().getRegister();
+        Meta2Register register = (Meta2Register) ((Meta2GUIReg) getElement()).getRegLink().getRegister();
+        return register;
         }
     public String getRegisterTitle() {
         if (!(getElement() instanceof Meta2GUIReg))

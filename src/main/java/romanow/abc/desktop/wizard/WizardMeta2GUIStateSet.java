@@ -104,7 +104,7 @@ public class WizardMeta2GUIStateSet extends WizardMeta2GUIRegW2 {
         jLabel1 = new javax.swing.JLabel();
         SaveBitsType = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
         getContentPane().add(BitsType);
         BitsType.setBounds(360, 180, 160, 25);
