@@ -22,6 +22,8 @@ public class WizardMeta2GUIDateTime extends WizardMeta2GUIRegW2 {
         elem = (Meta2GUIDateTime)  entity;
         onStart=true;
         OnlyTime.setSelected(elem.isOnlyTime());
+        OnlyDate.setSelected(elem.isOnlyDate());
+        OneString.setSelected(elem.isOneString());
         onStart=false;
         }
     /**
@@ -41,6 +43,8 @@ public class WizardMeta2GUIDateTime extends WizardMeta2GUIRegW2 {
     private void initComponents() {
 
         OnlyTime = new javax.swing.JCheckBox();
+        OneString = new javax.swing.JCheckBox();
+        OnlyDate = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -54,6 +58,24 @@ public class WizardMeta2GUIDateTime extends WizardMeta2GUIRegW2 {
         getContentPane().add(OnlyTime);
         OnlyTime.setBounds(230, 180, 130, 20);
 
+        OneString.setText("Одна строка");
+        OneString.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                OneStringItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(OneString);
+        OneString.setBounds(440, 180, 100, 20);
+
+        OnlyDate.setText("Только дата");
+        OnlyDate.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                OnlyDateItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(OnlyDate);
+        OnlyDate.setBounds(340, 180, 100, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -63,6 +85,20 @@ public class WizardMeta2GUIDateTime extends WizardMeta2GUIRegW2 {
         elem.setOnlyTime(OnlyTime.isSelected());
         back.onEnter("Изменено onlyTime"+": "+OnlyTime.isSelected());
     }//GEN-LAST:event_OnlyTimeItemStateChanged
+
+    private void OnlyDateItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_OnlyDateItemStateChanged
+        if (onStart)
+            return;
+        elem.setOnlyDate(OnlyDate.isSelected());
+        back.onEnter("Изменено onlyDate"+": "+OnlyDate.isSelected());
+    }//GEN-LAST:event_OnlyDateItemStateChanged
+
+    private void OneStringItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_OneStringItemStateChanged
+        if (onStart)
+            return;
+        elem.setOneString(OneString.isSelected());
+        back.onEnter("Изменено oneString"+": "+OneString.isSelected());
+    }//GEN-LAST:event_OneStringItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -100,6 +136,8 @@ public class WizardMeta2GUIDateTime extends WizardMeta2GUIRegW2 {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox OneString;
+    private javax.swing.JCheckBox OnlyDate;
     private javax.swing.JCheckBox OnlyTime;
     // End of variables declaration//GEN-END:variables
 }

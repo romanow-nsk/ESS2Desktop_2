@@ -21,7 +21,8 @@ import java.awt.*;
 import static romanow.abc.core.entity.metadata.Meta2Entity.toHex;
 
 public class DesktopGUIDateTime extends View2BaseDesktop {
-    private JButton textField;
+    private boolean isButton = false;
+    private JComponent textField;
     private Meta2GUIDateTime element;
     public DesktopGUIDateTime(){
         setType(Values.GUIDateTime);
@@ -31,7 +32,8 @@ public class DesktopGUIDateTime extends View2BaseDesktop {
         setLabel(panel);
         FormContext2 context= getContext();
         element = (Meta2GUIDateTime) getElement();
-        textField = new JButton();
+        isButton = !(element.isOneString() || element.isOnlyDate() || element.isOneString());
+        textField = isButton ? new JButton() : new JTextField();
         int dd=element.getW2();
         if (dd==0) dd=100;
         int hh = element.getH();
@@ -41,16 +43,10 @@ public class DesktopGUIDateTime extends View2BaseDesktop {
                 context.y(element.getY()+getDyOffset()),
                 context.dx(dd),
                 context.dy(hh));
-        setButtonParams(textField,true);
-        //textField.setBackground(new Color(context.getView().getMenuButtonOffColor()));
-        //textField.setFont(new Font(Values.FontName, Font.PLAIN, context.dy(12)));
-        //textField.setEditable(false);
-        //textField.setHorizontalAlignment(JTextField.LEFT);
-        //Color color=new Color(element.getColor());
-        //textField.setBackground(color);
-        //Color textColor = new Color(context.getView().getTextColor());
-        //textField.setBorder(BorderFactory.createLineBorder(textColor,1));
-        //textField.setForeground(textColor);
+        if (isButton)
+            setButtonParams((JButton) textField,true);
+        else
+            setTextFieldParams((JTextField) textField);
         panel.add(textField);
         setInfoClick(textField);
         }
@@ -75,10 +71,18 @@ public class DesktopGUIDateTime extends View2BaseDesktop {
         ss2 = ss2+String.format("%02d-",vv & 0x0FF);
         vv >>=8;
         ss2 = ss2+String.format("%02d",(vv & 0x0FF)+2000);
+        if (isButton)
+            ((JButton)textField).setText("<html>"+(element.isLabelOnCenter() ? "<center>" : "")+ss2 + "<br>"+ss+"</html>");
+        else{
+            JTextField textField1 = (JTextField) textField;
         if (element.isOnlyTime())
-            textField.setText(ss);
+            textField1.setText(ss);
         else
-            textField.setText("<html>"+(element.isLabelOnCenter() ? "<center>" : "")+ss2 + "<br>"+ss+"</html>");
+            if (element.isOnlyDate())
+                textField1.setText(ss2);
+            else
+                textField1.setText(ss2+" "+ss);
+            }
         }
 
     @Override
