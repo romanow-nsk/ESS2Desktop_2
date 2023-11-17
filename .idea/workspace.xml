@@ -13,8 +13,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="80 - Вывод даты/времени">
-      <change beforePath="$PROJECT_DIR$/../ABCCore/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCCore/pom.xml" afterDir="false" />
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="80 - KotlisReact - Новые метаданные">
+      <change beforePath="$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/mongo/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/mongo/DAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/mongo/ExportKotlin.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/mongo/ExportKotlin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/ESS2ExportKotlin.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/ESS2ExportKotlin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/Meta2Implement.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/Meta2Implement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ESS2Desktop.jar" beforeDir="false" afterPath="$PROJECT_DIR$/ESS2Desktop.jar" afterDir="false" />
     </list>
@@ -241,13 +244,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00332" summary="79 - Зависание 60870">
-      <created>1695788194450</created>
-      <option name="number" value="00332" />
-      <option name="presentableId" value="LOCAL-00332" />
-      <option name="project" value="LOCAL" />
-      <updated>1695788194450</updated>
     </task>
     <task id="LOCAL-00333" summary="79 - косячок чтения лога (в прямом направлении, размерность">
       <created>1695918761688</created>
@@ -585,7 +581,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699799957957</updated>
     </task>
-    <option name="localTasksCounter" value="381" />
+    <task id="LOCAL-00381" summary="80 - Обновление библиотек github рекомендации">
+      <created>1700211130694</created>
+      <option name="number" value="00381" />
+      <option name="presentableId" value="LOCAL-00381" />
+      <option name="project" value="LOCAL" />
+      <updated>1700211130694</updated>
+    </task>
+    <option name="localTasksCounter" value="382" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -612,8 +615,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="79 - Ссисок имен активных разрядов" />
-    <MESSAGE value="79 - Сохранение регистров PLC в отдельном файле" />
     <MESSAGE value="79 - Альтернативная нумерация регистров 60870" />
     <MESSAGE value="79 - метаданные без черточки" />
     <MESSAGE value="79 - ..." />
@@ -637,7 +638,9 @@
     <MESSAGE value="80 - Проверка наличия регистров" />
     <MESSAGE value="80 - Косяки" />
     <MESSAGE value="80 - Вывод даты/времени" />
-    <option name="LAST_COMMIT_MESSAGE" value="80 - Вывод даты/времени" />
+    <MESSAGE value="80 - Обновление библиотек github рекомендации" />
+    <MESSAGE value="80 - KotlisReact - Новые метаданные" />
+    <option name="LAST_COMMIT_MESSAGE" value="80 - KotlisReact - Новые метаданные" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -833,11 +836,6 @@
           <option name="timeStamp" value="1043" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/view/Meta2GUICommandBit.java</url>
-          <line>23</line>
-          <option name="timeStamp" value="1071" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUI3StateBox.java</url>
           <line>97</line>
           <option name="timeStamp" value="1092" />
@@ -871,11 +869,6 @@
           <url>file://$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/subject2area/ESS2Architecture.java</url>
           <line>178</line>
           <option name="timeStamp" value="1136" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/view/Meta2GUI3StateBox.java</url>
-          <line>6</line>
-          <option name="timeStamp" value="1159" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/MainBaseFrame.java</url>
@@ -971,6 +964,16 @@
           <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUICommandBit.java</url>
           <line>51</line>
           <option name="timeStamp" value="1291" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/ESS2ExportKotlin.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="1294" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/mongo/ExportKotlin.java</url>
+          <line>136</line>
+          <option name="timeStamp" value="1298" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS4ACDCEmulator.java</url>
