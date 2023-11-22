@@ -25,8 +25,10 @@ import static romanow.abc.core.entity.metadata.Meta2Entity.toHex;
 public class DesktopGUIBitStateCmdEnb extends View2BaseDesktop {
     protected JComponent textField;
     private int bitNum=0;
+    private int enableBitNum=0;
     private JButton cmdButton=null;     // Кнопка
     private int lastBitValue=-1;        // Последнее значение разряда
+    private int lastBitEnable=-1;       // Последнее значение разряда
     private boolean actionDisable=false;
     private Color normalColor;
     private Color disableColor;
@@ -89,6 +91,7 @@ public class DesktopGUIBitStateCmdEnb extends View2BaseDesktop {
         setInfoClick(textField);
         panel.add(textField);
         bitNum = element.getBitNum();
+        enableBitNum = element.getEnableBitNum();
         int bSize = element.getButtonSize();
         if (bSize==0)
             return;
@@ -105,6 +108,7 @@ public class DesktopGUIBitStateCmdEnb extends View2BaseDesktop {
             cmdButton.setBackground(disableColor);
         normalColor = cmdButton.getBackground();
         cmdButton.setText("");
+        cmdButton.setEnabled(false);
         cmdButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -165,6 +169,8 @@ public class DesktopGUIBitStateCmdEnb extends View2BaseDesktop {
     public void putValue(long vv) throws UniException {
         Meta2GUIBitStateCmdEnb element = (Meta2GUIBitStateCmdEnb) getElement();
         lastBitValue = (int)(vv>>bitNum) & 01;
+        lastBitEnable = (int)(vv>>enableBitNum) & 01;
+        cmdButton.setEnabled((lastBitEnable!=0) != element.isEnableBitInverted());
         int cc = (lastBitValue!=0 ? element.getColorYes() : element.getColorNo()) & 0x00FFFFFF;
         putValueOwn(cc);
         actionDisable = setActionDisable(element.getDisableIndexIn(),element.getDisableIndexOut(),lastBitValue);
@@ -184,8 +190,6 @@ public class DesktopGUIBitStateCmdEnb extends View2BaseDesktop {
             return "Недопустимый "+register.getTypeName()+" для битового регистра";
         Meta2GUIBitStateCmdEnb element = (Meta2GUIBitStateCmdEnb)  getElement();
         if  (!(element.getCmdReg().getRegister() instanceof Meta2CommandRegister))
-            return "Недопустимый "+element.getCmdReg().getRegister().getTypeName()+" для регистра команд";
-        if  (!(element.getEnableReg().getRegister() instanceof Meta2BitRegister))
             return "Недопустимый "+element.getCmdReg().getRegister().getTypeName()+" для регистра команд";
         return null;
         }

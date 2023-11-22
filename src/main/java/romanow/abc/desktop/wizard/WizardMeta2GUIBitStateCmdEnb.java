@@ -18,7 +18,7 @@ import java.awt.*;
  * @author romanow0
  */
 public class WizardMeta2GUIBitStateCmdEnb extends WizardMeta2GUI {
-
+    private boolean busy=false;
     private Meta2GUIBitStateCmdEnb elem;
     public WizardMeta2GUIBitStateCmdEnb() {
         initComponents();
@@ -28,13 +28,12 @@ public class WizardMeta2GUIBitStateCmdEnb extends WizardMeta2GUI {
         elem = (Meta2GUIBitStateCmdEnb) entity;
         if (elem.getCmdReg()==null)
             elem.setCmdReg(new Meta2RegLink());
-        resizeHeight(350);
+        resizeHeight(320);
         WizardRegLinkPanel linkPanel = new WizardRegLinkPanel(10,120,"BitReg",elem.getRegLink(),this);
         add(linkPanel);
         linkPanel = new WizardRegLinkPanel(10,175,"CmdReg",elem.getCmdReg(),this);
         add(linkPanel);
-        linkPanel = new WizardRegLinkPanel(10,230,"EnableReg",elem.getEnableReg(),this);
-        add(linkPanel);
+        busy=true;
         BitNum.setText(""+elem.getBitNum());
         EnableBitNum.setText(""+elem.getEnableBitNum());
         CmdOn.setText(""+elem.getCmdOn());
@@ -47,7 +46,9 @@ public class WizardMeta2GUIBitStateCmdEnb extends WizardMeta2GUI {
         ButtonSize.setText(""+elem.getButtonSize());
         RemoteEnable.setSelected(elem.isRemoteEnable());
         DisableIndexIn.setText(""+elem.getDisableIndexIn());
-        DisableIndexOut.setText(""+elem.getDisableIndexOut());        
+        DisableIndexOut.setText(""+elem.getDisableIndexOut());
+        EnableInverted.setSelected(elem.isEnableBitInverted());
+        busy=false;
         }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -84,7 +85,8 @@ public class WizardMeta2GUIBitStateCmdEnb extends WizardMeta2GUI {
         jLabel3 = new javax.swing.JLabel();
         DisableIndexOut = new javax.swing.JTextField();
         EnableBitNum = new javax.swing.JTextField();
-        jLabel18 = new javax.swing.JLabel();
+        fff = new javax.swing.JLabel();
+        EnableInverted = new javax.swing.JCheckBox();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -118,11 +120,11 @@ public class WizardMeta2GUIBitStateCmdEnb extends WizardMeta2GUI {
             }
         });
         getContentPane().add(CmdOff);
-        CmdOff.setBounds(420, 180, 70, 25);
+        CmdOff.setBounds(460, 180, 40, 25);
 
         jLabel13.setText("Выкл");
         getContentPane().add(jLabel13);
-        jLabel13.setBounds(380, 185, 40, 16);
+        jLabel13.setBounds(420, 185, 40, 16);
         getContentPane().add(ColorYesButton);
         ColorYesButton.setBounds(380, 150, 25, 25);
 
@@ -191,11 +193,11 @@ public class WizardMeta2GUIBitStateCmdEnb extends WizardMeta2GUI {
             }
         });
         getContentPane().add(CmdOn);
-        CmdOn.setBounds(290, 180, 70, 25);
+        CmdOn.setBounds(360, 180, 50, 25);
 
         jLabel17.setText("Вкл");
         getContentPane().add(jLabel17);
-        jLabel17.setBounds(240, 185, 40, 16);
+        jLabel17.setBounds(320, 185, 40, 16);
 
         jLabel4.setText("Событие ");
         getContentPane().add(jLabel4);
@@ -231,11 +233,20 @@ public class WizardMeta2GUIBitStateCmdEnb extends WizardMeta2GUI {
             }
         });
         getContentPane().add(EnableBitNum);
-        EnableBitNum.setBounds(240, 230, 40, 25);
+        EnableBitNum.setBounds(240, 180, 40, 25);
 
-        jLabel18.setText("Бит");
-        getContentPane().add(jLabel18);
-        jLabel18.setBounds(240, 210, 40, 16);
+        fff.setText("Бит разрешения");
+        getContentPane().add(fff);
+        fff.setBounds(240, 210, 110, 16);
+
+        EnableInverted.setText("по 0");
+        EnableInverted.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                EnableInvertedItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(EnableInverted);
+        EnableInverted.setBounds(360, 210, 70, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -340,6 +351,13 @@ public class WizardMeta2GUIBitStateCmdEnb extends WizardMeta2GUI {
 
     }//GEN-LAST:event_EnableBitNumKeyPressed
 
+    private void EnableInvertedItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_EnableInvertedItemStateChanged
+        if (busy)
+            return;
+        elem.setEnableBitInverted(EnableInverted.isSelected());
+        back.onEnter("Изменено enableBitInverted"+": "+EnableInverted.isSelected());
+    }//GEN-LAST:event_EnableInvertedItemStateChanged
+
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -354,8 +372,10 @@ public class WizardMeta2GUIBitStateCmdEnb extends WizardMeta2GUI {
     private javax.swing.JTextField DisableIndexIn;
     private javax.swing.JTextField DisableIndexOut;
     private javax.swing.JTextField EnableBitNum;
+    private javax.swing.JCheckBox EnableInverted;
     private javax.swing.JCheckBox RemoteEnable;
     private javax.swing.JTextField W2;
+    private javax.swing.JLabel fff;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel1;
@@ -364,7 +384,6 @@ public class WizardMeta2GUIBitStateCmdEnb extends WizardMeta2GUI {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
