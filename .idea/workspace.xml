@@ -13,14 +13,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="80 - Экспорт Котлин, биты разрешения для кнопок, косяк с типами view (restore)">
-      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/view/Meta2GUIBitStateCmdEnb.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/view/Meta2GUIBitStateCmdEnb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/uniquemodules/ESS2PLCCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/uniquemodules/ESS2PLCCommands.java" afterDir="false" />
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="80 - Разряды разрешения для кнопок">
+      <change afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/subject2area/events/EventPLC.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/uniquemodules/I_UniqueModuleBack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/mongo/DBXStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/mongo/DBXStream.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/Meta2MessageId.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/Meta2MessageId.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/uniquemodules/ESS2PLCMaps.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/uniquemodules/ESS2PLCMaps.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/uniquemodules/ESS2PLCModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/uniquemodules/ESS2PLCModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/uniquemodules/ESS2PLCOnCycle.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/uniquemodules/ESS2PLCOnCycle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/uniquemodules/UniqueModuleBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/uniquemodules/UniqueModuleBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUIBitStateCmdEnb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUIBitStateCmdEnb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIBitStateCmdEnb.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIBitStateCmdEnb.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIBitStateCmdEnb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIBitStateCmdEnb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/module/ModuleEventState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/module/ModuleEventState.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,13 +38,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../ESS2DataServer" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../ESS2Core" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
@@ -128,14 +133,14 @@
       <recent name="romanow.abc.dataserver.profiler.modules" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="romanow.abc.core.entity.subject2area.events" />
       <recent name="romanow.abc.desktop.view2.desktop" />
       <recent name="romanow.abc.core.entity.metadata.view" />
       <recent name="romanow.abc.core.script.functions" />
       <recent name="romanow.abc.desktop.wizard" />
-      <recent name="romanow.abc.desktop" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ESS40ConsoleServer">
+  <component name="RunManager" selected="Application.ESSClient">
     <configuration name="BARSConsoleServer" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="romanow.abc.dataserver.BARSConsoleServer" />
       <module name="ESS2DataServer" />
@@ -229,8 +234,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ESS40ConsoleServer" />
         <item itemvalue="Application.ESSClient" />
+        <item itemvalue="Application.ESS40ConsoleServer" />
         <item itemvalue="Application.ESSMonitorClient" />
         <item itemvalue="Application.ESSMainBase" />
         <item itemvalue="Application.IEC60870Connection" />
@@ -245,13 +250,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00335" summary="79 - текущее время">
-      <created>1696180642924</created>
-      <option name="number" value="00335" />
-      <option name="presentableId" value="LOCAL-00335" />
-      <option name="project" value="LOCAL" />
-      <updated>1696180642925</updated>
     </task>
     <task id="LOCAL-00336" summary="79 - селектор трендов">
       <created>1696216657705</created>
@@ -589,7 +587,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700545883911</updated>
     </task>
-    <option name="localTasksCounter" value="384" />
+    <task id="LOCAL-00384" summary="80 - Разряды разрешения для кнопок">
+      <created>1700652434196</created>
+      <option name="number" value="00384" />
+      <option name="presentableId" value="LOCAL-00384" />
+      <option name="project" value="LOCAL" />
+      <updated>1700652434196</updated>
+    </task>
+    <option name="localTasksCounter" value="385" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -616,7 +621,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="79 - метаданные без черточки" />
     <MESSAGE value="79 - ..." />
     <MESSAGE value="79 - счетчики элементов" />
     <MESSAGE value="79 - Запрещение на уровне GUI" />
@@ -641,7 +645,8 @@
     <MESSAGE value="80 - Обновление библиотек github рекомендации" />
     <MESSAGE value="80 - KotlisReact - Новые метаданные" />
     <MESSAGE value="80 - Экспорт Котлин, биты разрешения для кнопок, косяк с типами view (restore)" />
-    <option name="LAST_COMMIT_MESSAGE" value="80 - Экспорт Котлин, биты разрешения для кнопок, косяк с типами view (restore)" />
+    <MESSAGE value="80 - Разряды разрешения для кнопок" />
+    <option name="LAST_COMMIT_MESSAGE" value="80 - Разряды разрешения для кнопок" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -660,16 +665,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java</url>
           <line>152</line>
           <option name="timeStamp" value="303" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/subject2area/events/EventSetting.java</url>
-          <line>14</line>
-          <option name="timeStamp" value="337" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/subject2area/events/EventSetting.java</url>
-          <line>10</line>
-          <option name="timeStamp" value="338" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/../ABCDataServer/src/main/java/romanow/abc/dataserver/ConsoleServer.java</url>
@@ -783,7 +778,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java</url>
-          <line>2575</line>
+          <line>2585</line>
           <option name="timeStamp" value="786" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -913,7 +908,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java</url>
-          <line>528</line>
+          <line>530</line>
           <option name="timeStamp" value="1233" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -950,11 +945,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIBitStateCmd.java</url>
           <line>25</line>
           <option name="timeStamp" value="1296" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/uniquemodules/ESS2PLCCommands.java</url>
-          <line>272</line>
-          <option name="timeStamp" value="1305" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS4ACDCEmulator.java</url>
