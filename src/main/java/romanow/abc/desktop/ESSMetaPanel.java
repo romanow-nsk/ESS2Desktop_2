@@ -373,6 +373,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         jLabel22 = new javax.swing.JLabel();
         ForceRender = new javax.swing.JCheckBox();
         ForceDeploy = new javax.swing.JCheckBox();
+        ProfileName = new javax.swing.JLabel();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -1371,7 +1372,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(ProfilerOnOff);
-        ProfilerOnOff.setBounds(10, 600, 40, 40);
+        ProfilerOnOff.setBounds(10, 605, 40, 40);
         add(jSeparator5);
         jSeparator5.setBounds(380, 270, 460, 10);
 
@@ -1430,7 +1431,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(ProfilerResults);
-        ProfilerResults.setBounds(50, 600, 40, 30);
+        ProfilerResults.setBounds(190, 610, 40, 30);
 
         OnlyView.setText("Без данных");
         OnlyView.addItemListener(new java.awt.event.ItemListener() {
@@ -1486,6 +1487,10 @@ public class ESSMetaPanel extends ESSBasePanel {
         ForceRender.setBounds(95, 415, 30, 19);
         add(ForceDeploy);
         ForceDeploy.setBounds(20, 415, 30, 19);
+
+        ProfileName.setText("...");
+        add(ProfileName);
+        ProfileName.setBounds(50, 616, 130, 16);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ImportMetaDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportMetaDataActionPerformed
@@ -2682,6 +2687,29 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
     }//GEN-LAST:event_DeployActionPerformed
 
+
+    private void setSelectedProfile(boolean enabled){
+        if (!enabled){
+            ProfileName.setText("...");
+            return;
+            }
+        int count=0;
+        String ss="";
+        for (int i=0; i<deployed.getProfilers().size();i++){
+            ESS2ProfilerModule module = deployed.getProfilers().get(i);
+            if (!module.isEnable())
+                continue;
+            count++;
+            ProfileName.setText(module.getTitle());
+            if (ss.length()!=0)
+                ss +=",";
+            ss+=""+i;
+            }
+        if (count!=1){
+            ProfileName.setText("Профилей  "+count+": "+ss);
+            }
+        }
+
     private void ConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConnectActionPerformed
         setRenderingOff();
         if (deployed.isConnected()){
@@ -3720,7 +3748,8 @@ public class ESSMetaPanel extends ESSBasePanel {
         CIDLocal.setEnabled(!enabled);
         IEC61850OnOff.setEnabled(!enabled);
         IEC61850ClientGUI.setEnabled(!enabled);
-    }
+        setSelectedProfile(!enabled);
+        }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddArch;
@@ -3798,6 +3827,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JCheckBox OnlyView;
     private javax.swing.JCheckBox OrigHW;
     private javax.swing.JPasswordField Password;
+    private javax.swing.JLabel ProfileName;
     private javax.swing.JButton ProfilerOnOff;
     private javax.swing.JButton ProfilerResults;
     private java.awt.Choice Profilers;

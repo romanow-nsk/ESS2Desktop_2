@@ -25,17 +25,19 @@ import romanow.abc.desktop.MainBaseFrame;
  * @author romanow0
  */
 public class WizardESS2ЗProfilerModule extends WizardBaseViewDB {
-
+    private boolean start=false;
     private ESS2ProfilerModule module;
     public WizardESS2ЗProfilerModule(ESSMetaPanel frame0, ESS2Entity entity0, I_Wizard back0) {
         super("Модуль профилирования",frame0,entity0,back0);
         initComponents();
+        start=true;
         module = (ESS2ProfilerModule) entity0;
         ClassName.setText(module.getClassName());
         Enabled.setSelected(module.isEnable());
         Trace.setSelected(module.isTrace());
         DataFile.setText(module.getProfileData().getTitle());
         setSize(750,200);
+        start=false;
         }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -119,11 +121,15 @@ public class WizardESS2ЗProfilerModule extends WizardBaseViewDB {
     }// </editor-fold>//GEN-END:initComponents
 
     private void EnabledItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_EnabledItemStateChanged
+        if (start)
+            return;
         module.setEnable(Enabled.isSelected());
         oneUpdate("Изменено enable="+Enabled.isSelected());
     }//GEN-LAST:event_EnabledItemStateChanged
 
     private void TraceItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TraceItemStateChanged
+        if (start)
+            return;
         module.setTrace(Trace.isSelected());
         oneUpdate("Изменено trace="+Trace.isSelected());
 
