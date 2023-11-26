@@ -96,6 +96,8 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         jLabel37 = new javax.swing.JLabel();
         IEC60870ASDU = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
+        jLabel38 = new javax.swing.JLabel();
+        ModellingSpeed = new javax.swing.JTextField();
 
         setLayout(null);
 
@@ -178,7 +180,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
 
         jLabel23.setText("Адрес ASDU МЭК 60870");
         add(jLabel23);
-        jLabel23.setBounds(420, 200, 160, 16);
+        jLabel23.setBounds(420, 190, 160, 16);
 
         jLabel24.setText("Глубина архива в днях");
         add(jLabel24);
@@ -223,7 +225,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(WaitForMainServer);
-        WaitForMainServer.setBounds(410, 90, 340, 20);
+        WaitForMainServer.setBounds(410, 80, 340, 20);
 
         jLabel25.setText("Цикл опроса мгновенных значений  (сек)");
         add(jLabel25);
@@ -235,7 +237,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(MainServerPort);
-        MainServerPort.setBounds(720, 60, 60, 25);
+        MainServerPort.setBounds(720, 50, 60, 25);
 
         MainServerIP.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -243,7 +245,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(MainServerIP);
-        MainServerIP.setBounds(600, 60, 110, 25);
+        MainServerIP.setBounds(600, 50, 110, 25);
 
         SnapShotPeriod.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -272,7 +274,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
 
         jLabel28.setText("Цикл сервера интегратора  (сек)");
         add(jLabel28);
-        jLabel28.setBounds(420, 40, 200, 16);
+        jLabel28.setBounds(420, 30, 200, 16);
 
         MainServerPeriod.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -280,7 +282,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(MainServerPeriod);
-        MainServerPeriod.setBounds(640, 30, 70, 25);
+        MainServerPeriod.setBounds(640, 20, 70, 25);
 
         jLabel29.setText("Цикл проверки соединения  с интегратором (сек)");
         add(jLabel29);
@@ -301,11 +303,11 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(ToKotlinJS);
-        ToKotlinJS.setBounds(410, 120, 150, 25);
+        ToKotlinJS.setBounds(420, 110, 150, 25);
 
         jLabel27.setText("Каталог профилирования");
         add(jLabel27);
-        jLabel27.setBounds(520, 350, 180, 16);
+        jLabel27.setBounds(600, 310, 180, 16);
 
         IEC61850Port.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -313,7 +315,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(IEC61850Port);
-        IEC61850Port.setBounds(600, 140, 70, 25);
+        IEC61850Port.setBounds(600, 130, 70, 25);
 
         ClockAcrossAPI.setText("События таймеров через API");
         ClockAcrossAPI.addItemListener(new java.awt.event.ItemListener() {
@@ -322,7 +324,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(ClockAcrossAPI);
-        ClockAcrossAPI.setBounds(410, 270, 200, 20);
+        ClockAcrossAPI.setBounds(410, 250, 200, 20);
 
         PriorityDispatcher.setText("Диспетчер приоритетов для запросов к ModBus");
         PriorityDispatcher.addItemListener(new java.awt.event.ItemListener() {
@@ -331,7 +333,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(PriorityDispatcher);
-        PriorityDispatcher.setBounds(410, 250, 340, 20);
+        PriorityDispatcher.setBounds(410, 230, 340, 20);
 
         ProfilerOn.setText("Профилирование ");
         ProfilerOn.addItemListener(new java.awt.event.ItemListener() {
@@ -340,7 +342,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(ProfilerOn);
-        ProfilerOn.setBounds(410, 300, 170, 20);
+        ProfilerOn.setBounds(410, 270, 170, 20);
 
         ProfilerPort.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -348,11 +350,11 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(ProfilerPort);
-        ProfilerPort.setBounds(600, 300, 70, 25);
+        ProfilerPort.setBounds(600, 280, 70, 25);
 
         jLabel30.setText("IP/порт  сервера интегратора");
         add(jLabel30);
-        jLabel30.setBounds(420, 70, 180, 16);
+        jLabel30.setBounds(420, 60, 180, 16);
 
         ProfilerScale.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -360,7 +362,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(ProfilerScale);
-        ProfilerScale.setBounds(690, 300, 70, 25);
+        ProfilerScale.setBounds(680, 280, 70, 25);
 
         ProfilerFileSelect.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/statistic.png"))); // NOI18N
         ProfilerFileSelect.setBorderPainted(false);
@@ -371,11 +373,11 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(ProfilerFileSelect);
-        ProfilerFileSelect.setBounds(680, 360, 40, 40);
+        ProfilerFileSelect.setBounds(680, 330, 40, 40);
 
         jLabel31.setText("Порт");
         add(jLabel31);
-        jLabel31.setBounds(610, 280, 60, 16);
+        jLabel31.setBounds(600, 260, 60, 16);
 
         ProfilerFilesPath.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -383,11 +385,11 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(ProfilerFilesPath);
-        ProfilerFilesPath.setBounds(410, 370, 260, 25);
+        ProfilerFilesPath.setBounds(410, 330, 260, 25);
 
-        jLabel32.setText("Масштаб времени");
+        jLabel32.setText("Скорость моделирования * 100");
         add(jLabel32);
-        jLabel32.setBounds(690, 280, 110, 16);
+        jLabel32.setBounds(410, 375, 200, 16);
 
         ProfilerBundle.setText("Bundle");
         ProfilerBundle.addItemListener(new java.awt.event.ItemListener() {
@@ -396,7 +398,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(ProfilerBundle);
-        ProfilerBundle.setBounds(410, 340, 120, 20);
+        ProfilerBundle.setBounds(410, 310, 120, 20);
 
         ProfilerTrace.setText("Трассировка");
         ProfilerTrace.addItemListener(new java.awt.event.ItemListener() {
@@ -405,7 +407,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(ProfilerTrace);
-        ProfilerTrace.setBounds(410, 320, 170, 20);
+        ProfilerTrace.setBounds(410, 290, 170, 20);
 
         InterruptRegisterOn.setText("Опрос регистров прерываний");
         InterruptRegisterOn.addItemListener(new java.awt.event.ItemListener() {
@@ -430,7 +432,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
 
         jLabel36.setText("Порт  сервера МЭК 61850");
         add(jLabel36);
-        jLabel36.setBounds(420, 150, 160, 16);
+        jLabel36.setBounds(420, 140, 160, 16);
 
         IEC60870Port.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -438,11 +440,11 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(IEC60870Port);
-        IEC60870Port.setBounds(600, 170, 70, 25);
+        IEC60870Port.setBounds(600, 160, 70, 25);
 
         jLabel37.setText("Порт  сервера МЭК 60870");
         add(jLabel37);
-        jLabel37.setBounds(420, 175, 160, 16);
+        jLabel37.setBounds(420, 165, 160, 16);
 
         IEC60870ASDU.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -450,9 +452,21 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(IEC60870ASDU);
-        IEC60870ASDU.setBounds(600, 200, 70, 25);
+        IEC60870ASDU.setBounds(600, 190, 70, 25);
         add(jSeparator1);
-        jSeparator1.setBounds(410, 240, 360, 3);
+        jSeparator1.setBounds(410, 223, 360, 10);
+
+        jLabel38.setText("Масштаб времени");
+        add(jLabel38);
+        jLabel38.setBounds(680, 260, 110, 16);
+
+        ModellingSpeed.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ModellingSpeedKeyPressed(evt);
+            }
+        });
+        add(ModellingSpeed);
+        ModellingSpeed.setBounds(614, 370, 50, 25);
     }// </editor-fold>//GEN-END:initComponents
 
     private void GUIrefreshPeriodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GUIrefreshPeriodKeyPressed
@@ -612,6 +626,10 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     private void IEC60870ASDUKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IEC60870ASDUKeyPressed
         procPressedInt(evt, IEC60870ASDU,"iec60870ASDUAddress");
     }//GEN-LAST:event_IEC60870ASDUKeyPressed
+
+    private void ModellingSpeedKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ModellingSpeedKeyPressed
+        procPressedInt(evt, MainServerPort,"modellingSpeed");
+    }//GEN-LAST:event_ModellingSpeedKeyPressed
 
     private void procPressedInt(KeyEvent evt, JTextField text, String name){
         if(evt.getKeyCode()!=10) return;
@@ -820,6 +838,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     private javax.swing.JCheckBox MainServerMode;
     private javax.swing.JTextField MainServerPeriod;
     private javax.swing.JTextField MainServerPort;
+    private javax.swing.JTextField ModellingSpeed;
     private javax.swing.JCheckBox PriorityDispatcher;
     private javax.swing.JCheckBox ProfilerBundle;
     private javax.swing.JButton ProfilerFileSelect;
@@ -857,6 +876,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
