@@ -28,6 +28,7 @@ public class WizardESS2ModBusGate extends WizardBaseViewDB {
         Port.setText(""+gate.getPort());
         Enabled.setSelected(gate.isEnable());
         Trace.setSelected(gate.isTrace());
+        CommonRegField.setSelected(gate.isCommonRegField());
         Devices.removeAll();
         Devices.add("...");
         for(ESS2Device device : devices)
@@ -60,6 +61,7 @@ public class WizardESS2ModBusGate extends WizardBaseViewDB {
     private void initComponents() {
 
         jCheckBox1 = new javax.swing.JCheckBox();
+        checkbox1 = new java.awt.Checkbox();
         jSeparator1 = new javax.swing.JSeparator();
         Port = new javax.swing.JTextField();
         Enabled = new javax.swing.JCheckBox();
@@ -68,8 +70,11 @@ public class WizardESS2ModBusGate extends WizardBaseViewDB {
         SetMetaFile = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        CommonRegField = new javax.swing.JCheckBox();
 
         jCheckBox1.setText("jCheckBox1");
+
+        checkbox1.setLabel("checkbox1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -82,7 +87,7 @@ public class WizardESS2ModBusGate extends WizardBaseViewDB {
             }
         });
         getContentPane().add(Port);
-        Port.setBounds(260, 100, 60, 25);
+        Port.setBounds(520, 120, 60, 25);
 
         Enabled.setText("Включено");
         Enabled.addItemListener(new java.awt.event.ItemListener() {
@@ -100,7 +105,7 @@ public class WizardESS2ModBusGate extends WizardBaseViewDB {
             }
         });
         getContentPane().add(Trace);
-        Trace.setBounds(100, 100, 130, 20);
+        Trace.setBounds(330, 100, 130, 20);
         getContentPane().add(Devices);
         Devices.setBounds(10, 130, 310, 20);
 
@@ -117,12 +122,21 @@ public class WizardESS2ModBusGate extends WizardBaseViewDB {
 
         jLabel5.setText("Порт");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(210, 105, 50, 16);
+        jLabel5.setBounds(470, 130, 50, 16);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel6.setText("Контроллер");
         getContentPane().add(jLabel6);
         jLabel6.setBounds(370, 130, 110, 16);
+
+        CommonRegField.setText("Общее поле регистров");
+        CommonRegField.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CommonRegFieldItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(CommonRegField);
+        CommonRegField.setBounds(100, 100, 200, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -160,6 +174,13 @@ public class WizardESS2ModBusGate extends WizardBaseViewDB {
         gate.getDevice().setOidRef(devices.get(Devices.getSelectedIndex()-1));
         oneUpdate("Контроллер навзначен на шлюз "+ gate.getTitle());
     }//GEN-LAST:event_SetMetaFileActionPerformed
+
+    private void CommonRegFieldItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CommonRegFieldItemStateChanged
+        if (start)
+            return;
+        gate.setCommonRegField(CommonRegField.isSelected());
+        oneUpdate("Изменено commonRegField="+CommonRegField.isSelected());
+    }//GEN-LAST:event_CommonRegFieldItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -204,11 +225,13 @@ public class WizardESS2ModBusGate extends WizardBaseViewDB {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox CommonRegField;
     private java.awt.Choice Devices;
     private javax.swing.JCheckBox Enabled;
     private javax.swing.JTextField Port;
     private javax.swing.JButton SetMetaFile;
     private javax.swing.JCheckBox Trace;
+    private java.awt.Checkbox checkbox1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

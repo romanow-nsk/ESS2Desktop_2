@@ -919,7 +919,7 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         ArchitectureLabel.setText("Выбрать архитектуру");
         add(ArchitectureLabel);
-        ArchitectureLabel.setBounds(160, 480, 130, 16);
+        ArchitectureLabel.setBounds(170, 480, 130, 16);
 
         Connect.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/status_gray.png"))); // NOI18N
         Connect.setBorderPainted(false);
@@ -1093,7 +1093,7 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         RunTimeChangesLabel.setText("Изменений");
         add(RunTimeChangesLabel);
-        RunTimeChangesLabel.setBounds(290, 480, 80, 16);
+        RunTimeChangesLabel.setBounds(300, 480, 80, 16);
         add(MetaTypes);
         MetaTypes.setBounds(650, 50, 140, 20);
 
@@ -1466,7 +1466,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(OnOff2);
-        OnOff2.setBounds(120, 470, 30, 30);
+        OnOff2.setBounds(130, 465, 30, 30);
 
         OrigHW.setText("Ориг. пропорции");
         OrigHW.addActionListener(new java.awt.event.ActionListener() {
@@ -1481,9 +1481,9 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         jLabel22.setText("Игнорировать ошибки");
         add(jLabel22);
-        jLabel22.setBounds(130, 450, 160, 16);
+        jLabel22.setBounds(130, 440, 160, 16);
         add(ForceRender);
-        ForceRender.setBounds(90, 440, 30, 19);
+        ForceRender.setBounds(100, 440, 30, 19);
         add(ForceDeploy);
         ForceDeploy.setBounds(20, 440, 30, 19);
 
