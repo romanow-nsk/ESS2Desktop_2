@@ -18,11 +18,12 @@ import romanow.abc.desktop.MainBaseFrame;
  * @author romanow0
  */
 public class WizardESS2EquipEmulator extends WizardBaseViewDB {
-
+    private boolean start=false;
     private ESS2EquipEmulator emulator;
     public WizardESS2EquipEmulator(ESSMetaPanel frame0, ESS2Entity entity0, I_Wizard back0) {
         super("Эмулятор",frame0,entity0,back0);
         initComponents();
+        start = true;
         emulator = (ESS2EquipEmulator) entity0;
         ClassName.setText(emulator.getClassName());
         Port.setText(""+emulator.getPort());
@@ -38,6 +39,7 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
             MetaFile.add(metaFile.toString());
         selectChoice();
         setSize(750,280);
+        start = false;
         }
     private void selectChoice(){
         if (emulator.getMetaFile().getOid()==0){
@@ -218,17 +220,23 @@ public class WizardESS2EquipEmulator extends WizardBaseViewDB {
     }//GEN-LAST:event_DeviceNameKeyPressed
 
     private void EnabledItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_EnabledItemStateChanged
+        if (start)
+            return;
         emulator.setEnable(Enabled.isSelected());
         oneUpdate("Изменено enable="+Enabled.isSelected());
     }//GEN-LAST:event_EnabledItemStateChanged
 
     private void TraceItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TraceItemStateChanged
+        if (start)
+            return;
         emulator.setTrace(Trace.isSelected());
         oneUpdate("Изменено trace="+Trace.isSelected());
 
     }//GEN-LAST:event_TraceItemStateChanged
 
     private void RTUItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_RTUItemStateChanged
+        if (start)
+            return;
         emulator.setRTU(RTU.isSelected());
         oneUpdate("Изменено RTU="+RTU.isSelected());
     }//GEN-LAST:event_RTUItemStateChanged

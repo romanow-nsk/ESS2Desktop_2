@@ -211,7 +211,6 @@ public class ESSMetaPanel extends ESSBasePanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jCheckBox1 = new javax.swing.JCheckBox();
         ImportMetaData = new javax.swing.JButton();
         Password = new javax.swing.JPasswordField();
         OnOff = new javax.swing.JButton();
@@ -285,7 +284,6 @@ public class ESSMetaPanel extends ESSBasePanel {
         EditArch = new javax.swing.JButton();
         EditEquip = new javax.swing.JButton();
         EditDevice = new javax.swing.JButton();
-        jSeparator7 = new javax.swing.JSeparator();
         ArchNodeRefrresh = new javax.swing.JButton();
         RemoveNode = new javax.swing.JButton();
         AddNode = new javax.swing.JButton();
@@ -374,8 +372,11 @@ public class ESSMetaPanel extends ESSBasePanel {
         ForceRender = new javax.swing.JCheckBox();
         ForceDeploy = new javax.swing.JCheckBox();
         ProfileName = new javax.swing.JLabel();
-
-        jCheckBox1.setText("jCheckBox1");
+        Gates = new java.awt.Choice();
+        jLabel43 = new javax.swing.JLabel();
+        AddGate = new javax.swing.JButton();
+        RemoveGate = new javax.swing.JButton();
+        EditGate = new javax.swing.JButton();
 
         setLayout(null);
 
@@ -392,7 +393,7 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         Password.setText("pi31415926");
         add(Password);
-        Password.setBounds(10, 530, 110, 25);
+        Password.setBounds(10, 560, 110, 25);
 
         OnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/connect-off.png"))); // NOI18N
         OnOff.setBorderPainted(false);
@@ -403,7 +404,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(OnOff);
-        OnOff.setBounds(90, 435, 30, 40);
+        OnOff.setBounds(90, 460, 30, 40);
 
         DeviceRead.setText("Чтение");
         DeviceRead.addActionListener(new java.awt.event.ActionListener() {
@@ -589,7 +590,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         add(RefreshMeta);
         RefreshMeta.setBounds(380, 40, 30, 30);
         add(jSeparator3);
-        jSeparator3.setBounds(10, 415, 340, 5);
+        jSeparator3.setBounds(0, 437, 370, 3);
         add(jSeparator4);
         jSeparator4.setBounds(380, 90, 500, 10);
 
@@ -611,7 +612,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         jLabel24.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel24.setText("ЧМИ");
         add(jLabel24);
-        jLabel24.setBounds(10, 215, 90, 14);
+        jLabel24.setBounds(10, 245, 90, 14);
 
         MetaFile.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -678,7 +679,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         add(jLabel26);
         jLabel26.setBounds(650, 30, 100, 14);
         add(Views);
-        Views.setBounds(10, 230, 210, 20);
+        Views.setBounds(10, 260, 210, 20);
 
         jLabel25.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel25.setText("Узел СНЭЭ");
@@ -710,7 +711,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         jLabel27.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel27.setText("Архитектура");
         add(jLabel27);
-        jLabel27.setBounds(10, 50, 90, 14);
+        jLabel27.setBounds(10, 45, 90, 14);
 
         Architectures.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -718,14 +719,14 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(Architectures);
-        Architectures.setBounds(10, 65, 210, 20);
+        Architectures.setBounds(10, 60, 210, 20);
 
         jLabel28.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel28.setText("Лог.устройство (Unit)");
         add(jLabel28);
-        jLabel28.setBounds(10, 130, 210, 14);
+        jLabel28.setBounds(10, 125, 210, 14);
         add(Devices);
-        Devices.setBounds(10, 190, 210, 20);
+        Devices.setBounds(10, 180, 210, 20);
 
         Equipments.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -733,12 +734,12 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(Equipments);
-        Equipments.setBounds(10, 105, 210, 20);
+        Equipments.setBounds(10, 100, 210, 20);
 
         jLabel29.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel29.setText("Оборудование");
         add(jLabel29);
-        jLabel29.setBounds(10, 90, 90, 14);
+        jLabel29.setBounds(10, 85, 90, 14);
 
         RemoveEquip.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/remove.png"))); // NOI18N
         RemoveEquip.setBorderPainted(false);
@@ -793,7 +794,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(RemoveView);
-        RemoveView.setBounds(260, 220, 30, 30);
+        RemoveView.setBounds(260, 260, 30, 30);
 
         AddView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/add.png"))); // NOI18N
         AddView.setBorderPainted(false);
@@ -804,7 +805,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(AddView);
-        AddView.setBounds(220, 220, 40, 30);
+        AddView.setBounds(220, 260, 40, 30);
 
         EditView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/media_list.png"))); // NOI18N
         EditView.setBorderPainted(false);
@@ -815,7 +816,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(EditView);
-        EditView.setBounds(290, 220, 30, 30);
+        EditView.setBounds(290, 260, 30, 30);
 
         EditArch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/media_list.png"))); // NOI18N
         EditArch.setBorderPainted(false);
@@ -849,8 +850,6 @@ public class ESSMetaPanel extends ESSBasePanel {
         });
         add(EditDevice);
         EditDevice.setBounds(290, 180, 30, 30);
-        add(jSeparator7);
-        jSeparator7.setBounds(10, 50, 350, 10);
 
         ArchNodeRefrresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/refresh.png"))); // NOI18N
         ArchNodeRefrresh.setBorderPainted(false);
@@ -916,11 +915,11 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(Deploy);
-        Deploy.setBounds(10, 430, 40, 40);
+        Deploy.setBounds(10, 460, 40, 40);
 
         ArchitectureLabel.setText("Выбрать архитектуру");
         add(ArchitectureLabel);
-        ArchitectureLabel.setBounds(160, 450, 130, 16);
+        ArchitectureLabel.setBounds(160, 480, 130, 16);
 
         Connect.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/status_gray.png"))); // NOI18N
         Connect.setBorderPainted(false);
@@ -931,14 +930,14 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(Connect);
-        Connect.setBounds(50, 435, 40, 40);
+        Connect.setBounds(50, 460, 40, 40);
 
         jLabel33.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel33.setText("Эмуляторы");
         add(jLabel33);
-        jLabel33.setBounds(10, 255, 90, 14);
+        jLabel33.setBounds(10, 285, 90, 14);
         add(Emulators);
-        Emulators.setBounds(10, 270, 210, 20);
+        Emulators.setBounds(10, 300, 210, 20);
 
         RemoveEmulator.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/remove.png"))); // NOI18N
         RemoveEmulator.setBorderPainted(false);
@@ -949,7 +948,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(RemoveEmulator);
-        RemoveEmulator.setBounds(260, 260, 30, 30);
+        RemoveEmulator.setBounds(260, 300, 30, 30);
 
         AddEmulator.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/add.png"))); // NOI18N
         AddEmulator.setBorderPainted(false);
@@ -960,7 +959,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(AddEmulator);
-        AddEmulator.setBounds(220, 260, 40, 30);
+        AddEmulator.setBounds(220, 300, 40, 30);
 
         EditEmulator.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/media_list.png"))); // NOI18N
         EditEmulator.setBorderPainted(false);
@@ -971,7 +970,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(EditEmulator);
-        EditEmulator.setBounds(290, 260, 30, 30);
+        EditEmulator.setBounds(290, 300, 30, 30);
 
         ImportScript.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/upload.png"))); // NOI18N
         ImportScript.setBorderPainted(false);
@@ -982,9 +981,9 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(ImportScript);
-        ImportScript.setBounds(290, 350, 40, 30);
+        ImportScript.setBounds(290, 380, 40, 30);
         add(Scripts);
-        Scripts.setBounds(10, 390, 340, 20);
+        Scripts.setBounds(10, 415, 340, 20);
 
         RemoveScript.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/remove.png"))); // NOI18N
         RemoveScript.setBorderPainted(false);
@@ -995,7 +994,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(RemoveScript);
-        RemoveScript.setBounds(225, 350, 30, 30);
+        RemoveScript.setBounds(220, 380, 30, 30);
 
         EditScript.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/media_list.png"))); // NOI18N
         EditScript.setBorderPainted(false);
@@ -1006,12 +1005,12 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(EditScript);
-        EditScript.setBounds(260, 350, 30, 30);
+        EditScript.setBounds(260, 380, 30, 30);
 
         jLabel34.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel34.setText("Скрипты");
         add(jLabel34);
-        jLabel34.setBounds(10, 335, 60, 14);
+        jLabel34.setBounds(10, 360, 60, 14);
 
         ExecScriptServer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/shifton1.png"))); // NOI18N
         ExecScriptServer.setBorderPainted(false);
@@ -1022,11 +1021,11 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(ExecScriptServer);
-        ExecScriptServer.setBounds(120, 350, 40, 30);
+        ExecScriptServer.setBounds(120, 380, 40, 30);
 
         Trace.setText("Трасса");
         add(Trace);
-        Trace.setBounds(10, 350, 70, 20);
+        Trace.setBounds(10, 380, 70, 20);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("xls 2");
@@ -1058,15 +1057,15 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(ExecScriptClient);
-        ExecScriptClient.setBounds(70, 350, 40, 30);
+        ExecScriptClient.setBounds(70, 380, 40, 30);
 
         jLabel19.setText("сервер");
         add(jLabel19);
-        jLabel19.setBounds(120, 335, 50, 16);
+        jLabel19.setBounds(120, 360, 50, 16);
 
         jLabel30.setText("пароль операции");
         add(jLabel30);
-        jLabel30.setBounds(10, 510, 120, 16);
+        jLabel30.setBounds(10, 540, 120, 16);
 
         RuntimeEdit.setText("Редакт. \"на лету\"");
         RuntimeEdit.addItemListener(new java.awt.event.ItemListener() {
@@ -1075,7 +1074,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(RuntimeEdit);
-        RuntimeEdit.setBounds(10, 470, 130, 20);
+        RuntimeEdit.setBounds(10, 500, 130, 20);
 
         RunTimeSaveChanges.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/save.png"))); // NOI18N
         RunTimeSaveChanges.setBorderPainted(false);
@@ -1086,15 +1085,15 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(RunTimeSaveChanges);
-        RunTimeSaveChanges.setBounds(280, 470, 30, 30);
+        RunTimeSaveChanges.setBounds(280, 500, 30, 30);
 
         RunTimeChanges.setEnabled(false);
         add(RunTimeChanges);
-        RunTimeChanges.setBounds(320, 475, 40, 25);
+        RunTimeChanges.setBounds(320, 500, 40, 25);
 
         RunTimeChangesLabel.setText("Изменений");
         add(RunTimeChangesLabel);
-        RunTimeChangesLabel.setBounds(290, 450, 80, 16);
+        RunTimeChangesLabel.setBounds(290, 480, 80, 16);
         add(MetaTypes);
         MetaTypes.setBounds(650, 50, 140, 20);
 
@@ -1153,7 +1152,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         jLabel37.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel37.setText("xml");
         add(jLabel37);
-        jLabel37.setBounds(330, 250, 30, 20);
+        jLabel37.setBounds(330, 290, 30, 20);
 
         ExportXMLView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/download.png"))); // NOI18N
         ExportXMLView.setBorderPainted(false);
@@ -1164,7 +1163,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(ExportXMLView);
-        ExportXMLView.setBounds(330, 220, 30, 30);
+        ExportXMLView.setBounds(330, 260, 30, 30);
 
         jLabel39.setText("Контроллер");
         add(jLabel39);
@@ -1192,11 +1191,11 @@ public class ESSMetaPanel extends ESSBasePanel {
         HEXValue.setBounds(550, 640, 50, 20);
 
         jLabel40.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel40.setText("Контроллер (драйвер)");
+        jLabel40.setText("Шлюзы Modbus");
         add(jLabel40);
-        jLabel40.setBounds(10, 170, 210, 14);
+        jLabel40.setBounds(10, 205, 210, 14);
         add(LogUnits);
-        LogUnits.setBounds(10, 145, 210, 20);
+        LogUnits.setBounds(10, 140, 210, 20);
 
         RemoveLogUnit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/remove.png"))); // NOI18N
         RemoveLogUnit.setBorderPainted(false);
@@ -1231,14 +1230,14 @@ public class ESSMetaPanel extends ESSBasePanel {
         add(EditLogUnit);
         EditLogUnit.setBounds(290, 140, 30, 30);
         add(jSeparator9);
-        jSeparator9.setBounds(10, 560, 340, 10);
+        jSeparator9.setBounds(10, 590, 340, 10);
 
         jLabel41.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel41.setText("Переменные окружения");
         add(jLabel41);
-        jLabel41.setBounds(10, 295, 180, 14);
+        jLabel41.setBounds(10, 325, 180, 14);
         add(EnvValue);
-        EnvValue.setBounds(10, 310, 210, 20);
+        EnvValue.setBounds(10, 340, 210, 20);
 
         RemoveEnvValue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/remove.png"))); // NOI18N
         RemoveEnvValue.setBorderPainted(false);
@@ -1249,7 +1248,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(RemoveEnvValue);
-        RemoveEnvValue.setBounds(260, 300, 30, 30);
+        RemoveEnvValue.setBounds(260, 340, 30, 30);
 
         AddEnvValue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/add.png"))); // NOI18N
         AddEnvValue.setBorderPainted(false);
@@ -1260,7 +1259,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(AddEnvValue);
-        AddEnvValue.setBounds(220, 300, 40, 30);
+        AddEnvValue.setBounds(220, 340, 40, 30);
 
         EditEnvValue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/media_list.png"))); // NOI18N
         EditEnvValue.setBorderPainted(false);
@@ -1271,12 +1270,12 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(EditEnvValue);
-        EditEnvValue.setBounds(290, 300, 30, 30);
+        EditEnvValue.setBounds(290, 340, 30, 30);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel3.setText(" все");
         add(jLabel3);
-        jLabel3.setBounds(170, 335, 40, 14);
+        jLabel3.setBounds(170, 360, 40, 14);
 
         ExportXMLAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/download.png"))); // NOI18N
         ExportXMLAll.setBorderPainted(false);
@@ -1298,7 +1297,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(ExportScripts);
-        ExportScripts.setBounds(170, 350, 30, 30);
+        ExportScripts.setBounds(170, 380, 30, 30);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setText("xml-*");
@@ -1307,7 +1306,7 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         FullScreen.setText("Полный экран");
         add(FullScreen);
-        FullScreen.setBounds(160, 470, 120, 20);
+        FullScreen.setBounds(160, 500, 120, 20);
 
         OnOffNode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/connect-off.png"))); // NOI18N
         OnOffNode.setBorderPainted(false);
@@ -1329,7 +1328,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(CIDLocal);
-        CIDLocal.setBounds(270, 520, 40, 30);
+        CIDLocal.setBounds(270, 550, 40, 30);
 
         IEC61850OnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/status_gray.png"))); // NOI18N
         IEC61850OnOff.setBorderPainted(false);
@@ -1340,12 +1339,12 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(IEC61850OnOff);
-        IEC61850OnOff.setBounds(230, 520, 40, 40);
+        IEC61850OnOff.setBounds(230, 550, 40, 40);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel6.setText("Профилирование");
         add(jLabel6);
-        jLabel6.setBounds(10, 560, 130, 16);
+        jLabel6.setBounds(10, 590, 130, 16);
 
         IEC61850ClientGUI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/connect-off.png"))); // NOI18N
         IEC61850ClientGUI.setBorderPainted(false);
@@ -1356,12 +1355,12 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(IEC61850ClientGUI);
-        IEC61850ClientGUI.setBounds(310, 520, 40, 30);
+        IEC61850ClientGUI.setBounds(310, 550, 40, 30);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel7.setText("МЭК 60870");
         add(jLabel7);
-        jLabel7.setBounds(150, 540, 70, 16);
+        jLabel7.setBounds(150, 570, 70, 16);
 
         ProfilerOnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/status_gray.png"))); // NOI18N
         ProfilerOnOff.setBorderPainted(false);
@@ -1372,7 +1371,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(ProfilerOnOff);
-        ProfilerOnOff.setBounds(10, 605, 40, 40);
+        ProfilerOnOff.setBounds(10, 630, 40, 40);
         add(jSeparator5);
         jSeparator5.setBounds(380, 270, 460, 10);
 
@@ -1381,7 +1380,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         add(jLabel21);
         jLabel21.setBounds(770, 440, 100, 14);
         add(Profilers);
-        Profilers.setBounds(10, 580, 210, 20);
+        Profilers.setBounds(10, 610, 210, 20);
 
         RemoveProfiler.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/remove.png"))); // NOI18N
         RemoveProfiler.setBorderPainted(false);
@@ -1392,7 +1391,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(RemoveProfiler);
-        RemoveProfiler.setBounds(260, 570, 30, 30);
+        RemoveProfiler.setBounds(260, 600, 30, 30);
 
         AddProfiler.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/add.png"))); // NOI18N
         AddProfiler.setBorderPainted(false);
@@ -1403,7 +1402,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(AddProfiler);
-        AddProfiler.setBounds(220, 570, 40, 30);
+        AddProfiler.setBounds(220, 600, 40, 30);
 
         EditProfiler.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/media_list.png"))); // NOI18N
         EditProfiler.setBorderPainted(false);
@@ -1414,13 +1413,13 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(EditProfiler);
-        EditProfiler.setBounds(290, 570, 30, 30);
+        EditProfiler.setBounds(290, 600, 30, 30);
         add(jSeparator10);
-        jSeparator10.setBounds(10, 510, 350, 10);
+        jSeparator10.setBounds(10, 540, 350, 10);
 
         jLabel42.setText("клиент");
         add(jLabel42);
-        jLabel42.setBounds(70, 335, 50, 16);
+        jLabel42.setBounds(70, 360, 50, 16);
 
         ProfilerResults.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/load.png"))); // NOI18N
         ProfilerResults.setBorderPainted(false);
@@ -1431,7 +1430,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(ProfilerResults);
-        ProfilerResults.setBounds(190, 610, 40, 30);
+        ProfilerResults.setBounds(190, 640, 40, 30);
 
         OnlyView.setText("Без данных");
         OnlyView.addItemListener(new java.awt.event.ItemListener() {
@@ -1440,7 +1439,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(OnlyView);
-        OnlyView.setBounds(160, 490, 110, 20);
+        OnlyView.setBounds(160, 520, 110, 20);
 
         IEC60870OnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/status_gray.png"))); // NOI18N
         IEC60870OnOff.setBorderPainted(false);
@@ -1451,12 +1450,12 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(IEC60870OnOff);
-        IEC60870OnOff.setBounds(120, 520, 40, 40);
+        IEC60870OnOff.setBounds(120, 550, 40, 40);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel9.setText("МЭК 61850");
         add(jLabel9);
-        jLabel9.setBounds(170, 520, 70, 16);
+        jLabel9.setBounds(170, 550, 70, 16);
 
         OnOff2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/connect-off.png"))); // NOI18N
         OnOff2.setBorderPainted(false);
@@ -1467,7 +1466,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(OnOff2);
-        OnOff2.setBounds(125, 440, 30, 30);
+        OnOff2.setBounds(120, 470, 30, 30);
 
         OrigHW.setText("Ориг. пропорции");
         OrigHW.addActionListener(new java.awt.event.ActionListener() {
@@ -1476,21 +1475,61 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(OrigHW);
-        OrigHW.setBounds(10, 490, 140, 20);
+        OrigHW.setBounds(10, 520, 140, 20);
         add(ForceConnect);
-        ForceConnect.setBounds(60, 415, 30, 19);
+        ForceConnect.setBounds(60, 440, 30, 19);
 
         jLabel22.setText("Игнорировать ошибки");
         add(jLabel22);
-        jLabel22.setBounds(130, 420, 160, 16);
+        jLabel22.setBounds(130, 450, 160, 16);
         add(ForceRender);
-        ForceRender.setBounds(95, 415, 30, 19);
+        ForceRender.setBounds(90, 440, 30, 19);
         add(ForceDeploy);
-        ForceDeploy.setBounds(20, 415, 30, 19);
+        ForceDeploy.setBounds(20, 440, 30, 19);
 
         ProfileName.setText("...");
         add(ProfileName);
-        ProfileName.setBounds(50, 616, 130, 16);
+        ProfileName.setBounds(50, 650, 130, 16);
+        add(Gates);
+        Gates.setBounds(10, 220, 210, 20);
+
+        jLabel43.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel43.setText("Контроллер (драйвер)");
+        add(jLabel43);
+        jLabel43.setBounds(10, 165, 210, 14);
+
+        AddGate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/add.png"))); // NOI18N
+        AddGate.setBorderPainted(false);
+        AddGate.setContentAreaFilled(false);
+        AddGate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddGateActionPerformed(evt);
+            }
+        });
+        add(AddGate);
+        AddGate.setBounds(220, 220, 40, 30);
+
+        RemoveGate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/remove.png"))); // NOI18N
+        RemoveGate.setBorderPainted(false);
+        RemoveGate.setContentAreaFilled(false);
+        RemoveGate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RemoveGateActionPerformed(evt);
+            }
+        });
+        add(RemoveGate);
+        RemoveGate.setBounds(260, 220, 30, 30);
+
+        EditGate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/media_list.png"))); // NOI18N
+        EditGate.setBorderPainted(false);
+        EditGate.setContentAreaFilled(false);
+        EditGate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditGateActionPerformed(evt);
+            }
+        });
+        add(EditGate);
+        EditGate.setBounds(290, 220, 30, 30);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ImportMetaDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportMetaDataActionPerformed
@@ -1593,6 +1632,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         refreshDevices();
         refreshEnvValues();
         refreshProfilers();
+        refreshGates();
         architecture.createStreamRegisterList();
         }
 
@@ -1672,6 +1712,17 @@ public class ESSMetaPanel extends ESSBasePanel {
             return;
         for (ESS2EquipEmulator emulator : architecture.getEmulators()) {
             Emulators.add(emulator.getTitle());
+            }
+        }
+    private void refreshGates() {
+        Gates.removeAll();
+        if (architecture == null)
+            return;
+        for (ESS2ModBusGate gate : architecture.getGates()) {
+            ESS2Device device = architecture.getDevices().getById(gate.getDevice().getOid());
+            if (device!=null)
+                gate.getDevice().setRef(device);
+            Gates.add(gate.getTitle());
             }
         }
     private void refreshProfilers() {
@@ -3577,6 +3628,82 @@ public class ESSMetaPanel extends ESSBasePanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_OrigHWActionPerformed
 
+    private void AddGateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddGateActionPerformed
+        if (Architectures.getItemCount() == 0)
+            return;
+        final ESS2Architecture architecture = architectures.get(Architectures.getSelectedIndex());
+        new OK(200, 200, "Добавить шлюз Modbus", new I_Button() {
+            @Override
+            public void onPush() {
+                final ESS2ModBusGate gate = new ESS2ModBusGate("...", "Новый", "");
+                gate.getESS2Architecture().setOid(architecture.getOid());
+                gate.getDevice().setOid(0);
+                new APICall<JLong>(main) {
+                    @Override
+                    public Call<JLong> apiFun() {
+                        return main.service.addEntity(main.debugToken, new DBRequest(gate, main.gson), 0);
+                        }
+                    @Override
+                    public void onSucess(JLong val) {
+                        refreshArchitectures();
+                    }
+                };
+            }
+        });
+    }//GEN-LAST:event_AddGateActionPerformed
+
+    private void RemoveGateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveGateActionPerformed
+        if (Architectures.getItemCount() == 0)
+            return;
+        final ESS2Architecture architecture = architectures.get(Architectures.getSelectedIndex());
+        if (Emulators.getItemCount() == 0)
+            return;
+        final ESS2ModBusGate gate= architecture.getGates().get(Gates.getSelectedIndex());
+        new OK(200, 200, "Удалить эмулятор " + gate.getTitle(), new I_Button() {
+            @Override
+            public void onPush() {
+                new APICall<JBoolean>(main) {
+                    @Override
+                    public Call<JBoolean> apiFun() {
+                        return main.service.removeEntity(main.debugToken, "ESS2ModBusGate", gate.getOid());
+                    }
+                    @Override
+                    public void onSucess(JBoolean val) {
+                        refreshWithDelay(4);
+                    }
+                };
+            }
+        });
+    }//GEN-LAST:event_RemoveGateActionPerformed
+
+    private void EditGateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditGateActionPerformed
+        if (Architectures.getItemCount() == 0)
+            return;
+        final ESS2Architecture architecture = architectures.get(Architectures.getSelectedIndex());
+        if (Gates.getItemCount() == 0)
+            return;
+        final ESS2ModBusGate gate = architecture.getGates().get(Gates.getSelectedIndex());
+        new WizardESS2ModBusGate(this, gate, architecture.getDevices(), new I_Wizard() {
+            @Override
+            public void onUpdate() {
+                new APICall<JEmpty>(main) {
+                    @Override
+                    public Call<JEmpty> apiFun() {
+                        return main.service.updateEntity(main.debugToken, new DBRequest(gate, main.gson));
+                        }
+                    @Override
+                    public void onSucess(JEmpty vv) {
+                        refreshGates();
+                        }
+                    };
+            }
+            @Override
+            public void onEnter(String value) {
+                System.out.println(value);
+            }
+        });
+    }//GEN-LAST:event_EditGateActionPerformed
+
     private void refreshIEC61850State(){
         new APICall<JInt>(main) {
             @Override
@@ -3743,6 +3870,9 @@ public class ESSMetaPanel extends ESSBasePanel {
         DownLoadArchitecture.setEnabled(enabled);
         ArchNodeRefrresh.setEnabled(enabled);
         RefreshMeta.setEnabled(enabled);
+        AddGate.setEnabled(enabled);
+        RemoveGate.setEnabled(enabled);
+        EditGate.setEnabled(enabled);
         ExecScriptServer.setEnabled(!enabled);
         //-----------------------------------------------
         CIDLocal.setEnabled(!enabled);
@@ -3757,6 +3887,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JButton AddEmulator;
     private javax.swing.JButton AddEnvValue;
     private javax.swing.JButton AddEquip;
+    private javax.swing.JButton AddGate;
     private javax.swing.JButton AddLogUnit;
     private javax.swing.JButton AddMeta;
     private javax.swing.JButton AddNode;
@@ -3781,6 +3912,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JButton EditEmulator;
     private javax.swing.JButton EditEnvValue;
     private javax.swing.JButton EditEquip;
+    private javax.swing.JButton EditGate;
     private javax.swing.JButton EditLogUnit;
     private javax.swing.JButton EditMeta;
     private javax.swing.JButton EditNode;
@@ -3801,6 +3933,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JCheckBox ForceDeploy;
     private javax.swing.JCheckBox ForceRender;
     private javax.swing.JCheckBox FullScreen;
+    private java.awt.Choice Gates;
     private javax.swing.JCheckBox HEXReg;
     private javax.swing.JCheckBox HEXValue;
     private javax.swing.JButton IEC60870OnOff;
@@ -3839,6 +3972,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JButton RemoveEmulator;
     private javax.swing.JButton RemoveEnvValue;
     private javax.swing.JButton RemoveEquip;
+    private javax.swing.JButton RemoveGate;
     private javax.swing.JButton RemoveLogUnit;
     private javax.swing.JButton RemoveMeta;
     private javax.swing.JButton RemoveNode;
@@ -3863,7 +3997,6 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JCheckBox WriteFloat;
     private javax.swing.JCheckBox WriteInt32;
     private javax.swing.JButton WriteSetting;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -3900,6 +4033,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -3912,7 +4046,6 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     // End of variables declaration//GEN-END:variables
