@@ -628,7 +628,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     }//GEN-LAST:event_IEC60870ASDUKeyPressed
 
     private void ModellingSpeedKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ModellingSpeedKeyPressed
-        procPressedInt(evt, MainServerPort,"modellingSpeed");
+        procPressedInt(evt, ModellingSpeed,"modellingSpeed");
     }//GEN-LAST:event_ModellingSpeedKeyPressed
 
     private void procPressedInt(KeyEvent evt, JTextField text, String name){
@@ -691,6 +691,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             ProfilerFilesPath.setText(ws.getProfilerPath());
             InterruptRegisterOn.setSelected(ws.isInterruptRegisterOn());
             EventsQueuePeriod.setText(""+ws.getEventsQueuePeriod());
+            ModellingSpeed.setText(""+ws.getModellingSpeed());
             refreshMainServerParams();
             onStart=false;
             } catch (Exception e) {
