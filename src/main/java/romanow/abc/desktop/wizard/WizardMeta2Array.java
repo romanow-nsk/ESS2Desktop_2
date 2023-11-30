@@ -24,14 +24,16 @@ public class WizardMeta2Array extends WizardBaseView {
     /**
      * Creates new form xxx
      */
-    Meta2Array array;
-    ArrayList<ConstValue> types;
+    private boolean busy = false;
+    private Meta2Array array;
+    private ArrayList<ConstValue> types;
     public WizardMeta2Array() {
         initComponents();
         }
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
         setSize(850,250);
+        busy = true;
         array = (Meta2Array) entity;
         if (array.getElem()==null)
             Elem.setText("???");

@@ -20,7 +20,7 @@ import java.util.ArrayList;
  * @author romanow0
  */
 public class WizardMeta2StateRegister extends WizardMeta2Register {
-
+    private boolean busy = false;
     private Meta2StateRegister register;
     private WizardMetaEntitySelector selector;
     private Choice choice;
@@ -31,6 +31,7 @@ public class WizardMeta2StateRegister extends WizardMeta2Register {
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
         setSize(850,230);
+        busy=true;
         register = (Meta2StateRegister)entity;
         selector = new WizardMetaEntitySelector("Состояния", Values.MEState,callBack);
         selector.setBounds(10,130,750,40);
@@ -39,6 +40,7 @@ public class WizardMeta2StateRegister extends WizardMeta2Register {
         states = register.getStates().getList();
         refreshList();
         DEvent.setSelected(register.isDEvent());
+        busy=false;
         }
 
     public void refreshList(){
@@ -122,6 +124,7 @@ public class WizardMeta2StateRegister extends WizardMeta2Register {
     }//GEN-LAST:event_formWindowClosing
 
     private void DEventItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DEventItemStateChanged
+        if (busy) return;
         register.setDEvent(DEvent.isSelected());
         back.onEnter("Изменено dEvent: "+register.isDEvent());
     }//GEN-LAST:event_DEventItemStateChanged

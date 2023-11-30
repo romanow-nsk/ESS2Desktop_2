@@ -21,7 +21,7 @@ import java.util.ArrayList;
  * @author romanow0
  */
 public class WizardMeta2BitRegister extends WizardMeta2Register {
-
+    private boolean busy = false;
     private Meta2BitRegister register;
     private WizardMetaEntitySelector selector;
     private Choice choice;

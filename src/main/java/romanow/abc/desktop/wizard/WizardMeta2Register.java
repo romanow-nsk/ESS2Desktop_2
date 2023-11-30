@@ -19,7 +19,7 @@ import java.util.ArrayList;
  * @author romanow0
  */
 public class WizardMeta2Register extends WizardBaseView {
-
+    private boolean busy = false;
     private ArrayList<ConstValue> dataTypes;
     private Meta2Register register;
     public WizardMeta2Register() {
@@ -35,6 +35,7 @@ public class WizardMeta2Register extends WizardBaseView {
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
         setSize(800,200);
+        busy = true;
         register = (Meta2Register)entity;
         RegNum.setText(HEX.isSelected() ? "0x"+Integer.toString(register.getRegNum(),16) : ""+register.getRegNum());
         dataTypes = Values.constMap().getGroupList("ValueType");
@@ -44,6 +45,7 @@ public class WizardMeta2Register extends WizardBaseView {
         DataFormat.select(register.getFormat());
         SnapShot.setSelected(register.isSnapShot());
         IEC60870RegNum.setText(""+register.getIEC60870RegNum());
+        busy = false;
         }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -167,10 +169,12 @@ public class WizardMeta2Register extends WizardBaseView {
         }//GEN-LAST:event_RegNumKeyPressed
 
     private void HEXItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_HEXItemStateChanged
+        if (busy) return;
         setRegNum();
     }//GEN-LAST:event_HEXItemStateChanged
 
     private void SnapShotItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SnapShotItemStateChanged
+        if (busy) return;
         register.setSnapShot(SnapShot.isSelected());
         back.onEnter("Изменено snapShot: "+register.isSnapShot());
     }//GEN-LAST:event_SnapShotItemStateChanged

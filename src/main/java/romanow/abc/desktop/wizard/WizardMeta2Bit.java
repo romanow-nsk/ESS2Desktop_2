@@ -20,6 +20,7 @@ public class WizardMeta2Bit extends WizardBaseView {
     /**
      * Creates new form xxx
      */
+    private boolean busy = false;
     private Meta2Bit bit;
     private ArrayList<ConstValue> bitType;
     public WizardMeta2Bit() {
@@ -28,6 +29,7 @@ public class WizardMeta2Bit extends WizardBaseView {
     public void openForm(WizardBaseView parentView0, Meta2Entity entity0){
         super.openForm(parentView0,entity0);
         setSize(850,250);
+        busy = true;
         bit = (Meta2Bit) entity;
         bitType = Values.constMap().getGroupList("BitType");
         BitType.removeAll();
@@ -39,6 +41,7 @@ public class WizardMeta2Bit extends WizardBaseView {
         FailBy0.setSelected(bit.isInvert());
         BitNum.setText(""+bit.getBitNum());
         IEC60870RegNum.setText(""+bit.getIEC60870RegNum());
+        busy = false;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -165,6 +168,7 @@ public class WizardMeta2Bit extends WizardBaseView {
     }//GEN-LAST:event_SaveBitTypeActionPerformed
 
     private void FailBy0ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FailBy0ItemStateChanged
+        if (busy) return;
         bit.setInvert(FailBy0.isSelected());
         back.onEnter("Изменено invert: "+bit.isControl());
 
