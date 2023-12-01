@@ -895,7 +895,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         add(EditNode);
         EditNode.setBounds(290, 20, 30, 30);
 
-        DownLoadArchitecture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/no_problem.png"))); // NOI18N
+        DownLoadArchitecture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/download.png"))); // NOI18N
         DownLoadArchitecture.setBorderPainted(false);
         DownLoadArchitecture.setContentAreaFilled(false);
         DownLoadArchitecture.addActionListener(new java.awt.event.ActionListener() {
@@ -2657,7 +2657,10 @@ public class ESSMetaPanel extends ESSBasePanel {
         ESS2Architecture vv = main2.loadFullArchitecture(architectures.get(Architectures.getSelectedIndex()).getOid());
         vv.testFullArchitecture();
         if (vv.getErrors().getErrCount() == 0) {
-            architecture = vv;
+            Meta2XStream xStream = new Meta2XStream();
+            String ss = xStream.toXML(vv);
+            System.out.println(ss);
+            main.saveFile("Архитектура:"+vv.getTitle(),"xml",vv.getShortName(),ss);
             }
         System.out.println("-------------------------------------\n" + vv.getErrors().toString());
     }//GEN-LAST:event_DownLoadArchitectureActionPerformed

@@ -980,7 +980,7 @@
     <Component class="javax.swing.JButton" name="DownLoadArchitecture">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/drawable/no_problem.png"/>
+          <Image iconType="3" name="/drawable/download.png"/>
         </Property>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
