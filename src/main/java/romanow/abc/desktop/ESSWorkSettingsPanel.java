@@ -98,6 +98,8 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel38 = new javax.swing.JLabel();
         ModellingSpeed = new javax.swing.JTextField();
+        jLabel39 = new javax.swing.JLabel();
+        StreamFileSets = new javax.swing.JTextField();
 
         setLayout(null);
 
@@ -387,9 +389,9 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         add(ProfilerFilesPath);
         ProfilerFilesPath.setBounds(410, 330, 260, 25);
 
-        jLabel32.setText("Скорость моделирования * 100");
+        jLabel32.setText("Записей в файле ПД");
         add(jLabel32);
-        jLabel32.setBounds(410, 375, 200, 16);
+        jLabel32.setBounds(410, 400, 180, 16);
 
         ProfilerBundle.setText("Bundle");
         ProfilerBundle.addItemListener(new java.awt.event.ItemListener() {
@@ -466,7 +468,19 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(ModellingSpeed);
-        ModellingSpeed.setBounds(614, 370, 50, 25);
+        ModellingSpeed.setBounds(610, 370, 50, 25);
+
+        jLabel39.setText("Скорость моделирования * 100");
+        add(jLabel39);
+        jLabel39.setBounds(410, 375, 200, 16);
+
+        StreamFileSets.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                StreamFileSetsKeyPressed(evt);
+            }
+        });
+        add(StreamFileSets);
+        StreamFileSets.setBounds(610, 400, 50, 25);
     }// </editor-fold>//GEN-END:initComponents
 
     private void GUIrefreshPeriodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GUIrefreshPeriodKeyPressed
@@ -631,6 +645,10 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         procPressedInt(evt, ModellingSpeed,"modellingSpeed");
     }//GEN-LAST:event_ModellingSpeedKeyPressed
 
+    private void StreamFileSetsKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StreamFileSetsKeyPressed
+        procPressedInt(evt, StreamFileSets,"streamFileSets");
+    }//GEN-LAST:event_StreamFileSetsKeyPressed
+
     private void procPressedInt(KeyEvent evt, JTextField text, String name){
         if(evt.getKeyCode()!=10) return;
         int vv=0;
@@ -692,6 +710,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             InterruptRegisterOn.setSelected(ws.isInterruptRegisterOn());
             EventsQueuePeriod.setText(""+ws.getEventsQueuePeriod());
             ModellingSpeed.setText(""+ws.getModellingSpeed());
+            StreamFileSets.setText(""+ws.getStreamFileSets());
             refreshMainServerParams();
             onStart=false;
             } catch (Exception e) {
@@ -853,6 +872,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     private javax.swing.JTextField StreamDataCompressMode;
     private javax.swing.JTextField StreamDataLongPeriod;
     private javax.swing.JTextField StreamDataPeriod;
+    private javax.swing.JTextField StreamFileSets;
     private javax.swing.JButton ToKotlinJS;
     private javax.swing.JTextField UserSilenceTime;
     private javax.swing.JCheckBox WaitForMainServer;
@@ -878,6 +898,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

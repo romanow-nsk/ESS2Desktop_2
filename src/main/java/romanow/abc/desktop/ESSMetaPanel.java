@@ -2656,11 +2656,32 @@ public class ESSMetaPanel extends ESSBasePanel {
             return;
         ESS2Architecture vv = main2.loadFullArchitecture(architectures.get(Architectures.getSelectedIndex()).getOid());
         vv.testFullArchitecture();
+        vv.clearCrossReferences();
         if (vv.getErrors().getErrCount() == 0) {
             Meta2XStream xStream = new Meta2XStream();
             String ss = xStream.toXML(vv);
-            System.out.println(ss);
             main.saveFile("Архитектура:"+vv.getTitle(),"xml",vv.getShortName(),ss);
+            new APICall<ArrayList<DBRequest>>(main) {
+                @Override
+                public Call<ArrayList<DBRequest>> apiFun() {
+                    return main.service.getEntityList(main.debugToken,"Artifact",Values.GetAllModeActual,0);
+                    }
+                @Override
+                public void onSucess(ArrayList<DBRequest> list) {
+                    ArrayList<Artifact> out =new ArrayList<>();
+                    for (DBRequest request : list){
+                        try {
+                            out.add((Artifact) request.get(main.gson));
+                            } catch (Exception ee){
+                                System.out.println("Ошибка десериализации Artifct: "+ee.toString()+"\n"+request.getJsonObject());
+                                return;
+                                }
+                        }
+                    Meta2XStream xStream = new Meta2XStream();
+                    String ss = xStream.toXML(out);
+                    main.saveFile("Артефакты","xml","Artifacts",ss);
+                    }
+                };
             }
         System.out.println("-------------------------------------\n" + vv.getErrors().toString());
     }//GEN-LAST:event_DownLoadArchitectureActionPerformed
