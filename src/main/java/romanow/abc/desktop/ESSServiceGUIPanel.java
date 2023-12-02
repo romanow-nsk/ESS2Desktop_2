@@ -277,6 +277,8 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     //---------------------------------------------------------------------------------------
     @Override
     public void paintComponent(Graphics g){
+        if (!renderingOn)
+            return;
         ScreenMode screen = context.getScreen();
         Meta2GUIForm form = context.getForm();
         g.setColor(new Color(context.getView().getBackColor()-0x101010));
