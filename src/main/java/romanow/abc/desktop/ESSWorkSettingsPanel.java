@@ -389,7 +389,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         add(ProfilerFilesPath);
         ProfilerFilesPath.setBounds(410, 330, 260, 25);
 
-        jLabel32.setText("Записей в файле ПД");
+        jLabel32.setText("Интервал ПД в файле (мин)");
         add(jLabel32);
         jLabel32.setBounds(410, 400, 180, 16);
 

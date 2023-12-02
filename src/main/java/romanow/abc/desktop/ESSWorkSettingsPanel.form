@@ -478,7 +478,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel32">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#x417;&#x430;&#x43f;&#x438;&#x441;&#x435;&#x439; &#x432; &#x444;&#x430;&#x439;&#x43b;&#x435; &#x41f;&#x414;"/>
+        <Property name="text" type="java.lang.String" value="&#x418;&#x43d;&#x442;&#x435;&#x440;&#x432;&#x430;&#x43b; &#x41f;&#x414; &#x432; &#x444;&#x430;&#x439;&#x43b;&#x435; (&#x43c;&#x438;&#x43d;)"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
