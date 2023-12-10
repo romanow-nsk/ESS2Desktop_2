@@ -13,21 +13,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="81 - Потоковые данные в файл">
-      <change afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/drivers/ModBusCash.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/drivers/ModBusValue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/mongo/access/DAOEntityLink.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/mongo/access/DAOEntityLink.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/mongo/access/DAOEntityLinkList.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/mongo/access/DAOEntityLinkList.java" afterDir="false" />
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="82 - Modbus cash, ошибки связей">
       <change beforePath="$PROJECT_DIR$/../ABCDataServer/src/main/java/romanow/abc/dataserver/APICommon.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCDataServer/src/main/java/romanow/abc/dataserver/APICommon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/ServerPanel.form" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/ServerPanel.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/ServerPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/ServerPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/Meta2XStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/Meta2XStream.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/ESSDataServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/ESSDataServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/drivers/ModBusClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/drivers/ModBusClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/drivers/ModBusRTUClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/drivers/ModBusRTUClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/drivers/ModBusTCPClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/drivers/ModBusTCPClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS2BARSEmulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS2BARSEmulator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,7 +37,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../ESS2Core" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../ESS2DataServer" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
@@ -120,7 +110,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Admin/Downloads/sudoku-master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Admin/Downloads/lab_1&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.3218391&quot;,
@@ -143,7 +133,7 @@
       <recent name="romanow.abc.desktop.wizard" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ESS40ConsoleServer">
+  <component name="RunManager" selected="Application.ESSClient">
     <configuration name="ArchStreamDataSet" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="romanow.abc.core.entity.subjectarea.ArchStreamDataSet" />
       <module name="ESS2Core" />
@@ -237,8 +227,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ESS40ConsoleServer" />
         <item itemvalue="Application.ESSClient" />
+        <item itemvalue="Application.ESS40ConsoleServer" />
         <item itemvalue="Application.ArchStreamDataSet" />
         <item itemvalue="Application.IEC61850Client" />
         <item itemvalue="Application.ESSMonitorClient" />
@@ -253,13 +243,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00350" summary="79 - Ссисок имен активных разрядов">
-      <created>1697364022448</created>
-      <option name="number" value="00350" />
-      <option name="presentableId" value="LOCAL-00350" />
-      <option name="project" value="LOCAL" />
-      <updated>1697364022449</updated>
     </task>
     <task id="LOCAL-00351" summary="79 - ...">
       <created>1697375966944</created>
@@ -597,7 +580,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701518738089</updated>
     </task>
-    <option name="localTasksCounter" value="399" />
+    <task id="LOCAL-00399" summary="82 - Modbus cash, ошибки связей">
+      <created>1702046605392</created>
+      <option name="number" value="00399" />
+      <option name="presentableId" value="LOCAL-00399" />
+      <option name="project" value="LOCAL" />
+      <updated>1702046605392</updated>
+    </task>
+    <option name="localTasksCounter" value="400" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -624,7 +614,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="80 -" />
     <MESSAGE value="80 - toString" />
     <MESSAGE value="80 - Горизонтальный скролл" />
     <MESSAGE value="80 - Deploy Connect - force" />
@@ -649,7 +638,8 @@
     <MESSAGE value="81 - Частота вывода в лог." />
     <MESSAGE value="81 - Экспорт xml архитектуры" />
     <MESSAGE value="81 - Потоковые данные в файл" />
-    <option name="LAST_COMMIT_MESSAGE" value="81 - Потоковые данные в файл" />
+    <MESSAGE value="82 - Modbus cash, ошибки связей" />
+    <option name="LAST_COMMIT_MESSAGE" value="82 - Modbus cash, ошибки связей" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
