@@ -16,6 +16,8 @@ import romanow.abc.core.ErrorList;
 import romanow.abc.core.UniException;
 import romanow.abc.core.constants.ConstValue;
 import romanow.abc.core.constants.Values;
+import romanow.abc.core.entity.baseentityes.JBoolean;
+import romanow.abc.core.entity.baseentityes.JEmpty;
 import romanow.abc.core.entity.metadata.Meta2Register;
 import romanow.abc.core.entity.metadata.StreamDataValue;
 import romanow.abc.core.entity.metadata.StreamRegisterData;
@@ -94,7 +96,8 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         ShowData = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
+        RemoveData = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
@@ -153,15 +156,15 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
             }
         });
         add(DataSetList);
-        DataSetList.setBounds(10, 105, 210, 20);
+        DataSetList.setBounds(10, 105, 220, 20);
 
         DataSourceSize.setEnabled(false);
         add(DataSourceSize);
         DataSourceSize.setBounds(10, 150, 70, 25);
 
-        jLabel4.setText("hex/dec");
+        jLabel4.setText("hex");
         add(jLabel4);
-        jLabel4.setBounds(410, 115, 70, 16);
+        jLabel4.setBounds(440, 100, 40, 16);
 
         StreamDataOffset.setEnabled(false);
         add(StreamDataOffset);
@@ -169,7 +172,7 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
 
         DataValueAPI.setEnabled(false);
         add(DataValueAPI);
-        DataValueAPI.setBounds(240, 100, 70, 25);
+        DataValueAPI.setBounds(280, 100, 70, 25);
 
         jLabel5.setText("Смещение");
         add(jLabel5);
@@ -193,7 +196,7 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
 
         DataValueSet.setEnabled(false);
         add(DataValueSet);
-        DataValueSet.setBounds(320, 100, 70, 25);
+        DataValueSet.setBounds(360, 100, 70, 25);
 
         jLabel8.setText("Тип сжатия");
         add(jLabel8);
@@ -216,11 +219,22 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
             }
         });
         add(ShowData);
-        ShowData.setBounds(10, 60, 40, 40);
+        ShowData.setBounds(10, 65, 35, 35);
 
-        jLabel11.setText("Значение");
-        add(jLabel11);
-        jLabel11.setBounds(410, 100, 110, 16);
+        RemoveData.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/remove.png"))); // NOI18N
+        RemoveData.setBorderPainted(false);
+        RemoveData.setContentAreaFilled(false);
+        RemoveData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RemoveDataActionPerformed(evt);
+            }
+        });
+        add(RemoveData);
+        RemoveData.setBounds(240, 100, 30, 30);
+
+        jLabel7.setText("dec");
+        add(jLabel7);
+        jLabel7.setBounds(440, 115, 40, 16);
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -387,6 +401,34 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
         showData(false);
     }//GEN-LAST:event_ShowDataActionPerformed
 
+    private void RemoveDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveDataActionPerformed
+        if (DataSetList.getItemCount()==0)
+            return;
+        StreamDataValue value = data.getValueList().get(DataSetList.getSelectedIndex());
+        new OK(400, 300, "Удалить: setOid=" + value.setOid + " ?", new I_Button() {
+            @Override
+            public void onPush() {
+                new APICall<JBoolean>(main) {
+                    @Override
+                    public Call<JBoolean> apiFun() {
+                        return main.service.removeEntity(main.debugToken,"ArchStreamDataSet",value.setOid);
+                        }
+                    @Override
+                    public void onSucess(JBoolean oo) {
+                        if (oo.value()){
+                            int idx = DataSetList.getSelectedIndex();
+                            data.getValueList().remove(idx);
+                            DataSetList.remove(idx);
+                            if (idx!=0)
+                                DataSetList.select(idx-1);
+                            refreshDataSet();
+                        }
+                    }
+                };
+            }
+        });
+    }//GEN-LAST:event_RemoveDataActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField DataCompressMode;
@@ -396,6 +438,7 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
     private javax.swing.JTextField DataSourceSize;
     private javax.swing.JTextField DataValueAPI;
     private javax.swing.JTextField DataValueSet;
+    private javax.swing.JButton RemoveData;
     private javax.swing.JButton ShowData;
     private javax.swing.JButton ShowGraph;
     private javax.swing.JTextField StreamDataOffset;
@@ -405,12 +448,12 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
     private javax.swing.JTextField TIME2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
