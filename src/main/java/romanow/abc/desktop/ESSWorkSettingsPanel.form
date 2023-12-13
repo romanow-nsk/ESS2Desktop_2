@@ -614,11 +614,11 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel39">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#x421;&#x43a;&#x43e;&#x440;&#x43e;&#x441;&#x442;&#x44c; &#x43c;&#x43e;&#x434;&#x435;&#x43b;&#x438;&#x440;&#x43e;&#x432;&#x430;&#x43d;&#x438;&#x44f; * 100"/>
+        <Property name="text" type="java.lang.String" value="&#x421;&#x43a;&#x43e;&#x440;&#x43e;&#x441;&#x442;&#x44c; &#x43c;&#x43e;&#x434;&#x435;&#x43b;&#x438;&#x440;&#x43e;&#x432;&#x430;&#x43d;&#x438;&#x44f; (%)"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="410" y="375" width="200" height="-1"/>
+          <AbsoluteConstraints x="410" y="375" width="190" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

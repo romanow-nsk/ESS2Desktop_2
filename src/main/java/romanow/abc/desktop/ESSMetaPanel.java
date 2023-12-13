@@ -288,7 +288,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         RemoveNode = new javax.swing.JButton();
         AddNode = new javax.swing.JButton();
         EditNode = new javax.swing.JButton();
-        DownLoadArchitecture = new javax.swing.JButton();
+        ExportArchitectureFiles = new javax.swing.JButton();
         Deploy = new javax.swing.JButton();
         ArchitectureLabel = new javax.swing.JLabel();
         Connect = new javax.swing.JButton();
@@ -895,16 +895,16 @@ public class ESSMetaPanel extends ESSBasePanel {
         add(EditNode);
         EditNode.setBounds(290, 20, 30, 30);
 
-        DownLoadArchitecture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/download.png"))); // NOI18N
-        DownLoadArchitecture.setBorderPainted(false);
-        DownLoadArchitecture.setContentAreaFilled(false);
-        DownLoadArchitecture.addActionListener(new java.awt.event.ActionListener() {
+        ExportArchitectureFiles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/download.png"))); // NOI18N
+        ExportArchitectureFiles.setBorderPainted(false);
+        ExportArchitectureFiles.setContentAreaFilled(false);
+        ExportArchitectureFiles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DownLoadArchitectureActionPerformed(evt);
+                ExportArchitectureFilesActionPerformed(evt);
             }
         });
-        add(DownLoadArchitecture);
-        DownLoadArchitecture.setBounds(330, 60, 30, 30);
+        add(ExportArchitectureFiles);
+        ExportArchitectureFiles.setBounds(330, 60, 30, 30);
 
         Deploy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/settings.png"))); // NOI18N
         Deploy.setBorderPainted(false);
@@ -2651,7 +2651,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         });
     }//GEN-LAST:event_EditNodeActionPerformed
 
-    private void DownLoadArchitectureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DownLoadArchitectureActionPerformed
+    private void ExportArchitectureFilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExportArchitectureFilesActionPerformed
         if (Architectures.getItemCount() == 0)
             return;
         ESS2Architecture vv = main2.loadFullArchitecture(architectures.get(Architectures.getSelectedIndex()).getOid());
@@ -2673,18 +2673,25 @@ public class ESSMetaPanel extends ESSBasePanel {
                         try {
                             out.add((Artifact) request.get(main.gson));
                             } catch (Exception ee){
-                                System.out.println("Ошибка десериализации Artifct: "+ee.toString()+"\n"+request.getJsonObject());
+                                System.out.println("Ошибка десериализации Artafct: "+ee.toString()+"\n"+request.getJsonObject());
                                 return;
                                 }
                         }
                     Meta2XStream xStream = new Meta2XStream();
                     String ss = xStream.toXML(out);
                     main.saveFile("Артефакты","xml","Artifacts",ss);
+                    if (!main.getWorkSettings()){
+                        System.out.println("Недоступны настройки сервера");
+                        return;
+                        }
+                    WorkSettings ws = (WorkSettings)main.workSettings;
+                    ss = xStream.toXML(ws);
+                    main.saveFile("Настройки сервера","xml","WorkSettings",ss);
                     }
                 };
             }
         System.out.println("-------------------------------------\n" + vv.getErrors().toString());
-    }//GEN-LAST:event_DownLoadArchitectureActionPerformed
+    }//GEN-LAST:event_ExportArchitectureFilesActionPerformed
 
     private void clearDeployedMetaData(){
         ArchitectureLabel.setText("Архитектура не выбрана");
@@ -3891,7 +3898,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         EditProfiler.setEnabled(enabled);
         ImportMetaData.setEnabled(enabled);
         ImportMetaEquipment2.setEnabled(enabled);
-        DownLoadArchitecture.setEnabled(enabled);
+        ExportArchitectureFiles.setEnabled(enabled);
         ArchNodeRefrresh.setEnabled(enabled);
         RefreshMeta.setEnabled(enabled);
         AddGate.setEnabled(enabled);
@@ -3930,7 +3937,6 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JButton DeviceWrite;
     private java.awt.Choice Devices;
     private java.awt.Choice DevicesRW;
-    private javax.swing.JButton DownLoadArchitecture;
     private javax.swing.JButton EditArch;
     private javax.swing.JButton EditDevice;
     private javax.swing.JButton EditEmulator;
@@ -3948,6 +3954,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     private java.awt.Choice Equipments;
     private javax.swing.JButton ExecScriptClient;
     private javax.swing.JButton ExecScriptServer;
+    private javax.swing.JButton ExportArchitectureFiles;
     private javax.swing.JButton ExportScripts;
     private javax.swing.JButton ExportXML;
     private javax.swing.JButton ExportXMLAll;

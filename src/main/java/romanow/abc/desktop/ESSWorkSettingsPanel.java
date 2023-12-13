@@ -470,9 +470,9 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         add(ModellingSpeed);
         ModellingSpeed.setBounds(610, 370, 50, 25);
 
-        jLabel39.setText("Скорость моделирования * 100");
+        jLabel39.setText("Скорость моделирования (%)");
         add(jLabel39);
-        jLabel39.setBounds(410, 375, 200, 16);
+        jLabel39.setBounds(410, 375, 190, 16);
 
         StreamFileSets.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
