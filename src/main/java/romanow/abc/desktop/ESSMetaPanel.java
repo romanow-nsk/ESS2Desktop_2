@@ -377,6 +377,8 @@ public class ESSMetaPanel extends ESSBasePanel {
         AddGate = new javax.swing.JButton();
         RemoveGate = new javax.swing.JButton();
         EditGate = new javax.swing.JButton();
+        ExportNode = new javax.swing.JButton();
+        jSeparator7 = new javax.swing.JSeparator();
 
         setLayout(null);
 
@@ -1230,7 +1232,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         add(EditLogUnit);
         EditLogUnit.setBounds(290, 140, 30, 30);
         add(jSeparator9);
-        jSeparator9.setBounds(10, 590, 340, 10);
+        jSeparator9.setBounds(10, 590, 360, 10);
 
         jLabel41.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel41.setText("Переменные окружения");
@@ -1530,6 +1532,21 @@ public class ESSMetaPanel extends ESSBasePanel {
         });
         add(EditGate);
         EditGate.setBounds(290, 220, 30, 30);
+
+        ExportNode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/battery.png"))); // NOI18N
+        ExportNode.setBorderPainted(false);
+        ExportNode.setContentAreaFilled(false);
+        ExportNode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExportNodeActionPerformed(evt);
+            }
+        });
+        add(ExportNode);
+        ExportNode.setBounds(330, 600, 30, 50);
+
+        jSeparator7.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        add(jSeparator7);
+        jSeparator7.setBounds(325, 593, 50, 100);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ImportMetaDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportMetaDataActionPerformed
@@ -3735,6 +3752,18 @@ public class ESSMetaPanel extends ESSBasePanel {
         });
     }//GEN-LAST:event_EditGateActionPerformed
 
+    private void ExportNodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExportNodeActionPerformed
+        if (architecture==null){
+            popup("Не выбрана архитектура для экспорта");
+            }
+        new OK(200, 200, "Экспорт архитектуры в сервер: "+architecture.getTitle(), new I_Button() {
+            @Override
+            public void onPush() {
+                //new ESSExportConfig(main2,architecture,false,true);
+            }
+        });
+    }//GEN-LAST:event_ExportNodeActionPerformed
+
     private void refreshIEC61850State(){
         new APICall<JInt>(main) {
             @Override
@@ -3955,6 +3984,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JButton ExecScriptClient;
     private javax.swing.JButton ExecScriptServer;
     private javax.swing.JButton ExportArchitectureFiles;
+    private javax.swing.JButton ExportNode;
     private javax.swing.JButton ExportScripts;
     private javax.swing.JButton ExportXML;
     private javax.swing.JButton ExportXMLAll;
@@ -4077,6 +4107,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     // End of variables declaration//GEN-END:variables
