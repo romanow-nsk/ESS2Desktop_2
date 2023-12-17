@@ -44,7 +44,7 @@ public class ESSMainServerPanel extends BasePanel {
         new APICall<ArrayList<DBRequest>>(main){
             @Override
             public Call<ArrayList<DBRequest>> apiFun() {
-                return main.service.getEntityList(main.debugToken,"ESSNode", Values.GetAllModeActual,1);
+                return main.getService().getEntityList(main.getDebugToken(),"ESSNode", Values.GetAllModeActual,1);
             }
             @Override
             public void onSucess(ArrayList<DBRequest> oo) {
@@ -342,7 +342,7 @@ public class ESSMainServerPanel extends BasePanel {
                 new APICall<JLong>(main) {
                     @Override
                     public Call<JLong> apiFun() {
-                        return main.service.addEntity(main.debugToken, new DBRequest(new ESSNode(),main.gson),0);
+                        return main.getService().addEntity(main.getDebugToken(), new DBRequest(new ESSNode(),main.gson),0);
                         }
                     @Override
                     public void onSucess(JLong oo) {
@@ -363,7 +363,7 @@ public class ESSMainServerPanel extends BasePanel {
                 new APICall<JBoolean>(main) {
                     @Override
                     public Call<JBoolean> apiFun() {
-                        return main.service.removeEntity(main.debugToken, "ESSNode",selected.getOid());
+                        return main.getService().removeEntity(main.getDebugToken(), "ESSNode",selected.getOid());
                         }
                     @Override
                     public void onSucess(JBoolean oo) {
@@ -380,7 +380,7 @@ public class ESSMainServerPanel extends BasePanel {
         new APICall<JEmpty>(main) {
             @Override
             public Call<JEmpty> apiFun() {
-                return main.service.updateEntity(main.debugToken, new DBRequest(selected,main.gson));
+                return main.getService().updateEntity(main.getDebugToken(), new DBRequest(selected,main.gson));
                 }
             @Override
             public void onSucess(JEmpty oo) {
@@ -396,13 +396,13 @@ public class ESSMainServerPanel extends BasePanel {
             new APICall2<JEmpty>() {
                 @Override
                 public Call<JEmpty> apiFun() {
-                return main.service.updateEntityField(main.debugToken,"working",new DBRequest(selected,main.gson));
+                return main.getService().updateEntityField(main.getDebugToken(),"working",new DBRequest(selected,main.gson));
                     }
                 }.call(main);
             new APICall2<JEmpty>() {
                 @Override
                 public Call<JEmpty> apiFun() {
-                    return main.service.updateEntityField(main.debugToken,"stateTestTime",new DBRequest(selected,main.gson));
+                    return main.getService().updateEntityField(main.getDebugToken(),"stateTestTime",new DBRequest(selected,main.gson));
                     }
                 }.call(main);
             }catch (UniException ee){
@@ -419,7 +419,7 @@ public class ESSMainServerPanel extends BasePanel {
             account = new APICall2<Account>(){
                 @Override
                 public Call<Account> apiFun() {
-                return main.service.getOwnAccount(main.debugToken);
+                return main.getService().getOwnAccount(main.getDebugToken());
                     }
                 }.call(main);
             res = main.startOneClient(selected.getServerIP(),""+selected.getServerPort());
@@ -526,7 +526,7 @@ public class ESSMainServerPanel extends BasePanel {
             new APICall2<JEmpty>() {
                 @Override
                 public Call<JEmpty> apiFun() {
-                    return main.service.updateEntityField(main.debugToken,"connect",new DBRequest(selected,main.gson));
+                    return main.getService().updateEntityField(main.getDebugToken(),"connect",new DBRequest(selected,main.gson));
                 }
             }.call(main);
             } catch (UniException e) {

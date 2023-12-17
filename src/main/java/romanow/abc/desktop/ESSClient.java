@@ -88,7 +88,7 @@ public class ESSClient extends Client {
     public void onLoginSuccess(){
         try {
             service2 = startSecondClient(getServerIP(),""+getServerPort());
-            manager = new AccessManager(loginUser);
+            manager = new AccessManager(loginUser());
             getWorkSettings();
             } catch (UniException e) {
                 popup("Ошибка соединения: " +e.toString());
@@ -96,24 +96,24 @@ public class ESSClient extends Client {
         }
 
     public void setExternalData(String token, User uu, WorkSettings ws0, RestAPIBase service0, RestAPIESS2 service20, boolean localUser0){
-        debugToken = token;
-        loginUser = uu;
-        manager = new AccessManager(loginUser);
-        workSettings = ws0;
-        service = service0;
+        setDebugToken(token);
+        setLoginUser(uu);
+        manager = new AccessManager(loginUser());
+        setWorkSettins(ws0);
+        setService(service0);
         service2 = service20;
-        localUser = localUser0;
+        setLocalUser(localUser0);
         }
     public RestAPIESS2 startSecondClient(String ip, String port) throws UniException {
         RestAPIESS2 service = RestAPISecondClient.startClient(ip,port);
-        localUser = ip.equals("localhost") || port.equals("127.0.0.1");
+        setLocalUser(ip.equals("localhost") || port.equals("127.0.0.1"));
         return service;
         }
     //----------------------- Загрузка метаданных для всех клиентов ---------------------------------------
     public ESS2Architecture loadFullArchitecture(long oid){
         ESS2Architecture arch = new ESS2Architecture();
         try {
-            Response<DBRequest> res = service.getEntity(debugToken,"ESS2Architecture",oid,4).execute();
+            Response<DBRequest> res = getService().getEntity(getDebugToken(),"ESS2Architecture",oid,4).execute();
             if (!res.isSuccessful()){
                 if (res.code()== ValuesBase.HTTPAuthorization)
                     arch.addErrorData("Сеанс закрыт " + Utils.httpError(res));
@@ -167,8 +167,8 @@ public class ESSClient extends Client {
         deployed.testFullArchitecture();
         ModBusClientProxyDriver driver = new ModBusClientProxyDriver();
         HashMap<String,String> map = new HashMap<>();
-        map.put("token",debugToken);
-        Object oo[]={service, service2,this};
+        map.put("token",getDebugToken());
+        Object oo[]={getService(), service2,this};
         try {
             driver.openConnection(oo,map);
             for (ESS2Equipment equipment : deployed.getEquipments()) {
@@ -189,7 +189,7 @@ public class ESSClient extends Client {
             ArrayList<Long> val = new APICall2<ArrayList<Long>>() {
                 @Override
                 public Call<ArrayList<Long>> apiFun() {
-                    return service2.getArchitectureState(debugToken);
+                    return service2.getArchitectureState(getDebugToken());
                     }
                 }.call(this);
             int state = val.get(0).intValue();
@@ -358,9 +358,9 @@ public class ESSClient extends Client {
                 @Override
                 public Call<ESS2EnvValuesList> apiFun() {
                     if (nodeOid == 0)
-                        return service2.getEnvValues(debugToken);
+                        return service2.getEnvValues(getDebugToken());
                     else
-                        return service2.getEnvValuesNode(debugToken, nodeOid);
+                        return service2.getEnvValuesNode(getDebugToken(), nodeOid);
                     }
                 }.call(this);
             setLocalEnvValues(oo);

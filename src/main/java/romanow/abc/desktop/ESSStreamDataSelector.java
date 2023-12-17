@@ -255,7 +255,7 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
         new APICall<DBRequest>(main){
             @Override
             public Call<DBRequest> apiFun() {
-                return main.service.getEntity(main.debugToken,"ArchStreamDataSet",value.setOid,0);
+                return main.getService().getEntity(main.getDebugToken(),"ArchStreamDataSet",value.setOid,0);
                 }
             @Override
             public void onSucess(DBRequest oo) {
@@ -333,7 +333,7 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
         String res = new APICall3<Pair<ErrorList,ArrayList<StreamDataValue>>>(){
             @Override
             public Call<Pair<ErrorList,ArrayList<StreamDataValue>>> apiFun() {
-                return main.service2.getStreamData2(main.debugToken,selectedMode.value(),StreamRegister.getSelectedIndex(),time1.timeInMS(),time2.timeInMS());
+                return main.service2.getStreamData2(main.getDebugToken(),selectedMode.value(),StreamRegister.getSelectedIndex(),time1.timeInMS(),time2.timeInMS());
                 }
             @Override
             public void onSucess(Pair<ErrorList,ArrayList<StreamDataValue>> ans) {
@@ -358,7 +358,7 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
         String res = new APICall3<ArrayList<StreamDataValue>>(){
             @Override
             public Call<ArrayList<StreamDataValue>> apiFun() {
-                return main.service2.getStreamData(main.debugToken,selectedMode.value(),StreamRegister.getSelectedIndex(),time1.timeInMS(),time2.timeInMS());
+                return main.service2.getStreamData(main.getDebugToken(),selectedMode.value(),StreamRegister.getSelectedIndex(),time1.timeInMS(),time2.timeInMS());
                 }
             @Override
             public void onSucess(ArrayList<StreamDataValue> oo) {
@@ -411,7 +411,7 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
                 new APICall<JBoolean>(main) {
                     @Override
                     public Call<JBoolean> apiFun() {
-                        return main.service.removeEntity(main.debugToken,"ArchStreamDataSet",value.setOid);
+                        return main.getService().removeEntity(main.getDebugToken(),"ArchStreamDataSet",value.setOid);
                         }
                     @Override
                     public void onSucess(JBoolean oo) {

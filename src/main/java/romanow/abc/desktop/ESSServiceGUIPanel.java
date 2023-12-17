@@ -155,7 +155,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             public void run() {
                 while(!shutDown){
                     try {
-                        Thread.sleep(((WorkSettings) main.workSettings).getGUIrefreshPeriod() * 1000);
+                        Thread.sleep(((WorkSettings) main.workSettings()).getGUIrefreshPeriod() * 1000);
                         } catch (InterruptedException e) {
                             long tm = System.currentTimeMillis();
                             if (asyncCount!=0){
@@ -172,7 +172,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                             return;
                             }
                         long sec = (new OwnDateTime().timeInMS() - userLoginTime.timeInMS()) / 1000;
-                        if (logoutCallBack != null && sec > ((WorkSettings) main.workSettings).getUserSilenceTime() * 60) {
+                        if (logoutCallBack != null && sec > ((WorkSettings) main.workSettings()).getUserSilenceTime() * 60) {
                             shutDown();
                             logoutCallBack.onPush();
                             return;
@@ -215,9 +215,9 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         context.setLocalUser(main0.isLocalUser());
         context.setSuperUser(main0.loginUser().getTypeId()==Values.UserSuperAdminType);
         context.setManager(main0.manager);
-        context.setService(main0.service);
+        context.setService(main0.getService());
         context.setService2(main2.service2);
-        context.setToken(main0.debugToken);
+        context.setToken(main0.getDebugToken());
         context.setValid(true);
         context.setPlatformName("Desktop");
         context.setMain(main);
@@ -799,7 +799,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                     }
                 else{
                     module = (Module)res.o2;
-                    module.init(main,this,main.service,main2.service2,main.debugToken, context.getForm(),context);
+                    module.init(main,this,main.getService(),main2.service2,main.getDebugToken(), context.getForm(),context);
                     }
                 }
             }
@@ -1005,11 +1005,11 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                         @Override
                         public Call apiFun() {
                             if (nodeid!=0)
-                                return main2.service2.readESS2NodeSnapShotValues(main.debugToken, nodeid,device.getShortName(),list);
+                                return main2.service2.readESS2NodeSnapShotValues(main.getDebugToken(), nodeid,device.getShortName(),list);
                             if (currentForm.isSnapShot())
-                                return main2.service2.readESS2SnapShotValues(main.debugToken, device.getShortName(),list);
+                                return main2.service2.readESS2SnapShotValues(main.getDebugToken(), device.getShortName(),list);
                             else
-                                return main2.service2.readESS2RegistersValues(main.debugToken, device.getShortName(),list);
+                                return main2.service2.readESS2RegistersValues(main.getDebugToken(), device.getShortName(),list);
                             }
                     }.call(main);
                     java.awt.EventQueue.invokeLater(new Runnable() {

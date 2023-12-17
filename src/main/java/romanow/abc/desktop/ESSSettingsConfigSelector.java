@@ -44,7 +44,7 @@ public class ESSSettingsConfigSelector extends javax.swing.JPanel {
         new APICall<ArrayList<DBRequest>>(main){
             @Override
             public Call<ArrayList<DBRequest>> apiFun() {
-                return main.service.getEntityList(main.debugToken,"ESS2Config", Values.GetAllModeActual,2);
+                return main.getService().getEntityList(main.getDebugToken(),"ESS2Config", Values.GetAllModeActual,2);
             }
             @Override
             public void onSucess(ArrayList<DBRequest> oo) {
@@ -194,7 +194,7 @@ public class ESSSettingsConfigSelector extends javax.swing.JPanel {
                 new APICall<ErrorList>(main) {
                     @Override
                     public Call<ErrorList> apiFun() {
-                        return main.service2.deploySettingsConfig(main.debugToken, selected.getOid());
+                        return main.service2.deploySettingsConfig(main.getDebugToken(), selected.getOid());
                         }
                     @Override
                     public void onSucess(ErrorList ss) {
@@ -214,7 +214,7 @@ public class ESSSettingsConfigSelector extends javax.swing.JPanel {
                 new APICall<JEmpty>(main) {
                     @Override
                     public Call<JEmpty> apiFun() {
-                        return main.service2.removeSettingsConfig(main.debugToken, selected.getOid());
+                        return main.service2.removeSettingsConfig(main.getDebugToken(), selected.getOid());
                         }
                     @Override
                     public void onSucess(JEmpty ss) {
@@ -230,7 +230,7 @@ public class ESSSettingsConfigSelector extends javax.swing.JPanel {
         new APICall<JEmpty>(main) {
             @Override
             public Call<JEmpty> apiFun() {
-                return main.service.updateEntity(main.debugToken,new DBRequest(selected,main.gson));
+                return main.getService().updateEntity(main.getDebugToken(),new DBRequest(selected,main.gson));
                 }
             @Override
             public void onSucess(JEmpty oo) {
@@ -250,7 +250,7 @@ public class ESSSettingsConfigSelector extends javax.swing.JPanel {
                 new APICall<ErrorList>(main) {
                     @Override
                     public Call<ErrorList> apiFun() {
-                        return main.service2.addSettingsConfig(main.debugToken, Comment.getText(), Title.getText());
+                        return main.service2.addSettingsConfig(main.getDebugToken(), Comment.getText(), Title.getText());
                         }
                     @Override
                     public void onSucess(ErrorList ss) {

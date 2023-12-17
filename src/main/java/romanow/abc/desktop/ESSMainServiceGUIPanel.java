@@ -104,8 +104,8 @@ public class ESSMainServiceGUIPanel extends ESSBasePanel {
         context.setLocalUser(main0.isLocalUser());
         context.setSuperUser(main0.loginUser().getTypeId()== Values.UserSuperAdminType);
         context.setManager(main0.manager);
-        context.setService(main0.service);
-        context.setToken(main0.debugToken);
+        context.setService(main0.getService());
+        context.setToken(main0.getDebugToken());
         context.setValid(true);
         userLoginTime = new OwnDateTime();
         refreshNodeList();
@@ -141,12 +141,12 @@ public class ESSMainServiceGUIPanel extends ESSBasePanel {
             @Override
             public void run() {
                 try {
-                    Thread.sleep(((WorkSettings)main.workSettings).getGUIrefreshPeriod()*1000);
+                    Thread.sleep(((WorkSettings)main.workSettings()).getGUIrefreshPeriod()*1000);
                     } catch (InterruptedException e) {}
                     if (shutDown)
                         return;
                 long sec =  (new OwnDateTime().timeInMS()-userLoginTime.timeInMS())/1000;
-                if (logoutCallBack!=null && sec > ((WorkSettings)main.workSettings).getUserSilenceTime()*60){
+                if (logoutCallBack!=null && sec > ((WorkSettings)main.workSettings()).getUserSilenceTime()*60){
                     shutDown();
                     logoutCallBack.onPush();
                     return;
@@ -550,7 +550,7 @@ public class ESSMainServiceGUIPanel extends ESSBasePanel {
             ArrayList<DBRequest> list = new APICallC<ArrayList<DBRequest>>() {
                 @Override
                 public Call<ArrayList<DBRequest>> apiFun() {
-                    return main.service.getEntityList(main.debugToken, "ESSNode", Values.GetAllModeActual, 1);
+                    return main.getService().getEntityList(main.getDebugToken(), "ESSNode", Values.GetAllModeActual, 1);
                     }
                 }.call();
             for(DBRequest zz : list)

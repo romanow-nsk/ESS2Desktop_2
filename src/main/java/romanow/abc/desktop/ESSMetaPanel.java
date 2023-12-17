@@ -96,7 +96,7 @@ public class ESSMetaPanel extends ESSBasePanel {
 
     public void initPanel(MainBaseFrame main0) {
         super.initPanel(main0);
-        String pass = main.loginUser.getAccount().getPassword();
+        String pass = main.loginUser().getAccount().getPassword();
         Password.setText(pass);
         streamData.setBounds(370, 270, 470, 185);
         add(streamData);
@@ -126,8 +126,8 @@ public class ESSMetaPanel extends ESSBasePanel {
         refreshArchitectures();
         setRenderingOff();
         refreshArchtectureState();
-        if (main.loginUser.getTypeId()== UserESSOperator) {
-                if (main.loginUser.getTypeId()==Values.UserESSOperator){
+        if (main.loginUser().getTypeId()== UserESSOperator) {
+                if (main.loginUser().getTypeId()==Values.UserESSOperator){
                     if (main2.deployed.getArchitectureState()!=Values.ASConnected){
                         popup("Конфигурация не развернута или не активирована");
                     }
@@ -152,12 +152,13 @@ public class ESSMetaPanel extends ESSBasePanel {
                 }
             getRootPane().setVisible(false);
             }
-        if (!main2.getWorkSettings()){
-            popup("Ошибка чтения настроек");
-            System.out.println("Ошибка чтения настроек");
+        String ss=main2.getWorkSettings();
+        if (ss!=null){
+            popup("Ошибка чтения настроек: "+ss);
+            System.out.println("Ошибка чтения настроек: "+ss);
             }
         else{
-            mainServerMode = ((WorkSettings)main2.workSettings).isMainServerMode();
+            mainServerMode = ((WorkSettings)main2.workSettings()).isMainServerMode();
             }
         Deploy.setVisible(!mainServerMode);
         Connect.setVisible(!mainServerMode);
@@ -1555,14 +1556,14 @@ public class ESSMetaPanel extends ESSBasePanel {
         new APICall<Artifact>(main) {
             @Override
             public Call<Artifact> apiFun() {
-                return main.service.upload(main.debugToken, "Meta-Data import", fname.fileName(), body);
+                return main.getService().upload(main.getDebugToken(), "Meta-Data import", fname.fileName(), body);
                 }
             @Override
             public void onSucess(final Artifact oo) {
                 new APICall<ArrayList<OidString>>(main) {
                     @Override
                     public Call<ArrayList<OidString>> apiFun() {
-                        return main2.service2.importMetaData(main.debugToken, Password.getText(), oo.getOid());
+                        return main2.service2.importMetaData(main.getDebugToken(), Password.getText(), oo.getOid());
                        }
                     @Override
                     public void onSucess(ArrayList<OidString> oo) {
@@ -1586,7 +1587,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         new APICall<ArrayList<DBRequest>>(main) {
             @Override
             public Call<ArrayList<DBRequest>> apiFun() {
-                return main.service.getEntityList(main.debugToken, "ESS2MetaFile", Values.GetAllModeActual, 1);
+                return main.getService().getEntityList(main.getDebugToken(), "ESS2MetaFile", Values.GetAllModeActual, 1);
                 }
             @Override
             public void onSucess(ArrayList<DBRequest> oo) {
@@ -1622,7 +1623,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         new APICall<ArrayList<DBRequest>>(main) {
             @Override
             public Call<ArrayList<DBRequest>> apiFun() {
-                return main.service.getEntityList(main.debugToken, "ESS2Node", Values.GetAllModeActual, 5);
+                return main.getService().getEntityList(main.getDebugToken(), "ESS2Node", Values.GetAllModeActual, 5);
                 }
             @Override
             public void onSucess(ArrayList<DBRequest> oo) {
@@ -1659,7 +1660,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         new APICall<ArrayList<DBRequest>>(main) {
             @Override
             public Call<ArrayList<DBRequest>> apiFun() {
-                return main.service.getEntityList(main.debugToken, "ESS2Architecture", Values.GetAllModeActual, 4);
+                return main.getService().getEntityList(main.getDebugToken(), "ESS2Architecture", Values.GetAllModeActual, 4);
                 }
             @Override
             public void onSucess(ArrayList<DBRequest> oo) {
@@ -1755,7 +1756,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         new APICall<ArrayList<Long>>(main) {
             @Override
             public Call<ArrayList<Long>> apiFun() {
-                return main2.service2.getArchitectureState(main.debugToken);
+                return main2.service2.getArchitectureState(main.getDebugToken());
                 }
             @Override
             public void onSucess(ArrayList<Long> val) {
@@ -2083,14 +2084,14 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JEmpty>(main) {
                     @Override
                     public Call<JEmpty> apiFun() {
-                        return main.service.removeArtifact(main.debugToken,metaFile.getFile().getOid());
+                        return main.getService().removeArtifact(main.getDebugToken(),metaFile.getFile().getOid());
                         }
                     @Override
                     public void onSucess(JEmpty oo) {
                         new APICall<JBoolean>(main) {
                             @Override
                             public Call<JBoolean> apiFun() {
-                                return main.service.removeEntity(main.debugToken,"ESS2MetaFile",metaFile.getOid());
+                                return main.getService().removeEntity(main.getDebugToken(),"ESS2MetaFile",metaFile.getOid());
                                 }
 
                             @Override
@@ -2127,7 +2128,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         new APICall<Artifact>(main){
             @Override
             public Call<Artifact> apiFun() {
-                return main.service.createArtifactFromString(main.debugToken,"MetaData.xml",dataString);
+                return main.getService().createArtifactFromString(main.getDebugToken(),"MetaData.xml",dataString);
                 }
             @Override
             public void onSucess(Artifact oo) {
@@ -2135,7 +2136,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JLong>(main){
                     @Override
                     public Call<JLong> apiFun() {
-                        return main.service.addEntity(main.debugToken,new DBRequest(metaFile,main.gson),0);
+                        return main.getService().addEntity(main.getDebugToken(),new DBRequest(metaFile,main.gson),0);
                         }
                     @Override
                     public void onSucess(JLong oo) {
@@ -2197,7 +2198,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             new APICall<JEmpty>(main) {
                 @Override
                 public Call<JEmpty> apiFun() {
-                    return main.service.updateEntity(main.debugToken, new DBRequest(metaFile,main.gson));
+                    return main.getService().updateEntity(main.getDebugToken(), new DBRequest(metaFile,main.gson));
                 }
                 @Override
                 public void onSucess(JEmpty oo) {}
@@ -2218,7 +2219,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JEmpty>(main) {
                     @Override
                     public Call<JEmpty> apiFun() {
-                        return main.service.updateEntity(main.debugToken, new DBRequest(metaFile, main.gson));
+                        return main.getService().updateEntity(main.getDebugToken(), new DBRequest(metaFile, main.gson));
                         }
                     @Override
                     public void onSucess(JEmpty vv) {
@@ -2248,7 +2249,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JBoolean>(main) {
                     @Override
                     public Call<JBoolean> apiFun() {
-                        return main.service.removeEntity(main.debugToken, "ESS2Device", device.getOid());
+                        return main.getService().removeEntity(main.getDebugToken(), "ESS2Device", device.getOid());
                         }
                     @Override
                     public void onSucess(JBoolean val) {
@@ -2271,7 +2272,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JLong>(main) {
                     @Override
                     public Call<JLong> apiFun() {
-                        return main.service.addEntity(main.debugToken, new DBRequest(connector, main.gson), 0);
+                        return main.getService().addEntity(main.getDebugToken(), new DBRequest(connector, main.gson), 0);
                         }
                     @Override
                     public void onSucess(JLong val) {
@@ -2320,7 +2321,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JLong>(main) {
                     @Override
                     public Call<JLong> apiFun() {
-                        return main.service.addEntity(main.debugToken, new DBRequest(equipment, main.gson), 0);
+                        return main.getService().addEntity(main.getDebugToken(), new DBRequest(equipment, main.gson), 0);
                     }
 
                     @Override
@@ -2350,7 +2351,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         new APICall<JBoolean>(main) {
             @Override
             public Call<JBoolean> apiFun() {
-                return main.service.removeEntity(main.debugToken, "ESS2View", view.getOid());
+                return main.getService().removeEntity(main.getDebugToken(), "ESS2View", view.getOid());
             }
 
             @Override
@@ -2366,7 +2367,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             new APICall<JBoolean>(main) {
                 @Override
                 public Call<JBoolean> apiFun() {
-                    return main.service.removeEntity(main.debugToken, "ESS2LogUnit", connector.getOid());
+                    return main.getService().removeEntity(main.getDebugToken(), "ESS2LogUnit", connector.getOid());
                 }
                 @Override
                 public void onSucess(JBoolean val) {
@@ -2376,7 +2377,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         new APICall<JBoolean>(main) {
             @Override
             public Call<JBoolean> apiFun() {
-                return main.service.removeEntity(main.debugToken, "ESS2Equipment", equipment.getOid());
+                return main.getService().removeEntity(main.getDebugToken(), "ESS2Equipment", equipment.getOid());
                 }
             @Override
             public void onSucess(JBoolean val) {
@@ -2406,7 +2407,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JBoolean>(main) {
                     @Override
                     public Call<JBoolean> apiFun() {
-                        return main.service.removeEntity(main.debugToken, "ESS2Architecture", architecture.getOid());
+                        return main.getService().removeEntity(main.getDebugToken(), "ESS2Architecture", architecture.getOid());
                         }
                     @Override
                     public void onSucess(JBoolean val) {
@@ -2425,7 +2426,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JLong>(main) {
                     @Override
                     public Call<JLong> apiFun() {
-                        return main.service.addEntity(main.debugToken, new DBRequest(arch, main.gson), 0);
+                        return main.getService().addEntity(main.getDebugToken(), new DBRequest(arch, main.gson), 0);
                     }
 
                     @Override
@@ -2475,7 +2476,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JLong>(main) {
                     @Override
                     public Call<JLong> apiFun() {
-                        return main.service.addEntity(main.debugToken, new DBRequest(view, main.gson), 0);
+                        return main.getService().addEntity(main.getDebugToken(), new DBRequest(view, main.gson), 0);
                     }
 
                     @Override
@@ -2500,7 +2501,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JEmpty>(main) {
                     @Override
                     public Call<JEmpty> apiFun() {
-                        return main.service.updateEntity(main.debugToken, new DBRequest(view, main.gson));
+                        return main.getService().updateEntity(main.getDebugToken(), new DBRequest(view, main.gson));
                     }
                     @Override
                     public void onSucess(JEmpty vv) {
@@ -2525,7 +2526,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JEmpty>(main) {
                     @Override
                     public Call<JEmpty> apiFun() {
-                        return main.service.updateEntity(main.debugToken, new DBRequest(architecture, main.gson));
+                        return main.getService().updateEntity(main.getDebugToken(), new DBRequest(architecture, main.gson));
                         }
                     @Override
                     public void onSucess(JEmpty vv) {
@@ -2553,7 +2554,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JEmpty>(main) {
                     @Override
                     public Call<JEmpty> apiFun() {
-                        return main.service.updateEntity(main.debugToken, new DBRequest(equipment, main.gson));
+                        return main.getService().updateEntity(main.getDebugToken(), new DBRequest(equipment, main.gson));
                     }
                     @Override
                     public void onSucess(JEmpty vv) {
@@ -2579,7 +2580,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JEmpty>(main) {
                     @Override
                     public Call<JEmpty> apiFun() {
-                        return main.service.updateEntity(main.debugToken, new DBRequest(connector, main.gson));
+                        return main.getService().updateEntity(main.getDebugToken(), new DBRequest(connector, main.gson));
                         }
                     @Override
                     public void onSucess(JEmpty vv) {
@@ -2611,7 +2612,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JBoolean>(main) {
                     @Override
                     public Call<JBoolean> apiFun() {
-                        return main.service.removeEntity(main.debugToken, "ESS2Node", oid);
+                        return main.getService().removeEntity(main.getDebugToken(), "ESS2Node", oid);
                        }
                     @Override
                     public void onSucess(JBoolean val) {
@@ -2629,7 +2630,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JLong>(main) {
                     @Override
                     public Call<JLong> apiFun() {
-                        return main.service.addEntity(main.debugToken, new DBRequest(new ESS2Node(), main.gson), 0);
+                        return main.getService().addEntity(main.getDebugToken(), new DBRequest(new ESS2Node(), main.gson), 0);
                     }
 
                     @Override
@@ -2653,7 +2654,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JEmpty>(main) {
                     @Override
                     public Call<JEmpty> apiFun() {
-                        return main.service.updateEntity(main.debugToken, new DBRequest(node, main.gson));
+                        return main.getService().updateEntity(main.getDebugToken(), new DBRequest(node, main.gson));
                         }
                     @Override
                     public void onSucess(JEmpty vv) {
@@ -2681,7 +2682,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             new APICall<ArrayList<DBRequest>>(main) {
                 @Override
                 public Call<ArrayList<DBRequest>> apiFun() {
-                    return main.service.getEntityList(main.debugToken,"Artifact",Values.GetAllModeActual,0);
+                    return main.getService().getEntityList(main.getDebugToken(),"Artifact",Values.GetAllModeActual,0);
                     }
                 @Override
                 public void onSucess(ArrayList<DBRequest> list) {
@@ -2697,11 +2698,12 @@ public class ESSMetaPanel extends ESSBasePanel {
                     Meta2XStream xStream = new Meta2XStream();
                     String ss = xStream.toXML(out);
                     main.saveFile("Артефакты","xml","Artifacts",ss);
-                    if (!main.getWorkSettings()){
-                        System.out.println("Недоступны настройки сервера");
+                    String ss2 = main.getWorkSettings();
+                    if (ss2!=null){
+                        System.out.println("Недоступны настройки сервера: "+ss);
                         return;
                         }
-                    WorkSettings ws = (WorkSettings)main.workSettings;
+                    WorkSettings ws = (WorkSettings)main.workSettings();
                     ss = xStream.toXML(ws);
                     main.saveFile("Настройки сервера","xml","WorkSettings",ss);
                     }
@@ -2751,7 +2753,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 @Override
                 public Call<CallResult> apiFun() {
                     String pass = Password.getText();
-                    return main2.service2.metaDataCancel(main.debugToken,pass);
+                    return main2.service2.metaDataCancel(main.getDebugToken(),pass);
                     }
                 @Override
                 public void onSucess(CallResult val) {
@@ -2771,7 +2773,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             new APICall<CallResult>(main) {
                 @Override
                 public Call<CallResult> apiFun() {
-                    return main2.service2.metaDataDeployForce(main.debugToken, Password.getText(), oid,ForceDeploy.isSelected());
+                    return main2.service2.metaDataDeployForce(main.getDebugToken(), Password.getText(), oid,ForceDeploy.isSelected());
                     }
                 @Override
                 public void onSucess(CallResult val) {
@@ -2815,7 +2817,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             new APICall<CallResult>(main){
                 @Override
                 public Call<CallResult> apiFun() {
-                    return main2.service2.disconnectFromEquipment(main2.debugToken);
+                    return main2.service2.disconnectFromEquipment(main2.getDebugToken());
                     }
                 @Override
                 public void onSucess(CallResult oo) {
@@ -2842,7 +2844,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         new APICall<CallResult>(main){
             @Override
             public Call<CallResult> apiFun() {
-                return main2.service2.connectToEquipmentForce(main2.debugToken,ForceConnect.isSelected());
+                return main2.service2.connectToEquipmentForce(main2.getDebugToken(),ForceConnect.isSelected());
                 }
             @Override
             public void onSucess(CallResult oo) {
@@ -2873,7 +2875,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JBoolean>(main) {
                     @Override
                     public Call<JBoolean> apiFun() {
-                        return main.service.removeEntity(main.debugToken, "ESS2EquipEmulator", emulator.getOid());
+                        return main.getService().removeEntity(main.getDebugToken(), "ESS2EquipEmulator", emulator.getOid());
                         }
                     @Override
                     public void onSucess(JBoolean val) {
@@ -2900,7 +2902,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JLong>(main) {
                     @Override
                     public Call<JLong> apiFun() {
-                        return main.service.addEntity(main.debugToken, new DBRequest(emulator, main.gson), 0);
+                        return main.getService().addEntity(main.getDebugToken(), new DBRequest(emulator, main.gson), 0);
                         }
                     @Override
                     public void onSucess(JLong val) {
@@ -2924,7 +2926,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JEmpty>(main) {
                     @Override
                     public Call<JEmpty> apiFun() {
-                        return main.service.updateEntity(main.debugToken, new DBRequest(emulator, main.gson));
+                        return main.getService().updateEntity(main.getDebugToken(), new DBRequest(emulator, main.gson));
                         }
                     @Override
                     public void onSucess(JEmpty vv) {
@@ -2949,7 +2951,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         new APICall<Artifact>(main) {
             @Override
             public Call<Artifact> apiFun() {
-                return main.service.upload(main.debugToken, "Script import", fname.fileName(), body);
+                return main.getService().upload(main.getDebugToken(), "Script import", fname.fileName(), body);
                 }
             @Override
             public void onSucess(final Artifact oo) {
@@ -2960,7 +2962,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JLong>(main) {
                     @Override
                     public Call<JLong> apiFun() {
-                        return main.service.addEntity(main.debugToken, new DBRequest(script,main.gson),0);
+                        return main.getService().addEntity(main.getDebugToken(), new DBRequest(script,main.gson),0);
                         }
                     @Override
                     public void onSucess(JLong oo) {
@@ -2986,7 +2988,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JBoolean>(main) {
                     @Override
                     public Call<JBoolean> apiFun() {
-                        return main.service.deleteById(main.debugToken, "ESS2ScriptFile", scriptFile.getOid());
+                        return main.getService().deleteById(main.getDebugToken(), "ESS2ScriptFile", scriptFile.getOid());
                     }
                     @Override
                     public void onSucess(JBoolean val) {
@@ -3011,7 +3013,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                             new APICall<JEmpty>(main) {
                                 @Override
                                 public Call<JEmpty> apiFun() {
-                                    return main.service.updateEntity(main.debugToken, new DBRequest(scriptFile, main.gson));
+                                    return main.getService().updateEntity(main.getDebugToken(), new DBRequest(scriptFile, main.gson));
                                 }
 
                                 @Override
@@ -3077,7 +3079,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         new APICall<JString>(main){
             @Override
             public Call<JString> apiFun() {
-                return main2.service2.execScript(main.debugToken,scriptFile.getOid(),Trace.isSelected());
+                return main2.service2.execScript(main.getDebugToken(),scriptFile.getOid(),Trace.isSelected());
                 }
             @Override
             public void onSucess(JString oo) {
@@ -3094,14 +3096,14 @@ public class ESSMetaPanel extends ESSBasePanel {
         new APICall<Artifact>(main) {
             @Override
             public Call<Artifact> apiFun() {
-                return main.service.upload(main.debugToken, "Meta-Data import", fname.fileName(), body);
+                return main.getService().upload(main.getDebugToken(), "Meta-Data import", fname.fileName(), body);
                 }
             @Override
             public void onSucess(final Artifact oo) {
                 new APICall<ArrayList<OidString>>(main) {
                     @Override
                     public Call<ArrayList<OidString>> apiFun() {
-                        return main2.service2.importMetaData2(main.debugToken, Password.getText(), oo.getOid());
+                        return main2.service2.importMetaData2(main.getDebugToken(), Password.getText(), oo.getOid());
                         }
                     @Override
                     public void onSucess(ArrayList<OidString> oo) {
@@ -3155,7 +3157,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JEmpty>(main) {
                     @Override
                     public Call<JEmpty> apiFun() {
-                        return main.service.updateEntity(main.debugToken, new DBRequest(metaFile2, main.gson));
+                        return main.getService().updateEntity(main.getDebugToken(), new DBRequest(metaFile2, main.gson));
                     }
                     @Override
                     public void onSucess(JEmpty vv) {
@@ -3181,14 +3183,14 @@ public class ESSMetaPanel extends ESSBasePanel {
         new APICall<Artifact>(main) {
             @Override
             public Call<Artifact> apiFun() {
-                return main.service.upload(main.debugToken, "Meta-Data load", fname.fileName(), body);
+                return main.getService().upload(main.getDebugToken(), "Meta-Data load", fname.fileName(), body);
                 }
             @Override
             public void onSucess(final Artifact oo) {
                 new APICall<OidString>(main) {
                     @Override
                     public Call<OidString> apiFun() {
-                        return main2.service2.loadMetaData(main.debugToken, Password.getText(), oo.getOid());
+                        return main2.service2.loadMetaData(main.getDebugToken(), Password.getText(), oo.getOid());
                        }
                     @Override
                     public void onSucess(OidString oo) {
@@ -3255,7 +3257,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JBoolean>(main) {
                     @Override
                     public Call<JBoolean> apiFun() {
-                        return main.service.removeEntity(main.debugToken, "ESS2LogUnit", connector.getOid());
+                        return main.getService().removeEntity(main.getDebugToken(), "ESS2LogUnit", connector.getOid());
                     }
                     @Override
                     public void onSucess(JBoolean val) {
@@ -3281,7 +3283,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JLong>(main) {
                     @Override
                     public Call<JLong> apiFun() {
-                        return main.service.addEntity(main.debugToken, new DBRequest(logUnit, main.gson), 0);
+                        return main.getService().addEntity(main.getDebugToken(), new DBRequest(logUnit, main.gson), 0);
                         }
                     @Override
                     public void onSucess(JLong val) {
@@ -3308,7 +3310,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JEmpty>(main) {
                     @Override
                     public Call<JEmpty> apiFun() {
-                        return main.service.updateEntity(main.debugToken, new DBRequest(connector, main.gson));
+                        return main.getService().updateEntity(main.getDebugToken(), new DBRequest(connector, main.gson));
                         }
                     @Override
                     public void onSucess(JEmpty vv) {
@@ -3340,7 +3342,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JBoolean>(main) {
                     @Override
                     public Call<JBoolean> apiFun() {
-                        return main.service.deleteById(main.debugToken, "ESS2EnvValue", envValue.getOid());
+                        return main.getService().deleteById(main.getDebugToken(), "ESS2EnvValue", envValue.getOid());
                         }
                     @Override
                     public void onSucess(JBoolean val) {
@@ -3363,7 +3365,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JLong>(main) {
                     @Override
                     public Call<JLong> apiFun() {
-                        return main.service.addEntity(main.debugToken, new DBRequest(envValue, main.gson), 0);
+                        return main.getService().addEntity(main.getDebugToken(), new DBRequest(envValue, main.gson), 0);
                         }
                     @Override
                     public void onSucess(JLong val) {
@@ -3386,7 +3388,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JEmpty>(main) {
                     @Override
                     public Call<JEmpty> apiFun() {
-                        return main.service.updateEntity(main.debugToken, new DBRequest(envValue, main.gson));
+                        return main.getService().updateEntity(main.getDebugToken(), new DBRequest(envValue, main.gson));
                         }
                     @Override
                     public void onSucess(JEmpty vv) {
@@ -3503,7 +3505,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         new APICall<CallResult>(main) {
             @Override
             public Call<CallResult> apiFun() {
-                return main2.service2.iec61850ServerOnOff(main.debugToken, deployed.getEquipments().get(Equipments.getSelectedIndex()).getOid());
+                return main2.service2.iec61850ServerOnOff(main.getDebugToken(), deployed.getEquipments().get(Equipments.getSelectedIndex()).getOid());
                 }
             @Override
             public void onSucess(CallResult vv) {
@@ -3531,7 +3533,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         new APICall<CallResult>(main) {
             @Override
             public Call<CallResult> apiFun() {
-                return main2.service2.profilerOnOff(main.debugToken);
+                return main2.service2.profilerOnOff(main.getDebugToken());
             }
             @Override
             public void onSucess(CallResult vv) {
@@ -3556,7 +3558,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JBoolean>(main) {
                     @Override
                     public Call<JBoolean> apiFun() {
-                        return main.service.removeEntity(main.debugToken, "ESS2ProfilerModule", module.getOid());
+                        return main.getService().removeEntity(main.getDebugToken(), "ESS2ProfilerModule", module.getOid());
                         }
                     @Override
                     public void onSucess(JBoolean val) {
@@ -3583,7 +3585,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JLong>(main) {
                     @Override
                     public Call<JLong> apiFun() {
-                        return main.service.addEntity(main.debugToken, new DBRequest(module, main.gson), 0);
+                        return main.getService().addEntity(main.getDebugToken(), new DBRequest(module, main.gson), 0);
                         }
                     @Override
                     public void onSucess(JLong val) {
@@ -3607,7 +3609,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JEmpty>(main) {
                     @Override
                     public Call<JEmpty> apiFun() {
-                        return main.service.updateEntity(main.debugToken, new DBRequest(module, main.gson));
+                        return main.getService().updateEntity(main.getDebugToken(), new DBRequest(module, main.gson));
                         }
                     @Override
                     public void onSucess(JEmpty vv) {
@@ -3627,7 +3629,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         new APICall<CallResult2>(main) {
             @Override
             public Call<CallResult2> apiFun() {
-                return main2.service2.profilerExport(main.debugToken);
+                return main2.service2.profilerExport(main.getDebugToken());
                 }
             @Override
             public void onSucess(CallResult2 vv) {
@@ -3650,7 +3652,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         new APICall<CallResult>(main) {
             @Override
             public Call<CallResult> apiFun() {
-                return main2.service2.iec60870ServerOnOff(main.debugToken);
+                return main2.service2.iec60870ServerOnOff(main.getDebugToken());
                 }
             @Override
             public void onSucess(CallResult vv) {
@@ -3689,7 +3691,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JLong>(main) {
                     @Override
                     public Call<JLong> apiFun() {
-                        return main.service.addEntity(main.debugToken, new DBRequest(gate, main.gson), 0);
+                        return main.getService().addEntity(main.getDebugToken(), new DBRequest(gate, main.gson), 0);
                         }
                     @Override
                     public void onSucess(JLong val) {
@@ -3713,7 +3715,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JBoolean>(main) {
                     @Override
                     public Call<JBoolean> apiFun() {
-                        return main.service.removeEntity(main.debugToken, "ESS2ModBusGate", gate.getOid());
+                        return main.getService().removeEntity(main.getDebugToken(), "ESS2ModBusGate", gate.getOid());
                     }
                     @Override
                     public void onSucess(JBoolean val) {
@@ -3737,7 +3739,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 new APICall<JEmpty>(main) {
                     @Override
                     public Call<JEmpty> apiFun() {
-                        return main.service.updateEntity(main.debugToken, new DBRequest(gate, main.gson));
+                        return main.getService().updateEntity(main.getDebugToken(), new DBRequest(gate, main.gson));
                         }
                     @Override
                     public void onSucess(JEmpty vv) {
@@ -3768,7 +3770,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         new APICall<JInt>(main) {
             @Override
             public Call<JInt> apiFun() {
-                return main2.service2.iec61850ServerState(main.debugToken);
+                return main2.service2.iec61850ServerState(main.getDebugToken());
                 }
             @Override
             public void onSucess(JInt vv) {
@@ -3780,7 +3782,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         new APICall<JInt>(main) {
             @Override
             public Call<JInt> apiFun() {
-                return main2.service2.iec60870ServerState(main.debugToken);
+                return main2.service2.iec60870ServerState(main.getDebugToken());
             }
             @Override
             public void onSucess(JInt vv) {
@@ -3798,7 +3800,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         new APICall<JInt>(main) {
             @Override
             public Call<JInt> apiFun() {
-                return main2.service2.profilerState(main.debugToken);
+                return main2.service2.profilerState(main.getDebugToken());
                 }
             @Override
             public void onSucess(JInt vv) {
@@ -3831,7 +3833,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             JBoolean bb = new APICall2<JBoolean>() {
                 @Override
                 public Call<JBoolean> apiFun() {
-                    return main2.service2.isPLMReady(main.debugToken);
+                    return main2.service2.isPLMReady(main.getDebugToken());
                 }
             }.call(main);
             if (bb.value())

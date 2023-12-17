@@ -674,10 +674,13 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     @Override
     public void refresh() {
         try {
-            if (!main.getWorkSettings())
+            String ss= main.getWorkSettings();
+            if (ss!=null){
+                System.out.println(ss);
                 return;
+                }
             onStart=true;
-            ws = (WorkSettings)main.workSettings;
+            ws = (WorkSettings)main.workSettings();
             GUIrefreshPeriod.setText(""+ws.getGUIrefreshPeriod());
             StreamDataPeriod.setText(""+ws.getStreamDataPeriod());
             StreamDataLongPeriod.setText(""+ws.getStreamDataLongPeriod());
@@ -757,7 +760,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     private void updateSettings(KeyEvent evt){
         Response<JEmpty> wsr = null;
         try {
-            wsr = main.service.updateWorkSettings(main.debugToken,new DBRequest(ws,main.gson)).execute();
+            wsr = main.getService().updateWorkSettings(main.getDebugToken(),new DBRequest(ws,main.gson)).execute();
             if (!wsr.isSuccessful()){
                 popup("Ошибка обновления настроек  " + httpError(wsr),true);
                 return;
@@ -774,7 +777,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     private void updateSettings(KeyEvent evt, String name, int val){
         Response<JEmpty> wsr = null;
         try {
-            wsr = main.service.updateWorkSettings(main.debugToken,name,val).execute();
+            wsr = main.getService().updateWorkSettings(main.getDebugToken(),name,val).execute();
             if (!wsr.isSuccessful()){
                 popup("Ошибка обновления настроек  " + httpError(wsr),true);
                 return;
@@ -791,7 +794,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     private void updateSettings(KeyEvent evt, String name, boolean val){
         Response<JEmpty> wsr = null;
         try {
-            wsr = main.service.updateWorkSettings(main.debugToken,name,val).execute();
+            wsr = main.getService().updateWorkSettings(main.getDebugToken(),name,val).execute();
             if (!wsr.isSuccessful()){
                 popup("Ошибка обновления настроек  " + httpError(wsr),true);
                 return;
@@ -808,7 +811,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     private void updateSettings(KeyEvent evt, String name, String val){
         Response<JEmpty> wsr = null;
         try {
-            wsr = main.service.updateWorkSettings(main.debugToken,name,val).execute();
+            wsr = main.getService().updateWorkSettings(main.getDebugToken(),name,val).execute();
             if (!wsr.isSuccessful()){
                 popup("Ошибка обновления настроек  " + httpError(wsr),true);
                 return;
@@ -825,7 +828,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         private void updateSettings(Component evt, String name, String val){
             Response<JEmpty> wsr = null;
             try {
-                wsr = main.service.updateWorkSettings(main.debugToken,name,val).execute();
+                wsr = main.getService().updateWorkSettings(main.getDebugToken(),name,val).execute();
                 if (!wsr.isSuccessful()){
                     System.out.println("Ошибка обновления настроек  " + httpError(wsr));
                     popup("Ошибка обновления настроек, см. панель трассировки",true);
