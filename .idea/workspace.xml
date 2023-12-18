@@ -14,10 +14,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="83 - рефакторинг MainBaseFrame">
-      <change afterPath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/I_LoginBack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/MainBaseFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/MainBaseFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/APICallSync.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ABCDesktop/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCDesktop/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +37,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../ABCDesktop" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
@@ -46,9 +47,9 @@
     <setting file="file://$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/mongo/DAO.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/mongo/ExportKotlin.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/reports/DefaultFont.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../ABCDataServer/pom.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../ABCDataServer/src/main/java/romanow/abc/dataserver/APINotification.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../ABCDataServer/src/main/java/romanow/abc/dataserver/ConsoleServer.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../ABCDataserver/pom.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../ABCDataserver/src/main/java/romanow/abc/dataserver/APINotification.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../ABCDataserver/src/main/java/romanow/abc/dataserver/ConsoleServer.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../ABCDesktop/pom.xml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../ESS2Core/pom.xml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/ESS2ExportKotlin.java" root0="FORCE_HIGHLIGHTING" />
@@ -66,17 +67,17 @@
     <setting file="file://$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/subjectarea/MetaEntity.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/subjectarea/MetaExternalSystem.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/subjectarea/MetaSettingRegister.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../ESS2DataServer/pom.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/ESSDataServer.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850Client.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850NameParser.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850Server.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/modules/I_ProfilerEvent.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/modules/ProfilerBroadCastLogger.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/modules/ProfilerEventList.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/modules/ProfilerXLSStream.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/iot/IoTDispatcher.java" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../ESS2Dataserver/pom.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../ESS2Dataserver/src/main/java/romanow/abc/dataserver/APIESS2Meta.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../ESS2Dataserver/src/main/java/romanow/abc/dataserver/ESSDataServer.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../ESS2Dataserver/src/main/java/romanow/abc/dataserver/iec61850/IEC61850Client.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../ESS2Dataserver/src/main/java/romanow/abc/dataserver/iec61850/IEC61850NameParser.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../ESS2Dataserver/src/main/java/romanow/abc/dataserver/iec61850/IEC61850Server.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../ESS2Dataserver/src/main/java/romanow/abc/dataserver/profiler/modules/I_ProfilerEvent.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../ESS2Dataserver/src/main/java/romanow/abc/dataserver/profiler/modules/ProfilerBroadCastLogger.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../ESS2Dataserver/src/main/java/romanow/abc/dataserver/profiler/modules/ProfilerEventList.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../ESS2Dataserver/src/main/java/romanow/abc/dataserver/profiler/modules/ProfilerXLSStream.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../ESS2Dataserver/src/main/java/romanow/abc/ess2/iot/IoTDispatcher.java" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/TrendPanel.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/iec61850/ESS61850ClientGUI.java" root0="FORCE_HIGHLIGHTING" />
@@ -125,8 +126,8 @@
       <recent name="romanow.abc.core.entity.subject2area" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="romanow.abc.dataserver" />
       <recent name="romanow.abc.desktop" />
+      <recent name="romanow.abc.dataserver" />
       <recent name="romanow.abc.desktop.view2.desktop" />
       <recent name="romanow.abc.core.entity.metadata.view" />
       <recent name="romanow.abc.core.entity.subject2area.events" />
@@ -211,24 +212,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="ESS2Desktop" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="ESS2Desktop" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.ESSClient" />
-        <item itemvalue="Application.ESS40ConsoleServer" />
         <item itemvalue="Application.BARS4569ConsoleServer" />
+        <item itemvalue="Application.ESS40ConsoleServer" />
         <item itemvalue="Application.ArchStreamDataSet" />
         <item itemvalue="Application.IEC61850Client" />
       </list>
@@ -978,26 +966,6 @@
           <line>500</line>
           <option name="timeStamp" value="1377" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java</url>
-          <line>1780</line>
-          <option name="timeStamp" value="1385" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java</url>
-          <line>2736</line>
-          <option name="timeStamp" value="1386" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSClient.java</url>
-          <line>164</line>
-          <option name="timeStamp" value="1387" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSClient.java</url>
-          <line>129</line>
-          <option name="timeStamp" value="1388" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS4ACDCEmulator.java</url>
           <line>39</line>
@@ -1035,13 +1003,13 @@
     <SUITE FILE_PATH="coverage/ESS2Desktop$ESSCabinet.ic" NAME="ESSCabinet Coverage Results" MODIFIED="1669734969686" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>romanow.abc.desktop.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/ESS2Desktop$ESS61850ClientGUI.ic" NAME="ESS61850ClientGUI Coverage Results" MODIFIED="1671099059328" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>romanow.abc.desktop.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/ESS2Desktop$BARSConsoleServer.ic" NAME="BARSConsoleServer Coverage Results" MODIFIED="1688473880032" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>romanow.abc.dataserver.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/ESS2Desktop$ESSClient.ic" NAME="ESSClient Coverage Results" MODIFIED="1669739222771" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>romanow.abc.desktop.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/ESS2Desktop$ESS61850ClientGUI.ic" NAME="ESS61850ClientGUI Coverage Results" MODIFIED="1671099059328" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>romanow.abc.desktop.*</FILTER>
     </SUITE>
   </component>

@@ -3761,11 +3761,47 @@ public class ESSMetaPanel extends ESSBasePanel {
         new OK(200, 200, "Экспорт архитектуры в сервер: "+architecture.getTitle(), new I_Button() {
             @Override
             public void onPush() {
-                //new ESSExportConfig(main2,architecture,false,true);
+                exportNodeLogin();
             }
         });
     }//GEN-LAST:event_ExportNodeActionPerformed
-
+    private void exportExit(ClientContext exportContext, String text){
+        System.out.println(text);
+        Pair<String, JEmpty> res = new APICallSync<JEmpty>(){
+            @Override
+            public Call<JEmpty> apiFun() {
+                return exportContext.getService().logoff(exportContext.getDebugToken());
+            }}.call();
+        }
+    private void exportNode(ClientContext exportContext){
+        Pair<String,JString> res1 = new APICallSync<JString>(){
+            @Override
+            public Call<JString> apiFun() {
+                return exportContext.getService().clearDB(exportContext.getDebugToken(),Values.DebugTokenPass);
+            }
+        }.call();
+        if (res1.o1!=null){
+            exportExit(exportContext,res1.o1);
+            return;
+            }
+        System.out.println("Очистка БД: "+res1.o2);
+        }
+    private void exportNodeLogin(){
+        final ClientContext exportContext = new ClientContext();
+        Login loginForm = new Login(exportContext, new I_LoginBack() {
+            @Override
+            public void onPush() {
+                }
+            @Override
+            public void onLoginSuccess() {
+                exportNode(exportContext);
+                }
+            @Override
+            public void sendPopupMessage(JFrame parent, Container button, String text) {
+                System.out.println("Экспорт конфигурации: "+text);
+                }
+            });
+        }
     private void refreshIEC61850State(){
         new APICall<JInt>(main) {
             @Override
