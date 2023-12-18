@@ -25,6 +25,7 @@ import romanow.abc.core.utils.FileNameExt;
 import okhttp3.MultipartBody;
 import retrofit2.Call;
 import romanow.abc.core.utils.Pair;
+import romanow.abc.desktop.view2.desktop.ESSExportNode;
 import romanow.abc.desktop.wizard.*;
 
 import javax.swing.*;
@@ -3753,7 +3754,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
     }//GEN-LAST:event_EditGateActionPerformed
-
+    //------------------------------------------------------------------------------------------------------------------
     private void ExportNodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExportNodeActionPerformed
         if (architecture==null){
             popup("Не выбрана архитектура для экспорта");
@@ -3761,53 +3762,10 @@ public class ESSMetaPanel extends ESSBasePanel {
         new OK(200, 200, "Экспорт архитектуры в сервер: "+architecture.getTitle(), new I_Button() {
             @Override
             public void onPush() {
-                exportNodeLogin();
+                new ESSExportNode(architecture);
             }
         });
     }//GEN-LAST:event_ExportNodeActionPerformed
-    private void exportExit(ClientContext exportContext, String text){
-        System.out.println(text);
-        Pair<String, JEmpty> res = new APICallSync<JEmpty>(){
-            @Override
-            public Call<JEmpty> apiFun() {
-                return exportContext.getService().logoff(exportContext.getDebugToken());
-            }}.call();
-        }
-    private void exportNode(ClientContext exportContext, final String pass){
-        Pair<String,JString> res1 = new APICallSync<JString>(){
-            @Override
-            public Call<JString> apiFun() {
-                return exportContext.getService().clearDB(exportContext.getDebugToken(),pass);
-            }
-        }.call();
-        if (res1.o1!=null){
-            exportExit(exportContext,res1.o1);
-            return;
-            }
-        System.out.println("Очистка БД: "+res1.o2);
-        exportExit(exportContext,"Экспорт конфигурации "+architecture.getTitle()+" завершен");
-        }
-    private void exportNodeLogin(){
-        final ClientContext exportContext = new ClientContext();
-        Login loginForm = new Login(exportContext, new I_LoginBack() {
-            @Override
-            public void onPush() {
-                }
-            @Override
-            public void onLoginSuccess(final String passWord) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        exportNode(exportContext, passWord);
-                    }
-                }).start();
-                }
-            @Override
-            public void sendPopupMessage(JFrame parent, Container button, String text) {
-                System.out.println("Экспорт конфигурации: "+text);
-                }
-            });
-        }
     private void refreshIEC61850State(){
         new APICall<JInt>(main) {
             @Override
