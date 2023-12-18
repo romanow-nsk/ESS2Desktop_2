@@ -25,7 +25,6 @@ import romanow.abc.core.utils.FileNameExt;
 import okhttp3.MultipartBody;
 import retrofit2.Call;
 import romanow.abc.core.utils.Pair;
-import romanow.abc.desktop.view2.desktop.ESSExportNode;
 import romanow.abc.desktop.wizard.*;
 
 import javax.swing.*;
@@ -3762,7 +3761,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         new OK(200, 200, "Экспорт архитектуры в сервер: "+architecture.getTitle(), new I_Button() {
             @Override
             public void onPush() {
-                new ESSExportNode(architecture);
+                new ESSExportNode(architecture,main.getClientContext());
             }
         });
     }//GEN-LAST:event_ExportNodeActionPerformed

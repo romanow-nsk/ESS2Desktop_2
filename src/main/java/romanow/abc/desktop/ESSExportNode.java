@@ -1,4 +1,4 @@
-package romanow.abc.desktop.view2.desktop;
+package romanow.abc.desktop;
 
 import com.google.gson.Gson;
 import retrofit2.Call;
@@ -24,12 +24,15 @@ import java.awt.*;
 public class ESSExportNode {
     private ESS2Architecture architecture;
     private ClientContext exportContext;
+    private ClientContext importContext;
     private String passWord;
     private long tt0;
     private String debugToken;
     private RestAPIBase service;
-    public ESSExportNode(ESS2Architecture architecture0){
+    private Login loginForm;
+    public ESSExportNode(ESS2Architecture architecture0, ClientContext importContex0){
         architecture = architecture0;
+        importContext = importContex0;
         exportNodeLogin();
         }
     private void timeMes(String ss){
@@ -73,28 +76,14 @@ public class ESSExportNode {
         for (ESS2View view : architecture.getViews()) {
             view.getESS2Architecture().setOid(archOid);
             ESS2MetaFile metaFile = view.getMetaFile().getRef();
-            Pair<String, Artifact> res5 = uploadArtifact(metaFile.getFile().getRef(),xStream.toXML(view.getView()));
-            if (res5.o1 != null) {
-                exportExit(res5.o1 + " " + metaFile.getTitle());
-                }
-            metaFile.getFile().setOid(res5.o2.getOid());
-            timeMes("artifact oid=" + res5.o2.getOid()+" "+res5.o2.getTitle());
-            Pair<String, JLong> res4 = new APICallSync<JLong>() {
-                @Override
-                public Call<JLong> apiFun() {
-                    return exportContext.getService().addEntity(exportContext.getDebugToken(), new DBRequest(view, gson), 0);
-                    }
-                }.call();
-            if (res4.o1 != null) {
-                exportExit(res4.o1);
-                return;
-                }
-            timeMes("view oid=" + res4.o2+" "+view.getTitle());
+            //------------- Скопировать MetaFile c привязанны артефактом
             Pair<String, Long> res3 = addMetaFile(metaFile);
             if (res3.o1 != null) {
                 exportExit(res3.o1 + " " + metaFile.getTitle());
+                return;
                 }
             view.getMetaFile().setOid(res3.o2);
+            //------------ Скопировать ESS2View
             Pair<String, JLong> res6 = new APICallSync<JLong>() {
                 @Override
                 public Call<JLong> apiFun() {
@@ -107,28 +96,42 @@ public class ESSExportNode {
                 }
             timeMes("view oid=" + res6.o2+" "+view.getTitle());
             }
-
         exportExit("Экспорт конфигурации "+architecture.getTitle()+" завершен");
         }
     private Pair<String,Long> addMetaFile(ESS2MetaFile metaFile){
-        Pair<String, JLong> res2 = new APICallSync<JLong>(){
+        //-------- Загрузить старый артефакт как текст
+        Pair<String, String> res2 = importContext.loadFileAsStringSync(metaFile.getFile().getRef());
+        if (res2.o1!=null){
+            return new Pair<>(res2.o1,null);
+            }
+        //--------- Выгрузить в новый артефакт
+        Pair<String, Artifact> res5 = uploadArtifact(metaFile.getFile().getRef(),res2.o2);
+        if (res5.o1 != null) {
+            exportExit(res5.o1 + " " + metaFile.getTitle());
+            return new Pair<>("",null);
+            }
+        //-------- Скопировать MetaFile с новым артефактом
+        metaFile.getFile().setOidRef(res5.o2);
+        timeMes("artifact oid=" + res5.o2.getOid()+" "+res5.o2.getTitle());
+        Pair<String, JLong> res3 = new APICallSync<JLong>(){
             @Override
             public Call<JLong> apiFun() {
                 return exportContext.getService().addEntity(exportContext.getDebugToken(),new DBRequest(metaFile, new Gson()),0);
                 }
             }.call();
-        if (res2.o1!=null){
-            return new Pair<>(res2.o1,null);
+        if (res3.o1!=null){
+            return new Pair<>(res3.o1,null);
             }
-        long metaFileOid = res2.o2.getValue();
+        long metaFileOid = res3.o2.getValue();
         timeMes("metaFile oid="+metaFileOid+" "+metaFile.getTitle());
-        return new Pair<>(null,res2.o2.getValue());
+        return new Pair<>(null,res3.o2.getValue());
         }
     private Pair<String,Artifact> uploadArtifact(Artifact src, String text){
+        String fname = src.getOriginalName();
         Pair<String, Artifact> res2 = new APICallSync<Artifact>(){
             @Override
-            public Call<Artifact> apiFun() {
-                return exportContext.getService().createArtifactFromString(exportContext.getDebugToken(),src.getOriginalName(),text);
+            public Call<Artifact> apiFun() {            // TODO - не берет длинный текст
+                return exportContext.getService().createArtifactFromString2(exportContext.getDebugToken(),fname,new JString(text));
                 }
             }.call();
         if (res2.o1!=null){
@@ -140,7 +143,7 @@ public class ESSExportNode {
         }
     private void exportNodeLogin(){
         exportContext = new ClientContext();
-        Login loginForm = new Login(exportContext, new I_LoginBack() {
+        loginForm = new Login(exportContext, new I_LoginBack() {
             @Override
             public void onPush() {
             }
@@ -149,6 +152,10 @@ public class ESSExportNode {
                 passWord = passWord0;
                 debugToken = exportContext.getDebugToken();
                 service = exportContext.getService();
+                if (loginForm.getClientIP().equals(importContext.getServerIP()) && loginForm.getPort().equals(importContext.getServerPort())){
+                    exportExit("Экспорт в текущий узел");
+                    return;
+                    }
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -161,6 +168,8 @@ public class ESSExportNode {
                 System.out.println("Экспорт конфигурации: "+text);
             }
         });
+        loginForm.setLoginName(importContext.getLoginUser().getLogin());
+        loginForm.setPassword(importContext.getLoginUser().getPassword());
     }
 
 }
