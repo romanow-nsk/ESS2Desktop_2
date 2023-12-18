@@ -3773,11 +3773,11 @@ public class ESSMetaPanel extends ESSBasePanel {
                 return exportContext.getService().logoff(exportContext.getDebugToken());
             }}.call();
         }
-    private void exportNode(ClientContext exportContext){
+    private void exportNode(ClientContext exportContext, final String pass){
         Pair<String,JString> res1 = new APICallSync<JString>(){
             @Override
             public Call<JString> apiFun() {
-                return exportContext.getService().clearDB(exportContext.getDebugToken(),Values.DebugTokenPass);
+                return exportContext.getService().clearDB(exportContext.getDebugToken(),pass);
             }
         }.call();
         if (res1.o1!=null){
@@ -3785,6 +3785,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             return;
             }
         System.out.println("Очистка БД: "+res1.o2);
+        exportExit(exportContext,"Экспорт конфигурации "+architecture.getTitle()+" завершен");
         }
     private void exportNodeLogin(){
         final ClientContext exportContext = new ClientContext();
@@ -3793,8 +3794,13 @@ public class ESSMetaPanel extends ESSBasePanel {
             public void onPush() {
                 }
             @Override
-            public void onLoginSuccess() {
-                exportNode(exportContext);
+            public void onLoginSuccess(final String passWord) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        exportNode(exportContext, passWord);
+                    }
+                }).start();
                 }
             @Override
             public void sendPopupMessage(JFrame parent, Container button, String text) {

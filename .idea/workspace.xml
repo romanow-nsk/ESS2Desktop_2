@@ -13,10 +13,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="83 - рефакторинг MainBaseFrame">
-      <change afterPath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/APICallSync.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCDesktop/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCDesktop/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2Core/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="Авторизация и очистка БД">
+      <change beforePath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/I_LoginBack.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/I_LoginBack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/Login.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java" afterDir="false" />
     </list>
@@ -230,13 +230,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00356" summary="79 - Альтернативная нумерация регистров 60870">
-      <created>1697811101661</created>
-      <option name="number" value="00356" />
-      <option name="presentableId" value="LOCAL-00356" />
-      <option name="project" value="LOCAL" />
-      <updated>1697811101661</updated>
     </task>
     <task id="LOCAL-00357" summary="79 - метаданные без черточки">
       <created>1697861101540</created>
@@ -574,7 +567,14 @@
       <option name="project" value="LOCAL" />
       <updated>1702832826434</updated>
     </task>
-    <option name="localTasksCounter" value="405" />
+    <task id="LOCAL-00405" summary="Авторизация и очистка БД">
+      <created>1702881258941</created>
+      <option name="number" value="00405" />
+      <option name="presentableId" value="LOCAL-00405" />
+      <option name="project" value="LOCAL" />
+      <updated>1702881258941</updated>
+    </task>
+    <option name="localTasksCounter" value="406" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -601,7 +601,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="80 - Трассировка испольнения скриптов (Alert)" />
     <MESSAGE value="80 - Проверка наличия регистров" />
     <MESSAGE value="80 - Косяки" />
     <MESSAGE value="80 - Вывод даты/времени" />
@@ -626,7 +625,8 @@
     <MESSAGE value="82 - Удаление отсчетов (админка)" />
     <MESSAGE value="82 - Закрытие коллекции условное 60870" />
     <MESSAGE value="83 - рефакторинг MainBaseFrame" />
-    <option name="LAST_COMMIT_MESSAGE" value="83 - рефакторинг MainBaseFrame" />
+    <MESSAGE value="Авторизация и очистка БД" />
+    <option name="LAST_COMMIT_MESSAGE" value="Авторизация и очистка БД" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -965,6 +965,11 @@
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS2BARSEmulator.java</url>
           <line>500</line>
           <option name="timeStamp" value="1377" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java</url>
+          <line>3782</line>
+          <option name="timeStamp" value="1392" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS4ACDCEmulator.java</url>
