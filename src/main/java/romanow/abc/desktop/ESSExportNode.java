@@ -5,12 +5,16 @@ import retrofit2.Call;
 import romanow.abc.core.API.RestAPIBase;
 import romanow.abc.core.DBRequest;
 import romanow.abc.core.ErrorList;
+import romanow.abc.core.UniException;
+import romanow.abc.core.entity.EntityLink;
 import romanow.abc.core.entity.artifacts.Artifact;
 import romanow.abc.core.entity.baseentityes.JEmpty;
 import romanow.abc.core.entity.baseentityes.JLong;
 import romanow.abc.core.entity.baseentityes.JString;
+import romanow.abc.core.entity.metadata.Meta2GUIView;
 import romanow.abc.core.entity.metadata.Meta2XStream;
 import romanow.abc.core.entity.subject2area.*;
+import romanow.abc.core.utils.Base64Coder;
 import romanow.abc.core.utils.Pair;
 import romanow.abc.desktop.APICallSync;
 import romanow.abc.desktop.ClientContext;
@@ -34,7 +38,9 @@ public class ESSExportNode {
     private Gson gson = new Gson();
     private ErrorList errors = new ErrorList();
     private HashMap<Long,Long> deviceIdConvert = new HashMap<>();   // Конвертация oid для Device
-    private HashMap<Long,Long> equipIdConvert = new HashMap<>();    // Конвертация oid для Device
+    private HashMap<Long,Long> equipIdConvert = new HashMap<>();    // Конвертация oid для
+    private HashMap<Long,Artifact> artIdConvert = new HashMap<>();  // Конвертация oid для
+    private ArrayList<EntityLink<Artifact>> imagesConvert = new ArrayList<>();
     public ESSExportNode(ESS2Architecture architecture0, ClientContext importContex0){
         architecture = architecture0;
         importContext = importContex0;
@@ -91,7 +97,7 @@ public class ESSExportNode {
         for (ESS2View view : architecture.getViews()) {
             view.getESS2Architecture().setOid(archOid);
             ESS2MetaFile metaFile = view.getMetaFile().getRef();
-            oid = addMetaFile(metaFile);
+            oid = addMetaFile(true,metaFile);
             if (oid==-1)
                 continue;
             view.getMetaFile().setOid(oid);
@@ -122,7 +128,7 @@ public class ESSExportNode {
             if (metaFile==null)
                 emulator.getMetaFile().setOid(0);
             else{
-                oid = addMetaFile(metaFile);
+                oid = addMetaFile(false,metaFile);
                 if (oid==-1)
                     continue;
                 emulator.getMetaFile().setOid(oid);
@@ -173,7 +179,7 @@ public class ESSExportNode {
             long oldOid = equipment.getOid();
             equipment.getESS2Architecture().setOid(archOid);
             ESS2MetaFile metaFile = equipment.getMetaFile().getRef();
-            oid = addMetaFile(metaFile);
+            oid = addMetaFile(false,metaFile);
             if (oid==-1)
                 continue;
             equipment.getMetaFile().setOid(oid);
@@ -218,22 +224,74 @@ public class ESSExportNode {
             return -1;
             }
         //--------- Выгрузить в новый артефакт
-        Pair<String, Artifact> res5 = uploadArtifact(artifact, res2.o2);
+        Pair<String, Artifact> res5 = uploadArtifact(false,artifact, res2.o2);
         if (res5.o1 != null) {
             addError(res5.o1 + " " + artifact.getTitle());
             return -1;
             }
         return res5.o2.getOid();
         }
-    private long addMetaFile(ESS2MetaFile metaFile){
+    private long addMetaFile(boolean convertImages,ESS2MetaFile metaFile){
         //-------- Загрузить старый артефакт как текст
         Pair<String, String> res2 = importContext.loadFileAsStringSync(metaFile.getFile().getRef());
         if (res2.o1!=null){
             addError(res2.o1 + " " + metaFile.getTitle());
             return -1;
             }
+        if (convertImages){
+            Meta2XStream xStream = new Meta2XStream();
+            Meta2GUIView view = (Meta2GUIView) xStream.fromXML(res2.o2);
+            imagesConvert.clear();
+            view.addOwnArtifacts(imagesConvert);
+            for(EntityLink<Artifact> art : imagesConvert) {
+                if (art.getOid()==0)
+                    continue;
+                Artifact newArt = artIdConvert.get(art.getOid());
+                if (newArt!=null){
+                    timeMes(false,"Повторный артефакт-картинка oid="+art.getOid()+"-oid="+newArt);
+                    art.setRef(newArt);
+                    art.setOid(newArt.getOid());
+                    continue;
+                    }
+                Pair<String, DBRequest> res3 = new APICallSync<DBRequest>(){
+                    @Override
+                    public Call<DBRequest> apiFun() {
+                        return importContext.getService().getEntity(importContext.getDebugToken(),"Artifact",art.getOid(),0);
+                        }
+                    }.call();
+                if (res3.o1!=null){
+                    addError(res3.o1 + " Artifact oid=" + art.getOid());
+                    continue;
+                    }
+                Artifact artifact = null;
+                try {
+                    artifact = (Artifact) res3.o2.get(gson);
+                    } catch (UniException e) {
+                        addError(" Artifact oid=" + art.getOid()+": "+e.toString());
+                        continue;
+                        }
+                Pair<String, byte[]> res4 = importContext.loadFileAsBinSync(art.getOid());
+                if (res4.o1 != null) {
+                    addError(res4.o1 + " Artifact oid=" + art.getOid());
+                    continue;
+                    }
+                byte bb[] = res4.o2;
+                char base64[] = Base64Coder.encode(bb);
+                Pair<String, Artifact> res5 = uploadArtifact(true,artifact,new String(base64));
+                if (res5.o1 != null) {
+                    addError(res5.o1 +" Artifact oid" + art.getOid());
+                    continue;
+                    }
+                artIdConvert.put(art.getOid(),res5.o2);
+                timeMes(false,"Импорт артефакта-картинки oid="+art.getOid()+"-oid="+res5.o2.getOid());
+                art.getRef().setDate(res5.o2.getDate());
+                art.getRef().setOid(res5.o2.getOid());
+                art.setOid(res5.o2.getOid());      // Заменить id артефакта
+                }
+            res2.o2 = xStream.toXML(view);          // Вернуть XML с заменой oid артефактов
+            }
         //--------- Выгрузить в новый артефакт
-        Pair<String, Artifact> res5 = uploadArtifact(metaFile.getFile().getRef(),res2.o2);
+        Pair<String, Artifact> res5 = uploadArtifact(false,metaFile.getFile().getRef(),res2.o2);
         if (res5.o1 != null) {
             addError(res5.o1 + " " + metaFile.getTitle());
             return -1;
@@ -255,12 +313,12 @@ public class ESSExportNode {
         timeMes("metaFile oid="+metaFileOid+" "+metaFile.getTitle());
         return metaFileOid;
         }
-    private Pair<String,Artifact> uploadArtifact(Artifact src, String text){
+    private Pair<String,Artifact> uploadArtifact(boolean base64,Artifact src, String text){
         String fname = src.getOriginalName();
         Pair<String, Artifact> res2 = new APICallSync<Artifact>(){
             @Override
             public Call<Artifact> apiFun() {
-                return service.createArtifactFromString(exportContext.getDebugToken(),fname,new JString(text));
+                return service.createArtifactFromString(exportContext.getDebugToken(),fname,base64,new JString(text));
                 }
             }.call();
         if (res2.o1!=null){

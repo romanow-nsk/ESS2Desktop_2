@@ -2128,7 +2128,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         new APICall<Artifact>(main){
             @Override
             public Call<Artifact> apiFun() {
-                return main.getService().createArtifactFromString(main.getDebugToken(),"MetaData.xml",new JString(dataString));
+                return main.getService().createArtifactFromString(main.getDebugToken(),"MetaData.xml",false,new JString(dataString));
                 }
             @Override
             public void onSucess(Artifact oo) {
