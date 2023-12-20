@@ -164,6 +164,7 @@ public class ESSClient extends Client {
     public boolean loadDeployedArchitecture(long oid, int state) {
         deployed = loadFullArchitecture(oid);
         deployed.setArchitectureState(state);
+        deployed.setDebugConfigMode(((WorkSettings)workSettings()).isDebugConfig());
         deployed.testFullArchitecture();
         ModBusClientProxyDriver driver = new ModBusClientProxyDriver();
         HashMap<String,String> map = new HashMap<>();

@@ -2673,6 +2673,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         if (Architectures.getItemCount() == 0)
             return;
         ESS2Architecture vv = main2.loadFullArchitecture(architectures.get(Architectures.getSelectedIndex()).getOid());
+        vv.setDebugConfigMode(((WorkSettings)main.workSettings()).isDebugConfig());
         vv.testFullArchitecture();
         vv.clearCrossReferences();
         if (vv.getErrors().getErrCount() == 0) {
@@ -3458,6 +3459,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             return;
             }
         arch = main2.loadFullArchitecture(architectures.get(Architectures.getSelectedIndex()).getOid());
+        arch.setDebugConfigMode(((WorkSettings)main.workSettings()).isDebugConfig());
         arch.testFullArchitecture();
         deployed = arch;
         main2.deployed = arch;

@@ -25,20 +25,32 @@ public class WizardESS2LogUnit extends WizardBaseViewDB {
         super("Лог.устройство",frame0,entity0,back0);
         initComponents();
         logUnit = (ESS2LogUnit) entity0;
-        LogUnit.setText(""+logUnit.getUnit());
+        DebugLogUnit.setText(""+logUnit.getDebugUnit());
+        MainLogUnit.setText(""+logUnit.getMainUnit());
         SnapShotDisable.setSelected(logUnit.isSnapShotDisable());
-        setSize(750,230);
+        setSize(750,250);
         devices = devices0;
-        Devices.removeAll();
-        Devices.add("...");
+        DebugDevices.removeAll();
+        MainDevices.removeAll();
+        DebugDevices.add("...");
+        MainDevices.add("...");
         for(ESS2Device device : devices){
-            Devices.add(device.getTitle());
+            DebugDevices.add(device.getTitle());
+            MainDevices.add(device.getTitle());
             }
-        Devices.select(0);
+        DebugDevices.select(0);
+        MainDevices.select(0);
         int i=1;
         for(ESS2Device device : devices){
-            if (device.getOid()==logUnit.getDevice().getOid()){
-                Devices.select(i);
+            if (device.getOid()==logUnit.getDebugDevice().getOid()){
+                DebugDevices.select(i);
+                break;
+                }
+            i++;
+            }
+        for(ESS2Device device : devices){
+            if (device.getOid()==logUnit.getMainDevice().getOid()){
+                MainDevices.select(i);
                 break;
                 }
             i++;
@@ -55,41 +67,47 @@ public class WizardESS2LogUnit extends WizardBaseViewDB {
     private void initComponents() {
 
         jSeparator1 = new javax.swing.JSeparator();
-        LogUnit = new javax.swing.JTextField();
+        DebugLogUnit = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        Devices = new java.awt.Choice();
-        SetDevice = new javax.swing.JButton();
+        DebugDevices = new java.awt.Choice();
+        SetDebugDevice = new javax.swing.JButton();
         SnapShotDisable = new javax.swing.JCheckBox();
+        MainDevices = new java.awt.Choice();
+        SetMainDevice = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        MainLogUnit = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(10, 120, 460, 2);
+        jSeparator1.setBounds(10, 120, 460, 3);
 
-        LogUnit.addKeyListener(new java.awt.event.KeyAdapter() {
+        DebugLogUnit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                LogUnitKeyPressed(evt);
+                DebugLogUnitKeyPressed(evt);
             }
         });
-        getContentPane().add(LogUnit);
-        LogUnit.setBounds(430, 130, 40, 25);
+        getContentPane().add(DebugLogUnit);
+        DebugLogUnit.setBounds(430, 160, 40, 25);
 
         jLabel1.setText("Unit");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(400, 135, 40, 14);
-        getContentPane().add(Devices);
-        Devices.setBounds(10, 130, 330, 20);
+        jLabel1.setBounds(400, 160, 40, 16);
+        getContentPane().add(DebugDevices);
+        DebugDevices.setBounds(10, 160, 330, 20);
 
-        SetDevice.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/save.png"))); // NOI18N
-        SetDevice.setBorderPainted(false);
-        SetDevice.setContentAreaFilled(false);
-        SetDevice.addActionListener(new java.awt.event.ActionListener() {
+        SetDebugDevice.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/save.png"))); // NOI18N
+        SetDebugDevice.setBorderPainted(false);
+        SetDebugDevice.setContentAreaFilled(false);
+        SetDebugDevice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SetDeviceActionPerformed(evt);
+                SetDebugDeviceActionPerformed(evt);
             }
         });
-        getContentPane().add(SetDevice);
-        SetDevice.setBounds(350, 125, 40, 30);
+        getContentPane().add(SetDebugDevice);
+        SetDebugDevice.setBounds(350, 160, 40, 30);
 
         SnapShotDisable.setText("Запрещение  SnapShot");
         SnapShotDisable.addItemListener(new java.awt.event.ItemListener() {
@@ -98,36 +116,94 @@ public class WizardESS2LogUnit extends WizardBaseViewDB {
             }
         });
         getContentPane().add(SnapShotDisable);
-        SnapShotDisable.setBounds(480, 130, 180, 23);
+        SnapShotDisable.setBounds(560, 130, 180, 20);
+        getContentPane().add(MainDevices);
+        MainDevices.setBounds(10, 130, 330, 20);
+
+        SetMainDevice.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/save.png"))); // NOI18N
+        SetMainDevice.setBorderPainted(false);
+        SetMainDevice.setContentAreaFilled(false);
+        SetMainDevice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SetMainDeviceActionPerformed(evt);
+            }
+        });
+        getContentPane().add(SetMainDevice);
+        SetMainDevice.setBounds(350, 125, 40, 30);
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setText("Отладка");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(480, 160, 70, 16);
+
+        MainLogUnit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                MainLogUnitKeyPressed(evt);
+            }
+        });
+        getContentPane().add(MainLogUnit);
+        MainLogUnit.setBounds(430, 130, 40, 25);
+
+        jLabel3.setText("Unit");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(400, 135, 40, 16);
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setText("Работа");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(480, 135, 70, 16);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void LogUnitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LogUnitKeyPressed
-        onKeyPressed("logUnit", LogUnit, evt, new I_WizardAction() {
+    private void DebugLogUnitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DebugLogUnitKeyPressed
+        onKeyPressed("debugLogUnit", DebugLogUnit, evt, new I_WizardAction() {
             @Override
             public void onAction(int value) {
-                logUnit.setUnit(value);
+                logUnit.setDebugUnit(value);
                 }
             });
-    }//GEN-LAST:event_LogUnitKeyPressed
+    }//GEN-LAST:event_DebugLogUnitKeyPressed
 
-    private void SetDeviceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SetDeviceActionPerformed
-        int idx = Devices.getSelectedIndex();
+    private void SetDebugDeviceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SetDebugDeviceActionPerformed
+        int idx = DebugDevices.getSelectedIndex();
         if (idx==0){
-            logUnit.getDevice().setOid(0);
+            logUnit.getDebugDevice().setOid(0);
             oneUpdate("Удалена ссылка на драйвер");
             }
         else{
-            logUnit.getDevice().setOidRef(devices.get(idx-1));
-            oneUpdate("Изменено device: "+devices.get(idx-1).toString());
+            logUnit.getDebugDevice().setOidRef(devices.get(idx-1));
+            oneUpdate("Изменено debugDevice: "+devices.get(idx-1).toString());
             }
-    }//GEN-LAST:event_SetDeviceActionPerformed
+    }//GEN-LAST:event_SetDebugDeviceActionPerformed
 
     private void SnapShotDisableItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SnapShotDisableItemStateChanged
         logUnit.setSnapShotDisable(SnapShotDisable.isSelected());
         oneUpdate("Изменено snapShotEnable: "+logUnit.isSnapShotDisable());
     }//GEN-LAST:event_SnapShotDisableItemStateChanged
+
+    private void SetMainDeviceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SetMainDeviceActionPerformed
+        int idx = MainDevices.getSelectedIndex();
+        if (idx==0){
+            logUnit.getMainDevice().setOid(0);
+            oneUpdate("Удалена ссылка на драйвер");
+        }
+        else{
+            logUnit.getMainDevice().setOidRef(devices.get(idx-1));
+            oneUpdate("Изменено mainDevice: "+devices.get(idx-1).toString());
+        }
+
+    }//GEN-LAST:event_SetMainDeviceActionPerformed
+
+    private void MainLogUnitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MainLogUnitKeyPressed
+        onKeyPressed("mainLogUnit", MainLogUnit, evt, new I_WizardAction() {
+            @Override
+            public void onAction(int value) {
+                logUnit.setMainUnit(value);
+            }
+        });
+
+    }//GEN-LAST:event_MainLogUnitKeyPressed
 
     /**
      * @param args the command line arguments
@@ -166,11 +242,17 @@ public class WizardESS2LogUnit extends WizardBaseViewDB {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Choice Devices;
-    private javax.swing.JTextField LogUnit;
-    private javax.swing.JButton SetDevice;
+    private java.awt.Choice DebugDevices;
+    private javax.swing.JTextField DebugLogUnit;
+    private java.awt.Choice MainDevices;
+    private javax.swing.JTextField MainLogUnit;
+    private javax.swing.JButton SetDebugDevice;
+    private javax.swing.JButton SetMainDevice;
     private javax.swing.JCheckBox SnapShotDisable;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

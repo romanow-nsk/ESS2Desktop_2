@@ -100,6 +100,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         ModellingSpeed = new javax.swing.JTextField();
         jLabel39 = new javax.swing.JLabel();
         StreamFileSets = new javax.swing.JTextField();
+        DebugConfig = new javax.swing.JCheckBox();
 
         setLayout(null);
 
@@ -391,7 +392,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
 
         jLabel32.setText("Интервал ПД в файле (мин)");
         add(jLabel32);
-        jLabel32.setBounds(410, 400, 180, 16);
+        jLabel32.setBounds(410, 390, 180, 16);
 
         ProfilerBundle.setText("Bundle");
         ProfilerBundle.addItemListener(new java.awt.event.ItemListener() {
@@ -418,7 +419,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(InterruptRegisterOn);
-        InterruptRegisterOn.setBounds(20, 410, 280, 20);
+        InterruptRegisterOn.setBounds(20, 405, 210, 20);
 
         jLabel35.setText("Цикл опроса источников файлов (сек)");
         add(jLabel35);
@@ -468,11 +469,11 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(ModellingSpeed);
-        ModellingSpeed.setBounds(610, 370, 50, 25);
+        ModellingSpeed.setBounds(620, 360, 50, 25);
 
         jLabel39.setText("Скорость моделирования (%)");
         add(jLabel39);
-        jLabel39.setBounds(410, 375, 190, 16);
+        jLabel39.setBounds(410, 360, 190, 16);
 
         StreamFileSets.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -480,7 +481,16 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(StreamFileSets);
-        StreamFileSets.setBounds(610, 400, 50, 25);
+        StreamFileSets.setBounds(620, 390, 50, 25);
+
+        DebugConfig.setText("Конфигурация отладки");
+        DebugConfig.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                DebugConfigItemStateChanged(evt);
+            }
+        });
+        add(DebugConfig);
+        DebugConfig.setBounds(230, 405, 180, 20);
     }// </editor-fold>//GEN-END:initComponents
 
     private void GUIrefreshPeriodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GUIrefreshPeriodKeyPressed
@@ -649,6 +659,12 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         procPressedInt(evt, StreamFileSets,"streamFileSets");
     }//GEN-LAST:event_StreamFileSetsKeyPressed
 
+    private void DebugConfigItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DebugConfigItemStateChanged
+        if (onStart)
+            return;
+        procPressedBoolean(DebugConfig,"debugConfig");
+    }//GEN-LAST:event_DebugConfigItemStateChanged
+
     private void procPressedInt(KeyEvent evt, JTextField text, String name){
         if(evt.getKeyCode()!=10) return;
         int vv=0;
@@ -714,6 +730,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             EventsQueuePeriod.setText(""+ws.getEventsQueuePeriod());
             ModellingSpeed.setText(""+ws.getModellingSpeed());
             StreamFileSets.setText(""+ws.getStreamFileSets());
+            DebugConfig.setSelected(ws.isDebugConfig());
             refreshMainServerParams();
             onStart=false;
             } catch (Exception e) {
@@ -847,6 +864,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ArchiveDepthInDay;
     private javax.swing.JCheckBox ClockAcrossAPI;
+    private javax.swing.JCheckBox DebugConfig;
     private javax.swing.JTextField EventsPeriod;
     private javax.swing.JTextField EventsQueuePeriod;
     private javax.swing.JTextField FailureTestPeriod;
