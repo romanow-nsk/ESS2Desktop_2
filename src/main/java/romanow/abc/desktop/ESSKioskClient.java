@@ -33,8 +33,8 @@ public class ESSKioskClient extends ESSBaseView {
     ConsoleClient client = new ConsoleClient();
     ESSClient main = new ESSClient(false,false);
     private int xC,yC;
-    private String loginText="9131111111";
-    private String passText="1234";
+    private String loginText=Values.KioskClientAutoLogin;
+    private String passText=Values.KioskClientAutotPass;
     private String guiName="";
     private String host="localhost";
     private int port=4567;
@@ -43,16 +43,16 @@ public class ESSKioskClient extends ESSBaseView {
     private final static int xMin=640;
     private final static int yMin=480;
     public ESSKioskClient(String pars[]){
-        this(false,pars);
+        this(false,true,pars);
     }
     public ESSKioskClient(){
-        this(false,new String[]{});
+        this(false,false,new String[]{});
         }
     public void mes(String ss){
         Mes.append(ss);
         System.out.println(ss);
         }
-    public ESSKioskClient(boolean min, String pars[]){
+    public ESSKioskClient(boolean min, boolean auto,String pars[]){
         super(xMin,yMin);
         Values.init();
         setVisible(false);
@@ -72,6 +72,7 @@ public class ESSKioskClient extends ESSBaseView {
         if (!data.hasConf()){
             mes("Конфигурация клиента по умолчанию");
             }
+        else
             guiName = data.getConf();
         if (data.getPort()!=0)
             port = data.getPort();
@@ -97,6 +98,21 @@ public class ESSKioskClient extends ESSBaseView {
             positionOn(400,200);
             }
         initComponentsCenter();
+        if (auto) {
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    loginButtonClick();
+                    }
+                });
+            /*
+            delayIt(0,new Runnable(){
+                @Override
+                public void run() {
+                    loginButtonClick();
+                }
+            });
+             */
+            }
         }
 
     private  void initComponentsCenter(){
@@ -190,7 +206,7 @@ public class ESSKioskClient extends ESSBaseView {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
     }//GEN-LAST:event_formWindowClosing
 
-    private void LButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LButtonActionPerformed
+    private void loginButtonClick(){
         try {
             client.setClientIP(host);
             client.setClientPort(port);
@@ -228,6 +244,8 @@ public class ESSKioskClient extends ESSBaseView {
                     if (screen!=null)
                         screen.dispose();
                     screen = null;
+                    Login.setText(Values.KioskClientAutoLogin);
+                    Password.setText(Values.KioskClientAutotPass);
                     setVisible(true);
                     }
                 });
@@ -239,6 +257,10 @@ public class ESSKioskClient extends ESSBaseView {
                 Mes.setText(ee.toString());
                 System.out.println(ee.toString());
                 }
+        }
+
+    private void LButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LButtonActionPerformed
+        loginButtonClick();
     }//GEN-LAST:event_LButtonActionPerformed
 
     private void LoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginMouseClicked
@@ -260,7 +282,7 @@ public class ESSKioskClient extends ESSBaseView {
         Mes.setText("");
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new KeyBoardPanel(false,Password,"",new I_Value<String>() {
+                new KeyBoardPanel(screenMode.ScreenW(), screenMode.ScreenH(),false,Password,"",new I_Value<String>() {
                     @Override
                     public void onEnter(String value) {
                          passText = value;

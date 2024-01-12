@@ -43,6 +43,25 @@ public class ESSBaseView extends javax.swing.JFrame {
     public void noSilence(){
         wasEvent = true;
         }
+    public void delayIt(final  int delay, Runnable code){
+        wasEvent=false;
+        thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(delay*1000);
+                } catch (InterruptedException e) {
+                    return;
+                }
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        code.run();
+                        }
+                    });
+                }
+            });
+        thread.start();
+        }
     public void delayIt(final  int delay){
         wasEvent=false;
         thread = new Thread(new Runnable() {
