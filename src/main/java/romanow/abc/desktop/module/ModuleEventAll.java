@@ -6,27 +6,27 @@ import romanow.abc.core.API.RestAPIESS2;
 import romanow.abc.core.DBRequest;
 import romanow.abc.core.UniException;
 import romanow.abc.core.constants.Values;
+import romanow.abc.core.entity.baseentityes.JEmpty;
 import romanow.abc.core.entity.metadata.Meta2GUIForm;
 import romanow.abc.core.entity.subjectarea.ArchESSEvent;
 import romanow.abc.core.mongo.*;
-import romanow.abc.desktop.APICall;
-import romanow.abc.desktop.APICall2;
-import romanow.abc.desktop.Client;
-import romanow.abc.desktop.MainBaseFrame;
+import romanow.abc.desktop.*;
 import romanow.abc.core.utils.OwnDateTime;
 import retrofit2.Call;
 import romanow.abc.desktop.view2.FormContext2;
+import romanow.abc.desktop.view2.View2BaseDesktop;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Vector;
 
 public class ModuleEventAll extends Module {
-    public final static int EventsDeepth=5;                 // "Глубина" в днях чтения событий
     public final boolean endTime;
     protected ArrayList<ArchESSEvent> events = new ArrayList<>();
     protected ArrayList<ArchESSEvent> selected = new ArrayList<>();
@@ -40,9 +40,34 @@ public class ModuleEventAll extends Module {
         }
     private int types[] = {};
     public int[] eventTypes(){ return types; }
+    private long lastDayClock = 0;
     @Override
     public void init(MainBaseFrame client, JPanel panel, RestAPIBase service, RestAPIESS2 service2, String token, Meta2GUIForm form, FormContext2 formContext) {
         super.init(client, panel, service, service2,token, form, formContext);
+        OwnDateTime beginDate = new OwnDateTime();
+        beginDate.setOnlyDate();
+        lastDayClock = beginDate.timeInMS();
+        JButton bb = new JButton();
+        bb.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/calendar.png")));
+        bb.setBounds(
+                context.x(form.getModuleDX()-80),
+                context.y((int)(form.getModuleDY()*0.86)),
+                context.dx((int)(Values.MenuButtonH*1.8)),
+                context.dy((int)(Values.MenuButtonH*1.28)));
+        bb.setVisible(true);
+        bb.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new CalendarView("События", new I_CalendarTime() {
+                    @Override
+                    public void onSelect(OwnDateTime time) {
+                        lastDayClock = time.timeInMS();
+                        repaintView();
+                        }
+                    });
+                }
+            });
+        panel.add(bb);
         repaintView();
         }
     private String[] columnsHeader = new String[] {"дата","время", "тип","событие"};
@@ -50,21 +75,21 @@ public class ModuleEventAll extends Module {
     private int sizes[] = {100,80,120,700};
     private int sizes2[] = {100,80,80,120,700};
     private void showTable(){
-            Vector<Vector<String>> data = new Vector<Vector<String>>();
-            Vector<String> header = new Vector<String>();
-            for(String ss : endTime ? columnsHeader2 : columnsHeader)
-                header.add(ss);
-            for(ArchESSEvent essEvent : selected){
-                Vector<String> row = new Vector<String>();
-                OwnDateTime dd = essEvent.getArrivalTime();
-                row.add(dd.dateToString());
-                row.add(dd.timeFullToString());
-                if (endTime)
-                    row.add(essEvent.getEndTime().timeFullToString());
-                row.add(Values.title("EventType",essEvent.getType()));
-                row.add(essEvent.getTitle());
-                data.add(row);
-                }
+        Vector<Vector<String>> data = new Vector<Vector<String>>();
+        Vector<String> header = new Vector<String>();
+        for(String ss : endTime ? columnsHeader2 : columnsHeader)
+            header.add(ss);
+        for(ArchESSEvent essEvent : selected){
+            Vector<String> row = new Vector<String>();
+            OwnDateTime dd = essEvent.getArrivalTime();
+            row.add(dd.dateToString());
+            row.add(dd.timeFullToString());
+            if (endTime)
+                row.add(essEvent.getEndTime().timeFullToString());
+            row.add(Values.title("EventType",essEvent.getType()));
+            row.add(essEvent.getTitle());
+            data.add(row);
+            }
             /*
             int minRows=50;
             while (data.size()<minRows){
@@ -121,9 +146,9 @@ public class ModuleEventAll extends Module {
     @Override
     public void repaintValues() {
         super.repaintValues();
-            long after = new OwnDateTime().timeInMS()-EventsDeepth*24*3600*1000;
             DBQueryList query =  new DBQueryList().
-                    add(new DBQueryLong(I_DBQuery.ModeGT,"a_timeInMS", after)).
+                    add(new DBQueryLong(I_DBQuery.ModeGTE,"a_timeInMS", lastDayClock - Values.EventsDeepth*24*3600*1000)).
+                    add(new DBQueryLong(I_DBQuery.ModeLTE,"a_timeInMS", lastDayClock + 24*3600*1000)).
                     add(new DBQueryBoolean("valid",true));
             int types[] = eventTypes();
             if (types.length!=0){

@@ -11,6 +11,7 @@ import romanow.abc.core.entity.metadata.Meta2GUIForm;
 import romanow.abc.core.entity.subjectarea.ArchESSEvent;
 import romanow.abc.core.entity.subjectarea.Failure;
 import romanow.abc.core.entity.subjectarea.FailureSetting;
+import romanow.abc.core.mongo.*;
 import romanow.abc.desktop.*;
 import romanow.abc.desktop.view.MultiTextButton;
 import romanow.abc.core.utils.OwnDateTime;
@@ -33,11 +34,13 @@ import java.util.Vector;
 
 
 public class ModuleFailure extends Module {
+    private final int ListSize=50;
     protected ArrayList<Failure> events = new ArrayList<>();
     protected ArrayList<Failure> events1 = new ArrayList<>();
     protected ArrayList<Failure> events2 = new ArrayList<>();
     protected JTable table;
     private ListSelectionListener listener;
+    private long lastDayClock = 0;
     public ModuleFailure(){}
     private void addQuitedButton(){
         //JButton bb = new MultiTextButton(new Font(Values.FontName, Font.PLAIN, context.dy(12)));
@@ -45,7 +48,7 @@ public class ModuleFailure extends Module {
         View2BaseDesktop.setButtonParams(bb,"Квитировать всё",false,context);
         bb.setBounds(
                 context.x(10),
-                context.y(form.getModuleDY()),
+                context.y(form.getModuleDY()-40),
                 context.dx(Values.MenuButtonW*3),
                 context.dy(Values.MenuButtonH));
         bb.setVisible(true);
@@ -77,6 +80,31 @@ public class ModuleFailure extends Module {
     @Override
     public void init(MainBaseFrame client, JPanel panel, RestAPIBase service, RestAPIESS2 service2, String token, Meta2GUIForm form, FormContext2 formContext) {
         super.init(client,panel, service, service2,token, form, formContext);
+        addQuitedButton();
+        OwnDateTime beginDate = new OwnDateTime();
+        beginDate.setOnlyDate();
+        lastDayClock = beginDate.timeInMS();
+        JButton bb = new JButton();
+        bb.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/calendar.png")));
+        bb.setBounds(
+                context.x(form.getModuleDX()-80),
+                context.y((int)(form.getModuleDY()*0.93)),
+                context.dx((int)(Values.MenuButtonH*1.8)),
+                context.dy((int)(Values.MenuButtonH*1.28)));
+        bb.setVisible(true);
+        bb.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new CalendarView("События", new I_CalendarTime() {
+                    @Override
+                    public void onSelect(OwnDateTime time) {
+                        lastDayClock = time.timeInMS();
+                        repaintView();
+                    }
+                });
+            }
+        });
+        panel.add(bb);
         repaintView();
         }
     //------------------------------------------------------------------------------------
@@ -129,7 +157,6 @@ public class ModuleFailure extends Module {
                 model.setDataVector(data,header);
                 }
             else{
-                addQuitedButton();
                 table = new JTable(data,header);
                 JScrollPane scroll = new JScrollPane(table);
                 scroll.setBounds(
@@ -177,10 +204,16 @@ public class ModuleFailure extends Module {
     public void repaintValues() {
         super.repaintValues();
         try {
+            DBQueryList query =  new DBQueryList().
+                    add(new DBQueryLong(I_DBQuery.ModeGTE,"a_timeInMS", lastDayClock - Values.EventsDeepth*24*3600*1000)).
+                    add(new DBQueryLong(I_DBQuery.ModeLTE,"a_timeInMS", lastDayClock + 24*3600*1000)).
+                    add(new DBQueryBoolean("valid",true));
+            final String xmlQuery = new DBXStream().toXML(query);
             ArrayList<DBRequest> res = new APICall2<ArrayList<DBRequest>>(){
                 @Override
                 public Call<ArrayList<DBRequest>> apiFun() {
-                    return service.getEntityListLast(token,"FailureBit",50,0);
+                    return service.getEntityListByQuery(token,"FailureBit",xmlQuery,0);
+                    //return service.getEntityListLast(token,"FailureBit",ListSize,0);
                     }
                 }.call(client);
             System.out.println("Прочитано событий "+res.size());
@@ -195,7 +228,8 @@ public class ModuleFailure extends Module {
             res = new APICall2<ArrayList<DBRequest>>(){
                 @Override
                 public Call<ArrayList<DBRequest>> apiFun() {
-                    return service.getEntityListLast(token,"FailureSetting",50,0);
+                    return service.getEntityListByQuery(token,"FailureSetting",xmlQuery,0);
+                    //return service.getEntityListLast(token,"FailureSetting",ListSize,0);
                     }
                 }.call(client);
             System.out.println("Прочитано событий "+res.size());        // Слияние по времени
