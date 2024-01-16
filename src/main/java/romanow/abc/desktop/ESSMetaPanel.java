@@ -380,6 +380,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         EditGate = new javax.swing.JButton();
         ExportNode = new javax.swing.JButton();
         jSeparator7 = new javax.swing.JSeparator();
+        MD5Calc = new javax.swing.JButton();
 
         setLayout(null);
 
@@ -1547,7 +1548,16 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         jSeparator7.setOrientation(javax.swing.SwingConstants.VERTICAL);
         add(jSeparator7);
-        jSeparator7.setBounds(325, 593, 50, 100);
+        jSeparator7.setBounds(325, 593, 3, 100);
+
+        MD5Calc.setText("MD5");
+        MD5Calc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MD5CalcActionPerformed(evt);
+            }
+        });
+        add(MD5Calc);
+        MD5Calc.setBounds(300, 450, 60, 22);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ImportMetaDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportMetaDataActionPerformed
@@ -3767,6 +3777,23 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
     }//GEN-LAST:event_ExportNodeActionPerformed
+
+    private void MD5CalcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MD5CalcActionPerformed
+        if (deployed==null || !deployed.isConnected()){
+            System.out.println("Не выбрана и не развернута архитектура");
+            return;
+            }
+        new APICall<ErrorList>(main) {
+            @Override
+            public Call<ErrorList> apiFun() {
+                return main2.service2.calcMD5(main.getDebugToken());
+                }
+            @Override
+            public void onSucess(ErrorList vv) {
+                System.out.println("Конфигурация "+deployed.getTitle()+"\n"+vv.toString());
+                }
+            };
+        }//GEN-LAST:event_MD5CalcActionPerformed
     private void refreshIEC61850State(){
         new APICall<JInt>(main) {
             @Override
@@ -4008,6 +4035,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JButton ImportScript;
     private javax.swing.JButton ImportXML;
     private java.awt.Choice LogUnits;
+    private javax.swing.JButton MD5Calc;
     private javax.swing.JTextField MaxValue;
     private javax.swing.JTextField MaxValueFormula;
     private javax.swing.JTextField MetaDataChanges;
