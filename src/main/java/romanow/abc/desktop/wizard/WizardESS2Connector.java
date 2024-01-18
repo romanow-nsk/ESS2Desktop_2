@@ -106,7 +106,7 @@ public class WizardESS2Connector extends WizardBaseViewDB {
             }
         });
         getContentPane().add(DBEmulator);
-        DBEmulator.setBounds(460, 135, 110, 20);
+        DBEmulator.setBounds(480, 135, 110, 20);
 
         jLabel3.setText("IP/Имя");
         getContentPane().add(jLabel3);
@@ -135,7 +135,7 @@ public class WizardESS2Connector extends WizardBaseViewDB {
         jLabel5.setText("Бит/с");
         jLabel5.setInheritsPopupMenu(false);
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(460, 165, 60, 16);
+        jLabel5.setBounds(550, 165, 60, 16);
 
         UnitsNum.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -143,7 +143,7 @@ public class WizardESS2Connector extends WizardBaseViewDB {
             }
         });
         getContentPane().add(UnitsNum);
-        UnitsNum.setBounds(420, 130, 30, 25);
+        UnitsNum.setBounds(420, 130, 40, 25);
 
         RTU.setText("RS-485");
         RTU.addItemListener(new java.awt.event.ItemListener() {
@@ -160,7 +160,7 @@ public class WizardESS2Connector extends WizardBaseViewDB {
             }
         });
         getContentPane().add(BaudRate);
-        BaudRate.setBounds(500, 160, 64, 25);
+        BaudRate.setBounds(480, 160, 64, 25);
 
         jLabel6.setText("Unit-ов");
         getContentPane().add(jLabel6);
@@ -173,7 +173,7 @@ public class WizardESS2Connector extends WizardBaseViewDB {
             }
         });
         getContentPane().add(Trace);
-        Trace.setBounds(570, 135, 110, 20);
+        Trace.setBounds(580, 135, 110, 20);
 
         UniqueModule.setText("Уникальный модуль");
         UniqueModule.addItemListener(new java.awt.event.ItemListener() {

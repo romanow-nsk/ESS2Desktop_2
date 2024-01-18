@@ -48,6 +48,7 @@ public class WizardESS2LogUnit extends WizardBaseViewDB {
                 }
             i++;
             }
+        i=1;
         for(ESS2Device device : devices){
             if (device.getOid()==logUnit.getMainDevice().getOid()){
                 MainDevices.select(i);
