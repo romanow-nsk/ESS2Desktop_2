@@ -13,11 +13,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="83 - Подсчет MD5">
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="83 - косяк">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardESS2Connector.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardESS2Connector.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardESS2Connector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardESS2Connector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardESS2LogUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardESS2LogUnit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -229,13 +228,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00367" summary="79 -host-port клиенту">
-      <created>1698258733019</created>
-      <option name="number" value="00367" />
-      <option name="presentableId" value="LOCAL-00367" />
-      <option name="project" value="LOCAL" />
-      <updated>1698258733019</updated>
     </task>
     <task id="LOCAL-00368" summary="79 -Шрифт - константа">
       <created>1698301649388</created>
@@ -573,7 +565,14 @@
       <option name="project" value="LOCAL" />
       <updated>1705421192588</updated>
     </task>
-    <option name="localTasksCounter" value="416" />
+    <task id="LOCAL-00416" summary="83 - косяк">
+      <created>1705595037287</created>
+      <option name="number" value="00416" />
+      <option name="presentableId" value="LOCAL-00416" />
+      <option name="project" value="LOCAL" />
+      <updated>1705595037287</updated>
+    </task>
+    <option name="localTasksCounter" value="417" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -600,7 +599,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="80 - Сообщение МУ по прямому CallBack" />
     <MESSAGE value="80 - Регистры разрешений" />
     <MESSAGE value="80 - Контрольный разряд" />
     <MESSAGE value="80 - Состояния МУ" />
@@ -625,7 +623,8 @@
     <MESSAGE value="83 - календарь аварий и событий" />
     <MESSAGE value="83 - Надпись userdata" />
     <MESSAGE value="83 - Подсчет MD5" />
-    <option name="LAST_COMMIT_MESSAGE" value="83 - Подсчет MD5" />
+    <MESSAGE value="83 - косяк" />
+    <option name="LAST_COMMIT_MESSAGE" value="83 - косяк" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

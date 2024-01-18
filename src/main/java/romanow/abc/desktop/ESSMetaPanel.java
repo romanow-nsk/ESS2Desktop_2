@@ -1179,7 +1179,7 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         UnitRW.setText("0");
         add(UnitRW);
-        UnitRW.setBounds(710, 580, 30, 25);
+        UnitRW.setBounds(710, 580, 50, 25);
 
         jLabel38.setText("Unit");
         add(jLabel38);
