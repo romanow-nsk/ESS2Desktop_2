@@ -6,6 +6,8 @@ import romanow.abc.core.API.RestAPIBase;
 import romanow.abc.core.DBRequest;
 import romanow.abc.core.ErrorList;
 import romanow.abc.core.UniException;
+import romanow.abc.core.constants.ValuesBase;
+import romanow.abc.core.entity.Entity;
 import romanow.abc.core.entity.EntityLink;
 import romanow.abc.core.entity.artifacts.Artifact;
 import romanow.abc.core.entity.baseentityes.JEmpty;
@@ -14,6 +16,7 @@ import romanow.abc.core.entity.baseentityes.JString;
 import romanow.abc.core.entity.metadata.Meta2GUIView;
 import romanow.abc.core.entity.metadata.Meta2XStream;
 import romanow.abc.core.entity.subject2area.*;
+import romanow.abc.core.entity.users.User;
 import romanow.abc.core.utils.Base64Coder;
 import romanow.abc.core.utils.Pair;
 import romanow.abc.desktop.APICallSync;
@@ -40,6 +43,7 @@ public class ESSExportNode {
     private HashMap<Long,Long> deviceIdConvert = new HashMap<>();   // Конвертация oid для Device
     private HashMap<Long,Long> equipIdConvert = new HashMap<>();    // Конвертация oid для
     private HashMap<Long,Artifact> artIdConvert = new HashMap<>();  // Конвертация oid для
+    private HashMap<Long,Long>accountIdConvert = new HashMap<>();   // Конвертация oid для Account
     private ArrayList<EntityLink<Artifact>> imagesConvert = new ArrayList<>();
     public ESSExportNode(ESS2Architecture architecture0, ClientContext importContex0){
         architecture = architecture0;
@@ -74,6 +78,89 @@ public class ESSExportNode {
         exportExit(true,res.o1);
         return true;
         }
+    private HashMap<Long,Long> copyEntityList(String className){
+        HashMap<Long,Long> convertOid = new HashMap<>();
+         Pair<String, ArrayList<DBRequest>> resWS = new APICallSync<ArrayList<DBRequest>>() {
+            @Override
+            public Call<ArrayList<DBRequest>> apiFun() {
+                return importContext.getService().getEntityList(importContext.getDebugToken(),className, ValuesBase.GetAllModeActual,0);
+                }
+            }.call();
+        if (exportExit(resWS))
+            return null;
+        Pair<String,JString> res7 = new APICallSync<JString>(){
+            @Override
+            public Call<JString> apiFun() {
+                return service.clearTable(exportContext.getDebugToken(),className,passWord);
+                }
+            }.call();
+        for(DBRequest request : resWS.o2){
+            Pair<String, JLong> res6 = new APICallSync<JLong>() {
+                @Override
+                public Call<JLong> apiFun() {
+                    return service.addEntity(exportContext.getDebugToken(), request, 0);
+                   }
+                }.call();
+            if (exportExit(res6))
+                return null;
+            try {
+                Entity in = request.get(gson);
+                convertOid.put(in.getOid(),res6.o2.getValue());
+                } catch (UniException e) {
+                    exportExit(true,e.toString());
+                    return null;
+                    }
+            }
+        timeMes(false, className+": скопировано "+resWS.o2.size()+" записей");
+        return convertOid;
+        }
+    private boolean copyUsers(){
+        Pair<String, ArrayList<DBRequest>> resWS = new APICallSync<ArrayList<DBRequest>>() {
+            @Override
+            public Call<ArrayList<DBRequest>> apiFun() {
+                return importContext.getService().getEntityList(importContext.getDebugToken(),"User", ValuesBase.GetAllModeActual,0);
+                }
+            }.call();
+        if (exportExit(resWS))
+            return true;
+        Pair<String,JString> res7 = new APICallSync<JString>(){
+            @Override
+            public Call<JString> apiFun() {
+                return service.clearTable(exportContext.getDebugToken(),"User",passWord);
+                }
+            }.call();
+        for(DBRequest request : resWS.o2){
+            User user=null;
+            try {
+                user = (User) request.get(gson);
+                } catch (UniException e) {
+                    exportExit(true,e.toString());
+                    return true;
+                    }
+            long oldOId = user.getAccountData().getOid();
+            if (oldOId==0)
+                continue;
+            Long newOid = accountIdConvert.get(oldOId);
+            if (newOid==null){
+                exportExit(true,"Не найден новый account для старого oid="+oldOId);
+                return true;
+                }
+            if (oldOId!=newOid){
+                exportExit(false,"Смена oid для account "+oldOId+"->"+newOid);
+                user.getAccountData().setOid(newOid);
+                }
+            Pair<String, JLong> res6 = new APICallSync<JLong>() {
+                @Override
+                public Call<JLong> apiFun() {
+                    return service.addEntity(exportContext.getDebugToken(), request, 0);
+                    }
+                }.call();
+            if (exportExit(res6))
+                return true;
+            }
+        timeMes(false, "User: скопировано "+resWS.o2.size()+" записей");
+        return false;
+        }
     private void exportNode() {
         tt0 = System.currentTimeMillis();
         debugToken = exportContext.getDebugToken();
@@ -95,6 +182,15 @@ public class ESSExportNode {
         if (exportExit(res1))
             return;
         timeMes("Очистка БД: " + res1.o2);
+        //--------------------------------------------------------------------------------------------------------------
+        if  (copyEntityList("WorkSettings")==null)
+            return;
+        accountIdConvert = copyEntityList("Account");
+        if (artIdConvert==null)
+            return;
+        if  (copyUsers())
+            return;
+        //--------------------------------------------------------------------------------------------------------------
         long oid = addEntity(architecture);
         if (oid==-1){
             exportExit(true,"Экспорт прерван");
@@ -226,6 +322,13 @@ public class ESSExportNode {
             title(logUnit,oid);
             }
         exportExit(false,"Экспорт конфигурации "+architecture.getTitle()+" завершен");
+        Pair<String, JEmpty> res6 = new APICallSync<JEmpty>() {
+            @Override
+            public Call<JEmpty> apiFun() {
+                return service.rebootServer(exportContext.getDebugToken(), passWord);
+                }
+            }.call();
+        // exportExit(res6);
         }
     private void title(ESS2Entity entity, long oid){
         timeMes(entity.getClass().getSimpleName()+" oid=" + oid+" "+entity.getTitle());
