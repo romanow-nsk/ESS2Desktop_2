@@ -221,8 +221,8 @@ public class ModuleFailure extends Module {
             Gson gson = new Gson();
             for(DBRequest request : res){
                 Failure ff = (Failure) request.get(gson);
-                if (ff.getEndTime().dateTimeValid())
-                    System.out.println(ff);
+                //if (ff.getEndTime().dateTimeValid())
+                //    System.out.println(ff);
                 events1.add(ff);
                 }
             res = new APICall2<ArrayList<DBRequest>>(){
