@@ -379,8 +379,8 @@ public class ESSMetaPanel extends ESSBasePanel {
         RemoveGate = new javax.swing.JButton();
         EditGate = new javax.swing.JButton();
         ExportNode = new javax.swing.JButton();
-        jSeparator7 = new javax.swing.JSeparator();
         MD5Calc = new javax.swing.JButton();
+        jSeparator7 = new javax.swing.JSeparator();
 
         setLayout(null);
 
@@ -611,7 +611,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         add(WriteInt32);
         WriteInt32.setBounds(680, 640, 60, 20);
         add(jSeparator6);
-        jSeparator6.setBounds(380, 450, 390, 10);
+        jSeparator6.setBounds(230, 635, 130, 10);
 
         jLabel24.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel24.setText("ЧМИ");
@@ -1434,7 +1434,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(ProfilerResults);
-        ProfilerResults.setBounds(190, 640, 40, 30);
+        ProfilerResults.setBounds(180, 640, 40, 30);
 
         OnlyView.setText("Без данных");
         OnlyView.addItemListener(new java.awt.event.ItemListener() {
@@ -1493,7 +1493,7 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         ProfileName.setText("...");
         add(ProfileName);
-        ProfileName.setBounds(50, 650, 130, 16);
+        ProfileName.setBounds(50, 650, 120, 16);
         add(Gates);
         Gates.setBounds(10, 220, 210, 20);
 
@@ -1535,20 +1535,14 @@ public class ESSMetaPanel extends ESSBasePanel {
         add(EditGate);
         EditGate.setBounds(290, 220, 30, 30);
 
-        ExportNode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/battery.png"))); // NOI18N
-        ExportNode.setBorderPainted(false);
-        ExportNode.setContentAreaFilled(false);
+        ExportNode.setText("Экспорт конфиг.");
         ExportNode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ExportNodeActionPerformed(evt);
             }
         });
         add(ExportNode);
-        ExportNode.setBounds(330, 600, 30, 50);
-
-        jSeparator7.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        add(jSeparator7);
-        jSeparator7.setBounds(325, 593, 3, 100);
+        ExportNode.setBounds(230, 640, 130, 25);
 
         MD5Calc.setText("MD5");
         MD5Calc.addActionListener(new java.awt.event.ActionListener() {
@@ -1558,6 +1552,8 @@ public class ESSMetaPanel extends ESSBasePanel {
         });
         add(MD5Calc);
         MD5Calc.setBounds(300, 450, 60, 22);
+        add(jSeparator7);
+        jSeparator7.setBounds(380, 450, 390, 10);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ImportMetaDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportMetaDataActionPerformed

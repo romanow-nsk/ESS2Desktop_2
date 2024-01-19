@@ -86,6 +86,14 @@ public class ESSExportNode {
             }.call();
         if (exportExit(res1))
             return;
+        res1 = new APICallSync<JString>() {
+            @Override
+            public Call<JString> apiFun() {
+                return service.clearFiles(exportContext.getDebugToken(), passWord);
+                }
+            }.call();
+        if (exportExit(res1))
+            return;
         timeMes("Очистка БД: " + res1.o2);
         long oid = addEntity(architecture);
         if (oid==-1){
@@ -202,10 +210,16 @@ public class ESSExportNode {
             logUnit.getESS2Equipment().setOid(newOid);
             newOid = deviceIdConvert.get(logUnit.getDevice().getOid());
             if (newOid==null){
-                addError(logUnit.getTitle()+" oid="+logUnit.getOid()+" не найден ESS2Device.oid="+logUnit.getDevice().getOid());
+                addError(logUnit.getTitle()+" oid="+logUnit.getOid()+" не найден рабочий ESS2Device.oid="+logUnit.getDevice().getOid());
                 continue;
                 }
             logUnit.getDevice().setOid(newOid);
+            newOid = deviceIdConvert.get(logUnit.getDebugDevice().getOid());
+            if (newOid==null){
+                addError(logUnit.getTitle()+" oid="+logUnit.getOid()+" не найден отладочный ESS2Device.oid="+logUnit.getDevice().getOid());
+                continue;
+                }
+            logUnit.getDebugDevice().setOid(newOid);
             oid = addEntity(logUnit);
             if (oid==-1)
                 continue;
