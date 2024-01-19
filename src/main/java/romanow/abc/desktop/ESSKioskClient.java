@@ -231,7 +231,7 @@ public class ESSKioskClient extends ESSBaseView {
             main.setRenderingOn(guiName);
             ErrorList errors = main.getErrors();
             if (!errors.valid()){
-                Mes.append(errors.toString());
+                Mes.append("\n"+errors.toString());
                 main.show();
                 main.setVisible(false);
                 return;
