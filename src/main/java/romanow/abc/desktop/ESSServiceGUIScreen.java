@@ -5,6 +5,7 @@
  */
 package romanow.abc.desktop;
 
+import romanow.abc.core.I_Boolean;
 import romanow.abc.core.entity.metadata.Meta2GUIView;
 import romanow.abc.core.entity.metadata.render.ScreenMode;
 
@@ -19,9 +20,9 @@ public class ESSServiceGUIScreen extends javax.swing.JFrame implements I_PanelEv
     /**
      * Creates new form ESSServiceGUIScreen
      */
-    private I_Button back;
+    private I_Boolean back;
     private ESSServiceGUIPanel panel;
-    public ESSServiceGUIScreen(MainBaseFrame main, I_Button back0){
+    public ESSServiceGUIScreen(MainBaseFrame main, I_Boolean back0){
         setUndecorated(true);
         initComponents();
         setTitle("ПУ СНЭ");
@@ -38,12 +39,12 @@ public class ESSServiceGUIScreen extends javax.swing.JFrame implements I_PanelEv
         panel.setBounds(0,0,sSize.width,sSize.height-20);
         setVisible(true);
         panel.setMainForm();
-        panel.setLogoutCallBack(new I_Button() {
+        panel.setLogoutCallBack(new I_Boolean() {
             @Override
-            public void onPush() {
-                back.onPush();
-            }
-        });
+            public void onEvent(boolean bb) {
+                back.onEvent(bb);
+                }
+            });
         panel.refresh();
         }
 
@@ -79,7 +80,7 @@ public class ESSServiceGUIScreen extends javax.swing.JFrame implements I_PanelEv
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         panel.shutDown();
-        back.onPush();
+        back.onEvent(false);
     }//GEN-LAST:event_formWindowClosing
 
     @Override

@@ -1833,9 +1833,9 @@ public class ESSMetaPanel extends ESSBasePanel {
     public void fullScreenOn(){
         if (!FullScreen.isSelected())
             return;
-        screen = new ESSServiceGUIScreen(main, new I_Button() {
+        screen = new ESSServiceGUIScreen(main, new I_Boolean() {
              @Override
-             public void onPush() {
+             public void onEvent(boolean bb) {
                  if (screen!=null)
                     screen.dispose();
                  screen = null;

@@ -10,6 +10,7 @@ import lombok.Setter;
 import okhttp3.ResponseBody;
 import retrofit2.Response;
 import romanow.abc.core.ErrorList;
+import romanow.abc.core.I_Boolean;
 import romanow.abc.core.UniException;
 import romanow.abc.core.Utils;
 import romanow.abc.core.constants.IntegerList;
@@ -76,7 +77,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     private Module module=null;
     private ArrayList<View2Base> guiList = new ArrayList<>();
     private ErrorList errorList = new ErrorList();
-    private I_Button logoutCallBack = null;                     // CallBack кнопки выхода
+    private I_Boolean logoutCallBack = null;                     // CallBack кнопки выхода
     private OwnDateTime userLoginTime = new OwnDateTime();
     private Meta2GUIForm prevForm=null;                         // Предыдущая форма (асинхр обновление)
     private boolean runtimeEditMode=false;
@@ -174,7 +175,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                         long sec = (new OwnDateTime().timeInMS() - userLoginTime.timeInMS()) / 1000;
                         if (logoutCallBack != null && sec > ((WorkSettings) main.workSettings()).getUserSilenceTime() * 60) {
                             shutDown();
-                            logoutCallBack.onPush();
+                            logoutCallBack.onEvent(false);
                             return;
                             }
                         if (!renderingOn)
@@ -198,7 +199,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         return main2.currentView(secondPanel);
         }
     //-----------------------------------------------------------------------------------------------------
-    public void setLogoutCallBack(I_Button logoutCallBack) {
+    public void setLogoutCallBack(I_Boolean logoutCallBack) {
         this.logoutCallBack = logoutCallBack; }
     public boolean isMainMode(){ return false; }
     public boolean isESSMode(){ return true; }
@@ -752,7 +753,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             public void actionPerformed(ActionEvent e) {
                 if (logoutCallBack!=null){
                     shutDown();
-                    logoutCallBack.onPush();
+                    logoutCallBack.onEvent(true);
                     }
                 }
             });

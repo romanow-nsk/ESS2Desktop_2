@@ -6,6 +6,7 @@
 package romanow.abc.desktop;
 
 import romanow.abc.core.ErrorList;
+import romanow.abc.core.I_Boolean;
 import romanow.abc.core.UniException;
 import romanow.abc.core.constants.Values;
 import romanow.abc.core.entity.metadata.render.ScreenMode;
@@ -42,6 +43,7 @@ public class ESSKioskClient extends ESSBaseView {
     private ESSServiceGUIScreen screen=null;
     private final static int xMin=640;
     private final static int yMin=480;
+    private boolean wasAutoLogin=true;
     public ESSKioskClient(String pars[]){
         this(false,true,pars);
     }
@@ -98,6 +100,7 @@ public class ESSKioskClient extends ESSBaseView {
             positionOn(400,200);
             }
         initComponentsCenter();
+        wasAutoLogin = auto;
         if (auto) {
             java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
@@ -238,15 +241,20 @@ public class ESSKioskClient extends ESSBaseView {
                 }
             if (main.currentView(false)==null)
                 return;
-            screen = new ESSServiceGUIScreen(main, new I_Button() {
+            screen = new ESSServiceGUIScreen(main, new I_Boolean() {
                 @Override
-                public void onPush() {
+                public void onEvent(boolean bb) {
                     if (screen!=null)
                         screen.dispose();
                     screen = null;
                     Login.setText(Values.KioskClientAutoLogin);
                     Password.setText(Values.KioskClientAutotPass);
-                    setVisible(true);
+                    if (!bb){
+                        loginButtonClick();
+                        }
+                    else{
+                        setVisible(true);
+                        }
                     }
                 });
             setVisible(false);
@@ -267,7 +275,7 @@ public class ESSKioskClient extends ESSBaseView {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Mes.setText("");
-                new KeyBoardPanel(false,Login,"",new I_Value<String>() {
+                new KeyBoardPanel(screenMode.ScreenW(), screenMode.ScreenH(),false,Login,"",new I_Value<String>() {
                     @Override
                     public void onEnter(String value) {
                          loginText = value;
