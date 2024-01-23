@@ -16,6 +16,7 @@ import romanow.abc.core.Utils;
 import romanow.abc.core.constants.IntegerList;
 import romanow.abc.core.constants.Values;
 import romanow.abc.core.entity.UnitRegisterList;
+import romanow.abc.core.entity.baseentityes.JLong;
 import romanow.abc.core.entity.metadata.*;
 import romanow.abc.core.entity.metadata.render.I_ContextBack;
 import romanow.abc.core.entity.metadata.render.ScreenMode;
@@ -980,6 +981,13 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                 putOneLinkRegister(element,link2,element.getRegOffset());
                 }
             }
+        Pair<String, JLong> serverTime = new APICallSync<JLong>() {
+            @Override
+            public Call apiFun() {
+                return main.getService().getServerClock(main.getDebugToken());
+                }
+            }.call();
+        context.setServerClock(serverTime.o1==null ? serverTime.o2.getValue() : 0);
         renderSeqNum++;             // Установить след. номер запроса
         asyncCount=0;
         for(ESS2Device device : main2.deployed.getDevices()){

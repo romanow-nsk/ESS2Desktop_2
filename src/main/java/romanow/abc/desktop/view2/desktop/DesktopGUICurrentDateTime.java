@@ -52,7 +52,12 @@ public class DesktopGUICurrentDateTime extends View2BaseDesktop {
     public void putValue(long vv) throws UniException {}
     @Override
     public void repaintBefore(){
-        OwnDateTime vv = new OwnDateTime(System.currentTimeMillis());
+        long clock = element.isServerTime() ? getContext().getServerClock() : System.currentTimeMillis();
+        if (clock==0){
+            textField.setText("...");
+            return;
+            }
+        OwnDateTime vv = new OwnDateTime(clock);
         String ss = String.format("%02d:%02d:%02d",vv.hour(),vv.minute(),vv.second());
         String ss2 = String.format("%02d-%02d-%02d",vv.day(),vv.month(),vv.year());
         if (element.isOnlyTime())

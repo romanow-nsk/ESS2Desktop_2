@@ -24,6 +24,9 @@ public class WizardMeta2GUICurrentDateTime extends WizardMeta2GUILabel {
         elem = (Meta2GUICurrentDateTime)  entity;
         onStart=true;
         OnlyTime.setSelected(elem.isOnlyTime());
+        OnlyDate.setSelected(elem.isOnlyDate());
+        OneString.setSelected(elem.isOneString());
+        ServerTime.setSelected(elem.isServerTime());
         onStart=false;
         resizeHeight(250);
         }
@@ -40,10 +43,22 @@ public class WizardMeta2GUICurrentDateTime extends WizardMeta2GUILabel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        ServerTime = new javax.swing.JCheckBox();
         OnlyTime = new javax.swing.JCheckBox();
+        OnlyDate = new javax.swing.JCheckBox();
+        OneString = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
+
+        ServerTime.setText("Время сервера");
+        ServerTime.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ServerTimeItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(ServerTime);
+        ServerTime.setBounds(20, 150, 140, 20);
 
         OnlyTime.setText("Только время");
         OnlyTime.addItemListener(new java.awt.event.ItemListener() {
@@ -54,8 +69,33 @@ public class WizardMeta2GUICurrentDateTime extends WizardMeta2GUILabel {
         getContentPane().add(OnlyTime);
         OnlyTime.setBounds(20, 130, 140, 20);
 
+        OnlyDate.setText("Только дата");
+        OnlyDate.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                OnlyDateItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(OnlyDate);
+        OnlyDate.setBounds(130, 130, 100, 20);
+
+        OneString.setText("Одна строка");
+        OneString.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                OneStringItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(OneString);
+        OneString.setBounds(230, 130, 100, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ServerTimeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ServerTimeItemStateChanged
+        if (onStart)
+            return;
+        elem.setServerTime(ServerTime.isSelected());
+        back.onEnter("Изменено serverTime"+": "+ServerTime.isSelected());
+    }//GEN-LAST:event_ServerTimeItemStateChanged
 
     private void OnlyTimeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_OnlyTimeItemStateChanged
         if (onStart)
@@ -63,6 +103,20 @@ public class WizardMeta2GUICurrentDateTime extends WizardMeta2GUILabel {
         elem.setOnlyTime(OnlyTime.isSelected());
         back.onEnter("Изменено onlyTime"+": "+OnlyTime.isSelected());
     }//GEN-LAST:event_OnlyTimeItemStateChanged
+
+    private void OnlyDateItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_OnlyDateItemStateChanged
+        if (onStart)
+        return;
+        elem.setOnlyDate(OnlyDate.isSelected());
+        back.onEnter("Изменено onlyDate"+": "+OnlyDate.isSelected());
+    }//GEN-LAST:event_OnlyDateItemStateChanged
+
+    private void OneStringItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_OneStringItemStateChanged
+        if (onStart)
+        return;
+        elem.setOneString(OneString.isSelected());
+        back.onEnter("Изменено oneString"+": "+OneString.isSelected());
+    }//GEN-LAST:event_OneStringItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -100,6 +154,9 @@ public class WizardMeta2GUICurrentDateTime extends WizardMeta2GUILabel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox OneString;
+    private javax.swing.JCheckBox OnlyDate;
     private javax.swing.JCheckBox OnlyTime;
+    private javax.swing.JCheckBox ServerTime;
     // End of variables declaration//GEN-END:variables
 }
