@@ -18,6 +18,7 @@ import romanow.abc.core.constants.Values;
 import romanow.abc.core.entity.UnitRegisterList;
 import romanow.abc.core.entity.baseentityes.JLong;
 import romanow.abc.core.entity.metadata.*;
+import romanow.abc.core.entity.metadata.render.FormContextBase;
 import romanow.abc.core.entity.metadata.render.I_ContextBack;
 import romanow.abc.core.entity.metadata.render.ScreenMode;
 import romanow.abc.core.entity.metadata.view.Meta2GUI;
@@ -79,7 +80,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     private ArrayList<View2Base> guiList = new ArrayList<>();
     private ErrorList errorList = new ErrorList();
     private I_Boolean logoutCallBack = null;                     // CallBack кнопки выхода
-    private OwnDateTime userLoginTime = new OwnDateTime();
+    //private OwnDateTime userLoginTime = new OwnDateTime();
     private Meta2GUIForm prevForm=null;                         // Предыдущая форма (асинхр обновление)
     private boolean runtimeEditMode=false;
     private boolean runtimeOnlyView=false;
@@ -173,10 +174,17 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                             repaintOff();
                             return;
                             }
-                        long sec = (new OwnDateTime().timeInMS() - userLoginTime.timeInMS()) / 1000;
+                        long sec = (new OwnDateTime().timeInMS() - context.getUserLoginTime().timeInMS()) / 1000;
                         if (logoutCallBack != null && sec > ((WorkSettings) main.workSettings()).getUserSilenceTime() * 60) {
-                            shutDown();
-                            logoutCallBack.onEvent(false);
+                            if (main2.isGuestKioskClient() && context.getForm().getTitle().equals(MainFormName))
+                                return;
+                            java.awt.EventQueue.invokeLater(new Runnable() {
+                                public void run() {
+                                    //context.openForm(MainFormName, FormContextBase.ModeCrearIdx);
+                                    shutDown();
+                                    logoutCallBack.onEvent(false);
+                                    }
+                                });
                             return;
                             }
                         if (!renderingOn)
@@ -223,7 +231,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         context.setValid(true);
         context.setPlatformName("Desktop");
         context.setMain(main);
-        userLoginTime = new OwnDateTime();
+        context.setUserLoginTime();
         createLoopThread();
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
@@ -256,7 +264,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
          @Override
          public void onEnter(View2Base element, int iParam, String sParam) {
              guiLoop.interrupt();
-             userLoginTime = new OwnDateTime();
+             context.setUserLoginTime();
              repaintView();
             }
         };

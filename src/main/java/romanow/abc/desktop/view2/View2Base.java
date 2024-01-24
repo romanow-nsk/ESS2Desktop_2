@@ -97,9 +97,10 @@ public abstract class View2Base implements I_View2 {
     public void setInfoClick(Component textField){
         setInfoClick(textField,false);
         }
-    public void setInfoClick(Component textField,final boolean onLeftClick){        // Перехват левого клика
+    public void setInfoClick(Component textField,final boolean onLeftClick){    // Перехват левого клика
         textField.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
+                context.setUserLoginTime();                                     // Учет кликов при вычислении паузы
                 if (onLeftClick && e.getButton() == MouseEvent.BUTTON1)
                         onFullClick();
                 if (context.isInfoMode() || e.getButton() == MouseEvent.BUTTON3){

@@ -38,12 +38,13 @@ import static romanow.abc.desktop.BasePanel.EventPLMOn;
 
 public class ESSClient extends Client {
     @Getter @Setter private  ErrorList errors = new ErrorList();
-    ESS2Architecture deployed=null;             // Развернутая архитектура
-    @Getter @Setter private ESS2View currentView=null;  // Текущий вид
-    @Getter @Setter private ESS2View currentView2=null; // Второй экран
-    long mainServerNodeId = 0;                  // oid текущего узла для ДЦ
+    @Getter @Setter private boolean guestKioskClient=false; // Киоск-клиент - гость
+    ESS2Architecture deployed=null;                         // Развернутая архитектура
+    @Getter @Setter private ESS2View currentView=null;      // Текущий вид
+    @Getter @Setter private ESS2View currentView2=null;     // Второй экран
+    long mainServerNodeId = 0;                              // oid текущего узла для ДЦ
     I_ModbusGroupDriver plm= new ModBusMemoryEmulator();
-    MetaExternalSystem meta=null;               // Чтобы не удалять 1.0 (ESSMetaPanel ESSMainServiceGUIPanel
+    MetaExternalSystem meta=null;                           // Чтобы не удалять 1.0 (ESSMetaPanel ESSMainServiceGUIPanel
     ArrayList<ESSNode> nodes = new ArrayList<>();
     AccessManager manager;
     RestAPIESS2 service2;
