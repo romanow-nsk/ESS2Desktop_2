@@ -435,7 +435,7 @@ public class ESSExportNode {
         Pair<String, Artifact> res2 = new APICallSync<Artifact>(){
             @Override
             public Call<Artifact> apiFun() {
-                return service.createArtifactFromString(exportContext.getDebugToken(),fname,base64,new JString(text));
+                return service.createArtifactFromString(exportContext.getDebugToken(),fname,src.getName(),base64,new JString(text));
                 }
             }.call();
         if (res2.o1!=null){
