@@ -13,31 +13,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="84.01 - баг - закрытие лог-файлов">
-      <change beforePath="$PROJECT_DIR$/../ABCDataServer/src/main/java/romanow/abc/dataserver/CommandStringData.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCDataServer/src/main/java/romanow/abc/dataserver/CommandStringData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCDataServer/src/main/java/romanow/abc/dataserver/ConsoleServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCDataServer/src/main/java/romanow/abc/dataserver/ConsoleServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCDataServer/src/main/java/romanow/abc/dataserver/DataServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCDataServer/src/main/java/romanow/abc/dataserver/DataServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" afterDir="false" />
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="85.01 - Ключи сервера, рефакторинг">
       <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/ESSCommandStringData.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/ESSCommandStringData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/ESSConsoleServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/ESSConsoleServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/ESSDataServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/ESSDataServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BMSSettings.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Input01.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Input02.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Input02_bin.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Thermometer-IoT-Device-plc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bars4569.xls" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/develop4569.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/develop4569.xls" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/develop4569import.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/empty4569.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/empty4569.xls" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/empty4569bg.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/empty4569import.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/input01_bin.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/start_empty_4571.bat" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +36,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../ESS2Core" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../ESS2DataServer" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
@@ -152,7 +132,7 @@
       <recent name="romanow.abc.core.entity.subject2area.events" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.BARSConsoleServer">
+  <component name="RunManager" selected="Application.ESSConsoleServer">
     <configuration name="BARS4569ConsoleServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="romanow.abc.dataserver.BARS4569ConsoleServer" />
       <module name="ESS2DataServer" />
@@ -233,8 +213,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ESSClient" />
         <item itemvalue="Application.ESSConsoleServer" />
+        <item itemvalue="Application.ESSClient" />
         <item itemvalue="Application.BARS4569ConsoleServer" />
         <item itemvalue="Application.ESSKioskClientKLIAB100" />
         <item itemvalue="Application.ESSKioskClient" />
@@ -249,13 +229,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00379" summary="80 - Косяки">
-      <created>1699725490442</created>
-      <option name="number" value="00379" />
-      <option name="presentableId" value="LOCAL-00379" />
-      <option name="project" value="LOCAL" />
-      <updated>1699725490443</updated>
     </task>
     <task id="LOCAL-00380" summary="80 - Вывод даты/времени">
       <created>1699799957957</created>
@@ -593,7 +566,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706183855105</updated>
     </task>
-    <option name="localTasksCounter" value="428" />
+    <task id="LOCAL-00428" summary="85.01 - Ключи сервера, рефакторинг">
+      <created>1706266780066</created>
+      <option name="number" value="00428" />
+      <option name="presentableId" value="LOCAL-00428" />
+      <option name="project" value="LOCAL" />
+      <updated>1706266780066</updated>
+    </task>
+    <option name="localTasksCounter" value="429" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -620,7 +600,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="81 - Потоковые данные в файл" />
     <MESSAGE value="82 - Modbus cash, ошибки связей" />
     <MESSAGE value="82 - fix для Юрги" />
     <MESSAGE value="82 - Удаление отсчетов (админка)" />
@@ -645,7 +624,8 @@
     <MESSAGE value="84.01 - копирование файлов из текста (параметр API)" />
     <MESSAGE value="84.01 - Запрет вывода в консоль с режимее оборудования" />
     <MESSAGE value="84.01 - баг - закрытие лог-файлов" />
-    <option name="LAST_COMMIT_MESSAGE" value="84.01 - баг - закрытие лог-файлов" />
+    <MESSAGE value="85.01 - Ключи сервера, рефакторинг" />
+    <option name="LAST_COMMIT_MESSAGE" value="85.01 - Ключи сервера, рефакторинг" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -962,7 +942,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java</url>
-          <line>2932</line>
+          <line>2934</line>
           <option name="timeStamp" value="1423" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
