@@ -13,9 +13,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="85.01 - Ключи сервера, рефакторинг">
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="85.01 - Сжатие конфигурации">
       <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/ESSCommandStringData.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/ESSCommandStringData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/ESSConsoleServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/ESSConsoleServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -132,7 +131,7 @@
       <recent name="romanow.abc.core.entity.subject2area.events" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ESSConsoleServer">
+  <component name="RunManager" selected="Application.BARSConsoleServer">
     <configuration name="BARS4569ConsoleServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="romanow.abc.dataserver.BARS4569ConsoleServer" />
       <module name="ESS2DataServer" />
@@ -213,8 +212,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ESSConsoleServer" />
         <item itemvalue="Application.ESSClient" />
+        <item itemvalue="Application.ESSConsoleServer" />
         <item itemvalue="Application.BARS4569ConsoleServer" />
         <item itemvalue="Application.ESSKioskClientKLIAB100" />
         <item itemvalue="Application.ESSKioskClient" />
@@ -229,13 +228,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00380" summary="80 - Вывод даты/времени">
-      <created>1699799957957</created>
-      <option name="number" value="00380" />
-      <option name="presentableId" value="LOCAL-00380" />
-      <option name="project" value="LOCAL" />
-      <updated>1699799957957</updated>
     </task>
     <task id="LOCAL-00381" summary="80 - Обновление библиотек github рекомендации">
       <created>1700211130694</created>
@@ -573,7 +565,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706266780066</updated>
     </task>
-    <option name="localTasksCounter" value="429" />
+    <task id="LOCAL-00429" summary="85.01 - Сжатие конфигурации">
+      <created>1706274772967</created>
+      <option name="number" value="00429" />
+      <option name="presentableId" value="LOCAL-00429" />
+      <option name="project" value="LOCAL" />
+      <updated>1706274772967</updated>
+    </task>
+    <option name="localTasksCounter" value="430" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -600,7 +599,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="82 - Modbus cash, ошибки связей" />
     <MESSAGE value="82 - fix для Юрги" />
     <MESSAGE value="82 - Удаление отсчетов (админка)" />
     <MESSAGE value="82 - Закрытие коллекции условное 60870" />
@@ -625,7 +623,8 @@
     <MESSAGE value="84.01 - Запрет вывода в консоль с режимее оборудования" />
     <MESSAGE value="84.01 - баг - закрытие лог-файлов" />
     <MESSAGE value="85.01 - Ключи сервера, рефакторинг" />
-    <option name="LAST_COMMIT_MESSAGE" value="85.01 - Ключи сервера, рефакторинг" />
+    <MESSAGE value="85.01 - Сжатие конфигурации" />
+    <option name="LAST_COMMIT_MESSAGE" value="85.01 - Сжатие конфигурации" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -747,7 +746,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java</url>
-          <line>2645</line>
+          <line>2646</line>
           <option name="timeStamp" value="786" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -939,11 +938,6 @@
           <url>file://$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/view/Meta2GUI.java</url>
           <line>169</line>
           <option name="timeStamp" value="1415" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java</url>
-          <line>2934</line>
-          <option name="timeStamp" value="1423" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardESS2LogUnit.java</url>
