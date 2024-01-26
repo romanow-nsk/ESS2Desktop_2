@@ -13,7 +13,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="85.01 - Сжатие конфигурации">
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="85.01 -  MD5">
       <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/ESSConsoleServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/ESSConsoleServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -213,8 +213,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.ESSClient" />
-        <item itemvalue="Application.ESSConsoleServer" />
         <item itemvalue="Application.BARS4569ConsoleServer" />
+        <item itemvalue="Application.ESSConsoleServer" />
         <item itemvalue="Application.ESSKioskClientKLIAB100" />
         <item itemvalue="Application.ESSKioskClient" />
       </list>
@@ -228,13 +228,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00381" summary="80 - Обновление библиотек github рекомендации">
-      <created>1700211130694</created>
-      <option name="number" value="00381" />
-      <option name="presentableId" value="LOCAL-00381" />
-      <option name="project" value="LOCAL" />
-      <updated>1700211130694</updated>
     </task>
     <task id="LOCAL-00382" summary="80 - KotlisReact - Новые метаданные">
       <created>1700228071501</created>
@@ -572,7 +565,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706274772967</updated>
     </task>
-    <option name="localTasksCounter" value="430" />
+    <task id="LOCAL-00430" summary="85.01 -  MD5">
+      <created>1706280622998</created>
+      <option name="number" value="00430" />
+      <option name="presentableId" value="LOCAL-00430" />
+      <option name="project" value="LOCAL" />
+      <updated>1706280622999</updated>
+    </task>
+    <option name="localTasksCounter" value="431" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -599,7 +599,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="82 - fix для Юрги" />
     <MESSAGE value="82 - Удаление отсчетов (админка)" />
     <MESSAGE value="82 - Закрытие коллекции условное 60870" />
     <MESSAGE value="83 - рефакторинг MainBaseFrame" />
@@ -624,7 +623,8 @@
     <MESSAGE value="84.01 - баг - закрытие лог-файлов" />
     <MESSAGE value="85.01 - Ключи сервера, рефакторинг" />
     <MESSAGE value="85.01 - Сжатие конфигурации" />
-    <option name="LAST_COMMIT_MESSAGE" value="85.01 - Сжатие конфигурации" />
+    <MESSAGE value="85.01 -  MD5" />
+    <option name="LAST_COMMIT_MESSAGE" value="85.01 -  MD5" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
