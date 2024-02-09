@@ -108,12 +108,12 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="Not61850">
+    <Component class="javax.swing.JCheckBox" name="In61850">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#x41c;&#x42d;&#x41a; 61850 &#x438;&#x441;&#x43a;&#x43b;&#x44e;&#x447;&#x435;&#x43d;"/>
+        <Property name="text" type="java.lang.String" value="&#x41c;&#x42d;&#x41a; 61850 &#x432;&#x43a;&#x43b;&#x44e;&#x447;&#x435;&#x43d;"/>
       </Properties>
       <Events>
-        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="Not61850ItemStateChanged"/>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="In61850ItemStateChanged"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

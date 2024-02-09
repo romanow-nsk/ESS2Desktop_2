@@ -128,12 +128,12 @@ public class WizardBaseView extends ESSBaseView {
         ShortName.setText(entity.getShortName());
         if (entity instanceof Meta2Face){
             DOType.setText(((Meta2Face)entity).getDOType());
-            Not61850.setSelected(((Meta2Face)entity).isOut61850Model());
+            In61850.setSelected(((Meta2Face)entity).isIn61850Model());
             In60870.setSelected(((Meta2Face)entity).isIn60870Model());
             }
         else{
             DOType.setVisible(false);
-            Not61850.setVisible(false);
+            In61850.setVisible(false);
             In60870.setVisible(false);
             }
         busy=false;
@@ -161,7 +161,7 @@ public class WizardBaseView extends ESSBaseView {
         Title = new javax.swing.JTextField();
         DOType = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        Not61850 = new javax.swing.JCheckBox();
+        In61850 = new javax.swing.JCheckBox();
         In60870 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -220,14 +220,14 @@ public class WizardBaseView extends ESSBaseView {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(20, 20, 40, 16);
 
-        Not61850.setText("МЭК 61850 исключен");
-        Not61850.addItemListener(new java.awt.event.ItemListener() {
+        In61850.setText("МЭК 61850 включен");
+        In61850.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                Not61850ItemStateChanged(evt);
+                In61850ItemStateChanged(evt);
             }
         });
-        getContentPane().add(Not61850);
-        Not61850.setBounds(650, 10, 150, 20);
+        getContentPane().add(In61850);
+        In61850.setBounds(650, 10, 150, 20);
 
         In60870.setText("МЭК 60870 включен");
         In60870.addItemListener(new java.awt.event.ItemListener() {
@@ -293,18 +293,18 @@ public class WizardBaseView extends ESSBaseView {
         });
     }//GEN-LAST:event_DOTypeKeyPressed
 
-    private void Not61850ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_Not61850ItemStateChanged
+    private void In61850ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_In61850ItemStateChanged
         if (busy)
             return;
-        ((Meta2Face)entity).setOut61850Model(Not61850.isSelected());
-        back.onEnter("Изменено 61850 исключен="+Not61850.isSelected());
-    }//GEN-LAST:event_Not61850ItemStateChanged
+        ((Meta2Face)entity).setIn61850Model(In61850.isSelected());
+        back.onEnter("Изменено 61850 включен="+In61850.isSelected());
+    }//GEN-LAST:event_In61850ItemStateChanged
 
     private void In60870ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_In60870ItemStateChanged
         if (busy)
             return;
         ((Meta2Face)entity).setIn60870Model(In60870.isSelected());
-        back.onEnter("Изменено 61850 включен="+In60870.isSelected());
+        back.onEnter("Изменено 60870 включен="+In60870.isSelected());
     }//GEN-LAST:event_In60870ItemStateChanged
 
     public void onKeyPressedFloat(String name, JTextField fld, KeyEvent evt, I_WizardActionFloat action){
@@ -421,7 +421,7 @@ public class WizardBaseView extends ESSBaseView {
     private javax.swing.JTextField Comment;
     private javax.swing.JTextField DOType;
     private javax.swing.JCheckBox In60870;
-    private javax.swing.JCheckBox Not61850;
+    private javax.swing.JCheckBox In61850;
     private javax.swing.JTextField ShortName;
     private javax.swing.JTextField Title;
     private javax.swing.JLabel jLabel1;
