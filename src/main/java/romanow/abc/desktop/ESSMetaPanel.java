@@ -3489,7 +3489,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         ESS2Architecture arch = main2.deployed;
         FileNameExt ff = main.getOutputFileName("МЭК 61850","",arch.getTitle()+".cid");
         for(ESS2Equipment equipment : arch.getEquipments()){
-            equipment.createCIDRecord(arch.getShortName());
+            equipment.createCIDRecord(arch);
             CIDCreateData data = equipment.getCidData();
             ff.setName(arch.getTitle()+"_"+equipment.getTitle()+".cid");
             try {
