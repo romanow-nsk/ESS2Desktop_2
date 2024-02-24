@@ -3488,8 +3488,10 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         ESS2Architecture arch = main2.deployed;
         FileNameExt ff = main.getOutputFileName("МЭК 61850","",arch.getTitle()+".cid");
+        //------------ Версия для каждого устройства
+        int idx=0;
         for(ESS2Equipment equipment : arch.getEquipments()){
-            equipment.createCIDRecord(arch);
+            equipment.createCIDRecord(arch,idx++);
             CIDCreateData data = equipment.getCidData();
             ff.setName(arch.getTitle()+"_"+equipment.getTitle()+".cid");
             try {
@@ -3503,7 +3505,19 @@ public class ESSMetaPanel extends ESSBasePanel {
                     System.out.println("Ошибка записи "+ff.fileName());
                     }
                 }
-    }//GEN-LAST:event_CIDLocalActionPerformed
+        CIDCreateData data = arch.createCIDRecord();
+        ff.setName(arch.getTitle()+".cid");
+            try {
+                OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(ff.fullName()), "UTF-8");
+                writer.write(data.toString());
+                writer.close();
+                System.out.println("Файл записан "+ff.fullName());
+                if (!data.errors.valid())
+                    System.out.println(data.errors.toString());
+                } catch (Exception ee){
+                    System.out.println("Ошибка записи "+ff.fileName());
+                    }
+        }//GEN-LAST:event_CIDLocalActionPerformed
 
     private void IEC61850OnOffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IEC61850OnOffActionPerformed
         if (!main2.deployed.isConnected()){
@@ -3513,7 +3527,8 @@ public class ESSMetaPanel extends ESSBasePanel {
         new APICall<CallResult>(main) {
             @Override
             public Call<CallResult> apiFun() {
-                return main2.service2.iec61850ServerOnOff(main.getDebugToken(), deployed.getEquipments().get(Equipments.getSelectedIndex()).getOid());
+                //return main2.service2.iec61850ServerOnOff(main.getDebugToken(), deployed.getEquipments().get(Equipments.getSelectedIndex()).getOid());
+                return main2.service2.iec61850ServerOnOff(main.getDebugToken(), 0);
                 }
             @Override
             public void onSucess(CallResult vv) {
