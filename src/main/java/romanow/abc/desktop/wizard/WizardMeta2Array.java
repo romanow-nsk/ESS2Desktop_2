@@ -73,6 +73,9 @@ public class WizardMeta2Array extends WizardBaseView {
         Edit = new javax.swing.JButton();
         Types = new java.awt.Choice();
         Inline61850 = new javax.swing.JCheckBox();
+        SizesList = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -89,9 +92,9 @@ public class WizardMeta2Array extends WizardBaseView {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(20, 135, 90, 16);
 
-        jLabel3.setText("Размерность");
+        jLabel3.setText("Индивид.");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(20, 95, 100, 16);
+        jLabel3.setBounds(290, 90, 90, 16);
 
         Size.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -147,6 +150,22 @@ public class WizardMeta2Array extends WizardBaseView {
         });
         getContentPane().add(Inline61850);
         Inline61850.setBounds(650, 90, 120, 20);
+
+        SizesList.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SizesListKeyPressed(evt);
+            }
+        });
+        getContentPane().add(SizesList);
+        SizesList.setBounds(380, 90, 240, 25);
+
+        jLabel5.setText("Размерность");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(20, 95, 100, 16);
+
+        jLabel6.setText("размерности");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(290, 105, 100, 16);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -205,6 +224,19 @@ public class WizardMeta2Array extends WizardBaseView {
         back.onEnter("Изменено 61850 Inline="+Inline61850.isSelected());
     }//GEN-LAST:event_Inline61850ItemStateChanged
 
+    private void SizesListKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SizesListKeyPressed
+        onStringKeyPressed("sizes", SizesList, evt, new I_WizardActionString() {
+            @Override
+            public void onAction(String value) {
+                String ss = array.parseSizes("");
+                if (ss==null)
+                    array.setSizes(value);
+                else
+                    System.out.println(ss);
+            }
+        });
+    }//GEN-LAST:event_SizesListKeyPressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ChangeElem;
@@ -212,11 +244,14 @@ public class WizardMeta2Array extends WizardBaseView {
     private javax.swing.JTextField Elem;
     private javax.swing.JCheckBox Inline61850;
     private javax.swing.JTextField Size;
+    private javax.swing.JTextField SizesList;
     private javax.swing.JTextField Step;
     private java.awt.Choice Types;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
