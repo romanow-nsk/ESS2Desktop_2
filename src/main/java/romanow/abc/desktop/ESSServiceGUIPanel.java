@@ -1065,7 +1065,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         if (meta instanceof Meta2GUIArray){
             Meta2GUIArray array = (Meta2GUIArray) meta;
             Meta2GUI elem = array.getElem();
-            for(int i=0;i<array.getSize();i++){
+            for(int i=0;i<array.getSize(context.getIdx()[0]);i++){
                 int cIdx = i;
                 groupIndexes[groupLevel] = cIdx;        // Относительные индексы в группе (уровень 1 - level=0)
                 int xx = baseX + (array.getDxy() < 0 ? -array.getDxy()*i : 0);

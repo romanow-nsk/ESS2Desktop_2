@@ -41,6 +41,7 @@ public class WizardMeta2GUIArray extends WizardBaseView {
             Elem.setText(""+array.getElem().getFullTitle());
         DXY.setText(""+array.getDxy());
         Size.setText(""+array.getSize());
+        SizesList.setText(array.getSizes());        
         AbsoluteIndex.setSelected(array.isAbsoluteIndex());
         Types.removeAll();
         types = Values.constMap().getGroupList("GUIType");
@@ -78,6 +79,9 @@ public class WizardMeta2GUIArray extends WizardBaseView {
         Edit = new javax.swing.JButton();
         Types = new java.awt.Choice();
         AbsoluteIndex = new javax.swing.JCheckBox();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        SizesList = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -105,11 +109,11 @@ public class WizardMeta2GUIArray extends WizardBaseView {
             }
         });
         getContentPane().add(Size);
-        Size.setBounds(110, 90, 60, 25);
+        Size.setBounds(110, 90, 50, 25);
 
         jLabel4.setText("Шаг (dxy)");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(180, 95, 60, 16);
+        jLabel4.setBounds(170, 95, 60, 16);
 
         DXY.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -117,7 +121,7 @@ public class WizardMeta2GUIArray extends WizardBaseView {
             }
         });
         getContentPane().add(DXY);
-        DXY.setBounds(250, 90, 50, 25);
+        DXY.setBounds(230, 90, 50, 25);
         getContentPane().add(jSeparator1);
         jSeparator1.setBounds(10, 82, 560, 3);
 
@@ -152,7 +156,23 @@ public class WizardMeta2GUIArray extends WizardBaseView {
             }
         });
         getContentPane().add(AbsoluteIndex);
-        AbsoluteIndex.setBounds(320, 95, 110, 20);
+        AbsoluteIndex.setBounds(290, 95, 110, 20);
+
+        jLabel5.setText("Индивид.");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(380, 90, 90, 16);
+
+        jLabel6.setText("размерности");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(380, 105, 100, 16);
+
+        SizesList.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SizesListKeyPressed(evt);
+            }
+        });
+        getContentPane().add(SizesList);
+        SizesList.setBounds(470, 90, 240, 25);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -215,6 +235,19 @@ public class WizardMeta2GUIArray extends WizardBaseView {
         back.onEnter("Изменено absoluteIndex="+AbsoluteIndex.isSelected());
     }//GEN-LAST:event_AbsoluteIndexItemStateChanged
 
+    private void SizesListKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SizesListKeyPressed
+        onStringKeyPressed("sizes", SizesList, evt, new I_WizardActionString() {
+            @Override
+            public void onAction(String value) {
+                String ss = array.parseSizes("");
+                if (ss==null)
+                array.setSizes(value);
+                else
+                System.out.println(ss);
+            }
+        });
+    }//GEN-LAST:event_SizesListKeyPressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox AbsoluteIndex;
@@ -223,10 +256,13 @@ public class WizardMeta2GUIArray extends WizardBaseView {
     private javax.swing.JButton Edit;
     private javax.swing.JTextField Elem;
     private javax.swing.JTextField Size;
+    private javax.swing.JTextField SizesList;
     private java.awt.Choice Types;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
