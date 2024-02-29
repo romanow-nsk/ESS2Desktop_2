@@ -42,6 +42,7 @@ public class WizardMeta2Array extends WizardBaseView {
         Inline61850.setSelected(array.isInline61860());
         Step.setText(""+array.getStep());
         Size.setText(""+array.getSize());
+        SizesList.setText(array.getSizes());
         Types.removeAll();
         types = createEquipElemList();
         for(ConstValue cc : types)
