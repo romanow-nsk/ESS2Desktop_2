@@ -2171,7 +2171,8 @@ public class ESSMetaPanel extends ESSBasePanel {
                     metaXML.createMap();
                     metaXML.testLocalConfiguration();
                     System.out.println(metaXML.getErrors());
-                    String zz = WizardBaseView.openWizard(metaFile.getFile().getRef().createArtifactFileName(),main, metaXML, new I_Value<String>() {
+                    int timeZoneHour = main.getClientContext().workSettings().getTimeZoneHours();
+                    String zz = WizardBaseView.openWizard(metaFile.getFile().getRef().createArtifactFileName(-timeZoneHour),main, metaXML, new I_Value<String>() {
                         @Override
                         public void onEnter(String value) {
                             changesCount++;
