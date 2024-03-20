@@ -22,8 +22,6 @@ public class ESSSettingsCalculator {
     public ESSSettingsCalculator(){}
     I_Calculator result = new I_Calculator() {
         @Override
-        public void parseAndWrite(String ss, boolean mode) throws UniException { }
-        @Override
         public String getTitle() {
             return ""; }
         @Override
@@ -42,7 +40,9 @@ public class ESSSettingsCalculator {
         public String getMaxValue() {
             return ""+maxValue;
             }
-        };
+        @Override
+        public String getStartValue() { return ""; }
+    };
     public I_Calculator getResult() {
         return result;
     }

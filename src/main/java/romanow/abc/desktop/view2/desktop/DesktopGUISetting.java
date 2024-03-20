@@ -22,6 +22,8 @@ import static romanow.abc.core.entity.metadata.Meta2Entity.toHex;
 
 public class DesktopGUISetting extends View2BaseDesktop {
     private JTextField textField;
+    private String lastValue="";
+    private Meta2SettingRegister register;
     public DesktopGUISetting(){
         setType(Values.GUISetting);
         }
@@ -31,7 +33,7 @@ public class DesktopGUISetting extends View2BaseDesktop {
         setLabel(panel);
         FormContext2 context= getContext();
         Meta2GUISetting element = (Meta2GUISetting) getElement();
-        Meta2SettingRegister register = (Meta2SettingRegister) getRegister();
+        register = (Meta2SettingRegister) getRegister();
         int w2=element.getW2();
         if (w2==0) w2=100;
         textField = new JTextField();
@@ -74,11 +76,21 @@ public class DesktopGUISetting extends View2BaseDesktop {
                     return;
                     }
                 ESS2SettingsCalculator calculator = new ESS2SettingsCalculator();
-                try {
-                    calculator.calculate(getArchitecture(), register, DesktopGUISetting.this.getDevice().getDriver());
-                    new DigitPanel(calculator.getResult(), new I_RealValue() {
+                //try {
+                    //calculator.calculate(getArchitecture(), register, DesktopGUISetting.this.getDevice().getDriver());
+                    //new DigitPanel(calculator.getResult(), new I_RealValue() {
+                    //----------------- Без подсчета по формулам, напрямую 86.1
+                    new DigitPanel(calcResult, new I_RealValue() {
                         @Override
                         public void onEvent(double value) {
+                            if (register.getMinValue()!=0 && value < register.getMinValue()){
+                                context.popup("Калькулятор: значение - "+value+" меньше разрешенного "+register.getMinValue());
+                                return;
+                                }
+                            if (register.getMaxValue()!=0 && value > register.getMaxValue()){
+                                context.popup("Калькулятор: значение - "+value+" больше разрешенного "+register.getMaxValue());
+                                return;
+                                }
                             Meta2SettingRegister register = (Meta2SettingRegister) getRegister();
                             try {
                                 if (register.getFormat()==Values.FloatValue){
@@ -104,9 +116,9 @@ public class DesktopGUISetting extends View2BaseDesktop {
                             //onEvent.onEnter(GUISetting.this,0,"");
                             }
                         });
-                    } catch (UniException ex) {
-                        System.out.println("Калькулятор уставок: "+ex.toString());
-                        }
+                //    } catch (UniException ex) {
+                //        System.out.println("Калькулятор уставок: "+ex.toString());
+                //        }
                     }
                 });
             }
@@ -123,7 +135,8 @@ public class DesktopGUISetting extends View2BaseDesktop {
     public void putValue(long vv) throws UniException {
         Meta2Register register = getRegister();
         Meta2GUIRegW2 metaGUI = (Meta2GUIRegW2)getElement();
-        textField.setText(register.regValueToString(getUnitIdx(),(int)vv,metaGUI));
+        lastValue = register.regValueToString(getUnitIdx(),(int)vv,metaGUI);
+        textField.setText(lastValue);
         }
     @Override
     public String setParams(FormContext2 context0, ESS2Architecture meta0, Meta2GUI element0, I_GUI2Event onEvent0) {
@@ -135,4 +148,31 @@ public class DesktopGUISetting extends View2BaseDesktop {
             return "Недопустимый "+register.getTypeName()+" для "+getTypeName();
         return null;
         }
+    //------------------------------------------------------------------------------------------------------------------
+    private I_Calculator calcResult = new I_Calculator() {
+        @Override
+        public String getTitle() {
+            return "Уставка: "+getRegisterTitle();
+            }
+        @Override
+        public boolean isMinFormulaValid() {
+            return register.getMinValue()!=0;
+            };
+        @Override
+        public String getMinValue() {
+            return ""+register.getMinValue();
+            }
+        @Override
+        public boolean isMaxFormulaValid() {
+            return register.getMaxValue()!=0;
+            }
+        @Override
+        public String getMaxValue() {
+            return ""+register.getMaxValue();
+            }
+        @Override
+        public String getStartValue() {
+            return lastValue;
+            }
+        };
 }
