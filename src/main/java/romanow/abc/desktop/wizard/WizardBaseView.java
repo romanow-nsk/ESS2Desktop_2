@@ -135,6 +135,7 @@ public class WizardBaseView extends ESSBaseView {
             DOType.setVisible(false);
             In61850.setVisible(false);
             In60870.setVisible(false);
+            DOTypeLabel.setVisible(false);
             }
         busy=false;
         }
@@ -157,12 +158,12 @@ public class WizardBaseView extends ESSBaseView {
         jLabel1 = new javax.swing.JLabel();
         Comment = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         Title = new javax.swing.JTextField();
         DOType = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         In61850 = new javax.swing.JCheckBox();
         In60870 = new javax.swing.JCheckBox();
+        DOTypeLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -190,15 +191,11 @@ public class WizardBaseView extends ESSBaseView {
             }
         });
         getContentPane().add(Comment);
-        Comment.setBounds(120, 50, 450, 25);
+        Comment.setBounds(120, 50, 510, 25);
 
         jLabel2.setText("Комментарий");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(20, 50, 100, 20);
-
-        jLabel3.setText("DOType");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(590, 50, 70, 20);
 
         Title.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -214,7 +211,7 @@ public class WizardBaseView extends ESSBaseView {
             }
         });
         getContentPane().add(DOType);
-        DOType.setBounds(650, 50, 80, 25);
+        DOType.setBounds(710, 50, 60, 25);
 
         jLabel4.setText("Имя ");
         getContentPane().add(jLabel4);
@@ -227,7 +224,7 @@ public class WizardBaseView extends ESSBaseView {
             }
         });
         getContentPane().add(In61850);
-        In61850.setBounds(650, 10, 150, 20);
+        In61850.setBounds(640, 10, 150, 20);
 
         In60870.setText("МЭК 60870 включен");
         In60870.addItemListener(new java.awt.event.ItemListener() {
@@ -236,7 +233,11 @@ public class WizardBaseView extends ESSBaseView {
             }
         });
         getContentPane().add(In60870);
-        In60870.setBounds(650, 30, 140, 20);
+        In60870.setBounds(640, 30, 140, 20);
+
+        DOTypeLabel.setText("DOType");
+        getContentPane().add(DOTypeLabel);
+        DOTypeLabel.setBounds(650, 50, 70, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -285,7 +286,7 @@ public class WizardBaseView extends ESSBaseView {
     }//GEN-LAST:event_CommentKeyPressed
 
     private void DOTypeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DOTypeKeyPressed
-        onStringKeyPressed("logDevName", DOType, evt, new I_WizardActionString() {
+        onStringKeyPressed("DOType", DOType, evt, new I_WizardActionString() {
             @Override
             public void onAction(String value) {
                 ((Meta2Face)entity).setDOType(value);
@@ -420,13 +421,13 @@ public class WizardBaseView extends ESSBaseView {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Comment;
     private javax.swing.JTextField DOType;
+    private javax.swing.JLabel DOTypeLabel;
     private javax.swing.JCheckBox In60870;
     private javax.swing.JCheckBox In61850;
     private javax.swing.JTextField ShortName;
     private javax.swing.JTextField Title;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

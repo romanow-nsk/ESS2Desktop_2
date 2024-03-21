@@ -150,7 +150,7 @@ public class WizardMeta2Array extends WizardBaseView {
             }
         });
         getContentPane().add(Inline61850);
-        Inline61850.setBounds(650, 90, 120, 20);
+        Inline61850.setBounds(640, 90, 120, 20);
 
         SizesList.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {

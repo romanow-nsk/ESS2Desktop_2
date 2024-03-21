@@ -3506,7 +3506,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                     System.out.println("Ошибка записи "+ff.fileName());
                     }
                 }
-        CIDCreateData data = arch.createCIDRecord();
+        CIDCreateData data = arch.createCIDRecord(loadBack);
         ff.setName(arch.getTitle()+".cid");
             try {
                 OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(ff.fullName()), "UTF-8");
@@ -3519,6 +3519,22 @@ public class ESSMetaPanel extends ESSBasePanel {
                     System.out.println("Ошибка записи "+ff.fileName());
                     }
         }//GEN-LAST:event_CIDLocalActionPerformed
+
+    private I_Reports61850 loadBack = new I_Reports61850() {
+        @Override
+        public String createReportsText(ESS2Equipment equipment, ErrorList errors) {
+            if (equipment.getReports61850().getOid()==0)
+                return "";
+            Pair<String,String> res = main.loadFileAsStringSync(equipment.getReports61850().getRef());
+            if (res.o1!=null){
+                errors.addError(res.o1);
+                System.out.println(res.o1);
+                return "";
+                }
+            return res.o2;
+            }
+        };
+
 
     private void IEC61850OnOffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IEC61850OnOffActionPerformed
         if (!main2.deployed.isConnected()){

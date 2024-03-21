@@ -5,11 +5,24 @@
  */
 package romanow.abc.desktop.wizard;
 
+import java.util.ArrayList;
+
+import com.google.gson.Gson;
+import okhttp3.MultipartBody;
+import retrofit2.Call;
+import romanow.abc.core.API.RestAPICommon;
+import romanow.abc.core.DBRequest;
+import romanow.abc.core.OidString;
 import romanow.abc.core.constants.Values;
+import romanow.abc.core.entity.artifacts.Artifact;
+import romanow.abc.core.entity.baseentityes.JEmpty;
 import romanow.abc.core.entity.subject2area.ESS2Entity;
 import romanow.abc.core.entity.subject2area.ESS2Equipment;
 import romanow.abc.core.entity.subject2area.ESS2MetaFile;
 import romanow.abc.core.entity.subject2area.ESS2Node;
+import romanow.abc.core.utils.FileNameExt;
+import romanow.abc.desktop.APICall;
+import static romanow.abc.desktop.BasePanel.EventLogToFront;
 import romanow.abc.desktop.ESSMetaPanel;
 
 /**
@@ -42,6 +55,9 @@ public class WizardESS2Equipment extends WizardBaseViewDB {
         resizeHeight(220);
         onStart = true;
         equipment = (ESS2Equipment)entity0;
+        if (equipment.getReports61850().getOid()!=0){
+            Reports61850.setText(equipment.getReports61850().getRef().getOriginalName());
+            }
         MultiUnit.setSelected(equipment.isMultiUnit());
         MetaFile.removeAll();
         MetaFile.add("...");
@@ -64,6 +80,12 @@ public class WizardESS2Equipment extends WizardBaseViewDB {
         MetaFile = new java.awt.Choice();
         SetMetaFile = new javax.swing.JButton();
         MultiUnit = new javax.swing.JCheckBox();
+        Reports61850 = new javax.swing.JTextField();
+        DownLoadReports61850 = new javax.swing.JButton();
+        UploadReports61851 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -92,6 +114,44 @@ public class WizardESS2Equipment extends WizardBaseViewDB {
         getContentPane().add(MultiUnit);
         MultiUnit.setBounds(10, 130, 120, 20);
 
+        Reports61850.setEnabled(false);
+        getContentPane().add(Reports61850);
+        Reports61850.setBounds(160, 130, 250, 25);
+
+        DownLoadReports61850.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/download.png"))); // NOI18N
+        DownLoadReports61850.setBorderPainted(false);
+        DownLoadReports61850.setContentAreaFilled(false);
+        DownLoadReports61850.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DownLoadReports61850ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(DownLoadReports61850);
+        DownLoadReports61850.setBounds(460, 130, 30, 30);
+
+        UploadReports61851.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/upload.png"))); // NOI18N
+        UploadReports61851.setBorderPainted(false);
+        UploadReports61851.setContentAreaFilled(false);
+        UploadReports61851.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UploadReports61851ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(UploadReports61851);
+        UploadReports61851.setBounds(420, 130, 30, 30);
+
+        jLabel1.setText("61850");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(110, 145, 60, 16);
+
+        jLabel2.setText("Отчеты");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(110, 130, 60, 16);
+
+        jLabel3.setText("Отчеты");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(110, 130, 60, 16);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -115,6 +175,55 @@ public class WizardESS2Equipment extends WizardBaseViewDB {
         equipment.setMultiUnit(MultiUnit.isSelected());
         oneUpdate("Изменено multiUnit: "+MultiUnit.isSelected());
     }//GEN-LAST:event_MultiUnitItemStateChanged
+
+    private void DownLoadReports61850ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DownLoadReports61850ActionPerformed
+        if (equipment.getReports61850().getOid()!=0)
+            main.loadFile(equipment.getReports61850().getRef());
+    }//GEN-LAST:event_DownLoadReports61850ActionPerformed
+
+
+    private void uploadReports61870(){
+        FileNameExt fname = main.getInputFileName("Импорт описания отчетов и DataSet для 61850", "*.xml", null);
+        final MultipartBody.Part body = RestAPICommon.createMultipartBody(fname);
+        new APICall<Artifact>(main) {
+            @Override
+            public Call<Artifact> apiFun() {
+                return main.getService().upload(main.getDebugToken(), "Meta-Data import", fname.fileName(), body);
+                }
+            @Override
+            public void onSucess(final Artifact oo) {
+                equipment.getReports61850().setOidRef(oo);
+                new APICall<JEmpty>(main) {
+                    @Override
+                    public Call<JEmpty> apiFun() {
+                        return main.getService().updateEntityField(main.getDebugToken(),"reports61850", new DBRequest(equipment, new Gson()));
+                        }
+                    @Override
+                    public void onSucess(JEmpty oo) {
+                        Reports61850.setText(equipment.getReports61850().getRef().getOriginalName());
+                        main.popup("Импорт описания отчетов");
+                        }
+                    };
+                }
+            };
+        }
+
+    private void UploadReports61851ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UploadReports61851ActionPerformed
+        if (equipment.getReports61850().getOid()!=0){
+            new APICall<JEmpty>(main) {
+                @Override
+                public Call<JEmpty> apiFun() {
+                    return main.getService().removeArtifact(main.getDebugToken(), equipment.getReports61850().getOid());
+                    }
+                @Override
+                public void onSucess(JEmpty oo) {
+                    uploadReports61870();
+                    }
+                };
+            }
+        else
+            uploadReports61870();
+    }//GEN-LAST:event_UploadReports61851ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,9 +268,15 @@ public class WizardESS2Equipment extends WizardBaseViewDB {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton DownLoadReports61850;
     private java.awt.Choice MetaFile;
     private javax.swing.JCheckBox MultiUnit;
+    private javax.swing.JTextField Reports61850;
     private javax.swing.JButton SetMetaFile;
+    private javax.swing.JButton UploadReports61851;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
