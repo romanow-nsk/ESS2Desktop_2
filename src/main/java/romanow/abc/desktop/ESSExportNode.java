@@ -287,6 +287,13 @@ public class ESSExportNode {
             if (oid==-1)
                 continue;
             equipment.getMetaFile().setOid(oid);
+            if (equipment.getReports61850().getOid()!=0) {
+                Artifact artifact = equipment.getReports61850().getRef();
+                oid = addArtifact(artifact);
+                if (oid == -1)
+                    continue;
+                equipment.getReports61850().setOid(oid);
+                }
             oid = addEntity(equipment);
             if (oid==-1)
                 continue;
