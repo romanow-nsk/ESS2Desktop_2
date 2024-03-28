@@ -7,6 +7,8 @@ package romanow.abc.desktop;
 
 import romanow.abc.ESS2ExportKotlin;
 import romanow.abc.core.DBRequest;
+import romanow.abc.core.constants.Values;
+import romanow.abc.core.constants.ValuesBase;
 import romanow.abc.core.entity.baseentityes.JEmpty;
 import romanow.abc.core.entity.subjectarea.WorkSettings;
 import retrofit2.Response;
@@ -17,6 +19,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import retrofit2.Call;
+import romanow.abc.core.entity.baseentityes.JString;
 
 /**
  *
@@ -102,6 +106,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         StreamFileSets = new javax.swing.JTextField();
         DebugConfig = new javax.swing.JCheckBox();
         IEC61850FullLog = new javax.swing.JCheckBox();
+        ShutDown = new javax.swing.JButton();
 
         setLayout(null);
 
@@ -501,6 +506,15 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         });
         add(IEC61850FullLog);
         IEC61850FullLog.setBounds(410, 160, 190, 20);
+
+        ShutDown.setText("Завершение");
+        ShutDown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShutDownActionPerformed(evt);
+            }
+        });
+        add(ShutDown);
+        ShutDown.setBounds(20, 440, 130, 22);
     }// </editor-fold>//GEN-END:initComponents
 
     private void GUIrefreshPeriodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GUIrefreshPeriodKeyPressed
@@ -680,6 +694,27 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             return;
         procPressedBoolean(IEC61850FullLog,"iec61850FullLog");
     }//GEN-LAST:event_IEC61850FullLogItemStateChanged
+
+        private void shutdownServer(){
+        new APICall<JString>(main){
+            @Override
+            public Call<JString> apiFun() {
+                return main.getService().shutdown(main.getDebugToken(), Values.env().superUser().getPassword());
+                }
+            @Override
+            public void onSucess(JString oo) {
+                main2.logOff();
+                }
+            };
+        }
+    private void ShutDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShutDownActionPerformed
+        new OK(200, 200, "Завершение работы сервера", new I_Button() {
+            @Override
+            public void onPush() {
+                shutdownServer();
+            }
+        });
+    }//GEN-LAST:event_ShutDownActionPerformed
 
     private void procPressedInt(KeyEvent evt, JTextField text, String name){
         if(evt.getKeyCode()!=10) return;
@@ -907,6 +942,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     private javax.swing.JTextField ProfilerScale;
     private javax.swing.JCheckBox ProfilerTrace;
     private javax.swing.JTextField RegisterAge;
+    private javax.swing.JButton ShutDown;
     private javax.swing.JTextField SnapShotPeriod;
     private javax.swing.JTextField StreamDataCompressMode;
     private javax.swing.JTextField StreamDataLongPeriod;
