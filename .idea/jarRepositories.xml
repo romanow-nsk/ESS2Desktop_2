@@ -7,9 +7,24 @@
       <option name="url" value="https://repo.maven.apache.org/maven2" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="opennms" />
+      <option name="name" value="OpenNMS" />
+      <option name="url" value="http://repo.opennms.org/maven2/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="opennms" />
+      <option name="name" value="OpenNMS" />
+      <option name="url" value="https://repo.opennms.org/maven2/" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="asterisk-java-mvn-repo" />
       <option name="name" value="asterisk-java-mvn-repo" />
       <option name="url" value="https://raw.githubusercontent.com/asterisk-java/asterisk-java/mvn-repo" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="mibble" />
+      <option name="name" value="mibble" />
+      <option name="url" value="https://www.mibble.org/maven" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="central" />
