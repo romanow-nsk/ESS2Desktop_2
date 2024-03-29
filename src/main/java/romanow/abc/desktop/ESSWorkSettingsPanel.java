@@ -7,6 +7,7 @@ package romanow.abc.desktop;
 
 import romanow.abc.ESS2ExportKotlin;
 import romanow.abc.core.DBRequest;
+import romanow.abc.core.I_EmptyEvent;
 import romanow.abc.core.constants.Values;
 import romanow.abc.core.constants.ValuesBase;
 import romanow.abc.core.entity.baseentityes.JEmpty;
@@ -20,6 +21,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 import retrofit2.Call;
+import romanow.abc.core.entity.base.StringList;
 import romanow.abc.core.entity.baseentityes.JString;
 
 /**
@@ -35,6 +37,8 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         super.initPanel(main0);
         }
     private boolean onStart=false;
+    private long logPollingLastNum=0;
+    private GUITimer logPollingTimer = new GUITimer();                  // Таймер опроса лога
 
 
     /**
@@ -107,6 +111,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         DebugConfig = new javax.swing.JCheckBox();
         IEC61850FullLog = new javax.swing.JCheckBox();
         ShutDown = new javax.swing.JButton();
+        LogPolling = new javax.swing.JCheckBox();
 
         setLayout(null);
 
@@ -205,7 +210,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
 
         jLabel33.setText("Цикл опроса фоновых ПД  (сек)");
         add(jLabel33);
-        jLabel33.setBounds(20, 80, 280, 16);
+        jLabel33.setBounds(20, 80, 230, 16);
 
         jLabel34.setText("Цикл опроса очередей событий (сек)");
         add(jLabel34);
@@ -515,6 +520,15 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         });
         add(ShutDown);
         ShutDown.setBounds(20, 440, 130, 22);
+
+        LogPolling.setText("Лог сервера");
+        LogPolling.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                LogPollingItemStateChanged(evt);
+            }
+        });
+        add(LogPolling);
+        LogPolling.setBounds(160, 440, 110, 20);
     }// </editor-fold>//GEN-END:initComponents
 
     private void GUIrefreshPeriodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GUIrefreshPeriodKeyPressed
@@ -695,7 +709,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         procPressedBoolean(IEC61850FullLog,"iec61850FullLog");
     }//GEN-LAST:event_IEC61850FullLogItemStateChanged
 
-        private void shutdownServer(){
+    private void shutdownServer(){
         new APICall<JString>(main){
             @Override
             public Call<JString> apiFun() {
@@ -715,6 +729,41 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
     }//GEN-LAST:event_ShutDownActionPerformed
+        
+
+    private void logPolling(){
+        new APICall<Pair<Long,StringList>>(main) {
+            @Override
+            public Call<Pair<Long,StringList>> apiFun() {
+                return main.getService().getConsoleLogPolling(main.getDebugToken(),logPollingLastNum);
+            }
+            @Override
+            public void onSucess(Pair<Long,StringList> oo) {
+                logPollingLastNum = oo.o1;
+                for(String ss : oo.o2)
+                    System.out.println(ss);
+                }
+            };
+        }
+
+    private I_EmptyEvent onLogPolling = new I_EmptyEvent(){
+        @Override
+        public void onEvent() {
+            logPolling();
+            if (LogPolling.isSelected())
+                logPollingTimer.start(5,onLogPolling);
+        }
+    };
+
+    private void LogPollingItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_LogPollingItemStateChanged
+        if (LogPolling.isSelected()){
+            logPolling();
+            logPollingTimer.start(5, onLogPolling);
+        }
+        else{
+            logPollingTimer.cancel();
+        }
+    }//GEN-LAST:event_LogPollingItemStateChanged
 
     private void procPressedInt(KeyEvent evt, JTextField text, String name){
         if(evt.getKeyCode()!=10) return;
@@ -821,7 +870,8 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
 
     @Override
     public void shutDown() {
-    }
+        logPollingTimer.cancel();
+        }
 
     private void updateSettings(){
         updateSettings(null);
@@ -927,6 +977,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     private javax.swing.JCheckBox IEC61850FullLog;
     private javax.swing.JTextField IEC61850Port;
     private javax.swing.JCheckBox InterruptRegisterOn;
+    private javax.swing.JCheckBox LogPolling;
     private javax.swing.JTextField MainServerConnectPeriod;
     private javax.swing.JTextField MainServerIP;
     private javax.swing.JCheckBox MainServerMode;

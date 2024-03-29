@@ -96,6 +96,9 @@ public class ESSMetaPanel extends ESSBasePanel {
 
     public void initPanel(MainBaseFrame main0) {
         super.initPanel(main0);
+        OnOff2.setVisible(false);               // Второй экран не нужен.
+        DebugMode.setVisible(false);
+        DebugMode.setEnabled(false);
         String pass = main.loginUser().getAccount().getPassword();
         Password.setText(pass);
         streamData.setBounds(370, 270, 470, 185);
@@ -381,6 +384,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         ExportNode = new javax.swing.JButton();
         MD5Calc = new javax.swing.JButton();
         jSeparator7 = new javax.swing.JSeparator();
+        DebugMode = new javax.swing.JCheckBox();
 
         setLayout(null);
 
@@ -408,7 +412,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(OnOff);
-        OnOff.setBounds(90, 460, 30, 40);
+        OnOff.setBounds(95, 460, 30, 40);
 
         DeviceRead.setText("Чтение");
         DeviceRead.addActionListener(new java.awt.event.ActionListener() {
@@ -923,7 +927,7 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         ArchitectureLabel.setText("Выбрать архитектуру");
         add(ArchitectureLabel);
-        ArchitectureLabel.setBounds(170, 480, 130, 16);
+        ArchitectureLabel.setBounds(140, 480, 150, 16);
 
         Connect.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/status_gray.png"))); // NOI18N
         Connect.setBorderPainted(false);
@@ -1310,7 +1314,7 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         FullScreen.setText("Полный экран");
         add(FullScreen);
-        FullScreen.setBounds(160, 500, 120, 20);
+        FullScreen.setBounds(140, 500, 120, 20);
 
         OnOffNode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/connect-off.png"))); // NOI18N
         OnOffNode.setBorderPainted(false);
@@ -1443,7 +1447,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(OnlyView);
-        OnlyView.setBounds(160, 520, 110, 20);
+        OnlyView.setBounds(140, 520, 110, 20);
 
         IEC60870OnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/status_gray.png"))); // NOI18N
         IEC60870OnOff.setBorderPainted(false);
@@ -1470,7 +1474,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(OnOff2);
-        OnOff2.setBounds(130, 465, 30, 30);
+        OnOff2.setBounds(930, 640, 30, 30);
 
         OrigHW.setText("Ориг. пропорции");
         OrigHW.addActionListener(new java.awt.event.ActionListener() {
@@ -1485,7 +1489,7 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         jLabel22.setText("Игнорировать ошибки");
         add(jLabel22);
-        jLabel22.setBounds(130, 440, 160, 16);
+        jLabel22.setBounds(125, 440, 160, 16);
         add(ForceRender);
         ForceRender.setBounds(100, 440, 30, 19);
         add(ForceDeploy);
@@ -1554,6 +1558,11 @@ public class ESSMetaPanel extends ESSBasePanel {
         MD5Calc.setBounds(300, 450, 60, 22);
         add(jSeparator7);
         jSeparator7.setBounds(380, 450, 390, 10);
+
+        DebugMode.setText("Эмуляторы");
+        DebugMode.setEnabled(false);
+        add(DebugMode);
+        DebugMode.setBounds(140, 460, 120, 20);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ImportMetaDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportMetaDataActionPerformed
@@ -3950,6 +3959,7 @@ public class ESSMetaPanel extends ESSBasePanel {
 
     private void deployingViewState(){
         boolean enabled = !deployed.isDeployed();
+        DebugMode.setVisible(!enabled);
         Nodes.setEnabled(enabled);
         Architectures.setEnabled(enabled);
         AddNode.setEnabled(enabled);
@@ -3997,6 +4007,16 @@ public class ESSMetaPanel extends ESSBasePanel {
         IEC61850OnOff.setEnabled(!enabled);
         IEC61850ClientGUI.setEnabled(!enabled);
         setSelectedProfile(!enabled);
+        new APICall<JBoolean>(main) {
+            @Override
+            public Call<JBoolean> apiFun() {
+                return main2.service2.isDebugMode(main.getDebugToken());
+                }
+            @Override
+            public void onSucess(JBoolean vv) {
+                DebugMode.setSelected(vv.value());
+                }
+            };
         }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -4017,6 +4037,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JButton CIDLocal;
     private javax.swing.JCheckBox CheckLimits;
     private javax.swing.JButton Connect;
+    private javax.swing.JCheckBox DebugMode;
     private javax.swing.JTextField DefValue;
     private javax.swing.JTextField DefValueFormula;
     private javax.swing.JButton Deploy;

@@ -73,8 +73,9 @@ public class ESSClient extends Client {
         // Обязательна мета-панель, т.к. запускается соединение с ПЛК при инициализации
         panelDescList.add(new PanelDescriptor("Оператор", ESSServiceGUIPanel.class,new int[]
                 {UserSuperAdminType,UserAdminType,UserESSServiceEngeneer,UserESSEngeneer,UserESSOperator}));
-        panelDescList.add(new PanelDescriptor("Экран-2", ESSServiceGUIPanel2.class,new int[]
-                {UserSuperAdminType,UserAdminType}));
+        //--------------- Второй экран не нужен -------------------------------------------------
+        //panelDescList.add(new PanelDescriptor("Экран-2", ESSServiceGUIPanel2.class,new int[]
+        //        {UserSuperAdminType,UserAdminType}));
         panelDescList.add(new PanelDescriptor("Метаданные", ESSMetaPanel.class,new int[]
                 {UserSuperAdminType,UserAdminType,UserESSServiceEngeneer,UserESSEngeneer,UserESSOperator}));
         panelDescList.add(new PanelDescriptor("Сервер интегратора", ESSMainServerPanel.class,new int[]
