@@ -38,8 +38,8 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         }
     private boolean onStart=false;
     private long logPollingLastNum=0;
-    private GUITimer logPollingTimer = new GUITimer();                  // Таймер опроса лога
-
+    private GUITimer logPollingTimer = new GUITimer();   // Таймер опроса лога
+    private boolean logFilterOn=false;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -66,7 +66,6 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         jLabel24 = new javax.swing.JLabel();
         FileScanPeriod = new javax.swing.JTextField();
         jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
         StreamDataCompressMode = new javax.swing.JTextField();
         UserSilenceTime = new javax.swing.JTextField();
         WaitForMainServer = new javax.swing.JCheckBox();
@@ -112,6 +111,9 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         IEC61850FullLog = new javax.swing.JCheckBox();
         ShutDown = new javax.swing.JButton();
         LogPolling = new javax.swing.JCheckBox();
+        LogMask = new javax.swing.JTextField();
+        jLabel40 = new javax.swing.JLabel();
+        LogFilter = new javax.swing.JCheckBox();
 
         setLayout(null);
 
@@ -211,10 +213,6 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         jLabel33.setText("Цикл опроса фоновых ПД  (сек)");
         add(jLabel33);
         jLabel33.setBounds(20, 80, 230, 16);
-
-        jLabel34.setText("Цикл опроса очередей событий (сек)");
-        add(jLabel34);
-        jLabel34.setBounds(20, 380, 260, 16);
 
         StreamDataCompressMode.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -529,6 +527,23 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         });
         add(LogPolling);
         LogPolling.setBounds(160, 440, 110, 20);
+
+        LogMask.setText("IEC61850:***");
+        add(LogMask);
+        LogMask.setBounds(310, 440, 90, 25);
+
+        jLabel40.setText("Цикл опроса очередей событий (сек)");
+        add(jLabel40);
+        jLabel40.setBounds(20, 380, 260, 16);
+
+        LogFilter.setText("Фильтр лога");
+        LogFilter.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                LogFilterItemStateChanged(evt);
+            }
+        });
+        add(LogFilter);
+        LogFilter.setBounds(420, 440, 110, 20);
     }// </editor-fold>//GEN-END:initComponents
 
     private void GUIrefreshPeriodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GUIrefreshPeriodKeyPressed
@@ -740,8 +755,28 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             @Override
             public void onSucess(Pair<Long,StringList> oo) {
                 logPollingLastNum = oo.o1;
-                for(String ss : oo.o2)
+                String mask = LogMask.getText();
+                for(String ss : oo.o2){
                     System.out.println(ss);
+                    if (mask.length()==0)
+                        continue;
+                    int idx = ss.indexOf(mask);
+                    if (idx==-1)
+                        continue;
+                    ss = ss.substring(idx+mask.length()).trim();
+                    idx = ss.indexOf("=");
+                    if (idx==-1)
+                        continue;
+                    String name = ss.substring(0,idx);
+                    ss = ss.substring(idx+1).trim();
+                    idx = ss.indexOf(" ");
+                    if (idx==-1)
+                        continue;
+                    String value = ss.substring(0,idx).trim();
+                    String time = ss.substring(idx+1).trim();
+                    ss = ss.substring(idx+1).trim();
+                    main.sendEventPanel(BasePanel.EventLogFilter,2,0,"",new ESSLogValue(name,value,time));
+                    }
                 }
             };
         }
@@ -764,6 +799,16 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             logPollingTimer.cancel();
         }
     }//GEN-LAST:event_LogPollingItemStateChanged
+
+    private void LogFilterItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_LogFilterItemStateChanged
+       logFilterOn = LogFilter.isSelected();
+       if (logFilterOn){
+           main.sendEventPanel(BasePanel.EventLogFilter,0,0,"",null);
+            }
+       else {
+           main.sendEventPanel(BasePanel.EventLogFilter,1,0,"",null);
+            }
+    }//GEN-LAST:event_LogFilterItemStateChanged
 
     private void procPressedInt(KeyEvent evt, JTextField text, String name){
         if(evt.getKeyCode()!=10) return;
@@ -977,6 +1022,8 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     private javax.swing.JCheckBox IEC61850FullLog;
     private javax.swing.JTextField IEC61850Port;
     private javax.swing.JCheckBox InterruptRegisterOn;
+    private javax.swing.JCheckBox LogFilter;
+    private javax.swing.JTextField LogMask;
     private javax.swing.JCheckBox LogPolling;
     private javax.swing.JTextField MainServerConnectPeriod;
     private javax.swing.JTextField MainServerIP;
@@ -1019,12 +1066,12 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
+    private javax.swing.JLabel jLabel40;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

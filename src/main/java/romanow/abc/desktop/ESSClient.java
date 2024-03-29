@@ -68,6 +68,8 @@ public class ESSClient extends Client {
         }
     public void initPanels() {
         super.initPanels();
+        panelDescList.add(new PanelDescriptor("Фильтр лога", ESSLogFilterPanel.class,new int[]
+                {UserSuperAdminType,UserAdminType,UserESSServiceEngeneer,UserESSEngeneer,UserESSOperator}));
         panelDescList.add(new PanelDescriptor("Настройки СНЭЭ", ESSWorkSettingsPanel.class,new int[]
                 {UserSuperAdminType,UserAdminType,UserESSServiceEngeneer,UserESSEngeneer}));
         // Обязательна мета-панель, т.к. запускается соединение с ПЛК при инициализации

@@ -181,16 +181,6 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel34">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&#x426;&#x438;&#x43a;&#x43b; &#x43e;&#x43f;&#x440;&#x43e;&#x441;&#x430; &#x43e;&#x447;&#x435;&#x440;&#x435;&#x434;&#x435;&#x439; &#x441;&#x43e;&#x431;&#x44b;&#x442;&#x438;&#x439; (&#x441;&#x435;&#x43a;)"/>
-      </Properties>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="20" y="380" width="260" height="-1"/>
-        </Constraint>
-      </Constraints>
-    </Component>
     <Component class="javax.swing.JTextField" name="StreamDataCompressMode">
       <Events>
         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="StreamDataCompressModeKeyPressed"/>
@@ -681,6 +671,39 @@
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="160" y="440" width="110" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JTextField" name="LogMask">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="IEC61850:***"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="310" y="440" width="90" height="25"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel40">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x426;&#x438;&#x43a;&#x43b; &#x43e;&#x43f;&#x440;&#x43e;&#x441;&#x430; &#x43e;&#x447;&#x435;&#x440;&#x435;&#x434;&#x435;&#x439; &#x441;&#x43e;&#x431;&#x44b;&#x442;&#x438;&#x439; (&#x441;&#x435;&#x43a;)"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="20" y="380" width="260" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="LogFilter">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x424;&#x438;&#x43b;&#x44c;&#x442;&#x440; &#x43b;&#x43e;&#x433;&#x430;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="LogFilterItemStateChanged"/>
+      </Events>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="420" y="440" width="110" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
