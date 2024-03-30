@@ -44,29 +44,52 @@ public class ESSLogFilterPanel extends ESSBasePanel {
         setLayout(null);
     }// </editor-fold>//GEN-END:initComponents
     private final static int Stepy=25;
-    private final static int Stepx=20;
-    private final static int NGroup=28;
+    private final static int Stepx=480;
+    private final static int NGroup=27;
     private HashMap<String,ESSLogValue> valuesMap = new HashMap<>();
     private ArrayList<JTextField> valueFields = new ArrayList<>();
     private ArrayList<JTextField> timeFields = new ArrayList<>();
+    //private Box base;
+    private JPanel base;
+
     private boolean on=false;
+    private MainBaseFrame main0;
     @Override
     public void refresh() {
+        }
+    public void initPanel(MainBaseFrame main) {
+            main0 = main;
+            base = new JPanel();
+            JScrollPane scroll = new JScrollPane(base);
+            GroupLayout layout = new GroupLayout(base);
+            base.setLayout(layout);
+            layout.setHorizontalGroup(              // Для панелей - из визарда NetBeans
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 400, Short.MAX_VALUE));
+            layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 300, Short.MAX_VALUE));
+            base.setPreferredSize(new Dimension(Client.PanelW, Client.PanelH-20));
+            scroll.setViewportView(base);
+            scroll.setBounds(0, 0, Client.PanelW, Client.PanelH-30);
+            scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+            scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+            add(scroll,BorderLayout.CENTER);                // Добавить еще в старое
         }
     @Override
     public void eventPanel(int code, int par1, long par2, String par3,Object oo) {
         if (code == EventLogFilter) {
             switch (par1) {
                 case 0:
-                    removeAll();
+                    base.removeAll();
                     valueFields.clear();
                     valuesMap.clear();
                     timeFields.clear();
                     on=true;
-                    main.panelToFront(this);
+                    main0.panelToFront(this);
                     break;
                 case 1:
-                    removeAll();
+                    base.removeAll();
                     valuesMap.clear();
                     valueFields.clear();
                     timeFields.clear();
@@ -93,19 +116,24 @@ public class ESSLogFilterPanel extends ESSBasePanel {
                         int row = idx%NGroup;
                         JTextField fld = new JTextField();
                         fld.setText(logValue.name);
-                        fld.setBounds(10+col*470,5+row*Stepy,270,25);
-                        add(fld);
+                        int sizeX = 10+(col+1)*Stepx;
+                        fld.setBounds(10+col*Stepx,5+row*Stepy,300,25);
+                        base.add(fld);
                         fld = new JTextField();
                         fld.setText(logValue.value);
-                        fld.setBounds(280+col*470,5+row*Stepy,80,25);
-                        add(fld);
+                        fld.setBounds(310+col*Stepx,5+row*Stepy,80,25);
+                        base.add(fld);
                         valueFields.add(fld);
                         fld = new JTextField();
                         fld.setText(logValue.time);
-                        fld.setBounds(365+col*470,5+row*Stepy,100,25);
-                        add(fld);
+                        fld.setBounds(390+col*Stepx,5+row*Stepy,90,25);
+                        base.add(fld);
                         timeFields.add(fld);
-                    }
+                        if (sizeX > Client.PanelW)
+                            base.setPreferredSize(new Dimension(sizeX,Client.PanelH-20));
+                        else
+                            base.setPreferredSize(new Dimension(Client.PanelW,Client.PanelH-20));
+                        }
                     break;
             }
         }
