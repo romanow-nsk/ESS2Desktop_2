@@ -169,6 +169,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         OnOffNode.setVisible(mainServerMode);
         refreshIEC61850State();
         refreshIEC60870State();
+        refreshSNMPState();
         refreshProfilerState();
         }
     private void setMetaTypeSelector(int type){
@@ -258,7 +259,6 @@ public class ESSMetaPanel extends ESSBasePanel {
         jLabel20 = new javax.swing.JLabel();
         WriteFloat = new javax.swing.JCheckBox();
         WriteInt32 = new javax.swing.JCheckBox();
-        jSeparator6 = new javax.swing.JSeparator();
         jLabel24 = new javax.swing.JLabel();
         MetaFile = new java.awt.Choice();
         RemoveMeta = new javax.swing.JButton();
@@ -385,6 +385,11 @@ public class ESSMetaPanel extends ESSBasePanel {
         MD5Calc = new javax.swing.JButton();
         jSeparator7 = new javax.swing.JSeparator();
         DebugMode = new javax.swing.JCheckBox();
+        jSeparator11 = new javax.swing.JSeparator();
+        jLabel44 = new javax.swing.JLabel();
+        SNMPOnOff = new javax.swing.JButton();
+        jLabel23 = new javax.swing.JLabel();
+        MIBLocal = new javax.swing.JButton();
 
         setLayout(null);
 
@@ -401,7 +406,7 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         Password.setText("pi31415926");
         add(Password);
-        Password.setBounds(10, 560, 110, 25);
+        Password.setBounds(10, 680, 110, 25);
 
         OnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/connect-off.png"))); // NOI18N
         OnOff.setBorderPainted(false);
@@ -614,8 +619,6 @@ public class ESSMetaPanel extends ESSBasePanel {
         WriteInt32.setText("Int32");
         add(WriteInt32);
         WriteInt32.setBounds(680, 640, 60, 20);
-        add(jSeparator6);
-        jSeparator6.setBounds(230, 635, 130, 10);
 
         jLabel24.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel24.setText("ЧМИ");
@@ -1071,9 +1074,9 @@ public class ESSMetaPanel extends ESSBasePanel {
         add(jLabel19);
         jLabel19.setBounds(120, 360, 50, 16);
 
-        jLabel30.setText("пароль операции");
+        jLabel30.setText("операции");
         add(jLabel30);
-        jLabel30.setBounds(10, 540, 120, 16);
+        jLabel30.setBounds(130, 690, 70, 16);
 
         RuntimeEdit.setText("Редакт. \"на лету\"");
         RuntimeEdit.addItemListener(new java.awt.event.ItemListener() {
@@ -1238,7 +1241,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         add(EditLogUnit);
         EditLogUnit.setBounds(290, 140, 30, 30);
         add(jSeparator9);
-        jSeparator9.setBounds(10, 590, 360, 10);
+        jSeparator9.setBounds(10, 600, 360, 10);
 
         jLabel41.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel41.setText("Переменные окружения");
@@ -1336,7 +1339,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(CIDLocal);
-        CIDLocal.setBounds(270, 550, 40, 30);
+        CIDLocal.setBounds(120, 565, 40, 30);
 
         IEC61850OnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/status_gray.png"))); // NOI18N
         IEC61850OnOff.setBorderPainted(false);
@@ -1347,12 +1350,12 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(IEC61850OnOff);
-        IEC61850OnOff.setBounds(230, 550, 40, 40);
+        IEC61850OnOff.setBounds(80, 560, 40, 40);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel6.setText("Профилирование");
         add(jLabel6);
-        jLabel6.setBounds(10, 590, 130, 16);
+        jLabel6.setBounds(230, 610, 130, 16);
 
         IEC61850ClientGUI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/connect-off.png"))); // NOI18N
         IEC61850ClientGUI.setBorderPainted(false);
@@ -1363,12 +1366,12 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(IEC61850ClientGUI);
-        IEC61850ClientGUI.setBounds(310, 550, 40, 30);
+        IEC61850ClientGUI.setBounds(160, 565, 40, 30);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel7.setText("МЭК 60870");
+        jLabel7.setText("SNMP");
         add(jLabel7);
-        jLabel7.setBounds(150, 570, 70, 16);
+        jLabel7.setBounds(205, 545, 40, 16);
 
         ProfilerOnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/status_gray.png"))); // NOI18N
         ProfilerOnOff.setBorderPainted(false);
@@ -1399,7 +1402,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(RemoveProfiler);
-        RemoveProfiler.setBounds(260, 600, 30, 30);
+        RemoveProfiler.setBounds(260, 635, 30, 30);
 
         AddProfiler.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/add.png"))); // NOI18N
         AddProfiler.setBorderPainted(false);
@@ -1410,7 +1413,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(AddProfiler);
-        AddProfiler.setBounds(220, 600, 40, 30);
+        AddProfiler.setBounds(220, 635, 40, 30);
 
         EditProfiler.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/media_list.png"))); // NOI18N
         EditProfiler.setBorderPainted(false);
@@ -1421,9 +1424,9 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(EditProfiler);
-        EditProfiler.setBounds(290, 600, 30, 30);
+        EditProfiler.setBounds(290, 635, 30, 30);
         add(jSeparator10);
-        jSeparator10.setBounds(10, 540, 350, 10);
+        jSeparator10.setBounds(0, 670, 370, 10);
 
         jLabel42.setText("клиент");
         add(jLabel42);
@@ -1438,7 +1441,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(ProfilerResults);
-        ProfilerResults.setBounds(180, 640, 40, 30);
+        ProfilerResults.setBounds(180, 635, 40, 30);
 
         OnlyView.setText("Без данных");
         OnlyView.addItemListener(new java.awt.event.ItemListener() {
@@ -1458,12 +1461,12 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(IEC60870OnOff);
-        IEC60870OnOff.setBounds(120, 550, 40, 40);
+        IEC60870OnOff.setBounds(10, 560, 40, 40);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel9.setText("МЭК 61850");
         add(jLabel9);
-        jLabel9.setBounds(170, 550, 70, 16);
+        jLabel9.setBounds(90, 545, 70, 16);
 
         OnOff2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/connect-off.png"))); // NOI18N
         OnOff2.setBorderPainted(false);
@@ -1546,7 +1549,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(ExportNode);
-        ExportNode.setBounds(230, 640, 130, 25);
+        ExportNode.setBounds(200, 680, 130, 25);
 
         MD5Calc.setText("MD5");
         MD5Calc.addActionListener(new java.awt.event.ActionListener() {
@@ -1555,7 +1558,7 @@ public class ESSMetaPanel extends ESSBasePanel {
             }
         });
         add(MD5Calc);
-        MD5Calc.setBounds(300, 450, 60, 22);
+        MD5Calc.setBounds(340, 680, 60, 22);
         add(jSeparator7);
         jSeparator7.setBounds(380, 450, 390, 10);
 
@@ -1563,6 +1566,39 @@ public class ESSMetaPanel extends ESSBasePanel {
         DebugMode.setEnabled(false);
         add(DebugMode);
         DebugMode.setBounds(140, 460, 120, 20);
+        add(jSeparator11);
+        jSeparator11.setBounds(10, 540, 350, 10);
+
+        jLabel44.setText("пароль");
+        add(jLabel44);
+        jLabel44.setBounds(130, 675, 70, 16);
+
+        SNMPOnOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/status_gray.png"))); // NOI18N
+        SNMPOnOff.setBorderPainted(false);
+        SNMPOnOff.setContentAreaFilled(false);
+        SNMPOnOff.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SNMPOnOffActionPerformed(evt);
+            }
+        });
+        add(SNMPOnOff);
+        SNMPOnOff.setBounds(200, 560, 40, 40);
+
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel23.setText("МЭК 60870");
+        add(jLabel23);
+        jLabel23.setBounds(10, 545, 70, 16);
+
+        MIBLocal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/download.png"))); // NOI18N
+        MIBLocal.setBorderPainted(false);
+        MIBLocal.setContentAreaFilled(false);
+        MIBLocal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MIBLocalActionPerformed(evt);
+            }
+        });
+        add(MIBLocal);
+        MIBLocal.setBounds(240, 565, 40, 30);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ImportMetaDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportMetaDataActionPerformed
@@ -2840,6 +2876,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                 public void onSucess(CallResult oo) {
                     int state = oo.getState();
                     boolean connected = state == Values.ASConnected;
+                    refreshSNMPState();
                     refreshIEC61850State();
                     refreshIEC60870State();
                     refreshProfilerState();
@@ -3831,6 +3868,57 @@ public class ESSMetaPanel extends ESSBasePanel {
                 }
             };
         }//GEN-LAST:event_MD5CalcActionPerformed
+
+    private void SNMPOnOffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SNMPOnOffActionPerformed
+        if (!main2.deployed.isConnected()){
+            System.out.println("Допустимо только при подключенном оборудовании");
+            return;
+            }
+        new APICall<CallResult>(main) {
+            @Override
+            public Call<CallResult> apiFun() {
+                return main2.service2.SNMPServerOnOff(main.getDebugToken());
+                }
+            @Override
+            public void onSucess(CallResult vv) {
+                System.out.println(vv.toString());
+                viewServiceState(SNMPOnOff,vv.getState());
+                }
+            };
+    }//GEN-LAST:event_SNMPOnOffActionPerformed
+
+    private void MIBLocalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MIBLocalActionPerformed
+        if (!main2.deployed.isDeployed()){
+            popup("Архитектура не развернута");
+            return;
+            }
+        ESS2Architecture arch = main2.deployed;
+        FileNameExt ff = main.getOutputFileName("SNMP","",arch.getTitle()+".mib");
+        MIBCreateData data = arch.createMIBRecord();
+        ff.setName(arch.getTitle()+".mib");
+            try {
+                OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(ff.fullName()), "UTF-8");
+                writer.write(data.toString());
+                writer.close();
+                System.out.println("Файл записан "+ff.fullName());
+                if (!data.errors.valid())
+                    System.out.println(data.errors.toString());
+                } catch (Exception ee){
+                    System.out.println("Ошибка записи "+ff.fileName());
+                    }
+    }//GEN-LAST:event_MIBLocalActionPerformed
+    private void refreshSNMPState(){
+        new APICall<JInt>(main) {
+            @Override
+            public Call<JInt> apiFun() {
+                return main2.service2.SNMPServerState(main.getDebugToken());
+            }
+            @Override
+            public void onSucess(JInt vv) {
+                viewServiceState(SNMPOnOff,vv.getValue());
+            }
+            };
+        }
     private void refreshIEC61850State(){
         new APICall<JInt>(main) {
             @Override
@@ -4085,6 +4173,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JButton ImportXML;
     private java.awt.Choice LogUnits;
     private javax.swing.JButton MD5Calc;
+    private javax.swing.JButton MIBLocal;
     private javax.swing.JTextField MaxValue;
     private javax.swing.JTextField MaxValueFormula;
     private javax.swing.JTextField MetaDataChanges;
@@ -4124,6 +4213,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JLabel RunTimeChangesLabel;
     private javax.swing.JButton RunTimeSaveChanges;
     private javax.swing.JCheckBox RuntimeEdit;
+    private javax.swing.JButton SNMPOnOff;
     private java.awt.Choice Scripts;
     private javax.swing.JButton SettingEdit;
     private javax.swing.JTextField SettingRegNum;
@@ -4153,6 +4243,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
@@ -4175,6 +4266,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -4182,11 +4274,11 @@ public class ESSMetaPanel extends ESSBasePanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;

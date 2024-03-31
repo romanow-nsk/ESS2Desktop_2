@@ -114,6 +114,8 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         LogMask = new javax.swing.JTextField();
         jLabel40 = new javax.swing.JLabel();
         LogFilter = new javax.swing.JCheckBox();
+        jLabel41 = new javax.swing.JLabel();
+        SNMPPort = new javax.swing.JTextField();
 
         setLayout(null);
 
@@ -196,7 +198,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
 
         jLabel23.setText("Адрес ASDU МЭК 60870");
         add(jLabel23);
-        jLabel23.setBounds(420, 210, 160, 16);
+        jLabel23.setBounds(410, 185, 160, 16);
 
         jLabel24.setText("Глубина архива в днях");
         add(jLabel24);
@@ -315,7 +317,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(ToKotlinJS);
-        ToKotlinJS.setBounds(410, 110, 150, 25);
+        ToKotlinJS.setBounds(640, 250, 140, 25);
 
         jLabel27.setText("Каталог профилирования");
         add(jLabel27);
@@ -327,7 +329,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(IEC61850Port);
-        IEC61850Port.setBounds(600, 130, 70, 25);
+        IEC61850Port.setBounds(640, 100, 70, 25);
 
         ClockAcrossAPI.setText("События таймеров через API");
         ClockAcrossAPI.addItemListener(new java.awt.event.ItemListener() {
@@ -338,14 +340,14 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         add(ClockAcrossAPI);
         ClockAcrossAPI.setBounds(410, 270, 200, 20);
 
-        PriorityDispatcher.setText("Диспетчер приоритетов для запросов к ModBus");
+        PriorityDispatcher.setText("Диспетчер приоритетов к ModBus");
         PriorityDispatcher.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 PriorityDispatcherItemStateChanged(evt);
             }
         });
         add(PriorityDispatcher);
-        PriorityDispatcher.setBounds(410, 250, 340, 20);
+        PriorityDispatcher.setBounds(410, 250, 230, 20);
 
         ProfilerOn.setText("Профилирование ");
         ProfilerOn.addItemListener(new java.awt.event.ItemListener() {
@@ -444,7 +446,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
 
         jLabel36.setText("Порт  сервера МЭК 61850");
         add(jLabel36);
-        jLabel36.setBounds(420, 140, 160, 16);
+        jLabel36.setBounds(410, 110, 160, 16);
 
         IEC60870Port.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -452,11 +454,11 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(IEC60870Port);
-        IEC60870Port.setBounds(600, 180, 70, 25);
+        IEC60870Port.setBounds(640, 150, 70, 25);
 
-        jLabel37.setText("Порт  сервера МЭК 60870");
+        jLabel37.setText("Порт  SNMP-агента");
         add(jLabel37);
-        jLabel37.setBounds(420, 190, 160, 16);
+        jLabel37.setBounds(410, 210, 160, 16);
 
         IEC60870ASDU.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -464,7 +466,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(IEC60870ASDU);
-        IEC60870ASDU.setBounds(600, 210, 70, 25);
+        IEC60870ASDU.setBounds(640, 180, 70, 25);
         add(jSeparator1);
         jSeparator1.setBounds(410, 240, 360, 20);
 
@@ -508,7 +510,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
         });
         add(IEC61850FullLog);
-        IEC61850FullLog.setBounds(410, 160, 190, 20);
+        IEC61850FullLog.setBounds(410, 130, 190, 20);
 
         ShutDown.setText("Завершение");
         ShutDown.addActionListener(new java.awt.event.ActionListener() {
@@ -544,6 +546,18 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
         });
         add(LogFilter);
         LogFilter.setBounds(420, 440, 110, 20);
+
+        jLabel41.setText("Порт  сервера МЭК 60870");
+        add(jLabel41);
+        jLabel41.setBounds(410, 160, 160, 16);
+
+        SNMPPort.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SNMPPortKeyPressed(evt);
+            }
+        });
+        add(SNMPPort);
+        SNMPPort.setBounds(640, 210, 70, 25);
     }// </editor-fold>//GEN-END:initComponents
 
     private void GUIrefreshPeriodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GUIrefreshPeriodKeyPressed
@@ -810,6 +824,10 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             }
     }//GEN-LAST:event_LogFilterItemStateChanged
 
+    private void SNMPPortKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SNMPPortKeyPressed
+        procPressedInt(evt, SNMPPort,"SNMPPort");
+    }//GEN-LAST:event_SNMPPortKeyPressed
+
     private void procPressedInt(KeyEvent evt, JTextField text, String name){
         if(evt.getKeyCode()!=10) return;
         int vv=0;
@@ -877,6 +895,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
             ModellingSpeed.setText(""+ws.getModellingSpeed());
             StreamFileSets.setText(""+ws.getStreamFileSets());
             DebugConfig.setSelected(ws.isDebugConfig());
+            SNMPPort.setText(""+ws.getSNMPPort());
             refreshMainServerParams();
             onStart=false;
             } catch (Exception e) {
@@ -1040,6 +1059,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     private javax.swing.JTextField ProfilerScale;
     private javax.swing.JCheckBox ProfilerTrace;
     private javax.swing.JTextField RegisterAge;
+    private javax.swing.JTextField SNMPPort;
     private javax.swing.JButton ShutDown;
     private javax.swing.JTextField SnapShotPeriod;
     private javax.swing.JTextField StreamDataCompressMode;
@@ -1072,6 +1092,7 @@ public class ESSWorkSettingsPanel extends ESSBasePanel {
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

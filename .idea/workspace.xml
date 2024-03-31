@@ -13,9 +13,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="87.01 - Запрет 61850 MMSIdentity">
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="87.01 - Скролл Панель фильтра лога">
+      <change afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/MIBCreateData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/snmp/SNMPServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/API/RestAPIESS2.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/API/RestAPIESS2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/Meta2Face.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/Meta2Face.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/StreamRegisterData.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/StreamRegisterData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/subject2area/ESS2Architecture.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/subject2area/ESS2Architecture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/subject2area/ESS2Equipment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/subject2area/ESS2Equipment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/subjectarea/WorkSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/subjectarea/WorkSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/BARSConsoleServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/BARSConsoleServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/ESSCommandStringData.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/ESSCommandStringData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/ESSConsoleServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/ESSConsoleServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/ESSDataServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/ESSDataServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSLogFilterPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSLogFilterPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSWorkSettingsPanel.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSWorkSettingsPanel.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSWorkSettingsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSWorkSettingsPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardBaseView.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardBaseView.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardBaseView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardBaseView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +53,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../ESS2Core" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
@@ -124,14 +143,14 @@
       <recent name="romanow.abc.dataserver.datacash" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="romanow.abc.core.entity.metadata" />
       <recent name="romanow.abc.desktop.iec61850" />
       <recent name="romanow.abc.desktop.view2.desktop" />
       <recent name="romanow.abc.desktop" />
       <recent name="romanow.abc.dataserver" />
-      <recent name="romanow.abc.core.entity.metadata.view" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ESSClient">
+  <component name="RunManager" selected="Application.MIBParser">
     <configuration name="BARS4569ConsoleServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="romanow.abc.dataserver.BARS4569ConsoleServer" />
       <module name="ESS2DataServer" />
@@ -212,9 +231,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MIBParser" />
         <item itemvalue="Application.ESSClient" />
         <item itemvalue="Application.ESS61850TestClient" />
-        <item itemvalue="Application.MIBParser" />
         <item itemvalue="Application.BARS4569ConsoleServer" />
         <item itemvalue="Application.ESS61850ConsoleClient" />
       </list>
@@ -228,13 +247,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00410" summary="83 - конфигурация оборудования для отладки">
-      <created>1703088172370</created>
-      <option name="number" value="00410" />
-      <option name="presentableId" value="LOCAL-00410" />
-      <option name="project" value="LOCAL" />
-      <updated>1703088172370</updated>
     </task>
     <task id="LOCAL-00411" summary="83 - конфигурация оборудования для отладки">
       <created>1703133718950</created>
@@ -572,7 +584,14 @@
       <option name="project" value="LOCAL" />
       <updated>1711743537253</updated>
     </task>
-    <option name="localTasksCounter" value="459" />
+    <task id="LOCAL-00459" summary="87.01 - Скролл Панель фильтра лога">
+      <created>1711808142175</created>
+      <option name="number" value="00459" />
+      <option name="presentableId" value="LOCAL-00459" />
+      <option name="project" value="LOCAL" />
+      <updated>1711808142175</updated>
+    </task>
+    <option name="localTasksCounter" value="460" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -599,7 +618,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="85.01 -  MD5" />
     <MESSAGE value="85.01 -  consolelog по умолчанию" />
     <MESSAGE value="85.01 -  баг 12" />
     <MESSAGE value="85.01 -  баг 13 МЭК 61850 иерархия запретов по древу метаданных" />
@@ -624,7 +642,8 @@
     <MESSAGE value="87.01 - Парсинг snmp (предварительный)" />
     <MESSAGE value="87.01 - Форма фильтрации логов" />
     <MESSAGE value="87.01 - Запрет 61850 MMSIdentity" />
-    <option name="LAST_COMMIT_MESSAGE" value="87.01 - Запрет 61850 MMSIdentity" />
+    <MESSAGE value="87.01 - Скролл Панель фильтра лога" />
+    <option name="LAST_COMMIT_MESSAGE" value="87.01 - Скролл Панель фильтра лога" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -651,12 +670,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSWorkSettingsPanel.java</url>
-          <line>1001</line>
+          <line>1020</line>
           <option name="timeStamp" value="364" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSWorkSettingsPanel.java</url>
-          <line>992</line>
+          <line>1011</line>
           <option name="timeStamp" value="365" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -721,7 +740,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java</url>
-          <line>3685</line>
+          <line>3722</line>
           <option name="timeStamp" value="591" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -891,7 +910,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java</url>
-          <line>2705</line>
+          <line>2741</line>
           <option name="timeStamp" value="1351" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -943,11 +962,6 @@
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850Server.java</url>
           <line>167</line>
           <option name="timeStamp" value="1514" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/ESSConsoleServer.java</url>
-          <line>142</line>
-          <option name="timeStamp" value="1515" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSLogFilterPanel.java</url>

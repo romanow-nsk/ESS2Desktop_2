@@ -130,11 +130,13 @@ public class WizardBaseView extends ESSBaseView {
             DOType.setText(((Meta2Face)entity).getDOType());
             In61850.setSelected(((Meta2Face)entity).isIn61850Model());
             In60870.setSelected(((Meta2Face)entity).isIn60870Model());
+            InSNMP.setSelected(((Meta2Face)entity).isInSNMP());
             }
         else{
             DOType.setVisible(false);
             In61850.setVisible(false);
             In60870.setVisible(false);
+            InSNMP.setVisible(false);
             DOTypeLabel.setVisible(false);
             }
         busy=false;
@@ -164,6 +166,7 @@ public class WizardBaseView extends ESSBaseView {
         In61850 = new javax.swing.JCheckBox();
         In60870 = new javax.swing.JCheckBox();
         DOTypeLabel = new javax.swing.JLabel();
+        InSNMP = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -237,7 +240,16 @@ public class WizardBaseView extends ESSBaseView {
 
         DOTypeLabel.setText("DOType");
         getContentPane().add(DOTypeLabel);
-        DOTypeLabel.setBounds(650, 50, 70, 20);
+        DOTypeLabel.setBounds(645, 50, 70, 20);
+
+        InSNMP.setText("SNMP включен");
+        InSNMP.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                InSNMPItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(InSNMP);
+        InSNMP.setBounds(640, 75, 140, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -307,6 +319,14 @@ public class WizardBaseView extends ESSBaseView {
         ((Meta2Face)entity).setIn60870Model(In60870.isSelected());
         back.onEnter("Изменено 60870 включен="+In60870.isSelected());
     }//GEN-LAST:event_In60870ItemStateChanged
+
+    private void InSNMPItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_InSNMPItemStateChanged
+        if (busy)
+            return;
+        ((Meta2Face)entity).setInSNMP(InSNMP.isSelected());
+        back.onEnter("Изменено SNMP включен="+InSNMP.isSelected());
+
+    }//GEN-LAST:event_InSNMPItemStateChanged
 
     public void onKeyPressedFloat(String name, JTextField fld, KeyEvent evt, I_WizardActionFloat action){
         noSilence();
@@ -424,6 +444,7 @@ public class WizardBaseView extends ESSBaseView {
     private javax.swing.JLabel DOTypeLabel;
     private javax.swing.JCheckBox In60870;
     private javax.swing.JCheckBox In61850;
+    private javax.swing.JCheckBox InSNMP;
     private javax.swing.JTextField ShortName;
     private javax.swing.JTextField Title;
     private javax.swing.JLabel jLabel1;
