@@ -61,6 +61,7 @@ public class ESSClient extends Client {
             setLoginName(Values.env().superUser().getLoginPhone());
             setPassword(Values.env().superUser().getPassword());
             }
+        addIP("192.168.7.100");
         addIP("10.200.200.70");
         addIP("10.200.200.72");
         addIP("10.32.0.2");
