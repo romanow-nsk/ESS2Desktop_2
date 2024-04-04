@@ -59,6 +59,7 @@ public class WizardESS2Equipment extends WizardBaseViewDB {
             Reports61850.setText(equipment.getReports61850().getRef().getOriginalName());
             }
         MultiUnit.setSelected(equipment.isMultiUnit());
+        IEC61850LNType.setText(equipment.getIec61850LNType());
         MetaFile.removeAll();
         MetaFile.add("...");
         for(ESS2MetaFile metaFile : panel.getMetaData())
@@ -86,6 +87,9 @@ public class WizardESS2Equipment extends WizardBaseViewDB {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        IEC61850LNType = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -116,7 +120,7 @@ public class WizardESS2Equipment extends WizardBaseViewDB {
 
         Reports61850.setEnabled(false);
         getContentPane().add(Reports61850);
-        Reports61850.setBounds(160, 130, 250, 25);
+        Reports61850.setBounds(160, 130, 220, 25);
 
         DownLoadReports61850.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/download.png"))); // NOI18N
         DownLoadReports61850.setBorderPainted(false);
@@ -127,7 +131,7 @@ public class WizardESS2Equipment extends WizardBaseViewDB {
             }
         });
         getContentPane().add(DownLoadReports61850);
-        DownLoadReports61850.setBounds(460, 130, 30, 30);
+        DownLoadReports61850.setBounds(420, 130, 30, 30);
 
         UploadReports61851.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/upload.png"))); // NOI18N
         UploadReports61851.setBorderPainted(false);
@@ -138,19 +142,35 @@ public class WizardESS2Equipment extends WizardBaseViewDB {
             }
         });
         getContentPane().add(UploadReports61851);
-        UploadReports61851.setBounds(420, 130, 30, 30);
+        UploadReports61851.setBounds(390, 130, 30, 30);
 
         jLabel1.setText("61850");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(110, 145, 60, 16);
+        jLabel1.setBounds(460, 145, 60, 16);
 
-        jLabel2.setText("Отчеты");
+        jLabel2.setText("LNType");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(110, 130, 60, 16);
+        jLabel2.setBounds(460, 130, 60, 16);
 
         jLabel3.setText("Отчеты");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(110, 130, 60, 16);
+
+        IEC61850LNType.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                IEC61850LNTypeKeyPressed(evt);
+            }
+        });
+        getContentPane().add(IEC61850LNType);
+        IEC61850LNType.setBounds(510, 130, 80, 25);
+
+        jLabel4.setText("61850");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(110, 145, 60, 16);
+
+        jLabel5.setText("Отчеты");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(110, 130, 60, 16);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -225,6 +245,15 @@ public class WizardESS2Equipment extends WizardBaseViewDB {
             uploadReports61870();
     }//GEN-LAST:event_UploadReports61851ActionPerformed
 
+    private void IEC61850LNTypeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IEC61850LNTypeKeyPressed
+        onStringKeyPressed("iec61850LNType", IEC61850LNType, evt, new I_WizardActionString() {
+            @Override
+            public void onAction(String value) {
+                equipment.setIec61850LNType(value);
+            }
+        });
+    }//GEN-LAST:event_IEC61850LNTypeKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -269,6 +298,7 @@ public class WizardESS2Equipment extends WizardBaseViewDB {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton DownLoadReports61850;
+    private javax.swing.JTextField IEC61850LNType;
     private java.awt.Choice MetaFile;
     private javax.swing.JCheckBox MultiUnit;
     private javax.swing.JTextField Reports61850;
@@ -277,6 +307,8 @@ public class WizardESS2Equipment extends WizardBaseViewDB {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
