@@ -127,17 +127,14 @@ public class WizardBaseView extends ESSBaseView {
         Comment.setText(entity.getComment());
         ShortName.setText(entity.getShortName());
         if (entity instanceof Meta2Face){
-            DOType.setText(((Meta2Face)entity).getDOType());
             In61850.setSelected(((Meta2Face)entity).isIn61850Model());
             In60870.setSelected(((Meta2Face)entity).isIn60870Model());
             InSNMP.setSelected(((Meta2Face)entity).isInSNMP());
             }
         else{
-            DOType.setVisible(false);
             In61850.setVisible(false);
             In60870.setVisible(false);
             InSNMP.setVisible(false);
-            DOTypeLabel.setVisible(false);
             }
         busy=false;
         }
@@ -161,11 +158,9 @@ public class WizardBaseView extends ESSBaseView {
         Comment = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         Title = new javax.swing.JTextField();
-        DOType = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         In61850 = new javax.swing.JCheckBox();
         In60870 = new javax.swing.JCheckBox();
-        DOTypeLabel = new javax.swing.JLabel();
         InSNMP = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -208,14 +203,6 @@ public class WizardBaseView extends ESSBaseView {
         getContentPane().add(Title);
         Title.setBounds(270, 10, 360, 25);
 
-        DOType.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                DOTypeKeyPressed(evt);
-            }
-        });
-        getContentPane().add(DOType);
-        DOType.setBounds(710, 50, 60, 25);
-
         jLabel4.setText("Имя ");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(20, 20, 40, 16);
@@ -238,10 +225,6 @@ public class WizardBaseView extends ESSBaseView {
         getContentPane().add(In60870);
         In60870.setBounds(640, 30, 140, 20);
 
-        DOTypeLabel.setText("DOType");
-        getContentPane().add(DOTypeLabel);
-        DOTypeLabel.setBounds(645, 50, 70, 20);
-
         InSNMP.setText("SNMP включен");
         InSNMP.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -249,7 +232,7 @@ public class WizardBaseView extends ESSBaseView {
             }
         });
         getContentPane().add(InSNMP);
-        InSNMP.setBounds(640, 75, 140, 20);
+        InSNMP.setBounds(640, 50, 140, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -296,15 +279,6 @@ public class WizardBaseView extends ESSBaseView {
             }
         });
     }//GEN-LAST:event_CommentKeyPressed
-
-    private void DOTypeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DOTypeKeyPressed
-        onStringKeyPressed("DOType", DOType, evt, new I_WizardActionString() {
-            @Override
-            public void onAction(String value) {
-                ((Meta2Face)entity).setDOType(value);
-            }
-        });
-    }//GEN-LAST:event_DOTypeKeyPressed
 
     private void In61850ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_In61850ItemStateChanged
         if (busy)
@@ -440,8 +414,6 @@ public class WizardBaseView extends ESSBaseView {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Comment;
-    private javax.swing.JTextField DOType;
-    private javax.swing.JLabel DOTypeLabel;
     private javax.swing.JCheckBox In60870;
     private javax.swing.JCheckBox In61850;
     private javax.swing.JCheckBox InSNMP;
