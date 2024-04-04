@@ -122,7 +122,10 @@ public class ESSMetaPanel extends ESSBasePanel {
         CIDLocal.setEnabled(false);
         IEC61850OnOff.setEnabled(false);
         IEC61850ClientGUI.setEnabled(false);
+        IEC60870OnOff.setEnabled(false);
         ProfilerResults.setVisible(false);
+        MIBLocal.setEnabled(false);
+        SNMPOnOff.setEnabled(false);
         metaTypesMap = Values.constMap().getGroupMapByValue("MetaType");
         metaTypes = Values.constMap().getGroupList("MetaType");
         MetaTypes.removeAll();
@@ -4096,6 +4099,9 @@ public class ESSMetaPanel extends ESSBasePanel {
         CIDLocal.setEnabled(!enabled);
         IEC61850OnOff.setEnabled(!enabled);
         IEC61850ClientGUI.setEnabled(!enabled);
+        IEC60870OnOff.setEnabled(!enabled);
+        SNMPOnOff.setEnabled(!enabled);
+        MIBLocal.setEnabled(!enabled);
         setSelectedProfile(!enabled);
         new APICall<JBoolean>(main) {
             @Override
