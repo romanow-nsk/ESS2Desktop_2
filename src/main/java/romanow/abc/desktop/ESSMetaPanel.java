@@ -3541,6 +3541,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         ESS2Architecture arch = main2.deployed;
         FileNameExt ff = main.getOutputFileName("МЭК 61850","",arch.getTitle()+".cid");
         //------------ Версия для каждого устройства
+        /*
         int idx=0;
         for(ESS2Equipment equipment : arch.getEquipments()){
             equipment.createCIDRecord(arch,idx++);
@@ -3557,6 +3558,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                     System.out.println("Ошибка записи "+ff.fileName());
                     }
                 }
+         */
         CIDCreateData data = arch.createCIDRecord(loadBack);
         ff.setName(arch.getTitle()+".cid");
             try {
