@@ -60,10 +60,13 @@ public class WizardESS2Equipment extends WizardBaseViewDB {
             LNN0_61850.setText(equipment.getIec61850LNN0().getRef().getOriginalName());
             }
         if (equipment.getIec61850LNN0Template().getOid()!=0){
-            LNN0_61850.setText(equipment.getIec61850LNN0Template().getRef().getOriginalName());
+            LNN0Template61850.setText(equipment.getIec61850LNN0Template().getRef().getOriginalName());
             }
         if (equipment.getIec61850Template().getOid()!=0){
-            LNN0_61850.setText(equipment.getIec61850Template().getRef().getOriginalName());
+            Template61850.setText(equipment.getIec61850Template().getRef().getOriginalName());
+            }
+        if (equipment.getIec61850LNTemplate().getOid()!=0){
+            LNTemplate61850.setText(equipment.getIec61850LNTemplate().getRef().getOriginalName());
             }
         MultiUnit.setSelected(equipment.isMultiUnit());
         IEC61850LNType.setText(equipment.getIec61850LNType());
@@ -102,12 +105,16 @@ public class WizardESS2Equipment extends WizardBaseViewDB {
         UploadLNN0Template_61850 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         DeleteLNN0Template_61850 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
         Template61850 = new javax.swing.JTextField();
         DownLoadTemplate_61850 = new javax.swing.JButton();
         UploadTemplate_61850 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         DeleteTemplate_61850 = new javax.swing.JButton();
+        LNTemplate61850 = new javax.swing.JTextField();
+        DownLoadLNTemplate_61850 = new javax.swing.JButton();
+        UploadLNTemplate_61850 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        DeleteLNTemplate_61850 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -224,9 +231,9 @@ public class WizardESS2Equipment extends WizardBaseViewDB {
         getContentPane().add(UploadLNN0Template_61850);
         UploadLNN0Template_61850.setBounds(430, 160, 30, 30);
 
-        jLabel4.setText("Template");
+        jLabel4.setText("LNN0Template");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(130, 175, 60, 16);
+        jLabel4.setBounds(100, 170, 90, 16);
 
         DeleteLNN0Template_61850.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/remove.png"))); // NOI18N
         DeleteLNN0Template_61850.setBorderPainted(false);
@@ -238,10 +245,6 @@ public class WizardESS2Equipment extends WizardBaseViewDB {
         });
         getContentPane().add(DeleteLNN0Template_61850);
         DeleteLNN0Template_61850.setBounds(510, 160, 30, 30);
-
-        jLabel5.setText("LNN0");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(150, 160, 60, 16);
 
         Template61850.setEnabled(false);
         getContentPane().add(Template61850);
@@ -271,7 +274,7 @@ public class WizardESS2Equipment extends WizardBaseViewDB {
 
         jLabel7.setText("Template");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(130, 200, 60, 16);
+        jLabel7.setBounds(100, 195, 80, 16);
 
         DeleteTemplate_61850.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/remove.png"))); // NOI18N
         DeleteTemplate_61850.setBorderPainted(false);
@@ -283,6 +286,47 @@ public class WizardESS2Equipment extends WizardBaseViewDB {
         });
         getContentPane().add(DeleteTemplate_61850);
         DeleteTemplate_61850.setBounds(510, 190, 30, 30);
+
+        LNTemplate61850.setEnabled(false);
+        getContentPane().add(LNTemplate61850);
+        LNTemplate61850.setBounds(200, 220, 220, 25);
+
+        DownLoadLNTemplate_61850.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/download.png"))); // NOI18N
+        DownLoadLNTemplate_61850.setBorderPainted(false);
+        DownLoadLNTemplate_61850.setContentAreaFilled(false);
+        DownLoadLNTemplate_61850.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DownLoadLNTemplate_61850ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(DownLoadLNTemplate_61850);
+        DownLoadLNTemplate_61850.setBounds(470, 220, 30, 30);
+
+        UploadLNTemplate_61850.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/upload.png"))); // NOI18N
+        UploadLNTemplate_61850.setBorderPainted(false);
+        UploadLNTemplate_61850.setContentAreaFilled(false);
+        UploadLNTemplate_61850.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UploadLNTemplate_61850ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(UploadLNTemplate_61850);
+        UploadLNTemplate_61850.setBounds(430, 220, 30, 30);
+
+        jLabel8.setText("LN Template");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(100, 220, 80, 16);
+
+        DeleteLNTemplate_61850.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/remove.png"))); // NOI18N
+        DeleteLNTemplate_61850.setBorderPainted(false);
+        DeleteLNTemplate_61850.setContentAreaFilled(false);
+        DeleteLNTemplate_61850.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteLNTemplate_61850ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(DeleteLNTemplate_61850);
+        DeleteLNTemplate_61850.setBounds(510, 220, 30, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -562,6 +606,31 @@ public class WizardESS2Equipment extends WizardBaseViewDB {
         };
     }
 
+    private void deleteLNTemplate(){
+        new APICall<JEmpty>(main) {
+            @Override
+            public Call<JEmpty> apiFun() {
+                return main.getService().removeArtifact(main.getDebugToken(), equipment.getIec61850LNTemplate().getOid());
+            }
+            @Override
+            public void onSucess(JEmpty oo) {
+                equipment.getIec61850LNTemplate().setOid(0);
+                equipment.getIec61850LNTemplate().setRef(null);
+                new APICall<JEmpty>(main) {
+                    @Override
+                    public Call<JEmpty> apiFun() {
+                        return main.getService().updateEntityField(main.getDebugToken(),"iec61850LNTemplate", new DBRequest(equipment, new Gson()));
+                    }
+                    @Override
+                    public void onSucess(JEmpty oo) {
+                        LNN0Template61850.setText("");
+                        main.popup("Удаление LN template для 61850");
+                    }
+                };
+            }
+        };
+    }
+
     private void DeleteTemplate_61850ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteTemplate_61850ActionPerformed
         if (equipment.getIec61850Template().getOid()==0)
             return;
@@ -573,6 +642,49 @@ public class WizardESS2Equipment extends WizardBaseViewDB {
         });
 
     }//GEN-LAST:event_DeleteTemplate_61850ActionPerformed
+
+    private void DownLoadLNTemplate_61850ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DownLoadLNTemplate_61850ActionPerformed
+        if (equipment.getIec61850LNTemplate().getOid()!=0)
+            main.loadFile(equipment.getIec61850LNTemplate().getRef());
+    }//GEN-LAST:event_DownLoadLNTemplate_61850ActionPerformed
+
+    private void UploadLNTemplate_61850ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UploadLNTemplate_61850ActionPerformed
+        FileNameExt fname = main.getInputFileName("Импорт LN template для 61850", "*.xml", null);
+        final MultipartBody.Part body = RestAPICommon.createMultipartBody(fname);
+        new APICall<Artifact>(main) {
+            @Override
+            public Call<Artifact> apiFun() {
+                return main.getService().upload(main.getDebugToken(), "Meta-Data import", fname.fileName(), body);
+            }
+            @Override
+            public void onSucess(final Artifact oo) {
+                equipment.getIec61850LNTemplate().setOidRef(oo);
+                new APICall<JEmpty>(main) {
+                    @Override
+                    public Call<JEmpty> apiFun() {
+                        return main.getService().updateEntityField(main.getDebugToken(),"iec61850LNTemplate", new DBRequest(equipment, new Gson()));
+                    }
+                    @Override
+                    public void onSucess(JEmpty oo) {
+                        LNTemplate61850.setText(equipment.getIec61850LNTemplate().getRef().getOriginalName());
+                        main.popup("Импорт LN template для 61850");
+                        }
+                    };
+                }
+            };
+
+    }//GEN-LAST:event_UploadLNTemplate_61850ActionPerformed
+
+    private void DeleteLNTemplate_61850ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteLNTemplate_61850ActionPerformed
+        if (equipment.getIec61850Template().getOid()==0)
+            return;
+        new OK(200, 200, "Удалить " + equipment.getIec61850LNTemplate().getTitle(), new I_Button() {
+            @Override
+            public void onPush() {
+                deleteLNTemplate();
+            };
+        });
+    }//GEN-LAST:event_DeleteLNTemplate_61850ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -619,27 +731,31 @@ public class WizardESS2Equipment extends WizardBaseViewDB {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton DeleteLNN0Template_61850;
     private javax.swing.JButton DeleteLNN0_61850;
+    private javax.swing.JButton DeleteLNTemplate_61850;
     private javax.swing.JButton DeleteTemplate_61850;
     private javax.swing.JButton DownLoadLNN0Template_61850;
     private javax.swing.JButton DownLoadLNN0_61850;
+    private javax.swing.JButton DownLoadLNTemplate_61850;
     private javax.swing.JButton DownLoadTemplate_61850;
     private javax.swing.JTextField IEC61850LNType;
     private javax.swing.JTextField LNN0Template61850;
     private javax.swing.JTextField LNN0_61850;
+    private javax.swing.JTextField LNTemplate61850;
     private java.awt.Choice MetaFile;
     private javax.swing.JCheckBox MultiUnit;
     private javax.swing.JButton SetMetaFile;
     private javax.swing.JTextField Template61850;
     private javax.swing.JButton UploadLNN0Template_61850;
     private javax.swing.JButton UploadLNN0_61851;
+    private javax.swing.JButton UploadLNTemplate_61850;
     private javax.swing.JButton UploadTemplate_61850;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

@@ -308,6 +308,13 @@ public class ESSExportNode {
                     continue;
                 equipment.getIec61850Template().setOid(oid);
                 }
+            if (equipment.getIec61850Template().getOid()!=0) {
+                Artifact artifact = equipment.getIec61850LNTemplate().getRef();
+                oid = addArtifact(artifact);
+                if (oid == -1)
+                    continue;
+                equipment.getIec61850LNTemplate().setOid(oid);
+                }
             oid = addEntity(equipment);
             if (oid==-1)
                 continue;

@@ -3592,7 +3592,10 @@ case 1:         if (equipment.getIec61850LNN0Template().getOid() == 0)
                 return loadIEC61850(equipment.getIec61850LNN0Template().getRef(),errors);
 case 2:         if (equipment.getIec61850Template().getOid() == 0)
                     return "";
-                    return loadIEC61850(equipment.getIec61850Template().getRef(),errors);
+                return loadIEC61850(equipment.getIec61850Template().getRef(),errors);
+case 3:         if (equipment.getIec61850LNTemplate().getOid() == 0)
+                    return "";
+                return loadIEC61850(equipment.getIec61850LNTemplate().getRef(),errors);
             }
         errors.addError("IEC61850: баг - недопустимый вариант артефакта "+mode);
         return "";
