@@ -3571,21 +3571,33 @@ public class ESSMetaPanel extends ESSBasePanel {
                     }
         }//GEN-LAST:event_CIDLocalActionPerformed
 
+    private String loadIEC61850(Artifact art, ErrorList errors){
+        Pair<String, String> res = main.loadFileAsStringSync(art);
+        if (res.o1 != null) {
+            errors.addError(res.o1);
+            System.out.println(res.o1);
+            return "";
+            }
+        return res.o2;
+        }
     private I_Reports61850 loadBack = new I_Reports61850() {
         @Override
-        public String createReportsText(ESS2Equipment equipment, ErrorList errors) {
-            if (equipment.getReports61850().getOid()==0)
-                return "";
-            Pair<String,String> res = main.loadFileAsStringSync(equipment.getReports61850().getRef());
-            if (res.o1!=null){
-                errors.addError(res.o1);
-                System.out.println(res.o1);
-                return "";
-                }
-            return res.o2;
+        public String createReportsText(int mode,ESS2Equipment equipment, ErrorList errors) {
+            switch (mode) {
+case 0:         if (equipment.getIec61850LNN0().getOid() == 0)
+                    return "";
+                return loadIEC61850(equipment.getIec61850LNN0().getRef(),errors);
+case 1:         if (equipment.getIec61850LNN0Template().getOid() == 0)
+                    return "";
+                return loadIEC61850(equipment.getIec61850LNN0Template().getRef(),errors);
+case 2:         if (equipment.getIec61850Template().getOid() == 0)
+                    return "";
+                    return loadIEC61850(equipment.getIec61850Template().getRef(),errors);
             }
-        };
-
+        errors.addError("IEC61850: баг - недопустимый вариант артефакта "+mode);
+        return "";
+        }
+    };
 
     private void IEC61850OnOffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IEC61850OnOffActionPerformed
         if (!main2.deployed.isConnected()){

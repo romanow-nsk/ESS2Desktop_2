@@ -287,12 +287,26 @@ public class ESSExportNode {
             if (oid==-1)
                 continue;
             equipment.getMetaFile().setOid(oid);
-            if (equipment.getReports61850().getOid()!=0) {
-                Artifact artifact = equipment.getReports61850().getRef();
+            if (equipment.getIec61850LNN0().getOid()!=0) {
+                Artifact artifact = equipment.getIec61850LNN0().getRef();
                 oid = addArtifact(artifact);
                 if (oid == -1)
                     continue;
-                equipment.getReports61850().setOid(oid);
+                equipment.getIec61850LNN0().setOid(oid);
+                }
+            if (equipment.getIec61850LNN0Template().getOid()!=0) {
+                Artifact artifact = equipment.getIec61850LNN0Template().getRef();
+                oid = addArtifact(artifact);
+                if (oid == -1)
+                    continue;
+                equipment.getIec61850LNN0Template().setOid(oid);
+                }
+            if (equipment.getIec61850Template().getOid()!=0) {
+                Artifact artifact = equipment.getIec61850Template().getRef();
+                oid = addArtifact(artifact);
+                if (oid == -1)
+                    continue;
+                equipment.getIec61850Template().setOid(oid);
                 }
             oid = addEntity(equipment);
             if (oid==-1)
