@@ -13,10 +13,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="88.01 - 61850 - модуль LLN0,ZBAT">
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="88.01 - 61850 - Шаблоны для общих DA">
+      <change afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/iec61850/Utils61850.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/Meta2Bit.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/Meta2Bit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/Meta2DataRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/Meta2DataRegister.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/subject2area/ESS2Architecture.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/subject2area/ESS2Architecture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850ModuleBARS.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850ModuleBARS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/datastreams/DataStreamFailure.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/datastreams/DataStreamFailure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/datastreams/DataStreamGeneral.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/datastreams/DataStreamGeneral.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850NameParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850NameParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850VarFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850VarFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850VarTimeStamp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850VarTimeStamp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -37,7 +43,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../ESS2Core" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../ESS2DataServer" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
@@ -134,7 +140,7 @@
       <recent name="romanow.abc.desktop" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ESSClient">
+  <component name="RunManager" selected="Application.BARSConsoleServer">
     <configuration name="BARS4569ConsoleServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="romanow.abc.dataserver.BARS4569ConsoleServer" />
       <module name="ESS2DataServer" />
@@ -216,9 +222,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.ESSClient" />
+        <item itemvalue="Application.BARS4569ConsoleServer" />
         <item itemvalue="Application.ESS61850TestClient" />
         <item itemvalue="Application.MIBParser" />
-        <item itemvalue="Application.BARS4569ConsoleServer" />
         <item itemvalue="Application.ESS61850ConsoleClient" />
       </list>
     </recent_temporary>
@@ -231,13 +237,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00423" summary="84.01 - текущее время сервера, версия сервера">
-      <created>1706001397445</created>
-      <option name="number" value="00423" />
-      <option name="presentableId" value="LOCAL-00423" />
-      <option name="project" value="LOCAL" />
-      <updated>1706001397445</updated>
     </task>
     <task id="LOCAL-00424" summary="84.01 - глубина логов, синх. логаут киоска">
       <created>1706119329443</created>
@@ -575,7 +574,14 @@
       <option name="project" value="LOCAL" />
       <updated>1712431569822</updated>
     </task>
-    <option name="localTasksCounter" value="472" />
+    <task id="LOCAL-00472" summary="88.01 - 61850 - Шаблоны для общих DA">
+      <created>1712465727792</created>
+      <option name="number" value="00472" />
+      <option name="presentableId" value="LOCAL-00472" />
+      <option name="project" value="LOCAL" />
+      <updated>1712465727792</updated>
+    </task>
+    <option name="localTasksCounter" value="473" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -602,7 +608,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="85.03 -   размерности массивов индивид.GUI" />
     <MESSAGE value="85.03 - баг 15, разделение кэш-а" />
     <MESSAGE value="86.01 - смещение часового пояса" />
     <MESSAGE value="86.01 - ключ ком. строки exit" />
@@ -627,7 +632,8 @@
     <MESSAGE value="88.01 - 61850 - профиль LNN0" />
     <MESSAGE value="88.01 - 61850 - профиль LNN0,ZBAT" />
     <MESSAGE value="88.01 - 61850 - модуль LLN0,ZBAT" />
-    <option name="LAST_COMMIT_MESSAGE" value="88.01 - 61850 - модуль LLN0,ZBAT" />
+    <MESSAGE value="88.01 - 61850 - Шаблоны для общих DA" />
+    <option name="LAST_COMMIT_MESSAGE" value="88.01 - 61850 - Шаблоны для общих DA" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -931,21 +937,6 @@
           <url>file://$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/DigitPanel.java</url>
           <line>41</line>
           <option name="timeStamp" value="1507" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850Server.java</url>
-          <line>168</line>
-          <option name="timeStamp" value="1514" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850ModuleBARS.java</url>
-          <line>37</line>
-          <option name="timeStamp" value="1516" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java</url>
-          <line>2577</line>
-          <option name="timeStamp" value="1521" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS4ACDCEmulator.java</url>
