@@ -43,6 +43,12 @@ public abstract class View2Base implements I_View2 {
     @Getter @Setter FormContext2 context;
     public void setType(int type) {
         this.type = type;}
+    public boolean isRegisterSwichedOff(){          // Проверка на отуключение регистров 88.01
+        Meta2Register registerOff = getRegister();
+        if (registerOff!=null && registerOff.isSwichedOff())
+            return true;
+        return false;
+        }
     public Meta2RegLink getRegLink(){                           // Линк регистра в метаданных
         return element.getRegLink();
         }

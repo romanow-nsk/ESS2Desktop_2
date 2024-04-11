@@ -1062,6 +1062,8 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
 
     //----------------------- Рендеринг элементов ----------------------------------------
     public void renderGuiElement(Meta2GUI meta,int baseX, int baseY, int groupLevel, int groupIndexes[]){
+        if (meta.isSwichedOff())
+            return;
         if (meta instanceof Meta2GUIArray){
             Meta2GUIArray array = (Meta2GUIArray) meta;
             Meta2GUI elem = array.getElem();
@@ -1090,6 +1092,8 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             View2Base newElem = View2Base.createGUIElement(errorList,context.getPlatformName(),meta);
             if (newElem==null)
                 return;
+            if (newElem.isRegisterSwichedOff())
+                return;
             try {
                 String mes = newElem.setParams(context, main2.deployed, meta, retryPaintValues);
                 if (mes!=null){
@@ -1100,6 +1104,8 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                     errorList.addError("Ошибка настройки элемента "+newElem.getTitle()+"\n"+ Utils.createFatalMessage(ee));
                     return;
                     }
+            if (newElem.isRegisterSwichedOff())
+                return;
             newElem.setDxOffset(baseX);
             newElem.setDyOffset(baseY);
             newElem.setGroupLevel(groupLevel);

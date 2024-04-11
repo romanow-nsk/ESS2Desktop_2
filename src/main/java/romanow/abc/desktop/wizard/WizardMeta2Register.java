@@ -45,6 +45,7 @@ public class WizardMeta2Register extends WizardBaseView {
         DataFormat.select(register.getFormat());
         SnapShot.setSelected(register.isSnapShot());
         IEC60870RegNum.setText(""+register.getIEC60870RegNum());
+        SwitchedOff.setSelected(register.isSwichedOff());
         busy = false;
         }
     /**
@@ -69,6 +70,7 @@ public class WizardMeta2Register extends WizardBaseView {
         Регистр1 = new javax.swing.JLabel();
         Регистр = new javax.swing.JLabel();
         IEC60870RegNum = new javax.swing.JTextField();
+        SwitchedOff = new javax.swing.JCheckBox();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -79,7 +81,7 @@ public class WizardMeta2Register extends WizardBaseView {
         });
         getContentPane().setLayout(null);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(10, 82, 560, 3);
+        jSeparator1.setBounds(10, 82, 710, 3);
 
         SaveDataFormat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/save.png"))); // NOI18N
         SaveDataFormat.setBorderPainted(false);
@@ -94,7 +96,7 @@ public class WizardMeta2Register extends WizardBaseView {
 
         jLabel9.setText("Номер");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(70, 95, 50, 16);
+        jLabel9.setBounds(70, 97, 50, 16);
 
         RegNum.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -106,11 +108,11 @@ public class WizardMeta2Register extends WizardBaseView {
 
         jLabel10.setText("Формат ");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(280, 95, 60, 16);
+        jLabel10.setBounds(280, 97, 60, 16);
         getContentPane().add(DataFormat);
         DataFormat.setBounds(340, 90, 120, 25);
         getContentPane().add(jSeparator2);
-        jSeparator2.setBounds(10, 120, 560, 3);
+        jSeparator2.setBounds(10, 120, 710, 10);
 
         HEX.setText("hex");
         HEX.addItemListener(new java.awt.event.ItemListener() {
@@ -144,7 +146,16 @@ public class WizardMeta2Register extends WizardBaseView {
             }
         });
         getContentPane().add(IEC60870RegNum);
-        IEC60870RegNum.setBounds(590, 90, 50, 25);
+        IEC60870RegNum.setBounds(580, 90, 50, 25);
+
+        SwitchedOff.setText("Отключен");
+        SwitchedOff.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SwitchedOffItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(SwitchedOff);
+        SwitchedOff.setBounds(640, 95, 80, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -188,6 +199,13 @@ public class WizardMeta2Register extends WizardBaseView {
         });
     }//GEN-LAST:event_IEC60870RegNumKeyPressed
 
+    private void SwitchedOffItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SwitchedOffItemStateChanged
+        if (busy) return;
+        register.setSwichedOff(SwitchedOff.isSelected());
+        back.onEnter("Изменено switchedOff: "+register.isSwichedOff());
+
+    }//GEN-LAST:event_SwitchedOffItemStateChanged
+
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -197,6 +215,7 @@ public class WizardMeta2Register extends WizardBaseView {
     private javax.swing.JTextField RegNum;
     private javax.swing.JButton SaveDataFormat;
     private javax.swing.JCheckBox SnapShot;
+    private javax.swing.JCheckBox SwitchedOff;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel9;

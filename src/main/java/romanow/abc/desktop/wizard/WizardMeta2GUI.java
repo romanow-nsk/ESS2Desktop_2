@@ -52,6 +52,7 @@ public class WizardMeta2GUI extends WizardBaseView {
         LabelOnCenter.setSelected(elem.isLabelOnCenter());
         LabelBackColor.setSelected(elem.isLabelBackColor());
         NoEditThere.setSelected(elem.isNoEditThere());
+        SwitchedOff.setSelected(elem.isSwichedOff());
         baseBack = back;
         back = new I_Value<String>() {
             @Override
@@ -120,6 +121,7 @@ public class WizardMeta2GUI extends WizardBaseView {
         ElemBackColor = new javax.swing.JCheckBox();
         OnRight = new javax.swing.JCheckBox();
         NoEditThere = new javax.swing.JCheckBox();
+        SwitchedOff = new javax.swing.JCheckBox();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -452,6 +454,15 @@ public class WizardMeta2GUI extends WizardBaseView {
         getContentPane().add(NoEditThere);
         NoEditThere.setBounds(650, 105, 57, 20);
 
+        SwitchedOff.setText("Отключен");
+        SwitchedOff.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SwitchedOffItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(SwitchedOff);
+        SwitchedOff.setBounds(650, 65, 80, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -733,7 +744,12 @@ public class WizardMeta2GUI extends WizardBaseView {
     }//GEN-LAST:event_MoveStepActionPerformed
 
     private void LabelOnCenterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LabelOnCenterActionPerformed
-        // TODO add your handling code here:
+        if (busy)
+            return;
+        noSilence();
+        elem.setLabelOnCenter(LabelOnCenter.isSelected());
+        back.onEnter("Изменено labelOnCenter: "+elem.isLabelOnCenter());
+
     }//GEN-LAST:event_LabelOnCenterActionPerformed
 
     private void OnRightItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_OnRightItemStateChanged
@@ -745,7 +761,11 @@ public class WizardMeta2GUI extends WizardBaseView {
     }//GEN-LAST:event_OnRightItemStateChanged
 
     private void LabelCommonColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LabelCommonColorActionPerformed
-        // TODO add your handling code here:
+        if (busy)
+            return;
+        noSilence();
+        elem.setLabelCommonColor(LabelCommonColor.isSelected());
+        back.onEnter("Изменено labelCommonColor: "+elem.isLabelCommonColor());
     }//GEN-LAST:event_LabelCommonColorActionPerformed
 
     private void NoEditThereItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_NoEditThereItemStateChanged
@@ -755,6 +775,14 @@ public class WizardMeta2GUI extends WizardBaseView {
         elem.setNoEditThere(NoEditThere.isSelected());
         back.onEnter("Изменено noEditThere: "+elem.isNoEditThere());
     }//GEN-LAST:event_NoEditThereItemStateChanged
+
+    private void SwitchedOffItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SwitchedOffItemStateChanged
+        if (busy)
+            return;
+        noSilence();
+        elem.setSwichedOff(SwitchedOff.isSelected());
+        back.onEnter("Изменено switchedOff: "+elem.isSwichedOff());
+    }//GEN-LAST:event_SwitchedOffItemStateChanged
 
  
 
@@ -787,6 +815,7 @@ public class WizardMeta2GUI extends WizardBaseView {
     private javax.swing.JButton SelecElem;
     private javax.swing.JCheckBox Step5_25;
     private javax.swing.JTextField StringSize;
+    private javax.swing.JCheckBox SwitchedOff;
     private javax.swing.JTextField W;
     private javax.swing.JTextField X;
     private javax.swing.JTextField Y;
