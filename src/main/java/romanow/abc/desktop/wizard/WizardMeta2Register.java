@@ -155,7 +155,7 @@ public class WizardMeta2Register extends WizardBaseView {
             }
         });
         getContentPane().add(SwitchedOff);
-        SwitchedOff.setBounds(640, 95, 80, 20);
+        SwitchedOff.setBounds(640, 90, 80, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

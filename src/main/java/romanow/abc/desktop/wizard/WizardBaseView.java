@@ -214,7 +214,7 @@ public class WizardBaseView extends ESSBaseView {
             }
         });
         getContentPane().add(In61850);
-        In61850.setBounds(640, 10, 150, 20);
+        In61850.setBounds(640, 5, 150, 20);
 
         In60870.setText("МЭК 60870 включен");
         In60870.addItemListener(new java.awt.event.ItemListener() {
@@ -223,7 +223,7 @@ public class WizardBaseView extends ESSBaseView {
             }
         });
         getContentPane().add(In60870);
-        In60870.setBounds(640, 30, 140, 20);
+        In60870.setBounds(640, 25, 140, 20);
 
         InSNMP.setText("SNMP включен");
         InSNMP.addItemListener(new java.awt.event.ItemListener() {
@@ -232,7 +232,7 @@ public class WizardBaseView extends ESSBaseView {
             }
         });
         getContentPane().add(InSNMP);
-        InSNMP.setBounds(640, 50, 140, 20);
+        InSNMP.setBounds(640, 45, 140, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -257,7 +257,7 @@ public class WizardBaseView extends ESSBaseView {
         onStringKeyPressed("shortName", ShortName, evt, new I_WizardActionString() {
             @Override
             public void onAction(String value) {
-                entity.setShortName(value);
+                entity.setShortName(value.trim());
             }
         });
     }//GEN-LAST:event_ShortNameKeyPressed

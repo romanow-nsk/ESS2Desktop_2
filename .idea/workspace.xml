@@ -13,16 +13,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="88.01 Переустановка из ком. строки logunit, device">
-      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/Meta2Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/Meta2Register.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/view/Meta2GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/view/Meta2GUI.java" afterDir="false" />
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="88.01 switchedOff для View">
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/Meta2Bit.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/Meta2Bit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/Meta2BitRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/Meta2BitRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/subject2area/ESS2Architecture.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/subject2area/ESS2Architecture.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/BARSConsoleServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/BARSConsoleServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/datastreams/DataStreamFailure.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/datastreams/DataStreamFailure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSServiceGUIPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSServiceGUIPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/View2Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/View2Base.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUI.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIView.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2GUIView.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardBaseView.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardBaseView.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardBaseView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardBaseView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2BitRegister.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2BitRegister.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2BitRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2BitRegister.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2Register.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2Register.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2Register.java" afterDir="false" />
     </list>
@@ -43,7 +45,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../ESS2DataServer" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
@@ -140,7 +142,7 @@
       <recent name="romanow.abc.desktop.view2.desktop" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ESSClient">
+  <component name="RunManager" selected="Application.BARSConsoleServer">
     <configuration name="BARS4569ConsoleServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="romanow.abc.dataserver.BARS4569ConsoleServer" />
       <module name="ESS2DataServer" />
@@ -160,19 +162,6 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="romanow.abc.dataserver.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ESS61850ConsoleClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="romanow.abc.desktop.iec61850.ESS61850ConsoleClient" />
-      <module name="ESS2Desktop" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="romanow.abc.desktop.iec61850.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -206,6 +195,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="IEC61850Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="romanow.abc.dataserver.iec61850.IEC61850Client" />
+      <module name="ESS2DataServer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="romanow.abc.dataserver.iec61850.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MIBParser" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="romanow.abc.dataserver.snmp.MIBParser" />
       <module name="ESS2DataServer" />
@@ -222,10 +224,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.ESSClient" />
+        <item itemvalue="Application.IEC61850Client" />
         <item itemvalue="Application.ESS61850TestClient" />
         <item itemvalue="Application.BARS4569ConsoleServer" />
         <item itemvalue="Application.MIBParser" />
-        <item itemvalue="Application.ESS61850ConsoleClient" />
       </list>
     </recent_temporary>
   </component>
@@ -237,13 +239,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00426" summary="84.01 - Запрет вывода в консоль с режимее оборудования">
-      <created>1706182631022</created>
-      <option name="number" value="00426" />
-      <option name="presentableId" value="LOCAL-00426" />
-      <option name="project" value="LOCAL" />
-      <updated>1706182631022</updated>
     </task>
     <task id="LOCAL-00427" summary="84.01 - баг - закрытие лог-файлов">
       <created>1706183855105</created>
@@ -581,7 +576,14 @@
       <option name="project" value="LOCAL" />
       <updated>1712754688894</updated>
     </task>
-    <option name="localTasksCounter" value="475" />
+    <task id="LOCAL-00475" summary="88.01 switchedOff для View">
+      <created>1712814151187</created>
+      <option name="number" value="00475" />
+      <option name="presentableId" value="LOCAL-00475" />
+      <option name="project" value="LOCAL" />
+      <updated>1712814151187</updated>
+    </task>
+    <option name="localTasksCounter" value="476" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -608,7 +610,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="86.01 - ключ ком. строки exit" />
     <MESSAGE value="86.02 - баг калькулятора уставок" />
     <MESSAGE value="87.01 - Вставка датасетов и отчетов 61850" />
     <MESSAGE value="87.01 - Запись уставок через 61850" />
@@ -633,7 +634,8 @@
     <MESSAGE value="88.01 - 61850 - Шаблоны для общих DA" />
     <MESSAGE value="88.01 TimeStamp как отдельная переменная" />
     <MESSAGE value="88.01 Переустановка из ком. строки logunit, device" />
-    <option name="LAST_COMMIT_MESSAGE" value="88.01 Переустановка из ком. строки logunit, device" />
+    <MESSAGE value="88.01 switchedOff для View" />
+    <option name="LAST_COMMIT_MESSAGE" value="88.01 switchedOff для View" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -819,11 +821,6 @@
           <option name="timeStamp" value="1188" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardMeta2DataRegister.java</url>
-          <line>30</line>
-          <option name="timeStamp" value="1189" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/datastreams/DataStreamDiscreteEvents.java</url>
           <line>81</line>
           <option name="timeStamp" value="1195" />
@@ -929,14 +926,19 @@
           <option name="timeStamp" value="1507" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/View2Base.java</url>
-          <line>148</line>
-          <option name="timeStamp" value="1514" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSServiceGUIPanel.java</url>
           <line>1107</line>
           <option name="timeStamp" value="1515" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850Client.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="1516" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/datastreams/DataStreamFailure.java</url>
+          <line>209</line>
+          <option name="timeStamp" value="1518" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS4ACDCEmulator.java</url>

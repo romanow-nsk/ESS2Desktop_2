@@ -114,6 +114,7 @@ public class WizardMeta2BitRegister extends WizardMeta2Register {
                 formWindowClosing(evt);
             }
         });
+        getContentPane().setLayout(null);
         getContentPane().add(jSeparator1);
         jSeparator1.setBounds(10, 120, 560, 3);
         getContentPane().add(BitsType);
@@ -141,7 +142,7 @@ public class WizardMeta2BitRegister extends WizardMeta2Register {
             }
         });
         getContentPane().add(Inline61850);
-        Inline61850.setBounds(650, 90, 100, 20);
+        Inline61850.setBounds(640, 65, 100, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
