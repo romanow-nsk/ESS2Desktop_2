@@ -40,7 +40,7 @@ public class WizardMeta2BitRegister extends WizardMeta2Register {
         choice = selector.getList();
         getContentPane().add(selector);
         bits = register.getBits().getList();
-        Inline61850.setSelected(register.isInline61860());
+        Inline61850.setSelected(register.isInline61850());
         bitsTypes = Values.constMap().getGroupList("BitRegType");
         BitsType.removeAll();
         for(ConstValue vv : bitsTypes)
@@ -160,7 +160,7 @@ public class WizardMeta2BitRegister extends WizardMeta2Register {
     private void Inline61850ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_Inline61850ItemStateChanged
         if (busy)
             return;
-        register.setOut61850Model(Inline61850.isSelected());
+        register.setInline61850(Inline61850.isSelected());
         back.onEnter("Изменено 61850 Inline="+Inline61850.isSelected());
     }//GEN-LAST:event_Inline61850ItemStateChanged
 
