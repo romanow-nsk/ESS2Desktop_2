@@ -13,6 +13,7 @@
         <option value="$PROJECT_DIR$/../ESS2DataServer/pom.xml" />
         <option value="$PROJECT_DIR$/../ESS2Core/pom.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/../iec61850bean-1.9.0-sources/pom.xml" />
       </list>
     </option>
   </component>
