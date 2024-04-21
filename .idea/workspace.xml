@@ -13,29 +13,613 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="88.04 Генерация стандартных датасетов">
-      <change beforePath="$PROJECT_DIR$/../ESS2Core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/datastreams/DataStreamFailure.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/datastreams/DataStreamFailure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/datastreams/DataStreamGeneral.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/datastreams/DataStreamGeneral.java" afterDir="false" />
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="89 Исходники iec61850">
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/AcseListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/Array.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/BasicDataAttribute.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/BdaBitString.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/BdaBoolean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/BdaCheck.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/BdaDoubleBitPos.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/BdaEntryTime.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/BdaFloat32.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/BdaFloat64.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/BdaInt128.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/BdaInt16.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/BdaInt16U.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/BdaInt32.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/BdaInt32U.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/BdaInt64.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/BdaInt8.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/BdaInt8U.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/BdaOctetString.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/BdaOptFlds.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/BdaQuality.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/BdaReasonForInclusion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/BdaTapCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/BdaTimestamp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/BdaTriggerConditions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/BdaType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/BdaUnicodeString.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/BdaVisibleString.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/Brcb.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ClientAssociation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ClientEventListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ClientSap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ConstructedDataAttribute.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/DataDefinitionResParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/DataSet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/Fc.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/FcDataObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/FcModelNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/FileInformation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/GetFileListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/LogicalDevice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/LogicalNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ModelNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ObjectReference.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/Rcb.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/Report.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ReportEntryData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/SclParseException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/SclParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerAssociation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerEventListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerSap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServiceError.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServiceSupport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/Urcb.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/app/ConsoleClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/app/ConsoleServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/clientgui/BasicDataBind.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/clientgui/ClientGui.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/clientgui/DataObjectTreeCellRenderer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/clientgui/DataObjectTreeNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/clientgui/DataSetTreeNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/clientgui/DataTreeNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/clientgui/ServerModelParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/clientgui/SettingsFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/clientgui/databind/BooleanDataBind.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/clientgui/databind/CheckDataBind.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/clientgui/databind/DoubleBitPosDataBind.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/clientgui/databind/EntryTimeDataBind.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/clientgui/databind/Float32DataBind.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/clientgui/databind/Float64DataBind.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/clientgui/databind/Int16DataBind.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/clientgui/databind/Int16UDataBind.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/clientgui/databind/Int32DataBind.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/clientgui/databind/Int32UDataBind.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/clientgui/databind/Int64DataBind.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/clientgui/databind/Int8DataBind.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/clientgui/databind/Int8UDataBind.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/clientgui/databind/OctetStringDataBind.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/clientgui/databind/OptfldsDataBind.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/clientgui/databind/QualityDataBind.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/clientgui/databind/ReasonForInclusionDataBind.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/clientgui/databind/TapCommandDataBind.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/clientgui/databind/TextFieldDataBind.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/clientgui/databind/TimeStampDataBind.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/clientgui/databind/TriggerConditionDataBind.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/clientgui/databind/UnicodeStringDataBind.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/clientgui/databind/VisibleStringDataBind.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/clientgui/util/Counter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/BerBoolean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/HexString.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/NamedThreadFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/cli/Action.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/cli/ActionException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/cli/ActionListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/cli/ActionProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/cli/CliParameter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/cli/CliParameterBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/cli/CliParseException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/cli/CliParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/cli/FlagCliParameter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/cli/IntCliParameter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/cli/LongCliParameter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/cli/StringCliParameter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/cli/StringListCliParameter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/cli/ValueCliParameter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/AccessResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/AlternateAccess.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/AlternateAccessSelection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/BasicIdentifier.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/ConcludeRequestPDU.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/ConfirmedErrorPDU.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/ConfirmedRequestPDU.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/ConfirmedResponsePDU.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/ConfirmedServiceRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/ConfirmedServiceResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/Data.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/DataAccessError.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/DefineNamedVariableListRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/DefineNamedVariableListResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/DeleteNamedVariableListRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/DeleteNamedVariableListResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/DirectoryEntry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/FileAttributes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/FileCloseRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/FileCloseResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/FileDeleteRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/FileDeleteResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/FileDirectoryRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/FileDirectoryResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/FileName.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/FileOpenRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/FileOpenResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/FileReadRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/FileReadResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/FloatingPoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/GetNameListRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/GetNameListResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/GetNamedVariableListAttributesRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/GetNamedVariableListAttributesResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/GetVariableAccessAttributesRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/GetVariableAccessAttributesResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/Identifier.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/InformationReport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/InitiateErrorPDU.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/InitiateRequestPDU.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/InitiateResponsePDU.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/Integer16.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/Integer32.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/Integer8.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/MMSString.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/MMSpdu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/ObjectClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/ObjectName.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/ParameterSupportOptions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/ReadRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/ReadResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/RejectPDU.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/ServiceError.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/ServiceSupportOptions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/TimeOfDay.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/TypeDescription.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/TypeSpecification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/UnconfirmedPDU.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/UnconfirmedService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/Unsigned16.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/Unsigned32.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/Unsigned8.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/UtcTime.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/VariableAccessSpecification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/VariableDefs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/VariableSpecification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/WriteRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/WriteResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/scl/AbstractDataAttribute.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/scl/AbstractElement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/scl/AbstractType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/scl/Bda.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/scl/Da.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/scl/DaType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/scl/Do.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/scl/DoType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/scl/EnumType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/scl/EnumVal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/scl/LnSubDef.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/scl/LnType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/scl/Sdo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/scl/TypeDefinitions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/scl/Util.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/scl/Value.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/util/SequenceNumber.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/AcseAssociation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/AcseAssociationListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/ByteBufferInputStream.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/ClientAcseSap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/DecodingException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/ServerAcseSap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/acse/asn1/AAREApdu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/acse/asn1/AARQApdu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/acse/asn1/ACSEApdu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/acse/asn1/ACSERequirements.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/acse/asn1/AEInvocationIdentifier.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/acse/asn1/AEQualifier.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/acse/asn1/AEQualifierForm2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/acse/asn1/AETitle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/acse/asn1/AETitleForm2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/acse/asn1/APInvocationIdentifier.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/acse/asn1/APTitle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/acse/asn1/APTitleForm2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/acse/asn1/ApplicationContextName.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/acse/asn1/ApplicationContextNameList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/acse/asn1/AssociateResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/acse/asn1/AssociateSourceDiagnostic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/acse/asn1/AssociationInformation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/acse/asn1/AuthenticationValue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/acse/asn1/ImplementationData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/acse/asn1/MechanismName.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/acse/asn1/Myexternal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/acse/asn1/Myexternal2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/acse/asn1/OidValues.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/acse/asn1/RLREApdu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/acse/asn1/RLRQApdu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/acse/asn1/ReleaseRequestReason.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/acse/asn1/ReleaseResponseReason.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/presentation/asn1/AbstractSyntaxName.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/presentation/asn1/CPAPPDU.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/presentation/asn1/CPType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/presentation/asn1/CalledPresentationSelector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/presentation/asn1/CallingPresentationSelector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/presentation/asn1/ContextList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/presentation/asn1/DefaultContextName.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/presentation/asn1/FullyEncodedData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/presentation/asn1/ModeSelector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/presentation/asn1/PDVList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/presentation/asn1/PresentationContextDefinitionList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/presentation/asn1/PresentationContextDefinitionResultList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/presentation/asn1/PresentationContextIdentifier.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/presentation/asn1/PresentationRequirements.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/presentation/asn1/PresentationSelector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/presentation/asn1/ProtocolVersion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/presentation/asn1/RespondingPresentationSelector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/presentation/asn1/Result.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/presentation/asn1/ResultList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/presentation/asn1/SimplyEncodedData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/presentation/asn1/TransferSyntaxName.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/presentation/asn1/UserData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/internal/presentation/asn1/UserSessionRequirements.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/jositransport/ClientTSap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/jositransport/ServerTSap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/jositransport/ServerThread.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/jositransport/TConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/jositransport/TConnectionListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/AcseListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/Array.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/BasicDataAttribute.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/BdaBitString.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/BdaBoolean.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/BdaCheck.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/BdaDoubleBitPos$DoubleBitPos.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/BdaDoubleBitPos.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/BdaEntryTime.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/BdaFloat32.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/BdaFloat64.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/BdaInt128.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/BdaInt16.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/BdaInt16U.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/BdaInt32.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/BdaInt32U.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/BdaInt64.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/BdaInt8.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/BdaInt8U.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/BdaOctetString.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/BdaOptFlds.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/BdaQuality$Validity.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/BdaQuality.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/BdaReasonForInclusion.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/BdaTapCommand$TapCommand.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/BdaTapCommand.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/BdaTimestamp.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/BdaTriggerConditions.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/BdaType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/BdaUnicodeString.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/BdaVisibleString.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/Brcb.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/ClientAssociation$ClientReceiver$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/ClientAssociation$ClientReceiver$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/ClientAssociation$ClientReceiver$3.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/ClientAssociation$ClientReceiver.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/ClientAssociation.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/ClientEventListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/ClientSap.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/ConstructedDataAttribute.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/DataDefinitionResParser.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/DataSet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/Fc.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/FcDataObject.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/FcModelNode$1SelectResetTask.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/FcModelNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/FileInformation.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/GetFileListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/LogicalDevice.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/LogicalNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/ModelNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/ObjectReference.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/Rcb.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/Report.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/ReportEntryData$ReasonCode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/ReportEntryData.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/SclParseException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/SclParser.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/ServerAssociation.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/ServerEventListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/ServerModel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/ServerSap.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/ServiceError.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/ServiceSupport.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/Urcb$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/Urcb$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/Urcb$3.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/Urcb.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/app/ConsoleClient$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/app/ConsoleClient$ActionExecutor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/app/ConsoleClient$EventListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/app/ConsoleClient.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/app/ConsoleServer$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/app/ConsoleServer$ActionExecutor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/app/ConsoleServer$EventListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/app/ConsoleServer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/BasicDataBind.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/ClientGui.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/DataObjectTreeCellRenderer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/DataObjectTreeNode$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/DataObjectTreeNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/DataSetTreeNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/DataTreeNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/ServerModelParser.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/SettingsFrame.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/BooleanDataBind.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/CheckDataBind.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/DoubleBitPosDataBind.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/EntryTimeDataBind.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/Float32DataBind$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/Float32DataBind$FloatFilter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/Float32DataBind.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/Float64DataBind$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/Float64DataBind$DoubleFilter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/Float64DataBind.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/Int16DataBind$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/Int16DataBind$Int16Filter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/Int16DataBind.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/Int16UDataBind$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/Int16UDataBind$UInt16Filter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/Int16UDataBind.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/Int32DataBind$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/Int32DataBind$Int32Filter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/Int32DataBind.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/Int32UDataBind$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/Int32UDataBind$UInt32Filter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/Int32UDataBind.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/Int64DataBind$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/Int64DataBind$Int64Filter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/Int64DataBind.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/Int8DataBind$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/Int8DataBind$Int8Filter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/Int8DataBind.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/Int8UDataBind$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/Int8UDataBind$UInt8Filter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/Int8UDataBind.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/OctetStringDataBind.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/OptfldsDataBind.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/QualityDataBind.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/ReasonForInclusionDataBind.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/TapCommandDataBind.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/TextFieldDataBind$AbstractFilter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/TextFieldDataBind.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/TimeStampDataBind$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/TimeStampDataBind$TimestampFilter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/TimeStampDataBind.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/TriggerConditionDataBind.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/UnicodeStringDataBind$Utf8Filter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/UnicodeStringDataBind.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/VisibleStringDataBind$AsciiFilter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/databind/VisibleStringDataBind.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/clientgui/util/Counter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/BerBoolean.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/HexString.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/NamedThreadFactory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/cli/Action.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/cli/ActionException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/cli/ActionListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/cli/ActionProcessor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/cli/CliParameter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/cli/CliParameterBuilder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/cli/CliParseException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/cli/CliParser$ParameterGroup.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/cli/CliParser.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/cli/FlagCliParameter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/cli/IntCliParameter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/cli/LongCliParameter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/cli/StringCliParameter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/cli/StringListCliParameter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/cli/ValueCliParameter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/AccessResult.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/AlternateAccess$CHOICE.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/AlternateAccess.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/AlternateAccessSelection$SelectAccess$Component.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/AlternateAccessSelection$SelectAccess$IndexRange.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/AlternateAccessSelection$SelectAccess.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/AlternateAccessSelection$SelectAlternateAccess$AccessSelection$Component.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/AlternateAccessSelection$SelectAlternateAccess$AccessSelection$IndexRange.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/AlternateAccessSelection$SelectAlternateAccess$AccessSelection.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/AlternateAccessSelection$SelectAlternateAccess.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/AlternateAccessSelection.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/BasicIdentifier.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/ConcludeRequestPDU.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/ConfirmedErrorPDU.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/ConfirmedRequestPDU.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/ConfirmedResponsePDU.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/ConfirmedServiceRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/ConfirmedServiceResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/Data$Array.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/Data$Structure.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/Data.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/DataAccessError.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/DefineNamedVariableListRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/DefineNamedVariableListResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/DeleteNamedVariableListRequest$DomainName.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/DeleteNamedVariableListRequest$ListOfVariableListName.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/DeleteNamedVariableListRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/DeleteNamedVariableListResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/DirectoryEntry.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/FileAttributes.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/FileCloseRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/FileCloseResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/FileDeleteRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/FileDeleteResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/FileDirectoryRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/FileDirectoryResponse$ListOfDirectoryEntry.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/FileDirectoryResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/FileName.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/FileOpenRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/FileOpenResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/FileReadRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/FileReadResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/FloatingPoint.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/GetNameListRequest$ObjectScope.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/GetNameListRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/GetNameListResponse$ListOfIdentifier.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/GetNameListResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/GetNamedVariableListAttributesRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/GetNamedVariableListAttributesResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/GetVariableAccessAttributesRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/GetVariableAccessAttributesResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/Identifier.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/InformationReport$ListOfAccessResult.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/InformationReport.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/InitiateErrorPDU.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/InitiateRequestPDU$InitRequestDetail.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/InitiateRequestPDU.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/InitiateResponsePDU$InitResponseDetail.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/InitiateResponsePDU.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/Integer16.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/Integer32.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/Integer8.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/MMSString.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/MMSpdu.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/ObjectClass.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/ObjectName$DomainSpecific.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/ObjectName.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/ParameterSupportOptions.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/ReadRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/ReadResponse$ListOfAccessResult.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/ReadResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/RejectPDU$RejectReason.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/RejectPDU.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/ServiceError$ErrorClass.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/ServiceError.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/ServiceSupportOptions.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/TimeOfDay.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/TypeDescription$Array.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/TypeDescription$FloatingPoint.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/TypeDescription$Structure$Components$SEQUENCE.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/TypeDescription$Structure$Components.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/TypeDescription$Structure.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/TypeDescription.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/TypeSpecification.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/UnconfirmedPDU.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/UnconfirmedService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/Unsigned16.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/Unsigned32.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/Unsigned8.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/UtcTime.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/VariableAccessSpecification.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/VariableDefs$SEQUENCE.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/VariableDefs.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/VariableSpecification.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/WriteRequest$ListOfData.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/WriteRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/WriteResponse$CHOICE.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/mms/asn1/WriteResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/scl/AbstractDataAttribute.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/scl/AbstractElement.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/scl/AbstractType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/scl/Bda.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/scl/Da.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/scl/DaType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/scl/Do.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/scl/DoType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/scl/EnumType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/scl/EnumVal.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/scl/LnSubDef.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/scl/LnType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/scl/Sdo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/scl/TypeDefinitions.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/scl/Util.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/scl/Value.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/iec61850bean/internal/util/SequenceNumber.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/AcseAssociation.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/AcseAssociationListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/ByteBufferInputStream.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/ClientAcseSap.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/DecodingException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/ServerAcseSap.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/acse/asn1/AAREApdu.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/acse/asn1/AARQApdu.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/acse/asn1/ACSEApdu.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/acse/asn1/ACSERequirements.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/acse/asn1/AEInvocationIdentifier.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/acse/asn1/AEQualifier.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/acse/asn1/AEQualifierForm2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/acse/asn1/AETitle.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/acse/asn1/AETitleForm2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/acse/asn1/APInvocationIdentifier.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/acse/asn1/APTitle.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/acse/asn1/APTitleForm2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/acse/asn1/ApplicationContextName.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/acse/asn1/ApplicationContextNameList.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/acse/asn1/AssociateResult.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/acse/asn1/AssociateSourceDiagnostic.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/acse/asn1/AssociationInformation.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/acse/asn1/AuthenticationValue.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/acse/asn1/ImplementationData.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/acse/asn1/MechanismName.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/acse/asn1/Myexternal$Encoding.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/acse/asn1/Myexternal.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/acse/asn1/Myexternal2$Encoding.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/acse/asn1/Myexternal2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/acse/asn1/OidValues.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/acse/asn1/RLREApdu.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/acse/asn1/RLRQApdu.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/acse/asn1/ReleaseRequestReason.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/acse/asn1/ReleaseResponseReason.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/presentation/asn1/AbstractSyntaxName.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/presentation/asn1/CPAPPDU$NormalModeParameters.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/presentation/asn1/CPAPPDU.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/presentation/asn1/CPType$NormalModeParameters.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/presentation/asn1/CPType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/presentation/asn1/CalledPresentationSelector.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/presentation/asn1/CallingPresentationSelector.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/presentation/asn1/ContextList$SEQUENCE$TransferSyntaxNameList.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/presentation/asn1/ContextList$SEQUENCE.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/presentation/asn1/ContextList.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/presentation/asn1/DefaultContextName.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/presentation/asn1/FullyEncodedData.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/presentation/asn1/ModeSelector.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/presentation/asn1/PDVList$PresentationDataValues.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/presentation/asn1/PDVList.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/presentation/asn1/PresentationContextDefinitionList.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/presentation/asn1/PresentationContextDefinitionResultList.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/presentation/asn1/PresentationContextIdentifier.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/presentation/asn1/PresentationRequirements.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/presentation/asn1/PresentationSelector.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/presentation/asn1/ProtocolVersion.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/presentation/asn1/RespondingPresentationSelector.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/presentation/asn1/Result.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/presentation/asn1/ResultList$SEQUENCE.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/presentation/asn1/ResultList.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/presentation/asn1/SimplyEncodedData.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/presentation/asn1/TransferSyntaxName.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/presentation/asn1/UserData.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/josistack/internal/presentation/asn1/UserSessionRequirements.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/jositransport/ClientTSap.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/jositransport/ServerTSap.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/jositransport/ServerThread$ConnectionHandler.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/jositransport/ServerThread.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/jositransport/TConnection.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/target/classes/com/beanit/jositransport/TConnectionListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850ModuleBARS.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850ModuleBARS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850NameParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850NameParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850Var.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850Var.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850VarBoolean.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850VarBoolean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850VarByte.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850VarByte.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850VarFloat.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850VarFloat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850VarInt32.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850VarInt32.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850VarShort.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850VarShort.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850VarTimeStamp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850VarTimeStamp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850VarUInt.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850VarUInt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/I_IEC61850Module.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/I_IEC61850Module.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/iec61850/ESS61850ConsoleClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/iec61850/ESS61850ConsoleClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/iec61850/ESS61850ConsoleClient.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +711,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "F:/ABC/iec61850bean-1.9.0-sources",
+    "jdk.selected.JAVA_MODULE": "1.8",
+    "last_opened_file_path": "F:/ABC/ESS2IEC61850Core",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.3218391",
@@ -151,7 +736,7 @@
       <recent name="romanow.abc.desktop.view2.desktop" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.BARSConsoleServer">
+  <component name="RunManager" selected="Application.IEC61850Client">
     <configuration name="BARS4569ConsoleServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="romanow.abc.dataserver.BARS4569ConsoleServer" />
       <module name="ESS2DataServer" />
@@ -171,6 +756,19 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="romanow.abc.dataserver.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ESS61850ClientGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="romanow.abc.desktop.iec61850.ESS61850ClientGUI" />
+      <module name="ESS2Desktop" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="romanow.abc.desktop.iec61850.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -217,26 +815,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MIBParser" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="romanow.abc.dataserver.snmp.MIBParser" />
-      <module name="ESS2DataServer" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="romanow.abc.dataserver.snmp.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.IEC61850Client" />
+        <item itemvalue="Application.ESS61850ClientGUI" />
         <item itemvalue="Application.ESSClient" />
         <item itemvalue="Application.ESS61850TestClient" />
         <item itemvalue="Application.BARS4569ConsoleServer" />
-        <item itemvalue="Application.MIBParser" />
       </list>
     </recent_temporary>
   </component>
@@ -248,13 +833,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00430" summary="85.01 -  MD5">
-      <created>1706280622998</created>
-      <option name="number" value="00430" />
-      <option name="presentableId" value="LOCAL-00430" />
-      <option name="project" value="LOCAL" />
-      <updated>1706280622999</updated>
     </task>
     <task id="LOCAL-00431" summary="85.01 -  MD5">
       <created>1706287845566</created>
@@ -592,7 +1170,14 @@
       <option name="project" value="LOCAL" />
       <updated>1713243417407</updated>
     </task>
-    <option name="localTasksCounter" value="479" />
+    <task id="LOCAL-00479" summary="88.04 Замена библиотеки + модуль исходника">
+      <created>1713439203386</created>
+      <option name="number" value="00479" />
+      <option name="presentableId" value="LOCAL-00479" />
+      <option name="project" value="LOCAL" />
+      <updated>1713439203386</updated>
+    </task>
+    <option name="localTasksCounter" value="480" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -619,8 +1204,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="87.01 - Режим эмуляции по ИЛИ" />
-    <MESSAGE value="87.01 - Завершение работы сервера в настройках" />
     <MESSAGE value="87.01 - Завершение работы сервера в настройках (админ)" />
     <MESSAGE value="87.01 - Лог сервера в настройках СНЭЭ" />
     <MESSAGE value="87.01 - Лог сервера в настройках СНЭЭ, индикатор режима отладки" />
@@ -644,7 +1227,9 @@
     <MESSAGE value="88.01 Удаление пробелов в именах разрядов" />
     <MESSAGE value="88.01 Уровень 0 + inline Для разрядов битовых регистров" />
     <MESSAGE value="88.04 Генерация стандартных датасетов" />
-    <option name="LAST_COMMIT_MESSAGE" value="88.04 Генерация стандартных датасетов" />
+    <MESSAGE value="88.04 Замена библиотеки + модуль исходника" />
+    <MESSAGE value="89 Исходники iec61850" />
+    <option name="LAST_COMMIT_MESSAGE" value="89 Исходники iec61850" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -950,19 +1535,29 @@
           <option name="timeStamp" value="1530" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../iec61850bean-1.9.0-sources/src/main/java/com/beanit/iec61850bean/ServerAssociation.java</url>
-          <line>832</line>
-          <option name="timeStamp" value="1531" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/../iec61850bean-1.9.0-sources/src/main/java/com/beanit/iec61850bean/ServerModel.java</url>
           <line>362</line>
           <option name="timeStamp" value="1533" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../iec61850bean-1.9.0-sources/src/main/java/com/beanit/iec61850bean/ServerModel.java</url>
-          <line>273</line>
-          <option name="timeStamp" value="1535" />
+          <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850Client.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="1552" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850Client.java</url>
+          <line>75</line>
+          <option name="timeStamp" value="1553" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../iec61850bean-1.9.0-sources/src/main/java/com/beanit/iec61850bean/ClientAssociation.java</url>
+          <line>369</line>
+          <option name="timeStamp" value="1558" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../iec61850bean-1.9.0-sources/src/main/java/com/beanit/iec61850bean/ClientAssociation.java</url>
+          <line>1001</line>
+          <option name="timeStamp" value="1563" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS4ACDCEmulator.java</url>
