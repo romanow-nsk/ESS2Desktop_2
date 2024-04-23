@@ -7,18 +7,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="iec61850bean-1.9.0-sources" />
         <module name="ABCCore" />
         <module name="ESS2Core" />
         <module name="ABCDataServer" />
         <module name="ESS2Desktop" />
-        <module name="ESS2IEC61850Core" />
         <module name="ESS2DataServer" />
         <module name="ABCDesktop" />
         <module name="ABSDesktop" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="iec61850bean-1.9.0-sources" target="1.8" />
       <module name="openiec61850-1.7.0-sources" target="1.8" />
     </bytecodeTargetLevel>
   </component>
