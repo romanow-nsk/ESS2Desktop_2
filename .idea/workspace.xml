@@ -13,20 +13,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="85.03 61850 - баг в именах">
-      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/ESS2IEC61850Core.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCCore/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCCore/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCDataServer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCDataServer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCDesktop/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCDesktop/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2Core/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/snmp/SNMPServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/snmp/SNMPServer.java" afterDir="false" />
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="89 getAllDataValues patch">
+      <change afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ClientAssociation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ClientAssociation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerAssociation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerAssociation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerSap.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerSap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/VariableDefs.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/VariableDefs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2IEC61850Core/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2IEC61850Core/ESS2IEC61850Core.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2IEC61850Core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +38,8 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../ESS2IEC61850Core" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../ESS2DataServer" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/../ABCCore/pom.xml" root0="FORCE_HIGHLIGHTING" />
@@ -92,6 +86,13 @@
     <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/TrendPanel.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/iec61850/ESS61850ClientGUI.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ClientAssociation.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerModel.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/ConfirmedRequestPDU.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/ReadRequest.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/VariableDefs.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/VariableSpecification.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/josistack/AcseAssociation.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -122,7 +123,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/romanow/ABC/ESS2IEC61850Core&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/ABC/ESS2IEC61850Core&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.3218391&quot;,
@@ -1009,17 +1010,17 @@
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ESS2Desktop$ESSClient.ic" NAME="ESSClient Coverage Results" MODIFIED="1669739222771" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>romanow.abc.desktop.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/ESS2Desktop$ESS61850ClientGUI.ic" NAME="ESS61850ClientGUI Coverage Results" MODIFIED="1671099059328" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>romanow.abc.desktop.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/ESS2Desktop$ESSCabinet.ic" NAME="ESSCabinet Coverage Results" MODIFIED="1669734969686" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>romanow.abc.desktop.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/ESS2Desktop$BARSConsoleServer.ic" NAME="BARSConsoleServer Coverage Results" MODIFIED="1688473880032" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>romanow.abc.dataserver.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/ESS2Desktop$ESSClient.ic" NAME="ESSClient Coverage Results" MODIFIED="1669739222771" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>romanow.abc.desktop.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/ESS2Desktop$ESS61850ClientGUI.ic" NAME="ESS61850ClientGUI Coverage Results" MODIFIED="1671099059328" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>romanow.abc.desktop.*</FILTER>
     </SUITE>
   </component>
 </project>
