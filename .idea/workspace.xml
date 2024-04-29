@@ -13,9 +13,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="89 косяк рефакторинга">
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="89 альтернативные access">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ClientAssociation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ClientAssociation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerAssociation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerAssociation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -241,13 +240,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00435" summary="85.01 -  баг 12">
-      <created>1707410503653</created>
-      <option name="number" value="00435" />
-      <option name="presentableId" value="LOCAL-00435" />
-      <option name="project" value="LOCAL" />
-      <updated>1707410503654</updated>
     </task>
     <task id="LOCAL-00436" summary="85.01 -  баг 13 МЭК 61850 иерархия запретов по древу метаданных">
       <created>1707448824784</created>
@@ -585,7 +577,14 @@
       <option name="project" value="LOCAL" />
       <updated>1714057339927</updated>
     </task>
-    <option name="localTasksCounter" value="484" />
+    <task id="LOCAL-00484" summary="89 альтернативные access">
+      <created>1714126359507</created>
+      <option name="number" value="00484" />
+      <option name="presentableId" value="LOCAL-00484" />
+      <option name="project" value="LOCAL" />
+      <updated>1714126359507</updated>
+    </task>
+    <option name="localTasksCounter" value="485" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -612,7 +611,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="87.01 - Лог сервера в настройках СНЭЭ, индикатор режима отладки" />
     <MESSAGE value="87.01 - Парсинг snmp (предварительный)" />
     <MESSAGE value="87.01 - Форма фильтрации логов" />
     <MESSAGE value="87.01 - Запрет 61850 MMSIdentity" />
@@ -637,7 +635,8 @@
     <MESSAGE value="89 Исходники iec61850" />
     <MESSAGE value="89 перенастройка модуля" />
     <MESSAGE value="89 косяк рефакторинга" />
-    <option name="LAST_COMMIT_MESSAGE" value="89 косяк рефакторинга" />
+    <MESSAGE value="89 альтернативные access" />
+    <option name="LAST_COMMIT_MESSAGE" value="89 альтернативные access" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
