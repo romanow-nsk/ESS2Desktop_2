@@ -133,6 +133,8 @@
       <element id="module-output" name="ESS2IEC61850Core" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/beanit/asn1bean/1.14.0/asn1bean-1.14.0.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/2.0.13/slf4j-api-2.0.13.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/snmp4j/snmp4j-agent/2.7.9/snmp4j-agent-2.7.9.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/snmp4j/snmp4j/2.8.18/snmp4j-2.8.18.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
