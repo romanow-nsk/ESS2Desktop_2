@@ -13,14 +13,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="89 snmp - компоненты">
-      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/subject2area/ESS2Architecture.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/subject2area/ESS2Architecture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/snmp/SNMPAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/snmp/SNMPAgent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/snmp/SNMPManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/snmp/SNMPManager.java" afterDir="false" />
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="89 snmp - привязка агента">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardESS2Architecture.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardESS2Architecture.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardESS2Architecture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardESS2Architecture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ClientAssociation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ClientAssociation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/AlternateAccessSelection.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/AlternateAccessSelection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/VariableDefs.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/VariableDefs.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +36,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../ESS2DataServer" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../ESS2IEC61850Core" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
@@ -148,7 +145,7 @@
       <recent name="romanow.abc.desktop.view2.desktop" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.SNMPManager">
+  <component name="RunManager" selected="Application.IEC61850Client">
     <configuration name="BARSConsoleServer" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="romanow.abc.dataserver.BARSConsoleServer" />
       <module name="ESS2DataServer" />
@@ -168,6 +165,19 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="romanow.abc.desktop.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IEC61850Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="romanow.abc.dataserver.iec61850.IEC61850Client" />
+      <module name="ESS2DataServer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="romanow.abc.dataserver.iec61850.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -216,9 +226,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.IEC61850Client" />
+        <item itemvalue="Application.ESSClient" />
         <item itemvalue="Application.SNMPManager" />
         <item itemvalue="Application.SNMPAgent" />
-        <item itemvalue="Application.ESSClient" />
         <item itemvalue="Application.SNMPAgent" />
       </list>
     </recent_temporary>
@@ -231,13 +242,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00438" summary="85.02 -   баг - отсутствует передача Oid оборудования при старте из командной строки (61850)">
-      <created>1708169321657</created>
-      <option name="number" value="00438" />
-      <option name="presentableId" value="LOCAL-00438" />
-      <option name="project" value="LOCAL" />
-      <updated>1708169321657</updated>
     </task>
     <task id="LOCAL-00439" summary="85.02 -   полный лог 61850">
       <created>1708173183795</created>
@@ -575,7 +579,14 @@
       <option name="project" value="LOCAL" />
       <updated>1714587400084</updated>
     </task>
-    <option name="localTasksCounter" value="487" />
+    <task id="LOCAL-00487" summary="89 snmp - привязка агента">
+      <created>1714632659676</created>
+      <option name="number" value="00487" />
+      <option name="presentableId" value="LOCAL-00487" />
+      <option name="project" value="LOCAL" />
+      <updated>1714632659676</updated>
+    </task>
+    <option name="localTasksCounter" value="488" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -607,7 +618,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="87.01 - Форма фильтрации логов" />
     <MESSAGE value="87.01 - Запрет 61850 MMSIdentity" />
     <MESSAGE value="87.01 - Скролл Панель фильтра лога" />
     <MESSAGE value="88.01 - SMNP-инфраструктура" />
@@ -632,7 +642,8 @@
     <MESSAGE value="89 косяк рефакторинга" />
     <MESSAGE value="89 альтернативные access" />
     <MESSAGE value="89 snmp - компоненты" />
-    <option name="LAST_COMMIT_MESSAGE" value="89 snmp - компоненты" />
+    <MESSAGE value="89 snmp - привязка агента" />
+    <option name="LAST_COMMIT_MESSAGE" value="89 snmp - привязка агента" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -963,11 +974,6 @@
           <option name="timeStamp" value="1573" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ClientAssociation.java</url>
-          <line>365</line>
-          <option name="timeStamp" value="1580" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerSap.java</url>
           <line>308</line>
           <option name="timeStamp" value="1593" />
@@ -978,24 +984,49 @@
           <option name="timeStamp" value="1615" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/snmp4j/snmp4j-agent/2.7.9/snmp4j-agent-2.7.9-sources.jar!/org/snmp4j/agent/mo/snmp4j/Snmp4jConfigMib.java</url>
-          <line>529</line>
-          <option name="timeStamp" value="1621" />
+          <url>file://$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/AlternateAccessSelection.java</url>
+          <line>354</line>
+          <option name="timeStamp" value="1631" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/snmp4j/snmp4j-agent/2.7.9/snmp4j-agent-2.7.9-sources.jar!/org/snmp4j/agent/mo/snmp4j/Snmp4jConfigMib.java</url>
-          <line>513</line>
-          <option name="timeStamp" value="1622" />
+          <url>file://$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ClientAssociation.java</url>
+          <line>1149</line>
+          <option name="timeStamp" value="1634" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/snmp4j/snmp4j-agent/2.7.9/snmp4j-agent-2.7.9-sources.jar!/org/snmp4j/agent/AgentConfigManager.java</url>
-          <line>489</line>
-          <option name="timeStamp" value="1623" />
+          <url>file://$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ClientAssociation.java</url>
+          <line>1133</line>
+          <option name="timeStamp" value="1636" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/snmp/SNMPAgent.java</url>
-          <line>164</line>
-          <option name="timeStamp" value="1626" />
+          <url>file://$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/AlternateAccessSelection.java</url>
+          <line>841</line>
+          <option name="timeStamp" value="1638" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/AlternateAccessSelection.java</url>
+          <line>225</line>
+          <option name="timeStamp" value="1641" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/AlternateAccessSelection.java</url>
+          <line>210</line>
+          <option name="timeStamp" value="1642" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/AlternateAccessSelection.java</url>
+          <line>877</line>
+          <option name="timeStamp" value="1646" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ClientAssociation.java</url>
+          <line>1171</line>
+          <option name="timeStamp" value="1649" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/AlternateAccessSelection.java</url>
+          <line>93</line>
+          <option name="timeStamp" value="1650" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS4ACDCEmulator.java</url>
@@ -1008,12 +1039,6 @@
           <line>60</line>
           <properties field="BitBaseWork" class="romanow.abc.ess2.uniquemodules.ESS2PLCModule" />
           <option name="timeStamp" value="1303" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-field">
-          <url>jar://$MAVEN_REPOSITORY$/org/snmp4j/snmp4j-agent/2.7.9/snmp4j-agent-2.7.9-sources.jar!/org/snmp4j/agent/AgentConfigManager.java</url>
-          <line>82</line>
-          <properties field="persistenceProvider" class="org.snmp4j.agent.AgentConfigManager" />
-          <option name="timeStamp" value="1624" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
