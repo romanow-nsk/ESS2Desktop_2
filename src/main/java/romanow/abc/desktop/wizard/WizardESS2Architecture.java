@@ -5,10 +5,18 @@
  */
 package romanow.abc.desktop.wizard;
 
+import com.google.gson.Gson;
+import okhttp3.MultipartBody;
+import retrofit2.Call;
+import romanow.abc.core.API.RestAPICommon;
+import romanow.abc.core.DBRequest;
+import romanow.abc.core.entity.artifacts.Artifact;
+import romanow.abc.core.entity.baseentityes.JEmpty;
+import romanow.abc.core.entity.subject2area.ESS2Architecture;
 import romanow.abc.core.entity.subject2area.ESS2Entity;
 import romanow.abc.core.entity.subject2area.ESS2Node;
-import romanow.abc.desktop.ESSMetaPanel;
-import romanow.abc.desktop.MainBaseFrame;
+import romanow.abc.core.utils.FileNameExt;
+import romanow.abc.desktop.*;
 
 /**
  *
@@ -17,11 +25,16 @@ import romanow.abc.desktop.MainBaseFrame;
 public class WizardESS2Architecture extends WizardBaseViewDB {
 
     private ESS2Node node;
+    private ESS2Architecture architecture;
     public WizardESS2Architecture(ESSMetaPanel frame0, ESS2Entity entity0, I_Wizard back0) {
         super("Узел СНЭЭ",frame0,entity0,back0);
         initComponents();
-        setSize(750,150);
-    }
+        setSize(750,170);
+        architecture = (ESS2Architecture)entity0;
+        if (architecture.getSnmpMIBHeader().getOid()!=0){
+            SNMPHeader.setText(architecture.getSnmpMIBHeader().getRef().getOriginalName());
+            }
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,15 +46,126 @@ public class WizardESS2Architecture extends WizardBaseViewDB {
     private void initComponents() {
 
         jSeparator1 = new javax.swing.JSeparator();
+        SNMPHeader = new javax.swing.JTextField();
+        DownLoadSNMPHeader = new javax.swing.JButton();
+        UploadSNMPHeader = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        DeleteSNMPHeader = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(10, 120, 460, 2);
+        jSeparator1.setBounds(10, 120, 460, 3);
+
+        SNMPHeader.setEnabled(false);
+        getContentPane().add(SNMPHeader);
+        SNMPHeader.setBounds(160, 90, 180, 25);
+
+        DownLoadSNMPHeader.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/download.png"))); // NOI18N
+        DownLoadSNMPHeader.setBorderPainted(false);
+        DownLoadSNMPHeader.setContentAreaFilled(false);
+        DownLoadSNMPHeader.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DownLoadSNMPHeaderActionPerformed(evt);
+            }
+        });
+        getContentPane().add(DownLoadSNMPHeader);
+        DownLoadSNMPHeader.setBounds(390, 90, 30, 30);
+
+        UploadSNMPHeader.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/upload.png"))); // NOI18N
+        UploadSNMPHeader.setBorderPainted(false);
+        UploadSNMPHeader.setContentAreaFilled(false);
+        UploadSNMPHeader.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UploadSNMPHeaderActionPerformed(evt);
+            }
+        });
+        getContentPane().add(UploadSNMPHeader);
+        UploadSNMPHeader.setBounds(350, 90, 30, 30);
+
+        jLabel8.setText("SNMP MIB заголовок");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(20, 90, 130, 16);
+
+        DeleteSNMPHeader.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/remove.png"))); // NOI18N
+        DeleteSNMPHeader.setBorderPainted(false);
+        DeleteSNMPHeader.setContentAreaFilled(false);
+        DeleteSNMPHeader.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteSNMPHeaderActionPerformed(evt);
+            }
+        });
+        getContentPane().add(DeleteSNMPHeader);
+        DeleteSNMPHeader.setBounds(430, 90, 30, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void DownLoadSNMPHeaderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DownLoadSNMPHeaderActionPerformed
+        if (architecture.getSnmpMIBHeader().getOid()!=0)
+        main.loadFile(architecture.getSnmpMIBHeader().getRef());
+    }//GEN-LAST:event_DownLoadSNMPHeaderActionPerformed
+
+    private void UploadSNMPHeaderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UploadSNMPHeaderActionPerformed
+        FileNameExt fname = main.getInputFileName("Импорт MIB-заголовка для SNMP", "*.txt", null);
+        final MultipartBody.Part body = RestAPICommon.createMultipartBody(fname);
+        new APICall<Artifact>(main) {
+            @Override
+            public Call<Artifact> apiFun() {
+                return main.getService().upload(main.getDebugToken(), "Meta-Data import", fname.fileName(), body);
+            }
+            @Override
+            public void onSucess(final Artifact oo) {
+                architecture.getSnmpMIBHeader().setOidRef(oo);
+                new APICall<JEmpty>(main) {
+                    @Override
+                    public Call<JEmpty> apiFun() {
+                        return main.getService().updateEntityField(main.getDebugToken(),"snmpMIBHeader", new DBRequest(architecture, new Gson()));
+                    }
+                    @Override
+                    public void onSucess(JEmpty oo) {
+                        SNMPHeader.setText(architecture.getSnmpMIBHeader().getRef().getOriginalName());
+                        main.popup("Импорт MIB-заголовка для SNMP");
+                    }
+                };
+            }
+        };
+    }//GEN-LAST:event_UploadSNMPHeaderActionPerformed
+
+    private void DeleteSNMPHeaderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteSNMPHeaderActionPerformed
+        if (architecture.getSnmpMIBHeader().getOid()==0)
+        return;
+        new OK(200, 200, "Удалить " + architecture.getSnmpMIBHeader().getTitle(), new I_Button() {
+            @Override
+            public void onPush() {
+                deleteSNMPHeader();
+            };
+        });
+    }//GEN-LAST:event_DeleteSNMPHeaderActionPerformed
+    private void deleteSNMPHeader(){
+        new APICall<JEmpty>(main) {
+            @Override
+            public Call<JEmpty> apiFun() {
+                return main.getService().removeArtifact(main.getDebugToken(), architecture.getSnmpMIBHeader().getOid());
+            }
+            @Override
+            public void onSucess(JEmpty oo) {
+                architecture.getSnmpMIBHeader().setOid(0);
+                architecture.getSnmpMIBHeader().setRef(null);
+                new APICall<JEmpty>(main) {
+                    @Override
+                    public Call<JEmpty> apiFun() {
+                        return main.getService().updateEntityField(main.getDebugToken(),"snmpMIBHeader", new DBRequest(architecture, new Gson()));
+                    }
+                    @Override
+                    public void onSucess(JEmpty oo) {
+                        SNMPHeader.setText("");
+                        main.popup("Удаление MIB-заголовка для SNMP");
+                    }
+                };
+            }
+        };
+    }
     /**
      * @param args the command line arguments
      */
@@ -85,6 +209,11 @@ public class WizardESS2Architecture extends WizardBaseViewDB {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton DeleteSNMPHeader;
+    private javax.swing.JButton DownLoadSNMPHeader;
+    private javax.swing.JTextField SNMPHeader;
+    private javax.swing.JButton UploadSNMPHeader;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

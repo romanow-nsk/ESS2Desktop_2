@@ -13,15 +13,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="89 альтернативные access">
-      <change afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/snmp/SNMPAgent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/snmp/SNMPManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/ESSDataServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/ESSDataServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/snmp/SNMPServer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/ESS2Desktop_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/ESS2Desktop_jar.xml" afterDir="false" />
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="89 snmp - компоненты">
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/subject2area/ESS2Architecture.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/subject2area/ESS2Architecture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/snmp/SNMPAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/snmp/SNMPAgent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/snmp/SNMPManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/snmp/SNMPManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardESS2Architecture.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardESS2Architecture.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardESS2Architecture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/wizard/WizardESS2Architecture.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,24 +114,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "jdk.selected.JAVA_MODULE": "1.8",
-    "last_opened_file_path": "F:/ABC/ESS2IEC61850Core",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.3218391",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "reference.settings.project.statistic.project.settings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/ABC/ESS2IEC61850Core&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.3218391&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.statistic.project.settings&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="romanow.abc.core.entity.metadata.snmp" />
@@ -156,6 +155,19 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="romanow.abc.dataserver.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ESSClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="romanow.abc.desktop.ESSClient" />
+      <module name="ESS2Desktop" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="romanow.abc.desktop.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -206,6 +218,7 @@
       <list>
         <item itemvalue="Application.SNMPManager" />
         <item itemvalue="Application.SNMPAgent" />
+        <item itemvalue="Application.ESSClient" />
         <item itemvalue="Application.SNMPAgent" />
       </list>
     </recent_temporary>
@@ -218,13 +231,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00437" summary="85.01 -   МЭК 61850 инверсия разрешений">
-      <created>1707508124332</created>
-      <option name="number" value="00437" />
-      <option name="presentableId" value="LOCAL-00437" />
-      <option name="project" value="LOCAL" />
-      <updated>1707508124333</updated>
     </task>
     <task id="LOCAL-00438" summary="85.02 -   баг - отсутствует передача Oid оборудования при старте из командной строки (61850)">
       <created>1708169321657</created>
@@ -562,7 +568,14 @@
       <option name="project" value="LOCAL" />
       <updated>1714404957561</updated>
     </task>
-    <option name="localTasksCounter" value="486" />
+    <task id="LOCAL-00486" summary="89 snmp - компоненты">
+      <created>1714587400084</created>
+      <option name="number" value="00486" />
+      <option name="presentableId" value="LOCAL-00486" />
+      <option name="project" value="LOCAL" />
+      <updated>1714587400084</updated>
+    </task>
+    <option name="localTasksCounter" value="487" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -594,7 +607,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="87.01 - Парсинг snmp (предварительный)" />
     <MESSAGE value="87.01 - Форма фильтрации логов" />
     <MESSAGE value="87.01 - Запрет 61850 MMSIdentity" />
     <MESSAGE value="87.01 - Скролл Панель фильтра лога" />
@@ -619,7 +631,8 @@
     <MESSAGE value="89 перенастройка модуля" />
     <MESSAGE value="89 косяк рефакторинга" />
     <MESSAGE value="89 альтернативные access" />
-    <option name="LAST_COMMIT_MESSAGE" value="89 альтернативные access" />
+    <MESSAGE value="89 snmp - компоненты" />
+    <option name="LAST_COMMIT_MESSAGE" value="89 snmp - компоненты" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -961,13 +974,28 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/snmp/SNMPAgent.java</url>
-          <line>84</line>
-          <option name="timeStamp" value="1606" />
+          <line>180</line>
+          <option name="timeStamp" value="1615" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/snmp4j/snmp4j-agent/2.7.9/snmp4j-agent-2.7.9-sources.jar!/org/snmp4j/agent/mo/snmp4j/Snmp4jConfigMib.java</url>
+          <line>529</line>
+          <option name="timeStamp" value="1621" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/snmp4j/snmp4j-agent/2.7.9/snmp4j-agent-2.7.9-sources.jar!/org/snmp4j/agent/mo/snmp4j/Snmp4jConfigMib.java</url>
+          <line>513</line>
+          <option name="timeStamp" value="1622" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/snmp4j/snmp4j-agent/2.7.9/snmp4j-agent-2.7.9-sources.jar!/org/snmp4j/agent/AgentConfigManager.java</url>
+          <line>489</line>
+          <option name="timeStamp" value="1623" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/snmp/SNMPAgent.java</url>
-          <line>113</line>
-          <option name="timeStamp" value="1607" />
+          <line>164</line>
+          <option name="timeStamp" value="1626" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS4ACDCEmulator.java</url>
@@ -980,6 +1008,12 @@
           <line>60</line>
           <properties field="BitBaseWork" class="romanow.abc.ess2.uniquemodules.ESS2PLCModule" />
           <option name="timeStamp" value="1303" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>jar://$MAVEN_REPOSITORY$/org/snmp4j/snmp4j-agent/2.7.9/snmp4j-agent-2.7.9-sources.jar!/org/snmp4j/agent/AgentConfigManager.java</url>
+          <line>82</line>
+          <properties field="persistenceProvider" class="org.snmp4j.agent.AgentConfigManager" />
+          <option name="timeStamp" value="1624" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
