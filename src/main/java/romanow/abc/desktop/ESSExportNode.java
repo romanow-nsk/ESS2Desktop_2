@@ -198,6 +198,12 @@ public class ESSExportNode {
             }
         long archOid = oid;
         timeMes("architecture oid=" + archOid);
+        if (architecture.getSnmpMIBHeader().getOid()!=0) {
+            Artifact artifact = architecture.getSnmpMIBHeader().getRef();
+            oid = addArtifact(artifact);
+            if (oid != -1)
+                architecture.getSnmpMIBHeader().setOid(oid);
+            }
         for (ESS2View view : architecture.getViews()) {
             view.getESS2Architecture().setOid(archOid);
             ESS2MetaFile metaFile = view.getMetaFile().getRef();
