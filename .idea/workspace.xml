@@ -13,9 +13,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="89 SNMP - сохранение MibHeader при сжатии">
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="89 61850 - AlternativeAccess - остутствие узла">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerAssociation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerAssociation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +142,7 @@
       <recent name="romanow.abc.desktop.view2.desktop" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MIBParser">
+  <component name="RunManager" selected="Application.BARSConsoleServer">
     <configuration name="BARS4569ConsoleServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="romanow.abc.dataserver.BARS4569ConsoleServer" />
       <module name="ESS2DataServer" />
@@ -253,13 +252,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00442" summary="85.03 -   размерности массивов индивид.">
-      <created>1709147929381</created>
-      <option name="number" value="00442" />
-      <option name="presentableId" value="LOCAL-00442" />
-      <option name="project" value="LOCAL" />
-      <updated>1709147929381</updated>
     </task>
     <task id="LOCAL-00443" summary="85.03 -   размерности массивов индивид.GUI">
       <created>1709207558227</created>
@@ -597,7 +589,14 @@
       <option name="project" value="LOCAL" />
       <updated>1714670029358</updated>
     </task>
-    <option name="localTasksCounter" value="491" />
+    <task id="LOCAL-00491" summary="89 61850 - AlternativeAccess - остутствие узла">
+      <created>1714757196019</created>
+      <option name="number" value="00491" />
+      <option name="presentableId" value="LOCAL-00491" />
+      <option name="project" value="LOCAL" />
+      <updated>1714757196020</updated>
+    </task>
+    <option name="localTasksCounter" value="492" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -629,7 +628,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="88.01 - SMNP-инфраструктура" />
     <MESSAGE value="88.01 - библиотеки в git" />
     <MESSAGE value="88.01 - snmp - генерация mib-файла" />
     <MESSAGE value="88.01 - snmp - генерация id-ов" />
@@ -654,7 +652,8 @@
     <MESSAGE value="89 snmp - привязка агента" />
     <MESSAGE value="89 61850 - AlternateAccess с кодом 0x81&#10;81 02 53 54 &lt;- a1 04 1a 02 53 54" />
     <MESSAGE value="89 SNMP - сохранение MibHeader при сжатии" />
-    <option name="LAST_COMMIT_MESSAGE" value="89 SNMP - сохранение MibHeader при сжатии" />
+    <MESSAGE value="89 61850 - AlternativeAccess - остутствие узла" />
+    <option name="LAST_COMMIT_MESSAGE" value="89 61850 - AlternativeAccess - остутствие узла" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1035,9 +1034,9 @@
           <option name="timeStamp" value="1649" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java</url>
-          <line>2750</line>
-          <option name="timeStamp" value="1650" />
+          <url>file://$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/MMSpdu.java</url>
+          <line>255</line>
+          <option name="timeStamp" value="1651" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS4ACDCEmulator.java</url>
