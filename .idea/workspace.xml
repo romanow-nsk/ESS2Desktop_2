@@ -13,9 +13,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="89 61850 - AlternativeAccess - остутствие узла">
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="89 61850 - AlternativeAccess - остутствие узла ServiceError">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerAssociation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerAssociation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServiceError.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServiceError.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/MMSpdu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/MMSpdu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,10 +239,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.IEC61850Client" />
         <item itemvalue="Application.MIBParser" />
         <item itemvalue="Application.ESSClient" />
         <item itemvalue="Application.BARS4569ConsoleServer" />
-        <item itemvalue="Application.IEC61850Client" />
         <item itemvalue="Application.SNMPManager" />
       </list>
     </recent_temporary>
@@ -253,13 +255,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00444" summary="85.03 - баг 15, разделение кэш-а">
-      <created>1709210048453</created>
-      <option name="number" value="00444" />
-      <option name="presentableId" value="LOCAL-00444" />
-      <option name="project" value="LOCAL" />
-      <updated>1709210048453</updated>
     </task>
     <task id="LOCAL-00445" summary="86.01 - смещение часового пояса">
       <created>1710177429767</created>
@@ -597,7 +592,14 @@
       <option name="project" value="LOCAL" />
       <updated>1715009555661</updated>
     </task>
-    <option name="localTasksCounter" value="493" />
+    <task id="LOCAL-00493" summary="89 61850 - AlternativeAccess - остутствие узла ServiceError">
+      <created>1715010534063</created>
+      <option name="number" value="00493" />
+      <option name="presentableId" value="LOCAL-00493" />
+      <option name="project" value="LOCAL" />
+      <updated>1715010534063</updated>
+    </task>
+    <option name="localTasksCounter" value="494" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -629,7 +631,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="88.01 - библиотеки в git" />
     <MESSAGE value="88.01 - snmp - генерация mib-файла" />
     <MESSAGE value="88.01 - snmp - генерация id-ов" />
     <MESSAGE value="88.01 - 61850 - генерация" />
@@ -654,7 +655,8 @@
     <MESSAGE value="89 61850 - AlternateAccess с кодом 0x81&#10;81 02 53 54 &lt;- a1 04 1a 02 53 54" />
     <MESSAGE value="89 SNMP - сохранение MibHeader при сжатии" />
     <MESSAGE value="89 61850 - AlternativeAccess - остутствие узла" />
-    <option name="LAST_COMMIT_MESSAGE" value="89 61850 - AlternativeAccess - остутствие узла" />
+    <MESSAGE value="89 61850 - AlternativeAccess - остутствие узла ServiceError" />
+    <option name="LAST_COMMIT_MESSAGE" value="89 61850 - AlternativeAccess - остутствие узла ServiceError" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -965,11 +967,6 @@
           <option name="timeStamp" value="1533" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec61850/IEC61850Client.java</url>
-          <line>75</line>
-          <option name="timeStamp" value="1553" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/../iec61850bean-1.9.0-sources/src/main/java/com/beanit/iec61850bean/ClientAssociation.java</url>
           <line>369</line>
           <option name="timeStamp" value="1558" />
@@ -1035,9 +1032,9 @@
           <option name="timeStamp" value="1649" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/MMSpdu.java</url>
-          <line>255</line>
-          <option name="timeStamp" value="1651" />
+          <url>file://$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerAssociation.java</url>
+          <line>442</line>
+          <option name="timeStamp" value="1656" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS4ACDCEmulator.java</url>
