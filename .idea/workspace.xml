@@ -13,11 +13,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="89 61850 - AlternativeAccess - остутствие узла ServiceError">
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="89 61850 - ответы сервера и conclude">
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerAssociation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerAssociation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServiceError.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServiceError.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/MMSpdu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/MMSpdu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -255,13 +254,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00445" summary="86.01 - смещение часового пояса">
-      <created>1710177429767</created>
-      <option name="number" value="00445" />
-      <option name="presentableId" value="LOCAL-00445" />
-      <option name="project" value="LOCAL" />
-      <updated>1710177429768</updated>
     </task>
     <task id="LOCAL-00446" summary="86.01 - смещение часового пояса">
       <created>1710403565199</created>
@@ -599,7 +591,14 @@
       <option name="project" value="LOCAL" />
       <updated>1715010534063</updated>
     </task>
-    <option name="localTasksCounter" value="494" />
+    <task id="LOCAL-00494" summary="89 61850 - ответы сервера и conclude">
+      <created>1715102622485</created>
+      <option name="number" value="00494" />
+      <option name="presentableId" value="LOCAL-00494" />
+      <option name="project" value="LOCAL" />
+      <updated>1715102622485</updated>
+    </task>
+    <option name="localTasksCounter" value="495" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -631,7 +630,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="88.01 - snmp - генерация mib-файла" />
     <MESSAGE value="88.01 - snmp - генерация id-ов" />
     <MESSAGE value="88.01 - 61850 - генерация" />
     <MESSAGE value="88.01 - 61850 - реинжинирирнг" />
@@ -656,7 +654,8 @@
     <MESSAGE value="89 SNMP - сохранение MibHeader при сжатии" />
     <MESSAGE value="89 61850 - AlternativeAccess - остутствие узла" />
     <MESSAGE value="89 61850 - AlternativeAccess - остутствие узла ServiceError" />
-    <option name="LAST_COMMIT_MESSAGE" value="89 61850 - AlternativeAccess - остутствие узла ServiceError" />
+    <MESSAGE value="89 61850 - ответы сервера и conclude" />
+    <option name="LAST_COMMIT_MESSAGE" value="89 61850 - ответы сервера и conclude" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1033,7 +1032,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerAssociation.java</url>
-          <line>442</line>
+          <line>440</line>
           <option name="timeStamp" value="1656" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
