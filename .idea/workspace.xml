@@ -13,10 +13,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="89 remove.png">
-      <change beforePath="$PROJECT_DIR$/src/main/resources/drawable/remove.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/drawable/remove.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/remove.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/remove.png" afterDir="false" />
-    </list>
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="89 remove.png" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -253,13 +250,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00451" summary="87.01 - Запись уставок через 61850">
-      <created>1711300404247</created>
-      <option name="number" value="00451" />
-      <option name="presentableId" value="LOCAL-00451" />
-      <option name="project" value="LOCAL" />
-      <updated>1711300404248</updated>
     </task>
     <task id="LOCAL-00452" summary="87.01 - Режим эмуляции по ИЛИ">
       <created>1711604259685</created>
@@ -597,7 +587,14 @@
       <option name="project" value="LOCAL" />
       <updated>1715855419104</updated>
     </task>
-    <option name="localTasksCounter" value="500" />
+    <task id="LOCAL-00500" summary="89 remove.png">
+      <created>1715855898283</created>
+      <option name="number" value="00500" />
+      <option name="presentableId" value="LOCAL-00500" />
+      <option name="project" value="LOCAL" />
+      <updated>1715855898283</updated>
+    </task>
+    <option name="localTasksCounter" value="501" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
