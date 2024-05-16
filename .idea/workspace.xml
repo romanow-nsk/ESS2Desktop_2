@@ -13,7 +13,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="89 remove.png" />
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="89 класс клиента = манифест">
+      <change afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSStreamDataSelectorBig.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSStreamDataSelectorBig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSStreamDataSelector.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSStreamDataSelector.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSStreamDataSelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSStreamDataSelector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSStreamDataView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSStreamDataView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/TrendPanel.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/TrendPanel.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/TrendPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/TrendPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/drawable/calendar.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/drawable/calendar.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/drawable/date_clear.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/drawable/date_clear.png" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -250,13 +262,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00452" summary="87.01 - Режим эмуляции по ИЛИ">
-      <created>1711604259685</created>
-      <option name="number" value="00452" />
-      <option name="presentableId" value="LOCAL-00452" />
-      <option name="project" value="LOCAL" />
-      <updated>1711604259686</updated>
     </task>
     <task id="LOCAL-00453" summary="87.01 - Завершение работы сервера в настройках">
       <created>1711638977737</created>
@@ -594,7 +599,14 @@
       <option name="project" value="LOCAL" />
       <updated>1715855898283</updated>
     </task>
-    <option name="localTasksCounter" value="501" />
+    <task id="LOCAL-00501" summary="89 класс клиента = манифест">
+      <created>1715856623142</created>
+      <option name="number" value="00501" />
+      <option name="presentableId" value="LOCAL-00501" />
+      <option name="project" value="LOCAL" />
+      <updated>1715856623142</updated>
+    </task>
+    <option name="localTasksCounter" value="502" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -626,7 +638,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="88.01 - 61850 - профиль LNN0" />
     <MESSAGE value="88.01 - 61850 - профиль LNN0,ZBAT" />
     <MESSAGE value="88.01 - 61850 - модуль LLN0,ZBAT" />
     <MESSAGE value="88.01 - 61850 - Шаблоны для общих DA" />
@@ -651,7 +662,8 @@
     <MESSAGE value="89 61850 - ответы сервера - коды ошибок" />
     <MESSAGE value="89 UTF-8" />
     <MESSAGE value="89 remove.png" />
-    <option name="LAST_COMMIT_MESSAGE" value="89 remove.png" />
+    <MESSAGE value="89 класс клиента = манифест" />
+    <option name="LAST_COMMIT_MESSAGE" value="89 класс клиента = манифест" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1032,29 +1044,14 @@
           <option name="timeStamp" value="1656" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSServiceGUIPanel.java</url>
-          <line>248</line>
-          <option name="timeStamp" value="1657" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSServiceGUIPanel.java</url>
-          <line>207</line>
-          <option name="timeStamp" value="1658" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSClient.java</url>
           <line>357</line>
           <option name="timeStamp" value="1659" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSClient.java</url>
-          <line>358</line>
-          <option name="timeStamp" value="1660" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSClient.java</url>
-          <line>141</line>
-          <option name="timeStamp" value="1661" />
+          <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSStreamDataView.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="1665" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS4ACDCEmulator.java</url>

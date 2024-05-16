@@ -48,7 +48,7 @@ public class ModuleEventAll extends Module {
         beginDate.setOnlyDate();
         lastDayClock = beginDate.timeInMS();
         JButton bb = new JButton();
-        bb.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/calendar.png")));
+        bb.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/calendarBig.png")));
         bb.setBounds(
                 context.x(form.getModuleDX()-80),
                 context.y((int)(form.getModuleDY()*0.86)),

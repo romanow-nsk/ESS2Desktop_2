@@ -62,6 +62,9 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
             StreamType.add(cc.title());
         StreamRegister.removeAll();
         compressModes = Values.constMap().getGroupMapByValue("CompressMode");
+        long ct = System.currentTimeMillis()-3*24*60*60*1000;
+        TIME2.setText(new OwnDateTime().toString2());
+        TIME1.setText(new OwnDateTime(ct).toString2());
         }
 
     /**
@@ -78,8 +81,6 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
         TIME1 = new javax.swing.JTextField();
         TIME2 = new javax.swing.JTextField();
         ShowGraph = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         StreamType = new java.awt.Choice();
         DataSetList = new java.awt.Choice();
         DataSourceSize = new javax.swing.JTextField();
@@ -98,6 +99,8 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
         ShowData = new javax.swing.JButton();
         RemoveData = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        SetTIME2 = new javax.swing.JButton();
+        SetTIME1 = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -112,7 +115,7 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
             }
         });
         add(TIME1);
-        TIME1.setBounds(90, 70, 180, 25);
+        TIME1.setBounds(100, 70, 160, 25);
 
         TIME2.setEnabled(false);
         TIME2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -121,7 +124,7 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
             }
         });
         add(TIME2);
-        TIME2.setBounds(320, 70, 150, 25);
+        TIME2.setBounds(320, 70, 160, 25);
 
         ShowGraph.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/statistic.png"))); // NOI18N
         ShowGraph.setBorderPainted(false);
@@ -133,14 +136,6 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
         });
         add(ShowGraph);
         ShowGraph.setBounds(420, 25, 40, 40);
-
-        jLabel2.setText("До");
-        add(jLabel2);
-        jLabel2.setBounds(290, 70, 34, 16);
-
-        jLabel3.setText("От");
-        add(jLabel3);
-        jLabel3.setBounds(60, 70, 14, 16);
 
         StreamType.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -235,6 +230,28 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
         jLabel7.setText("dec");
         add(jLabel7);
         jLabel7.setBounds(440, 115, 40, 16);
+
+        SetTIME2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/calendar.png"))); // NOI18N
+        SetTIME2.setBorderPainted(false);
+        SetTIME2.setContentAreaFilled(false);
+        SetTIME2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SetTIME2ActionPerformed(evt);
+            }
+        });
+        add(SetTIME2);
+        SetTIME2.setBounds(270, 60, 40, 40);
+
+        SetTIME1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/calendar.png"))); // NOI18N
+        SetTIME1.setBorderPainted(false);
+        SetTIME1.setContentAreaFilled(false);
+        SetTIME1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SetTIME1ActionPerformed(evt);
+            }
+        });
+        add(SetTIME1);
+        SetTIME1.setBounds(50, 60, 40, 40);
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -283,29 +300,40 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
 
     }
 
-    private void TIME1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TIME1MouseClicked
-        if (evt.getClickCount()<2) return;
-        if (evt.getButton()==1){
-            new CalendarView("Начало периода", new I_CalendarTime() {
-                @Override
-                public void onSelect(OwnDateTime time) {
-                    time1 = time;
-                    TIME1.setText(time1.toString2());
-                    }
-                });
+    private void setTime1(){
+        new CalendarView("Начало периода", new I_CalendarTime() {
+            @Override
+            public void onSelect(OwnDateTime time) {
+                time1 = time;
+                TIME1.setText(time1.toString2());
+                }
+            });
+        }
+
+    private void setTime2(){
+        new CalendarView("Начало периода", new I_CalendarTime() {
+            @Override
+            public void onSelect(OwnDateTime time) {
+                time2 = time;
+                TIME2.setText(time2.toString2());
             }
+        });
+    }
+
+    private void TIME1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TIME1MouseClicked
+        new CalendarView("Окончание периода", new I_CalendarTime() {
+            @Override
+            public void onSelect(OwnDateTime time) {
+                time2 = time;
+                TIME2.setText(time2.toString2());
+            }
+        });
     }//GEN-LAST:event_TIME1MouseClicked
 
     private void TIME2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TIME2MouseClicked
         if (evt.getClickCount()<2) return;
         if (evt.getButton()==1){
-            new CalendarView("Окончание периода", new I_CalendarTime() {
-                @Override
-                public void onSelect(OwnDateTime time) {
-                    time2 = time;
-                    TIME2.setText(time2.toString2());
-                }
-            });
+            setTime2();
         }
     }//GEN-LAST:event_TIME2MouseClicked
 
@@ -429,6 +457,14 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
         });
     }//GEN-LAST:event_RemoveDataActionPerformed
 
+    private void SetTIME2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SetTIME2ActionPerformed
+        setTime2();
+    }//GEN-LAST:event_SetTIME2ActionPerformed
+
+    private void SetTIME1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SetTIME1ActionPerformed
+        setTime1();
+    }//GEN-LAST:event_SetTIME1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField DataCompressMode;
@@ -439,6 +475,8 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
     private javax.swing.JTextField DataValueAPI;
     private javax.swing.JTextField DataValueSet;
     private javax.swing.JButton RemoveData;
+    private javax.swing.JButton SetTIME1;
+    private javax.swing.JButton SetTIME2;
     private javax.swing.JButton ShowData;
     private javax.swing.JButton ShowGraph;
     private javax.swing.JTextField StreamDataOffset;
@@ -448,8 +486,6 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
     private javax.swing.JTextField TIME2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

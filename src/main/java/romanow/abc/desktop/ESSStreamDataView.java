@@ -22,8 +22,8 @@ public class ESSStreamDataView extends javax.swing.JFrame {
     public ESSStreamDataView(ESSClient client, I_Value<StreamRegisterData> back0) {
         initComponents();
         back = back0;
-        setBounds(200,200,500,270);
-        ESSStreamDataSelector selector = new ESSStreamDataSelector();
+        setBounds(200,200,550,180);
+        ESSStreamDataSelectorBig selector = new ESSStreamDataSelectorBig();
         selector.init(client, client.deployed, new I_Value<StreamRegisterData>() {
             @Override
             public void onEnter(StreamRegisterData value) {
@@ -32,7 +32,7 @@ public class ESSStreamDataView extends javax.swing.JFrame {
                 }
             });
         setTitle("Потоковые данные");
-        selector.setBounds(0,0,500,220);
+        selector.setBounds(0,0,550,180);
         add(selector);
         setVisible(true);
         }
