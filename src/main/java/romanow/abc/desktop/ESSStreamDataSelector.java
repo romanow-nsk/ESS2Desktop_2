@@ -63,8 +63,10 @@ public class ESSStreamDataSelector extends javax.swing.JPanel {
         StreamRegister.removeAll();
         compressModes = Values.constMap().getGroupMapByValue("CompressMode");
         long ct = System.currentTimeMillis()-3*24*60*60*1000;
-        TIME2.setText(new OwnDateTime().toString2());
-        TIME1.setText(new OwnDateTime(ct).toString2());
+        time2=new OwnDateTime();
+        time1=new OwnDateTime(ct);
+        TIME2.setText(time2.toString2());
+        TIME1.setText(time1.toString2());
         }
 
     /**

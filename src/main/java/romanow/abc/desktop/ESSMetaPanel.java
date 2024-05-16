@@ -103,7 +103,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         DebugMode.setEnabled(false);
         String pass = main.loginUser().getAccount().getPassword();
         Password.setText(pass);
-        streamData.setBounds(370, 270, 470, 185);
+        streamData.setBounds(370, 265, 500, 185);
         add(streamData);
         configSelector.setBounds(370, 450, 400, 125);
         add(configSelector);
@@ -494,7 +494,7 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         jLabel12.setText("Значение");
         add(jLabel12);
-        jLabel12.setBounds(630, 250, 90, 16);
+        jLabel12.setBounds(630, 245, 90, 16);
 
         DefValueFormula.setEnabled(false);
         add(DefValueFormula);
@@ -514,7 +514,7 @@ public class ESSMetaPanel extends ESSBasePanel {
 
         jLabel14.setText("Формула");
         add(jLabel14);
-        jLabel14.setBounds(460, 250, 90, 16);
+        jLabel14.setBounds(460, 245, 90, 16);
 
         DefValue.setEnabled(false);
         add(DefValue);
@@ -615,7 +615,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         jLabel20.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel20.setText("Тренды");
         add(jLabel20);
-        jLabel20.setBounds(840, 260, 70, 14);
+        jLabel20.setBounds(850, 260, 70, 14);
 
         WriteFloat.setText("Float");
         add(WriteFloat);
@@ -1389,7 +1389,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         add(ProfilerOnOff);
         ProfilerOnOff.setBounds(10, 630, 40, 40);
         add(jSeparator5);
-        jSeparator5.setBounds(380, 270, 460, 10);
+        jSeparator5.setBounds(380, 265, 460, 10);
 
         jLabel21.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel21.setText("Конфигурации");
