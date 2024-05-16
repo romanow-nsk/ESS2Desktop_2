@@ -13,11 +13,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="89 61850 - ответы сервера - коды ошибок">
-      <change beforePath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/ClientContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/ClientContext.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/MainBaseFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCDesktop/src/main/java/romanow/abc/desktop/MainBaseFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/IoTDeviceEmulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/IoTDeviceEmulator.java" afterDir="false" />
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="89 UTF-8">
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/snmp/MIBParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/snmp/MIBParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -256,13 +253,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00448" summary="86.02 - баг калькулятора уставок">
-      <created>1710917086013</created>
-      <option name="number" value="00448" />
-      <option name="presentableId" value="LOCAL-00448" />
-      <option name="project" value="LOCAL" />
-      <updated>1710917086013</updated>
     </task>
     <task id="LOCAL-00449" summary="87.01 - Вставка датасетов и отчетов 61850">
       <created>1711025574910</created>
@@ -600,7 +590,14 @@
       <option name="project" value="LOCAL" />
       <updated>1715399779551</updated>
     </task>
-    <option name="localTasksCounter" value="497" />
+    <task id="LOCAL-00497" summary="89 UTF-8">
+      <created>1715852193674</created>
+      <option name="number" value="00497" />
+      <option name="presentableId" value="LOCAL-00497" />
+      <option name="project" value="LOCAL" />
+      <updated>1715852193675</updated>
+    </task>
+    <option name="localTasksCounter" value="498" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -632,7 +629,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="88.01 - 61850 - генерация" />
     <MESSAGE value="88.01 - 61850 - реинжинирирнг" />
     <MESSAGE value="88.01 - 61850 - профиль LNN0" />
     <MESSAGE value="88.01 - 61850 - профиль LNN0,ZBAT" />
@@ -657,7 +653,8 @@
     <MESSAGE value="89 61850 - AlternativeAccess - остутствие узла ServiceError" />
     <MESSAGE value="89 61850 - ответы сервера и conclude" />
     <MESSAGE value="89 61850 - ответы сервера - коды ошибок" />
-    <option name="LAST_COMMIT_MESSAGE" value="89 61850 - ответы сервера - коды ошибок" />
+    <MESSAGE value="89 UTF-8" />
+    <option name="LAST_COMMIT_MESSAGE" value="89 UTF-8" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
