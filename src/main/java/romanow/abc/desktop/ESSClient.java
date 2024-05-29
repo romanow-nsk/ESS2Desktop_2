@@ -66,6 +66,7 @@ public class ESSClient extends Client {
         addIP("10.200.200.72");
         addIP("10.32.0.2");
         addIP("10.30.0.2");
+        addIP("10.30.0.5");
         }
     public void initPanels() {
         super.initPanels();
