@@ -13,14 +13,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="89.04 Тест sRp2 Данные в отчет по DataRef">
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="89.04 Два варианта обработки ...$Fc вместо датасета">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/FcDataObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/FcDataObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerAssociation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerAssociation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerSap.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerSap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/Urcb.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/Urcb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/VariableAccessSpecification.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/internal/mms/asn1/VariableAccessSpecification.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -245,13 +241,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00458" summary="87.01 - Запрет 61850 MMSIdentity">
-      <created>1711743537253</created>
-      <option name="number" value="00458" />
-      <option name="presentableId" value="LOCAL-00458" />
-      <option name="project" value="LOCAL" />
-      <updated>1711743537253</updated>
     </task>
     <task id="LOCAL-00459" summary="87.01 - Скролл Панель фильтра лога">
       <created>1711808142175</created>
@@ -589,7 +578,14 @@
       <option name="project" value="LOCAL" />
       <updated>1716988675487</updated>
     </task>
-    <option name="localTasksCounter" value="507" />
+    <task id="LOCAL-00507" summary="89.04 Два варианта обработки ...$Fc вместо датасета">
+      <created>1717006036362</created>
+      <option name="number" value="00507" />
+      <option name="presentableId" value="LOCAL-00507" />
+      <option name="project" value="LOCAL" />
+      <updated>1717006036362</updated>
+    </task>
+    <option name="localTasksCounter" value="508" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -621,7 +617,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="88.01 Переустановка из ком. строки logunit, device" />
     <MESSAGE value="88.01 switchedOff для View" />
     <MESSAGE value="88.01 Удаление пробелов в именах разрядов" />
     <MESSAGE value="88.01 Уровень 0 + inline Для разрядов битовых регистров" />
@@ -646,7 +641,8 @@
     <MESSAGE value="89.04 Тест sRp2" />
     <MESSAGE value="89.04 Тест sRp2 Пропуск пустой OctetString" />
     <MESSAGE value="89.04 Тест sRp2 Данные в отчет по DataRef" />
-    <option name="LAST_COMMIT_MESSAGE" value="89.04 Тест sRp2 Данные в отчет по DataRef" />
+    <MESSAGE value="89.04 Два варианта обработки ...$Fc вместо датасета" />
+    <option name="LAST_COMMIT_MESSAGE" value="89.04 Два варианта обработки ...$Fc вместо датасета" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1028,7 +1024,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerAssociation.java</url>
-          <line>1075</line>
+          <line>1083</line>
           <option name="timeStamp" value="1739" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
