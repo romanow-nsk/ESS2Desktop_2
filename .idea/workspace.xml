@@ -6,15 +6,20 @@
   </component>
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="ESS2Desktop:jar" />
+      <artifact name="ESS2Desktop:jar2" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="89.04 Изменение формата datareference">
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="89.04 библиотека">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/ESS2Desktop_jar2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ABCDataServer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCDataServer/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +38,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../ABCDataServer" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
@@ -118,8 +123,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "jdk.selected.JAVA_MODULE": "1.8",
-    "last_opened_file_path": "F:/ABC/ESS2DataServer/libs",
-    "project.structure.last.edited": "Libraries",
+    "last_opened_file_path": "F:/ABC/ESS2Desktop",
+    "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.3218391",
     "run.code.analysis.last.selected.profile": "pProject Default",
@@ -239,13 +244,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00462" summary="88.01 - библиотеки в git">
-      <created>1711977987012</created>
-      <option name="number" value="00462" />
-      <option name="presentableId" value="LOCAL-00462" />
-      <option name="project" value="LOCAL" />
-      <updated>1711977987012</updated>
     </task>
     <task id="LOCAL-00463" summary="88.01 - snmp - генерация mib-файла">
       <created>1712075863690</created>
@@ -583,7 +581,14 @@
       <option name="project" value="LOCAL" />
       <updated>1717253206453</updated>
     </task>
-    <option name="localTasksCounter" value="511" />
+    <task id="LOCAL-00511" summary="89.04 библиотека">
+      <created>1717258092118</created>
+      <option name="number" value="00511" />
+      <option name="presentableId" value="LOCAL-00511" />
+      <option name="project" value="LOCAL" />
+      <updated>1717258092119</updated>
+    </task>
+    <option name="localTasksCounter" value="512" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -615,7 +620,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="88.01 Уровень 0 + inline Для разрядов битовых регистров" />
     <MESSAGE value="88.04 Генерация стандартных датасетов" />
     <MESSAGE value="88.04 Замена библиотеки + модуль исходника" />
     <MESSAGE value="89 Исходники iec61850" />
@@ -640,7 +644,8 @@
     <MESSAGE value="89.04 Два варианта обработки ...$Fc вместо датасета" />
     <MESSAGE value="89.04 Два варианта обработки ...$Fc вместо датасета  IED Excplorer работает" />
     <MESSAGE value="89.04 Изменение формата datareference" />
-    <option name="LAST_COMMIT_MESSAGE" value="89.04 Изменение формата datareference" />
+    <MESSAGE value="89.04 библиотека" />
+    <option name="LAST_COMMIT_MESSAGE" value="89.04 библиотека" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
