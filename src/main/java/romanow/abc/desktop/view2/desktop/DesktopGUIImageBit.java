@@ -41,8 +41,22 @@ public class DesktopGUIImageBit extends View2BaseDesktop {
     private Image image1 = null;
     private JPanel imagePanel=null;
     private Meta2GUIImageBit element;
+    private volatile long clock=System.currentTimeMillis();
     public DesktopGUIImageBit(){
         setType(Values.GUIImageBit);
+        }
+    //-----------------------------------------------------------------------
+    public void paintOwn(Graphics g) {
+        g.setColor(new Color(0xfff0f0f0));
+        g.fillRect(0,0,imagePanel.getWidth(),imagePanel.getHeight());
+        Image image = lastBitValue==0 ? image0 : image1;
+        if (image != null) {
+            g.drawImage(image, 0, 0, null);
+            imagePanel.setBorder(javax.swing.BorderFactory.createLineBorder(Color.BLUE,0));
+        }
+        else{
+            imagePanel.setBorder(javax.swing.BorderFactory.createLineBorder(Color.BLUE,1));
+            }
         }
     //-----------------------------------------------------------------------
     @Override
@@ -58,6 +72,8 @@ public class DesktopGUIImageBit extends View2BaseDesktop {
         imagePanel = new JPanel(){
             @Override
             public void paint(Graphics g) {
+                super.paint(g);
+                System.out.println("1 "+(System.currentTimeMillis()-clock)+" "+getRegisterTitle()+" "+bitNum);
                 g.setColor(new Color(0xfff0f0f0));
                 g.fillRect(0,0,imagePanel.getWidth(),imagePanel.getHeight());
                 Image image = lastBitValue==0 ? image0 : image1;
@@ -93,8 +109,10 @@ public class DesktopGUIImageBit extends View2BaseDesktop {
     @Override
     public void putValue(long vv) throws UniException {
         lastBitValue = (int)(vv>>bitNum) & 01;
+        clock = System.currentTimeMillis();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                //paintOwn(imagePanel.getGraphics());
                 imagePanel.repaint();
                 }
             });
