@@ -56,6 +56,9 @@ public class DesktopGUIImageScriptLevel extends View2BaseDesktop {
         imagePanel = new JPanel(){
             @Override
             public void paint(Graphics g) {
+                try {                       // 89.05  Задержка для снижения частоты вызова (Idle ?????)
+                    Thread.sleep(Values.PicturesEventDelayMs);
+                    } catch (InterruptedException e) {}
                 int yy=0;
                 if (scriptFile.isValid()){
                     if (scriptValue > element.getHighLevel())

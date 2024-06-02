@@ -13,11 +13,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="89.04 библиотеки">
-      <change beforePath="$PROJECT_DIR$/../ABCDesktop/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCDesktop/pom.xml" afterDir="false" />
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="89.05 FX + трассировка">
       <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUIImageBit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUIImageBit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUIImageBitCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUIImageBitCmd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUIImageDataLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUIImageDataLevel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUIImageScriptLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/view2/desktop/DesktopGUIImageScriptLevel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,13 +244,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00463" summary="88.01 - snmp - генерация mib-файла">
-      <created>1712075863690</created>
-      <option name="number" value="00463" />
-      <option name="presentableId" value="LOCAL-00463" />
-      <option name="project" value="LOCAL" />
-      <updated>1712075863690</updated>
     </task>
     <task id="LOCAL-00464" summary="88.01 - snmp - генерация id-ов">
       <created>1712079467502</created>
@@ -586,7 +581,14 @@
       <option name="project" value="LOCAL" />
       <updated>1717258092119</updated>
     </task>
-    <option name="localTasksCounter" value="512" />
+    <task id="LOCAL-00512" summary="89.05 FX + трассировка">
+      <created>1717305103213</created>
+      <option name="number" value="00512" />
+      <option name="presentableId" value="LOCAL-00512" />
+      <option name="project" value="LOCAL" />
+      <updated>1717305103213</updated>
+    </task>
+    <option name="localTasksCounter" value="513" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -618,7 +620,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="88.04 Генерация стандартных датасетов" />
     <MESSAGE value="88.04 Замена библиотеки + модуль исходника" />
     <MESSAGE value="89 Исходники iec61850" />
     <MESSAGE value="89 перенастройка модуля" />
@@ -643,7 +644,8 @@
     <MESSAGE value="89.04 Два варианта обработки ...$Fc вместо датасета  IED Excplorer работает" />
     <MESSAGE value="89.04 Изменение формата datareference" />
     <MESSAGE value="89.04 библиотека" />
-    <option name="LAST_COMMIT_MESSAGE" value="89.04 библиотека" />
+    <MESSAGE value="89.05 FX + трассировка" />
+    <option name="LAST_COMMIT_MESSAGE" value="89.05 FX + трассировка" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

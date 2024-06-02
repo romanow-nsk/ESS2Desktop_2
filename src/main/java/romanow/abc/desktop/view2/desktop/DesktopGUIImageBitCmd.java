@@ -59,6 +59,9 @@ public class DesktopGUIImageBitCmd extends View2BaseDesktop {
         imagePanel = new JPanel(){
             @Override
             public void paint(Graphics g) {
+                try {                       // 89.05  Задержка для снижения частоты вызова (Idle ?????)
+                    Thread.sleep(Values.PicturesEventDelayMs);
+                    } catch (InterruptedException e) {}
                 g.setColor(new Color(0xfff0f0f0));
                 g.fillRect(0,0,imagePanel.getWidth(),imagePanel.getHeight());
                 Image image = lastBitValue==0 ? image0 : image1;
