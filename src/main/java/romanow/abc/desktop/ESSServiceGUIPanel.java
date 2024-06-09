@@ -9,10 +9,7 @@ import lombok.Getter;
 import lombok.Setter;
 import okhttp3.ResponseBody;
 import retrofit2.Response;
-import romanow.abc.core.ErrorList;
-import romanow.abc.core.I_Boolean;
-import romanow.abc.core.UniException;
-import romanow.abc.core.Utils;
+import romanow.abc.core.*;
 import romanow.abc.core.constants.IntegerList;
 import romanow.abc.core.constants.Values;
 import romanow.abc.core.entity.UnitRegisterList;
@@ -80,6 +77,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     private ArrayList<View2Base> guiList = new ArrayList<>();
     private ErrorList errorList = new ErrorList();
     private I_Boolean logoutCallBack = null;                     // CallBack кнопки выхода
+    private boolean wasLogout=false;
     //private OwnDateTime userLoginTime = new OwnDateTime();
     private Meta2GUIForm prevForm=null;                         // Предыдущая форма (асинхр обновление)
     private boolean runtimeEditMode=false;
@@ -178,13 +176,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                         if (logoutCallBack != null && sec > ((WorkSettings) main.workSettings()).getUserSilenceTime() * 60) {
                             if (main2.isGuestKioskClient() && context.getForm().getTitle().equals(MainFormName))
                                 return;
-                            java.awt.EventQueue.invokeLater(new Runnable() {
-                                public void run() {
-                                    //context.openForm(MainFormName, FormContextBase.ModeCrearIdx);
-                                    shutDown();
-                                    logoutCallBack.onEvent(false);
-                                    }
-                                });
+                            logoutByEvent();
                             return;
                             }
                         if (!renderingOn)
@@ -204,6 +196,23 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         guiLoop.start();
         }
     //-----------------------------------------------------------------------------------------------------
+    private void logoutByEvent(){
+        if (wasLogout)
+            return;
+        wasLogout=true;
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                shutDown();
+                new GUITimer().start(5, new I_EmptyEvent() {
+                    @Override
+                    public void onEvent() {
+                        logoutCallBack.onEvent(false);
+                    }
+                });
+                }
+            });
+        }
+    //-----------------------------------------------------------------------------------------------------
     public ESS2View currentView(){
         return main2.currentView(secondPanel);
         }
@@ -214,10 +223,12 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     public boolean isESSMode(){ return true; }
     public ESSServiceGUIPanel() {
         initComponents();
+        wasLogout=false;
         }
     public ESSServiceGUIPanel(ScreenMode screenMode) {
         initComponents();
         context.setScreen(screenMode);
+        wasLogout=false;
         }
     public void initPanel(MainBaseFrame main){
         super.initPanel(main);
@@ -1053,6 +1064,8 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                             asyncCount--;
                             limiter.popup("Ошибка сервера: "+ee.getSysMessage());
                             main.sendEventPanel(EventPLMOffForce,0,0,"",null);
+                            if (main2.isGuestKioskClient())         // 89.05 - ошибка чтения регистров в киоске - выход без авторизации
+                                logoutByEvent();
                             }
                         });
                      }

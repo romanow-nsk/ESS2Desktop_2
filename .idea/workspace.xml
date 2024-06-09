@@ -13,11 +13,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="89.05  Задержка для снижения частоты вызова (Idle ?????)">
-      <change beforePath="$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/mongo/access/DAOEntityRefList.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/mongo/access/DAOEntityRefList.java" afterDir="false" />
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="89.05  БАГ DAOEntityRefList: Загрузка EntityRefList при отсутствии автозагрузки по связи">
       <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/Meta2BitRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/Meta2BitRegister.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSKioskClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSKioskClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSServiceGUIPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSServiceGUIPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +36,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../ABCCore" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
@@ -145,20 +145,7 @@
       <recent name="romanow.abc.desktop.view2.desktop" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ESSClient">
-    <configuration name="BARS4569ConsoleServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="romanow.abc.dataserver.BARS4569ConsoleServer" />
-      <module name="ESS2DataServer" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="romanow.abc.dataserver.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.BARSConsoleServer">
     <configuration name="BARSConsoleServer" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="romanow.abc.dataserver.BARSConsoleServer" />
       <module name="ESS2DataServer" />
@@ -187,6 +174,19 @@
     </configuration>
     <configuration name="ESSClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="romanow.abc.desktop.ESSClient" />
+      <module name="ESS2Desktop" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="romanow.abc.desktop.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ESSKioskClientKLIAB100" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="romanow.abc.desktop.ESSKioskClientKLIAB100" />
       <module name="ESS2Desktop" />
       <extension name="coverage">
         <pattern>
@@ -227,10 +227,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.ESSClient" />
+        <item itemvalue="Application.ESSKioskClientKLIAB100" />
         <item itemvalue="Application.ESS61850ClientGUI" />
         <item itemvalue="Application.IEC61850Client" />
         <item itemvalue="Application.MIBParser" />
-        <item itemvalue="Application.BARS4569ConsoleServer" />
       </list>
     </recent_temporary>
   </component>
@@ -242,13 +242,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00465" summary="88.01 - 61850 - генерация">
-      <created>1712158537999</created>
-      <option name="number" value="00465" />
-      <option name="presentableId" value="LOCAL-00465" />
-      <option name="project" value="LOCAL" />
-      <updated>1712158538000</updated>
     </task>
     <task id="LOCAL-00466" summary="88.01 - 61850 - реинжинирирнг">
       <created>1712218807754</created>
@@ -586,7 +579,14 @@
       <option name="project" value="LOCAL" />
       <updated>1717311541831</updated>
     </task>
-    <option name="localTasksCounter" value="514" />
+    <task id="LOCAL-00514" summary="89.05  БАГ DAOEntityRefList: Загрузка EntityRefList при отсутствии автозагрузки по связи">
+      <created>1717514886827</created>
+      <option name="number" value="00514" />
+      <option name="presentableId" value="LOCAL-00514" />
+      <option name="project" value="LOCAL" />
+      <updated>1717514886827</updated>
+    </task>
+    <option name="localTasksCounter" value="515" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -605,7 +605,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="ESS2IEC61850Core/master" />
+                        <option value="origin/master" />
                       </list>
                     </value>
                   </entry>
@@ -618,7 +618,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="89 Исходники iec61850" />
     <MESSAGE value="89 перенастройка модуля" />
     <MESSAGE value="89 косяк рефакторинга" />
     <MESSAGE value="89 альтернативные access" />
@@ -643,7 +642,8 @@
     <MESSAGE value="89.04 библиотека" />
     <MESSAGE value="89.05 FX + трассировка" />
     <MESSAGE value="89.05  Задержка для снижения частоты вызова (Idle ?????)" />
-    <option name="LAST_COMMIT_MESSAGE" value="89.05  Задержка для снижения частоты вызова (Idle ?????)" />
+    <MESSAGE value="89.05  БАГ DAOEntityRefList: Загрузка EntityRefList при отсутствии автозагрузки по связи" />
+    <option name="LAST_COMMIT_MESSAGE" value="89.05  БАГ DAOEntityRefList: Загрузка EntityRefList при отсутствии автозагрузки по связи" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -935,7 +935,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSServiceGUIPanel.java</url>
-          <line>1107</line>
+          <line>1120</line>
           <option name="timeStamp" value="1515" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -1039,14 +1039,9 @@
           <option name="timeStamp" value="1754" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/mongo/access/DAOEntityRefList.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="1757" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/mongo/DAO.java</url>
-          <line>173</line>
-          <option name="timeStamp" value="1758" />
+          <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/APIESS2Meta.java</url>
+          <line>1426</line>
+          <option name="timeStamp" value="1761" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS4ACDCEmulator.java</url>

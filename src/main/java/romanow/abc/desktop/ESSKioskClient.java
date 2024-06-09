@@ -56,7 +56,8 @@ public class ESSKioskClient extends ESSBaseView {
         }
     public ESSKioskClient(boolean min, boolean auto,String pars[]){
         super(xMin,yMin);
-        Values.init();main.setGuestKioskClient(true);
+        Values.init();
+        main.setGuestKioskClient(true);
         setVisible(false);
         setUndecorated(true);
         initComponents();
