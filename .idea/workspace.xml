@@ -13,11 +13,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="89.05  БАГ DAOEntityRefList: Загрузка EntityRefList при отсутствии автозагрузки по связи">
-      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" afterDir="false" />
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="89.05  Киоск-клиент: возврат в главную форму с авторизацией гостя при ошибке чтения регистров">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSKioskClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSKioskClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSServiceGUIPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSServiceGUIPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerAssociation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerAssociation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +35,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../ESS2IEC61850Core" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
@@ -121,7 +120,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
-    &quot;last_opened_file_path&quot;: &quot;F:/ABC/ESS2Desktop&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/temp/Scala&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.3218391&quot;,
@@ -242,13 +241,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00466" summary="88.01 - 61850 - реинжинирирнг">
-      <created>1712218807754</created>
-      <option name="number" value="00466" />
-      <option name="presentableId" value="LOCAL-00466" />
-      <option name="project" value="LOCAL" />
-      <updated>1712218807754</updated>
     </task>
     <task id="LOCAL-00467" summary="88.01 - 61850 - реинжинирирнг">
       <created>1712228301395</created>
@@ -586,7 +578,14 @@
       <option name="project" value="LOCAL" />
       <updated>1717514886827</updated>
     </task>
-    <option name="localTasksCounter" value="515" />
+    <task id="LOCAL-00515" summary="89.05  Киоск-клиент: возврат в главную форму с авторизацией гостя при ошибке чтения регистров">
+      <created>1717953023303</created>
+      <option name="number" value="00515" />
+      <option name="presentableId" value="LOCAL-00515" />
+      <option name="project" value="LOCAL" />
+      <updated>1717953023304</updated>
+    </task>
+    <option name="localTasksCounter" value="516" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -618,7 +617,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="89 перенастройка модуля" />
     <MESSAGE value="89 косяк рефакторинга" />
     <MESSAGE value="89 альтернативные access" />
     <MESSAGE value="89 snmp - компоненты" />
@@ -643,7 +641,8 @@
     <MESSAGE value="89.05 FX + трассировка" />
     <MESSAGE value="89.05  Задержка для снижения частоты вызова (Idle ?????)" />
     <MESSAGE value="89.05  БАГ DAOEntityRefList: Загрузка EntityRefList при отсутствии автозагрузки по связи" />
-    <option name="LAST_COMMIT_MESSAGE" value="89.05  БАГ DAOEntityRefList: Загрузка EntityRefList при отсутствии автозагрузки по связи" />
+    <MESSAGE value="89.05  Киоск-клиент: возврат в главную форму с авторизацией гостя при ошибке чтения регистров" />
+    <option name="LAST_COMMIT_MESSAGE" value="89.05  Киоск-клиент: возврат в главную форму с авторизацией гостя при ошибке чтения регистров" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -935,7 +934,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSServiceGUIPanel.java</url>
-          <line>1120</line>
+          <line>1121</line>
           <option name="timeStamp" value="1515" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -1043,6 +1042,31 @@
           <line>1426</line>
           <option name="timeStamp" value="1761" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerAssociation.java</url>
+          <line>243</line>
+          <option name="timeStamp" value="1763" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerAssociation.java</url>
+          <line>1305</line>
+          <option name="timeStamp" value="1767" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerAssociation.java</url>
+          <line>1673</line>
+          <option name="timeStamp" value="1768" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerAssociation.java</url>
+          <line>1347</line>
+          <option name="timeStamp" value="1769" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerAssociation.java</url>
+          <line>1441</line>
+          <option name="timeStamp" value="1770" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS4ACDCEmulator.java</url>
           <line>39</line>
@@ -1072,6 +1096,7 @@
         <watch expression="register" />
         <watch expression="variableDef" />
         <watch expression="result.success" />
+        <watch expression="confirmedServiceRequest" />
       </configuration>
     </watches-manager>
   </component>

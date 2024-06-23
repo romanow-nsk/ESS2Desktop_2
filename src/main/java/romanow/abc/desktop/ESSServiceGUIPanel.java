@@ -174,8 +174,9 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
                             }
                         long sec = (new OwnDateTime().timeInMS() - context.getUserLoginTime().timeInMS()) / 1000;
                         if (logoutCallBack != null && sec > ((WorkSettings) main.workSettings()).getUserSilenceTime() * 60) {
-                            if (main2.isGuestKioskClient() && context.getForm().getTitle().equals(MainFormName))
-                                return;
+                            //Передернуть и киоск-главная форма
+                            //if (main2.isGuestKioskClient() && context.getForm().getTitle().equals(MainFormName))
+                            //    return;
                             logoutByEvent();
                             return;
                             }
