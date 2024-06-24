@@ -13,9 +13,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="89.05  Киоск-клиент: возврат в главную форму с авторизацией гостя при ошибке чтения регистров">
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="89.05  sRpN8 - логика ответа">
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/constants/Values.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSServiceGUIPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSServiceGUIPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/BdaTriggerConditions.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/BdaTriggerConditions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerAssociation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerAssociation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -241,13 +242,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00467" summary="88.01 - 61850 - реинжинирирнг">
-      <created>1712228301395</created>
-      <option name="number" value="00467" />
-      <option name="presentableId" value="LOCAL-00467" />
-      <option name="project" value="LOCAL" />
-      <updated>1712228301395</updated>
     </task>
     <task id="LOCAL-00468" summary="88.01 - 61850 - реинжинирирнг">
       <created>1712232289612</created>
@@ -585,7 +579,14 @@
       <option name="project" value="LOCAL" />
       <updated>1717953023304</updated>
     </task>
-    <option name="localTasksCounter" value="516" />
+    <task id="LOCAL-00516" summary="89.05  sRpN4 - коды ошибок">
+      <created>1719137426518</created>
+      <option name="number" value="00516" />
+      <option name="presentableId" value="LOCAL-00516" />
+      <option name="project" value="LOCAL" />
+      <updated>1719137426519</updated>
+    </task>
+    <option name="localTasksCounter" value="517" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -617,8 +618,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="89 косяк рефакторинга" />
-    <MESSAGE value="89 альтернативные access" />
     <MESSAGE value="89 snmp - компоненты" />
     <MESSAGE value="89 snmp - привязка агента" />
     <MESSAGE value="89 61850 - AlternateAccess с кодом 0x81&#10;81 02 53 54 &lt;- a1 04 1a 02 53 54" />
@@ -642,7 +641,9 @@
     <MESSAGE value="89.05  Задержка для снижения частоты вызова (Idle ?????)" />
     <MESSAGE value="89.05  БАГ DAOEntityRefList: Загрузка EntityRefList при отсутствии автозагрузки по связи" />
     <MESSAGE value="89.05  Киоск-клиент: возврат в главную форму с авторизацией гостя при ошибке чтения регистров" />
-    <option name="LAST_COMMIT_MESSAGE" value="89.05  Киоск-клиент: возврат в главную форму с авторизацией гостя при ошибке чтения регистров" />
+    <MESSAGE value="89.05  sRpN4 - коды ошибок" />
+    <MESSAGE value="89.05  sRpN8 - логика ответа" />
+    <option name="LAST_COMMIT_MESSAGE" value="89.05  sRpN8 - логика ответа" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1043,29 +1044,14 @@
           <option name="timeStamp" value="1761" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerAssociation.java</url>
-          <line>243</line>
-          <option name="timeStamp" value="1763" />
+          <url>file://$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/BdaTriggerConditions.java</url>
+          <line>99</line>
+          <option name="timeStamp" value="1778" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerAssociation.java</url>
-          <line>1305</line>
-          <option name="timeStamp" value="1767" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerAssociation.java</url>
-          <line>1673</line>
-          <option name="timeStamp" value="1768" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerAssociation.java</url>
-          <line>1347</line>
-          <option name="timeStamp" value="1769" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../ESS2IEC61850Core/src/main/java/com/beanit/iec61850bean/ServerAssociation.java</url>
-          <line>1441</line>
-          <option name="timeStamp" value="1770" />
+          <line>1715</line>
+          <option name="timeStamp" value="1779" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS4ACDCEmulator.java</url>
@@ -1097,6 +1083,7 @@
         <watch expression="variableDef" />
         <watch expression="result.success" />
         <watch expression="confirmedServiceRequest" />
+        <watch expression="result.success" />
       </configuration>
     </watches-manager>
   </component>
