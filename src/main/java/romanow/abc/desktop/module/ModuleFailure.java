@@ -41,6 +41,8 @@ public class ModuleFailure extends Module {
     protected JTable table;
     private ListSelectionListener listener;
     private long lastDayClock = 0;
+    private boolean withWarnings=false;
+    private JButton WB;
     public ModuleFailure(){}
     private void addQuitedButton(){
         //JButton bb = new MultiTextButton(new Font(Values.FontName, Font.PLAIN, context.dy(12)));
@@ -74,6 +76,25 @@ public class ModuleFailure extends Module {
                 }
             });
         panel.add(bb);
+        //--------------------------------------------------------------------------------------------------------------
+        WB = new JButton();
+        View2BaseDesktop.setButtonParams(WB,"+Предупр.",false,context);
+        WB.setBounds(
+                context.x(20+Values.MenuButtonW*3),
+                context.y(form.getModuleDY()-40),
+                context.dx(Values.MenuButtonW*2),
+                context.dy(Values.MenuButtonH));
+        WB.setVisible(true);
+        WB.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                withWarnings = !withWarnings;
+                WB.setText((withWarnings ? "-" : "+")+"Предупр.");
+                repaintValues();
+                }
+            });
+        panel.add(WB);
+        //--------------------------------------------------------------------------------------------------------------
         panel.revalidate();
         panel.repaint();
         }
@@ -221,6 +242,8 @@ public class ModuleFailure extends Module {
             Gson gson = new Gson();
             for(DBRequest request : res){
                 Failure ff = (Failure) request.get(gson);
+                if (ff.isWarning() && !withWarnings)
+                    continue;
                 //if (ff.getEndTime().dateTimeValid())
                 //    System.out.println(ff);
                 events1.add(ff);
