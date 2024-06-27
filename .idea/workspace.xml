@@ -13,10 +13,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="89.06  Индексы группы регистров в авариях">
-      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/subjectarea/FailureBit.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/subjectarea/FailureBit.java" afterDir="false" />
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="90.01 Клиент - аварии/предупр. + индексы">
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec60870/ASDUCmdInterrogation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec60870/ASDUCmdInterrogation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/module/ModuleFailure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/module/ModuleFailure.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +34,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../ESS2DataServer" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
@@ -241,13 +240,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00470" summary="88.01 - 61850 - профиль LNN0,ZBAT">
-      <created>1712421029245</created>
-      <option name="number" value="00470" />
-      <option name="presentableId" value="LOCAL-00470" />
-      <option name="project" value="LOCAL" />
-      <updated>1712421029245</updated>
     </task>
     <task id="LOCAL-00471" summary="88.01 - 61850 - модуль LLN0,ZBAT">
       <created>1712431569822</created>
@@ -585,7 +577,14 @@
       <option name="project" value="LOCAL" />
       <updated>1719312761062</updated>
     </task>
-    <option name="localTasksCounter" value="519" />
+    <task id="LOCAL-00519" summary="90.01 Клиент - аварии/предупр. + индексы">
+      <created>1719314520386</created>
+      <option name="number" value="00519" />
+      <option name="presentableId" value="LOCAL-00519" />
+      <option name="project" value="LOCAL" />
+      <updated>1719314520386</updated>
+    </task>
+    <option name="localTasksCounter" value="520" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -617,7 +616,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="89 snmp - привязка агента" />
     <MESSAGE value="89 61850 - AlternateAccess с кодом 0x81&#10;81 02 53 54 &lt;- a1 04 1a 02 53 54" />
     <MESSAGE value="89 SNMP - сохранение MibHeader при сжатии" />
     <MESSAGE value="89 61850 - AlternativeAccess - остутствие узла" />
@@ -642,7 +640,8 @@
     <MESSAGE value="89.05  sRpN4 - коды ошибок" />
     <MESSAGE value="89.05  sRpN8 - логика ответа" />
     <MESSAGE value="89.06  Индексы группы регистров в авариях" />
-    <option name="LAST_COMMIT_MESSAGE" value="89.06  Индексы группы регистров в авариях" />
+    <MESSAGE value="90.01 Клиент - аварии/предупр. + индексы" />
+    <option name="LAST_COMMIT_MESSAGE" value="90.01 Клиент - аварии/предупр. + индексы" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
