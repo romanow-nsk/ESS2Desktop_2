@@ -395,6 +395,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         SNMPOnOff = new javax.swing.JButton();
         jLabel23 = new javax.swing.JLabel();
         MIBLocal = new javax.swing.JButton();
+        ExportToExcel = new javax.swing.JButton();
 
         setLayout(null);
 
@@ -1437,7 +1438,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         add(jLabel42);
         jLabel42.setBounds(70, 360, 50, 16);
 
-        ProfilerResults.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/load.png"))); // NOI18N
+        ProfilerResults.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/excel_32.png"))); // NOI18N
         ProfilerResults.setBorderPainted(false);
         ProfilerResults.setContentAreaFilled(false);
         ProfilerResults.addActionListener(new java.awt.event.ActionListener() {
@@ -1604,6 +1605,17 @@ public class ESSMetaPanel extends ESSBasePanel {
         });
         add(MIBLocal);
         MIBLocal.setBounds(240, 565, 40, 30);
+
+        ExportToExcel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawable/excel_32.png"))); // NOI18N
+        ExportToExcel.setBorderPainted(false);
+        ExportToExcel.setContentAreaFilled(false);
+        ExportToExcel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExportToExcelActionPerformed(evt);
+            }
+        });
+        add(ExportToExcel);
+        ExportToExcel.setBounds(860, 290, 40, 40);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ImportMetaDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportMetaDataActionPerformed
@@ -3929,6 +3941,15 @@ case 3:         if (equipment.getIec61850LNTemplate().getOid() == 0)
                     System.out.println("Ошибка записи "+ff.fileName());
                     }
     }//GEN-LAST:event_MIBLocalActionPerformed
+
+    private void ExportToExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExportToExcelActionPerformed
+        if (main2.deployed==null){
+            System.out.println("Нет развернутой архитектуры");
+            return;
+            }
+        ESSStreamDataExportPanel export = new ESSStreamDataExportPanel();
+        export.init(main2, main2.deployed);
+    }//GEN-LAST:event_ExportToExcelActionPerformed
     private void refreshSNMPState(){
         new APICall<JInt>(main) {
             @Override
@@ -4178,6 +4199,7 @@ case 3:         if (equipment.getIec61850LNTemplate().getOid() == 0)
     private javax.swing.JButton ExportArchitectureFiles;
     private javax.swing.JButton ExportNode;
     private javax.swing.JButton ExportScripts;
+    private javax.swing.JButton ExportToExcel;
     private javax.swing.JButton ExportXML;
     private javax.swing.JButton ExportXMLAll;
     private javax.swing.JButton ExportXMLEquipment;

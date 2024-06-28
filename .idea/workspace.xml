@@ -13,9 +13,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="90.01 Клиент - аварии/предупр. + индексы">
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec60870/ASDUCmdInterrogation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/iec60870/ASDUCmdInterrogation.java" afterDir="false" />
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="90.01 60870 - int/float только от регистров данных">
+      <change afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/StreamDataList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSStreamDataExport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSStreamDataExportPanel.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSStreamDataExportPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/drawable/excel_32.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/utils/OwnTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/utils/OwnTime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/modules/ProfilerXLSBundleLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/modules/ProfilerXLSBundleLogger.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +42,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../ESS2DataServer" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
@@ -225,8 +233,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.ESSClient" />
-        <item itemvalue="Application.ESSKioskClientKLIAB100" />
         <item itemvalue="Application.ESS61850ClientGUI" />
+        <item itemvalue="Application.ESSKioskClientKLIAB100" />
         <item itemvalue="Application.IEC61850Client" />
         <item itemvalue="Application.MIBParser" />
       </list>
@@ -240,13 +248,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00471" summary="88.01 - 61850 - модуль LLN0,ZBAT">
-      <created>1712431569822</created>
-      <option name="number" value="00471" />
-      <option name="presentableId" value="LOCAL-00471" />
-      <option name="project" value="LOCAL" />
-      <updated>1712431569822</updated>
     </task>
     <task id="LOCAL-00472" summary="88.01 - 61850 - Шаблоны для общих DA">
       <created>1712465727792</created>
@@ -584,7 +585,14 @@
       <option name="project" value="LOCAL" />
       <updated>1719314520386</updated>
     </task>
-    <option name="localTasksCounter" value="520" />
+    <task id="LOCAL-00520" summary="90.01 60870 - int/float только от регистров данных">
+      <created>1719509283173</created>
+      <option name="number" value="00520" />
+      <option name="presentableId" value="LOCAL-00520" />
+      <option name="project" value="LOCAL" />
+      <updated>1719509283174</updated>
+    </task>
+    <option name="localTasksCounter" value="521" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -616,7 +624,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="89 61850 - AlternateAccess с кодом 0x81&#10;81 02 53 54 &lt;- a1 04 1a 02 53 54" />
     <MESSAGE value="89 SNMP - сохранение MibHeader при сжатии" />
     <MESSAGE value="89 61850 - AlternativeAccess - остутствие узла" />
     <MESSAGE value="89 61850 - AlternativeAccess - остутствие узла ServiceError" />
@@ -641,7 +648,8 @@
     <MESSAGE value="89.05  sRpN8 - логика ответа" />
     <MESSAGE value="89.06  Индексы группы регистров в авариях" />
     <MESSAGE value="90.01 Клиент - аварии/предупр. + индексы" />
-    <option name="LAST_COMMIT_MESSAGE" value="90.01 Клиент - аварии/предупр. + индексы" />
+    <MESSAGE value="90.01 60870 - int/float только от регистров данных" />
+    <option name="LAST_COMMIT_MESSAGE" value="90.01 60870 - int/float только от регистров данных" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -733,12 +741,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/modules/ProfilerXLSBundleLogger.java</url>
-          <line>79</line>
+          <line>76</line>
           <option name="timeStamp" value="586" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java</url>
-          <line>3744</line>
+          <line>3756</line>
           <option name="timeStamp" value="591" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -893,7 +901,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java</url>
-          <line>2746</line>
+          <line>2758</line>
           <option name="timeStamp" value="1351" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
