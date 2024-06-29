@@ -1906,6 +1906,7 @@ public class ESSMetaPanel extends ESSBasePanel {
         Dimension sSize = Toolkit.getDefaultToolkit ().getScreenSize ();
         ESS2View view = deployed.getViews().get(Views.getSelectedIndex());
         ScreenMode screenMode = new ScreenMode(false,view.getView().getWidth(),view.getView().getHeight(),sSize.width,sSize.height);
+        screenMode.setFullScreen(true);
         screen.setVisible(true);
         screen.eventPanel(EventPLMOn,0,Trace.isSelected() ? 1 : 0,"",screenMode);
         screen.refresh();

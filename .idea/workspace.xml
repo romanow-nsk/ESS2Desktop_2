@@ -13,17 +13,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="90.01 60870 - int/float только от регистров данных">
-      <change afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/StreamDataList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSStreamDataExport.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSStreamDataExportPanel.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSStreamDataExportPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/drawable/excel_32.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/utils/OwnTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCCore/src/main/java/romanow/abc/core/utils/OwnTime.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/modules/ProfilerXLSBundleLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/profiler/modules/ProfilerXLSBundleLogger.java" afterDir="false" />
+    <list default="true" id="1cc556d2-a532-4005-93ea-1e49ee04e016" name="Changes" comment="90.01 ПД в Excel">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/cancel.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/drawable/cancel.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/render/ScreenMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ESS2Core/src/main/java/romanow/abc/core/entity/metadata/render/ScreenMode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSServiceGUIPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSServiceGUIPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSServiceGUIScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSServiceGUIScreen.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -248,13 +245,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668101942038</updated>
-    </task>
-    <task id="LOCAL-00472" summary="88.01 - 61850 - Шаблоны для общих DA">
-      <created>1712465727792</created>
-      <option name="number" value="00472" />
-      <option name="presentableId" value="LOCAL-00472" />
-      <option name="project" value="LOCAL" />
-      <updated>1712465727792</updated>
     </task>
     <task id="LOCAL-00473" summary="88.01 TimeStamp как отдельная переменная">
       <created>1712677420286</created>
@@ -592,7 +582,14 @@
       <option name="project" value="LOCAL" />
       <updated>1719509283174</updated>
     </task>
-    <option name="localTasksCounter" value="521" />
+    <task id="LOCAL-00521" summary="90.01 ПД в Excel">
+      <created>1719593325330</created>
+      <option name="number" value="00521" />
+      <option name="presentableId" value="LOCAL-00521" />
+      <option name="project" value="LOCAL" />
+      <updated>1719593325330</updated>
+    </task>
+    <option name="localTasksCounter" value="522" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -624,7 +621,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="89 SNMP - сохранение MibHeader при сжатии" />
     <MESSAGE value="89 61850 - AlternativeAccess - остутствие узла" />
     <MESSAGE value="89 61850 - AlternativeAccess - остутствие узла ServiceError" />
     <MESSAGE value="89 61850 - ответы сервера и conclude" />
@@ -649,7 +645,8 @@
     <MESSAGE value="89.06  Индексы группы регистров в авариях" />
     <MESSAGE value="90.01 Клиент - аварии/предупр. + индексы" />
     <MESSAGE value="90.01 60870 - int/float только от регистров данных" />
-    <option name="LAST_COMMIT_MESSAGE" value="90.01 60870 - int/float только от регистров данных" />
+    <MESSAGE value="90.01 ПД в Excel" />
+    <option name="LAST_COMMIT_MESSAGE" value="90.01 ПД в Excel" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -746,7 +743,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java</url>
-          <line>3756</line>
+          <line>3757</line>
           <option name="timeStamp" value="591" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -901,7 +898,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSMetaPanel.java</url>
-          <line>2758</line>
+          <line>2759</line>
           <option name="timeStamp" value="1351" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -941,7 +938,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSServiceGUIPanel.java</url>
-          <line>1121</line>
+          <line>1144</line>
           <option name="timeStamp" value="1515" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -1068,6 +1065,21 @@
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/dataserver/datastreams/DataStreamFailure.java</url>
           <line>152</line>
           <option name="timeStamp" value="1786" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSServiceGUIPanel.java</url>
+          <line>796</line>
+          <option name="timeStamp" value="1787" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSServiceGUIPanel.java</url>
+          <line>231</line>
+          <option name="timeStamp" value="1788" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/romanow/abc/desktop/ESSServiceGUIPanel.java</url>
+          <line>227</line>
+          <option name="timeStamp" value="1789" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/../ESS2DataServer/src/main/java/romanow/abc/ess2/emulators/ESS4ACDCEmulator.java</url>

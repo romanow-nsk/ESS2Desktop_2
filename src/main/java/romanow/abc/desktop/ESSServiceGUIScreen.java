@@ -33,6 +33,7 @@ public class ESSServiceGUIScreen extends javax.swing.JFrame implements I_PanelEv
         Meta2GUIView view = essClient.currentView(false).getView();
         ScreenMode screen = new ScreenMode(false,view.getWidth(), view.getHeight(),sSize.width,sSize.height);
         setSize(sSize.width,sSize.height);
+        screen.setFullScreen(true);
         panel = new ESSServiceGUIPanel(screen);
         add(panel);
         panel.initPanel(main);

@@ -64,6 +64,7 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
     private final static String buttonLogout = "/login.png";
     private final static String buttonInfoOn = "/question.png";
     private final static String buttonInfoOff = "/question_gray.png";
+    private final static String buttonExit = "/cancel.png";
     private final static int maxMenuLevels=5;
     private final static int MenuButtonMarginY=70;
     private int menuModes[] = new int[maxMenuLevels];
@@ -792,6 +793,28 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
             });
         add(info);
         info.setBounds(context.x(realWidth-150), context.y(10), context.dx(40), context.dy(40));
+        //----------------------------------------------------------------------------------- 90.01 - выход из полноэкранного режима
+        if (context.getScreen().isFullScreen()){
+            JButton exitButton = new JButton();
+            exitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource(buttonExit))); // NOI18N
+            exitButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if (main2.isGuestKioskClient())
+                        new OK(context.x(200), context.y(200), "Завершить работу", new I_Button() {
+                            @Override
+                            public void onPush() {
+                                System.exit(1);
+                            }
+                        });
+                    else {
+                        logoutCallBack.onEvent(true);
+                        }
+                    }
+                });
+            add(exitButton);
+            exitButton.setBounds(context.x(realWidth-200), context.y(10), context.dx(40), context.dy(40));
+            }
         //-----------------------------------------------------------------------------------------
         Meta2GUIForm baseForm = context.getBaseForm();
         guiList.clear();
