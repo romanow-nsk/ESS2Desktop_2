@@ -1034,6 +1034,8 @@ public class ESSServiceGUIPanel extends ESSBasePanel {
         renderSeqNum++;             // Установить след. номер запроса
         asyncCount=0;
         for(ESS2Device device : main2.deployed.getDevices()){
+            if (!device.isAccessed())
+                continue;           // 90.01 Пропуск неактивных устройств
             ArrayList<UnitRegisterList> list2 = device.createList(false);
                 for(UnitRegisterList list : list2){
                     //System.out.println(device.getShortName()+"["+list.getUnitIdx()+"]="+list.size());

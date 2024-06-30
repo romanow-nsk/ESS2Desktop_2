@@ -16,6 +16,7 @@ import romanow.abc.core.constants.ValuesBase;
 import romanow.abc.core.drivers.I_ModbusGroupDriver;
 import romanow.abc.core.entity.EntityRefList;
 import romanow.abc.core.entity.artifacts.Artifact;
+import romanow.abc.core.entity.baseentityes.JBoolean;
 import romanow.abc.core.entity.metadata.*;
 import romanow.abc.core.entity.metadata.render.ScreenMode;
 import romanow.abc.core.entity.subject2area.*;
@@ -167,10 +168,10 @@ public class ESSClient extends Client {
         return entity;
         }
     //-------------------------------------------------------------------------------------------------------
-    public boolean loadDeployedArchitecture(long oid, int state) {
+    public boolean loadDeployedArchitecture(long oid, int state, boolean debugMode) {
         deployed = loadFullArchitecture(oid);
         deployed.setArchitectureState(state);
-        deployed.setDebugConfigMode(((WorkSettings)workSettings()).isDebugConfig());
+        deployed.setDebugConfigMode(debugMode);
         deployed.testFullArchitecture();
         ModBusClientProxyDriver driver = new ModBusClientProxyDriver();
         HashMap<String,String> map = new HashMap<>();
@@ -205,8 +206,15 @@ public class ESSClient extends Client {
                 errors.addError(ss);
                 }
             long oid = val.get(1);
-            loadDeployedArchitecture(oid, state);
-            deployed.setArchitectureState(state);
+            //if (val.size()>2)
+            //    deployed.setDebugConfigMode((val.get(2) & 1)!=0);
+            JBoolean val2 = new APICall2<JBoolean>() {
+                @Override
+                public Call<JBoolean> apiFun() {
+                    return service2.isDebugMode(getDebugToken());
+                    }
+                }.call(this);
+            loadDeployedArchitecture(oid, state,val2.value());
             errors.addError(deployed.getErrors());
             } catch (Exception ee){
                 errors.addError(ee.toString());

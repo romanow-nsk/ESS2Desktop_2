@@ -68,6 +68,7 @@ public class ESSMetaPanel extends ESSBasePanel {
     private GUITimer profilerTimer = new GUITimer();                    // Таймер профилирования
     private final static int profilerTimerDelay=3;                      // Таймер повтора профилирования
     private boolean oldProfilerState=false;
+    private boolean serverDebugMode=false;
     //---------------------------------------------------------------------------------------------------
     private int  lastViewIndex=-1;
     private String archStateIcons[]={
@@ -1846,12 +1847,26 @@ public class ESSMetaPanel extends ESSBasePanel {
                     return;
                     }
                 Architectures.select(idx);
+
                 loadDeployedArchitecture(oid, state);
                 deployingViewState();
                 deployed.setArchitectureState(state);
                 }
             };
         }
+    private void getServerDebugMode(){
+        new APICall<JBoolean>(main) {
+            @Override
+            public Call<JBoolean> apiFun() {
+                return main2.service2.isDebugMode(main.getDebugToken());
+            }
+            @Override
+            public void onSucess(JBoolean vv) {
+                serverDebugMode = vv.value();
+            }
+        };
+    }
+
     private void clearRunTimeChanges(){
         runTimeChangesCount = 0;
         RunTimeSaveChanges.setVisible(false);
@@ -2805,7 +2820,8 @@ public class ESSMetaPanel extends ESSBasePanel {
         }
 
     private void loadDeployedArchitecture(long oid, int state) {
-        if (!main2.loadDeployedArchitecture(oid,state))
+        getServerDebugMode();
+        if (!main2.loadDeployedArchitecture(oid,state,serverDebugMode))
             return;
         deployed = main2.deployed;
         architecture = deployed;
@@ -4142,16 +4158,8 @@ case 3:         if (equipment.getIec61850LNTemplate().getOid() == 0)
         SNMPOnOff.setEnabled(!enabled);
         MIBLocal.setEnabled(!enabled);
         setSelectedProfile(!enabled);
-        new APICall<JBoolean>(main) {
-            @Override
-            public Call<JBoolean> apiFun() {
-                return main2.service2.isDebugMode(main.getDebugToken());
-                }
-            @Override
-            public void onSucess(JBoolean vv) {
-                DebugMode.setSelected(vv.value());
-                }
-            };
+        getServerDebugMode();
+        DebugMode.setSelected(serverDebugMode);
         }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
