@@ -116,7 +116,7 @@ public class ESSClient extends Client {
         setLocalUser(ip.equals("localhost") || port.equals("127.0.0.1"));
         return service;
         }
-    //----------------------- Загрузка метаданных для всех клиентов ---------------------------------------
+    //----------------------- Загрузка метаданных для всех клиентов ВРУЧНУЮ  --------------------------------------
     public ESS2Architecture loadFullArchitecture(long oid){
         ESS2Architecture arch = new ESS2Architecture();
         try {
@@ -127,9 +127,28 @@ public class ESSClient extends Client {
                 else
                     arch.addErrorData("Ошибка " + res.message()+" ("+res.code()+") "+res.errorBody().string());
                 return arch;
-            }
+                }
             DBRequest request = res.body();
             arch = (ESS2Architecture)  request.get(gson);
+            Response<ArrayList<Long>> res2 = service2.getArchitectureState(getDebugToken()).execute();
+            if (!res2.isSuccessful()) {
+                if (res2.code() == ValuesBase.HTTPAuthorization)
+                    arch.addErrorData("Сеанс закрыт " + Utils.httpError(res));
+                else
+                    arch.addErrorData("Ошибка " + res.message() + " (" + res.code() + ") " + res.errorBody().string());
+                return arch;
+                }
+            int state = res2.body().get(0).intValue();
+            arch.setArchitectureState(state);
+            Response<JBoolean> res3 = service2.isDebugMode(getDebugToken()).execute();
+            if (!res3.isSuccessful()){
+                if (res3.code()== ValuesBase.HTTPAuthorization)
+                    arch.addErrorData("Сеанс закрыт " + Utils.httpError(res));
+                else
+                    arch.addErrorData("Ошибка " + res.message()+" ("+res.code()+") "+res.errorBody().string());
+                return arch;
+                }
+            arch.setDebugConfigMode(res3.body().value());
             Artifact artifact;
             for(ESS2Equipment equipment : arch.getEquipments()){
                 ESS2MetaFile metaFile = equipment.getMetaFile().getRef();
@@ -168,10 +187,8 @@ public class ESSClient extends Client {
         return entity;
         }
     //-------------------------------------------------------------------------------------------------------
-    public boolean loadDeployedArchitecture(long oid, int state, boolean debugMode) {
+    public boolean loadDeployedArchitecture(long oid) {
         deployed = loadFullArchitecture(oid);
-        deployed.setArchitectureState(state);
-        deployed.setDebugConfigMode(debugMode);
         deployed.testFullArchitecture();
         ModBusClientProxyDriver driver = new ModBusClientProxyDriver();
         HashMap<String,String> map = new HashMap<>();
@@ -206,15 +223,7 @@ public class ESSClient extends Client {
                 errors.addError(ss);
                 }
             long oid = val.get(1);
-            //if (val.size()>2)
-            //    deployed.setDebugConfigMode((val.get(2) & 1)!=0);
-            JBoolean val2 = new APICall2<JBoolean>() {
-                @Override
-                public Call<JBoolean> apiFun() {
-                    return service2.isDebugMode(getDebugToken());
-                    }
-                }.call(this);
-            loadDeployedArchitecture(oid, state,val2.value());
+            loadDeployedArchitecture(oid);
             errors.addError(deployed.getErrors());
             } catch (Exception ee){
                 errors.addError(ee.toString());

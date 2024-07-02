@@ -1847,10 +1847,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                     return;
                     }
                 Architectures.select(idx);
-
-                loadDeployedArchitecture(oid, state);
-                deployingViewState();
-                deployed.setArchitectureState(state);
+                loadDeployedArchitecture(oid);
                 }
             };
         }
@@ -2777,7 +2774,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                         try {
                             out.add((Artifact) request.get(main.gson));
                             } catch (Exception ee){
-                                System.out.println("Ошибка десериализации Artafct: "+ee.toString()+"\n"+request.getJsonObject());
+                                System.out.println("Ошибка десериализации Artifact: "+ee.toString()+"\n"+request.getJsonObject());
                                 return;
                                 }
                         }
@@ -2819,9 +2816,8 @@ public class ESSMetaPanel extends ESSBasePanel {
         setRenderingOff();
         }
 
-    private void loadDeployedArchitecture(long oid, int state) {
-        getServerDebugMode();
-        if (!main2.loadDeployedArchitecture(oid,state,serverDebugMode))
+    private void loadDeployedArchitecture(long oid) {
+        if (!main2.loadDeployedArchitecture(oid))
             return;
         deployed = main2.deployed;
         architecture = deployed;
@@ -2868,8 +2864,7 @@ public class ESSMetaPanel extends ESSBasePanel {
                             Values.constMap().getGroupMapByValue("ArchState").get(val.getState()).title());
                     System.out.println(val);
                     int state = val.getState();
-                    loadDeployedArchitecture(oid, state);
-                    deployingViewState();
+                    loadDeployedArchitecture(oid);
                     }
                 };
             }
